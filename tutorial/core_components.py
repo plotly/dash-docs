@@ -3,6 +3,7 @@ import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output, State, Event
 from pandas_datareader import data as web
+import core_component_examples as examples
 from datetime import datetime as dt
 import plotly.graph_objs as go
 import json
@@ -11,6 +12,9 @@ import styles
 from server import app
 
 layout = html.Div(children=[
+    dcc.Location(id='url', refresh=False),
+    html.Div(id='page-content'),
+    dcc.Link(html.A('More examples'), href="/dropdown"),
     html.H1('Dash Core Components'),
 
     dcc.Markdown('''
@@ -407,7 +411,7 @@ dcc.Graph(
 
 
 for k in layout.keys():
-    if k == 'hidden':
+    if k == 'hidden' or k == 'page-content' or k == 'url':
         continue
 
     if k in ['section2-rangeslider-2', 'section2-slider-2']:
@@ -430,3 +434,14 @@ for k in layout.keys():
      for k in layout.keys() if k != 'hidden'])
 def update_hidden_div(*args):
     return ''
+
+
+@app.callback(Output('page-content', 'children'),
+              [Input('url', 'pathname')])
+def display_page(pathname):
+    print(pathname)
+    if pathname == 'dash/dash-core-components/dropdown':
+        return examples.dropdown
+    else:
+        return html.Div([html.P('hello')])
+    # You could also return a 404 "URL not found" page here
