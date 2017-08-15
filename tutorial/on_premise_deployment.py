@@ -224,8 +224,9 @@ def generate_instructions(chapter, platform):
 
             ('In Git Bash, run: ' if platform == 'Windows' else ''),
 
-            dcc.SyntaxHighlighter(
-                '$ git clone https://github.com/plotly/dash-on-premise-sample-app.git',
+            dcc.SyntaxHighlighter(s('''
+                $ git clone https://github.com/plotly/dash-on-premise-sample-app.git
+                '''),
                 customStyle=styles.code_container
             ),
 
@@ -239,8 +240,8 @@ def generate_instructions(chapter, platform):
                 Plotly On-Premise.
             ''')),
 
-            dcc.SyntaxHighlighter(
-                '$ git remote add plotly dokku@your-dash-app-manager:your-dash-app-name',
+            dcc.SyntaxHighlighter(s('''$ cd dash-on-premise-sample-app
+                $ git remote add plotly dokku@your-dash-app-manager:your-dash-app-name'''),
                 customStyle=styles.code_container,
                 language='python'
             ),
@@ -259,31 +260,23 @@ def generate_instructions(chapter, platform):
 
             dcc.Markdown(s('''***
 
-                #### Deploy
+                #### Modify `config.py`
 
-                Deploy your code by commiting it and pushing it to the repository:
-
+                Read through `config.py` and modify the values as necessary.
+                If Dash On-Premise was set up with "path-based routing"
+                (the default), then you will just need to change the
+                `DASH_APP_NAME` to be equal to the name of the Dash app that you
+                set earlier.
             ''')),
 
-
-            dcc.SyntaxHighlighter(s('''$ git push plotly master'''), customStyle=styles.code_container, language='python'),
-
-
             dcc.Markdown(s('''
-                Once this command finishes running, you will be able to view
-                your app in your web browser. The command will print out the URL
-                of the app. The URL will look look
-                `https://your-dash-app-name.your-dash-app-manager.com` or
-                `https://your-dash-app-manager.com/your-dash-app-name`, depending
-                on whether your Plotly On-Premise administrator set up
-                subdomain-based routing or path-based routing.
-
                 ***
 
                 #### Deploying Changes
 
-                When you modify `app.py` with your own code, you will need to add the changes
-                to git and push those changes to Plotly On-Premise.
+                After you have modified `config.py`, you are ready to upload
+                this folder to your Dash On-Premise server.
+                Files are transferred to the server using `git`:
             ''')),
 
             dcc.SyntaxHighlighter(s('''$ git status # view the changed files
@@ -294,10 +287,21 @@ def generate_instructions(chapter, platform):
                 '''), customStyle=styles.code_container, language='python'),
 
             dcc.Markdown(s('''
+                This commands will push the code in this folder to the
+                Dash On-Premise server and while doing so, will install the
+                necessary python packages and run your application
+                automatically.
+
+                Whenver you make changes to your Dash code,
+                you will need to run those `git` commands above.
+
                 If you install any other Python packages, add those packages to
                 the `requirements.txt` file. Packages that are included in this
                 file will be installed automatically by the Plotly On-Premise
                 server.
+
+                You can now modify `app.py` with your own custom Dash
+                application code.
             '''))
         ]
     elif chapter == 'auth':

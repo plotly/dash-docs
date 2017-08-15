@@ -250,7 +250,7 @@ app.css.append_css({
 })
 
 if 'DYNO' in os.environ:
-    app.scripts.config.serve_locally = False
+    app.scripts.config.serve_locally = True
     app.scripts.append_script({
         'external_url': 'https://cdn.rawgit.com/chriddyp/ca0d8f02a1659981a0ea7f013a378bbd/raw/e79f3f789517deec58f41251f7dbb6bee72c44ab/plotly_ga.js'
     })
