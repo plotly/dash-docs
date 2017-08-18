@@ -31,6 +31,7 @@ import getting_started_part_2
 import urls
 import auth
 import on_premise_deployment
+import core_component_examples as examples
 
 dcc._js_dist[0]['external_url'] = 'https://cdn.plot.ly/plotly-basic-1.27.1.min.js'
 
@@ -176,6 +177,56 @@ chapters = {
     'support': {
         'url': '/dash/support',
         'content': support.layout
+    },
+
+    'dropdown-examples': {
+        'url': '/dash/dash-core-components/dropdown',
+        'content': examples.Dropdown
+    },
+
+    'slider-examples': {
+        'url': '/dash/dash-core-components/slider',
+        'content': examples.Slider
+    },
+
+    'range-slider-examples': {
+        'url': '/dash/dash-core-components/rangeslider',
+        'content': examples.RangeSlider
+    },
+
+    'checklist-examples': {
+        'url': '/dash/dash-core-components/checklist',
+        'content': examples.Checklist
+    },
+
+    'input-examples': {
+        'url': '/dash/dash-core-components/input',
+        'content': examples.Input
+    },
+
+    'radio-item-examples': {
+        'url': '/dash/dash-core-components/radioitems',
+        'content': examples.RadioItems
+    },
+
+    'graph-examples': {
+        'url': '/dash/dash-core-components/graph',
+        'content': examples.Graph
+    },
+
+    'datepickersingle-examples': {
+        'url': '/dash/dash-core-components/datepickersingle',
+        'content': examples.DatePickerSingle
+    },
+
+    'datepickerrange-examples': {
+        'url': '/dash/dash-core-components/datepickerrange',
+        'content': examples.DatePickerRange
+    },
+
+    'markdown-examples': {
+        'url': '/dash/dash-core-components/markdown',
+        'content': examples.Markdown
     }
 }
 
