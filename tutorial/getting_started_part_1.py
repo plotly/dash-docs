@@ -64,7 +64,7 @@ layout = html.Div([
         pip install dash-renderer=={}  # The dash front-end
         pip install dash-html-components=={}  # HTML components
         pip install dash-core-components=={}  # Supercharged components
-        pip install plotly=={}  # Plotly graphing library used in examples
+        pip install plotly --upgrade  # Latest Plotly graphing library
     '''.replace('    ', '').format(
         dash.__version__,
         dash_renderer.__version__,

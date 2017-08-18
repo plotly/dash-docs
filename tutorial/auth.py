@@ -61,7 +61,7 @@ layout = html.Div([
     '''.replace('    ', '')),
 
     dcc.SyntaxHighlighter('''pip install dash==0.17.8rc2
-pip install dash-auth==0.0.4rc7''', customStyle=styles.code_container),
+pip install dash-auth==0.0.4''', customStyle=styles.code_container),
 
     dcc.Markdown('''
     Example Code:
@@ -138,7 +138,7 @@ if __name__ == '__main__':
     '''.replace('    ', '')),
 
     dcc.SyntaxHighlighter('''pip install dash==0.17.8rc2
-pip install dash-auth==0.0.4rc7''', customStyle=styles.code_container),
+pip install dash-auth==0.0.4''', customStyle=styles.code_container),
 
     dcc.Markdown('''
     Example Code:
