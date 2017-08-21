@@ -12,8 +12,6 @@ import styles
 from server import app
 
 layout = html.Div(children=[
-    dcc.Location(id='url', refresh=False),
-    html.Div(id='page-content'),
     html.H1('Dash Core Components'),
 
     dcc.Markdown('''
