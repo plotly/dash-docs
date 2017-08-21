@@ -14,7 +14,6 @@ from server import app
 layout = html.Div(children=[
     dcc.Location(id='url', refresh=False),
     html.Div(id='page-content'),
-    dcc.Link(html.A('More examples'), href="/dropdown"),
     html.H1('Dash Core Components'),
 
     dcc.Markdown('''
@@ -61,7 +60,7 @@ dcc.Dropdown(
     ], multi=True, value="MTL", id='section2-dropdown-2'),
 
     html.Hr(),
-    html.H3('Date Picker'),
+    html.H3('Single Date Picker'),
     dcc.SyntaxHighlighter('''import dash_core_components as dcc
 from datetime import datetime as dt
 

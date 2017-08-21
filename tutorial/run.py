@@ -227,6 +227,11 @@ chapters = {
     'markdown-examples': {
         'url': '/dash/dash-core-components/markdown',
         'content': examples.Markdown
+    },
+
+    'link-examples': {
+        'url': '/dash/dash-core-components/link',
+        'content': examples.Link
     }
 }
 

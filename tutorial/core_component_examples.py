@@ -1,10 +1,12 @@
 import dash_core_components as dcc
 import dash_html_components as html
+import plotly.graph_objs as go
 import os as _os
 import json
 import dash as _dash
 import pandas as pd
 import styles
+from datetime import datetime as dt
 
 _current_path = _os.path.join(_os.path.dirname(_os.path.abspath(dcc.__file__)),
                               'metadata.json')
@@ -30,7 +32,6 @@ def object_hook_handler(obj):
             if(objVal['name'] == 'shape'):
                 for i in objVal['value']:
                     holder['Array Of'][0][i] = objVal['value'][i]['name']
-                print(holder.items()[0])
                 obj['Type'] = holder.items()[0]
             elif('value' in objVal):
                 for i in objVal['value']:
@@ -66,10 +67,11 @@ def object_hook_handler(obj):
             obj['defaultValue']['value'] = 'True'
         elif(obj['defaultValue']['value'] == 'false'):
             obj['defaultValue']['value'] = 'False'
-        elif(type(obj['defaultValue']['value']) == dict and
-             len(obj['defaultValue']['value']) > 20):
+        elif(type(obj['defaultValue']['value']) == dict):
+            print(obj['defaultValue']['value'])
             obj['defaultValue']['value'] = 'Checkout plotly.js docs for\
                                             more info'
+
         obj['Default Value'] = obj['defaultValue']['value']
         obj.pop('defaultValue')
     if 'description' in obj:
@@ -93,6 +95,8 @@ def get_dataframe(string):
         df.drop(['fireEvent'], inplace=True)
     if('setProps' in df.index):
         df.drop(['setProps'], inplace=True)
+    if('dashFireEvent' in df.index):
+        df.drop(['dashFireEvent'], inplace=True)
     if('className' in df.index.tolist()):
         reindex = ['id', 'className']
     else:
@@ -102,10 +106,15 @@ def get_dataframe(string):
     df['Props'] = df.index
     df = df.reindex(reindex)
     df.fillna('N/A', inplace=True)
-    if('Default Value' in df.index):
+    if('Default Value' in df.columns.values.tolist()):
         df = df[['Props', 'Description', 'Type', 'Default Value']]
     else:
         df = df[['Props', 'Description', 'Type']]
+
+    if('config' in df['Props']):
+        df.set_value('config', 'Default Value',
+                     "Check Plotly.js docs for more information")
+
     return df
 
 def generate_table(dataframe):
@@ -442,7 +451,95 @@ Markdown = html.Div(children=[
 
 # Graph
 Graph = html.Div(children=[
-    html.H3('Graph Proptypes'),
+    html.H3('Graph Extra Examples'),
+    html.Hr(),
+    html.H4('Hide Modebar'),
+    dcc.Markdown('To hide the modebar, just add it to the `config`!'),
+    dcc.SyntaxHighlighter('''import dash_core_components as dcc
+import plotly.graph_objs as go
+
+dcc.Graph(
+    figure=go.Figure(
+        data=[
+            go.Scatter(x=[1, 2, 3], y=[3, 2, 4], mode='lines'),
+            go.Scatter(x=[1, 2, 3], y=[4, 1, 5], mode='lines')
+        ],
+        layout=go.Layout(
+            title='Quarterly Results',
+            showlegend=False,
+            margin=go.Margin(l=20, r=0, t=40, b=20)
+        ),
+        config=
+    ),
+    style={'height': 300},
+    config={'displayModeBar': False},
+    id='my-graph'
+)
+
+    ''', customStyle=styles.code_container, language='python'),
+    html.Div([
+        dcc.Graph(
+            figure=go.Figure(
+                data=[
+                    go.Scatter(x=[1, 2, 3], y=[3, 2, 4], mode='lines'),
+                    go.Scatter(x=[1, 2, 3], y=[4, 1, 5], mode='lines')
+                ],
+                layout=go.Layout(
+                    title='Quarterly Results',
+                    showlegend=False,
+                    margin=go.Margin(l=20, r=0, t=40, b=20)
+                ),
+            ),
+            style={'height': 300},
+            config={'displayModeBar': True},
+            id='my-graph'
+        ),
+    ], className='example-container'),
+    html.Hr(),
+    html.H4('Create Static Plot'),
+    dcc.Markdown('To create a static plot, all you have to do again is\
+                  change the `config` value!'),
+    dcc.SyntaxHighlighter('''import dash_core_components as dcc
+import plotly.graph_objs as go
+
+dcc.Graph(
+    figure=go.Figure(
+        data=[
+            go.Scatter(x=[1, 2, 3], y=[3, 2, 4], mode='lines'),
+            go.Scatter(x=[1, 2, 3], y=[4, 1, 5], mode='lines')
+        ],
+        layout=go.Layout(
+            title='Quarterly Results',
+            showlegend=False,
+            margin=go.Margin(l=20, r=0, t=40, b=20)
+        ),
+    ),
+    style={'height': 300},
+    config={'staticPlot': True},
+    id='my-graph'
+)
+
+    ''', customStyle=styles.code_container, language='python'),
+    html.Div([
+        dcc.Graph(
+            figure=go.Figure(
+                data=[
+                    go.Scatter(x=[1, 2, 3], y=[3, 2, 4], mode='lines'),
+                    go.Scatter(x=[1, 2, 3], y=[4, 1, 5], mode='lines')
+                ],
+                layout=go.Layout(
+                    title='Quarterly Results',
+                    showlegend=False,
+                    margin=go.Margin(l=20, r=0, t=40, b=20)
+                ),
+            ),
+            config={'staticPlot': True},
+            style={'height': 300},
+            id='my-graph'
+        ),
+    ], className='example-container'),
+    html.Hr(),
+    html.H4('Graph PropTypes'),
     generate_table(get_dataframe('Graph'))
 ])
 
@@ -455,6 +552,180 @@ DatePickerRange = html.Div(children=[
 
 # DatePickerSingle
 DatePickerSingle = html.Div(children=[
-    html.H3('DatePickerRange Proptypes'),
+    html.H3("DatePickerSingle Extra Examples"),
+    html.Hr(),
+    dcc.SyntaxHighlighter('''import dash_core_components as dcc
+from datetime import datetime as dt
+
+dcc.DatePickerSingle(
+    id='date-picker-single',
+    initial_visible_month=dt(1997, 5, 5),
+    min_date_allowed=dt(1997, 4, 29),
+    max_date_allowed=dt(1997, 6, 3),
+    show_outside_days=True,
+    with_portal=True,
+    number_of_months_shown=1,
+    placeholder='Try it out!'
+)''', language='python', customStyle=styles.code_container),
+    dcc.DatePickerSingle(
+        id='section2-datepickersingle-2',
+        initial_visible_month=dt(1997, 5, 5),
+        min_date_allowed=dt(1997, 4, 29),
+        max_date_allowed=dt(1997, 6, 3),
+        show_outside_days=True,
+        with_portal=True,
+        number_of_months_shown=1,
+        placeholder='Try it out!'
+    ),
+    html.Hr(),
+    html.H4('Show outside days'),
+    dcc.Markdown('To show days outside the curret calender month,\
+                 `show_outside_days` needs to be set to True'),
+    dcc.SyntaxHighlighter('''import dash_core_components as dcc
+from datetime import datetime as dt
+
+dcc.DatePickerSingle(
+    id='date-picker-single',
+    show_outside_days=True,
+    placeholder='With Outside Days'
+),
+
+dcc.DatePickerSingle(
+    id='date-picker-single',
+    show_outside_days=False,
+    placeholder='Without Outside Days'
+)
+
+''', language='python', customStyle=styles.code_container),
+    dcc.DatePickerSingle(
+        id='date-picker-single',
+        show_outside_days=True,
+        placeholder='True'
+    ),
+
+    dcc.DatePickerSingle(
+        id='date-picker-single',
+        show_outside_days=False,
+        placeholder='False'
+    ),
+    html.Hr(),
+    html.H4('Display Formats'),
+    dcc.Markdown('You can show months in a variety of display formats.\
+                  Display formats denote how, your selected dates will look'),
+    dcc.SyntaxHighlighter('''import dash_core_components as dcc
+from datetime import datetime as dt
+
+dcc.DatePickerSingle(
+    id='date-picker-single',
+    date=dt.now(),
+    display_format='MM YY'
+),
+
+dcc.DatePickerSingle(
+    id='date-picker-single',
+    date=dt.now(),
+    display_format='M, YYYY'
+),
+
+dcc.DatePickerSingle(
+    id='date-picker-single',
+    date=dt.now(),
+    display_format='MMMM Y'
+),
+
+dcc.DatePickerSingle(
+    id='date-picker-single',
+    date=dt.now(),
+    display_format='MMMM || Y'
+)
+
+''', language='python', customStyle=styles.code_container),
+    dcc.DatePickerSingle(
+        id='date-picker-single',
+        date=dt.now(),
+        display_format='MM YY'
+    ),
+
+    dcc.DatePickerSingle(
+        id='date-picker-single',
+        date=dt.now(),
+        display_format='M, YYYY'
+    ),
+
+    dcc.DatePickerSingle(
+        id='date-picker-single',
+        date=dt.now(),
+        display_format='MMMM Y'
+    ),
+
+    dcc.DatePickerSingle(
+        id='date-picker-single',
+        date=dt.now(),
+        display_format='MMMM || Y'
+    ),
+    html.Hr(),
+    html.H4('Month Formats'),
+    dcc.Markdown('This prop determines how the month formats will be\
+                 displayed. Click on the date pickers below to see the\
+                 results.'),
+    dcc.SyntaxHighlighter('''import dash_core_components as dcc
+from datetime import datetime as dt
+
+dcc.DatePickerSingle(
+    id='date-picker-single',
+    placeholder='Select me!',
+    month_format='MM YY'
+),
+
+dcc.DatePickerSingle(
+    id='date-picker-single',
+    placeholder='Select me too!',
+    month_format='M, YYYY'
+),
+
+dcc.DatePickerSingle(
+    id='date-picker-single',
+    placeholder='Try me!',
+    month_format='MMMM Y'
+),
+
+dcc.DatePickerSingle(
+    id='date-picker-single',
+    placeholder='Click me!',
+    month_format='MMMM || Y'
+)
+
+''', language='python', customStyle=styles.code_container),
+    dcc.DatePickerSingle(
+        id='date-picker-single',
+        placeholder='Select me!',
+        month_format='MM YY'
+    ),
+
+    dcc.DatePickerSingle(
+        id='date-picker-single',
+        placeholder='Select me too!',
+        month_format='M, YYYY'
+    ),
+
+    dcc.DatePickerSingle(
+        id='date-picker-single',
+        placeholder='Try me!',
+        month_format='MMMM Y'
+    ),
+
+    dcc.DatePickerSingle(
+        id='date-picker-single',
+        placeholder='Click me!',
+        month_format='MMMM || Y'
+    ),
+    html.Hr(),
+    html.H3('DatePickerSingle Proptypes'),
     generate_table(get_dataframe('DatePickerSingle'))
+])
+
+# Link
+Link = html.Div(children=[
+    html.H3('Link Proptypes'),
+    generate_table(get_dataframe('Link'))
 ])
