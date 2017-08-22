@@ -555,40 +555,17 @@ from datetime import datetime as dt
 
 dcc.DatePickerRange(
     id='date-picker-range',
-    calendar_orientation='vertical'
+    calendar_orientation='vertical',
+    start_date_placeholder_text='Test out',
+    end_date_placeholder_text='the vertical here!'
 )
 
 ''', language='python', customStyle=styles.code_container),
     dcc.DatePickerRange(
         id='date-picker-range',
-        calendar_orientation='vertical'
-    ),
-    html.Hr(),
-    html.Hr(),
-    dcc.SyntaxHighlighter('''import dash_core_components as dcc
-from datetime import datetime as dt
-
-dcc.DatePickerRange(
-    id='date-picker-range',
-    initial_visible_month=dt(1997, 5, 5),
-    min_date_allowed=dt(1997, 4, 29),
-    max_date_allowed=dt(1997, 6, 3),
-    show_outside_days=True,
-    with_portal=True,
-    number_of_months_shown=1,
-    start_date_placeholder_text='Try it',
-    end_date_placeholder_text='out!'
-)''', language='python', customStyle=styles.code_container),
-    dcc.DatePickerRange(
-        id='date-picker-range',
-        initial_visible_month=dt(1997, 5, 5),
-        min_date_allowed=dt(1997, 4, 29),
-        max_date_allowed=dt(1997, 6, 3),
-        show_outside_days=True,
-        with_portal=True,
-        number_of_months_shown=1,
-        start_date_placeholder_text='Try it',
-        end_date_placeholder_text='out!'
+        calendar_orientation='vertical',
+        start_date_placeholder_text='Test out the',
+        end_date_placeholder_text='calendar!'
     ),
     html.Hr(),
     html.H4('Show outside days'),
@@ -634,51 +611,59 @@ from datetime import datetime as dt
 
 dcc.DatePickerRange(
     id='date-picker-range',
-    start_date=dt.now(),
-    display_format='MM YY'
+    start_date=dt(2017, 8, 5),
+    display_format='MM YY DD',
+    end_date_placeholder_text='MM YY DD'
 ),
 
 dcc.DatePickerRange(
     id='date-picker-range',
-    start_date=dt.now(),
-    display_format='M, YYYY'
+    start_date=dt(2017, 8, 5),
+    display_format='M, YYYY, DD',
+    end_date_placeholder_text='M, YYYY, DD'
 ),
 
 dcc.DatePickerRange(
     id='date-picker-range',
-    start_date=dt.now(),
-    display_format='MMMM Y'
+    start_date=dt(2017, 8, 5),
+    display_format='MMMM, D, Y',
+    end_date_placeholder_text='MMMM, D, Y'
 ),
 
 dcc.DatePickerRange(
     id='date-picker-range',
-    start_date=dt.now(),
-    display_format='MMMM || Y'
+    start_date=dt(2017, 8, 5),
+    display_format='MM || DD || Y',
+    end_date_placeholder_text='MM || DD || Y'
 )
 
 ''', language='python', customStyle=styles.code_container),
     dcc.DatePickerRange(
         id='date-picker-range',
-        start_date=dt.now(),
-        display_format='MM YY'
+        start_date=dt(2017, 8, 5),
+        display_format='MM YY DD',
+        end_date_placeholder_text='MM YY DD'
     ),
 
     dcc.DatePickerRange(
         id='date-picker-range',
-        start_date=dt.now(),
-        display_format='M, YYYY'
+        start_date=dt(2017, 8, 5),
+        display_format='M, YYYY, DD',
+        end_date_placeholder_text='M, YYYY, DD'
     ),
 
     dcc.DatePickerRange(
         id='date-picker-range',
-        start_date=dt.now(),
-        display_format='MMMM Y'
+        start_date=dt(2017, 8, 5),
+        display_format='MMMM, D, Y',
+        end_date_placeholder_text='MMMM, D, Y'
     ),
 
     dcc.DatePickerRange(
         id='date-picker-range',
-        start_date=dt.now(),
-        display_format='MMMM || Y'
+        start_date=dt(2017, 8, 5),
+        display_format='MM || DD || Y',
+        end_date_placeholder_text='MM || DD || Y'
     ),
     html.Hr(),
     html.H4('Month Formats'),
@@ -690,51 +675,59 @@ from datetime import datetime as dt
 
 dcc.DatePickerRange(
     id='date-picker-range',
-    placeholder='Select me!',
-    month_format='MM YY'
+    start_date_placeholder_text='Select',
+    end_date_placeholder_text='me!',
+    month_format='MM YY, DD'
 ),
 
 dcc.DatePickerRange(
     id='date-picker-range',
-    placeholder='Select me too!',
-    month_format='M, YYYY'
+    start_date_placeholder_text='Select',
+    end_date_placeholder_text='me too!',
+    month_format='M, YYYY, DD'
 ),
 
 dcc.DatePickerRange(
     id='date-picker-range',
-    placeholder='Try me!',
-    month_format='MMMM Y'
+    start_date_placeholder_text='Try',
+    end_date_placeholder_text='me!',
+    month_format='MMMM D Y'
 ),
 
 dcc.DatePickerRange(
     id='date-picker-range',
-    placeholder='Click me!',
-    month_format='MMMM || Y'
+    start_date_placeholder_text='Click',
+    end_date_placeholder_text='me!',
+    month_format='MMMM || DD || Y'
 )
 
 ''', language='python', customStyle=styles.code_container),
     dcc.DatePickerRange(
         id='date-picker-range',
-        start_date_placeholder_text='Select me!',
-        month_format='MM YY'
+        start_date_placeholder_text='Select',
+        end_date_placeholder_text='me!',
+        month_format='MM YY, DD'
     ),
 
     dcc.DatePickerRange(
         id='date-picker-range',
-        start_date_placeholder_text='Select me too!',
-        month_format='M, YYYY'
+        start_date_placeholder_text='Select',
+        end_date_placeholder_text='me too!',
+        month_format='M, YYYY, DD'
     ),
 
     dcc.DatePickerRange(
         id='date-picker-range',
-        start_date_placeholder_text='Try me!',
-        month_format='MMMM Y'
+        start_date_placeholder_text='Try',
+        end_date_placeholder_text='me!',
+        month_format='MMMM D Y'
     ),
 
     dcc.DatePickerRange(
         id='date-picker-range',
-        start_date_placeholder_text='Click me!',
-        month_format='MMMM || Y'
+        start_date_placeholder_text='Click',
+        end_date_placeholder_text='me!',
+        month_format='MMMM || DD || Y'
     ),
     html.Hr(),
     html.H4('Min, Max and Initial Visible Month'),
@@ -759,6 +752,29 @@ dcc.DatePickerRange(
         initial_visible_month=dt(2017, 8, 1)
     ),
     html.Hr(),
+    html.H4('Clearable Property'),
+    dcc.SyntaxHighlighter('''import dash_core_components as dcc
+from datetime import datetime as dt
+
+dcc.DatePickerRange(
+    id='date-picker-range',
+    min_date_allowed=dt(2017, 8, 5),
+    max_date_allowed=dt(2017, 8, 27),
+    start_date=dt(2017, 8, 5),
+    end_date=dt(2017, 8, 20),
+    initial_visible_month=dt(2017, 8, 1)
+)
+
+''', language='python', customStyle=styles.code_container),
+    dcc.DatePickerRange(
+        id='date-picker-range',
+        min_date_allowed=dt(2017, 8, 5),
+        max_date_allowed=dt(2017, 8, 27),
+        start_date=dt(2017, 8, 5),
+        end_date=dt(2017, 8, 20),
+        initial_visible_month=dt(2017, 8, 1)
+    ),
+    html.Hr(),
     html.H3('DatePickerRange Proptypes'),
     generate_table(get_dataframe('DatePickerRange'))
 ])
@@ -774,38 +790,15 @@ from datetime import datetime as dt
 
 dcc.DatePickerSingle(
     id='date-picker-single',
-    calendar_orientation='vertical'
+    calendar_orientation='vertical',
+    placeholder='Test it here!'
 )
 
 ''', language='python', customStyle=styles.code_container),
     dcc.DatePickerSingle(
         id='date-picker-single',
-        calendar_orientation='vertical'
-    ),
-    html.Hr(),
-    html.Hr(),
-    dcc.SyntaxHighlighter('''import dash_core_components as dcc
-from datetime import datetime as dt
-
-dcc.DatePickerSingle(
-    id='date-picker-single',
-    initial_visible_month=dt(1997, 5, 5),
-    min_date_allowed=dt(1997, 4, 29),
-    max_date_allowed=dt(1997, 6, 3),
-    show_outside_days=True,
-    with_portal=True,
-    number_of_months_shown=1,
-    placeholder='Try it out!'
-)''', language='python', customStyle=styles.code_container),
-    dcc.DatePickerSingle(
-        id='section2-datepickersingle-2',
-        initial_visible_month=dt(1997, 5, 5),
-        min_date_allowed=dt(1997, 4, 29),
-        max_date_allowed=dt(1997, 6, 3),
-        show_outside_days=True,
-        with_portal=True,
-        number_of_months_shown=1,
-        placeholder='Try it out!'
+        calendar_orientation='vertical',
+        placeholder='Test it here!'
     ),
     html.Hr(),
     html.H4('Show outside days'),
@@ -848,50 +841,50 @@ from datetime import datetime as dt
 dcc.DatePickerSingle(
     id='date-picker-single',
     date=dt.now(),
-    display_format='MM YY'
+    display_format='MM YY, DD'
 ),
 
 dcc.DatePickerSingle(
     id='date-picker-single',
     date=dt.now(),
-    display_format='M, YYYY'
+    display_format='M, YYYY, DD'
 ),
 
 dcc.DatePickerSingle(
     id='date-picker-single',
     date=dt.now(),
-    display_format='MMMM Y'
+    display_format='MMMM Y, DD'
 ),
 
 dcc.DatePickerSingle(
     id='date-picker-single',
     date=dt.now(),
-    display_format='MMMM || Y'
+    display_format='MMMM || Y || DD'
 )
 
 ''', language='python', customStyle=styles.code_container),
     dcc.DatePickerSingle(
         id='date-picker-single',
         date=dt.now(),
-        display_format='MM YY'
+        display_format='MM YY, DD'
     ),
 
     dcc.DatePickerSingle(
         id='date-picker-single',
         date=dt.now(),
-        display_format='M, YYYY'
+        display_format='M, YYYY, DD'
     ),
 
     dcc.DatePickerSingle(
         id='date-picker-single',
         date=dt.now(),
-        display_format='MMMM Y'
+        display_format='MMMM Y, DD'
     ),
 
     dcc.DatePickerSingle(
         id='date-picker-single',
         date=dt.now(),
-        display_format='MMMM || Y'
+        display_format='MMMM || Y || DD'
     ),
     html.Hr(),
     html.H4('Month Formats'),
@@ -969,6 +962,29 @@ dcc.DatePickerSingle(
         id='date-picker-single',
         min_date_allowed=dt(2017, 8, 5),
         max_date_allowed=dt(2017, 8, 27),
+        initial_visible_month=dt(2017, 8, 1)
+    ),
+    html.Hr(),
+    html.H4('Clearable Property'),
+    dcc.SyntaxHighlighter('''import dash_core_components as dcc
+from datetime import datetime as dt
+
+dcc.DatePickerSingle(
+    id='date-picker-single',
+    min_date_allowed=dt(2017, 8, 5),
+    date=dt(2017, 8, 15),
+    max_date_allowed=dt(2017, 8, 27),
+    clearable=True,
+    initial_visible_month=dt(2017, 8, 1)
+)
+
+''', language='python', customStyle=styles.code_container),
+    dcc.DatePickerSingle(
+        id='date-picker-single',
+        min_date_allowed=dt(2017, 8, 5),
+        date=dt(2017, 8, 15),
+        max_date_allowed=dt(2017, 8, 27),
+        clearable=True,
         initial_visible_month=dt(2017, 8, 1)
     ),
     html.Hr(),
