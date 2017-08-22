@@ -271,6 +271,7 @@ dcc.Textarea(
     ),
 
     html.Br(),
+    html.Br(),
     dcc.Link(html.A('More Textarea Properties'),
              href="/dash/dash-core-components/textarea"),
     html.Hr(),
