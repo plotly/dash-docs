@@ -56,9 +56,11 @@ dcc.Dropdown(
         {'label': 'Montréal', 'value': 'MTL'},
         {'label': 'San Francisco', 'value': 'SF'}
     ], multi=True, value="MTL", id='section2-dropdown-2'),
-
+    html.Br(),
+    dcc.Link(html.A('More Dropdown Examples'),
+             href="/dash/dash-core-components/dropdown"),
     html.Hr(),
-    html.H3('Single Date Picker'),
+    html.H3('DatePickerSingle'),
     dcc.SyntaxHighlighter('''import dash_core_components as dcc
 from datetime import datetime as dt
 
@@ -71,22 +73,6 @@ dcc.DatePickerSingle(
     dcc.DatePickerSingle(
         id='section2-datepickersingle-1',
         date=dt(1997, 5, 10)
-    ),
-
-    dcc.SyntaxHighlighter('''import dash_core_components as dcc
-from datetime import datetime as dt
-
-dcc.DatePickerRange(
-    id='date-picker-range',
-    start_date=dt(1997, 5, 3),
-    end_date_placeholder_text='Select a date!'
-)
-''', language='python', customStyle=styles.code_container),
-
-    dcc.DatePickerRange(
-        id='section2-datepickerrange-1',
-        start_date=dt(1997, 5, 3),
-        end_date_placeholder_text='Select a date!'
     ),
 
     dcc.SyntaxHighlighter('''import dash_core_components as dcc
@@ -111,6 +97,27 @@ dcc.DatePickerSingle(
         with_portal=True,
         number_of_months_shown=1,
         placeholder='Try it out!'
+    ),
+    html.Br(),
+    html.Br(),
+    dcc.Link(html.A('More DatePickerSingle Examples'),
+             href="/dash/dash-core-components/datepickersingle"),
+    html.Hr(),
+    html.H3('DatePickerRange'),
+    dcc.SyntaxHighlighter('''import dash_core_components as dcc
+from datetime import datetime as dt
+
+dcc.DatePickerRange(
+    id='date-picker-range',
+    start_date=dt(1997, 5, 3),
+    end_date_placeholder_text='Select a date!'
+)
+''', language='python', customStyle=styles.code_container),
+
+    dcc.DatePickerRange(
+        id='section2-datepickerrange-1',
+        start_date=dt(1997, 5, 3),
+        end_date_placeholder_text='Select a date!'
     ),
 
     dcc.SyntaxHighlighter('''import dash_core_components as dcc
@@ -153,7 +160,10 @@ dcc.DatePickerRange(
         month_format='MM YY',
         display_format='MMMM D, Y'
     ),
-
+    html.Br(),
+    html.Br(),
+    dcc.Link(html.A('More DatePickerRange Examples'),
+             href="/dash/dash-core-components/datepickerrange"),
     html.Hr(),
     html.H3('Slider'),
     dcc.SyntaxHighlighter('''import dash_core_components as dcc
@@ -187,6 +197,9 @@ dcc.Slider(
         value=5,
         id='section2-slider-2'
     )),
+    html.Br(),
+    dcc.Link(html.A('More Slider Examples'),
+             href="/dash/dash-core-components/slider"),
     html.Hr(),
     html.H3('RangeSlider'),
     dcc.SyntaxHighlighter('''import dash_core_components as dcc
@@ -222,7 +235,9 @@ dcc.RangeSlider(
         value=[-3, 4],
         id='section2-rangeslider-2'
     )),
-
+    html.Br(),
+    dcc.Link(html.A('More RangeSlider Examples'),
+             href="/dash/dash-core-components/rangeslider"),
     html.Hr(),
     html.H3('Input'),
     dcc.SyntaxHighlighter('''import dash_core_components as dcc
@@ -239,6 +254,25 @@ dcc.Input(
         id='section2-input'
     ),
 
+    html.Br(),
+    dcc.Link(html.A('More Input Properties'),
+             href="/dash/dash-core-components/input"),
+    html.Hr(),
+    html.H3('Textarea'),
+    dcc.SyntaxHighlighter('''import dash_core_components as dcc
+
+dcc.Textarea(
+    placeholder='Enter a value...',
+    style={'width': '100%'}
+)''', language='python', customStyle=styles.code_container),
+    dcc.Textarea(
+        placeholder='Enter a value...',
+        style={'width': '100%'}
+    ),
+
+    html.Br(),
+    dcc.Link(html.A('More Textarea Properties'),
+             href="/dash/dash-core-components/textarea"),
     html.Hr(),
     html.H3('Checkboxes'),
     dcc.SyntaxHighlighter('''import dash_core_components as dcc
@@ -283,7 +317,9 @@ dcc.Checklist(
         id='section2-checklist-2'
     ),
 
-
+    html.Br(),
+    dcc.Link(html.A('More Checklist Properties'),
+             href="/dash/dash-core-components/checklist"),
     html.Hr(),
     html.H3('Radio Items'),
     dcc.SyntaxHighlighter('''import dash_core_components as dcc
@@ -327,7 +363,9 @@ dcc.RadioItems(
         labelStyle={'display': 'inline-block'},
         id='section2-radioitems-2'
     ),
-
+    html.Br(),
+    dcc.Link(html.A('More RadioItems Properties'),
+             href="/dash/dash-core-components/radioitems"),
     html.Hr(),
     html.H3('Markdown'),
     dcc.SyntaxHighlighter('''import dash_core_components as dcc
@@ -358,6 +396,9 @@ dcc.RadioItems(
     quotes, and more.'''.replace('  ', ''),
     containerProps={'className': 'example-container'}),
 
+    html.Br(),
+    dcc.Link(html.A('More Markdown Properties'),
+             href="/dash/dash-core-components/markdown"),
     html.Hr(),
     html.H3('Graphs'),
     dcc.Markdown('''
@@ -401,7 +442,9 @@ dcc.Graph(
         id="my-graph"
     ),
 
-    html.Div(style={'marginBottom': 50}),
+    html.Br(),
+    dcc.Link(html.A('More Graph Examples'),
+             href="/dash/dash-core-components/graph"),
 
     html.Div(id='hidden', style={'display': 'none'})
 ])

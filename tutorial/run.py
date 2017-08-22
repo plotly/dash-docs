@@ -232,6 +232,11 @@ chapters = {
     'link-examples': {
         'url': '/dash/dash-core-components/link',
         'content': examples.Link
+    },
+
+    'textarea-examples': {
+        'url': '/dash/dash-core-components/textarea',
+        'content': examples.Textarea
     }
 }
 
