@@ -7,6 +7,8 @@ import dash as _dash
 import pandas as pd
 import styles
 from datetime import datetime as dt
+from server import app
+import dash
 
 _current_path = _os.path.join(_os.path.dirname(_os.path.abspath(dcc.__file__)),
                               'metadata.json')
@@ -96,6 +98,7 @@ def get_dataframe(string):
     if('setProps' in df.index):
         df.drop(['setProps'], inplace=True)
     if('dashFireEvent' in df.index):
+        print(df)
         df.drop(['dashFireEvent'], inplace=True)
     if('className' in df.index.tolist()):
         reindex = ['id', 'className']
@@ -152,9 +155,56 @@ def generate_table(dataframe):
 
 Dropdown = html.Div(children=[
 
-    html.H3('Dropdown Extra Examples'),
+    html.H2('Dropdown Examples and Reference'),
     html.Hr(),
-    html.H4('Searching Dropdown'),
+    html.H4('Default Dropdown'),
+    html.P("An example of a default dropdown without \
+            any non-essential properties."),
+    dcc.SyntaxHighlighter('''import dash
+import dash_html_components as html
+import dash_core_components as dcc
+
+app = dash.Dash()
+app.layout = html.Div([
+    dcc.Dropdown(
+        id='my-dropdown',
+        options=[
+            {'label': 'New York City', 'value': 'NYC'},
+            {'label': 'Montreal', 'value': 'MTL'},
+            {'label': 'San Francisco', 'value': 'SF'}
+        ],
+       value='NYC'
+    ),
+    html.Div(id='output-container')
+)
+
+@app.callback(
+    dash.dependencies.Output('output-container', 'children'),
+    [dash.dependencies.Input('my-dropdown', 'value')])
+def update_output(value):
+    return 'You have selected "{}"'.format(value)
+
+if __name__ == '__main__':
+    app.run_server(debug=True)
+
+    ''', customStyle=styles.code_container, language='python'),
+
+    dcc.Dropdown(
+        id='my-dropdown',
+        options=[
+            {'label': 'New York City', 'value': 'NYC'},
+            {'label': 'Montreal', 'value': 'MTL'},
+            {'label': 'San Francisco', 'value': 'SF'}
+        ],
+       value='NYC'
+    ),
+    html.Div(id='output-container'),
+
+    html.Hr(),
+    html.H4('Multi-Value Dropdown'),
+    dcc.Markdown("A dropdown component with the `multi` property set to `True` \
+                  will allow the user to select more than one value \
+                  at a time."),
     dcc.SyntaxHighlighter('''import dash_core_components as dcc
 
 dcc.Dropdown(
@@ -163,27 +213,57 @@ dcc.Dropdown(
         {'label': 'Montreal', 'value': 'MTL'},
         {'label': 'San Francisco', 'value': 'SF'}
     ],
-    searchable=True,
-    clearable=False,
-    placeholder="Try typing: "New York"
+    value=['MTL', 'NYC'],
+    multi=True
 )
 
     ''', customStyle=styles.code_container, language='python'),
 
     dcc.Dropdown(
-            options=[
-                {'label': 'New York City', 'value': 'NYC'},
-                {'label': 'Montreal', 'value': 'MTL'},
-                {'label': 'San Francisco', 'value': 'SF'}
-            ],
-            searchable=True,
-            clearable=False,
-            placeholder='Try typing: "New York"'
+        id='multi-value',
+        options=[
+            {'label': 'New York City', 'value': 'NYC'},
+            {'label': 'Montreal', 'value': 'MTL'},
+            {'label': 'San Francisco', 'value': 'SF'}
+        ],
+        value=['MTL', 'NYC'],
+        multi=True
     ),
-
     html.Hr(),
-    html.H4('Clearing Dropdown'),
-    html.P("Try selecting New York or San Francisco"),
+
+    html.H4('Disable Search'),
+    dcc.Markdown("The `searchable` property is set to `True` by default on all \
+            `Dropdown`s. To prevent searching the dropdown \
+            value, just set the `searchable` property to `False`. \
+            Try searching for 'New York' on this dropdown below and compare \
+            it to the other dropdowns on the page to see the difference."),
+    dcc.SyntaxHighlighter('''import dash_core_components as dcc
+
+dcc.Dropdown(
+    options=[
+        {'label': 'New York City', 'value': 'NYC'},
+        {'label': 'Montreal', 'value': 'MTL'},
+        {'label': 'San Francisco', 'value': 'SF'}
+    ],
+    searchable=False
+)
+
+    ''', customStyle=styles.code_container, language='python'),
+
+    dcc.Dropdown(
+        options=[
+            {'label': 'New York City', 'value': 'NYC'},
+            {'label': 'Montreal', 'value': 'MTL'},
+            {'label': 'San Francisco', 'value': 'SF'}
+        ],
+        searchable=False
+    ),
+    html.Hr(),
+
+    html.H4('Dropdown Clear'),
+    dcc.Markdown("The `clearable` property is set to `True` by default on all \
+            `Dropdown`s. To prevent the clearing of the selected dropdwon \
+            value, just set the `clearable` property to `False`"),
     dcc.SyntaxHighlighter('''import dash_core_components as dcc
 
 dcc.Dropdown(
@@ -193,7 +273,7 @@ dcc.Dropdown(
         {'label': 'San Francisco', 'value': 'SF'},
     ],
     value='MTL',
-    clearable=True
+    clearable=False
 )
 
     ''', customStyle=styles.code_container, language='python'),
@@ -201,17 +281,70 @@ dcc.Dropdown(
     dcc.Dropdown(
         id='clearable',
         options=[
-            {'label': 'New York City', 'value': 'BBC'},
-            {'label': 'Montreal', 'value': 'T'},
-            {'label': 'San Francisco', 'value': 'F'},
+            {'label': 'New York City', 'value': 'NYC'},
+            {'label': 'Montreal', 'value': 'MTL'},
+            {'label': 'San Francisco', 'value': 'SF'},
         ],
-        value='T',
-        clearable=True
+        value='MTL',
+        clearable=False
     ),
 
     html.Hr(),
-    html.H4('Disabled Options'),
-    html.P("Try selecting New York or San Francisco"),
+    html.H4('Placeholder Text'),
+    dcc.Markdown("The `placeholder` property allows you to define \
+                 default text shown when no value is selected."),
+    dcc.SyntaxHighlighter('''import dash_core_components as dcc
+
+dcc.Dropdown(
+    options=[
+        {'label': 'New York City', 'value': 'NYC'},
+        {'label': 'Montreal', 'value': 'MTL'},
+        {'label': 'San Francisco', 'value': 'SF'}
+    ],
+    placeholder="Select a value!",
+)
+
+    ''', customStyle=styles.code_container, language='python'),
+
+    dcc.Dropdown(
+        options=[
+            {'label': 'New York City', 'value': 'NYC'},
+            {'label': 'Montreal', 'value': 'MTL'},
+            {'label': 'San Francisco', 'value': 'SF'}
+        ],
+        placeholder="Select a value!",
+    ),
+
+    html.Hr(),
+    html.H4('Disable Dropdown'),
+    dcc.Markdown("To disable the dropdown just set `disabled=True`."),
+    dcc.SyntaxHighlighter('''import dash_core_components as dcc
+
+dcc.Dropdown(
+    options=[
+        {'label': 'New York City', 'value': 'NYC'},
+        {'label': 'Montreal', 'value': 'MTL'},
+        {'label': 'San Francisco', 'value': 'SF'}
+    ],
+    disabled=True
+)
+
+    ''', customStyle=styles.code_container, language='python'),
+
+    dcc.Dropdown(
+        options=[
+            {'label': 'New York City', 'value': 'NYC'},
+            {'label': 'Montreal', 'value': 'MTL'},
+            {'label': 'San Francisco', 'value': 'SF'}
+        ],
+        disabled=True
+    ),
+
+    html.Hr(),
+    html.H4('Disable Options'),
+    dcc.Markdown("To disable certain options displayed inside the dropdown \
+                 menu. Just set define the `disabled` property in the options \
+                 declaration."),
     dcc.SyntaxHighlighter('''import dash_core_components as dcc
 
 dcc.Dropdown(
@@ -220,40 +353,41 @@ dcc.Dropdown(
         {'label': 'Montreal', 'value': 'MTL'},
         {'label': 'San Francisco', 'value': 'SF', 'disabled': 'True'}
     ],
-    clearable=False,
 )
 
     ''', customStyle=styles.code_container, language='python'),
 
     dcc.Dropdown(
-            options=[
-                {'label': 'New York City', 'value': 'NYC', 'disabled': 'True'},
-                {'label': 'Montreal', 'value': 'MTL'},
-                {'label': 'San Francisco', 'value': 'SF', 'disabled': 'True'}
-            ],
-            clearable=False,
+        options=[
+            {'label': 'New York City', 'value': 'NYC', 'disabled': 'True'},
+            {'label': 'Montreal', 'value': 'MTL'},
+            {'label': 'San Francisco', 'value': 'SF', 'disabled': 'True'}
+        ],
     ),
 
-    html.Hr(),
-    html.H4('Disabled Dropdown'),
-    dcc.SyntaxHighlighter('''import dash_core_components as dcc
-
-dcc.Dropdown(
-    disabled=True
-)
-
-    ''', customStyle=styles.code_container, language='python'),
-
-    dcc.Dropdown(
-        disabled=True
-    ),
-
-
+    html.Div(id='hidden-div', style={'display': 'none'}),
     html.Hr(),
     html.H4("Dropdown Proptypes"),
     generate_table(get_dataframe('Dropdown'))
 ])
 
+@app.callback(
+    dash.dependencies.Output('output-container', 'children'),
+    [dash.dependencies.Input('my-dropdown', 'value')])
+def update_output(value):
+    return 'You have selected "{}"'.format(value)
+
+@app.callback(
+    dash.dependencies.Output('hidden-div', 'children'),
+    [dash.dependencies.Input('clearable', 'value')])
+def update_output(value):
+    return 'You have selected "{}"'.format(value)
+
+@app.callback(
+    dash.dependencies.Output('hidden-div', 'n_clicks'),
+    [dash.dependencies.Input('multi-value', 'value')])
+def update_output(value):
+    return 'You have selected "{}"'.format(value)
 
 # RangeSlider
 Slider = html.Div(children=[
