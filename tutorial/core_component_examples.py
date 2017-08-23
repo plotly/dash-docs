@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import dash_core_components as dcc
 import dash_html_components as html
 import plotly.graph_objs as go
@@ -7,7 +8,6 @@ import dash as _dash
 import pandas as pd
 import styles
 from datetime import datetime as dt
-from server import app
 import dash
 
 _current_path = _os.path.join(_os.path.dirname(_os.path.abspath(dcc.__file__)),
@@ -159,7 +159,7 @@ Dropdown = html.Div(children=[
     html.Hr(),
     html.H4('Default Dropdown'),
     html.P("An example of a default dropdown without \
-            any non-essential properties."),
+            any extra properties."),
     dcc.SyntaxHighlighter('''import dash
 import dash_html_components as html
 import dash_core_components as dcc
@@ -198,7 +198,7 @@ if __name__ == '__main__':
         ],
        value='NYC'
     ),
-    html.Div(id='output-container'),
+    html.Div(id='output-container-dropdown'),
 
     html.Hr(),
     html.H4('Multi-Value Dropdown'),
@@ -371,96 +371,382 @@ dcc.Dropdown(
     generate_table(get_dataframe('Dropdown'))
 ])
 
+# Slider
+Slider = html.Div(children=[
+    html.H3('Slider Examples and Reference'),
+    html.Hr(),
+    html.H4('Simple Slider Example'),
+    html.P("An example of a basic slider tied to a callback."),
+    dcc.SyntaxHighlighter('''import dash
+import dash_html_components as html
+import dash_core_components as dcc
+
+app = dash.Dash()
+app.layout = html.Div([
+    dcc.Slider(
+        id='my-slider',
+        min=0,
+        max=20,
+        step=0.5,
+        value=10,
+    ),
+    html.Div(id='output-container')
+)
+
 @app.callback(
     dash.dependencies.Output('output-container', 'children'),
-    [dash.dependencies.Input('my-dropdown', 'value')])
+    [dash.dependencies.Input('my-slider', 'value')])
 def update_output(value):
     return 'You have selected "{}"'.format(value)
 
-@app.callback(
-    dash.dependencies.Output('hidden-div', 'children'),
-    [dash.dependencies.Input('clearable', 'value')])
-def update_output(value):
-    return 'You have selected "{}"'.format(value)
-
-@app.callback(
-    dash.dependencies.Output('hidden-div', 'n_clicks'),
-    [dash.dependencies.Input('multi-value', 'value')])
-def update_output(value):
-    return 'You have selected "{}"'.format(value)
-
-# RangeSlider
-Slider = html.Div(children=[
-    html.H3('RangeSlider Extra Examples'),
-    html.Hr(),
-    html.H4('Slider Dots'),
-    dcc.SyntaxHighlighter('''import dash_core_components as dcc
-
-dcc.Slider(
-    min=0,
-    max=20,
-    value=10,
-    dots=True
-)
+if __name__ == '__main__':
+    app.run_server(debug=True)
 
     ''', customStyle=styles.code_container, language='python'),
+
     html.Div([
         dcc.Slider(
+            id='my-slider',
             min=0,
             max=20,
-            value=10,
-            dots=True
+            step=0.5,
+            value=10
         ),
     ], className='example-container'),
+    html.Div(id='output-container-slider'),
     html.Hr(),
-    html.H4('Vertical Slider'),
+    html.H4('Marks and Steps'),
+    dcc.Markdown("If slider `marks` are defined and `step` is set to `None` \
+                 then the slider will only be able to select values that \
+                 have been predefined by the `marks`."),
     dcc.SyntaxHighlighter('''import dash_core_components as dcc
 
 dcc.Slider(
     min=0,
-    max=20,
-    value=20,
-    vertical=True
+    max=10,
+    step=None,
+    marks={
+        0: 0,
+        3: 3,
+        5: 5,
+        7.65: 7.65,
+        10: 10
+    }
 )
 
     ''', customStyle=styles.code_container, language='python'),
     html.Div([
         dcc.Slider(
             min=0,
-            max=20,
-            value=10,
-            vertical=True
-        ),
-    ]),
+            max=10,
+            step=None,
+            marks={
+                0: 0,
+                3: 3,
+                5: 5,
+                7.65: 7.65,
+                10: 10
+            }
+        )
+    ], className='example-container',
+        style={'overflow': 'hidden', 'padding': '20px'}),
     html.Hr(),
-    html.H4('Included Prop'),
+
+    html.H4('Included and Styling Marks'),
+    dcc.Markdown("By default, `included=True`, meaning the rail trailing the \
+                 handle will be highlighted. To have the handle act as a \
+                 discrete value set `included=False`. To style `marks`, \
+                 include a style css attribute alongside the key value."),
     dcc.SyntaxHighlighter('''import dash_core_components as dcc
 
+dcc.Markdown('`included=True`'),
+# Slider has included=True by default
 dcc.Slider(
     min=0,
-    max=20,
-    value=20,
+    max=100,
+    value=65,
+    marks={
+        0: {'label': '0°C', 'style': {'color': '#77b0b1'}},
+        26: {'label': '26°C'},
+        37: {'label': '37°C'},
+        100: {'label': '100°C', 'style': {'color': '#f50'}}
+    }
+),
+
+dcc.Markdown('`included==False`'),
+dcc.Slider(
+    min=0,
+    max=100,
+    value=37,
+    marks={
+        0: {'label': '0°C', 'style': {'color': '#77b0b1'}},
+        26: {'label': '26°C'},
+        37: {'label': '37°C'},
+        100: {'label': '100°C', 'style': {'color': '#f50'}}
+    },
     included=False
 )
 
     ''', customStyle=styles.code_container, language='python'),
     html.Div([
+        dcc.Markdown('`included=True`'),
         dcc.Slider(
             min=0,
-            max=20,
-            value=10,
+            max=100,
+            value=65,
+            marks={
+                0: {'label': '0°C', 'style': {'color': '#77b0b1'}},
+                26: {'label': '26°C'},
+                37: {'label': '37°C'},
+                100: {'label': '100°C', 'style': {'color': '#f50'}}
+            }
+        )
+    ], className='example-container',
+        style={
+            'overflow': 'hidden',
+            'padding': '10px 20px 30px 20px',
+            'font-weight': 'bolder'
+            }),
+    html.Div([
+        dcc.Markdown('`included=False`'),
+        dcc.Slider(
+            min=0,
+            max=100,
+            value=37,
+            marks={
+                0: {'label': '0°C', 'style': {'color': '#77b0b1'}},
+                26: {'label': '26°C'},
+                37: {'label': '37°C'},
+                100: {'label': '100°C', 'style': {'color': '#f50'}}
+            },
             included=False
-        ),
-    ], className='example-container'),
+        )
+    ], className='example-container',
+        style={
+            'overflow': 'hidden',
+            'padding': '10px 20px 30px 20px',
+            'font-weight': 'bolder'
+            }),
+    html.Hr(),
+    html.H4('Non-Linear Slider and Updatemode'),
+    dcc.Markdown("Dash doesn't natively support non-linear sliders but you\
+                 can recreate a logarithmic slider by setting `marks`\
+                 to be logarithmic and adjusting the slider's output \
+                 `value` in the callbacks. The `updatemode` property \
+                 allows us to determine when we want a callback to be \
+                 triggered. The following example has `updatemode='drag'` \
+                 which means a callback is triggered everytime the handle \
+                 is moved. \
+                 Contrast the callback output with the first example on this \
+                 page to see the difference."),
+    dcc.SyntaxHighlighter('''import dash_core_components as dcc
+
+# Use the following function when accessing the value of 'my-slider'
+# in callbacks to transorm the output value to logarithmic
+import dash_core_components as dcc
+import dash_html_components as html
+from dash.dependencies import *
+import dash
+
+app = dash.Dash('')
+
+def transform_value(value):
+    return 10 ** value
+
+app.layout = html.Div([
+    dcc.Slider(
+        id='my-slider',
+        marks={(i): '{}'.format(10 ** i) for i in range(4)},
+        max=3,
+        value=2,
+        step=0.01,
+        updatemode='drag'
+    ),
+    html.Div(id='output-container')
+])
+
+@app.callback(Output('output-container', 'children'),
+              [Input('my-slider', 'value')])
+def display_value(value):
+    return 'Linear Value: {} | \
+            Log Value: {:0.2f}'.format(value, transform_value(value))
+
+    ''', customStyle=styles.code_container, language='python'),
+    html.Div([
+        dcc.Slider(
+            id='non-linear-slider',
+            marks={(i): '{}'.format(10 ** i) for i in range(4)},
+            max=3,
+            value=2,
+            step=0.01,
+            updatemode='drag'
+        )
+    ], className='example-container',
+        style={'overflow': 'hidden', 'padding': '20px'}),
+    html.Div(id='output-container-slider-non-linear'),
     html.Hr(),
     html.H4("Slider Proptypes"),
     generate_table(get_dataframe('Slider'))
 ])
 
-
 # RangeSlider
 RangeSlider = html.Div(children=[
-    html.H3('Slider Extra Examples'),
+    html.H2("RangeSlider Examples and Reference"),
+    html.Hr(),
+    html.H4('Simple RangeSlider Example'),
+    html.P("An example of a basic RangeSlider tied to a callback"),
+    dcc.SyntaxHighlighter('''import dash
+import dash_html_components as html
+import dash_core_components as dcc
+
+app = dash.Dash()
+app.layout = html.Div([
+    dcc.RangeSlider(
+        id='my-range-slider',
+        min=0,
+        max=20,
+        step=0.5,
+        value=[5, 15]
+    ),
+    html.Div(id='output-container-range-slider')
+)
+
+@app.callback(
+    dash.dependencies.Output('output-container-range-slider', 'children'),
+    [dash.dependencies.Input('my-range-slider', 'value')])
+def update_output(value):
+    return 'You have selected "{}"'.format(value)
+
+if __name__ == '__main__':
+    app.run_server(debug=True)
+
+    ''', customStyle=styles.code_container, language='python'),
+
+    html.Div([
+        dcc.RangeSlider(
+            id='my-range-slider',
+            min=0,
+            max=20,
+            step=0.5,
+            value=[5, 15]
+        ),
+    ], className='example-container',
+       style={'overflow': 'hidden'}),
+    html.Div(id='output-container-range-slider'),
+    html.Hr(),
+    html.H4('Marks and Steps'),
+    dcc.Markdown("If slider `marks` are defined and `step` is set to `None` \
+                 then the slider will only be able to select values that \
+                 have been predefined by the `marks`."),
+    dcc.SyntaxHighlighter('''import dash_core_components as dcc
+
+dcc.RangeSlider(
+    min=0,
+    max=10,
+    step=None,
+    marks={
+        0: 0,
+        3: 3,
+        5: 5,
+        7.65: 7.65,
+        10: 10
+    },
+    value=[3, 7.65]
+)
+
+    ''', customStyle=styles.code_container, language='python'),
+    html.Div([
+        dcc.RangeSlider(
+            min=0,
+            max=10,
+            step=None,
+            marks={
+                0: 0,
+                3: 3,
+                5: 5,
+                7.65: 7.65,
+                10: 10
+            },
+            value=[3, 7.65]
+        )
+    ], className='example-container',
+        style={'overflow': 'hidden', 'padding': '20px 10px 30px 20px'}),
+    html.Hr(),
+    html.H4('Included and Styling Marks'),
+    dcc.Markdown("By default, `included=True`, meaning the rail trailing the \
+                 handle will be highlighted. To have the handle act as a \
+                 discrete value set `included=False`. To style `marks`, \
+                 include a style css attribute alongside the key value."),
+    dcc.SyntaxHighlighter('''import dash_core_components as dcc
+
+    dcc.Markdown('`included=True`'),
+    # RangeSlider has included=True by default
+    dcc.RangeSlider(
+        min=0,
+        max=100,
+        value=[10, 65],
+        marks={
+            0: {'label': '0°C', 'style': {'color': '#77b0b1'}},
+            26: {'label': '26°C'},
+            37: {'label': '37°C'},
+            100: {'label': '100°C', 'style': {'color': '#f50'}}
+        }
+    ),
+
+    dcc.Markdown('`included==False`'),
+    dcc.RangeSlider(
+        min=0,
+        max=100,
+        value=[37, 65, 75],
+        marks={
+            0: {'label': '0°C', 'style': {'color': '#77b0b1'}},
+            26: {'label': '26°C'},
+            37: {'label': '37°C'},
+            100: {'label': '100°C', 'style': {'color': '#f50'}}
+        },
+    included=False
+    )
+
+    ''', customStyle=styles.code_container, language='python'),
+    html.Div([
+        dcc.Markdown('`included=True`'),
+        dcc.RangeSlider(
+            min=0,
+            max=100,
+            value=[65, 87],
+            marks={
+                0: {'label': '0°C', 'style': {'color': '#77b0b1'}},
+                26: {'label': '26°C'},
+                37: {'label': '37°C'},
+                100: {'label': '100°C', 'style': {'color': '#f50'}}
+            }
+        )
+    ], className='example-container',
+        style={
+            'overflow': 'hidden',
+            'padding': '10px 20px 30px 20px',
+            'font-weight': 'bolder'
+            }),
+    html.Div([
+        dcc.Markdown('`included=False`'),
+        dcc.RangeSlider(
+            min=0,
+            max=100,
+            value=[37, 46, 75],
+            marks={
+                0: {'label': '0°C', 'style': {'color': '#77b0b1'}},
+                26: {'label': '26°C'},
+                37: {'label': '37°C'},
+                100: {'label': '100°C', 'style': {'color': '#f50'}}
+            },
+            included=False
+        )
+    ], className='example-container',
+        style={
+            'overflow': 'hidden',
+            'padding': '10px 20px 30px 20px',
+            'font-weight': 'bolder'
+            }),
     html.Hr(),
     html.H4('Multiple Handles'),
     dcc.Markdown('To create multiple handles \
@@ -472,7 +758,6 @@ dcc.RangeSlider(
     max=30,
     value=[1, 3, 4, 5, 12, 17]
 )
-
     ''', customStyle=styles.code_container, language='python'),
     html.Div([
         dcc.RangeSlider(
@@ -480,21 +765,23 @@ dcc.RangeSlider(
             max=30,
             value=[1, 3, 4, 5, 12, 17]
         ),
-    ], className='example-container'),
+    ], className='example-container',
+       style={'overflow': 'hidden'}),
     html.Hr(),
     html.H4('Pushable Handles'),
-    dcc.Markdown("`Pushable` can take on two different sets of values. \
+    dcc.Markdown("The `pushable` property can take on two different \
+                sets of values. \
                 Either a `bool` or a numerical value. \
-                Try moving the handles around! "),
+                Try moving the handles around! The numerical value determines \
+                the minimum distance between the handles before they get \
+                pushed."),
     dcc.SyntaxHighlighter('''import dash_core_components as dcc
-
 dcc.RangeSlider(
     min=0,
     max=30,
     value=[8, 10, 15, 17, 20],
     pushable=2
 )
-
     ''', customStyle=styles.code_container, language='python'),
     html.Div([
         dcc.RangeSlider(
@@ -503,30 +790,8 @@ dcc.RangeSlider(
             value=[8, 10, 15, 17, 20],
             pushable=2
         ),
-    ], className='example-container'),
-    html.Hr(),
-    html.H4('Included Prop'),
-    dcc.Markdown("If `included=True`, the rail will not highlight between\
-                the points, becoming an independent point rather than\
-                continuous"),
-    dcc.SyntaxHighlighter('''import dash_core_components as dcc
-
-dcc.RangeSlider(
-    min=0,
-    max=30,
-    value=[8, 10, 15],
-    included=False
-)
-
-    ''', customStyle=styles.code_container, language='python'),
-    html.Div([
-        dcc.RangeSlider(
-            min=0,
-            max=30,
-            value=[8, 10, 15],
-            included=False
-        ),
-    ], className='example-container'),
+    ], className='example-container',
+       style={'overflow': 'hidden'}),
     html.Hr(),
     html.H4('Crossing Handles'),
     dcc.Markdown("If `allowCross=False`, the handles will not be allowed to\
@@ -536,10 +801,9 @@ dcc.RangeSlider(
 dcc.RangeSlider(
     min=0,
     max=30,
-    value=[8, 10, 15],
+    value=[10, 15],
     allowCross=False
 )
-
     ''', customStyle=styles.code_container, language='python'),
     html.Div([
         dcc.RangeSlider(
@@ -548,9 +812,77 @@ dcc.RangeSlider(
             value=[10, 15],
             allowCross=False
         ),
-    ], className='example-container'),
+    ], className='example-container',
+        style={'overflow': 'hidden'}),
     html.Hr(),
-    html.H4("RangeSlider Proptypes"),
+    html.H4('Non-Linear Slider and Updatemode'),
+    dcc.Markdown("Dash doesn't natively support non-linear sliders but you\
+                 can recreate a logarithmic slider by setting `marks`\
+                 to be logarithmic and adjusting the slider's output \
+                 `value` in the callbacks. The `updatemode` property \
+                 allows us to determine when we want a callback to be \
+                 triggered. The following example has `updatemode='drag'` \
+                 which means a callback is triggered everytime the handle \
+                 is moved. \
+                 Contrast the callback output with the first example on this \
+                 page to see the difference."),
+    dcc.SyntaxHighlighter('''import dash_core_components as dcc
+import dash_core_components as dcc
+import dash_html_components as html
+from dash.dependencies import *
+import dash
+
+app = dash.Dash('')
+
+# Use the following function when accessing the value of 'my-range-slider'
+# in callbacks to transorm the output value to logarithmic
+def transform_value(value):
+    if(type(value) == list):
+        valueList = []
+        for i in value:
+            valueList.append(10 ** i)
+        return valueList
+    else:
+        return 10 ** value
+
+app.layout = html.Div([
+    dcc.RangeSlider(
+        id='non-linear-range-slider',
+        marks={(i): '{}'.format(10 ** i) for i in range(4)},
+        max=3,
+        value=[0.1, 2],
+        dots=False,
+        step=0.01,
+        updatemode='drag'
+    ),
+    html.Div(id='output-container')
+])
+
+@app.callback(
+    Output('output-container-range-slider-non-linear', 'children'),
+    [Input('non-linear-range-slider', 'value')])
+def update_output(value):
+    transformed_value=transform_value(value)
+    return 'Linear Value: [{}, {}] |
+            Log Value: [{:0.2f}, {:0.2f}]'.format(value[0], value[1],
+                                       transformed_value[0],
+                                       transformed_value[1])
+
+    ''', customStyle=styles.code_container, language='python'),
+    html.Div([
+        dcc.RangeSlider(
+            id='non-linear-range-slider',
+            marks={(i): '{}'.format(10 ** i) for i in range(4)},
+            max=3,
+            value=[0.1, 2],
+            dots=False,
+            step=0.01,
+            updatemode='drag'
+        )
+    ], className='example-container',
+        style={'overflow': 'hidden', 'padding': '20px'}),
+    html.Div(id='output-container-range-slider-non-linear'),
+    html.Hr(),
     generate_table(get_dataframe('RangeSlider'))
 ])
 
@@ -585,93 +917,7 @@ Markdown = html.Div(children=[
 
 # Graph
 Graph = html.Div(children=[
-    html.H3('Graph Extra Examples'),
-    html.Hr(),
-    html.H4('Hide Modebar'),
-    dcc.Markdown('To hide the modebar, just add it to the `config`!'),
-    dcc.SyntaxHighlighter('''import dash_core_components as dcc
-import plotly.graph_objs as go
-
-dcc.Graph(
-    figure=go.Figure(
-        data=[
-            go.Scatter(x=[1, 2, 3], y=[3, 2, 4], mode='lines'),
-            go.Scatter(x=[1, 2, 3], y=[4, 1, 5], mode='lines')
-        ],
-        layout=go.Layout(
-            title='Quarterly Results',
-            showlegend=False,
-            margin=go.Margin(l=20, r=0, t=40, b=20)
-        ),
-        config=
-    ),
-    style={'height': 300},
-    config={'displayModeBar': False},
-    id='my-graph'
-)
-
-    ''', customStyle=styles.code_container, language='python'),
-    html.Div([
-        dcc.Graph(
-            figure=go.Figure(
-                data=[
-                    go.Scatter(x=[1, 2, 3], y=[3, 2, 4], mode='lines'),
-                    go.Scatter(x=[1, 2, 3], y=[4, 1, 5], mode='lines')
-                ],
-                layout=go.Layout(
-                    title='Quarterly Results',
-                    showlegend=False,
-                    margin=go.Margin(l=20, r=0, t=40, b=20)
-                ),
-            ),
-            style={'height': 300},
-            config={'displayModeBar': True},
-            id='my-graph'
-        ),
-    ], className='example-container'),
-    html.Hr(),
-    html.H4('Create Static Plot'),
-    dcc.Markdown('To create a static plot, all you have to do again is\
-                  change the `config` value!'),
-    dcc.SyntaxHighlighter('''import dash_core_components as dcc
-import plotly.graph_objs as go
-
-dcc.Graph(
-    figure=go.Figure(
-        data=[
-            go.Scatter(x=[1, 2, 3], y=[3, 2, 4], mode='lines'),
-            go.Scatter(x=[1, 2, 3], y=[4, 1, 5], mode='lines')
-        ],
-        layout=go.Layout(
-            title='Quarterly Results',
-            showlegend=False,
-            margin=go.Margin(l=20, r=0, t=40, b=20)
-        ),
-    ),
-    style={'height': 300},
-    config={'staticPlot': True},
-    id='my-graph'
-)
-
-    ''', customStyle=styles.code_container, language='python'),
-    html.Div([
-        dcc.Graph(
-            figure=go.Figure(
-                data=[
-                    go.Scatter(x=[1, 2, 3], y=[3, 2, 4], mode='lines'),
-                    go.Scatter(x=[1, 2, 3], y=[4, 1, 5], mode='lines')
-                ],
-                layout=go.Layout(
-                    title='Quarterly Results',
-                    showlegend=False,
-                    margin=go.Margin(l=20, r=0, t=40, b=20)
-                ),
-            ),
-            config={'staticPlot': True},
-            style={'height': 300},
-            id='my-graph'
-        ),
-    ], className='example-container'),
+    html.H2('Graph Reference Guide'),
     html.Hr(),
     html.H4('Graph PropTypes'),
     generate_table(get_dataframe('Graph'))
@@ -680,234 +926,78 @@ dcc.Graph(
 
 # DatePickerRange
 DatePickerRange = html.Div(children=[
-    html.H3("DatePickerRange Extra Examples"),
-    html.Hr(),
-    html.H4('Calendar Orientation'),
-    dcc.Markdown('Calendar can either be displayed vertically or horizontally'),
-    dcc.SyntaxHighlighter('''import dash_core_components as dcc
-from datetime import datetime as dt
-
-dcc.DatePickerRange(
-    id='date-picker-range',
-    calendar_orientation='vertical',
-    start_date_placeholder_text='Test out',
-    end_date_placeholder_text='the vertical here!'
-)
-
-''', language='python', customStyle=styles.code_container),
-    dcc.DatePickerRange(
-        id='date-picker-range',
-        calendar_orientation='vertical',
-        start_date_placeholder_text='Test out the',
-        end_date_placeholder_text='calendar!'
-    ),
-    html.Hr(),
-    html.H4('Show outside days'),
-    dcc.Markdown('To show days outside the curret calender month,\
-                 `show_outside_days` needs to be set to True'),
-    dcc.SyntaxHighlighter('''import dash_core_components as dcc
-from datetime import datetime as dt
-
-dcc.DatePickerRange(
-    id='date-picker-range',
-    show_outside_days=True,
-    start_date_placeholder_text='With',
-    end_date_placeholder_text='Outside Days'
-),
-
-dcc.DatePickerRange(
-    id='date-picker-range',
-    show_outside_days=False,
-    start_date_placeholder_text='Without',
-    end_date_placeholder_text='Outside Days',
-)
-
-''', language='python', customStyle=styles.code_container),
-    dcc.DatePickerRange(
-        id='date-picker-range',
-        show_outside_days=True,
-        start_date_placeholder_text='With',
-        end_date_placeholder_text='Outside Days'
-    ),
-
-    dcc.DatePickerRange(
-        id='date-picker-range',
-        show_outside_days=False,
-        start_date_placeholder_text='Without',
-        end_date_placeholder_text='Outside Days',
-    ),
-    html.Hr(),
-    html.H4('Display Formats'),
-    dcc.Markdown('You can show months in a variety of display formats.\
-                  Display formats denote how, your selected dates will look'),
-    dcc.SyntaxHighlighter('''import dash_core_components as dcc
-from datetime import datetime as dt
-
-dcc.DatePickerRange(
-    id='date-picker-range',
-    start_date=dt(2017, 8, 5),
-    display_format='MM YY DD',
-    end_date_placeholder_text='MM YY DD'
-),
-
-dcc.DatePickerRange(
-    id='date-picker-range',
-    start_date=dt(2017, 8, 5),
-    display_format='M, YYYY, DD',
-    end_date_placeholder_text='M, YYYY, DD'
-),
-
-dcc.DatePickerRange(
-    id='date-picker-range',
-    start_date=dt(2017, 8, 5),
-    display_format='MMMM, D, Y',
-    end_date_placeholder_text='MMMM, D, Y'
-),
-
-dcc.DatePickerRange(
-    id='date-picker-range',
-    start_date=dt(2017, 8, 5),
-    display_format='MM || DD || Y',
-    end_date_placeholder_text='MM || DD || Y'
-)
-
-''', language='python', customStyle=styles.code_container),
-    dcc.DatePickerRange(
-        id='date-picker-range',
-        start_date=dt(2017, 8, 5),
-        display_format='MM YY DD',
-        end_date_placeholder_text='MM YY DD'
-    ),
-
-    dcc.DatePickerRange(
-        id='date-picker-range',
-        start_date=dt(2017, 8, 5),
-        display_format='M, YYYY, DD',
-        end_date_placeholder_text='M, YYYY, DD'
-    ),
-
-    dcc.DatePickerRange(
-        id='date-picker-range',
-        start_date=dt(2017, 8, 5),
-        display_format='MMMM, D, Y',
-        end_date_placeholder_text='MMMM, D, Y'
-    ),
-
-    dcc.DatePickerRange(
-        id='date-picker-range',
-        start_date=dt(2017, 8, 5),
-        display_format='MM || DD || Y',
-        end_date_placeholder_text='MM || DD || Y'
-    ),
-    html.Hr(),
-    html.H4('Month Formats'),
-    dcc.Markdown('This prop determines how the month formats will be\
-                 displayed. Click on the date pickers below to see the\
-                 results.'),
-    dcc.SyntaxHighlighter('''import dash_core_components as dcc
-from datetime import datetime as dt
-
-dcc.DatePickerRange(
-    id='date-picker-range',
-    start_date_placeholder_text='Select',
-    end_date_placeholder_text='me!',
-    month_format='MM YY, DD'
-),
-
-dcc.DatePickerRange(
-    id='date-picker-range',
-    start_date_placeholder_text='Select',
-    end_date_placeholder_text='me too!',
-    month_format='M, YYYY, DD'
-),
-
-dcc.DatePickerRange(
-    id='date-picker-range',
-    start_date_placeholder_text='Try',
-    end_date_placeholder_text='me!',
-    month_format='MMMM D Y'
-),
-
-dcc.DatePickerRange(
-    id='date-picker-range',
-    start_date_placeholder_text='Click',
-    end_date_placeholder_text='me!',
-    month_format='MMMM || DD || Y'
-)
-
-''', language='python', customStyle=styles.code_container),
-    dcc.DatePickerRange(
-        id='date-picker-range',
-        start_date_placeholder_text='Select',
-        end_date_placeholder_text='me!',
-        month_format='MM YY, DD'
-    ),
-
-    dcc.DatePickerRange(
-        id='date-picker-range',
-        start_date_placeholder_text='Select',
-        end_date_placeholder_text='me too!',
-        month_format='M, YYYY, DD'
-    ),
-
-    dcc.DatePickerRange(
-        id='date-picker-range',
-        start_date_placeholder_text='Try',
-        end_date_placeholder_text='me!',
-        month_format='MMMM D Y'
-    ),
-
-    dcc.DatePickerRange(
-        id='date-picker-range',
-        start_date_placeholder_text='Click',
-        end_date_placeholder_text='me!',
-        month_format='MMMM || DD || Y'
-    ),
-    html.Hr(),
-    html.H4('Min, Max and Initial Visible Month'),
-    dcc.Markdown('The `min_date_allowed` prop determines the minimum\
-                 selectable date on the calendar, the `max_date_allowed`\
-                 determines the maximum selectable date on the calendar'),
-    dcc.SyntaxHighlighter('''import dash_core_components as dcc
-from datetime import datetime as dt
-
-dcc.DatePickerRange(
-    id='date-picker-range',
-    min_date_allowed=dt(2017, 8, 5),
-    max_date_allowed=dt(2017, 8, 27),
-    initial_visible_month=dt(2017, 8, 1)
-)
-
-''', language='python', customStyle=styles.code_container),
-    dcc.DatePickerRange(
-        id='date-picker-range',
-        min_date_allowed=dt(2017, 8, 5),
-        max_date_allowed=dt(2017, 8, 27),
-        initial_visible_month=dt(2017, 8, 1)
-    ),
-    html.Hr(),
-    html.H4('Clearable Property'),
-    dcc.SyntaxHighlighter('''import dash_core_components as dcc
-from datetime import datetime as dt
-
-dcc.DatePickerRange(
-    id='date-picker-range',
-    min_date_allowed=dt(2017, 8, 5),
-    max_date_allowed=dt(2017, 8, 27),
-    start_date=dt(2017, 8, 5),
-    end_date=dt(2017, 8, 20),
-    initial_visible_month=dt(2017, 8, 1)
-)
-
-''', language='python', customStyle=styles.code_container),
-    dcc.DatePickerRange(
-        id='date-picker-range',
-        min_date_allowed=dt(2017, 8, 5),
-        max_date_allowed=dt(2017, 8, 27),
-        start_date=dt(2017, 8, 5),
-        end_date=dt(2017, 8, 20),
-        initial_visible_month=dt(2017, 8, 1)
-    ),
+    html.H2("DatePickerRange Extra Examples"),
+    html.H4('Month and Display Format'),
+    dcc.Markdown("The `display_format` property \
+                 determines how selected dates are displayed \
+                 in the `DatePickerRange` component. The `month_format` \
+                 property determines how calendar headers are displayed when \
+                 the calendar is opened."),
+    html.P("Both of these properties are specified through \
+            strings that utilize a combination of any \
+            of the following tokens."),
+    html.Table([
+        html.Tr([
+            html.Th('String Token', style={'text-align': 'center', 'width': '20%'}),
+            html.Th('Example', style={'text-align': 'center', 'width': '20%'}),
+            html.Th('Description', style={'text-align': 'center', 'width': '40%'})
+        ]),
+        html.Tr([
+            html.Td(dcc.Markdown('`YYYY`'), style={'text-align': 'right'}),
+            html.Td(dcc.Markdown('`2014`'), style={'text-align': 'left'}),
+            html.Td('4 or 2 digit year')
+        ]),
+        html.Tr([
+            html.Td(dcc.Markdown('`YY`'), style={'text-align': 'right'}),
+            html.Td(dcc.Markdown('`14`'), style={'text-align': 'left'}),
+            html.Td('2 digit year')
+        ]),
+        html.Tr([
+            html.Td(dcc.Markdown('`Y`'), style={'text-align': 'right'}),
+            html.Td(dcc.Markdown('`-25`'), style={'text-align': 'left'}),
+            html.Td('Year with any number of digits and sign')
+        ]),
+        html.Tr([
+            html.Td(dcc.Markdown('`Q`'), style={'text-align': 'right'}),
+            html.Td(dcc.Markdown('`1..4`'), style={'text-align': 'left'}),
+            html.Td('Quarter of year. Sets month to first month in quarter.')
+        ]),
+        html.Tr([
+            html.Td(dcc.Markdown('`M MM`'), style={'text-align': 'right'}),
+            html.Td(dcc.Markdown('`1..12`'), style={'text-align': 'left'}),
+            html.Td('Month number')
+        ]),
+        html.Tr([
+            html.Td(dcc.Markdown('`MMM MMMM`'), style={'text-align': 'right'}),
+            html.Td(dcc.Markdown('`Jan..December`'), style={'text-align': 'left'}),
+            html.Td('Month name')
+        ]),
+        html.Tr([
+            html.Td(dcc.Markdown('`D DD`'), style={'text-align': 'right'}),
+            html.Td(dcc.Markdown('`1..31`'), style={'text-align': 'left'}),
+            html.Td('Day of month')
+        ]),
+        html.Tr([
+            html.Td(dcc.Markdown('`Do`'), style={'text-align': 'right'}),
+            html.Td(dcc.Markdown('`1st..31st`'), style={'text-align': 'left'}),
+            html.Td('Day of month with ordinal')
+        ]),
+        html.Tr([
+            html.Td(dcc.Markdown('`DDD DDDD`'), style={'text-align': 'right'}),
+            html.Td(dcc.Markdown('`1..365`'), style={'text-align': 'left'}),
+            html.Td('Day of year')
+        ]),
+        html.Tr([
+            html.Td(dcc.Markdown('`X`'), style={'text-align': 'right'}),
+            html.Td(dcc.Markdown('`1410715640.579`'), style={'text-align': 'left'}),
+            html.Td('Unix timestamp')
+        ]),
+        html.Tr([
+            html.Td(dcc.Markdown('`x`'), style={'text-align': 'right'}),
+            html.Td(dcc.Markdown('`1410715640579`'), style={'text-align': 'left'}),
+            html.Td('Unix ms timestamp')
+        ]),
+    ], style={'margin': 'auto'}),
     html.Hr(),
     html.H3('DatePickerRange Proptypes'),
     generate_table(get_dataframe('DatePickerRange'))

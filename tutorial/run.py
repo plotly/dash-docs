@@ -302,6 +302,61 @@ def display_content(pathname):
 
     return content
 
+@app.callback(
+    Output('output-container-dropdown', 'children'),
+    [Input('my-dropdown', 'value')])
+def update_output(value):
+    return 'You have selected "{}"'.format(value)
+
+@app.callback(
+    Output('hidden-div', 'children'),
+    [Input('clearable', 'value')])
+def update_output(value):
+    return 'You have selected "{}"'.format(value)
+
+@app.callback(
+    Output('hidden-div', 'n_clicks'),
+    [Input('multi-value', 'value')])
+def update_output(value):
+    return 'You have selected "{}"'.format(value)
+
+def transform_value(value):
+    if(type(value) == list):
+        valueList = []
+        for i in value:
+            valueList.append(10 ** i)
+        return valueList
+    else:
+        return 10 ** value
+
+@app.callback(
+    Output('output-container-slider', 'children'),
+    [Input('my-slider', 'value')])
+def update_output(value):
+    return 'You have selected: {}'.format(value)
+
+@app.callback(
+    Output('output-container-slider-non-linear', 'children'),
+    [Input('non-linear-slider', 'value')])
+def update_output(value):
+    return 'Linear Value: {} | \
+            Log Value: {:0.2f}'.format(value, transform_value(value))
+
+@app.callback(
+    Output('output-container-range-slider', 'children'),
+    [Input('my-range-slider', 'value')])
+def update_output(value):
+    return 'You have selected: {}'.format(value)
+
+@app.callback(
+    Output('output-container-range-slider-non-linear', 'children'),
+    [Input('non-linear-range-slider', 'value')])
+def update_output(value):
+    transformed_value=transform_value(value)
+    return 'Linear Value: [{}, {}] | \
+            Log Value: [{:0.2f}, {:0.2f}]'.format(value[0], value[1],
+                                       transformed_value[0],
+                                       transformed_value[1])
 
 app.css.append_css({
     'external_url': (
