@@ -998,6 +998,102 @@ DatePickerRange = html.Div(children=[
             html.Td('Unix ms timestamp')
         ]),
     ], style={'margin': 'auto'}),
+    html.Br(),
+    html.Br(),
+    html.H2("Display Format Examples"),
+    dcc.SyntaxHighlighter('''import dash_core_components as dcc
+from datetime import datetime as dt
+
+dcc.DatePickerRange(
+    display_format='MMM Do, YY',
+    end_date_placeholder_text='MMM Do, YY'
+),
+
+dcc.DatePickerRange(
+    display_format='M-D-Y-Q',
+    end_date_placeholder_text='M-D-Y-Q'
+),
+
+dcc.DatePickerRange(
+    display_format='MMMM Y, DD',
+    end_date_placeholder_text='MMMM Y, DD'
+),
+
+dcc.DatePickerRange(
+    display_format='X',
+    end_date_placeholder_text='X'
+)
+
+''', language='python', customStyle=styles.code_container),
+    dcc.DatePickerRange(
+        start_date=dt.now(),
+        display_format='MMM Do, YY',
+        end_date_placeholder_text='MMM Do, YY'
+    ),
+
+    dcc.DatePickerRange(
+        start_date=dt.now(),
+        display_format='M-D-Y-Q',
+        end_date_placeholder_text='M-D-Y-Q'
+    ),
+
+    dcc.DatePickerRange(
+        start_date=dt.now(),
+        display_format='MMMM Y, DD',
+        end_date_placeholder_text='MMMM Y, DD'
+    ),
+
+    dcc.DatePickerRange(
+        start_date=dt.now(),
+        display_format='X',
+        end_date_placeholder_text='X'
+    ),
+    html.Br(),
+    html.H2("Month Format Examples"),
+    dcc.SyntaxHighlighter('''import dash_core_components as dcc
+from datetime import datetime as dt
+
+dcc.DatePickerRange(
+    month_format='MMM Do, YY',
+    end_date_placeholder_text='MMM Do, YY'
+),
+
+dcc.DatePickerRange(
+    month_format='M-D-Y-Q',
+    end_date_placeholder_text='M-D-Y-Q'
+),
+
+dcc.DatePickerRange(
+    month_format='MMMM Y, DD',
+    end_date_placeholder_text='MMMM Y, DD'
+),
+
+dcc.DatePickerRange(
+    month_format='X',
+    end_date_placeholder_text='X'
+)
+
+''', language='python', customStyle=styles.code_container),
+    dcc.DatePickerRange(
+        month_format='MMM Do, YY',
+        end_date_placeholder_text='MMM Do, YY'
+    ),
+
+    dcc.DatePickerRange(
+        month_format='M-D-Y-Q',
+        end_date_placeholder_text='M-D-Y-Q'
+    ),
+
+    dcc.DatePickerRange(
+        month_format='MMMM Y, DD',
+        end_date_placeholder_text='MMMM Y, DD'
+    ),
+
+    dcc.DatePickerRange(
+        month_format='X',
+        end_date_placeholder_text='X'
+    ),
+
     html.Hr(),
     html.H3('DatePickerRange Proptypes'),
     generate_table(get_dataframe('DatePickerRange'))
