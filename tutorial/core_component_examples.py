@@ -172,9 +172,9 @@ def get_dataframe(string):
 
     if('config' in df['Props']):
         df.set_value('config', 'Type',
-                     "Check Plotly.js docs for more information")
+                     "dict, check Plotly.js docs for more information")
         df.set_value('config', 'Default Value',
-                     "dict")
+                     "{}")
     return df
 
 
