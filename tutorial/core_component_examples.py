@@ -13,6 +13,104 @@ import dash
 _current_path = _os.path.join(_os.path.dirname(_os.path.abspath(dcc.__file__)),
                               'metadata.json')
 
+def js_to_py_type(type_object):
+    js_type_name = type_object['name']
+
+    if js_type_name == 'shape' and 'number' in type_object['value']:
+        print(type_object)
+    # wrapping everything in lambda to prevent immediate execution
+    js_to_py_types = {
+        'array': lambda: 'list',
+        'bool': lambda: 'boolean',
+        'number': lambda: 'number',
+        'string': lambda: 'string',
+        'object': lambda: 'dict',
+
+        'any': lambda: 'boolean | number | string | dict | list',
+        'element': lambda: 'dash component',
+        'node': lambda: (
+            'a list of or a singular dash component, string or number'
+        ),
+
+        # React's PropTypes.oneOf
+        'enum': lambda: 'a value equal to: {}'.format(', '.join([
+            '{}'.format(str(t['value'])) for t in type_object['value']
+        ])),
+
+        # React's PropTypes.oneOfType
+        'union': lambda: '{}'.format(' | '.join([
+            '{}'.format(js_to_py_type(subType))
+            for subType in type_object['value'] if js_to_py_type(subType) != ''
+        ])),
+
+        # React's PropTypes.arrayOf
+        'arrayOf': lambda: 'list {}'.format(
+            'of {}'.format(js_to_py_type(type_object['value']))
+            if (js_to_py_type(type_object['value']) != '')
+            else ''
+        ),
+
+        # React's PropTypes.objectOf
+        'objectOf': lambda: (
+            'dict with strings as keys and values of type {}'
+        ).format(js_to_py_type(type_object['value'])),
+
+
+        # React's PropTypes.shape
+        'shape': lambda: (
+            'dict containing key(s) {}\n{}'.format(
+                ', '.join(
+                    ["'{}'".format(t) for t in list(type_object['value'].keys())]
+                ),
+                '\n. Those keys have the following types: \n{}'.format(
+                    '\n'.join([
+                        '  - ' + argument_doc(
+                            prop_name,
+                            prop,
+                            prop.get('description', '')
+                        ) for
+                        prop_name, prop in list(type_object['value'].items())
+                    ])
+                )
+            )
+        )
+    }
+
+    if 'computed' in type_object and type_object['computed']:
+        return ''
+    if js_type_name in js_to_py_types:
+        return js_to_py_types[js_type_name]()
+    else:
+        return ''
+
+
+def argument_doc(arg_name, type_object, description):
+    js_type_name = type_object['name']
+    py_type_name = js_to_py_type(type_object)
+
+    if '\n' in py_type_name:
+        return (
+            '{name}: {description}. '
+            '{name} has the following type: {type}'
+        ).format(
+            name=arg_name,
+            type=py_type_name,
+            description=description
+        )
+    else:
+        return '{name} ({type}){description}'.format(
+            name=arg_name,
+            type='{}'.format(py_type_name) if py_type_name else '',
+            description=(
+                ': {}'.format(description) if description != '' else ''
+            )
+        )
+
+
+# object_hook_handler allows the user to define a
+# specific method of parsing
+# in this case we remove unneeded elements and format
+# property types to display in a html.Table
 def object_hook_handler(obj):
     if 'required' in obj:
         obj.pop('required')
@@ -23,47 +121,7 @@ def object_hook_handler(obj):
         obj['className']['Description'] = '''Sets the class name of the element (the value of an
                                              element's html class attribute)'''
     if 'type' in obj and obj['type'] != None and 'name' in obj['type']:
-        if (obj['type']['name'] == 'enum'):
-            holder = {'Possible values': []}
-            for i in obj['type']['value']:
-                holder['Possible values'].append(i['value'])
-            obj['Type'] = holder.items()[0]
-        elif (obj['type']['name'] == 'arrayOf'):
-            objVal = obj['type']['value']
-            holder = {'Array Of': [{}]}
-            if(objVal['name'] == 'shape'):
-                for i in objVal['value']:
-                    holder['Array Of'][0][i] = objVal['value'][i]['name']
-                obj['Type'] = holder.items()[0]
-            elif('value' in objVal):
-                for i in objVal['value']:
-                    holder['Array Of'].append(str(i))
-                obj['Type'] = holder.items()[0]
-            else:
-                obj['Type'] = "Array of: [" + objVal['name'] + "]"
-        elif (obj['type']['name'] == 'union'):
-            objVal = obj['type']['value']
-            holder = []
-            for i in objVal:
-                holder.append(i['name'])
-                if(len(i) > 1):
-                    holder[-1] = "Array of: [" + str(i['value']['name']) + "]"
-            obj['Type'] = "One of the following: " + str(holder)
-        elif (obj['type']['name'] == 'shape'):
-            objVal = obj['type']
-            holder = {}
-            if('value' in objVal):
-                for i in objVal['value']:
-                    holder[i] = objVal['value'][i]['name']
-            if(len(holder.keys()) > 5):
-                obj['Type'] = 'dict'
-                obj['Default Value'] = "Check plotly.js docs for more info"
-            else:
-                obj['Type'] = "Dict of: " + str(holder)
-        else:
-            obj['Type'] = obj['type']['name']
-        obj.pop('type')
-
+        obj['Type'] = js_to_py_type(obj['type'])
     if 'defaultValue' in obj:
         if(obj['defaultValue']['value'] == 'true'):
             obj['defaultValue']['value'] = 'True'
@@ -72,13 +130,13 @@ def object_hook_handler(obj):
         elif(type(obj['defaultValue']['value']) == dict):
             obj['defaultValue']['value'] = 'Checkout plotly.js docs for\
                                             more info'
-
         obj['Default Value'] = obj['defaultValue']['value']
         obj.pop('defaultValue')
     if 'description' in obj:
         obj['Description'] = obj['description']
         obj.pop('description')
     return obj
+
 
 with open(_current_path, 'r') as f:
     metadata = json.load(f, object_hook=object_hook_handler)
@@ -113,10 +171,12 @@ def get_dataframe(string):
         df = df[['Props', 'Description', 'Type']]
 
     if('config' in df['Props']):
-        df.set_value('config', 'Default Value',
+        df.set_value('config', 'Type',
                      "Check Plotly.js docs for more information")
-
+        df.set_value('config', 'Default Value',
+                     "Too long")
     return df
+
 
 def generate_table(dataframe):
     rows = []
@@ -142,7 +202,7 @@ def generate_table(dataframe):
                     internalRow.append(html.Td(dataframe.iloc[i][col],
                                        style={'font-size': '0.95em'}))
                 else:
-                    internalRow.append(html.Td(str(dataframe.iloc[i][col])))
+                    internalRow.append(html.Td(dataframe.iloc[i][col]))
         rows.append(html.Tr(internalRow))
     table = html.Table(
             [html.Tr([html.Th(col, style={'text-align': 'center'}) for col in
@@ -150,9 +210,9 @@ def generate_table(dataframe):
 
     return table
 
+
 # Dropdown
 Dropdown = html.Div(children=[
-
     html.H2('Dropdown Examples and Reference'),
     html.Hr(),
     html.H4('Default Dropdown'),
@@ -539,8 +599,7 @@ dcc.Slider(
                  page to see the difference."),
     dcc.SyntaxHighlighter('''import dash_core_components as dcc
 
-# Use the following function when accessing the value of 'my-slider'
-# in callbacks to transorm the output value to logarithmic
+
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import *
@@ -548,6 +607,8 @@ import dash
 
 app = dash.Dash('')
 
+# Use the following function when accessing the value of 'my-slider'
+# in callbacks to transorm the output value to logarithmic
 def transform_value(value):
     return 10 ** value
 
@@ -973,6 +1034,23 @@ Renders as:
 1. Item 3
    1. Item 3a
    1. Item 3b
+'''),
+    html.Hr(),
+    html.H3("Block Quotes"),
+    dcc.Markdown('''
+>
+> \>
+>
+> \> Block quotes are a great way to highlight a certain block of text!
+>
+> \>
+>
+
+Renders as:
+>
+> Block quotes are a great way to highlight a certain block of text!
+>
+
 '''),
     html.Hr(),
     html.H3("Images"),
