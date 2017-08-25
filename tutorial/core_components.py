@@ -407,9 +407,10 @@ if __name__ == '__main__':
                 'display': 'inline-block'
             }
         ),
-    ], className='example-container', id='hidden'),
+    ], className='example-container', style={'overflow': 'hidden'}),
     html.Div(id='output-container-button',
              children="Type a value and press submit!"),
+    html.Hr(),
     html.H3('Markdown'),
     dcc.SyntaxHighlighter('''import dash_core_components as dcc
 
@@ -437,10 +438,11 @@ if __name__ == '__main__':
     It includes a syntax for things like **bold text** and *italics*,
     [links](http://commonmark.org/help), inline `code` snippets, lists,
     quotes, and more.'''.replace('  ', ''),
-    containerProps={'className': 'example-container'}),
+    containerProps={'className': 'example-container',
+                    'style': {'overflow': 'hidden'}}),
 
     html.Br(),
-    dcc.Link(html.A('More Markdown Properties'),
+    dcc.Link(html.A('More Markdown Examples and Reference'),
              href="/dash/dash-core-components/markdown"),
     html.Hr(),
     html.H3('Graphs'),
@@ -494,14 +496,14 @@ dcc.Graph(
 
 
 for k in layout.keys():
-    if k == 'hidden' or k == 'page-content' or k == 'url' \
-       or 'input-box' or 'button':
+    if (k == 'hidden' or k == 'page-content' or k == 'url'
+       or k == 'input-box' or k == 'button' or k == 'output-container-button'):
         continue
 
     if k in ['section2-rangeslider-2', 'section2-slider-2']:
         layout[k] = html.Div(layout[k],
             className="example-container",
-            style=dict({'padding': '40px'})
+            style=dict({'padding': '40px', 'overflow': 'hidden'})
         )
     elif(k in ['section2-dropdown-1', 'section2-dropdown-2']):
         layout[k] = html.Div(layout[k])
@@ -509,7 +511,8 @@ for k in layout.keys():
                'section2-datepickerrange-1', 'section2-datepickerrange-2']):
         layout[k] = html.Div(layout[k], style={'display': 'inline-block'})
     else:
-        layout[k] = html.Div(layout[k], className="example-container")
+        layout[k] = html.Div(layout[k], className="example-container",
+                             style={'overflow': 'hidden'})
 
 # add dependencies to all of section2's elements so that they become controlled
 @app.callback(
