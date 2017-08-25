@@ -174,7 +174,7 @@ def get_dataframe(string):
         df.set_value('config', 'Type',
                      "Check Plotly.js docs for more information")
         df.set_value('config', 'Default Value',
-                     "Too long")
+                     "dict")
     return df
 
 
