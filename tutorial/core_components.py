@@ -57,7 +57,7 @@ dcc.Dropdown(
         {'label': 'San Francisco', 'value': 'SF'}
     ], multi=True, value="MTL", id='section2-dropdown-2'),
     html.Br(),
-    dcc.Link(html.A('More Dropdown Examples'),
+    dcc.Link(html.A('More Dropdown Examples and Reference'),
              href="/dash/dash-core-components/dropdown"),
     html.Hr(),
     html.H3('DatePickerSingle'),
@@ -100,7 +100,7 @@ dcc.DatePickerSingle(
     ),
     html.Br(),
     html.Br(),
-    dcc.Link(html.A('More DatePickerSingle Examples'),
+    dcc.Link(html.A('More DatePickerSingle Examples and Reference'),
              href="/dash/dash-core-components/datepickersingle"),
     html.Hr(),
     html.H3('DatePickerRange'),
@@ -162,7 +162,7 @@ dcc.DatePickerRange(
     ),
     html.Br(),
     html.Br(),
-    dcc.Link(html.A('More DatePickerRange Examples'),
+    dcc.Link(html.A('More DatePickerRange Examples and Reference'),
              href="/dash/dash-core-components/datepickerrange"),
     html.Hr(),
     html.H3('Slider'),
@@ -198,7 +198,7 @@ dcc.Slider(
         id='section2-slider-2'
     )),
     html.Br(),
-    dcc.Link(html.A('More Slider Examples'),
+    dcc.Link(html.A('More Slider Examples and Reference'),
              href="/dash/dash-core-components/slider"),
     html.Hr(),
     html.H3('RangeSlider'),
@@ -236,7 +236,7 @@ dcc.RangeSlider(
         id='section2-rangeslider-2'
     )),
     html.Br(),
-    dcc.Link(html.A('More RangeSlider Examples'),
+    dcc.Link(html.A('More RangeSlider Examples and Reference'),
              href="/dash/dash-core-components/rangeslider"),
     html.Hr(),
     html.H3('Input'),
@@ -255,7 +255,7 @@ dcc.Input(
     ),
 
     html.Br(),
-    dcc.Link(html.A('More Input Properties'),
+    dcc.Link(html.A('More Input Properties and Reference'),
              href="/dash/dash-core-components/input"),
     html.Hr(),
     html.H3('Textarea'),
@@ -368,6 +368,48 @@ dcc.RadioItems(
     dcc.Link(html.A('More RadioItems Properties'),
              href="/dash/dash-core-components/radioitems"),
     html.Hr(),
+    html.H3("Button"),
+    dcc.SyntaxHighlighter('''import dash
+import dash_html_components as html
+import dash_core_components as dcc
+
+app = dash.Dash()
+app.layout = html.Div([
+    dcc.Input(
+        id='input-box'
+    ),
+    html.Button(
+        id='button'
+    ),
+    html.Div(id='output-container-button',
+             children="Type a value and press submit!")
+)
+
+@app.callback(
+    dash.dependencies.Output('output-container-button', 'children'),
+    [dash.dependencies.Input('button', 'n_clicks')],
+    [dash.dependencies.State('input-box', 'value')])
+def update_output(n_clicks, value):
+    return "The input value was " + value
+
+if __name__ == '__main__':
+    app.run_server(debug=True)
+
+    ''', customStyle=styles.code_container, language='python'),
+    html.Div([
+        dcc.Input(
+            id='input-box'
+        ),
+        html.Button(
+            id='button',
+            children="Sumbit!",
+            style={
+                'display': 'inline-block'
+            }
+        ),
+    ], className='example-container', id='hidden'),
+    html.Div(id='output-container-button',
+             children="Type a value and press submit!"),
     html.H3('Markdown'),
     dcc.SyntaxHighlighter('''import dash_core_components as dcc
 
@@ -444,7 +486,7 @@ dcc.Graph(
     ),
 
     html.Br(),
-    dcc.Link(html.A('More Graph Examples'),
+    dcc.Link(html.A('More Graph Properties'),
              href="/dash/dash-core-components/graph"),
 
     html.Div(id='hidden', style={'display': 'none'})
@@ -452,7 +494,8 @@ dcc.Graph(
 
 
 for k in layout.keys():
-    if k == 'hidden' or k == 'page-content' or k == 'url':
+    if k == 'hidden' or k == 'page-content' or k == 'url' \
+       or 'input-box' or 'button':
         continue
 
     if k in ['section2-rangeslider-2', 'section2-slider-2']:

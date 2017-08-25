@@ -152,7 +152,7 @@ def generate_table(dataframe):
 
     return table
 
-
+# Dropdown
 Dropdown = html.Div(children=[
 
     html.H2('Dropdown Examples and Reference'),
@@ -367,7 +367,7 @@ dcc.Dropdown(
 
     html.Div(id='hidden-div', style={'display': 'none'}),
     html.Hr(),
-    html.H4("Dropdown Proptypes"),
+    html.H4("Dropdown Properties"),
     generate_table(get_dataframe('Dropdown'))
 ])
 
@@ -585,7 +585,7 @@ def display_value(value):
         style={'overflow': 'hidden', 'padding': '20px'}),
     html.Div(id='output-container-slider-non-linear'),
     html.Hr(),
-    html.H4("Slider Proptypes"),
+    html.H4("Slider Properties"),
     generate_table(get_dataframe('Slider'))
 ])
 
@@ -594,7 +594,7 @@ RangeSlider = html.Div(children=[
     html.H2("RangeSlider Examples and Reference"),
     html.Hr(),
     html.H4('Simple RangeSlider Example'),
-    html.P("An example of a basic RangeSlider tied to a callback"),
+    html.P("An example of a basic RangeSlider tied to a callback."),
     dcc.SyntaxHighlighter('''import dash
 import dash_html_components as html
 import dash_core_components as dcc
@@ -889,28 +889,116 @@ def update_output(value):
 
 # Checklist
 Checklist = html.Div(children=[
-    html.H3('Checklist Proptypes'),
+    html.H3('Checklist Properties'),
     generate_table(get_dataframe('Checklist'))
 ])
 
 
 # Input
 Input = html.Div(children=[
-    html.H3('Input Proptypes'),
+    html.H3('Input Properties'),
     generate_table(get_dataframe('Input'))
 ])
 
 
 # RadioItems
 RadioItems = html.Div(children=[
-    html.H3('RadioItem Proptypes'),
+    html.H3('RadioItem Properties'),
     generate_table(get_dataframe('RadioItems'))
 ])
 
 
 # Markdown
 Markdown = html.Div(children=[
-    html.H3('Markdown Proptypes'),
+    html.H2("Markdown Examples and Reference"),
+    html.Hr(),
+    html.H3("Syntax Guide"),
+    dcc.Markdown("These examples are based on the \
+    [GitHub Markdown Guide](https://guides.github.com/features/mastering-markdown/)."),
+    html.Br(),
+    html.H4("Headers"),
+    dcc.Markdown('''
+
+> \# This is an <h1> tag
+>
+> \## This is an <h2> tag
+>
+> \###### This is an <h6> tag
+'''),
+    html.H4("Emphasis"),
+    dcc.Markdown('''
+>\*This text will be italic*
+>
+>\_This will also be italic_
+>
+>
+>\**This text will be bold**
+>
+>\__This will also be bold__
+>
+>
+>\_You \**can** combine them_
+'''),
+    html.Hr(),
+    html.H3("Lists"),
+    html.H4("Unordered"),
+    dcc.Markdown('''
+>\* Item 1
+>
+>\* Item 2
+>
+>  &nbsp;&nbsp;&nbsp; \* Item 2a
+>
+>  &nbsp;&nbsp;&nbsp; \* Item 2b
+
+Renders as:
+* Item 1
+* Item 2
+  * Item 2a
+  * Item 2b
+'''),
+    html.H4("Unordered"),
+    dcc.Markdown('''
+>1\. Item 1
+>
+>1\. Item 2
+>
+>1\. Item 3
+>
+>   &nbsp;&nbsp;&nbsp; 1. Item 3a
+>
+>   &nbsp;&nbsp;&nbsp; 1. Item 3b
+
+Renders as:
+1. Item 1
+1. Item 2
+1. Item 3
+   1. Item 3a
+   1. Item 3b
+'''),
+    html.Hr(),
+    html.H3("Images"),
+    dcc.Markdown('''
+>![Dash Logo]\(/images/logo.png)
+>
+>Format: ![Alt Text]\(url)
+'''),
+    html.Hr(),
+    html.H3("Links"),
+    dcc.Markdown('''
+> https://plot.ly/dash/ - automatic!
+>
+>\[Dash User Guide](https://plot.ly/dash/)
+'''),
+    html.Hr(),
+    html.H3("Inline Code"),
+    html.P("Any block of text surronded by ` ` will rendered as inline-code"),
+    dcc.Markdown("`Markdown` is awesome! Try it out!"),
+    dcc.Markdown('''To insert code block, and utilize syntax highlighting,
+              use the `dcc.SyntaxHighlighter` component. See an example of
+              how it works in the Dash User Guide [here](https://github.com/plotly/dash-docs/blob/378fe7cfec89616470ad3c7de16a43eee0298631/tutorial/core_components.py#L61)
+              .'''),
+    html.H3('Markdown Properties'),
     generate_table(get_dataframe('Markdown'))
 ])
 
@@ -919,15 +1007,76 @@ Markdown = html.Div(children=[
 Graph = html.Div(children=[
     html.H2('Graph Reference Guide'),
     html.Hr(),
-    html.H4('Graph PropTypes'),
+    html.H4('Graph Properties'),
     generate_table(get_dataframe('Graph'))
 ])
 
 
 # DatePickerRange
 DatePickerRange = html.Div(children=[
-    html.H2("DatePickerRange Extra Examples"),
-    html.H4('Month and Display Format'),
+    html.H2("DatePickerRange Examples and Reference"),
+    html.Hr(),
+    html.H4("Simple DatePickerRange Example"),
+    dcc.Markdown("The following is a simple example of a `DatePickerRange` \
+                 component tied to a callback. The `min_date_allowed` and \
+                 `max_date_allowed` properties define the minimum and \
+                 maximum selectable \
+                 dates on the calender while `initial_visible_month` defines \
+                 the calendar month that is first displayed when the \
+                 `DatePickerRange` component is opened."),
+    dcc.SyntaxHighlighter('''import dash
+import dash_html_components as html
+import dash_core_components as dcc
+from datetime import datetime as dt
+
+app = dash.Dash()
+app.layout = html.Div([
+    dcc.DatePickerRange(
+        id='my-date-picker-range',
+        min_date_allowed=dt(1995, 8, 5),
+        max_date_allowed=dt(2017, 9, 19),
+        initial_visible_month=dt(2017, 8, 5),
+        end_date=dt(2017, 8, 25)
+    ),
+    html.Div(id='output-container-date-picker-range')
+)
+
+
+@app.callback(
+    dash.dependencies.Output(
+        'output-container-date-picker-range', 'children'
+    ),
+    [dash.dependencies.Input('my-date-picker-range', 'start_date'),
+     dash.dependencies.Input('my-date-picker-range', 'end_date')])
+def update_output(start_date, end_date):
+    string_prefix = "You have selected: "
+    if start_date is not None:
+        start_date = dt.strptime(start_date, '%Y-%m-%d')
+        start_date_string = start_date.strftime('%B %d, %Y')
+        string_prefix = string_prefix + "Start Date: " + start_date_string + " | "
+    if end_date is not None:
+        end_date = dt.strptime(end_date, '%Y-%m-%d')
+        end_date_string = end_date.strftime('%B %d, %Y')
+        string_prefix = string_prefix + "End Date: " + end_date_string
+    if(len(string_prefix) == len("You have selected: ")):
+        return "Select a date to see it displayed here"
+    else:
+        return string_prefix
+
+if __name__ == '__main__':
+    app.run_server(debug=True)
+
+''', language='python', customStyle=styles.code_container),
+    dcc.DatePickerRange(
+        id='my-date-picker-range',
+        min_date_allowed=dt(1995, 8, 5),
+        max_date_allowed=dt(2017, 9, 19),
+        initial_visible_month=dt(2017, 8, 5),
+        end_date=dt(2017, 8, 25)
+    ),
+    html.Div(id='output-container-date-picker-range'),
+    html.Hr(),
+    html.H3('Month and Display Format'),
     dcc.Markdown("The `display_format` property \
                  determines how selected dates are displayed \
                  in the `DatePickerRange` component. The `month_format` \
@@ -1000,56 +1149,68 @@ DatePickerRange = html.Div(children=[
     ], style={'margin': 'auto'}),
     html.Br(),
     html.Br(),
-    html.H2("Display Format Examples"),
+    html.H4("Display Format Examples"),
+    dcc.Markdown("You can utilize any permutation of the string tokens \
+                 shown in the table above to change how selected dates are \
+                 displayed in the `DatePickerRange` component."),
     dcc.SyntaxHighlighter('''import dash_core_components as dcc
 from datetime import datetime as dt
 
 dcc.DatePickerRange(
+    end_date=dt.now(),
     display_format='MMM Do, YY',
-    end_date_placeholder_text='MMM Do, YY'
+    start_date_placeholder_text='MMM Do, YY'
 ),
 
 dcc.DatePickerRange(
+    end_date=dt.now(),
     display_format='M-D-Y-Q',
-    end_date_placeholder_text='M-D-Y-Q'
+    start_date_placeholder_text='M-D-Y-Q'
 ),
 
 dcc.DatePickerRange(
+    end_date=dt.now(),
     display_format='MMMM Y, DD',
-    end_date_placeholder_text='MMMM Y, DD'
+    start_date_placeholder_text='MMMM Y, DD'
 ),
 
 dcc.DatePickerRange(
+    end_date=dt.now(),
     display_format='X',
-    end_date_placeholder_text='X'
+    start_date_placeholder_text='X'
 )
 
 ''', language='python', customStyle=styles.code_container),
     dcc.DatePickerRange(
-        start_date=dt.now(),
+        end_date=dt.now(),
         display_format='MMM Do, YY',
-        end_date_placeholder_text='MMM Do, YY'
+        start_date_placeholder_text='MMM Do, YY'
     ),
 
     dcc.DatePickerRange(
-        start_date=dt.now(),
+        end_date=dt.now(),
         display_format='M-D-Y-Q',
-        end_date_placeholder_text='M-D-Y-Q'
+        start_date_placeholder_text='M-D-Y-Q'
     ),
 
     dcc.DatePickerRange(
-        start_date=dt.now(),
+        end_date=dt.now(),
         display_format='MMMM Y, DD',
-        end_date_placeholder_text='MMMM Y, DD'
+        start_date_placeholder_text='MMMM Y, DD'
     ),
 
     dcc.DatePickerRange(
-        start_date=dt.now(),
+        end_date=dt.now(),
         display_format='X',
-        end_date_placeholder_text='X'
+        start_date_placeholder_text='X'
     ),
     html.Br(),
-    html.H2("Month Format Examples"),
+    html.Br(),
+    html.H4("Month Format Examples"),
+    dcc.Markdown("Similar to the `display_format`, you can set `month_format` \
+                 to any permutation of the string tokens \
+                 shown in the table above to change how calendar titles \
+                 are displayed in the `DatePickerRange` component."),
     dcc.SyntaxHighlighter('''import dash_core_components as dcc
 from datetime import datetime as dt
 
@@ -1064,8 +1225,8 @@ dcc.DatePickerRange(
 ),
 
 dcc.DatePickerRange(
-    month_format='MMMM Y, DD',
-    end_date_placeholder_text='MMMM Y, DD'
+    month_format='MMMM Y',
+    end_date_placeholder_text='MMMM Y'
 ),
 
 dcc.DatePickerRange(
@@ -1074,6 +1235,7 @@ dcc.DatePickerRange(
 )
 
 ''', language='python', customStyle=styles.code_container),
+    html.P("Open the calendars below to see the difference!"),
     dcc.DatePickerRange(
         month_format='MMM Do, YY',
         end_date_placeholder_text='MMM Do, YY'
@@ -1085,241 +1247,413 @@ dcc.DatePickerRange(
     ),
 
     dcc.DatePickerRange(
-        month_format='MMMM Y, DD',
-        end_date_placeholder_text='MMMM Y, DD'
+        month_format='MMMM Y',
+        end_date_placeholder_text='MMMM Y'
     ),
 
     dcc.DatePickerRange(
+        initial_visible_month=dt(2012, 9, 1),
         month_format='X',
         end_date_placeholder_text='X'
     ),
 
     html.Hr(),
-    html.H3('DatePickerRange Proptypes'),
+    html.H4("Vertical Calendar and Placholder Text"),
+    dcc.Markdown("The `DatePickerRange` component can be rendered in two \
+                  orientations, either horizontally or vertically. \
+                  If `calendar_orientation` is set to `'vertical'`, it will \
+                  be rendered vertically and will default to `'horizontal'` \
+                  if not defined."),
+    dcc.Markdown("As you may have also noticed in the \
+                  previous examples `start_date_placeholder_text` and \
+                  `end_date_placeholder_text` define the grey default text \
+                  defined in the calendar input boxes when no date is \
+                  selected."),
+    dcc.SyntaxHighlighter('''import dash_core_components as dcc
+from datetime import datetime as dt
+
+dcc.DatePickerRange(
+    start_date_placeholder_text="Select",
+    end_date_placeholder_text=" me!",
+    calendar_orientation='vertical',
+)
+
+''', language='python', customStyle=styles.code_container),
+    dcc.DatePickerRange(
+        start_date_placeholder_text="Select",
+        end_date_placeholder_text=" me!",
+        calendar_orientation='vertical',
+    ),
+    html.Hr(),
+
+    html.H4("Minimum Nights, Calendar Clear and Portals"),
+    dcc.Markdown("The `minimum_nights` property defines the number of \
+                  nights that must be in between the range of two \
+                  selected dates."),
+    dcc.Markdown("When the `clearable` property is set to `True` \
+                  the component will be rendered with a small 'x' \
+                  that will remove all selected dates when selected."),
+    dcc.Markdown("The `DatePickerRange` component supports two different \
+                  portal types, one being a full screen portal \
+                  (`with_full_screen_portal`) and another being a simple \
+                  screen overlay, like the one shown below (`with_portal`)."),
+    dcc.SyntaxHighlighter('''import dash_core_components as dcc
+from datetime import datetime as dt
+
+dcc.DatePickerRange(
+    minimum_nights=5,
+    clearable=True,
+    with_portal=True
+)
+
+''', language='python', customStyle=styles.code_container),
+    dcc.DatePickerRange(
+        clearable=True,
+        minimum_nights=5,
+        with_portal=True
+    ),
+
+    html.Hr(),
+
+    html.H4("Right to Left Calendars and First Day of Week"),
+    dcc.Markdown("When the `is_RTL` property is set to `True` \
+                  the calendar will be rendered from right to left."),
+    dcc.Markdown("The `first_day_of_week` property allows you to \
+                  define which day of the week will be set as the first \
+                  day of the week. In the example below, Tuesday is \
+                  the first day of the week."),
+    dcc.SyntaxHighlighter('''import dash_core_components as dcc
+from datetime import datetime as dt
+
+dcc.DatePickerRange(
+    is_RTL=True,
+    first_day_of_week=3
+)
+
+''', language='python', customStyle=styles.code_container),
+    dcc.DatePickerRange(
+        is_RTL=True,
+        first_day_of_week=3
+    ),
+
+    html.Hr(),
+    html.H3('DatePickerRange Properties'),
     generate_table(get_dataframe('DatePickerRange'))
 ])
 
 # DatePickerSingle
 DatePickerSingle = html.Div(children=[
-    html.H3("DatePickerSingle Extra Examples"),
+    html.H3("DatePickerSingle Examples and Reference"),
     html.Hr(),
-    html.H4('Calendar Orientation'),
-    dcc.Markdown('Calendar can either be displayed vertically or horizontally'),
-    dcc.SyntaxHighlighter('''import dash_core_components as dcc
+    html.H4("Simple DatePickerSingle Example"),
+    dcc.Markdown("The following is a simple example of a `DatePickerSingle` \
+                 component tied to a callback. The `min_date_allowed` and \
+                 `max_date_allowed` properties define the minimum and \
+                 maximum selectable \
+                 dates on the calender while `initial_visible_month` defines \
+                 the calendar month that is first displayed when the \
+                 `DatePickerSingle` component is opened."),
+    dcc.SyntaxHighlighter('''import dash
+import dash_html_components as html
+import dash_core_components as dcc
 from datetime import datetime as dt
 
-dcc.DatePickerSingle(
-    id='date-picker-single',
-    calendar_orientation='vertical',
-    placeholder='Test it here!'
+app = dash.Dash()
+app.layout = html.Div([
+    dcc.DatePickerSingle(
+        id='my-date-picker-single',
+        min_date_allowed=dt(1995, 8, 5),
+        max_date_allowed=dt(2017, 9, 19),
+        initial_visible_month=dt(2017, 8, 5),
+        date=dt(2017, 8, 25)
+    ),
+    html.Div(id='output-container-date-picker-single')
 )
+
+
+@app.callback(
+    dash.dependencies.Output(
+        'output-container-date-picker-single', 'children'
+    ),
+    [dash.dependencies.Input('my-date-picker-single', 'date')])
+def update_output(date):
+    string_prefix = "You have selected: "
+    if date is not None:
+        date = dt.strptime(date, '%Y-%m-%d')
+        date_string = date.strftime('%B %d, %Y')
+        string_prefix = string_prefix + "Start Date: " + date_string
+        return string_prefix
+
+if __name__ == '__main__':
+    app.run_server(debug=True)
 
 ''', language='python', customStyle=styles.code_container),
     dcc.DatePickerSingle(
-        id='date-picker-single',
-        calendar_orientation='vertical',
-        placeholder='Test it here!'
+        id='my-date-picker-single',
+        min_date_allowed=dt(1995, 8, 5),
+        max_date_allowed=dt(2017, 9, 19),
+        initial_visible_month=dt(2017, 8, 5),
+        date=dt(2017, 8, 25)
     ),
+    html.Div(id='output-container-date-picker-single'),
     html.Hr(),
-    html.H4('Show outside days'),
-    dcc.Markdown('To show days outside the curret calender month,\
-                 `show_outside_days` needs to be set to True'),
+    html.H3('Month and Display Format'),
+    dcc.Markdown("The `display_format` property \
+                 determines how selected dates are displayed \
+                 in the `DatePickerSingle` component. The `month_format` \
+                 property determines how calendar headers are displayed when \
+                 the calendar is opened."),
+    html.P("Both of these properties are specified through \
+            strings that utilize a combination of any \
+            of the following tokens."),
+    html.Table([
+        html.Tr([
+            html.Th('String Token', style={'text-align': 'center', 'width': '20%'}),
+            html.Th('Example', style={'text-align': 'center', 'width': '20%'}),
+            html.Th('Description', style={'text-align': 'center', 'width': '40%'})
+        ]),
+        html.Tr([
+            html.Td(dcc.Markdown('`YYYY`'), style={'text-align': 'right'}),
+            html.Td(dcc.Markdown('`2014`'), style={'text-align': 'left'}),
+            html.Td('4 or 2 digit year')
+        ]),
+        html.Tr([
+            html.Td(dcc.Markdown('`YY`'), style={'text-align': 'right'}),
+            html.Td(dcc.Markdown('`14`'), style={'text-align': 'left'}),
+            html.Td('2 digit year')
+        ]),
+        html.Tr([
+            html.Td(dcc.Markdown('`Y`'), style={'text-align': 'right'}),
+            html.Td(dcc.Markdown('`-25`'), style={'text-align': 'left'}),
+            html.Td('Year with any number of digits and sign')
+        ]),
+        html.Tr([
+            html.Td(dcc.Markdown('`Q`'), style={'text-align': 'right'}),
+            html.Td(dcc.Markdown('`1..4`'), style={'text-align': 'left'}),
+            html.Td('Quarter of year. Sets month to first month in quarter.')
+        ]),
+        html.Tr([
+            html.Td(dcc.Markdown('`M MM`'), style={'text-align': 'right'}),
+            html.Td(dcc.Markdown('`1..12`'), style={'text-align': 'left'}),
+            html.Td('Month number')
+        ]),
+        html.Tr([
+            html.Td(dcc.Markdown('`MMM MMMM`'), style={'text-align': 'right'}),
+            html.Td(dcc.Markdown('`Jan..December`'), style={'text-align': 'left'}),
+            html.Td('Month name')
+        ]),
+        html.Tr([
+            html.Td(dcc.Markdown('`D DD`'), style={'text-align': 'right'}),
+            html.Td(dcc.Markdown('`1..31`'), style={'text-align': 'left'}),
+            html.Td('Day of month')
+        ]),
+        html.Tr([
+            html.Td(dcc.Markdown('`Do`'), style={'text-align': 'right'}),
+            html.Td(dcc.Markdown('`1st..31st`'), style={'text-align': 'left'}),
+            html.Td('Day of month with ordinal')
+        ]),
+        html.Tr([
+            html.Td(dcc.Markdown('`DDD DDDD`'), style={'text-align': 'right'}),
+            html.Td(dcc.Markdown('`1..365`'), style={'text-align': 'left'}),
+            html.Td('Day of year')
+        ]),
+        html.Tr([
+            html.Td(dcc.Markdown('`X`'), style={'text-align': 'right'}),
+            html.Td(dcc.Markdown('`1410715640.579`'), style={'text-align': 'left'}),
+            html.Td('Unix timestamp')
+        ]),
+        html.Tr([
+            html.Td(dcc.Markdown('`x`'), style={'text-align': 'right'}),
+            html.Td(dcc.Markdown('`1410715640579`'), style={'text-align': 'left'}),
+            html.Td('Unix ms timestamp')
+        ]),
+    ], style={'margin': 'auto'}),
+    html.Br(),
+    html.Br(),
+    html.H4("Display Format Examples"),
+    dcc.Markdown("You can utilize any permutation of the string tokens \
+                 shown in the table above to change how selected dates are \
+                 displayed in the `DatePickerSingle` component."),
     dcc.SyntaxHighlighter('''import dash_core_components as dcc
 from datetime import datetime as dt
 
 dcc.DatePickerSingle(
-    id='date-picker-single',
-    show_outside_days=True,
-    placeholder='With Outside Days'
-),
-
-dcc.DatePickerSingle(
-    id='date-picker-single',
-    show_outside_days=False,
-    placeholder='Without Outside Days'
-)
-
-''', language='python', customStyle=styles.code_container),
-    dcc.DatePickerSingle(
-        id='date-picker-single',
-        show_outside_days=True,
-        placeholder='True'
-    ),
-
-    dcc.DatePickerSingle(
-        id='date-picker-single',
-        show_outside_days=False,
-        placeholder='False'
-    ),
-    html.Hr(),
-    html.H4('Display Formats'),
-    dcc.Markdown('You can show months in a variety of display formats.\
-                  Display formats denote how, your selected dates will look'),
-    dcc.SyntaxHighlighter('''import dash_core_components as dcc
-from datetime import datetime as dt
-
-dcc.DatePickerSingle(
-    id='date-picker-single',
     date=dt.now(),
-    display_format='MM YY, DD'
+    display_format='MMM Do, YY'
 ),
 
 dcc.DatePickerSingle(
-    id='date-picker-single',
     date=dt.now(),
-    display_format='M, YYYY, DD'
+    display_format='M-D-Y-Q',
 ),
 
 dcc.DatePickerSingle(
-    id='date-picker-single',
     date=dt.now(),
     display_format='MMMM Y, DD'
 ),
 
 dcc.DatePickerSingle(
-    id='date-picker-single',
     date=dt.now(),
-    display_format='MMMM || Y || DD'
+    display_format='X',
 )
 
 ''', language='python', customStyle=styles.code_container),
     dcc.DatePickerSingle(
-        id='date-picker-single',
         date=dt.now(),
-        display_format='MM YY, DD'
+        display_format='MMM Do, YY'
     ),
 
     dcc.DatePickerSingle(
-        id='date-picker-single',
         date=dt.now(),
-        display_format='M, YYYY, DD'
+        display_format='M-D-Y-Q',
     ),
 
     dcc.DatePickerSingle(
-        id='date-picker-single',
         date=dt.now(),
         display_format='MMMM Y, DD'
     ),
 
     dcc.DatePickerSingle(
-        id='date-picker-single',
         date=dt.now(),
-        display_format='MMMM || Y || DD'
+        display_format='X',
     ),
-    html.Hr(),
-    html.H4('Month Formats'),
-    dcc.Markdown('This prop determines how the month formats will be\
-                 displayed. Click on the date pickers below to see the\
-                 results.'),
+    html.Br(),
+    html.Br(),
+    html.H4("Month Format Examples"),
+    dcc.Markdown("Similar to the `display_format`, you can set `month_format` \
+                 to any permutation of the string tokens \
+                 shown in the table above to change how calendar titles \
+                 are displayed in the `DatePickerSingle` component."),
     dcc.SyntaxHighlighter('''import dash_core_components as dcc
 from datetime import datetime as dt
 
 dcc.DatePickerSingle(
-    id='date-picker-single',
-    placeholder='Select me!',
-    month_format='MM YY'
+    month_format='MMM Do, YY',
+    placeholder='MMM Do, YY'
 ),
 
 dcc.DatePickerSingle(
-    id='date-picker-single',
-    placeholder='Select me too!',
-    month_format='M, YYYY'
+    month_format='M-D-Y-Q',
+    placeholder='M-D-Y-Q'
 ),
 
 dcc.DatePickerSingle(
-    id='date-picker-single',
-    placeholder='Try me!',
-    month_format='MMMM Y'
+    month_format='MMMM Y',
+    placeholder='MMMM Y'
 ),
 
 dcc.DatePickerSingle(
-    id='date-picker-single',
-    placeholder='Click me!',
-    month_format='MMMM || Y'
+    month_format='X',
+    placeholder='X'
 )
 
 ''', language='python', customStyle=styles.code_container),
+    html.P("Open the calendars below to see the difference!"),
     dcc.DatePickerSingle(
-        id='date-picker-single',
-        placeholder='Select me!',
-        month_format='MM YY'
+        month_format='MMM Do, YY',
+        placeholder='MMM Do, YY'
     ),
 
     dcc.DatePickerSingle(
-        id='date-picker-single',
-        placeholder='Select me too!',
-        month_format='M, YYYY'
+        month_format='M-D-Y-Q',
+        placeholder='M-D-Y-Q'
     ),
 
     dcc.DatePickerSingle(
-        id='date-picker-single',
-        placeholder='Try me!',
-        month_format='MMMM Y'
+        month_format='MMMM Y',
+        placeholder='MMMM Y'
     ),
 
     dcc.DatePickerSingle(
-        id='date-picker-single',
-        placeholder='Click me!',
-        month_format='MMMM || Y'
+        month_format='X',
+        placeholder='X'
     ),
+
     html.Hr(),
-    html.H4('Min, Max and Initial Visible Month'),
-    dcc.Markdown('The `min_date_allowed` prop determines the minimum\
-                 selectable date on the calendar, the `max_date_allowed`\
-                 determines the maximum selectable date on the calendar'),
+    html.H4("Vertical Calendar and Placholder Text"),
+    dcc.Markdown("The `DatePickerSingle` component can be rendered in two \
+                  orientations, either horizontally or vertically. \
+                  If `calendar_orientation` is set to `'vertical'`, it will \
+                  be rendered vertically and will default to `'horizontal'` \
+                  if not defined."),
+    dcc.Markdown("As you may have also noticed in the \
+                  previous examples `placeholder` defines the grey default \
+                  text defined in the calendar input boxes when no date is \
+                  selected."),
     dcc.SyntaxHighlighter('''import dash_core_components as dcc
 from datetime import datetime as dt
 
 dcc.DatePickerSingle(
-    id='date-picker-single',
-    min_date_allowed=dt(2017, 8, 5),
-    max_date_allowed=dt(2017, 8, 27),
-    initial_visible_month=dt(2017, 8, 1)
+    placeholder="Select me!",
+    calendar_orientation='vertical',
 )
 
 ''', language='python', customStyle=styles.code_container),
-    dcc.DatePickerSingle(
-        id='date-picker-single',
-        min_date_allowed=dt(2017, 8, 5),
-        max_date_allowed=dt(2017, 8, 27),
-        initial_visible_month=dt(2017, 8, 1)
+    dcc.DatePickerRange(
+        start_date_placeholder_text="Select",
+        end_date_placeholder_text=" me!",
+        calendar_orientation='vertical',
     ),
     html.Hr(),
-    html.H4('Clearable Property'),
+
+    html.H4("Calendar Clear and Portals"),
+    dcc.Markdown("When the `clearable` property is set to `True` \
+                  the component will be rendered with a small 'x' \
+                  that will remove all selected dates when selected."),
+    dcc.Markdown("The `DatePickerSingle` component supports two different \
+                  portal types, one being a full screen portal \
+                  (`with_full_screen_portal`) and another being a simple \
+                  screen overlay, like the one shown below (`with_portal`)."),
     dcc.SyntaxHighlighter('''import dash_core_components as dcc
 from datetime import datetime as dt
 
 dcc.DatePickerSingle(
-    id='date-picker-single',
-    min_date_allowed=dt(2017, 8, 5),
-    date=dt(2017, 8, 15),
-    max_date_allowed=dt(2017, 8, 27),
     clearable=True,
-    initial_visible_month=dt(2017, 8, 1)
+    with_portal=True
+)
+
+''', language='python', customStyle=styles.code_container),
+    dcc.DatePickerRange(
+        clearable=True,
+        with_portal=True
+    ),
+
+    html.Hr(),
+
+    html.H4("Right to Left Calendars and First Day of Week"),
+    dcc.Markdown("When the `is_RTL` property is set to `True` \
+                  the calendar will be rendered from right to left."),
+    dcc.Markdown("The `first_day_of_week` property allows you to \
+                  define which day of the week will be set as the first \
+                  day of the week. In the example below, Tuesday is \
+                  the first day of the week."),
+    dcc.SyntaxHighlighter('''import dash_core_components as dcc
+from datetime import datetime as dt
+
+dcc.DatePickerSingle(
+    is_RTL=True,
+    first_day_of_week=3
 )
 
 ''', language='python', customStyle=styles.code_container),
     dcc.DatePickerSingle(
-        id='date-picker-single',
-        min_date_allowed=dt(2017, 8, 5),
-        date=dt(2017, 8, 15),
-        max_date_allowed=dt(2017, 8, 27),
-        clearable=True,
-        initial_visible_month=dt(2017, 8, 1)
+        is_RTL=True,
+        first_day_of_week=3
     ),
+
     html.Hr(),
-    html.H3('DatePickerSingle Proptypes'),
+    html.H3('DatePickerSingle Properties'),
     generate_table(get_dataframe('DatePickerSingle'))
 ])
 
 # Link
 Link = html.Div(children=[
-    html.H3('Link Proptypes'),
+    html.H3('Link Properties'),
     generate_table(get_dataframe('Link'))
 ])
 
 # Textarea
 Textarea = html.Div(children=[
-    html.H3('Textarea Proptypes'),
+    html.H3('Textarea Properties'),
     generate_table(get_dataframe('Textarea'))
 ])

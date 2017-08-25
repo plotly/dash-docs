@@ -32,6 +32,7 @@ import urls
 import auth
 import on_premise_deployment
 import core_component_examples as examples
+from datetime import datetime as dt
 
 dcc._js_dist[0]['external_url'] = 'https://cdn.plot.ly/plotly-basic-1.27.1.min.js'
 
@@ -357,6 +358,45 @@ def update_output(value):
             Log Value: [{:0.2f}, {:0.2f}]'.format(value[0], value[1],
                                        transformed_value[0],
                                        transformed_value[1])
+
+@app.callback(
+    Output('output-container-date-picker-range', 'children'),
+    [Input('my-date-picker-range', 'start_date'),
+     Input('my-date-picker-range', 'end_date')])
+def update_output(start_date, end_date):
+    string_prefix = "You have selected: "
+    if start_date is not None:
+        start_date = dt.strptime(start_date, '%Y-%m-%d')
+        start_date_string = start_date.strftime('%B %d, %Y')
+        string_prefix = string_prefix + "Start Date: " + start_date_string + " | "
+    if end_date is not None:
+        end_date = dt.strptime(end_date, '%Y-%m-%d')
+        end_date_string = end_date.strftime('%B %d, %Y')
+        string_prefix = string_prefix + "End Date: " + end_date_string
+    if(len(string_prefix) == len("You have selected: ")):
+        return "Select a date to see it displayed here"
+    else:
+        return string_prefix
+
+@app.callback(
+    Output(
+        'output-container-date-picker-single', 'children'
+    ),
+    [Input('my-date-picker-single', 'date')])
+def update_output(date):
+    string_prefix = "You have selected: "
+    if date is not None:
+        date = dt.strptime(date, '%Y-%m-%d')
+        date_string = date.strftime('%B %d, %Y')
+        string_prefix = string_prefix + "Start Date: " + date_string
+        return string_prefix
+
+@app.callback(
+    Output('output-container-button', 'children'),
+    [Input('button', 'n_clicks')],
+    [State('input-box', 'value')])
+def update_output(n_clicks, value):
+    return "The input value was: " + value
 
 app.css.append_css({
     'external_url': (
