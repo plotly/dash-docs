@@ -70,7 +70,6 @@ def object_hook_handler(obj):
         elif(obj['defaultValue']['value'] == 'false'):
             obj['defaultValue']['value'] = 'False'
         elif(type(obj['defaultValue']['value']) == dict):
-            print(obj['defaultValue']['value'])
             obj['defaultValue']['value'] = 'Checkout plotly.js docs for\
                                             more info'
 
@@ -98,7 +97,6 @@ def get_dataframe(string):
     if('setProps' in df.index):
         df.drop(['setProps'], inplace=True)
     if('dashFireEvent' in df.index):
-        print(df)
         df.drop(['dashFireEvent'], inplace=True)
     if('className' in df.index.tolist()):
         reindex = ['id', 'className']
