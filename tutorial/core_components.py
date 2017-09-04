@@ -9,7 +9,16 @@ import plotly.graph_objs as go
 import json
 import styles
 
+import tools
+from utils.component_block import ComponentBlock
+
 from server import app
+
+examples = {
+    'button': tools.load_example('tutorial/examples/core_components/button.py')
+}
+
+
 
 layout = html.Div(children=[
     html.H1('Dash Core Components'),
@@ -20,7 +29,14 @@ layout = html.Div(children=[
         is available in the `dash-core-components` library.
 
         The source is on GitHub at [plotly/dash-core-components](https://github.com/plotly/dash-core-components).
-    '''.replace('    ', '')),
+
+        These docs are using version {}.
+    '''.replace('    ', '').format(dcc.__version__)),
+
+    dcc.SyntaxHighlighter('''>>> import dash_core_components as dcc
+    >>> print(dcc.__version__)
+    {}'''.replace('    ', '').format(dcc.__version__),
+    customStyle=styles.code_container),
 
     html.Hr(),
     html.H3('Dropdown'),
@@ -255,7 +271,7 @@ dcc.Input(
     ),
 
     html.Br(),
-    dcc.Link(html.A('More Input Properties and Reference'),
+    dcc.Link(html.A('Input Reference'),
              href="/dash/dash-core-components/input"),
     html.Hr(),
     html.H3('Textarea'),
@@ -263,6 +279,7 @@ dcc.Input(
 
 dcc.Textarea(
     placeholder='Enter a value...',
+    value='This is a TextArea component',
     style={'width': '100%'}
 )''', language='python', customStyle=styles.code_container),
     dcc.Textarea(
@@ -272,7 +289,7 @@ dcc.Textarea(
 
     html.Br(),
     html.Br(),
-    dcc.Link(html.A('More Textarea Properties'),
+    dcc.Link(html.A('Textarea Reference'),
              href="/dash/dash-core-components/textarea"),
     html.Hr(),
     html.H3('Checkboxes'),
@@ -319,7 +336,7 @@ dcc.Checklist(
     ),
 
     html.Br(),
-    dcc.Link(html.A('More Checklist Properties'),
+    dcc.Link(html.A('Checklist Properties'),
              href="/dash/dash-core-components/checklist"),
     html.Hr(),
     html.H3('Radio Items'),
@@ -365,51 +382,15 @@ dcc.RadioItems(
         id='section2-radioitems-2'
     ),
     html.Br(),
-    dcc.Link(html.A('More RadioItems Properties'),
+    dcc.Link(html.A('RadioItems Reference'),
              href="/dash/dash-core-components/radioitems"),
     html.Hr(),
     html.H3("Button"),
-    dcc.SyntaxHighlighter('''import dash
-import dash_html_components as html
-import dash_core_components as dcc
-
-app = dash.Dash()
-app.layout = html.Div([
-    dcc.Input(
-        id='input-box'
+    dcc.SyntaxHighlighter(
+        examples['button'][0],
+        customStyle=styles.code_container, language='python'
     ),
-    html.Button(
-        id='button'
-    ),
-    html.Div(id='output-container-button',
-             children="Type a value and press submit!")
-)
-
-@app.callback(
-    dash.dependencies.Output('output-container-button', 'children'),
-    [dash.dependencies.Input('button', 'n_clicks')],
-    [dash.dependencies.State('input-box', 'value')])
-def update_output(n_clicks, value):
-    return "The input value was " + value
-
-if __name__ == '__main__':
-    app.run_server(debug=True)
-
-    ''', customStyle=styles.code_container, language='python'),
-    html.Div([
-        dcc.Input(
-            id='input-box'
-        ),
-        html.Button(
-            id='button',
-            children="Sumbit!",
-            style={
-                'display': 'inline-block'
-            }
-        ),
-    ], className='example-container', style={'overflow': 'hidden'}),
-    html.Div(id='output-container-button',
-             children="Type a value and press submit!"),
+    html.Div(examples['button'][1], className='example-container'),
     html.Hr(),
     html.H3('Markdown'),
     dcc.SyntaxHighlighter('''import dash_core_components as dcc
@@ -488,8 +469,7 @@ dcc.Graph(
     ),
 
     html.Br(),
-    dcc.Link(html.A('More Graph Properties'),
-             href="/dash/dash-core-components/graph"),
+    dcc.Markdown('View the [plotly.py docs](https://plot.ly/python).'),
 
     html.Div(id='hidden', style={'display': 'none'})
 ])

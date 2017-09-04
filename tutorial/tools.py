@@ -1,6 +1,5 @@
 from server import app
 
-
 def load_example(path):
     with open(path, 'r') as _f:
         _source = _f.read()
@@ -28,7 +27,15 @@ def load_example(path):
         )
 
         scope = {'app': app}
-        exec(_example, scope)
+        try:
+            exec(_example, scope)
+        except Exception as e:
+            print('\nError running {}\n{}'.format(
+                path,
+                ('======================================' +
+                 '======================================')
+            ))
+            raise e
 
     return (
         _source,

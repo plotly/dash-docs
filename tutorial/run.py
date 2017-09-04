@@ -210,11 +210,6 @@ chapters = {
         'content': examples.RadioItems
     },
 
-    'graph-examples': {
-        'url': '/dash/dash-core-components/graph',
-        'content': examples.Graph
-    },
-
     'datepickersingle-examples': {
         'url': '/dash/dash-core-components/datepickersingle',
         'content': examples.DatePickerSingle
@@ -302,101 +297,6 @@ def display_content(pathname):
         content = chapters['index']['content']
 
     return content
-
-@app.callback(
-    Output('output-container-dropdown', 'children'),
-    [Input('my-dropdown', 'value')])
-def update_output(value):
-    return 'You have selected "{}"'.format(value)
-
-@app.callback(
-    Output('hidden-div', 'children'),
-    [Input('clearable', 'value')])
-def update_output(value):
-    return 'You have selected "{}"'.format(value)
-
-@app.callback(
-    Output('hidden-div', 'n_clicks'),
-    [Input('multi-value', 'value')])
-def update_output(value):
-    return 'You have selected "{}"'.format(value)
-
-def transform_value(value):
-    if(type(value) == list):
-        valueList = []
-        for i in value:
-            valueList.append(10 ** i)
-        return valueList
-    else:
-        return 10 ** value
-
-@app.callback(
-    Output('output-container-slider', 'children'),
-    [Input('my-slider', 'value')])
-def update_output(value):
-    return 'You have selected: {}'.format(value)
-
-@app.callback(
-    Output('output-container-slider-non-linear', 'children'),
-    [Input('non-linear-slider', 'value')])
-def update_output(value):
-    return 'Linear Value: {} | \
-            Log Value: {:0.2f}'.format(value, transform_value(value))
-
-@app.callback(
-    Output('output-container-range-slider', 'children'),
-    [Input('my-range-slider', 'value')])
-def update_output(value):
-    return 'You have selected: {}'.format(value)
-
-@app.callback(
-    Output('output-container-range-slider-non-linear', 'children'),
-    [Input('non-linear-range-slider', 'value')])
-def update_output(value):
-    transformed_value=transform_value(value)
-    return 'Linear Value: [{}, {}] | \
-            Log Value: [{:0.2f}, {:0.2f}]'.format(value[0], value[1],
-                                       transformed_value[0],
-                                       transformed_value[1])
-
-@app.callback(
-    Output('output-container-date-picker-range', 'children'),
-    [Input('my-date-picker-range', 'start_date'),
-     Input('my-date-picker-range', 'end_date')])
-def update_output(start_date, end_date):
-    string_prefix = "You have selected: "
-    if start_date is not None:
-        start_date = dt.strptime(start_date, '%Y-%m-%d')
-        start_date_string = start_date.strftime('%B %d, %Y')
-        string_prefix = string_prefix + "Start Date: " + start_date_string + " | "
-    if end_date is not None:
-        end_date = dt.strptime(end_date, '%Y-%m-%d')
-        end_date_string = end_date.strftime('%B %d, %Y')
-        string_prefix = string_prefix + "End Date: " + end_date_string
-    if(len(string_prefix) == len("You have selected: ")):
-        return "Select a date to see it displayed here"
-    else:
-        return string_prefix
-
-@app.callback(
-    Output(
-        'output-container-date-picker-single', 'children'
-    ),
-    [Input('my-date-picker-single', 'date')])
-def update_output(date):
-    string_prefix = "You have selected: "
-    if date is not None:
-        date = dt.strptime(date, '%Y-%m-%d')
-        date_string = date.strftime('%B %d, %Y')
-        string_prefix = string_prefix + "Start Date: " + date_string
-        return string_prefix
-
-@app.callback(
-    Output('output-container-button', 'children'),
-    [Input('button', 'n_clicks')],
-    [State('input-box', 'value')])
-def update_output(n_clicks, value):
-    return "The input value was: " + value
 
 app.css.append_css({
     'external_url': (
