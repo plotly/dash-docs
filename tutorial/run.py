@@ -283,6 +283,7 @@ app.layout = html.Div([
 @app.callback(Output('chapter', 'children'),
     [Input('location', 'pathname')])
 def display_content(pathname):
+    print(pathname)
     if pathname is None:
         return ''
     if pathname.endswith('/') and pathname != '/':
