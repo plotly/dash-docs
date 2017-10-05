@@ -39,7 +39,7 @@ import support
 import urls
 
 dcc._js_dist[0]['external_url'] = (
-    'https://cdn.plot.ly/plotly-basic-1.27.1.min.js'
+    'https://cdn.plot.ly/plotly-basic-1.31.0.min.js'
 )
 
 
