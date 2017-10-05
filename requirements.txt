@@ -8,7 +8,7 @@ colorlover==0.2.1
 configparser==3.5.0
 dash==0.18.3
 dash-auth==0.0.9
-dash-core-components==0.12.7
+dash-core-components==0.13.0
 dash-html-components==0.8.0
 dash-renderer==0.11.0
 dash-table-experiments==0.3.0
