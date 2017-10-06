@@ -101,10 +101,6 @@ layout = html.Div([
     ### Current Limitations
 
     There are a few limitations in graph interactions right now.
-    - Box select and lasso select are only supported for scatter plots.
-      As a workaround, you can enable selection on other chart types
-      (like bar charts) by drawing an invisible scatter trace.
-      This isssue is being worked on in [https://github.com/plotly/plotly.js/issues/170](https://github.com/plotly/plotly.js/issues/170).
     - Clicking points does not accumulate: you cannot accumulate the number
       of points that you have clicked on nor is there the concept of
       "unselecting" a point. This issue is being worked on in [https://github.com/plotly/plotly.js/issues/1848](https://github.com/plotly/plotly.js/issues/1848).
