@@ -116,7 +116,7 @@ layout = html.Div([
        our input is the "`value`" property of the component that has the ID
        "`my-id`". Our output is the "`children`" property of the
        component with the ID "`my-div`".
-    3. Whenver an input property changes, the function that the
+    3. Whenever an input property changes, the function that the
        callback decorator wraps will get called automatically.
        Dash provides the function with the new value of the input property as
        an input argument and Dash updates the property of the output component

@@ -142,7 +142,7 @@ Easy.
 Now, what happens if `output-1` depends on `input-1` and `input-2`'s values
 but should only updated when `button-1` is clicked.
 `input-2` still depends on `input-1` and should
-still get updated whenver `input-1`'s value changes.
+still get updated whenever `input-1`'s value changes.
 
 This examples becomes cumbersome because we just want to subscribe to
 `button-1`'s click event, we don't

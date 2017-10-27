@@ -292,7 +292,7 @@ def generate_instructions(chapter, platform):
                 necessary python packages and run your application
                 automatically.
 
-                Whenver you make changes to your Dash code,
+                Whenever you make changes to your Dash code,
                 you will need to run those `git` commands above.
 
                 If you install any other Python packages, add those packages to
