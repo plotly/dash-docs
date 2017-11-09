@@ -91,7 +91,7 @@ app = dash.Dash()
 # doing something wrong.
 # In this case, we're adding the elements through a callback, so we can ignore
 # the exception.
-app.config.supress_callback_exceptions = True
+app.config.suppress_callback_exceptions = True
 
 app.layout = html.Div([
     dcc.Location(id='url', refresh=False),
@@ -178,7 +178,7 @@ callbacks with their initial values.
 - Since we're adding callbacks to elements that don't exist in the app.layout,
 Dash will raise an exception to warn us that we might be doing something
 wrong.  In this case, we're adding the elements through a callback, so we can
-ignore the exception by setting `app.config.supress_callback_exceptions = True`
+ignore the exception by setting `app.config.suppress_callback_exceptions = True`
 - You can modify this example to import the different page's `layout`s in different files.
 - This Dash Userguide that you're looking at is itself a multi-page Dash app, using
 rendered with these same principles.
@@ -211,7 +211,7 @@ dcc.SyntaxHighlighter('''import dash
 
 app = dash.Dash()
 server = app.server
-app.config.supress_callback_exceptions = True
+app.config.suppress_callback_exceptions = True
 ''', language='python', customStyle=styles.code_container),
 
 dcc.Markdown('''

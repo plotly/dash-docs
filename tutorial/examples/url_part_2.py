@@ -11,7 +11,7 @@ app = dash.Dash()
 # doing something wrong.
 # In this case, we're adding the elements through a callback, so we can ignore
 # the exception.
-app.config.supress_callback_exceptions = True
+app.config.suppress_callback_exceptions = True
 
 app.layout = html.Div([
     dcc.Location(id='url', refresh=False),

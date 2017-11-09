@@ -3,7 +3,7 @@ from dash.dependencies import Event, Output
 import dash_html_components as html
 
 app = dash.Dash(__name__)
-app.config.supress_callback_exceptions = True
+app.config.suppress_callback_exceptions = True
 
 app.layout = html.Div([
     html.Button('Click to load children', id='display-children-button'),

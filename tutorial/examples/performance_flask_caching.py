@@ -13,7 +13,7 @@ cache = Cache(app.server, config={
     'CACHE_TYPE': 'redis',
     'CACHE_REDIS_URL': os.environ.get('REDIS_URL', '')
 })
-app.config.supress_callback_exceptions = True
+app.config.suppress_callback_exceptions = True
 
 timeout = 20
 app.layout = html.Div([

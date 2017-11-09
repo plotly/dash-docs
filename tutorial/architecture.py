@@ -826,7 +826,7 @@ def update_figure(value):
 **Raise if ids don't exist**
 We can check `layout` for the IDs and throw an exception if they don't exist.
 If the user is generating the IDs through dynamic components, then we can
-provide a method for them to supress the exceptions.
+provide a method for them to suppress the exceptions.
 
 If they suppress the exceptions then we can still show them an error
 modal in the front-end if the ID doesn't exist.

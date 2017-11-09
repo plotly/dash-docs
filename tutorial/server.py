@@ -12,4 +12,4 @@ server = Flask(__name__, static_url_path='/dash/static', static_folder='./static
 server.secret_key = os.environ.get('secret_key', 'secret')
 app = Dash(__name__, server=server, url_base_pathname='/dash/', csrf_protect=False)
 
-app.config.supress_callback_exceptions = True
+app.config.suppress_callback_exceptions = True

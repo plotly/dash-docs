@@ -11,7 +11,7 @@ else:
     from functools import lru_cache
 
 app = dash.Dash(__name__)
-app.config.supress_callback_exceptions = True
+app.config.suppress_callback_exceptions = True
 
 app.layout = html.Div([
     html.Div(id='memoized-children'),
