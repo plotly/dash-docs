@@ -1,3 +1,4 @@
+from datetime import datetime as dt
 import dash
 from dash.dependencies import Input, Output
 import dash_core_components as dcc
@@ -5,7 +6,6 @@ import dash_html_components as html
 
 from plotly import graph_objs as go
 from pandas_datareader import data as web
-from datetime import datetime as dt
 
 app = dash.Dash('Hello World')
 
@@ -45,6 +45,7 @@ def update_graph(selected_dropdown_value):
             'margin': {'l': 20, 'r': 10, 't': 20, 'b': 30}
         }
     )
+
 
 # Run the server
 if __name__ == '__main__':

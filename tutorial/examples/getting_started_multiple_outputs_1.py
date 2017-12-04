@@ -21,17 +21,20 @@ app.layout = html.Div([
 
 ])
 
+
 @app.callback(
     dash.dependencies.Output('output-a', 'children'),
     [dash.dependencies.Input('dropdown-a', 'value')])
 def callback_a(dropdown_value):
     return 'You\'ve selected "{}"'.format(dropdown_value)
 
+
 @app.callback(
     dash.dependencies.Output('output-b', 'children'),
     [dash.dependencies.Input('dropdown-b', 'value')])
 def callback_b(dropdown_value):
     return 'You\'ve selected "{}"'.format(dropdown_value)
+
 
 if __name__ == '__main__':
     app.run_server()

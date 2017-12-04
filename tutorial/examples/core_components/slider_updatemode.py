@@ -10,10 +10,11 @@ app = dash.Dash()
 def transform_value(value):
     return 10 ** value
 
+
 app.layout = html.Div([
     dcc.Slider(
         id='slider-updatemode',
-        marks={(i): '{}'.format(10 ** i) for i in range(4)},
+        marks={i: '{}'.format(10 ** i) for i in range(4)},
         max=3,
         value=2,
         step=0.01,
@@ -22,8 +23,9 @@ app.layout = html.Div([
     html.Div(id='updatemode-output-container', style={'margin-top': 20})
 ])
 
+
 @app.callback(Output('updatemode-output-container', 'children'),
-          [Input('slider-updatemode', 'value')])
+              [Input('slider-updatemode', 'value')])
 def display_value(value):
     return 'Linear Value: {} | \
             Log Value: {:0.2f}'.format(value, transform_value(value))

@@ -10,6 +10,7 @@ df = pd.read_csv(
     'c353e8ef842413cae56ae3920b8fd78468aa4cb2/'
     'usa-agricultural-exports-2011.csv')
 
+
 def generate_table(dataframe, max_rows=10):
     return html.Table(
         # Header
@@ -20,6 +21,7 @@ def generate_table(dataframe, max_rows=10):
             html.Td(dataframe.iloc[i][col]) for col in dataframe.columns
         ]) for i in range(min(len(dataframe), max_rows))]
     )
+
 
 app = dash.Dash()
 

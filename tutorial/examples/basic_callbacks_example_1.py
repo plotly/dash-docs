@@ -1,9 +1,9 @@
+from datetime import datetime as dt
 import dash
 from dash.dependencies import Input, Output
 import dash_core_components as dcc
 import dash_html_components as html
 
-from datetime import datetime as dt
 from pandas_datareader import data as web
 import plotly.graph_objs as go
 
@@ -61,6 +61,7 @@ def update_graph(selected_dropdown_value):
         }],
         layout={'margin': {'l': 30, 'r': 0, 'b': 20, 't': 10}}
     )
+
 
 # Run the app
 if __name__ == '__main__':

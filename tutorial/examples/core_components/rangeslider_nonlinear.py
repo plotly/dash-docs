@@ -10,10 +10,11 @@ app = dash.Dash('')
 def transform_value(value):
     return 10 ** value
 
+
 app.layout = html.Div([
     dcc.RangeSlider(
         id='non-linear-range-slider',
-        marks={(i): '{}'.format(10 ** i) for i in range(4)},
+        marks={i: '{}'.format(10 ** i) for i in range(4)},
         max=3,
         value=[0.1, 2],
         dots=False,
@@ -22,6 +23,7 @@ app.layout = html.Div([
     ),
     html.Div(id='output-container-range-slider-non-linear', style={'margin-top': 20})
 ])
+
 
 @app.callback(
     Output('output-container-range-slider-non-linear', 'children'),

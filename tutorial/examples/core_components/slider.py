@@ -14,11 +14,13 @@ app.layout = html.Div([
     html.Div(id='slider-output-container')
 ])
 
+
 @app.callback(
     dash.dependencies.Output('slider-output-container', 'children'),
     [dash.dependencies.Input('my-slider', 'value')])
 def update_output(value):
     return 'You have selected "{}"'.format(value)
+
 
 if __name__ == '__main__':
     app.run_server(debug=True)

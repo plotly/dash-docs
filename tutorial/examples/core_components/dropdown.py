@@ -11,16 +11,18 @@ app.layout = html.Div([
             {'label': 'Montreal', 'value': 'MTL'},
             {'label': 'San Francisco', 'value': 'SF'}
         ],
-       value='NYC'
+        value='NYC'
     ),
     html.Div(id='output-container')
 ])
+
 
 @app.callback(
     dash.dependencies.Output('output-container', 'children'),
     [dash.dependencies.Input('my-dropdown', 'value')])
 def update_output(value):
     return 'You have selected "{}"'.format(value)
+
 
 if __name__ == '__main__':
     app.run_server(debug=True)

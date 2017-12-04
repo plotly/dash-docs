@@ -1,7 +1,7 @@
+from datetime import datetime as dt
 import dash
 import dash_html_components as html
 import dash_core_components as dcc
-from datetime import datetime as dt
 
 app = dash.Dash()
 app.layout = html.Div([
@@ -25,6 +25,7 @@ def update_output(date):
         date = dt.strptime(date, '%Y-%m-%d')
         date_string = date.strftime('%B %d, %Y')
         return string_prefix + date_string
+
 
 if __name__ == '__main__':
     app.run_server(debug=True)

@@ -72,8 +72,7 @@ def parse_contents(contents, filename, date):
         html.Div('Raw Content'),
         html.Pre(contents[0:200] + '...', style={
             'whiteSpace': 'pre-wrap',
-            'wordBreak': 'break-all',
-            'whiteSpace': 'normal'
+            'wordBreak': 'break-all'
         })
     ])
 
@@ -91,7 +90,7 @@ def update_output(list_of_contents, list_of_names, list_of_dates):
 
 
 app.css.append_css({
-    "external_url": "https://codepen.io/chriddyp/pen/bWLwgP.css"
+    'external_url': 'https://codepen.io/chriddyp/pen/bWLwgP.css'
 })
 
 if __name__ == '__main__':

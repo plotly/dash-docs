@@ -118,7 +118,7 @@ def highlight(x, y):
 
 
 app.css.append_css({
-    "external_url": "https://codepen.io/chriddyp/pen/bWLwgP.css"})
+    'external_url': 'https://codepen.io/chriddyp/pen/bWLwgP.css'})
 
 # app.callback is a decorator which means that it takes a function
 # as its argument.

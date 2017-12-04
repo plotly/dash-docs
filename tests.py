@@ -45,12 +45,12 @@ with open('tutorial/examples/getting_started.py', 'r') as f:
 
     # return the layout instead of assigning it to the global app
     if 'app.layout = ' not in example:
-        raise Exception("app.layout not assigned")
+        raise Exception('app.layout not assigned')
     example = example.replace('app.layout = ', 'layout = ')
 
     # Remove the "# Run the server" commands
     if 'app.run_server' not in example:
-        raise Exception("app.run_server missing")
+        raise Exception('app.run_server missing')
     example = example.replace(
         '\n    app.run_server',
         'print("Running")\n    # app.run_server'

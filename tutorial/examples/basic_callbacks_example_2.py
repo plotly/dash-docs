@@ -1,9 +1,9 @@
+from datetime import datetime as dt
 import dash
 from dash.dependencies import Input, Output
 import dash_core_components as dcc
 import dash_html_components as html
 
-from datetime import datetime as dt
 from pandas_datareader import data as web
 import plotly.graph_objs as go
 
@@ -58,6 +58,7 @@ def update_graph(stock_ticker, column):
             margin=go.Margin(l=40, r=0, t=10, b=30)
         )
     )
+
 
 # Run the app
 if __name__ == '__main__':

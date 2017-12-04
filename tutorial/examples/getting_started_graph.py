@@ -22,6 +22,7 @@ app.layout = html.Div([
     )
 ])
 
+
 @app.callback(
     dash.dependencies.Output('graph-with-slider', 'figure'),
     [dash.dependencies.Input('year-slider', 'value')])
@@ -53,6 +54,7 @@ def update_figure(selected_year):
             hovermode='closest'
         )
     }
+
 
 if __name__ == '__main__':
     app.run_server()

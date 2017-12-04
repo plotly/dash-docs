@@ -7,8 +7,8 @@ import dash_html_components as html
 app = dash.Dash(__name__)
 
 app.layout = html.Div([
-    dcc.Input(id='input-1', type="text", value='Montréal'),
-    dcc.Input(id='input-2', type="text", value='Canada'),
+    dcc.Input(id='input-1', type='text', value='Montréal'),
+    dcc.Input(id='input-2', type='text', value='Canada'),
     html.Div(id='output')
 ])
 

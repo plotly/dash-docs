@@ -28,15 +28,18 @@ app.layout = html.Div([
     'marginTop': 40
 })
 
+
 @app.callback(Output('amount', 'children'),
               [Input('hours', 'value'), Input('rate', 'value')])
 def compute_amount(hours, rate):
     return float(hours) * float(rate)
 
+
 @app.callback(Output('amount-per-week', 'children'),
               [Input('amount', 'children')])
 def compute_amount(amount):
     return float(amount) * 7
+
 
 app.css.append_css({
     'external_url': (

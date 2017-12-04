@@ -1,3 +1,4 @@
+from datetime import datetime as dt
 import dash
 import dash_html_components as html
 import dash_core_components as dcc
@@ -5,7 +6,6 @@ from dash.dependencies import State, Event, Output
 import plotly.graph_objs as go
 
 from pandas_datareader import data as web
-from datetime import datetime as dt
 
 app = dash.Dash('')
 
