@@ -49,7 +49,7 @@ css = [
     'https://cdn.rawgit.com/plotly/dash-app-stylesheets/30b641e2e89753b13e6557b9d65649f13ea7c64c/dash-docs-custom.css',
     'https://fonts.googleapis.com/css?family=Dosis'
 ]
-
+js = ['https://cdn.rawgit.com/chriddyp/ca0d8f02a1659981a0ea7f013a378bbd/raw/e79f3f789517deec58f41251f7dbb6bee72c44ab/plotly_ga.js']
 
 def create_contents(contents):
     h = []
@@ -250,6 +250,7 @@ app.title = 'Dash User Guide and Documentation - Dash by Plotly'
 
 app.layout = html.Div(
     [html.Link(rel='stylesheet', href=css_link) for css_link in css] +
+    [html.Script(type='text/javascript', src=js_link) for js_link in js] +
     [
         html.Meta(name='viewport', content='width=device-width, initial-scale=1.0'),
         html.Meta(
@@ -297,14 +298,9 @@ def display_content(pathname):
 app.css.append_css({
     'external_url': css
 })
-
-if 'DYNO' in os.environ:
-    app.scripts.config.serve_locally = False
-    app.scripts.append_script({
-        'external_url': 'https://cdn.rawgit.com/chriddyp/ca0d8f02a1659981a0ea7f013a378bbd/raw/e79f3f789517deec58f41251f7dbb6bee72c44ab/plotly_ga.js'
-    })
-else:
-    app.scripts.config.serve_locally = True
+app.scripts.append_script({
+    'external_url': js
+})
 
 if __name__ == '__main__':
     app.run_server(debug=True, threaded=True, port=8050)
