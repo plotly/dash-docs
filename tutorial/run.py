@@ -44,6 +44,12 @@ dcc._js_dist[0]['external_url'] = (
     'https://cdn.plot.ly/plotly-basic-1.31.0.min.js'
 )
 
+css = [
+    'https://cdn.rawgit.com/plotly/dash-app-stylesheets/8485c028c19c393e9ab85e1a4fafd78c489609c2/dash-docs-base.css',
+    'https://cdn.rawgit.com/plotly/dash-app-stylesheets/30b641e2e89753b13e6557b9d65649f13ea7c64c/dash-docs-custom.css',
+    'https://fonts.googleapis.com/css?family=Dosis'
+]
+
 
 def create_contents(contents):
     h = []
@@ -242,26 +248,29 @@ header = html.Div(
 
 app.title = 'Dash User Guide and Documentation - Dash by Plotly'
 
-app.layout = html.Div([
-    html.Meta(name='viewport', content='width=device-width, initial-scale=1.0'),
-    html.Meta(
-        name='description',
-        content=('Dash User Guide and Documentation. '
-                 'Dash is a Python framework for building '
-                 'reactive web apps developed by Plotly.')
-    ),
-    header,
-    html.Div([
+app.layout = html.Div(
+    [html.Link(rel='stylesheet', href=css_link) for css_link in css] +
+    [
+        html.Meta(name='viewport', content='width=device-width, initial-scale=1.0'),
+        html.Meta(
+            name='description',
+            content=('Dash User Guide and Documentation. '
+                     'Dash is a Python framework for building '
+                     'reactive web apps developed by Plotly.')
+        ),
+        header,
         html.Div([
-            html.Div(
-                html.Div(id="chapter", className="content"),
-                className="content-container"
-            ),
-        ], className="container-width")
-    ], className="background"),
-    dcc.Location(id='location', refresh=False),
-    html.Div(dt.DataTable(rows=[{}]), style={'display': 'none'})
-])
+            html.Div([
+                html.Div(
+                    html.Div(id="chapter", className="content"),
+                    className="content-container"
+                ),
+            ], className="container-width")
+        ], className="background"),
+        dcc.Location(id='location', refresh=False),
+        html.Div(dt.DataTable(rows=[{}]), style={'display': 'none'})
+    ]
+)
 
 
 @app.callback(Output('chapter', 'children'),
@@ -286,11 +295,7 @@ def display_content(pathname):
     return content
 
 app.css.append_css({
-    'external_url': (
-        'https://cdn.rawgit.com/plotly/dash-app-stylesheets/8485c028c19c393e9ab85e1a4fafd78c489609c2/dash-docs-base.css',
-        'https://cdn.rawgit.com/plotly/dash-app-stylesheets/30b641e2e89753b13e6557b9d65649f13ea7c64c/dash-docs-custom.css',
-        'https://fonts.googleapis.com/css?family=Dosis'
-    )
+    'external_url': css
 })
 
 if 'DYNO' in os.environ:
