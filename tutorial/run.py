@@ -49,7 +49,11 @@ css = [
     'https://cdn.rawgit.com/plotly/dash-app-stylesheets/30b641e2e89753b13e6557b9d65649f13ea7c64c/dash-docs-custom.css',
     'https://fonts.googleapis.com/css?family=Dosis'
 ]
+<<<<<<< HEAD
 js = ['https://cdn.rawgit.com/chriddyp/ca0d8f02a1659981a0ea7f013a378bbd/raw/e79f3f789517deec58f41251f7dbb6bee72c44ab/plotly_ga.js']
+=======
+
+>>>>>>> master
 
 def create_contents(contents):
     h = []
@@ -295,12 +299,8 @@ def display_content(pathname):
 
     return content
 
-app.css.append_css({
-    'external_url': css
-})
-app.scripts.append_script({
-    'external_url': js
-})
+app.css.append_css({'external_url': css})
+app.scripts.append_script({'external_url': js})
 
 if __name__ == '__main__':
     app.run_server(debug=True, threaded=True, port=8050)
