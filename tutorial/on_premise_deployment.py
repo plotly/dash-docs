@@ -8,6 +8,7 @@ from server import app
 def s(string_block):
     return string_block.replace('    ', '')
 
+
 STEPS = [
     {'label': 'Part 1 - Authenticating to Plotly On-Premise with SSH',
      'value': 'ssh'},
@@ -22,6 +23,7 @@ STEPS = [
      'value': 'auth'},
 
 ]
+
 
 def generate_instructions(chapter, platform):
     if chapter == 'ssh':
@@ -54,7 +56,7 @@ def generate_instructions(chapter, platform):
                 '**1. Open Terminal**'
             ),
 
-             dcc.Markdown(s('''
+            dcc.Markdown(s('''
                 **2. Generate Key**
 
                 This command will walk you
@@ -128,8 +130,8 @@ def generate_instructions(chapter, platform):
             ''')),
 
             html.Img(
-                alt="Dash App Create Menu",
-                src="https://github.com/plotly/dash-docs/raw/master/images/dash-create-menu.png",
+                alt='Dash App Create Menu',
+                src='https://github.com/plotly/dash-docs/raw/master/images/dash-create-menu.png',
                 style={
                     'width': '100%', 'border': 'thin lightgrey solid',
                     'border-radius': '4px'
@@ -146,8 +148,8 @@ def generate_instructions(chapter, platform):
             ''')),
 
             html.Img(
-                alt="Dash App Manager Public Key Interface",
-                src="https://github.com/plotly/dash-docs/raw/master/images/dash-app-manager-ssh-key.png",
+                alt='Dash App Manager Public Key Interface',
+                src='https://github.com/plotly/dash-docs/raw/master/images/dash-app-manager-ssh-key.png',
                 style={
                     'width': '100%', 'border': 'thin lightgrey solid',
                     'border-radius': '4px'
@@ -195,8 +197,8 @@ def generate_instructions(chapter, platform):
             ''')),
 
             html.Img(
-                alt="Dash App Manager Add App Interface",
-                src="https://github.com/plotly/dash-docs/raw/master/images/dash-app-manager-empty.png",
+                alt='Dash App Manager Add App Interface',
+                src='https://github.com/plotly/dash-docs/raw/master/images/dash-app-manager-empty.png',
                 style={
                     'width': '100%', 'border': 'thin lightgrey solid',
                     'border-radius': '4px'
@@ -328,6 +330,7 @@ def generate_instructions(chapter, platform):
             '''))
         ]
 
+
 layout = html.Div([
     dcc.Markdown(s('''
         # Deploying Dash Apps on Plotly On-Premise
@@ -364,6 +367,7 @@ layout = html.Div([
 
     html.Div(id='deployment-instructions')
 ])
+
 
 @app.callback(Output('header', 'children'),
               [Input('step', 'value')])

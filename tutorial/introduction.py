@@ -42,9 +42,9 @@ layout = html.Div([
     '''.replace('  ', '')),
 
     html.Iframe(
-        width="100%",
-        height="480",
+        width='100%',
+        height='480',
         style={'border': 'none'},
-        src="https://www.youtube-nocookie.com/embed/5BAthiN0htc?rel=0"
+        src='https://www.youtube-nocookie.com/embed/5BAthiN0htc?rel=0'
     )
 ])
