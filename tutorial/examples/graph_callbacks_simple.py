@@ -42,7 +42,7 @@ app.layout = html.Div([
         }
     ),
 
-    html.Div(className="row", children=[
+    html.Div(className='row', children=[
         html.Div([
             dcc.Markdown(d("""
                 **Hover Data**
@@ -50,7 +50,7 @@ app.layout = html.Div([
                 Mouse over values in the graph.
             """)),
             html.Pre(id='hover-data', style=styles['pre'])
-        ], className="three columns"),
+        ], className='three columns'),
 
         html.Div([
             dcc.Markdown(d("""
@@ -59,7 +59,7 @@ app.layout = html.Div([
                 Click on points in the graph.
             """)),
             html.Pre(id='click-data', style=styles['pre']),
-        ], className="three columns"),
+        ], className='three columns'),
 
         html.Div([
             dcc.Markdown(d("""
@@ -69,7 +69,7 @@ app.layout = html.Div([
                 bar and then select points in the graph.
             """)),
             html.Pre(id='selected-data', style=styles['pre']),
-        ], className="three columns"),
+        ], className='three columns'),
 
         html.Div([
             dcc.Markdown(d("""
@@ -81,7 +81,7 @@ app.layout = html.Div([
                 this event.
             """)),
             html.Pre(id='relayout-data', style=styles['pre']),
-        ], className="three columns")
+        ], className='three columns')
     ])
 ])
 

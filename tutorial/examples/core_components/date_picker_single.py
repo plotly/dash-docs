@@ -20,7 +20,7 @@ app.layout = html.Div([
     dash.dependencies.Output('output-container-date-picker-single', 'children'),
     [dash.dependencies.Input('my-date-picker-single', 'date')])
 def update_output(date):
-    string_prefix = "You have selected: "
+    string_prefix = 'You have selected: '
     if date is not None:
         date = dt.strptime(date, '%Y-%m-%d')
         date_string = date.strftime('%B %d, %Y')

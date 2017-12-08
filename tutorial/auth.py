@@ -51,8 +51,8 @@ layout = html.Div([
     '''.replace('    ', '')),
 
     html.Img(
-        src="https://github.com/plotly/dash-docs/raw/master/images/basic-auth.gif",
-        alt="Dash Basic Auth Example",
+        src='https://github.com/plotly/dash-docs/raw/master/images/basic-auth.gif',
+        alt='Dash Basic Auth Example',
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
             'border-radius': '4px'
@@ -99,7 +99,7 @@ app.layout = html.Div([
         value='A'
     ),
     dcc.Graph(id='graph')
-], className="container")
+], className='container')
 
 @app.callback(
     dash.dependencies.Output('graph', 'figure'),
@@ -132,8 +132,8 @@ if __name__ == '__main__':
     '''.replace('   ', '')),
 
     html.Img(
-        src="https://github.com/plotly/dash-docs/raw/master/images/plotly-auth.gif",
-        alt="Dash Plotly OAuth Example",
+        src='https://github.com/plotly/dash-docs/raw/master/images/plotly-auth.gif',
+        alt='Dash Plotly OAuth Example',
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
             'border-radius': '4px'
@@ -178,7 +178,7 @@ app.layout = html.Div([
         value='A'
     ),
     dcc.Graph(id='graph')
-], className="container")
+], className='container')
 
 @app.callback(
     dash.dependencies.Output('graph', 'figure'),

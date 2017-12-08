@@ -20,21 +20,21 @@ app.layout = html.Div([
             # if selectedData is not specified then it is initialized as None
             selectedData={'points': [], 'range': None},
             config={'displayModeBar': False}
-        ), className="four columns"
+        ), className='four columns'
     ),
     html.Div(
         dcc.Graph(
             id='g2',
             selectedData={'points': [], 'range': None},
             config={'displayModeBar': False}
-        ), className="four columns"),
+        ), className='four columns'),
     html.Div(
         dcc.Graph(
             id='g3',
             selectedData={'points': [], 'range': None},
             config={'displayModeBar': False}
-        ), className="four columns")
-], className="row")
+        ), className='four columns')
+], className='row')
 
 
 def highlight(x, y):

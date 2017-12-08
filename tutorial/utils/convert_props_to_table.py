@@ -168,7 +168,7 @@ def get_dataframe(component_name):
 
     if 'config' in df['Attribute']:
         df.set_value('config', 'Type',
-                     "dict, check Plotly.js docs for more information")
+                     'dict, check Plotly.js docs for more information')
         df.set_value('config', 'Default Value',
                      "{}")
     return df
@@ -187,7 +187,7 @@ def generate_table(dataframe):
                                                                       [1]])))
             elif(type(dataframe.iloc[i][col]) == tuple and
                  type(dataframe.iloc[i][col][1][0]) == dict):
-                internalRow.append(html.Td("Array of Dict: " +
+                internalRow.append(html.Td('Array of Dict: ' +
                                            str(dataframe.iloc[i][col][1])))
             else:
                 if col == 'Type':
