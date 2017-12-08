@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
+from textwrap import dedent as s
 import dash_core_components as dcc
 import dash_html_components as html
 from components import Syntax
-from textwrap import dedent as s
 
 
 layout = html.Div([
