@@ -14,6 +14,7 @@ from tutorial import architecture
 from tutorial import graph_callbacks
 from tutorial import live_updates
 from tutorial import urls
+from tutorial.server import app
 
 chapters = [
     introduction,
@@ -31,8 +32,6 @@ chapters = [
     live_updates,
     urls
 ]
-
-from tutorial.server import app
 
 with open('tutorial/examples/getting_started.py', 'r') as f:
     example = f.read()
