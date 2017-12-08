@@ -35,7 +35,7 @@ def Section(title, links, description=None, headerStyle={}):
     ])
 
 
-layout = html.Div(className="toc", children=[
+layout = html.Div(className='toc', children=[
     html.H1('Dash User Guide'),
 
     Section("What's Dash?", [
@@ -117,7 +117,7 @@ layout = html.Div(className="toc", children=[
 
     Section('Getting Help', [
         Chapter('FAQ', 'https://community.plot.ly/c/dash'),
-        Chapter('Support and Contact', href="/dash/support")
+        Chapter('Support and Contact', href='/dash/support')
     ]),
 
     Section('Plotly On-Premises', [

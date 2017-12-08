@@ -40,6 +40,7 @@ page_1_layout = html.Div([
 
 ])
 
+
 @app.callback(dash.dependencies.Output('page-1-content', 'children'),
               [dash.dependencies.Input('page-1-dropdown', 'value')])
 def page_1_dropdown(value):
@@ -60,6 +61,7 @@ page_2_layout = html.Div([
     dcc.Link('Go back to home', href='/')
 ])
 
+
 @app.callback(dash.dependencies.Output('page-2-content', 'children'),
               [dash.dependencies.Input('page-2-radios', 'value')])
 def page_2_radios(value):
@@ -77,6 +79,7 @@ def display_page(pathname):
     else:
         return index_page
     # You could also return a 404 "URL not found" page here
+
 
 app.css.append_css({
     'external_url': 'https://codepen.io/chriddyp/pen/bWLwgP.css'

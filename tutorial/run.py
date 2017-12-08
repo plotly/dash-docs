@@ -51,6 +51,7 @@ css = [
 ]
 js = ['https://cdn.rawgit.com/chriddyp/ca0d8f02a1659981a0ea7f013a378bbd/raw/e79f3f789517deec58f41251f7dbb6bee72c44ab/plotly_ga.js']
 
+
 def create_contents(contents):
     h = []
     for i in contents:
@@ -233,14 +234,14 @@ header = html.Div(
         style={'height': '100%'},
         children=[
             html.A(html.Img(
-                src="https://cdn.rawgit.com/plotly/dash-docs/b1178b4e/images/dash-logo-stripe.svg",
-                className="logo"
-            ), href='https://plot.ly/products/dash', className="logo-link"),
+                src='https://cdn.rawgit.com/plotly/dash-docs/b1178b4e/images/dash-logo-stripe.svg',
+                className='logo'
+            ), href='https://plot.ly/products/dash', className='logo-link'),
 
-            html.Div(className="links", children=[
-                html.A('pricing', className="link", href="https://plot.ly/products/on-premise"),
-                html.A('user guide', className="link active", href="https://plot.ly/dash/"),
-                html.A('plotly', className="link", href="https://plot.ly/")
+            html.Div(className='links', children=[
+                html.A('pricing', className='link', href='https://plot.ly/products/on-premise'),
+                html.A('user guide', className='link active', href='https://plot.ly/dash/'),
+                html.A('plotly', className='link', href='https://plot.ly/')
             ])
         ]
     )
@@ -263,11 +264,11 @@ app.layout = html.Div(
         html.Div([
             html.Div([
                 html.Div(
-                    html.Div(id="chapter", className="content"),
-                    className="content-container"
+                    html.Div(id='chapter', className='content'),
+                    className='content-container'
                 ),
-            ], className="container-width")
-        ], className="background"),
+            ], className='container-width')
+        ], className='background'),
         dcc.Location(id='location', refresh=False),
         html.Div(dt.DataTable(rows=[{}]), style={'display': 'none'})
     ]
@@ -294,6 +295,7 @@ def display_content(pathname):
         content = chapters['index']['content']
 
     return content
+
 
 app.css.append_css({'external_url': css})
 app.scripts.append_script({'external_url': js})

@@ -10,6 +10,7 @@ import dash
 _current_path = os.path.join(os.path.dirname(os.path.abspath(dcc.__file__)),
                               'metadata.json')
 
+
 def js_to_py_type(type_object):
     js_type_name = type_object['name']
 
@@ -110,19 +111,19 @@ def object_hook_handler(obj):
     if 'required' in obj:
         obj.pop('required')
     if 'id' in obj:
-        obj['id']['Description'] = "Optional identifier used to reference\
-                              component in callbacks"
+        obj['id']['Description'] = 'Optional identifier used to reference\
+                              component in callbacks'
     if 'className' in obj:
         obj['className']['Description'] = '''Sets the class name of the element (the value of an
                                              element's html class attribute)'''
     if 'type' in obj and obj['type'] != None and 'name' in obj['type']:
         obj['Type'] = js_to_py_type(obj['type'])
     if 'defaultValue' in obj:
-        if(obj['defaultValue']['value'] == 'true'):
+        if obj['defaultValue']['value'] == 'true':
             obj['defaultValue']['value'] = '`True`'
-        elif(obj['defaultValue']['value'] == 'false'):
+        elif obj['defaultValue']['value'] == 'false':
             obj['defaultValue']['value'] = '`False`'
-        elif(type(obj['defaultValue']['value']) == dict):
+        elif type(obj['defaultValue']['value']) == dict:
             obj['defaultValue']['value'] = 'Checkout plotly.js docs for\
                                             more info'
         obj['Default Value'] = obj['defaultValue']['value']
@@ -143,15 +144,15 @@ def get_dataframe(component_name):
     fullString = prefix+component_name+suffix
     df = pd.DataFrame(metadata[fullString]
                               ['props']).transpose()
-    if('dashEvents' in df.index.tolist()):
+    if 'dashEvents' in df.index.tolist():
         df.drop(['dashEvents'], inplace=True)
-    if('fireEvent' in df.index):
+    if 'fireEvent' in df.index:
         df.drop(['fireEvent'], inplace=True)
-    if('setAttribute' in df.index):
+    if 'setAttribute' in df.index:
         df.drop(['setAttribute'], inplace=True)
-    if('dashFireEvent' in df.index):
+    if 'dashFireEvent' in df.index:
         df.drop(['dashFireEvent'], inplace=True)
-    if('className' in df.index.tolist()):
+    if 'className' in df.index.tolist():
         reindex = ['id', 'className']
     else:
         reindex = ['id']
@@ -160,12 +161,12 @@ def get_dataframe(component_name):
     df['Attribute'] = df.index
     df = df.reindex(reindex)
     df.fillna('', inplace=True)
-    if('Default Value' in df.columns.values.tolist()):
+    if 'Default Value' in df.columns.values.tolist():
         df = df[['Attribute', 'Description', 'Type', 'Default Value']]
     else:
         df = df[['Attribute', 'Description', 'Type']]
 
-    if('config' in df['Attribute']):
+    if 'config' in df['Attribute']:
         df.set_value('config', 'Type',
                      "dict, check Plotly.js docs for more information")
         df.set_value('config', 'Default Value',
@@ -189,7 +190,7 @@ def generate_table(dataframe):
                 internalRow.append(html.Td("Array of Dict: " +
                                            str(dataframe.iloc[i][col][1])))
             else:
-                if(col == 'Type'):
+                if col == 'Type':
                     internalRow.append(html.Td(
                         dcc.Markdown(dataframe.iloc[i][col]\
                             .replace('true', '`True`')\
@@ -198,7 +199,7 @@ def generate_table(dataframe):
                             .replace('    ', '')
                         ),
                         style={'text-align': 'left'}))
-                elif(col == 'Description'):
+                elif col == 'Description':
                     internalRow.append(
                         html.Td(dcc.Markdown(
                             dataframe.iloc[i][col]\

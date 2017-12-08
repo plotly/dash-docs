@@ -25,7 +25,7 @@ def ComponentBlock(example_string, **kwargs):
         ),
         html.Div(
             scope['component'],
-            className="example-container",
+            className='example-container',
             style=(({'overflow-x': 'initial'}) if (
                 'DatePicker' in example_string or
                 'Dropdown' in example_string
