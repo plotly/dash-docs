@@ -170,7 +170,7 @@ def get_dataframe(component_name):
         df.set_value('config', 'Type',
                      'dict, check Plotly.js docs for more information')
         df.set_value('config', 'Default Value',
-                     "{}")
+                     '{}')
     return df
 
 

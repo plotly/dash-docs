@@ -2,7 +2,7 @@ import dash_html_components as html
 import dash_core_components as dcc
 
 
-layout = html.Div(className="gallery", children=[
+layout = html.Div(className='gallery', children=[
 
     dcc.Markdown('''
 
@@ -26,11 +26,11 @@ layout = html.Div(className="gallery", children=[
     '''.replace('    ', '')),
 
     html.A(
-        className="image-link",
-        href="https://plot.ly/dash/getting-started",
+        className='image-link',
+        href='https://plot.ly/dash/getting-started',
         children=html.Img(
-            src="https://github.com/plotly/dash-docs/raw/master/images/gapminder-animation.gif",
-            alt="Screenshot of simple Dash app"
+            src='https://github.com/plotly/dash-docs/raw/master/images/gapminder-animation.gif',
+            alt='Screenshot of simple Dash app'
         )
     ),
 
@@ -55,11 +55,11 @@ layout = html.Div(className="gallery", children=[
     '''.replace('    ', '')),
 
     html.A(
-        className="image-link",
-        href="https://plot.ly/dash/gallery/new-york-oil-and-gas",
+        className='image-link',
+        href='https://plot.ly/dash/gallery/new-york-oil-and-gas',
         children=html.Img(
-            src="https://github.com/plotly/dash-docs/raw/master/images/oil-and-gas.gif",
-            alt="Screenshot of an oil and gas Dash app"
+            src='https://github.com/plotly/dash-docs/raw/master/images/oil-and-gas.gif',
+            alt='Screenshot of an oil and gas Dash app'
         )
     ),
 
@@ -89,11 +89,11 @@ layout = html.Div(className="gallery", children=[
     '''.replace('    ', '')),
 
     html.A(
-        className="image-link",
-        href="https://plot.ly/dash/gallery/goldman-sachs-report",
+        className='image-link',
+        href='https://plot.ly/dash/gallery/goldman-sachs-report',
         children=html.Img(
-            src="https://github.com/plotly/dash-docs/raw/master/images/goldman-sachs.png",
-            alt="Screenshot of Goldman Sachs report"
+            src='https://github.com/plotly/dash-docs/raw/master/images/goldman-sachs.png',
+            alt='Screenshot of Goldman Sachs report'
         )
     ),
 
@@ -112,11 +112,11 @@ layout = html.Div(className="gallery", children=[
     '''.replace('    ', '')),
 
     html.A(
-        className="image-link",
-        href="https://plot.ly/dash/gallery/uber-rides",
+        className='image-link',
+        href='https://plot.ly/dash/gallery/uber-rides',
         children=html.Img(
-            src="https://github.com/plotly/dash-docs/raw/master/images/uber-rides.gif",
-            alt="Screenshot of an Uber rides Dash app"
+            src='https://github.com/plotly/dash-docs/raw/master/images/uber-rides.gif',
+            alt='Screenshot of an Uber rides Dash app'
         )
     ),
 
@@ -140,11 +140,11 @@ layout = html.Div(className="gallery", children=[
     '''.replace('    ', '')),
 
     html.A(
-        className="image-link",
-        href="https://github.com/plotly/dash-table-experiments",
+        className='image-link',
+        href='https://github.com/plotly/dash-table-experiments',
         children=html.Img(
-            src="https://github.com/plotly/dash-table-experiments/raw/master/images/DataTable.gif",
-            alt="Example of a Dash Interactive Table"
+            src='https://github.com/plotly/dash-table-experiments/raw/master/images/DataTable.gif',
+            alt='Example of a Dash Interactive Table'
         )
     ),
 
@@ -165,11 +165,11 @@ layout = html.Div(className="gallery", children=[
     '''.replace('    ', '')),
 
     html.A(
-        className="image-link",
-        href="https://plot.ly/dash/gallery/stock-tickers",
+        className='image-link',
+        href='https://plot.ly/dash/gallery/stock-tickers',
         children=html.Img(
-            src="https://github.com/plotly/dash-docs/raw/master/images/stock-tickers.png",
-            alt="Screenshot of a stock tickers Dash app"
+            src='https://github.com/plotly/dash-docs/raw/master/images/stock-tickers.png',
+            alt='Screenshot of a stock tickers Dash app'
         )
     ),
 
@@ -196,11 +196,11 @@ layout = html.Div(className="gallery", children=[
     '''.replace('    ', '')),
 
     html.A(
-        className="image-link",
-        href="https://plot.ly/dash/gallery/volatility-surface",
+        className='image-link',
+        href='https://plot.ly/dash/gallery/volatility-surface',
         children=html.Img(
-            src="https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-volatility-surface.gif",
-            alt="Screenshot of volatility surface"
+            src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-volatility-surface.gif',
+            alt='Screenshot of volatility surface'
         )
     ),
 
@@ -222,11 +222,11 @@ layout = html.Div(className="gallery", children=[
     '''.replace('    ', '')),
 
     html.A(
-        className="image-link",
-        href="https://plot.ly/dash/gallery/drug-explorer",
+        className='image-link',
+        href='https://plot.ly/dash/gallery/drug-explorer',
         children=html.Img(
-            src="https://github.com/plotly/dash-docs/raw/master/images/drug-discovery-app.gif",
-            alt="Screenshot of a drug discovery Dash app"
+            src='https://github.com/plotly/dash-docs/raw/master/images/drug-discovery-app.gif',
+            alt='Screenshot of a drug discovery Dash app'
         )
     ),
 
@@ -244,11 +244,11 @@ layout = html.Div(className="gallery", children=[
     '''.replace('    ', '')),
 
     html.A(
-        className="image-link",
-        href="https://plot.ly/dash/gallery/live-wind-data",
+        className='image-link',
+        href='https://plot.ly/dash/gallery/live-wind-data',
         children=html.Img(
-            src="https://cdn.rawgit.com/plotly/dash-wind-streaming/d84b15eebf2c502372740416d445e8e3f23d0619/Gif/dash-wind-streaming.gif",
-            alt="gif of a wind streaming Dash app"
+            src='https://cdn.rawgit.com/plotly/dash-wind-streaming/d84b15eebf2c502372740416d445e8e3f23d0619/Gif/dash-wind-streaming.gif',
+            alt='gif of a wind streaming Dash app'
         )
     ),
 
@@ -283,11 +283,11 @@ layout = html.Div(className="gallery", children=[
     '''.replace('    ', '')),
 
     html.A(
-        className="image-link",
-        href="https://plot.ly/dash/gallery/recession-report",
+        className='image-link',
+        href='https://plot.ly/dash/gallery/recession-report',
         children=html.Img(
-            src="https://github.com/plotly/dash-docs/raw/master/images/nytimes.png",
-            alt="Screenshot of a recession reports"
+            src='https://github.com/plotly/dash-docs/raw/master/images/nytimes.png',
+            alt='Screenshot of a recession reports'
         )
     ),
 
@@ -312,11 +312,11 @@ layout = html.Div(className="gallery", children=[
     '''.replace('    ', '')),
 
     html.A(
-        className="image-link",
-        href="https://plot.ly/dash/gallery/yield-curve",
+        className='image-link',
+        href='https://plot.ly/dash/gallery/yield-curve',
         children=html.Img(
-            src="https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-yield-curve-app.png",
-            alt="Screenshot of a dash home page"
+            src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-yield-curve-app.png',
+            alt='Screenshot of a dash home page'
         )
     ),
     dcc.Markdown('''
@@ -333,11 +333,11 @@ layout = html.Div(className="gallery", children=[
     '''.replace('    ', '')),
 
     html.A(
-        className="image-link",
-        href="https://plot.ly/dash/",
+        className='image-link',
+        href='https://plot.ly/dash/',
         children=html.Img(
-            src="https://github.com/plotly/dash-docs/raw/master/images/dash-home-page.png",
-            alt="Screenshot of a dash home page"
+            src='https://github.com/plotly/dash-docs/raw/master/images/dash-home-page.png',
+            alt='Screenshot of a dash home page'
         )
     ),
     dcc.Markdown('''
