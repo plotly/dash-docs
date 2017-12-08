@@ -15,6 +15,18 @@ If you would like to trial or purchase a Dash On-Premises server,
 Our sales engineering team is happy to give you or your team
 a demo of Dash and Dash On-Premises too.
 
+### Dash Workshops
+
+We will be leading a [two day Dash workshop](https://plotcon.plot.ly/) at
+Plotly Headquarters this Februrary!
+The workshop will start with the foundations and guiding principles of Dash
+and move into advanced Dash practices with plenty of time for individual
+questions. You can register for the workshop and see more information at:
+[https://plotcon.plot.ly/workshops](https://plotcon.plot.ly/workshops).
+
+Last Fall's workshops sold out, so if you are interested,
+[register soon](https://plotcon.plot.ly/workshops)!
+
 ### Sponsored Feature Requests and Customizations
 
 If you or your company would like to sponsor a specific feature or enterprise
