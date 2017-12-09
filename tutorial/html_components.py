@@ -100,7 +100,7 @@ html.Div([
 ], style={'marginBottom': 50, 'marginTop': 25})
 ''', language='python', customStyle=styles.code_container),
 
-    html.Div("That dash code will render this HTML markup:"),
+    html.Div('That dash code will render this HTML markup:'),
 
     dcc.SyntaxHighlighter('''
 <div style="margin-bottom: 50px; margin-top: 25px;">
