@@ -89,8 +89,8 @@ value when they get clicked.
 
 ```
 dash.layout = Div([
-    A('Chapter 1', href="#chapter-1"),
-    A('Chapter 2', href="#chapter-2"),
+    A('Chapter 1', href='#chapter-1'),
+    A('Chapter 2', href='#chapter-2'),
     Div(id='body'),
 
     # This "component" doesn't render anything to the dom
