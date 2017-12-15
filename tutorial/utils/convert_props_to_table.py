@@ -1,14 +1,13 @@
 # -*- coding: utf-8 -*-
-import dash_html_components as html
-import dash_core_components as dcc
 import json
 import os
+import dash_html_components as html
+import dash_core_components as dcc
 import pandas as pd
-import dash
 
 
 _current_path = os.path.join(os.path.dirname(os.path.abspath(dcc.__file__)),
-                              'metadata.json')
+                             'metadata.json')
 
 
 def js_to_py_type(type_object):
@@ -81,7 +80,6 @@ def js_to_py_type(type_object):
 
 
 def argument_doc(arg_name, type_object, description):
-    js_type_name = type_object['name']
     py_type_name = js_to_py_type(type_object)
 
     if '\n' in py_type_name:
@@ -116,7 +114,7 @@ def object_hook_handler(obj):
     if 'className' in obj:
         obj['className']['Description'] = '''Sets the class name of the element (the value of an
                                              element's html class attribute)'''
-    if 'type' in obj and obj['type'] != None and 'name' in obj['type']:
+    if 'type' in obj and obj['type'] is not None and 'name' in obj['type']:
         obj['Type'] = js_to_py_type(obj['type'])
     if 'defaultValue' in obj:
         if obj['defaultValue']['value'] == 'true':
@@ -220,6 +218,7 @@ def generate_table(dataframe):
                      dataframe.columns])] + rows)
 
     return table
+
 
 def generate_prop_table(component_name):
     return generate_table(get_dataframe(component_name))
