@@ -1,8 +1,12 @@
-dash==0.19.0  # The core dash backend
-dash-renderer==0.11.1  # The dash front-end
-dash-html-components==0.8.0  # HTML components
-dash-core-components==0.15.2  # Supercharged components
+dash==0.19.0
+dash-renderer==0.11.1
+dash-html-components==0.8.0
+dash-core-components==0.15.2
+dash-table-experiments==0.5.3
 plotly==2.2.3
+dash-auth
+pyorbital
+flask-caching
 pandas
 redis
 gevent
