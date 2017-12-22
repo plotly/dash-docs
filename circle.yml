@@ -13,7 +13,7 @@ machine:
 dependencies:
     pre:
         - pip install tox
-        - pip install -r dev-requirements.txt
+        - pip install -r requirements.txt
 
 test:
     override:
