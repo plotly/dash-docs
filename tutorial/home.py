@@ -153,8 +153,8 @@ layout = html.Div(className='toc', children=[
             'Deploying Dash Apps on Plotly On-Premises',
             '/dash/deployment/on-premise'
         )],
-        description="""Plotly On-Premises is Plotly's commercial offering for
-        hosting and sharing Dash apps.""",
-        headerStyle={'color': '#0D76BF'}
-    )
+            description="""Plotly On-Premises is Plotly's commercial offering for
+                           hosting and sharing Dash apps.""",
+            headerStyle={'color': '#0D76BF'}
+           )
 ])
