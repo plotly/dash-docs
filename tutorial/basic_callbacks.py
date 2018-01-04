@@ -29,7 +29,7 @@ layout = html.Div(children=[
     ),
     html.Div('This code will generate an app like this:'),
 
-    html.Div(examples[0][1], className="example-container")
+    html.Div(examples[0][1], className='example-container')
 ])
 
 
@@ -49,7 +49,7 @@ automatically.
 '''),
     dcc.SyntaxHighlighter(
         examples[1][0], language='python', customStyle=styles.code_container),
-    html.Div(examples[1][1], className="example-container")
+    html.Div(examples[1][1], className='example-container')
 ])
 
 
@@ -90,5 +90,5 @@ the `state` arguments.
     dcc.SyntaxHighlighter(
         examples[2][0], language='python', customStyle=styles.code_container
     ),
-    html.Div(examples[2][1], className="example-container")
+    html.Div(examples[2][1], className='example-container')
 ])
