@@ -1,9 +1,6 @@
 # -*- coding: utf-8 -*-
 import dash_core_components as dcc
-import dash_html_components as html
-from dash.dependencies import Input, Output
 import styles
-from server import app
 
 layout = [dcc.Markdown('''
 # Multi-Page Apps and URL Support
@@ -20,7 +17,7 @@ through the `pathname` property. Here's a simple example:
 
 '''),
 
-dcc.SyntaxHighlighter('''import dash
+          dcc.SyntaxHighlighter('''import dash
 import dash_core_components as dcc
 import dash_html_components as html
 
@@ -58,7 +55,7 @@ if __name__ == '__main__':
     app.run_server(debug=True)
 ''', language='python', customStyle=styles.code_container),
 
-dcc.Markdown('''
+          dcc.Markdown('''
 In this example, the callback `display_page` receives the current pathname
 (the last part of the URL) of the page. The callback simply displays the
 `pathname` on page but it could use the `pathname` to display different
@@ -78,7 +75,7 @@ doesn't refresh the page even though it updates the URL!
 You can modify the example above to display different pages depending on the URL:
 '''),
 
-dcc.SyntaxHighlighter('''import dash
+          dcc.SyntaxHighlighter('''import dash
 import dash_core_components as dcc
 import dash_html_components as html
 
@@ -167,7 +164,7 @@ if __name__ == '__main__':
     app.run_server(debug=True)
 ''', language='python', customStyle=styles.code_container),
 
-dcc.Markdown('''![Dash app with multiple pages](https://github.com/plotly/dash-docs/raw/master/images/url-support-pages.gif)
+          dcc.Markdown('''![Dash app with multiple pages](https://github.com/plotly/dash-docs/raw/master/images/url-support-pages.gif)
 
 In this example, we're displaying different layouts through the `display_page`
 function. A few notes:
@@ -184,7 +181,7 @@ ignore the exception by setting `app.config.suppress_callback_exceptions = True`
 rendered with these same principles.
 '''),
 
-dcc.Markdown('''***
+          dcc.Markdown('''***
 
 # Structuring a Multi-Page App
 
@@ -207,20 +204,20 @@ File structure:
 `app.py`
 '''),
 
-dcc.SyntaxHighlighter('''import dash
+          dcc.SyntaxHighlighter('''import dash
 
 app = dash.Dash()
 server = app.server
 app.config.suppress_callback_exceptions = True
 ''', language='python', customStyle=styles.code_container),
 
-dcc.Markdown('''
+          dcc.Markdown('''
 ***
 
 `apps/app1.py`
 '''),
 
-dcc.SyntaxHighlighter('''from dash.dependencies import Input, Output
+          dcc.SyntaxHighlighter('''from dash.dependencies import Input, Output
 import dash_html_components as html
 import dash_core_components as dcc
 
@@ -248,7 +245,7 @@ def display_value(value):
     return 'You have selected "{}"'.format(value)
 ''', language='python', customStyle=styles.code_container),
 
-dcc.Markdown('''
+          dcc.Markdown('''
 And similarly for other apps
 ***
 
@@ -257,7 +254,7 @@ And similarly for other apps
 `index.py` loads different apps on different urls like this:
 '''),
 
-dcc.SyntaxHighlighter('''
+          dcc.SyntaxHighlighter('''
 from dash.dependencies import Input, Output
 import dash_core_components as dcc
 import dash_html_components as html
