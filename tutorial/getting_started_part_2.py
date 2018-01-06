@@ -6,9 +6,8 @@ import dash_html_components as html
 
 import plotly
 
-from dash.dependencies import Input, Output, Event, State
 import styles
-from tools import load_example, merge
+from tools import load_example
 
 examples = [
     load_example(s) for s in [

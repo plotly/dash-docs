@@ -382,8 +382,8 @@ dcc.RangeSlider(
         language='python'
     ),
     html.Div(examples['rangeslider-nonlinear'][1],
-        className='example-container',
-        style={'overflow': 'hidden', 'padding': '20px'}),
+             className='example-container',
+             style={'overflow': 'hidden', 'padding': '20px'}),
     html.Hr(),
     generate_prop_table('RangeSlider')
 ])
@@ -598,7 +598,7 @@ DatePickerRange = html.Div(children=[
     dcc.Markdown("You can utilize any permutation of the string tokens \
                  shown in the table above to change how selected dates are \
                  displayed in the `DatePickerRange` component."),
-ComponentBlock('''import dash_core_components as dcc
+    ComponentBlock('''import dash_core_components as dcc
 from datetime import datetime as dt
 
 dcc.DatePickerRange(
@@ -607,7 +607,7 @@ dcc.DatePickerRange(
     start_date_placeholder_text='MMM Do, YY'
 )'''),
 
-ComponentBlock('''import dash_core_components as dcc
+    ComponentBlock('''import dash_core_components as dcc
 from datetime import datetime as dt
 dcc.DatePickerRange(
     end_date=dt.now(),
@@ -615,7 +615,7 @@ dcc.DatePickerRange(
     start_date_placeholder_text='M-D-Y-Q'
 )'''),
 
-ComponentBlock('''import dash_core_components as dcc
+    ComponentBlock('''import dash_core_components as dcc
 from datetime import datetime as dt
 
 dcc.DatePickerRange(
@@ -624,7 +624,7 @@ dcc.DatePickerRange(
     start_date_placeholder_text='MMMM Y, DD'
 )'''),
 
-ComponentBlock('''import dash_core_components as dcc
+    ComponentBlock('''import dash_core_components as dcc
 from datetime import datetime as dt
 
 dcc.DatePickerRange(
@@ -647,21 +647,21 @@ dcc.DatePickerRange(
     month_format='MMM Do, YY',
     end_date_placeholder_text='MMM Do, YY'
 )'''),
-ComponentBlock('''import dash_core_components as dcc
+    ComponentBlock('''import dash_core_components as dcc
 from datetime import datetime as dt
 
 dcc.DatePickerRange(
     month_format='M-D-Y-Q',
     end_date_placeholder_text='M-D-Y-Q'
 )'''),
-ComponentBlock('''import dash_core_components as dcc
+    ComponentBlock('''import dash_core_components as dcc
 from datetime import datetime as dt
 
 dcc.DatePickerRange(
     month_format='MMMM Y',
     end_date_placeholder_text='MMMM Y'
 )'''),
-ComponentBlock('''import dash_core_components as dcc
+    ComponentBlock('''import dash_core_components as dcc
 from datetime import datetime as dt
 
 dcc.DatePickerRange(
@@ -844,7 +844,7 @@ dcc.DatePickerSingle(
     display_format='MMM Do, YY'
 )'''),
 
-ComponentBlock('''import dash_core_components as dcc
+    ComponentBlock('''import dash_core_components as dcc
 from datetime import datetime as dt
 
 dcc.DatePickerSingle(
@@ -852,7 +852,7 @@ dcc.DatePickerSingle(
     display_format='M-D-Y-Q',
 )'''),
 
-ComponentBlock('''import dash_core_components as dcc
+    ComponentBlock('''import dash_core_components as dcc
 from datetime import datetime as dt
 
 dcc.DatePickerSingle(
@@ -860,7 +860,7 @@ dcc.DatePickerSingle(
     display_format='MMMM Y, DD'
 )'''),
 
-ComponentBlock('''import dash_core_components as dcc
+    ComponentBlock('''import dash_core_components as dcc
 from datetime import datetime as dt
 
 dcc.DatePickerSingle(
@@ -880,7 +880,7 @@ dcc.DatePickerSingle(
     month_format='MMM Do, YY',
     placeholder='MMM Do, YY'
 )'''),
-ComponentBlock('''import dash_core_components as dcc
+    ComponentBlock('''import dash_core_components as dcc
 from datetime import datetime as dt
 
 dcc.DatePickerSingle(
@@ -888,7 +888,7 @@ dcc.DatePickerSingle(
     placeholder='M-D-Y-Q'
 )'''),
 
-ComponentBlock('''import dash_core_components as dcc
+    ComponentBlock('''import dash_core_components as dcc
 from datetime import datetime as dt
 
 dcc.DatePickerSingle(
@@ -896,7 +896,7 @@ dcc.DatePickerSingle(
     placeholder='MMMM Y'
 )'''),
 
-ComponentBlock('''import dash_core_components as dcc
+    ComponentBlock('''import dash_core_components as dcc
 from datetime import datetime as dt
 
 dcc.DatePickerSingle(

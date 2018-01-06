@@ -2,7 +2,6 @@
 import dash_core_components as dcc
 import dash_html_components as html
 import styles
-from server import app
 
 layout = html.Div(children=[
 
@@ -62,8 +61,8 @@ html.Div([
     quotes, and more.
     \'\'\')
     '''.replace('  ', ''),
-        customStyle=styles.code_container,
-        language='python'
+                          customStyle=styles.code_container,
+                          language='python'
     ),
 
     dcc.Markdown('''
@@ -75,7 +74,7 @@ html.Div([
     It includes a syntax for things like **bold text** and *italics*,
     [links](http://commonmark.org/help), inline `code` snippets, lists,
     quotes, and more.'''.replace('  ', ''),
-    containerProps={'className': 'example-container'}),
+                 containerProps={'className': 'example-container'}),
 
     dcc.Markdown('''
         If you're using HTML components, then you also access to

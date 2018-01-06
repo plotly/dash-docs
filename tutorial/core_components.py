@@ -261,8 +261,8 @@ dcc.DatePickerRange(
     quotes, and more.
     \'\'\')
     '''.replace('  ', ''),
-        customStyle=styles.code_container,
-        language='python'
+                   customStyle=styles.code_container,
+                   language='python'
     ),
 
     html.Br(),
