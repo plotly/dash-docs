@@ -1,9 +1,6 @@
-import dash_html_components as html
 import dash_core_components as dcc
-import functools32
 
-from components import Example, Syntax
-import styles
+from components import Syntax
 import tools
 
 examples = {
@@ -16,7 +13,7 @@ examples = {
 }
 
 layout = [
-dcc.Markdown('''# Performance
+    dcc.Markdown('''# Performance
 
 This chapter contains several recommendations for improving the performance
 of your dash apps.
@@ -36,7 +33,7 @@ To better understand how memoization works, let's start with a simple example.
 
 '''),
 
-Syntax('''import time
+    Syntax('''import time
 import functools32
 
 @functools32.lru_cache(maxsize=32)
@@ -45,7 +42,7 @@ def slow_function(input):
     return 'Input was {}'.format(input)
 '''),
 
-dcc.Markdown('''
+    dcc.Markdown('''
 
 Calling `slow_function('test')` the first time will take 10 seconds.
 Calling it a second time with the same argument will take almost no time
@@ -68,9 +65,9 @@ data (clear your cache) every hour or every day.
 Here is an example of `Flask-Caching` with Redis:
 '''),
 
-Syntax(examples['performance_flask_caching'][0]),
+    Syntax(examples['performance_flask_caching'][0]),
 
-dcc.Markdown('''
+    dcc.Markdown('''
 
 ***
 
@@ -82,9 +79,9 @@ several callbacks.
 
 '''),
 
-Syntax(examples['performance_flask_caching_dataset']),
+    Syntax(examples['performance_flask_caching_dataset']),
 
-dcc.Markdown('''
+    dcc.Markdown('''
 
 ***
 
