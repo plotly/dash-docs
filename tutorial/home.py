@@ -14,7 +14,7 @@ styles = {
 
 
 def Chapter(name, href=None, caption=None):
-    linkComponent = html.A if href.startswith('http') else dcc.Link
+    linkComponent = html.A
     return html.Div([
         html.Li(
             linkComponent(

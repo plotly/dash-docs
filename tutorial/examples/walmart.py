@@ -51,6 +51,7 @@ def update_text(hoverData):
         )
     )
 
+
 app.css.append_css({
     'external_url': 'https://codepen.io/chriddyp/pen/bWLwgP.css'
 })
