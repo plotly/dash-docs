@@ -141,7 +141,7 @@ def get_dataframe(component_name):
     suffix = '.react.js'
     fullString = prefix+component_name+suffix
     df = pd.DataFrame(metadata[fullString]
-                              ['props']).transpose()
+                      ['props']).transpose()
     if 'dashEvents' in df.index.tolist():
         df.drop(['dashEvents'], inplace=True)
     if 'fireEvent' in df.index:
@@ -181,8 +181,8 @@ def generate_table(dataframe):
             if(type(dataframe.iloc[i][col]) == tuple and
                type(dataframe.iloc[i][col][1][0]) != dict):
                 internalRow.append(html.Td(dataframe.iloc[i][col][0] + ': ' +
-                                   str([str(j) for j in dataframe.iloc[i][col]
-                                                                      [1]])))
+                                           str([str(j) for j in dataframe.iloc[i][col]
+                                                [1]])))
             elif(type(dataframe.iloc[i][col]) == tuple and
                  type(dataframe.iloc[i][col][1][0]) == dict):
                 internalRow.append(html.Td('Array of Dict: ' +
@@ -203,8 +203,8 @@ def generate_table(dataframe):
                             dataframe.iloc[i][col]\
                                 .replace('true', '`True`')\
                                 .replace('false', '`False`')
-                        ),
-                        style={'font-size': '0.95em'})
+                            ),
+                                style={'font-size': '0.95em'})
                     )
                 else:
                     internalRow.append(html.Td(
@@ -215,7 +215,7 @@ def generate_table(dataframe):
         rows.append(html.Tr(internalRow))
     table = html.Table(
             [html.Tr([html.Th(col, style={'text-align': 'left'}) for col in
-                     dataframe.columns])] + rows)
+                      dataframe.columns])] + rows)
 
     return table
 

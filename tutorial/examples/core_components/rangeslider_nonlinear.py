@@ -5,6 +5,7 @@ import dash
 
 app = dash.Dash('')
 
+
 # Use the following function when accessing the value of 'my-range-slider'
 # in callbacks to transorm the output value to logarithmic
 def transform_value(value):
@@ -29,7 +30,7 @@ app.layout = html.Div([
     Output('output-container-range-slider-non-linear', 'children'),
     [Input('non-linear-range-slider', 'value')])
 def update_output(value):
-    transformed_value=[transform_value(v) for v in value]
+    transformed_value = [transform_value(v) for v in value]
     return 'Linear Value: {}, Log Value: [{:0.2f}, {:0.2f}]'.format(
         str(value),
         transformed_value[0],
