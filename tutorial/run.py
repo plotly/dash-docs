@@ -35,7 +35,6 @@ js = ['https://cdn.rawgit.com/chriddyp/ca0d8f02a1659981a0ea7f013a378bbd/raw/e79f
       'https://codepen.io/plotly/pen/ZvPmYv.js'
 ]
 
-
 def create_contents(contents):
     h = []
     for i in contents:
@@ -131,6 +130,9 @@ def display_content(pathname):
 
 app.css.append_css({'external_url': css})
 app.scripts.append_script({'external_url': js})
+
+app.scripts.append_script({'external_url': 'https://cdn.jsdelivr.net/npm/instantsearch.js@2.3/dist/instantsearch.min.js'})
+app.scripts.append_script({'external_url': 'https://codepen.io/plotly/pen/ZvPmYv.js'})
 
 if __name__ == '__main__':
     app.run_server(debug=True, threaded=True, port=8050)
