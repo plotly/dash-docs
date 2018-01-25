@@ -28,7 +28,8 @@ dcc._js_dist[0]['external_url'] = (
 css = [
     'https://cdn.rawgit.com/plotly/dash-app-stylesheets/8485c028c19c393e9ab85e1a4fafd78c489609c2/dash-docs-base.css',
     'https://cdn.rawgit.com/plotly/dash-app-stylesheets/30b641e2e89753b13e6557b9d65649f13ea7c64c/dash-docs-custom.css',
-    'https://fonts.googleapis.com/css?family=Dosis'
+    'https://fonts.googleapis.com/css?family=Dosis',
+    'https://cdn.jsdelivr.net/npm/instantsearch.js@2.3/dist/instantsearch.min.css'
 ]
 js = ['https://cdn.rawgit.com/chriddyp/ca0d8f02a1659981a0ea7f013a378bbd/raw/e79f3f789517deec58f41251f7dbb6bee72c44ab/plotly_ga.js',
       'https://cdn.jsdelivr.net/npm/instantsearch.js@2.3/dist/instantsearch.min.js',
