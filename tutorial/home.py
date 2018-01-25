@@ -2,6 +2,7 @@
 from textwrap import dedent as s
 import dash_core_components as dcc
 import dash_html_components as html
+from chapter_index import chapters
 
 from tools import merge
 
@@ -11,7 +12,6 @@ styles = {
         'margin-top': '50px'
     }
 }
-
 
 def Chapter(name, href=None, caption=None):
     linkComponent = html.A if href.startswith('http') else dcc.Link
@@ -46,115 +46,83 @@ layout = html.Div(className='toc', children=[
     html.H1('Dash User Guide'),
 
     Section("What's Dash?", [
-        Chapter('Introduction', '/dash/introduction'),
-        Chapter('Announcement', 'https://medium.com/@plotlygraphs/introducing-dash-5ecf7191b503'),
-        Chapter('Dash App Gallery', '/dash/gallery'),
-        Chapter('Winter 2018 Workshops', 'https://plotcon.plot.ly/workshops'),
+        Chapter(chapters['introduction']['name'],
+                chapters['introduction']['url']),
+        Chapter('Announcement',
+                'https://medium.com/@plotlygraphs/introducing-dash-5ecf7191b503'),
+        Chapter(chapters['gallery']['name'],
+                chapters['gallery']['url']),
+        Chapter('Winter 2018 Workshops',
+                'https://plotcon.plot.ly/workshops'),
     ]),
 
     Section('Dash Tutorial', [
-        Chapter('Part 1. Installation', '/dash/installation'),
-        Chapter(
-            'Part 2. The Dash Layout',
-            '/dash/getting-started',
-            '''The Dash `layout` describes what your app will
-            look like and is composed of a set of declarative Dash components.
-        '''),
-        Chapter(
-            'Part 3. Basic Callbacks',
-            '/dash/getting-started-part-2',
-            '''Dash apps are made interactive through Dash Callbacks:
-            Python functions that are automatically called whenever an input
-            component's property changes. Callbacks can be chained, allowing
-            one update in the UI to trigger several updates across the app.'''
-        ),
-        Chapter(
-            'Part 4. Callbacks With State',
-            '/dash/state',
-            '''Basic callbacks are fired whenever the values change. Use
-            Dash `State` with Dash `Inputs` to pass in extra values whenever
-            the `Inputs` change. `State` is useful for UIs that contain
-            forms or buttons.'''
-        ),
-        Chapter(
-            'Part 5. Interactive Graphing and Crossfiltering',
-            '/dash/interactive-graphing',
-            '''Bind interactivity to the Dash `Graph` component whenever you
-            hover, click, or select points on your chart.'''
-        ),
-        Chapter(
-            'Part 6. Sharing Data Between Callbacks',
-            '/dash/sharing-data-between-callbacks',
-            '''`global` variables will break your Dash apps. However, there
-            are other ways to share data between callbacks. This chapter is
-            useful for callbacks that run expensive data processing tasks or
-            process large data.
-            '''
-        )
+        Chapter(chapters['installation']['name'],
+                chapters['installation']['url']),
+        Chapter(chapters['getting-started']['name'],
+                chapters['getting-started']['url'],
+                chapters['getting-started']['description']),
+        Chapter(chapters['getting-started-part-2']['name'],
+                chapters['getting-started-part-2']['url'],
+                chapters['getting-started-part-2']['description']),
+        Chapter(chapters['state']['name'],
+                chapters['state']['url'],
+                chapters['state']['description']),
+        Chapter(chapters['graphing']['name'],
+                chapters['graphing']['url'],
+                chapters['graphing']['description']),
+        Chapter(chapters['shared-state']['name'],
+                chapters['shared-state']['url'],
+                chapters['shared-state']['description'])
     ]),
 
     Section('Component Libraries', [
-        Chapter('Dash Core Components', '/dash/dash-core-components', '''
-            The Dash Core Component library contains a set of higher-level
-            components like sliders, graphs, dropdowns, tables, and more.
-        '''),
-        Chapter('Dash HTML Components', '/dash/dash-html-components', '''
-            Dash provides all of the available HTML tags as user-friendly
-            Python classes. This chapter explains how this works and the few
-            important key differences between Dash HTML components and standard
-            html.
-        '''),
-        Chapter('Build Your Own Components', '/dash/plugins', '''
-            Dash components are built with [React.js](https://reactjs.org/).
-            Dash provides a React → Dash toolchain that generates a
-            Dash-compatible interface to these components in Python.
-        ''')
+        Chapter(chapters['dash-core-components']['name'],
+                chapters['dash-core-components']['url'],
+                chapters['dash-core-components']['description']),
+        Chapter(chapters['dash-html-components']['name'],
+                chapters['dash-html-components']['url'],
+                chapters['dash-html-components']['description']),
+        Chapter(chapters['plugins']['name'],
+                chapters['plugins']['url'],
+                chapters['plugins']['description'])
     ]),
 
     Section('Advanced Usage', [
-        Chapter('Performance', '/dash/performance', '''
-        There are two main ways to speed up dash apps: caching and using
-        WebGL chart types.
-        '''),
-        Chapter('Live Updates', '/dash/live-updates', '''
-        Update your apps on page load or on a predefined interval
-        (e.g. every 30 seconds).
-        '''),
-        Chapter('External CSS and JS', '/dash/external-resources', '''
-        By default, Dash loads CSS and JS assets from a fast, global CDN -
-        but you can optionally these resources locally,
-        making your apps completely self contained (no internet access required!).
-        Also, learn how to append your own CSS styleseets or JS scripts to
-        your apps.
-        '''),
-        Chapter('URL Routing and Multiple Apps', '/dash/urls', '''
-        Dash provides two components (`dcc.Link` and `dcc.Location`) that allow
-        you to easily make fast multipage apps using its own
-        "Single Page App (SPA)" design pattern.
-        ''')
+        Chapter(chapters['performance']['name'],
+                chapters['performance']['url'],
+                chapters['performance']['description']),
+        Chapter(chapters['live-updates']['name'],
+                chapters['live-updates']['url'],
+                chapters['live-updates']['description']),
+        Chapter(chapters['external']['name'],
+                chapters['external']['url'],
+                chapters['external']['description']),
+        Chapter(chapters['urls']['name'],
+                chapters['urls']['url'],
+                chapters['urls']['description'])
     ]),
 
     Section('Production', [
-        Chapter('Authentication', '/dash/authentication'),
-        Chapter('Deployment', '/dash/deployment'),
+        Chapter(chapters['auth']['name'],
+                chapters['auth']['url']),
+        Chapter(chapters['deployment']['name'],
+                chapters['deployment']['url']),
     ]),
 
     Section('Getting Help', [
         Chapter('FAQ', 'https://community.plot.ly/c/dash'),
-        Chapter('Support and Contact', href='/dash/support')
+        Chapter(chapters['support']['name'],
+                chapters['support']['url'])
     ]),
 
     Section('Plotly On-Premises', [
-        Chapter(
-            'About Plotly On-Premises',
-            'https://plot.ly/products/on-premise'
-        ),
-        Chapter(
-            'Deploying Dash Apps on Plotly On-Premises',
-            '/dash/deployment/on-premise'
-        )],
-            description="""Plotly On-Premises is Plotly's commercial offering for
-                           hosting and sharing Dash apps.""",
-            headerStyle={'color': '#0D76BF'}
-           )
+        Chapter('About Plotly On-Premises',
+                'https://plot.ly/products/on-premise'),
+        Chapter(chapters['deployment-onpremise']['name'],
+                chapters['deployment-onpremise']['url'])],
+        description="""Plotly On-Premises is Plotly's commercial offering for
+                       hosting and sharing Dash apps.""",
+        headerStyle={'color': '#0D76BF'}
+    )
 ])

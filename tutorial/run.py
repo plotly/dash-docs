@@ -11,34 +11,15 @@ from dash.dependencies import Input, State, Event, Output
 from server import app, server
 
 import architecture
-import auth
 import authentication
 import basic_callbacks
 import callbacks_with_dependencies
 import changelog
-import core_component_examples as examples
-import core_components
-import deployment
+import chapter_index
 import dynamic_content
-import external_css_and_js
-import gallery
-import getting_started_part_1
-import getting_started_part_2
-import graphing
 import home
 import html_component_appendix
-import html_components
-import installation
-import introduction
-import live_updates
-import on_premise_deployment
 import open_problems
-import performance
-import plugins
-import sharing_state
-import state
-import support
-import urls
 
 dcc._js_dist[0]['external_url'] = (
     'https://cdn.plot.ly/plotly-basic-1.31.0.min.js'
@@ -49,7 +30,10 @@ css = [
     'https://cdn.rawgit.com/plotly/dash-app-stylesheets/30b641e2e89753b13e6557b9d65649f13ea7c64c/dash-docs-custom.css',
     'https://fonts.googleapis.com/css?family=Dosis'
 ]
-js = ['https://cdn.rawgit.com/chriddyp/ca0d8f02a1659981a0ea7f013a378bbd/raw/e79f3f789517deec58f41251f7dbb6bee72c44ab/plotly_ga.js']
+js = ['https://cdn.rawgit.com/chriddyp/ca0d8f02a1659981a0ea7f013a378bbd/raw/e79f3f789517deec58f41251f7dbb6bee72c44ab/plotly_ga.js',
+      'https://cdn.jsdelivr.net/npm/instantsearch.js@2.3/dist/instantsearch.min.js',
+      'https://codepen.io/plotly/pen/ZvPmYv.js'
+]
 
 
 def create_contents(contents):
@@ -65,167 +49,13 @@ def create_contents(contents):
 chapters = {
     'index': {
         'url': '/dash/',
-        'content': home.layout
-    },
-
-    'introduction': {
-        'url': '/dash/introduction',
-        'content': introduction.layout
-    },
-
-    'installation': {
-        'url': '/dash/installation',
-        'content': installation.layout
-    },
-
-    'getting-started': {
-        'url': '/dash/getting-started',
-        'content': getting_started_part_1.layout
-    },
-
-    'getting-started-part-2': {
-        'url': '/dash/getting-started-part-2',
-        'content': getting_started_part_2.layout
-    },
-
-    'state': {
-        'url': '/dash/state',
-        'content': state.layout
-    },
-
-    'graphing': {
-        'url': '/dash/interactive-graphing',
-        'content': graphing.layout
-    },
-
-    'shared-state': {
-        'url': '/dash/sharing-data-between-callbacks',
-        'content': sharing_state.layout
-    },
-
-    'dash-core-components': {
-        'url': '/dash/dash-core-components',
-        'content': core_components.layout
-    },
-
-    'dash-html-components': {
-        'url': '/dash/dash-html-components',
-        'content': [
-            html_components.layout,
-            # html_component_appendix.layout
-        ]
-    },
-
-    'external': {
-        'url': '/dash/external-resources',
-        'content': external_css_and_js.layout
-    },
-
-    'plugins': {
-        'url': '/dash/plugins',
-        'content': plugins.layout
-    },
-
-    'gallery': {
-        'url': '/dash/gallery',
-        'content': gallery.layout
-    },
-
-    'live-updates': {
-        'url': '/dash/live-updates',
-        'content': live_updates.layout
-    },
-
-    'performance': {
-        'url': '/dash/performance',
-        'content': performance.layout
-    },
-
-    'urls': {
-        'url': '/dash/urls',
-        'content': urls.layout
-    },
-
-    'deployment': {
-        'url': '/dash/deployment',
-        'content': deployment.layout
-    },
-
-    'deployment-onpremise': {
-        'url': '/dash/deployment/on-premise',
-        'content': on_premise_deployment.layout
-    },
-
-    'auth': {
-        'url': '/dash/authentication',
-        'content': auth.layout
-    },
-
-    'support': {
-        'url': '/dash/support',
-        'content': support.layout
-    },
-
-    'dropdown-examples': {
-        'url': '/dash/dash-core-components/dropdown',
-        'content': examples.Dropdown
-    },
-
-    'slider-examples': {
-        'url': '/dash/dash-core-components/slider',
-        'content': examples.Slider
-    },
-
-    'range-slider-examples': {
-        'url': '/dash/dash-core-components/rangeslider',
-        'content': examples.RangeSlider
-    },
-
-    'checklist-examples': {
-        'url': '/dash/dash-core-components/checklist',
-        'content': examples.Checklist
-    },
-
-    'input-examples': {
-        'url': '/dash/dash-core-components/input',
-        'content': examples.Input
-    },
-
-    'radio-item-examples': {
-        'url': '/dash/dash-core-components/radioitems',
-        'content': examples.RadioItems
-    },
-
-    'datepickersingle-examples': {
-        'url': '/dash/dash-core-components/datepickersingle',
-        'content': examples.DatePickerSingle
-    },
-
-    'datepickerrange-examples': {
-        'url': '/dash/dash-core-components/datepickerrange',
-        'content': examples.DatePickerRange
-    },
-
-    'markdown-examples': {
-        'url': '/dash/dash-core-components/markdown',
-        'content': examples.Markdown
-    },
-
-    'link-examples': {
-        'url': '/dash/dash-core-components/link',
-        'content': examples.Link
-    },
-
-    'textarea-examples': {
-        'url': '/dash/dash-core-components/textarea',
-        'content': examples.Textarea
-    },
-
-    'upload-examples': {
-        'url': '/dash/dash-core-components/upload',
-        'content': examples.Upload
+        'content': home.layout,
+        'name': 'Index',
+        'description': ''
     }
 }
+
+chapters.update(chapter_index.chapters)
 
 header = html.Div(
     className='header',
@@ -298,7 +128,6 @@ def display_content(pathname):
         content = chapters['index']['content']
 
     return content
-
 
 app.css.append_css({'external_url': css})
 app.scripts.append_script({'external_url': js})
