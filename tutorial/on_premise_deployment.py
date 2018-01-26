@@ -22,6 +22,9 @@ STEPS = [
     {'label': 'Part 4 - Adding Authentication to your Dash App (Optional)',
      'value': 'auth'},
 
+    {'label': 'Part 5 - Troubleshooting App Deployment',
+     'value': 'troubleshooting'},
+
 ]
 
 
@@ -329,7 +332,42 @@ def generate_instructions(chapter, platform):
             at `https://<your-plotly-domain>/organize`.
             '''))
         ]
+    elif chapter == 'troubleshooting':
+        return [
+            dcc.Markdown(s('''
+            If you encounter any issues deploying your app you can email
+            `onpremise.support@plot.ly`. It is helpful to include any error
+            messages you encounter as well as available logs. See below on how
+            to obtain Dash app logs as well as the Plotly On-Premise support
+            bundle.
 
+            #### Dash App Logs
+
+            To view the logs for a specific Dash app run the following command
+            in your terminal:
+
+            `ssh dokku@<your-dash-domain> logs <your-app-name>`
+
+            This will work for any app you have permission on, and uses the
+            same mechanism as pushing the app via ssh.
+            Please note, to continually stream the logs you can add the `-t`
+            flag:
+
+            `ssh dokku@<your-dash-domain> logs <your-app-name> -t`
+
+            ''')),
+
+            dcc.Markdown(s('''
+            #### Onpremise Support Bundle
+
+            If you're requested to send the full support bundle you can
+            download this from your Plotly On-Premise Server Manager
+            (e.g. `https://<your.plotly.domain>:8800`). Please note you
+            will need admin permissions to access the Server Manager.
+            Navigate to the Server Manager and then select the Support tab.
+            There you will see the option to download the support bundle.
+            '''))
+        ]
 
 layout = html.Div([
     dcc.Markdown(s('''
