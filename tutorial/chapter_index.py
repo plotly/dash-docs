@@ -20,9 +20,12 @@ import state
 import support
 import urls
 
-### home.py ###
+## The chapters dict is used to generate the dash-docs search index
+## If edited, update the search index by running `python dash_search_index.py`
+## in the root of this repo.
 
 chapters = {
+    ### home.py ###
     'introduction': {
         'url': '/dash/introduction',
         'content': introduction.layout,
@@ -175,14 +178,18 @@ chapters = {
         'url': '/dash/authentication',
         'content': auth.layout,
         'name': 'Authentication',
-        'description': ''
+        'description': 'Authentication for dash apps is provided through a ' \
+                       'separate dash-auth package. `dash-auth` provides ' \
+                       'two methods of authentication: HTTP Basic Auth and ' \
+                       'Plotly OAuth.'
     },
 
     'deployment': {
         'url': '/dash/deployment',
         'content': deployment.layout,
         'name': 'Deployment',
-        'description': ''
+        'description': 'To share a Dash app, you need to "deploy" your Dash ' \
+                       'app to a server'
     },
 
     'deployment-onpremise': {
@@ -197,9 +204,10 @@ chapters = {
         'url': '/dash/support',
         'content': support.layout,
         'name': 'Support and Contact',
-        'description': ''
+        'description': 'More information for Dash demos, On-Premise trials, ' \
+                       'Dash workshops, sponsored feature requests and ' \
+                       'customizations.'
     },
-
 ### End of home.py ###
 
     'dropdown-examples': {
@@ -283,7 +291,7 @@ chapters = {
         'url': '/dash/dash-core-components/upload',
         'content': examples.Upload,
         'name': 'Upload Component',
-        'description': ''
+        'description': 'Upload examples, properties, and reference.'
     },
 
     'search': {

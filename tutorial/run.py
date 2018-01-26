@@ -6,6 +6,7 @@ from datetime import datetime as dt
 import dash_html_components as html
 import dash_core_components as dcc
 import dash_table_experiments as dt
+
 from dash.dependencies import Input, State, Event, Output
 
 from server import app, server
@@ -29,7 +30,7 @@ css = [
     'https://cdn.rawgit.com/plotly/dash-app-stylesheets/8485c028c19c393e9ab85e1a4fafd78c489609c2/dash-docs-base.css',
     'https://cdn.rawgit.com/plotly/dash-app-stylesheets/30b641e2e89753b13e6557b9d65649f13ea7c64c/dash-docs-custom.css',
     'https://fonts.googleapis.com/css?family=Dosis',
-    'https://cdn.jsdelivr.net/npm/instantsearch.js@2.3/dist/instantsearch.min.css'
+    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'
 ]
 js = ['https://cdn.rawgit.com/chriddyp/ca0d8f02a1659981a0ea7f013a378bbd/raw/e79f3f789517deec58f41251f7dbb6bee72c44ab/plotly_ga.js',
       'https://cdn.jsdelivr.net/npm/instantsearch.js@2.3/dist/instantsearch.min.js',
@@ -72,7 +73,8 @@ header = html.Div(
                 html.A('pricing', className='link', href='https://plot.ly/dash/pricing'),
                 html.A('workshops', className='link', href='https://plotcon.plot.ly/workshops'),
                 html.A('user guide', className='link active', href='https://plot.ly/dash/'),
-                html.A('plotly', className='link', href='https://plot.ly/')
+                html.A('plotly', className='link', href='https://plot.ly/'),
+                html.A(children=[html.I(className="fa fa-search")], className='link', href='https://plot.ly/dash/search')
             ])
         ]
     )
@@ -82,7 +84,6 @@ app.title = 'Dash User Guide and Documentation - Dash by Plotly'
 
 app.layout = html.Div(
     [html.Link(rel='stylesheet', href=css_link) for css_link in css] +
-    [html.Script(type='text/javascript', src=js_link) for js_link in js] +
     [
         html.Meta(name='viewport', content='width=device-width, initial-scale=1.0'),
         html.Meta(
@@ -132,8 +133,6 @@ def display_content(pathname):
 app.css.append_css({'external_url': css})
 app.scripts.append_script({'external_url': js})
 
-app.scripts.append_script({'external_url': 'https://cdn.jsdelivr.net/npm/instantsearch.js@2.3/dist/instantsearch.min.js'})
-app.scripts.append_script({'external_url': 'https://codepen.io/plotly/pen/ZvPmYv.js'})
 
 if __name__ == '__main__':
     app.run_server(debug=True, threaded=True, port=8050)

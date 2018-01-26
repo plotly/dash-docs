@@ -1,6 +1,7 @@
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
+import dash_dangerously_set_inner_html
 
 
 layout = html.Div(style={'padding': 20},
@@ -9,8 +10,7 @@ layout = html.Div(style={'padding': 20},
                                       placeholder='Search the Dash docs...',
                                       type='text',
                                       value=''),
-                            html.Div(id='search-results', children=[
-                                    html.Div(id='hits'),
+                            html.Div(id='hits', children=[
                                     html.Div(id='hit-template',
                                              style={'display': 'none'},
                                              children=[html.Div(
