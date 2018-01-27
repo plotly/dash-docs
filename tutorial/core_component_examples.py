@@ -82,7 +82,7 @@ dcc.Dropdown(
 
     html.H3('Dropdown Clear'),
     dcc.Markdown("The `clearable` property is set to `True` by default on all \
-            `Dropdown` components. To prevent the clearing of the selected dropdwon \
+            `Dropdown` components. To prevent the clearing of the selected dropdown \
             value, just set the `clearable` property to `False`"),
     ComponentBlock('''import dash_core_components as dcc
 
