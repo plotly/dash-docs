@@ -27,7 +27,7 @@ If you're building an application for monitoring, you may want to update
 components in your application every few seconds or minutes.
 
 The `dash_core_components.Interval` element allows you to update components
-on a predefined interval. The `n_interval` property is an integer that is
+on a predefined interval. The `n_intervals` property is an integer that is
 automatically incremented every time `interval` millseconds pass.
 You can listen to this variable inside your app's `callback` to fire
 the callback on a predefined interval.
@@ -55,14 +55,14 @@ app.layout = html.Div(
         dcc.Interval(
             id='interval-component',
             interval=1*1000, # in milliseconds
-            n_interval=0
+            n_intervals=0
         )
     ])
 )
 
 
 @app.callback(Output('live-update-text', 'children'),
-              [Input('interval-component', 'n_interval')])
+              [Input('interval-component', 'n_intervals')])
 def update_metrics(n):
     lon, lat, alt = satellite.get_lonlatalt(datetime.datetime.now())
     style = {'padding': '5px', 'fontSize': '16px'}
@@ -75,7 +75,7 @@ def update_metrics(n):
 
 # Multiple components can update everytime interval gets fired.
 @app.callback(Output('live-update-graph', 'figure'),
-              [Input('interval-component', 'n_interval')])
+              [Input('interval-component', 'n_intervals')])
 def update_graph_live(n):
     satellite = Orbital('TERRA')
     data = {
