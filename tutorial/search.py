@@ -10,14 +10,17 @@ layout = html.Div(style={'padding': 20},
                                       placeholder='Search the Dash docs...',
                                       type='text',
                                       value=''),
-                            html.Div(id='hits', children=[
-                                    html.Div(id='hit-template',
-                                             style={'display': 'none'},
-                                             children=[html.Div(
-                                                    children=[html.A(href='{{permalink}}',
-                                                                     children=[html.H3('{{{_highlightResult.name.value}}}')]),
-                                                              html.P('{{{_highlightResult.description.value}}}')])
+                            html.Div(id='hits',
+                                     children=[html.Div(id='hit-template',
+                                                        style={'display': 'none'},
+                                                        children=[html.H3(html.A('{{{_highlightResult.name.value}}}',
+                                                                                 href='{{permalink}}',
+                                                                                 style={'background-color': '#ffffff',
+                                                                                        'padding-left': '0px'}),
+                                                                          style={'margin-bottom': '1rem'}),
+                                                                  html.P('{{{_highlightResult.description.value}}}')
+                                                        ])
 
-                                            ])
-                                ])
+                            ])
+
 ])
