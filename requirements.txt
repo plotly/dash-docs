@@ -18,3 +18,4 @@ selenium
 percy
 futures
 algoliasearch
+dash_dangerously_set_inner_html
