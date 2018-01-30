@@ -14,12 +14,13 @@ styles = {
 
 
 def Chapter(name, href=None, caption=None):
-    linkComponent = html.A if href.startswith('http') else dcc.Link
+    linkComponent = html.A
+    anchor = '' if href.startswith('http') else '#chapter'
     return html.Div([
         html.Li(
             linkComponent(
                 name,
-                href=href,
+                href=href + anchor,
                 style={'paddingLeft': 0},
                 id=href
             )
