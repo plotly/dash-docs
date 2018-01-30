@@ -17,3 +17,4 @@ flake8
 selenium
 percy
 futures
+algoliasearch
