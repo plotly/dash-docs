@@ -130,9 +130,9 @@ def display_content(pathname):
 
     return content
 
+
 app.css.append_css({'external_url': css})
 app.scripts.append_script({'external_url': js})
-
 
 if __name__ == '__main__':
     app.run_server(debug=True, threaded=True, port=8050)
