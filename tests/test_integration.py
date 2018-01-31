@@ -89,16 +89,8 @@ class Tests(IntegrationTests):
             if link.startswith('/'):
                 visit_and_snapshot(link)
 
-    def test_search(self):
-        self.startServer(app, '/dash/search')
-
-        try:
-            self.wait_for_element_by_id('wait-for-layout')
-        except Exception as e:
-            print(self.wait_for_element_by_id(
-                '_dash-app-content').get_attribute('innerHTML'))
-            raise e
-
+        # test search
+        visit_and_snapshot('/dash/search')
         search_element = self.driver.find_element_by_id('search-input')
         search_element.clear()
         search_element.send_keys('dropdown')

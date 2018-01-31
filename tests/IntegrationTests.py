@@ -27,9 +27,7 @@ class IntegrationTests(unittest.TestCase):
         pass
 
     def tearDown(self):
-        time.sleep(3)
         self.server_process.terminate()
-        time.sleep(3)
 
     def startServer(self, app, path='/'):
         def run():
