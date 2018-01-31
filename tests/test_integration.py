@@ -44,6 +44,7 @@ class Tests(IntegrationTests):
                     return False
             wait_for(find_element_by_id)
             find_element_by_id()
+
         self.wait_for_element_by_id = wait_for_element_by_id
 
         def wait_for_element_by_css_selector(css_selector):
@@ -91,6 +92,7 @@ class Tests(IntegrationTests):
 
         # test search
         visit_and_snapshot('/dash/search')
+        wait_for_element_by_id('search-input')
         search_element = self.driver.find_element_by_id('search-input')
         search_element.clear()
         search_element.send_keys('dropdown')
