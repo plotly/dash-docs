@@ -97,4 +97,5 @@ class Tests(IntegrationTests):
         search_element = self.driver.find_element_by_id('search-input')
         search_element.clear()
         search_element.send_keys('dropdown')
+        time.sleep(5)
         self.snapshot('search-dropdown')
