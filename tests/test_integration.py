@@ -90,9 +90,10 @@ class Tests(IntegrationTests):
             if link.startswith('/'):
                 visit_and_snapshot(link)
 
-        # test search
-        visit_and_snapshot('/dash/search')
+        # test search page
+        self.driver.get('http://localhost:8050{}'.format(href))
         self.wait_for_element_by_id('search-input')
+        self.snapshot('search-blank')
         search_element = self.driver.find_element_by_id('search-input')
         search_element.clear()
         search_element.send_keys('dropdown')
