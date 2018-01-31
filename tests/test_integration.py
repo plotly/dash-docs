@@ -91,7 +91,7 @@ class Tests(IntegrationTests):
                 visit_and_snapshot(link)
 
         # test search page
-        self.driver.get('http://localhost:8050{}'.format(href))
+        self.driver.get('http://localhost:8050/dash/search')
         self.wait_for_element_by_id('search-input')
         self.snapshot('search-blank')
         search_element = self.driver.find_element_by_id('search-input')
