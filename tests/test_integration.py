@@ -92,7 +92,7 @@ class Tests(IntegrationTests):
 
         # test search
         visit_and_snapshot('/dash/search')
-        wait_for_element_by_id('search-input')
+        self.wait_for_element_by_id('search-input')
         search_element = self.driver.find_element_by_id('search-input')
         search_element.clear()
         search_element.send_keys('dropdown')
