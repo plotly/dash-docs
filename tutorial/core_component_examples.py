@@ -127,9 +127,8 @@ dcc.Dropdown(
 
     html.Hr(),
     html.H3('Disable Options'),
-    dcc.Markdown("To disable certain options displayed inside the dropdown \
-                 menu. Just set define the `disabled` property in the options \
-                 declaration."),
+    dcc.Markdown("To disable a particular option inside the dropdown \
+                 menu, set the `disabled` property in the options."),
     ComponentBlock('''import dash_core_components as dcc
 
 dcc.Dropdown(
