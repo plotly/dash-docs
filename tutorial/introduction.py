@@ -10,7 +10,7 @@ layout = html.Div([
         Written on top of Flask, Plotly.js, and React.js,
         Dash is ideal for building data visualization apps
         with highly custom user interfaces in pure Python.
-        It's particuarly suited for anyone who works with data in Python.
+        It's particularly suited for anyone who works with data in Python.
 
         Through a couple of simple patterns, Dash abstracts away all of the
         technologies and protocols that are required to build an

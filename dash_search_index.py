@@ -27,6 +27,6 @@ for chapter in chapters:
         chap['content'] = ''
     dash_index.append(chap)
 
-# clear exsisting remote index and push dash_index to algolia
+# clear existing remote index and push dash_index to algolia
 index.clear_index()
 index.add_objects(dash_index)

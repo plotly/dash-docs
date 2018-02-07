@@ -28,7 +28,7 @@ components in your application every few seconds or minutes.
 
 The `dash_core_components.Interval` element allows you to update components
 on a predefined interval. The `n_intervals` property is an integer that is
-automatically incremented every time `interval` millseconds pass.
+automatically incremented every time `interval` milliseconds pass.
 You can listen to this variable inside your app's `callback` to fire
 the callback on a predefined interval.
 

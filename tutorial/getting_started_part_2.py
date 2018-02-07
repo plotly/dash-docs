@@ -231,7 +231,7 @@ layout = html.Div([
     Even though only a single `Input` changes at a time (a user can only change
     the value of a single Dropdown in a given moment), Dash collects the current
     state of all of the specified `Input` properties and passes them into your
-    function for you. Your callback functions are always guarenteed to be passed
+    function for you. Your callback functions are always guaranteed to be passed
     the representative state of the app.
 
     Let's extend our example to include multiple outputs.

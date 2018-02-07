@@ -86,7 +86,7 @@ layout = html.Div([
     dcc.Markdown(s('''
     Try clicking and dragging in any of the plots to filter different regions.
     On every selection, the three graph callbacks are fired with the latest
-    selected regions of each plot. A pandas dataframe is fitered based off
+    selected regions of each plot. A pandas dataframe is filtered based off
     of the selected points and the graphs are replotted with the selected
     points highlighted and the selected region drawn as a dashed rectangle.
 

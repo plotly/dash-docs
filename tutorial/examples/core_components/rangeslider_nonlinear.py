@@ -7,7 +7,7 @@ app = dash.Dash('')
 
 
 # Use the following function when accessing the value of 'my-range-slider'
-# in callbacks to transorm the output value to logarithmic
+# in callbacks to transform the output value to logarithmic
 def transform_value(value):
     return 10 ** value
 

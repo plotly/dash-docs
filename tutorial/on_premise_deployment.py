@@ -183,7 +183,7 @@ def generate_instructions(chapter, platform):
             dcc.Markdown(s('''
                 ***
 
-                Next, proceed to Part 2 to intialize your app on Plotly On-Premise.
+                Next, proceed to Part 2 to initialize your app on Plotly On-Premise.
 
             '''))
         ]

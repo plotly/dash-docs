@@ -231,7 +231,7 @@ export default class ExampleComponent extends Component {
 
 ExampleComponent.propTypes = {
     /**
-     * The ID used to identify this compnent in Dash callbacks
+     * The ID used to identify this component in Dash callbacks
      */
     id: PropTypes.string,
 
@@ -272,7 +272,7 @@ class ExampleComponent(dash.development.base_component.Component)
  |  which is editable by the user.
  |
  |  Keyword arguments:
- |  - id (string; optional): The ID used to identify this compnent in Dash callbacks
+ |  - id (string; optional): The ID used to identify this component in Dash callbacks
  |  - label (string; required): A label that will be printed when this component is rendered.
  |  - value (string; optional): The value displayed in the input
 
@@ -345,7 +345,7 @@ dcc.SyntaxHighlighter('''npm run publish-all
 ''', customStyle=styles.code_container),
 
 dcc.Markdown('''
-The version of the package is set in both `package.json` and a `verison.py` file.
+The version of the package is set in both `package.json` and a `version.py` file.
 
 By convention, dash components should adhere to [semver](http://semver.org/).
 Finally, if you'd like, share your component suite with other Dash users in the

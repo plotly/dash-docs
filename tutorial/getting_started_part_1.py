@@ -181,7 +181,7 @@ layout = html.Div([
 
         #### Reusable Components
 
-        By writing our markup in Python, we can create complex resuable
+        By writing our markup in Python, we can create complex reusable
         components like tables without switching contexts or languages.
 
     '''.replace('   ', '')),

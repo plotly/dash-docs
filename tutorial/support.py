@@ -18,7 +18,7 @@ a demo of Dash and Dash On-Premises too.
 ### Dash Workshops
 
 We will be leading a [two day Dash workshop](https://plotcon.plot.ly/) at
-Plotly Headquarters this Februrary!
+Plotly Headquarters this February!
 The workshop will start with the foundations and guiding principles of Dash
 and move into advanced Dash practices with plenty of time for individual
 questions. You can register for the workshop and see more information at:

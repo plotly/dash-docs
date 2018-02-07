@@ -73,7 +73,7 @@ Consider the following example:
 - A graph depends on the value of the dropdown's value and the slider's value.
 - The graph should update whenever the slider's value changes.
 
-Component's values can change through the server and through user intefaces.
+Component's values can change through the server and through user interfaces.
 
 Declaring event IDs for user interfaces is simple and intuitive:
 "`onClick`", "`onSelect`", "`onBlur`".
@@ -186,7 +186,7 @@ We need to introduce two new concepts:
 It feels cumbersome to have to transform these events as state and
 it's a little bit confusing to wrap your head around.
 
-`input-2` observing changes to `input-1` is intuitive but listenining
+`input-2` observing changes to `input-1` is intuitive but listening
 to the "`button`"'s `click-counter` prop feels contrived.
 
 ### Subscribe to state or events
@@ -597,7 +597,7 @@ def update_app(val1, val2):
     # compute new options for
     # dropdown-2.
     # If computing options is expensive,
-    # then this is unecessarily slow.
+    # then this is unnecessarily slow.
     d2_options = compute_options(val1, val2)
 
     if val2 not in d2_options:

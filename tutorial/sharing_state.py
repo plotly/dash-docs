@@ -205,7 +205,7 @@ def update_output_1(value):
 
         In many cases, your app will only display a subset or an aggregation
         of the computed or filtered data. In these cases, you could precompute
-        your aggreations in your data processing callback and transport these
+        your aggregations in your data processing callback and transport these
         aggregations to the remaining callbacks.
     ''')),
 

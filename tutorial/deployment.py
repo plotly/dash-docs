@@ -122,7 +122,7 @@ You will also need a new dependency, `gunicorn`, for deploying the app:
           dcc.SyntaxHighlighter('''$ pip install gunicorn''', customStyle=styles.code_container),
 
           dcc.Markdown('''***
-**Step 3. Initialze the folder with a sample app (`app.py`), a `.gitignore` file, `requirements.txt`, and a `Procfile` for deployment**
+**Step 3. Initialize the folder with a sample app (`app.py`), a `.gitignore` file, `requirements.txt`, and a `Procfile` for deployment**
 
 Create the following files in your project folder:
 
