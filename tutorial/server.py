@@ -13,14 +13,9 @@ server = Flask(__name__, static_url_path='/dash/static', static_folder='./static
 server.secret_key = os.environ.get('secret_key', 'secret')
 app = Dash(
     __name__,
-    server=server,
-    csrf_protect=False,
-    url_base_pathname='/dash/'
+    server=server
 )
-app.config.requests_pathname_prefix = 'https://dash-docs.herokuapp.com/dash/'
-app.config.routes_pathname_prefix = '/dash/'
 
 app.css.config.serve_locally = False
 app.scripts.config.serve_locally = False
 app.config.suppress_callback_exceptions = True
-CORS(app.server)
