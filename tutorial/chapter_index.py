@@ -27,7 +27,7 @@ import urls
 chapters = {
     ### home.py ###
     'introduction': {
-        'url': '/dash/introduction',
+        'url': '/introduction',
         'content': introduction.layout,
         'name':'Introduction',
         'description': 'Dash is a productive Python framework for ' \
@@ -36,7 +36,7 @@ chapters = {
     },
 
     'gallery': {
-        'url': '/dash/gallery',
+        'url': '/gallery',
         'content': gallery.layout,
         'name': 'Dash App Gallery',
         'description': 'Examples of Dash apps including ' \
@@ -45,14 +45,14 @@ chapters = {
     },
 
     'installation': {
-        'url': '/dash/installation',
+        'url': '/installation',
         'content': installation.layout,
         'name': 'Part 1. Installation',
         'description': 'How to install and upgrade dash libraries with pip.'
     },
 
     'getting-started': {
-        'url': '/dash/getting-started',
+        'url': '/getting-started',
         'content': getting_started_part_1.layout,
         'name': 'Part 2. The Dash Layout',
         'description': 'The Dash `layout` describes what your app will ' \
@@ -61,7 +61,7 @@ chapters = {
     },
 
     'getting-started-part-2': {
-        'url': '/dash/getting-started-part-2',
+        'url': '/getting-started-part-2',
         'content': getting_started_part_2.layout,
         'name': 'Part 3. Basic Callbacks',
         'description': "Dash apps are made interactive through Dash " \
@@ -73,7 +73,7 @@ chapters = {
     },
 
     'state': {
-        'url': '/dash/state',
+        'url': '/state',
         'content': state.layout,
         'name': 'Part 4. Callbacks With State',
         'description': 'Basic callbacks are fired whenever the values ' \
@@ -84,7 +84,7 @@ chapters = {
     },
 
     'graphing': {
-        'url': '/dash/interactive-graphing',
+        'url': '/interactive-graphing',
         'content': graphing.layout,
         'name': 'Part 5. Interactive Graphing and Crossfiltering',
         'description': 'Bind interactivity to the Dash `Graph` ' \
@@ -93,7 +93,7 @@ chapters = {
     },
 
     'shared-state': {
-        'url': '/dash/sharing-data-between-callbacks',
+        'url': '/sharing-data-between-callbacks',
         'content': sharing_state.layout,
         'name': 'Part 6. Sharing Data Between Callbacks',
         'description': '`global` variables will break your Dash apps. ' \
@@ -104,7 +104,7 @@ chapters = {
     },
 
     'dash-core-components': {
-        'url': '/dash/dash-core-components',
+        'url': '/dash-core-components',
         'content': core_components.layout,
         'name': 'Dash Core Components',
         'description': 'The Dash Core Component library contains a set ' \
@@ -113,7 +113,7 @@ chapters = {
     },
 
     'dash-html-components': {
-        'url': '/dash/dash-html-components',
+        'url': '/dash-html-components',
         'content': [
             html_components.layout,
             # html_component_appendix.layout,
@@ -127,7 +127,7 @@ chapters = {
     },
 
     'plugins': {
-        'url': '/dash/plugins',
+        'url': '/plugins',
         'content': plugins.layout,
         'name': 'Build Your Own Components',
         'description': 'Dash components are built with ' \
@@ -137,7 +137,7 @@ chapters = {
     },
 
     'performance': {
-        'url': '/dash/performance',
+        'url': '/performance',
         'content': performance.layout,
         'name': 'Performance',
         'description': 'There are two main ways to speed up dash apps: '\
@@ -145,7 +145,7 @@ chapters = {
     },
 
     'live-updates': {
-        'url': '/dash/live-updates',
+        'url': '/live-updates',
         'content': live_updates.layout,
         'name': 'Live Updates',
         'description': 'Update your apps on page load or on a predefined ' \
@@ -153,7 +153,7 @@ chapters = {
     },
 
     'external': {
-        'url': '/dash/external-resources',
+        'url': '/external-resources',
         'content': external_css_and_js.layout,
         'name': 'External CSS and JS',
         'description': 'By default, Dash loads CSS and JS assets from a ' \
@@ -165,7 +165,7 @@ chapters = {
     },
 
     'urls': {
-        'url': '/dash/urls',
+        'url': '/urls',
         'content': urls.layout,
         'name': 'URL Routing and Multiple Apps',
         'description': 'Dash provides two components (`dcc.Link` and ' \
@@ -175,7 +175,7 @@ chapters = {
     },
 
     'auth': {
-        'url': '/dash/authentication',
+        'url': '/authentication',
         'content': auth.layout,
         'name': 'Authentication',
         'description': 'Authentication for dash apps is provided through a ' \
@@ -185,7 +185,7 @@ chapters = {
     },
 
     'deployment': {
-        'url': '/dash/deployment',
+        'url': '/deployment',
         'content': deployment.layout,
         'name': 'Deployment',
         'description': 'To share a Dash app, you need to "deploy" your Dash ' \
@@ -193,7 +193,7 @@ chapters = {
     },
 
     'deployment-onpremise': {
-        'url': '/dash/deployment/on-premise',
+        'url': '/deployment/on-premise',
         'content': on_premise_deployment.layout,
         'name': 'Deploying Dash Apps on Plotly On-Premises',
         'description': "Plotly On-Premises is Plotly's commercial " \
@@ -201,7 +201,7 @@ chapters = {
     },
 
     'support': {
-        'url': '/dash/support',
+        'url': '/support',
         'content': support.layout,
         'name': 'Support and Contact',
         'description': 'More information for Dash demos, On-Premise trials, ' \
@@ -211,91 +211,91 @@ chapters = {
 ### End of home.py ###
 
     'dropdown-examples': {
-        'url': '/dash/dash-core-components/dropdown',
+        'url': '/dash-core-components/dropdown',
         'content': examples.Dropdown,
         'name': 'Dropdowns',
         'description': 'Dropdown examples, properties, and reference.'
     },
 
     'slider-examples': {
-        'url': '/dash/dash-core-components/slider',
+        'url': '/dash-core-components/slider',
         'content': examples.Slider,
         'name': 'Sliders Component',
         'description': 'Slider examples, properties, and reference.'
     },
 
     'range-slider-examples': {
-        'url': '/dash/dash-core-components/rangeslider',
+        'url': '/dash-core-components/rangeslider',
         'content': examples.RangeSlider,
         'name': 'Range Slider Component',
         'description': 'Range slider examples, properties, and reference.'
     },
 
     'checklist-examples': {
-        'url': '/dash/dash-core-components/checklist',
+        'url': '/dash-core-components/checklist',
         'content': examples.Checklist,
         'name': 'Checklist Component',
         'description': 'Checklist examples, properties, and reference.'
     },
 
     'input-examples': {
-        'url': '/dash/dash-core-components/input',
+        'url': '/dash-core-components/input',
         'content': examples.Input,
         'name': 'Input Component',
         'description': 'Input properties and reference.'
     },
 
     'radio-item-examples': {
-        'url': '/dash/dash-core-components/radioitems',
+        'url': '/dash-core-components/radioitems',
         'content': examples.RadioItems,
         'name': 'Radio Item Component',
         'description': 'Radio item examples, properties, and reference.'
     },
 
     'datepickersingle-examples': {
-        'url': '/dash/dash-core-components/datepickersingle',
+        'url': '/dash-core-components/datepickersingle',
         'content': examples.DatePickerSingle,
         'name': 'Date Picker: Single Component',
         'description': 'Single date picker examples, properties, and reference.'
     },
 
     'datepickerrange-examples': {
-        'url': '/dash/dash-core-components/datepickerrange',
+        'url': '/dash-core-components/datepickerrange',
         'content': examples.DatePickerRange,
         'name': 'Date Picker: Range Component',
         'description': 'Date range picker examples, properties, and reference.'
     },
 
     'markdown-examples': {
-        'url': '/dash/dash-core-components/markdown',
+        'url': '/dash-core-components/markdown',
         'content': examples.Markdown,
         'name': 'Markdown Component',
         'description': 'Markdown examples, properties, and reference.'
     },
 
     'link-examples': {
-        'url': '/dash/dash-core-components/link',
+        'url': '/dash-core-components/link',
         'content': examples.Link,
         'name': 'Link Component',
         'description': 'Link examples, properties, and reference.'
     },
 
     'textarea-examples': {
-        'url': '/dash/dash-core-components/textarea',
+        'url': '/dash-core-components/textarea',
         'content': examples.Textarea,
         'name': 'Text Area Component',
         'description': 'Text area properties and reference.'
     },
 
     'upload-examples': {
-        'url': '/dash/dash-core-components/upload',
+        'url': '/dash-core-components/upload',
         'content': examples.Upload,
         'name': 'Upload Component',
         'description': 'Upload examples, properties, and reference.'
     },
 
     'search': {
-        'url': '/dash/search',
+        'url': '/search',
         'content': search.layout,
         'name': '',
         'description': 'Search the Dash Docs'
