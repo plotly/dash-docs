@@ -122,7 +122,7 @@ def display_content(pathname):
         content = html.Div([
             html.Div(chapters[matched[0]]['content']),
             html.Hr(),
-            dcc.Link(html.A('Back to the Table of Contents'), href='/dash/'),
+            dcc.Link(html.A('Back to the Table of Contents'), href='/'),
             html.Div(id='wait-for-page-{}'.format(pathname)),
         ])
     else:
