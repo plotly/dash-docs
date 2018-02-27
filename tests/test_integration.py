@@ -63,7 +63,7 @@ class Tests(IntegrationTests):
             self.percy_runner.snapshot(name=name)
 
     def test_docs(self):
-        self.startServer(app, '/dash/')
+        self.startServer(app, '/')
 
         try:
             self.wait_for_element_by_id('wait-for-layout')
@@ -91,7 +91,7 @@ class Tests(IntegrationTests):
                 visit_and_snapshot(link)
 
         # test search page
-        self.driver.get('http://localhost:8050/dash/search')
+        self.driver.get('http://localhost:8050/search')
         self.wait_for_element_by_id('search-input')
         self.snapshot('search-blank')
         search_element = self.driver.find_element_by_id('search-input')
