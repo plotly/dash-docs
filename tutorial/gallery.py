@@ -268,13 +268,13 @@ layout = html.Div(className='gallery', children=[
     [View the app](https://dash-yield-curve.plot.ly) | [View the source code](https://github.com/plotly/dash-yield-curve)
 
     ***
-    
+
     ## Brain Surface Viewer
-    
-    🐭 Explore human and mice brains in 3d. 
-    
+
+    🐭 Explore human and mice brains in 3d.
+
     Add interactive labels to points on the brain surface and change the surface colorscale.
-    
+
     '''.replace('    ', '')),
 
     html.A(
@@ -288,7 +288,7 @@ layout = html.Div(className='gallery', children=[
     dcc.Markdown('''
 
     [View the app](http://brain-surface-viewer.herokuapp.com/) | [View the source code](https://github.com/plotly/dash-brain-surface-viewer)
-    
+
     ***
 
     ## Dash Documentation
