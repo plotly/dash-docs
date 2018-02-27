@@ -10,7 +10,7 @@ layout = html.Div([
 
     dcc.Markdown(s('''
     One of the core Dash principles explained in the
-    [Getting Started Guide on Callbacks](https://plot.ly/dash/getting-started-part-2)
+    [Getting Started Guide on Callbacks](/getting-started-part-2)
     is that **Dash Callbacks must never modify variables outside of their
     scope**. It is not safe to modify any `global` variables.
     This chapter explains why and provides some alternative patterns for

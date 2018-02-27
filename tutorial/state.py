@@ -15,7 +15,7 @@ layout = html.Div([
 
     dcc.Markdown(s('''
         In the previous chapter on
-        [basic dash callbacks](/dash/getting-started-part-2),
+        [basic dash callbacks](/getting-started-part-2),
         our callbacks looked something like:
     ''')),
     Syntax(examples['basic-input'][0]),

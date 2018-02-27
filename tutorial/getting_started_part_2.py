@@ -33,7 +33,7 @@ layout = html.Div([
     dcc.Markdown('''***
 
 1. [Installation](#installation)
-2. [Dash App Layout](/dash/getting-started-part-1)
+2. [Dash App Layout](/getting-started-part-1)
     - Generating HTML with Dash
     - Data Visualization in Dash
     - Markdown
@@ -77,7 +77,7 @@ layout = html.Div([
 
     dcc.Markdown('''
 
-        The [first part](/dash/getting-started) of this tutorial
+        The [first part](/getting-started) of this tutorial
         covered the `layout` of Dash apps. The `layout` of a Dash app
         describes what the app looks like.
         It is a hierarchical tree of components.
@@ -307,6 +307,6 @@ layout = html.Div([
 
     dcc.Link(
         html.A('Part 3 - Interactive Graphing'),
-        href='/dash/interactive-graphing')
+        href='/interactive-graphing')
 
 ])

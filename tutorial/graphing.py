@@ -121,6 +121,6 @@ layout = html.Div([
     `State` is useful for UIs that contain forms or buttons.
     ''')),
 
-    dcc.Link('Dash Tutorial Part 4. Callbacks With State', href='/dash/state')
+    dcc.Link('Dash Tutorial Part 4. Callbacks With State', href='/state')
 
 ])

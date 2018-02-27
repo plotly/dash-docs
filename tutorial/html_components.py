@@ -44,7 +44,7 @@ html.Div([
         If you're not comfortable with HTML, don't worry!
         You can get 95% of the way there with just a few elements
         and attributes.
-        Dash's [core component library](/dash/dash-core-components) also supports
+        Dash's [core component library](/dash-core-components) also supports
         [Markdown](http://commonmark.org/help).
     '''.replace('  ', '')),
 

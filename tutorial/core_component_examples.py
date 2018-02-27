@@ -471,7 +471,7 @@ dcc.Markdown('''
     ComponentBlock("""import dash_core_components as dcc
 
 dcc.Markdown('''
-[Dash User Guide](https://plot.ly/dash/)
+[Dash User Guide](https://dash.plot.ly/)
 ''')"""),
     html.Hr(),
     html.H3("Inline Code"),
@@ -976,7 +976,7 @@ dcc.DatePickerSingle(
 # Link
 Link = html.Div(children=[
     html.H3('Link Example'),
-    dcc.Markdown('To learn more about links, see the chapter on [Dash URLs](/dash/urls)'),
+    dcc.Markdown('To learn more about links, see the chapter on [Dash URLs](/urls)'),
     html.H3('Link Properties'),
     generate_prop_table('Link')
 ])

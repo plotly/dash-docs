@@ -38,7 +38,7 @@ layout = html.Div(className="gallery", children=[
     customStyle=styles.code_container),
 
     html.Hr(),
-    html.H3(dcc.Link('Dropdown', href='/dash/dash-core-components/dropdown')),
+    html.H3(dcc.Link('Dropdown', href='/dash-core-components/dropdown')),
     ComponentBlock('''import dash_core_components as dcc
 
 dcc.Dropdown(
@@ -63,11 +63,11 @@ dcc.Dropdown(
 )''', language='python', customStyle=styles.code_container),
     html.Br(),
     dcc.Link(html.A('More Dropdown Examples and Reference'),
-             href="/dash/dash-core-components/dropdown"),
+             href="/dash-core-components/dropdown"),
 
     html.Hr(),
 
-    html.H3(dcc.Link('Slider', href='/dash/dash-core-components/slider')),
+    html.H3(dcc.Link('Slider', href='/dash-core-components/slider')),
     ComponentBlock('''import dash_core_components as dcc
 
 dcc.Slider(
@@ -87,11 +87,11 @@ dcc.Slider(
 )''', language='python', customStyle=styles.code_container),
     html.Br(),
     dcc.Link(html.A('More Slider Examples and Reference'),
-             href="/dash/dash-core-components/slider"),
+             href="/dash-core-components/slider"),
 
     html.Hr(),
 
-    html.H3(dcc.Link('RangeSlider', href='/dash/dash-core-components/rangeslider')),
+    html.H3(dcc.Link('RangeSlider', href='/dash-core-components/rangeslider')),
     ComponentBlock('''import dash_core_components as dcc
 
 dcc.RangeSlider(
@@ -112,11 +112,11 @@ dcc.RangeSlider(
 )''', language='python', customStyle=styles.code_container),
     html.Br(),
     dcc.Link(html.A('More RangeSlider Examples and Reference'),
-             href="/dash/dash-core-components/rangeslider"),
+             href="/dash-core-components/rangeslider"),
 
     html.Hr(),
 
-    html.H3(dcc.Link('Input', href='/dash/dash-core-components/input')),
+    html.H3(dcc.Link('Input', href='/dash-core-components/input')),
     ComponentBlock('''import dash_core_components as dcc
 
 dcc.Input(
@@ -126,11 +126,11 @@ dcc.Input(
 )''', language='python', customStyle=styles.code_container),
     html.Br(),
     dcc.Link(html.A('Input Reference'),
-             href="/dash/dash-core-components/input"),
+             href="/dash-core-components/input"),
 
     html.Hr(),
 
-    html.H3(dcc.Link('Textarea', href='/dash/dash-core-components/textarea')),
+    html.H3(dcc.Link('Textarea', href='/dash-core-components/textarea')),
     ComponentBlock('''import dash_core_components as dcc
 
 dcc.Textarea(
@@ -142,11 +142,11 @@ dcc.Textarea(
     html.Br(),
     html.Br(),
     dcc.Link(html.A('Textarea Reference'),
-             href="/dash/dash-core-components/textarea"),
+             href="/dash-core-components/textarea"),
 
     html.Hr(),
 
-    html.H3(dcc.Link('Checkboxes', href='/dash/dash-core-components/checklist')),
+    html.H3(dcc.Link('Checkboxes', href='/dash-core-components/checklist')),
     ComponentBlock('''import dash_core_components as dcc
 
 dcc.Checklist(
@@ -172,9 +172,9 @@ dcc.Checklist(
 
     html.Br(),
     dcc.Link(html.A('Checklist Properties'),
-             href="/dash/dash-core-components/checklist"),
+             href="/dash-core-components/checklist"),
     html.Hr(),
-    html.H3(dcc.Link('Radio Items', href='/dash/dash-core-components/radioitems')),
+    html.H3(dcc.Link('Radio Items', href='/dash-core-components/radioitems')),
     ComponentBlock('''import dash_core_components as dcc
 
 dcc.RadioItems(
@@ -199,7 +199,7 @@ dcc.RadioItems(
 )''', language='python', customStyle=styles.code_container),
     html.Br(),
     dcc.Link(html.A('RadioItems Reference'),
-             href="/dash/dash-core-components/radioitems"),
+             href="/dash-core-components/radioitems"),
 
     html.Hr(),
 
@@ -212,13 +212,13 @@ dcc.RadioItems(
 
     html.P([
         '''For more on `dash.dependencies.State`, see the tutorial on ''',
-        dcc.Link('Dash State', href='/dash/state'),
+        dcc.Link('Dash State', href='/state'),
         '.'
     ]),
 
     html.Hr(),
 
-    html.H3(dcc.Link('DatePickerSingle', href='/dash/dash-core-components/datepickersingle')),
+    html.H3(dcc.Link('DatePickerSingle', href='/dash-core-components/datepickersingle')),
     ComponentBlock('''import dash_core_components as dcc
 from datetime import datetime as dt
 
@@ -228,10 +228,10 @@ dcc.DatePickerSingle(
 )
 ''', language='python', customStyle=styles.code_container),
     dcc.Link(html.A('More DatePickerSingle Examples and Reference'),
-             href="/dash/dash-core-components/datepickersingle"),
+             href="/dash-core-components/datepickersingle"),
     html.Hr(),
 
-    html.H3(dcc.Link('DatePickerRange', href='/dash/dash-core-components/datepickerrange')),
+    html.H3(dcc.Link('DatePickerRange', href='/dash-core-components/datepickerrange')),
     ComponentBlock('''import dash_core_components as dcc
 from datetime import datetime as dt
 
@@ -243,11 +243,11 @@ dcc.DatePickerRange(
 ''', language='python', customStyle=styles.code_container),
     html.Br(),
     dcc.Link(html.A('More DatePickerRange Examples and Reference'),
-             href="/dash/dash-core-components/datepickerrange"),
+             href="/dash-core-components/datepickerrange"),
 
     html.Hr(),
 
-    html.H3(dcc.Link('Markdown', href='/dash/dash-core-components/markdown')),
+    html.H3(dcc.Link('Markdown', href='/dash-core-components/markdown')),
     ComponentBlock('''import dash_core_components as dcc
 
     dcc.Markdown(\'\'\'
@@ -267,7 +267,7 @@ dcc.DatePickerRange(
 
     html.Br(),
     dcc.Link(html.A('More Markdown Examples and Reference'),
-             href="/dash/dash-core-components/markdown"),
+             href="/dash-core-components/markdown"),
 
     html.Hr(),
 
@@ -276,7 +276,7 @@ dcc.DatePickerRange(
     The `dash_html_components` library exposes all of the HTML tags.
     This includes the `Table`, `Tr`, and `Tbody` tags that can be used
     to create an HTML table. See
-    [Create Your First Dash App, Part 1](https://plot.ly/dash/getting-started-part-1)
+    [Create Your First Dash App, Part 1](/getting-started-part-1)
     for an example.
 
     Dash is currently incubating an interactive table component that provides
@@ -304,7 +304,7 @@ dcc.DatePickerRange(
     ***
     '''.replace('    ', '')),
 
-    html.H3(dcc.Link('Upload Component', href='/dash/dash-core-components/upload')),
+    html.H3(dcc.Link('Upload Component', href='/dash-core-components/upload')),
     dcc.Markdown('''
 
     The `dcc.Upload` component allows users to upload files into your app
@@ -321,7 +321,7 @@ dcc.DatePickerRange(
     ),
 
     dcc.Link(html.A('More Upload Examples and Reference'),
-             href="/dash/dash-core-components/upload"),
+             href="/dash-core-components/upload"),
 
     dcc.Markdown('''
     ***

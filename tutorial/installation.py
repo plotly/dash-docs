@@ -33,7 +33,7 @@ layout = html.Div([
 
     html.Div([
         'Ready? Now, get started with the ',
-        dcc.Link('Dash Tutorial - Part 1', href='/dash/getting-started'),
+        dcc.Link('Dash Tutorial - Part 1', href='/getting-started'),
         '.'
     ])
 

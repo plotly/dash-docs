@@ -26,7 +26,7 @@ or view the tutorial on deploying to Heroku below.
 You can restrict access to Dash apps through the `dash-auth`
 package, which provides authentication through HTTP Basic Auth and through
 your [Plotly Cloud account](https://plot.ly/).
-[Tutorial on Dash Authentication](/dash/authentication).
+[Tutorial on Dash Authentication](/authentication).
 
 ### On-Premise Dash Apps
 
@@ -37,7 +37,7 @@ namespacing, built-in SSL support, LDAP authentication, and more.
 [Request a Dash On-Premises demo](https://plot.ly/products/on-premise).
 
 For existing customers, view the
-[tutorial on deploying Dash Apps on Plotly On-Premise](/dash/deployment/on-premise).
+[tutorial on deploying Dash Apps on Plotly On-Premise](/deployment/on-premise).
 
 ### Dash and Flask
 
