@@ -9,7 +9,7 @@ import plotly.graph_objs as go
 import os
 from flask_cors import CORS
 
-server = Flask(__name__, static_url_path='/dash/static', static_folder='./static')
+server = Flask(__name__, static_url_path='/static', static_folder='./static')
 server.secret_key = os.environ.get('secret_key', 'secret')
 app = Dash(
     __name__,
