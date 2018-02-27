@@ -24,7 +24,7 @@ source activate dash_docs
 
 2. `pip install -r requirements.txt`
 3. `gunicorn tutorial.run:server`
-4. open http://127.0.0.1:8000/dash/ in your browser
+4. open http://127.0.0.1:8000 in your browser
 
 
 ### Contributing
