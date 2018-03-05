@@ -337,7 +337,19 @@ dcc.Markdown('''
 
 #### Step 7 - Publish Your Component
 
-Finally, you can publish your component to both NPM and PyPI by running:
+Finally, you can publish your component to both NPM and PyPI (Python's package registry).
+You'll need an account on both registries:
+- NPM: [https://www.npmjs.com](https://www.npmjs.com)
+- PyPI: [https://pypi.org/](https://pypi.org/)
+
+> PyPI is moving to new infrastructure for publishing packages. 
+> If you have published packages before using PyPI, you may recieve an authentication 
+> warning if your account's email address is not verified. You can verify your address
+> on their new site ([https://pypi.org/](https://pypi.org/)). You can find your PyPI 
+> credentials in a `~/.pypirc` file.
+
+
+To publish the components, run:
 
 '''),
 
