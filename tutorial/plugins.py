@@ -342,6 +342,27 @@ You'll need an account on both registries:
 - NPM: [https://www.npmjs.com](https://www.npmjs.com)
 - PyPI: [https://pypi.org/](https://pypi.org/)
 
+We publish to NPM so that Dash can use a global CDN called [unpkg](https://unpkg.com/).
+Unpkg automatically serves content from NPM packages.
+
+After you have created accounts, you'll need to save your login credentials on your local machine
+so that they can be used when you publish to the registries. For PyPI, create a file named `~/.pypirc`:
+```
+[distutils]
+index-servers =
+  pypi
+
+[pypi]
+repository=https://pypi.python.org/pypi
+username=your_username
+password=your_password
+```
+
+For NPM, your credentials will be saved in `~/.npmrc`. NPM will save these credentials for you if you run:
+```
+$ npm login
+```
+
 > PyPI is moving to new infrastructure for publishing packages. 
 > If you have published packages before using PyPI, you may recieve an authentication 
 > warning if your account's email address is not verified. You can verify your address
@@ -349,7 +370,7 @@ You'll need an account on both registries:
 > credentials in a `~/.pypirc` file.
 
 
-To publish the components, run:
+To publish the components (to NPM _and_ PyPI), run:
 
 '''),
 
@@ -359,8 +380,15 @@ dcc.SyntaxHighlighter('''npm run publish-all
 dcc.Markdown('''
 The version of the package is set in both `package.json` and a `version.py` file.
 
+For more information on publishing to PyPI, 
+see this [community blogpost](http://peterdowns.com/posts/first-time-with-pypi.html).
+
 By convention, dash components should adhere to [semver](http://semver.org/).
 Finally, if you'd like, share your component suite with other Dash users in the
 [Dash community forum](https://community.plot.ly/c/dash)!
+
+To be notified of **breaking changes** in the component API, please subscribe to one of these issues:
+- https://github.com/plotly/dash-components-archetype/issues/40
+- https://github.com/plotly/dash-components-archetype/issues/40
 ''')
 ]
