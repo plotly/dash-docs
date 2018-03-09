@@ -389,6 +389,6 @@ Finally, if you'd like, share your component suite with other Dash users in the
 
 To be notified of **breaking changes** in the component API, please subscribe to one of these issues:
 - https://github.com/plotly/dash-components-archetype/issues/40
-- https://github.com/plotly/dash-components-archetype/issues/40
+- https://community.plot.ly/t/mega-react-component-authors-subscribe-to-be-notified-of-breaking-changes/8640
 ''')
 ]
