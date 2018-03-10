@@ -242,7 +242,7 @@ layout = html.Div([
     dcc.Markdown('''
         #### Core Components
 
-        The `dash_core_components` includes a set a higher-level components like
+        The `dash_core_components` includes a set of higher-level components like
         dropdowns, graphs, markdown blocks, and more.
 
         Like all Dash components, they are described entirely declaratively.
