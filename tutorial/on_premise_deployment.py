@@ -180,6 +180,12 @@ def generate_instructions(chapter, platform):
             then you can open that hidden folder with just `$ open ~/.ssh`''')
             if platform == 'Mac' else ''),
 
+            (dcc.Markdown('''Please be careful not to save your SSH config as a .txt file as
+            it will not be recognized by Git when deploying your applications. If you are using
+            Notepad to create your SSH config, you can force the removal of the .txt extension
+            by naming the file "config", including the quotes, in the Save As dialog box.''')
+            if platform == 'Windows' else ''),
+
             dcc.Markdown(s('''
                 ***
 
