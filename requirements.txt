@@ -1,7 +1,7 @@
 dash==0.21.0
 dash-renderer==0.11.3
 dash-html-components==0.9.0
-dash-core-components==0.20.2
+dash-core-components==0.21.0
 dash-table-experiments==0.6.0
 plotly==2.2.3
 dash-auth
