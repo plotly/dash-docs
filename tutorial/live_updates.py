@@ -35,13 +35,14 @@ the callback on a predefined interval.
 This example pulls data from live satellite feeds and updates the graph
 and the text every second.
 '''),
-    dcc.SyntaxHighlighter('''import dash
-from dash.dependencies import Input, Output
+    dcc.SyntaxHighlighter('''import datetime
+
+import dash
 import dash_core_components as dcc
 import dash_html_components as html
-import datetime
 import plotly
-
+from dash.dependencies import Input, Output
+    
 # pip install pyorbital
 from pyorbital.orbital import Orbital
 satellite = Orbital('TERRA')
@@ -145,9 +146,10 @@ on every page load.
 For example, if your `app.layout` looked like this:
 
 ```
+import datetime
+
 import dash
 import dash_html_components as html
-import datetime
 
 app.layout = html.H1('The time is: ' + str(datetime.datetime.now()))
 
@@ -161,9 +163,10 @@ If you change this to a function, then a new `datetime` will get computed
 everytime you refresh the page. Give it a try:
 
 ```
+import datetime
+
 import dash
 import dash_html_components as html
-import datetime
 
 def serve_layout():
     return html.H1('The time is: ' + str(datetime.datetime.now()))

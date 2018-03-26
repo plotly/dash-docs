@@ -217,9 +217,9 @@ app.config.suppress_callback_exceptions = True
 `apps/app1.py`
 '''),
 
-          dcc.SyntaxHighlighter('''from dash.dependencies import Input, Output
+          dcc.SyntaxHighlighter('''import dash_core_components as dcc
 import dash_html_components as html
-import dash_core_components as dcc
+from dash.dependencies import Input, Output
 
 from app import app
 
@@ -254,10 +254,9 @@ And similarly for other apps
 `index.py` loads different apps on different urls like this:
 '''),
 
-          dcc.SyntaxHighlighter('''
-from dash.dependencies import Input, Output
-import dash_core_components as dcc
+          dcc.SyntaxHighlighter('''import dash_core_components as dcc
 import dash_html_components as html
+from dash.dependencies import Input, Output
 
 from app import app
 from apps import app1, app2

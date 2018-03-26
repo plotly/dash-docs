@@ -129,10 +129,12 @@ Create the following files in your project folder:
 **`app.py`**
 '''),
 
-          dcc.SyntaxHighlighter('''import dash
+          dcc.SyntaxHighlighter('''import os
+
+import dash
 import dash_core_components as dcc
 import dash_html_components as html
-import os
+
 
 app = dash.Dash(__name__)
 server = app.server

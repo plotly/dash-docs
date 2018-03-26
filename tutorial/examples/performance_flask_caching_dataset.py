@@ -1,13 +1,14 @@
-import dash
-from dash.dependencies import Input, Output
-import dash_html_components as html
-import dash_core_components as dcc
 import datetime as dt
-from flask_caching import Cache
-import numpy as np
 import os
-import pandas as pd
 import time
+
+import dash
+import dash_core_components as dcc
+import dash_html_components as html
+import numpy as np
+import pandas as pd
+from dash.dependencies import Input, Output
+from flask_caching import Cache
 
 app = dash.Dash(__name__)
 cache = Cache(app.server, config={

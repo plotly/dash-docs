@@ -1,10 +1,9 @@
+from collections import OrderedDict
+
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
-
 import plotly.plotly as py
-
-from collections import OrderedDict
 
 graphs = OrderedDict([
     ['scatter', {

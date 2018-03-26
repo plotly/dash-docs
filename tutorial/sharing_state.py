@@ -315,17 +315,18 @@ def update_output_1(value):
 
     Syntax(summary="Here's what this example looks like in code",
            children=s('''
-        import copy
-        import dash
-        from dash.dependencies import Input, Output
-        import dash_html_components as html
-        import dash_core_components as dcc
-        import datetime
-        from flask_caching import Cache
-        import numpy as np
         import os
-        import pandas as pd
+        import copy
         import time
+        import datetime
+
+        import dash
+        import dash_core_components as dcc
+        import dash_html_components as html
+        import numpy as np
+        import pandas as pd
+        from dash.dependencies import Input, Output
+        from flask_caching import Cache
 
 
         app = dash.Dash(__name__)

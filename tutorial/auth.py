@@ -75,8 +75,8 @@ layout = html.Div([
 
     dcc.SyntaxHighlighter('''import dash
 import dash_auth
-import dash_html_components as html
 import dash_core_components as dcc
+import dash_html_components as html
 import plotly
 
 # Keep this out of source code repository - save in a file or a database
@@ -152,8 +152,8 @@ pip install dash-auth==0.0.4''', customStyle=styles.code_container),
 
     dcc.SyntaxHighlighter('''import dash
 import dash_auth
-import dash_html_components as html
 import dash_core_components as dcc
+import dash_html_components as html
 import plotly
 
 
