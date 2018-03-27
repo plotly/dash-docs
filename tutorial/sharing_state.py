@@ -526,7 +526,7 @@ def update_output_1(value):
         the data that is shared between callbacks is isolated to individual
         user sessions.
 
-    Questions? Discuss these examples on the
-    [Dash Community Forum](https://community.plot.ly/c/dash)
+        Questions? Discuss these examples on the
+        [Dash Community Forum](https://community.plot.ly/c/dash)
     '''))
 ])
