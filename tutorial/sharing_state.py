@@ -52,6 +52,9 @@ layout = html.Div([
     variable in one callback, that modification will not be
     applied to the rest of the workers.
 
+    Here is an example of code that is _not safe_ as
+    the `update_output_1` callback updates a global variable.
+
     ***
 
     ''')),
@@ -117,7 +120,9 @@ def update_output_1(value):
 
         In order for to share data safely across multiple python
         processes, we need to store the data somewhere that is accessible to
-        each of the processes. There are 3 places to store this data:
+        each of the processes.
+
+        There are 3 main places to store this data:
 
         1 - In the user's browser session
 
@@ -127,7 +132,7 @@ def update_output_1(value):
 
         The following three examples illustrate these approaches.
 
-        ## Example 1 - Storing Data in Hidden Div
+        ## Example 1 - Storing Data in the Browser with a Hidden Div
 
         To save data in user's browser's session:
         - Implemented by saving the data as part of Dash's front-end store
@@ -293,7 +298,7 @@ def update_output_1(value):
         - Once the computation is complete, the signal is sent and 4 callbacks
           are executed in parallel to render the graphs.
           Each of these callbacks retrieves the data from the
-          “global store”: the redis cache.
+          “global store”: the redis or filesystem cache.
         - I’ve set processes=6 in app.run_server so that multiple callbacks
           can be executed in parallel. In production, this is done with
           something like $ gunicorn --workers 6 --threads 2 app:server
