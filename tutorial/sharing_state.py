@@ -2,7 +2,15 @@
 from textwrap import dedent as s
 import dash_core_components as dcc
 import dash_html_components as html
-from components import Syntax
+
+from components import Example, Syntax
+import tools
+
+examples = {
+    'filesystem-session-cache': tools.load_example(
+        'tutorial/examples/sharing_state_filesystem_sessions.py'
+    )
+}
 
 
 layout = html.Div([
@@ -462,6 +470,63 @@ def update_output_1(value):
         if __name__ == '__main__':
             app.run_server(debug=True, processes=6)
         '''
-    ))
+    )),
 
+
+    dcc.Markdown(s('''
+        ***
+
+        ## Example 4 - Filesystem Sessions
+
+        The previous example cached computations on the filesystem and
+        those computations were accessible for all users.
+
+        In some cases, you want to keep the data isolated to user sessions:
+        one user's derived data shouldn't update the next user's derived data.
+        One way to do this is to save the data in a hidden `Div`,
+        as demonstrated in the first example.
+
+        Another way to do this is to key the file system cache with a
+        session identifier.
+
+        This example was originally discussed in a
+        [Dash Community Forum thread](https://community.plot.ly/t/capture-window-tab-closing-event/7375/2?u=chriddyp).
+
+        This example:
+        - Caches data using the `flask_caching` Redis cache. You can also save to the filesystem.
+        - Serializes the data as JSON.
+            - If you are using Pandas, consider serializing
+            with Apache Arrow. [Community thread](https://community.plot.ly/t/fast-way-to-share-data-between-callbacks/8024/2)
+        - Saves session data up to the number of expected concurrent users.
+        This prevents the cache from being overfilled with data.
+        - Creates unique session IDs by embedding a hidden random string into
+        the app's layout and serving a unique layout on every page load.
+
+        ''')),
+
+    Syntax(
+        examples['filesystem-session-cache'][0],
+        summary="Here's what this example looks like in code"
+    ),
+
+    html.Div(
+        children=html.Img(
+            src='https://user-images.githubusercontent.com/1280389/37941518-8f47b71a-313c-11e8-8b00-80ffbb012c4a.gif',
+            alt='Example of a Dash App that uses User Session Caching'
+        )
+    ),
+
+    dcc.Markdown(s('''
+        There are three things to notice in this example:
+        - The timestamps of the dataframe don't update when we retrieve
+        the data. This data is cached as part of the user's session.
+        - Retrieving the data initially takes 5 seconds but successive queries
+        are instance, as the data has been cached.
+        - The second session displays different data than the first session:
+        the data that is shared between callbacks is isolated to individual
+        user sessions.
+
+    Questions? Discuss these examples on the
+    [Dash Community Forum](https://community.plot.ly/c/dash)
+    '''))
 ])
