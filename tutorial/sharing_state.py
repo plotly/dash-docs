@@ -476,7 +476,7 @@ def update_output_1(value):
     dcc.Markdown(s('''
         ***
 
-        ## Example 4 - Filesystem Sessions
+        ## Example 4 - User-Based Session Data on the Server
 
         The previous example cached computations on the filesystem and
         those computations were accessible for all users.
@@ -484,16 +484,20 @@ def update_output_1(value):
         In some cases, you want to keep the data isolated to user sessions:
         one user's derived data shouldn't update the next user's derived data.
         One way to do this is to save the data in a hidden `Div`,
-        as demonstrated in the first example.
+        as demonstrated in the first example. 
 
-        Another way to do this is to key the file system cache with a
-        session identifier.
+        Another way to do this is to save the data on the 
+        filesystem cache with and reference the data using 
+        a session id. In this method, since data is saved on the server,
+        instead of transported over the network, it is generally faster than the 
+        "hidden div" method.
+
 
         This example was originally discussed in a
         [Dash Community Forum thread](https://community.plot.ly/t/capture-window-tab-closing-event/7375/2?u=chriddyp).
 
         This example:
-        - Caches data using the `flask_caching` Redis cache. You can also save to the filesystem.
+        - Caches data using the `flask_caching` filesystem cache. You can also save to an in-memory database like Redis..
         - Serializes the data as JSON.
             - If you are using Pandas, consider serializing
             with Apache Arrow. [Community thread](https://community.plot.ly/t/fast-way-to-share-data-between-callbacks/8024/2)
