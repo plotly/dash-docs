@@ -13,13 +13,11 @@ import uuid
 app = dash.Dash()
 cache = Cache(app.server, config={
     'CACHE_TYPE': 'redis',
-    'CACHE_REDIS_URL': os.environ.get('REDIS_URL', 'localhost:6379'),
-
-    # Alternatively, save on the filesystem with the following config:
     # Note that filesystem cache doesn't work on systems with ephemeral
     # filesystems like Heroku.
-    # 'CACHE_TYPE': 'filesystem',
-    # 'CACHE_DIR': 'cache-directory',
+    'CACHE_TYPE': 'filesystem',
+    'CACHE_DIR': 'cache-directory',
+    
     # should be equal to maximum number of users on the app at a single time
     # higher numbers will store more data in the filesystem / redis cache
     'CACHE_THRESHOLD': 200
