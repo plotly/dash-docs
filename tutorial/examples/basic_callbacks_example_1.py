@@ -1,11 +1,11 @@
 from datetime import datetime as dt
+
 import dash
-from dash.dependencies import Input, Output
 import dash_core_components as dcc
 import dash_html_components as html
-
-from pandas_datareader import data as web
 import plotly.graph_objs as go
+from dash.dependencies import Input, Output
+from pandas_datareader import data as web
 
 app = dash.Dash('')
 

@@ -45,7 +45,7 @@ app.scripts.append_script({
 
     Currently, Dash does not include styles by default.
 
-    In future releases, Dash may incldue a default (removable) stylesheet.
+    In future releases, Dash may include a default (removable) stylesheet.
 
     For now, you can use or fork this [CSS stylesheet](https://codepen.io/chriddyp/pen/bWLwgP?editors=1100) hosted
     on [Codepen](https://codepen.io).

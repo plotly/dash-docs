@@ -27,14 +27,10 @@ class IntegrationTests(unittest.TestCase):
         pass
 
     def tearDown(self):
-        time.sleep(3)
         self.server_process.terminate()
-        time.sleep(3)
 
     def startServer(self, app, path='/'):
         def run():
-            app.scripts.config.serve_locally = True
-            app.css.config.serve_locally = True
             app.run_server(
                 port=8050,
                 debug=False,

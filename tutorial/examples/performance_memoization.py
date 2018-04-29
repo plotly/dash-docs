@@ -1,9 +1,10 @@
-import dash
-from dash.dependencies import Input, Output
-import dash_html_components as html
-import dash_core_components as dcc
 import sys
 import time
+
+import dash
+import dash_core_components as dcc
+import dash_html_components as html
+from dash.dependencies import Input, Output
 
 if sys.version_info < (3, 2, 0):
     from functools32 import lru_cache

@@ -11,6 +11,16 @@ def load_example(path):
             raise Exception("Didn't declare app")
         _example = _example.replace('app = dash.Dash', '# app = dash.Dash')
 
+        commented_configs = [
+            'app.scripts.config.serve_locally',
+            'app.css.config.serve_locally'
+        ]
+        for config in commented_configs:
+            _example = _example.replace(
+                config,
+                '# {}'.format(config)
+            )
+
         if 'import dash\n' not in _example:
             raise Exception("Didn't import dash")
 

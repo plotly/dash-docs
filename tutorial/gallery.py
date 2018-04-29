@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import dash_html_components as html
 import dash_core_components as dcc
 
@@ -12,7 +13,7 @@ layout = html.Div(className='gallery', children=[
 
     ## Getting Started Example
 
-    The [Dash Getting Started Guide](/dash/getting-started) contains
+    The [Dash Getting Started Guide](/getting-started) contains
     many applications that range in complexity.
 
     The first interactive app that you'll create combines a `Slider`
@@ -27,7 +28,7 @@ layout = html.Div(className='gallery', children=[
 
     html.A(
         className='image-link',
-        href='https://plot.ly/dash/getting-started',
+        href='https://dash.plot.ly/getting-started',
         children=html.Img(
             src='https://github.com/plotly/dash-docs/raw/master/images/gapminder-animation.gif',
             alt='Screenshot of simple Dash app'
@@ -35,7 +36,7 @@ layout = html.Div(className='gallery', children=[
     ),
 
     dcc.Markdown('''
-    [View the getting started guide](https://plot.ly/dash/getting-started)
+    [View the getting started guide](https://dash.plot.ly/getting-started)
 
     ***
 
@@ -56,7 +57,7 @@ layout = html.Div(className='gallery', children=[
 
     html.A(
         className='image-link',
-        href='https://plot.ly/dash/gallery/new-york-oil-and-gas',
+        href='https://dash-oil-and-gas.plot.ly',
         children=html.Img(
             src='https://github.com/plotly/dash-docs/raw/master/images/oil-and-gas.gif',
             alt='Screenshot of an oil and gas Dash app'
@@ -65,41 +66,7 @@ layout = html.Div(className='gallery', children=[
 
     dcc.Markdown('''
 
-    [View the app](/dash/gallery/new-york-oil-and-gas) | [View the source code](https://github.com/plotly/dash-oil-and-gas-demo)
-
-    ***
-
-    ## Goldman Sachs Remake: Portfolio Report
-
-    This app recreates the look and feel of a Goldman Sachs report.
-    It includes a Print to PDF button and the styles were optimized
-    to look good on the web and in PDF form.
-
-    The charts in the report on the web version are interactive.
-    You can hover over points to see their values and zoom into
-    regions. Since this report was built on top of Dash, you could
-    adapt this report to include even more interactive elements, like
-    a dropdown or a search box.
-
-    With PDF styles, you can hide and show elements depending on whether
-    the app is being viewed in the web browser or in print, using the
-    same framework for the rich interactive applications as the static
-    PDF reports.
-
-    '''.replace('    ', '')),
-
-    html.A(
-        className='image-link',
-        href='https://plot.ly/dash/gallery/goldman-sachs-report',
-        children=html.Img(
-            src='https://github.com/plotly/dash-docs/raw/master/images/goldman-sachs.png',
-            alt='Screenshot of Goldman Sachs report'
-        )
-    ),
-
-    dcc.Markdown('''
-
-    [View the app](/dash/gallery/goldman-sachs-report) | [View the source code](https://github.com/plotly/dash-goldman-sachs-report-demo)
+    [View the app](https://dash-oil-and-gas.plot.ly) | [View the source code](https://github.com/plotly/dash-oil-and-gas-demo)
 
     ***
 
@@ -113,7 +80,7 @@ layout = html.Div(className='gallery', children=[
 
     html.A(
         className='image-link',
-        href='https://plot.ly/dash/gallery/uber-rides',
+        href='https://dash-uber-rides.plot.ly',
         children=html.Img(
             src='https://github.com/plotly/dash-docs/raw/master/images/uber-rides.gif',
             alt='Screenshot of an Uber rides Dash app'
@@ -122,7 +89,7 @@ layout = html.Div(className='gallery', children=[
 
     dcc.Markdown('''
 
-    [View the app](https://plot.ly/dash/gallery/uber-rides) | [View the source code](https://github.com/plotly/dash-uber-rides-demo)
+    [View the app](https://dash-uber-rides.plot.ly) | [View the source code](https://github.com/plotly/dash-uber-rides-demo)
 
     ***
 
@@ -166,7 +133,7 @@ layout = html.Div(className='gallery', children=[
 
     html.A(
         className='image-link',
-        href='https://plot.ly/dash/gallery/stock-tickers',
+        href='https://dash-stock-tickers.plot.ly',
         children=html.Img(
             src='https://github.com/plotly/dash-docs/raw/master/images/stock-tickers.png',
             alt='Screenshot of a stock tickers Dash app'
@@ -175,37 +142,14 @@ layout = html.Div(className='gallery', children=[
 
     dcc.Markdown('''
 
-    [View the app](https://plot.ly/dash/gallery/stock-tickers) | [View the source code](https://github.com/plotly/dash-stock-tickers-demo-app)
+    [View the app](https://dash-stock-tickers.plot.ly) | [View the source code](https://github.com/plotly/dash-stock-tickers-demo-app)
 
 
     ***
 
-    ## Volatility Surface Explorer
-
-    This demo fetches CBOE options chain data from Yahoo Finance with Pandas Datareader
-    and calculates the implied volatility of each option using the [`py_vollib`](https://github.com/vollib/py_vollib)
-    library.
-
-    All parameters of the IV calculation are adjustable and the
-    resulting volatility curve is rendered using a [Mesh 3D chart](https://plot.ly/python/3d-mesh/)
-    with several subplots showing subsections of the 3D plot.
-
-    Initially fetching the options data and calculating the IV might take a
-    few seconds due to the scale of the calculations required.
-
     '''.replace('    ', '')),
 
-    html.A(
-        className='image-link',
-        href='https://plot.ly/dash/gallery/volatility-surface',
-        children=html.Img(
-            src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-volatility-surface.gif',
-            alt='Screenshot of volatility surface'
-        )
-    ),
-
     dcc.Markdown('''
-    [View the app](https://plot.ly/dash/gallery/volatility-surface) | [View the source code](https://github.com/plotly/dash-volatility-surface)
 
     ***
 
@@ -223,7 +167,7 @@ layout = html.Div(className='gallery', children=[
 
     html.A(
         className='image-link',
-        href='https://plot.ly/dash/gallery/drug-explorer',
+        href='https://dash-drug-explorer.plot.ly',
         children=html.Img(
             src='https://github.com/plotly/dash-docs/raw/master/images/drug-discovery-app.gif',
             alt='Screenshot of a drug discovery Dash app'
@@ -231,21 +175,21 @@ layout = html.Div(className='gallery', children=[
     ),
 
     dcc.Markdown('''
-    [View the app](https://plot.ly/dash/gallery/drug-explorer) | [View the source code](https://github.com/plotly/dash-drug-discovery-demo/)
+    [View the app](https://dash-drug-explorer.plot.ly) | [View the source code](https://github.com/plotly/dash-drug-discovery-demo/)
 
     ***
 
     ## Live Wind Streaming
 
     This app continually queries a SQL database and displays live charts of
-    wind speed and wind direction. In Dash, the [dcc.Interval](https://plot.ly/dash/live-upates)
+    wind speed and wind direction. In Dash, the [dcc.Interval](https://dash.plot.ly/live-upates)
     component can be used to update any element on a recurring interval.
 
     '''.replace('    ', '')),
 
     html.A(
         className='image-link',
-        href='https://plot.ly/dash/gallery/live-wind-data',
+        href='https://dash-live-wind-data.plot.ly',
         children=html.Img(
             src='https://cdn.rawgit.com/plotly/dash-wind-streaming/d84b15eebf2c502372740416d445e8e3f23d0619/Gif/dash-wind-streaming.gif',
             alt='gif of a wind streaming Dash app'
@@ -253,7 +197,7 @@ layout = html.Div(className='gallery', children=[
     ),
 
     dcc.Markdown('''
-    [View the app](https://plot.ly/dash/gallery/live-wind-data) | [View the source code](https://github.com/plotly/dash-wind-streaming)
+    [View the app](https://dash-live-wind-data.plot.ly) | [View the source code](https://github.com/plotly/dash-wind-streaming)
 
 
     ***
@@ -284,7 +228,7 @@ layout = html.Div(className='gallery', children=[
 
     html.A(
         className='image-link',
-        href='https://plot.ly/dash/gallery/recession-report',
+        href='https://dash-recession-report.plot.ly',
         children=html.Img(
             src='https://github.com/plotly/dash-docs/raw/master/images/nytimes.png',
             alt='Screenshot of a recession reports'
@@ -293,7 +237,7 @@ layout = html.Div(className='gallery', children=[
 
     dcc.Markdown('''
 
-    [View the app](https://plot.ly/dash/gallery/recession-report) | [View the source code](https://github.com/plotly/dash-recession-report-demo)
+    [View the app](https://dash-recession-report.plot.ly) | [View the source code](https://github.com/plotly/dash-recession-report-demo)
 
 
     ***
@@ -313,7 +257,7 @@ layout = html.Div(className='gallery', children=[
 
     html.A(
         className='image-link',
-        href='https://plot.ly/dash/gallery/yield-curve',
+        href='https://dash-yield-curve.plot.ly',
         children=html.Img(
             src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-yield-curve-app.png',
             alt='Screenshot of a dash home page'
@@ -321,8 +265,82 @@ layout = html.Div(className='gallery', children=[
     ),
     dcc.Markdown('''
 
-    [View the app](https://plot.ly/dash/gallery/yield-curve) | [View the source code](https://github.com/plotly/dash-yield-curve)
+    [View the app](https://dash-yield-curve.plot.ly) | [View the source code](https://github.com/plotly/dash-yield-curve)
 
+    ***
+
+    ## Brain Surface Viewer
+
+    🐭 Explore human and mice brains in 3d.
+
+    Add interactive labels to points on the brain surface and change the surface colorscale.
+
+    '''.replace('    ', '')),
+
+    html.A(
+        className='image-link',
+        href='http://brain-surface-viewer.herokuapp.com/',
+        children=html.Img(
+            src='https://raw.githubusercontent.com/plotly/dash-brain-surface-viewer/master/ZOMBIE_BRAIN.png',
+            alt='Screenshot of brain surface viewer'
+        )
+    ),
+    dcc.Markdown('''
+
+    [View the app](http://brain-surface-viewer.herokuapp.com/) | [View the source code](https://github.com/plotly/dash-brain-surface-viewer)
+
+    ***
+
+    ## Opioid Epidemic
+
+    Interactively explore the effect of the opioid epidemic in North America.
+
+    '''.replace('    ', '')),
+
+    html.A(
+        className='image-link',
+        href='https://opioid-epidemic.herokuapp.com/',
+        children=html.Img(
+            src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/opioid-epidemic.png',
+            alt='Screenshot of opioid epidemic'
+        )
+    ),
+    dcc.Markdown('''
+
+    [View the app](https://opioid-epidemic.herokuapp.com/) | [View the source code](https://github.com/plotly/dash-opioid-epidemic-demo)
+
+    ***
+
+    ## Vanguard Report
+
+    This app recreates the look and feel of a Vanguard report.
+    It includes a Print to PDF button and the styles were optimized
+    to look good on the web and in PDF form.
+
+    The charts in the report on the web version are interactive.
+    You can hover over points to see their values and zoom into
+    regions. Since this report was built on top of Dash, you could
+    adapt this report to include even more interactive elements, like
+    a dropdown or a search box.
+
+    With PDF styles, you can hide and show elements depending on whether
+    the app is being viewed in the web browser or in print, using the
+    same framework for the rich interactive applications as the static
+    PDF reports.
+
+    '''.replace('    ', '')),
+
+    html.A(
+        className='image-link',
+        href='https://vanguard-report.herokuapp.com/',
+        children=html.Img(
+            src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/vanguard.gif',
+            alt='Screenshot of vanguard report'
+        )
+    ),
+    dcc.Markdown('''
+
+    [View the app](https://vanguard-report.herokuapp.com/) | [View the source code](https://github.com/plotly/dash-vanguard-report)
 
     ***
 
@@ -334,7 +352,7 @@ layout = html.Div(className='gallery', children=[
 
     html.A(
         className='image-link',
-        href='https://plot.ly/dash/',
+        href='https://dash.plot.ly/',
         children=html.Img(
             src='https://github.com/plotly/dash-docs/raw/master/images/dash-home-page.png',
             alt='Screenshot of a dash home page'

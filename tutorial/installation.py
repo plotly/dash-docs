@@ -6,9 +6,7 @@ import dash_html_components as html
 
 import plotly
 
-from dash.dependencies import Input, Output, Event, State
 import styles
-from tools import load_example, merge
 
 layout = html.Div([
 
@@ -35,7 +33,7 @@ layout = html.Div([
 
     html.Div([
         'Ready? Now, get started with the ',
-        dcc.Link('Dash Tutorial - Part 1', href='/dash/getting-started'),
+        dcc.Link('Dash Tutorial - Part 1', href='/getting-started'),
         '.'
     ])
 

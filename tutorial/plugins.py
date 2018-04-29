@@ -66,8 +66,9 @@ repository on GitHub.
 You'll need Node, NPM, and Python installed.
 Components are built with [React.js](https://facebook.github.io/react/).
 
-> If you're just getting started, we've written a great
-[React.js tutorial](https://academy.plot.ly/) as part of our open source academy.
+> If you're just getting started, here's a great
+[React.js tutorial](https://reactjs.org/tutorial/tutorial.html) you can use to get up 
+to speed.
 
 ### Step 2 - Install Builder
 '''),
@@ -231,7 +232,7 @@ export default class ExampleComponent extends Component {
 
 ExampleComponent.propTypes = {
     /**
-     * The ID used to identify this compnent in Dash callbacks
+     * The ID used to identify this component in Dash callbacks
      */
     id: PropTypes.string,
 
@@ -272,7 +273,7 @@ class ExampleComponent(dash.development.base_component.Component)
  |  which is editable by the user.
  |
  |  Keyword arguments:
- |  - id (string; optional): The ID used to identify this compnent in Dash callbacks
+ |  - id (string; optional): The ID used to identify this component in Dash callbacks
  |  - label (string; required): A label that will be printed when this component is rendered.
  |  - value (string; optional): The value displayed in the input
 
@@ -337,7 +338,40 @@ dcc.Markdown('''
 
 #### Step 7 - Publish Your Component
 
-Finally, you can publish your component to both NPM and PyPI by running:
+Finally, you can publish your component to both NPM and PyPI (Python's package registry).
+You'll need an account on both registries:
+- NPM: [https://www.npmjs.com](https://www.npmjs.com)
+- PyPI: [https://pypi.org/](https://pypi.org/)
+
+We publish to NPM so that Dash can use a global CDN called [unpkg](https://unpkg.com/).
+Unpkg automatically serves content from NPM packages.
+
+After you have created accounts, you'll need to save your login credentials on your local machine
+so that they can be used when you publish to the registries. For PyPI, create a file named `~/.pypirc`:
+```
+[distutils]
+index-servers =
+  pypi
+
+[pypi]
+repository=https://pypi.python.org/pypi
+username=your_username
+password=your_password
+```
+
+For NPM, your credentials will be saved in `~/.npmrc`. NPM will save these credentials for you if you run:
+```
+$ npm login
+```
+
+> PyPI is moving to new infrastructure for publishing packages. 
+> If you have published packages before using PyPI, you may recieve an authentication 
+> warning if your account's email address is not verified. You can verify your address
+> on their new site ([https://pypi.org/](https://pypi.org/)). You can find your PyPI 
+> credentials in a `~/.pypirc` file.
+
+
+To publish the components (to NPM _and_ PyPI), run:
 
 '''),
 
@@ -345,10 +379,17 @@ dcc.SyntaxHighlighter('''npm run publish-all
 ''', customStyle=styles.code_container),
 
 dcc.Markdown('''
-The version of the package is set in both `package.json` and a `verison.py` file.
+The version of the package is set in both `package.json` and a `version.py` file.
+
+For more information on publishing to PyPI, 
+see this [community blogpost](http://peterdowns.com/posts/first-time-with-pypi.html).
 
 By convention, dash components should adhere to [semver](http://semver.org/).
 Finally, if you'd like, share your component suite with other Dash users in the
 [Dash community forum](https://community.plot.ly/c/dash)!
+
+To be notified of **breaking changes** in the component API, please subscribe to one of these issues:
+- https://github.com/plotly/dash-components-archetype/issues/40
+- https://community.plot.ly/t/mega-react-component-authors-subscribe-to-be-notified-of-breaking-changes/8640
 ''')
 ]

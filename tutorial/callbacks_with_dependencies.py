@@ -1,9 +1,6 @@
 # -*- coding: utf-8 -*-
 import dash_core_components as dcc
 import dash_html_components as html
-from dash.dependencies import State, Event, Input, Output
-from server import app
-import time
 import styles
 import tools
 
@@ -47,5 +44,5 @@ layout = [
         language='python',
         customStyle=styles.code_container
     ),
-    html.Div(examples[0][1], className="example-container")
+    html.Div(examples[0][1], className='example-container')
 ]

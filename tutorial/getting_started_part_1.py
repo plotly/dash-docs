@@ -6,9 +6,8 @@ import dash_html_components as html
 
 import plotly
 
-from dash.dependencies import Input, Output, Event, State
 import styles
-from tools import load_example, merge
+from tools import load_example
 from components import Example, Syntax
 
 examples = [
@@ -42,7 +41,7 @@ layout = html.Div([
     - Markdown
     - Core Components
     - Calling `help`
-3. [Interactivity](/dash/getting-started-part-2)
+3. [Interactivity](/getting-started-part-2)
     - Fundamentals
     - Multiple Inputs
     - Multiple Outputs
@@ -132,7 +131,7 @@ layout = html.Div([
         6. The fonts in your application will look a little bit different than
            what is displayed here. This application is using a
            custom CSS stylesheet to modify the default styles of the elements.
-           You can learn more in the [css tutorial](/dash/external-resources),
+           You can learn more in the [css tutorial](/external-resources),
            but for now you can add
            ```
            app.css.append_css({"external_url": "https://codepen.io/chriddyp/pen/bWLwgP.css"})
@@ -182,7 +181,7 @@ layout = html.Div([
 
         #### Reusable Components
 
-        By writing our markup in Python, we can create complex resuable
+        By writing our markup in Python, we can create complex reusable
         components like tables without switching contexts or languages.
 
     '''.replace('   ', '')),
@@ -243,7 +242,7 @@ layout = html.Div([
     dcc.Markdown('''
         #### Core Components
 
-        The `dash_core_components` includes a set a higher-level components like
+        The `dash_core_components` includes a set of higher-level components like
         dropdowns, graphs, markdown blocks, and more.
 
         Like all Dash components, they are described entirely declaratively.
@@ -256,7 +255,7 @@ layout = html.Div([
         You can view all of the available components in the
     ''', dcc.Link(
         'Dash Core Components Gallery',
-        href='/dash/dash-core-components'
+        href='/dash-core-components'
     )]),
 
     Syntax(
@@ -322,13 +321,13 @@ class Dropdown(dash.development.base_component.Component)
         html.Li(
             dcc.Link(
                 [html.Code('dash_core_components'), ' gallery'],
-                href='/dash/dash-core-components'
+                href='/dash-core-components'
             )
         ),
         html.Li(
             dcc.Link(
                 [html.Code('dash_html_components'), ' gallery'],
-                href='/dash/dash-html-components'
+                href='/dash-html-components'
             )
         )
     ]),
@@ -340,7 +339,7 @@ class Dropdown(dash.development.base_component.Component)
 
     dcc.Link(
         'Dash Tutorial - Part 2: Basic Callbacks',
-        href="/dash/getting-started-part-2"
+        href="/getting-started-part-2"
     )
 
 ])

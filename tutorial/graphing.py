@@ -81,12 +81,18 @@ layout = html.Div([
     underlying dataset.
     """),
 
-    Example(examples['crossfilter-recipe'][1]),
+    html.Img(
+        src='https://github.com/plotly/dash-docs/raw/master/images/select.gif',
+        alt='Dash Data Selection Example',
+        style={
+            'width': '100%', 'border': 'thin lightgrey solid',
+            'border-radius': '4px'
+        }),
 
     dcc.Markdown(s('''
     Try clicking and dragging in any of the plots to filter different regions.
     On every selection, the three graph callbacks are fired with the latest
-    selected regions of each plot. A pandas dataframe is fitered based off
+    selected regions of each plot. A pandas dataframe is filtered based off
     of the selected points and the graphs are replotted with the selected
     points highlighted and the selected region drawn as a dashed rectangle.
 
@@ -121,6 +127,6 @@ layout = html.Div([
     `State` is useful for UIs that contain forms or buttons.
     ''')),
 
-    dcc.Link('Dash Tutorial Part 4. Callbacks With State', href='/dash/state')
+    dcc.Link('Dash Tutorial Part 4. Callbacks With State', href='/state')
 
 ])

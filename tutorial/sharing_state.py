@@ -10,7 +10,7 @@ layout = html.Div([
 
     dcc.Markdown(s('''
     One of the core Dash principles explained in the
-    [Getting Started Guide on Callbacks](https://plot.ly/dash/getting-started-part-2)
+    [Getting Started Guide on Callbacks](/getting-started-part-2)
     is that **Dash Callbacks must never modify variables outside of their
     scope**. It is not safe to modify any `global` variables.
     This chapter explains why and provides some alternative patterns for
@@ -82,7 +82,7 @@ def update_output_1(value):
     return len(df)
 
 ''', summary='''
-    Here is an sketch of an app with a callback that modifies data
+    Here is a sketch of an app with a callback that modifies data
     out of it's scope. This type of pattern *will not work reliably*
     for the reasons outlined above.'''),
 
@@ -177,7 +177,7 @@ def update_output_1(value):
              # json.dumps(cleaned_df)
              return cleaned_df.to_json(date_format='iso', orient='split')
 
-        @app.callback(Output('graph', 'figure'), [Input('intermediate-value', 'children'])
+        @app.callback(Output('graph', 'figure'), [Input('intermediate-value', 'children')])
         def update_graph(jsonified_cleaned_data):
 
             # more generally, this line would be
@@ -187,7 +187,7 @@ def update_output_1(value):
             figure = create_figure(dff)
             return figure
 
-        @app.callback(Output('table', 'children'), [Input('intermediate-value', 'children'])
+        @app.callback(Output('table', 'children'), [Input('intermediate-value', 'children')])
         def update_table(jsonified_cleaned_data):
             dff = pd.read_json(jsonified_cleaned_data, orient='split')
             table = create_table(dff)
@@ -205,7 +205,7 @@ def update_output_1(value):
 
         In many cases, your app will only display a subset or an aggregation
         of the computed or filtered data. In these cases, you could precompute
-        your aggreations in your data processing callback and transport these
+        your aggregations in your data processing callback and transport these
         aggregations to the remaining callbacks.
     ''')),
 
@@ -219,36 +219,42 @@ def update_output_1(value):
 
              # a few filter steps that compute the data
              # as it's needed in the future callbacks
-             df_1 = cleaned_df[cleaned_df == 'apples']
-             df_2 = cleaned_df[cleaned_df == 'oranges']
-             df_3 = cleaned_df[cleaned_df == 'figs']
-             return {
+             df_1 = cleaned_df[cleaned_df['fruit'] == 'apples']
+             df_2 = cleaned_df[cleaned_df['fruit'] == 'oranges']
+             df_3 = cleaned_df[cleaned_df['fruit'] == 'figs']
+
+             datasets = {
                  'df_1': df_1.to_json(orient='split', date_format='iso'),
                  'df_2': df_2.to_json(orient='split', date_format='iso'),
                  'df_3': df_3.to_json(orient='split', date_format='iso'),
              }
 
+             return json.dumps(datasets)
+
         @app.callback(
             Output('graph', 'figure'),
-            [Input('intermediate-value', 'children'])
+            [Input('intermediate-value', 'children')])
         def update_graph_1(jsonified_cleaned_data):
-            dff = pd.read_json(jsonified_cleaned_data['df_1'], orient='split')
+            datasets = json.loads(jsonified_cleaned_data)
+            dff = pd.read_json(datasets['df_1'], orient='split')
             figure = create_figure_1(dff)
             return figure
 
         @app.callback(
             Output('graph', 'figure'),
-            [Input('intermediate-value', 'children'])
+            [Input('intermediate-value', 'children')])
         def update_graph_2(jsonified_cleaned_data):
-            dff = pd.read_json(jsonified_cleaned_data['df_2'], orient='split')
+            datasets = json.loads(jsonified_cleaned_data)
+            dff = pd.read_json(datasets['df_2'], orient='split')
             figure = create_figure_2(dff)
             return figure
 
         @app.callback(
             Output('graph', 'figure'),
-            [Input('intermediate-value', 'children'])
+            [Input('intermediate-value', 'children')])
         def update_graph_3(jsonified_cleaned_data):
-            dff = pd.read_json(jsonified_cleaned_data['df_3'], orient='split')
+            datasets = json.loads(jsonified_cleaned_data)
+            dff = pd.read_json(datasets['df_3'], orient='split')
             figure = create_figure_3(dff)
             return figure
         '''), summary='''Here's a simple example of how you might transport
@@ -309,17 +315,18 @@ def update_output_1(value):
 
     Syntax(summary="Here's what this example looks like in code",
            children=s('''
-        import copy
-        import dash
-        from dash.dependencies import Input, Output
-        import dash_html_components as html
-        import dash_core_components as dcc
-        import datetime
-        from flask_caching import Cache
-        import numpy as np
         import os
-        import pandas as pd
+        import copy
         import time
+        import datetime
+
+        import dash
+        import dash_core_components as dcc
+        import dash_html_components as html
+        import numpy as np
+        import pandas as pd
+        from dash.dependencies import Input, Output
+        from flask_caching import Cache
 
 
         app = dash.Dash(__name__)

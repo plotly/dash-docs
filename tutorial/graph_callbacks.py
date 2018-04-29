@@ -1,10 +1,7 @@
 import dash_html_components as html
 import dash_core_components as dcc
-from dash.dependencies import Input, Output
-import json
 
 import styles
-from server import app
 import tools
 
 print('Loading examples')
@@ -37,14 +34,14 @@ By setting those properties as `Input` properties, you can
 update your Dash application in response to these events.
 
 '''),
-    dcc.SyntaxHighlighter(examples[0][0], customStyle=styles.code_container),
+          dcc.SyntaxHighlighter(examples[0][0], customStyle=styles.code_container),
 
-    html.Div(examples[0][1], className="example-container")
+          html.Div(examples[0][1], className="example-container")
 ]
 
 
 layout.extend([
-dcc.Markdown('''
+    dcc.Markdown('''
 
 ***
 
@@ -69,7 +66,7 @@ metadata for the points that we've hovered over or selected.
 ])
 
 layout.extend([
-dcc.Markdown('''
+    dcc.Markdown('''
 
 This graph is highly interactive. Hovering over values will trigger our
 callbacks and highlight the associated point (country) in the other graph.

@@ -15,7 +15,7 @@ venv/
 .DS_Store
 cache
 bundle.js
-
+.idea
 .env
 
 ignore/indicators.csv

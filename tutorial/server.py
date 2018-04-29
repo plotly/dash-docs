@@ -7,11 +7,15 @@ from flask import Flask, request
 import json
 import plotly.graph_objs as go
 import os
+from flask_cors import CORS
 
-server = Flask(__name__, static_url_path='/dash/static', static_folder='./static')
+server = Flask(__name__, static_url_path='/static', static_folder='./static')
 server.secret_key = os.environ.get('secret_key', 'secret')
-app = Dash(__name__, server=server, url_base_pathname='/dash/', csrf_protect=False)
-app.css.config.serve_locally = True
-app.scripts.config.serve_locally = True
+app = Dash(
+    __name__,
+    server=server
+)
 
+app.css.config.serve_locally = False
+app.scripts.config.serve_locally = False
 app.config.suppress_callback_exceptions = True

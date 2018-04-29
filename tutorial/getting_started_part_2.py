@@ -6,9 +6,8 @@ import dash_html_components as html
 
 import plotly
 
-from dash.dependencies import Input, Output, Event, State
 import styles
-from tools import load_example, merge
+from tools import load_example
 
 examples = [
     load_example(s) for s in [
@@ -34,7 +33,7 @@ layout = html.Div([
     dcc.Markdown('''***
 
 1. [Installation](#installation)
-2. [Dash App Layout](/dash/getting-started-part-1)
+2. [Dash App Layout](/getting-started-part-1)
     - Generating HTML with Dash
     - Data Visualization in Dash
     - Markdown
@@ -78,7 +77,7 @@ layout = html.Div([
 
     dcc.Markdown('''
 
-        The [first part](/dash/getting-started) of this tutorial
+        The [first part](/getting-started) of this tutorial
         covered the `layout` of Dash apps. The `layout` of a Dash app
         describes what the app looks like.
         It is a hierarchical tree of components.
@@ -232,7 +231,7 @@ layout = html.Div([
     Even though only a single `Input` changes at a time (a user can only change
     the value of a single Dropdown in a given moment), Dash collects the current
     state of all of the specified `Input` properties and passes them into your
-    function for you. Your callback functions are always guarenteed to be passed
+    function for you. Your callback functions are always guaranteed to be passed
     the representative state of the app.
 
     Let's extend our example to include multiple outputs.
@@ -308,6 +307,6 @@ layout = html.Div([
 
     dcc.Link(
         html.A('Part 3 - Interactive Graphing'),
-        href='/dash/interactive-graphing')
+        href='/interactive-graphing')
 
 ])

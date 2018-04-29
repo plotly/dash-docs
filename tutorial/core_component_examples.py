@@ -82,7 +82,7 @@ dcc.Dropdown(
 
     html.H3('Dropdown Clear'),
     dcc.Markdown("The `clearable` property is set to `True` by default on all \
-            `Dropdown` components. To prevent the clearing of the selected dropdwon \
+            `Dropdown` components. To prevent the clearing of the selected dropdown \
             value, just set the `clearable` property to `False`"),
     ComponentBlock('''import dash_core_components as dcc
 
@@ -127,9 +127,8 @@ dcc.Dropdown(
 
     html.Hr(),
     html.H3('Disable Options'),
-    dcc.Markdown("To disable certain options displayed inside the dropdown \
-                 menu. Just set define the `disabled` property in the options \
-                 declaration."),
+    dcc.Markdown("To disable a particular option inside the dropdown \
+                 menu, set the `disabled` property in the options."),
     ComponentBlock('''import dash_core_components as dcc
 
 dcc.Dropdown(
@@ -382,8 +381,8 @@ dcc.RangeSlider(
         language='python'
     ),
     html.Div(examples['rangeslider-nonlinear'][1],
-        className='example-container',
-        style={'overflow': 'hidden', 'padding': '20px'}),
+             className='example-container',
+             style={'overflow': 'hidden', 'padding': '20px'}),
     html.Hr(),
     generate_prop_table('RangeSlider')
 ])
@@ -472,11 +471,11 @@ dcc.Markdown('''
     ComponentBlock("""import dash_core_components as dcc
 
 dcc.Markdown('''
-[Dash User Guide](https://plot.ly/dash/)
+[Dash User Guide](https://dash.plot.ly/)
 ''')"""),
     html.Hr(),
     html.H3("Inline Code"),
-    html.P("Any block of text surronded by ` ` will rendered as inline-code. "),
+    html.P("Any block of text surrounded by ` ` will rendered as inline-code. "),
 
     ComponentBlock("""import dash_core_components as dcc
 
@@ -598,7 +597,7 @@ DatePickerRange = html.Div(children=[
     dcc.Markdown("You can utilize any permutation of the string tokens \
                  shown in the table above to change how selected dates are \
                  displayed in the `DatePickerRange` component."),
-ComponentBlock('''import dash_core_components as dcc
+    ComponentBlock('''import dash_core_components as dcc
 from datetime import datetime as dt
 
 dcc.DatePickerRange(
@@ -607,7 +606,7 @@ dcc.DatePickerRange(
     start_date_placeholder_text='MMM Do, YY'
 )'''),
 
-ComponentBlock('''import dash_core_components as dcc
+    ComponentBlock('''import dash_core_components as dcc
 from datetime import datetime as dt
 dcc.DatePickerRange(
     end_date=dt.now(),
@@ -615,7 +614,7 @@ dcc.DatePickerRange(
     start_date_placeholder_text='M-D-Y-Q'
 )'''),
 
-ComponentBlock('''import dash_core_components as dcc
+    ComponentBlock('''import dash_core_components as dcc
 from datetime import datetime as dt
 
 dcc.DatePickerRange(
@@ -624,7 +623,7 @@ dcc.DatePickerRange(
     start_date_placeholder_text='MMMM Y, DD'
 )'''),
 
-ComponentBlock('''import dash_core_components as dcc
+    ComponentBlock('''import dash_core_components as dcc
 from datetime import datetime as dt
 
 dcc.DatePickerRange(
@@ -645,33 +644,37 @@ from datetime import datetime as dt
 
 dcc.DatePickerRange(
     month_format='MMM Do, YY',
-    end_date_placeholder_text='MMM Do, YY'
+    end_date_placeholder_text='MMM Do, YY',
+    start_date=dt.now()
 )'''),
-ComponentBlock('''import dash_core_components as dcc
+    ComponentBlock('''import dash_core_components as dcc
 from datetime import datetime as dt
 
 dcc.DatePickerRange(
     month_format='M-D-Y-Q',
-    end_date_placeholder_text='M-D-Y-Q'
+    end_date_placeholder_text='M-D-Y-Q',
+    start_date=dt.now()
 )'''),
-ComponentBlock('''import dash_core_components as dcc
+    ComponentBlock('''import dash_core_components as dcc
 from datetime import datetime as dt
 
 dcc.DatePickerRange(
     month_format='MMMM Y',
-    end_date_placeholder_text='MMMM Y'
+    end_date_placeholder_text='MMMM Y',
+    start_date=dt.now()
 )'''),
-ComponentBlock('''import dash_core_components as dcc
+    ComponentBlock('''import dash_core_components as dcc
 from datetime import datetime as dt
 
 dcc.DatePickerRange(
     month_format='X',
-    end_date_placeholder_text='X'
+    end_date_placeholder_text='X',
+    start_date=dt.now()
 )'''),
 
     html.Hr(),
 
-    html.H3("Vertical Calendar and Placholder Text"),
+    html.H3("Vertical Calendar and Placeholder Text"),
     dcc.Markdown("The `DatePickerRange` component can be rendered in two \
                   orientations, either horizontally or vertically. \
                   If `calendar_orientation` is set to `'vertical'`, it will \
@@ -709,7 +712,8 @@ from datetime import datetime as dt
 dcc.DatePickerRange(
     minimum_nights=5,
     clearable=True,
-    with_portal=True
+    with_portal=True,
+    start_date=dt.now()
 )'''),
 
     html.Hr(),
@@ -726,7 +730,8 @@ from datetime import datetime as dt
 
 dcc.DatePickerRange(
     is_RTL=True,
-    first_day_of_week=3
+    first_day_of_week=3,
+    start_date=dt.now()
 )''', language='python', customStyle=styles.code_container),
     html.Hr(),
     html.H3('DatePickerRange Properties'),
@@ -844,7 +849,7 @@ dcc.DatePickerSingle(
     display_format='MMM Do, YY'
 )'''),
 
-ComponentBlock('''import dash_core_components as dcc
+    ComponentBlock('''import dash_core_components as dcc
 from datetime import datetime as dt
 
 dcc.DatePickerSingle(
@@ -852,7 +857,7 @@ dcc.DatePickerSingle(
     display_format='M-D-Y-Q',
 )'''),
 
-ComponentBlock('''import dash_core_components as dcc
+    ComponentBlock('''import dash_core_components as dcc
 from datetime import datetime as dt
 
 dcc.DatePickerSingle(
@@ -860,7 +865,7 @@ dcc.DatePickerSingle(
     display_format='MMMM Y, DD'
 )'''),
 
-ComponentBlock('''import dash_core_components as dcc
+    ComponentBlock('''import dash_core_components as dcc
 from datetime import datetime as dt
 
 dcc.DatePickerSingle(
@@ -878,33 +883,37 @@ from datetime import datetime as dt
 
 dcc.DatePickerSingle(
     month_format='MMM Do, YY',
-    placeholder='MMM Do, YY'
+    placeholder='MMM Do, YY',
+    date=dt.now()
 )'''),
-ComponentBlock('''import dash_core_components as dcc
+    ComponentBlock('''import dash_core_components as dcc
 from datetime import datetime as dt
 
 dcc.DatePickerSingle(
     month_format='M-D-Y-Q',
-    placeholder='M-D-Y-Q'
+    placeholder='M-D-Y-Q',
+    date=dt.now()
 )'''),
 
-ComponentBlock('''import dash_core_components as dcc
+    ComponentBlock('''import dash_core_components as dcc
 from datetime import datetime as dt
 
 dcc.DatePickerSingle(
     month_format='MMMM Y',
-    placeholder='MMMM Y'
+    placeholder='MMMM Y',
+    date=dt.now()
 )'''),
 
-ComponentBlock('''import dash_core_components as dcc
+    ComponentBlock('''import dash_core_components as dcc
 from datetime import datetime as dt
 
 dcc.DatePickerSingle(
     month_format='X',
-    placeholder='X'
+    placeholder='X',
+    date=dt.now()
 )''', language='python', customStyle=styles.code_container),
     html.Hr(),
-    html.H3("Vertical Calendar and Placholder Text"),
+    html.H3("Vertical Calendar and Placeholder Text"),
     dcc.Markdown("The `DatePickerSingle` component can be rendered in two \
                   orientations, either horizontally or vertically. \
                   If `calendar_orientation` is set to `'vertical'`, it will \
@@ -918,7 +927,8 @@ from datetime import datetime as dt
 
 dcc.DatePickerSingle(
     calendar_orientation='vertical',
-    placeholder='Select a date'
+    placeholder='Select a date',
+    date=dt.now()
 )'''),
 
     html.Hr(),
@@ -936,7 +946,8 @@ from datetime import datetime as dt
 
 dcc.DatePickerSingle(
     clearable=True,
-    with_portal=True
+    with_portal=True,
+    date=dt.now()
 )'''),
 
     html.Hr(),
@@ -953,7 +964,8 @@ from datetime import datetime as dt
 
 dcc.DatePickerSingle(
     is_RTL=True,
-    first_day_of_week=3
+    first_day_of_week=3,
+    date=dt.now()
 )'''),
 
     html.Hr(),
@@ -964,7 +976,7 @@ dcc.DatePickerSingle(
 # Link
 Link = html.Div(children=[
     html.H3('Link Example'),
-    dcc.Markdown('To learn more about links, see the chapter on [Dash URLs](/dash/urls)'),
+    dcc.Markdown('To learn more about links, see the chapter on [Dash URLs](/urls)'),
     html.H3('Link Properties'),
     generate_prop_table('Link')
 ])
