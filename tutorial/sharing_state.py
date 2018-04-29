@@ -63,9 +63,6 @@ layout = html.Div([
     variable in one callback, that modification will not be
     applied to the rest of the workers.
 
-    Here is an example of code that is _not safe_ as
-    the `update_output_1` callback updates a global variable.
-
     ***
 
     ''')),
