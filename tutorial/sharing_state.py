@@ -484,12 +484,12 @@ def update_output_1(value):
         In some cases, you want to keep the data isolated to user sessions:
         one user's derived data shouldn't update the next user's derived data.
         One way to do this is to save the data in a hidden `Div`,
-        as demonstrated in the first example. 
+        as demonstrated in the first example.
 
-        Another way to do this is to save the data on the 
-        filesystem cache with and reference the data using 
-        a session id. In this method, since data is saved on the server,
-        instead of transported over the network, it is generally faster than the 
+        Another way to do this is to save the data on the
+        filesystem cache with with a seession id and reference the data
+        using that session id. In this method, since data is saved on the server,
+        instead of transported over the network, it is generally faster than the
         "hidden div" method.
 
 
@@ -505,6 +505,12 @@ def update_output_1(value):
         This prevents the cache from being overfilled with data.
         - Creates unique session IDs by embedding a hidden random string into
         the app's layout and serving a unique layout on every page load.
+
+        > Note: As with all examples that send data to the client, be aware
+        > that these sessions aren't necessarily secure or encrypted.
+        > These session IDs may be vulnerable to
+        > [Session Fixation](https://en.wikipedia.org/wiki/Session_fixation)
+        > style attacks.
 
         ''')),
 
@@ -525,7 +531,7 @@ def update_output_1(value):
         - The timestamps of the dataframe don't update when we retrieve
         the data. This data is cached as part of the user's session.
         - Retrieving the data initially takes 5 seconds but successive queries
-        are instance, as the data has been cached.
+        are instant, as the data has been cached.
         - The second session displays different data than the first session:
         the data that is shared between callbacks is isolated to individual
         user sessions.
