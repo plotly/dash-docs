@@ -81,10 +81,7 @@ class Tests(IntegrationTests):
 
         def visit_and_snapshot(href):
             self.driver.get('http://localhost:8050{}'.format(href))
-            self.wait_for_element_by_id(
-                'wait-for-page-{}'.format(href),
-                get_message=lambda: 'not found: wait-for-page-{}'.format(href)
-            )
+            self.wait_for_element_by_id('wait-for-page-{}'.format(href))
             time.sleep(5)
             self.snapshot(href)
             self.driver.back()
