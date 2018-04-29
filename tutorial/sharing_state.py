@@ -52,7 +52,7 @@ layout = html.Div([
     workers** so that callbacks can be executed in parallel.
     This is commonly done with `gunicorn` using syntax like
     ```
-    $ gunicorn --workers 4 --threads 2 app:server
+    $ gunicorn --workers 4 app:server
     ```
 
     When Dash apps run across multiple workers, their memory
