@@ -55,6 +55,9 @@ layout = html.Div([
     $ gunicorn --workers 4 app:server
     ```
 
+    (`app` refers to a file named `app.py` and `server` refers to a variable
+    in that file named `server`: `server = app.server`).
+
     When Dash apps run across multiple workers, their memory
     _is not shared_. This means that if you modify a global
     variable in one callback, that modification will not be
