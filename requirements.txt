@@ -7,8 +7,8 @@ dash==0.21.1
 dash-auth==1.0.0
 dash-core-components==0.23.0
 dash-dangerously-set-inner-html==0.0.1
-dash-html-components==0.10.1
-dash-renderer==0.12.1
+dash-html-components==0.11.0
+dash-renderer==0.13.0
 dash-table-experiments==0.6.0
 decorator==4.3.0
 enum34==1.1.6
