@@ -376,6 +376,70 @@ layout = html.Div(className='gallery', children=[
         ]),
     ]),
 
+    dcc.Markdown('''
+    
+    ***
+    
+    ## Component Libraries
+    
+    '''.replace('    ', '')),
+
+    html.Div(className="row", children=[
+        html.Div(className="six columns", children=[
+            html.A(
+                className='image-link',
+                href='https://github.com/plotly/dash-table-experiments',
+                children=html.Img(
+                    src='https://github.com/plotly/dash-table-experiments/raw/master/images/DataTable.gif',
+                    alt='Example of a Dash Interactive Table'
+                )
+            ),
+
+            dcc.Markdown(
+                className="markdown-links",
+                children='''
+            [Join the discussion](https://community.plot.ly/t/display-tables-in-dash/4707/38)| [Source Code](https://github.com/plotly/dash-table-experiments)
+            '''.replace('    ', '')
+            ),
+
+            dcc.Markdown('''
+    
+            Dash is currently incubating an interactive table component that provides
+            built-in filtering, row-selection, editing, and sorting.
+            Prototypes of this component are being developed in the
+            [`dash-table-experiments`](https://github.com/plotly/dash-table-experiments)
+            repository. Join the discussion in the
+            [Dash Community Forum](https://community.plot.ly/t/display-tables-in-dash/4707/38).
+    
+            This example was written in ~100 lines of code. 
+    
+            '''.replace('    ', '')),
+        ]),
+
+        html.Div(className="six columns", children=[
+            html.A(
+                className='image-link',
+                href='https://dash.plot.ly/dash-core-components',
+                children=html.Img(
+                    src="https://raw.githubusercontent.com/xhlulu/dash-docs/xhlulu-additional-images/images/dash-core-components.png",
+                    alt='Link to Dash Core Components'
+                )
+            ),
+
+            dcc.Markdown(
+                className="markdown-links",
+                children='''
+            [Dash Core Components](https://dash.plot.ly/dash-core-components)| [Source Code](https://github.com/plotly/dash-core-components)
+            '''.replace('    ', '')
+            ),
+
+            dcc.Markdown('''
+            Dash comes with a set of rich components like sliders, dropdowns, graphs, and more. 
+            [View the official Dash documentation to learn more](https://dash.plot.ly/dash-core-components).
+            '''.replace('    ', ''))
+        ]),
+    ]),
+
     ####################################################################################################################
     # LIVE UPDATES SECTION
     dcc.Markdown('''    
@@ -458,6 +522,55 @@ layout = html.Div(className='gallery', children=[
         ]),
 
         html.Div(className="six columns", children=[
+            html.A(
+                className='image-link',
+                href='https://dash.plot.ly/dash-core-components',
+                children=html.Img(
+                    src="https://raw.githubusercontent.com/xhlulu/dash-docs/xhlulu-additional-images/images/dash-core-components.png",
+                    alt='Link to Dash Core Components'
+                )
+            ),
+
+            dcc.Markdown(
+                className="markdown-links",
+                children='''
+                [Dash Core Components](https://dash.plot.ly/dash-core-components)| [Source Code](https://github.com/plotly/dash-core-components)
+                '''.replace('    ', '')
+            ),
+
+            dcc.Markdown('''
+            Dash comes with a set of rich components like sliders, dropdowns, graphs, and more. 
+            [View the official Dash documentation to learn more](https://dash.plot.ly/dash-core-components).
+            '''.replace('    ', ''))
+        ]),
+    ]),
+
+    html.Div(className="row", children=[
+        html.Div(className="six columns", children=[
+            html.A(
+                className='image-link',
+                href='https://community.plot.ly/t/show-and-tell-community-thread/7554',
+                children=html.Img(
+                    src="https://raw.githubusercontent.com/xhlulu/dash-docs/xhlulu-additional-images/images/dash-community-components.png",
+                    alt='Link to Dash Core Components'
+                )
+            ),
+
+            dcc.Markdown(
+                className="markdown-links",
+                children='''
+                [Dash Community Components](https://community.plot.ly/t/show-and-tell-community-thread/7554)
+                '''.replace('    ', '')
+            ),
+
+            dcc.Markdown('''
+            Dash has a [plugin system](https://dash.plot.ly/plugins) for integrating your own React.js components. 
+            The Dash community has built many of their component libraries, like 
+            [Video Components](https://community.plot.ly/t/modifying-a-dom-property-in-html-video/7649/11) 
+            and [Large File Upload](https://community.plot.ly/t/show-and-tell-dash-resumable-upload/9519). 
+            View more community maintained components and other projects in the Dash Community Forum’s 
+            [Show and Tell Thread](https://community.plot.ly/t/show-and-tell-community-thread/7554)
+            '''.replace('    ', ''))
         ]),
     ]),
 
