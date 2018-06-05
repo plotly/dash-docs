@@ -382,7 +382,7 @@ layout = html.Div(className='gallery', children=[
     
     ***
     
-    ## Machine Learning and Computer Vision
+    ## Machine Learning & Computer Vision
     
     '''.replace('    ', '')),
 
