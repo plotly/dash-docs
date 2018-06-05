@@ -392,7 +392,7 @@ layout = html.Div(className='gallery', children=[
                 className='image-link',
                 href='https://github.com/plotly/dash-object-detection',
                 children=html.Img(
-                    src='https://raw.githubusercontent.com/xhlulu/dash-docs/xhlulu-additional-images/images/dash-object-detection-app.png',
+                    src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-object-detection-app.png',
                     alt='Link to Object Detection App'
                 )
             ),
@@ -419,7 +419,7 @@ layout = html.Div(className='gallery', children=[
                 className='image-link',
                 href='https://github.com/plotly/dash-live-model-training',
                 children=html.Img(
-                    src="https://raw.githubusercontent.com/xhlulu/dash-docs/xhlulu-additional-images/images/dash-live-model-training-viewer.png",
+                    src="https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-live-model-training-viewer.png",
                     alt='Link to Live Model Training Viewer'
                 )
             ),
@@ -527,7 +527,7 @@ layout = html.Div(className='gallery', children=[
                 className='image-link',
                 href='https://dash.plot.ly/dash-core-components',
                 children=html.Img(
-                    src="https://raw.githubusercontent.com/xhlulu/dash-docs/xhlulu-additional-images/images/dash-core-components.png",
+                    src="https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-core-components.png",
                     alt='Link to Dash Core Components'
                 )
             ),
@@ -552,7 +552,7 @@ layout = html.Div(className='gallery', children=[
                 className='image-link',
                 href='https://community.plot.ly/t/show-and-tell-community-thread/7554',
                 children=html.Img(
-                    src="https://raw.githubusercontent.com/xhlulu/dash-docs/xhlulu-additional-images/images/dash-community-components.png",
+                    src="https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-community-components.png",
                     alt='Link to Dash Core Components'
                 )
             ),
