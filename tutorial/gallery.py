@@ -287,7 +287,8 @@ layout = html.Div(className='gallery', children=[
     ),
     dcc.Markdown('''
 
-    [View the app](http://brain-surface-viewer.herokuapp.com/) | [View the source code](https://github.com/plotly/dash-brain-surface-viewer)
+    [View the app](http://brain-surface-viewer.herokuapp.com/) | \
+    [View the source code](https://github.com/plotly/dash-brain-surface-viewer)
 
     ***
 
@@ -301,13 +302,15 @@ layout = html.Div(className='gallery', children=[
         className='image-link',
         href='https://opioid-epidemic.herokuapp.com/',
         children=html.Img(
-            src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/opioid-epidemic.png',
+            src='https://raw.githubusercontent.com/plotly/dash-docs/'
+                'master/images/opioid-epidemic.png',
             alt='Screenshot of opioid epidemic'
         )
     ),
     dcc.Markdown('''
 
-    [View the app](https://opioid-epidemic.herokuapp.com/) | [View the source code](https://github.com/plotly/dash-opioid-epidemic-demo)
+    [View the app](https://opioid-epidemic.herokuapp.com/) | \
+    [View the source code](https://github.com/plotly/dash-opioid-epidemic-demo)
 
     ***
 
@@ -334,13 +337,38 @@ layout = html.Div(className='gallery', children=[
         className='image-link',
         href='https://vanguard-report.herokuapp.com/',
         children=html.Img(
-            src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/vanguard.gif',
+            src='https://raw.githubusercontent.com/plotly/dash-docs/'
+                'master/images/vanguard.gif',
             alt='Screenshot of vanguard report'
         )
     ),
     dcc.Markdown('''
 
-    [View the app](https://vanguard-report.herokuapp.com/) | [View the source code](https://github.com/plotly/dash-vanguard-report)
+    [View the app](https://vanguard-report.herokuapp.com/) | \
+    [View the source code](https://github.com/plotly/dash-vanguard-report)
+
+    ***
+
+    ## Dash Datashader
+
+    Visualize hundreds of millions of points interactively \
+    with Dash and Datashader.
+
+    '''.replace('    ', '')),
+
+    html.A(
+        className='image-link',
+        href='https://dash-datashader.herokuapp.com/',
+        children=html.Img(
+            src='https://raw.githubusercontent.com/plotly/dash-docs/'
+                'master/images/dash-datashader.png',
+            alt='Screenshot of dash datashader'
+        )
+    ),
+    dcc.Markdown('''
+
+    [View the app](https://dash-datashader.herokuapp.com/) | \
+    [View the source code](https://github.com/plotly/dash-datashader)
 
     ***
 
