@@ -441,6 +441,41 @@ layout = html.Div(className='gallery', children=[
         ]),
     ]),
 
+    # BIG DATA
+    dcc.Markdown(dedent('''
+    
+    ***
+    
+    ## Big Data
+    
+    ''')),
+
+    html.Div(className="row", children=[
+        html.A(
+            className='image-link',
+            href='https://dash-datashader.herokuapp.com/',
+            children=html.Img(
+                src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-datashader.png',
+                alt='Screenshot of dash datashader'
+            )
+        ),
+
+        dcc.Markdown(
+            className="markdown-links",
+            children=dedent('''
+            [Dash Datashader](https://dash-datashader.herokuapp.com/) | [Source code](https://github.com/plotly/dash-datashader)
+            ''')
+        ),
+
+        dcc.Markdown(dedent('''
+
+        Visualize hundreds of millions of points interactively with Dash and Datashader.
+
+        ''')),
+
+    ]),
+
+
     # LIVE UPDATES SECTION
     dcc.Markdown(dedent('''    
     
