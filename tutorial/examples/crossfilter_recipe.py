@@ -62,7 +62,6 @@ def highlight(x, y):
                     'customdata': df.index,
                     'type': 'scatter',
                     'mode': 'markers+text',
-                    'textposition': 'top',
                     'marker': {
                         'color': 'rgba(0, 116, 217, 0.7)',
                         'size': 12,
