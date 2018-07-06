@@ -255,7 +255,7 @@ def generate_instructions(chapter, platform):
             ''')),
 
             dcc.SyntaxHighlighter(s('''$ cd dash-on-premise-sample-app
-                $ git remote add plotly dokku@your-dash-app-manager:your-dash-app-name'''),
+                $ git remote add plotly-[your-dash-app-name] dokku@your-dash-app-manager:your-dash-app-name'''),
                 customStyle=styles.code_container,
                 language='python'
             ),
