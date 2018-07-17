@@ -437,15 +437,18 @@ def generate_instructions(chapter, platform):
             To view the logs for a specific Dash app run the following command
             in your terminal:
 
-            `ssh dokku@<your-dash-domain> logs <your-app-name>`
+            ```
+            ssh dokku@<your-dash-domain> logs <your-app-name> --num -1
+            ```
 
             This will work for any app you have permission on, and uses the
             same mechanism as pushing the app via ssh.
-            Please note, to continually stream the logs you can add the `-t`
-            flag:
-
-            `ssh dokku@<your-dash-domain> logs <your-app-name> -t`
-
+            
+            **Options**
+            - `--num`, `-n`: The number of lines to display. By default, 100 lines are displayed.
+               Set to -1 to display _all_ of the logs. Note that we only store logs from the latest app deploy.
+            - `--tail`, -`t`: Continuously stream the logs.
+            - `--quiet`, -`q`: Display the raw logs without colors, times, and names.
             ''')),
 
             dcc.Markdown(s('''
