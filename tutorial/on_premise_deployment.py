@@ -447,8 +447,8 @@ def generate_instructions(chapter, platform):
             **Options**
             - `--num`, `-n`: The number of lines to display. By default, 100 lines are displayed.
                Set to -1 to display _all_ of the logs. Note that we only store logs from the latest app deploy.
-            - `--tail`, -`t`: Continuously stream the logs.
-            - `--quiet`, -`q`: Display the raw logs without colors, times, and names.
+            - `--tail`, `-t`: Continuously stream the logs.
+            - `--quiet`, `-q`: Display the raw logs without colors, times, and names.
             ''')),
 
             dcc.Markdown(s('''
