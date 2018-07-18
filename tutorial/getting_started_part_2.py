@@ -23,57 +23,16 @@ examples = [
 layout = html.Div([
 
     dcc.Markdown('''
-    # Dash Tutorial - Part 2: Interactivity
+    # Basic Callbacks
 
     This tutorial will walk you through the fundamentals of creating Dash apps
     through {} self-contained apps.
+    
+    Before you work through this tutorial, make sure that you have the 
+    [appropriate libraries installed](/installation) and that you have
+    [learned about the Dash Layout](/getting-started).
 
     '''.format(len(examples)).replace('    ', '')),
-
-    dcc.Markdown('''***
-
-1. [Installation](#installation)
-2. [Dash App Layout](/getting-started-part-1)
-    - Generating HTML with Dash
-    - Data Visualization in Dash
-    - Markdown
-    - Core Components
-    - Calling `help`
-3. [Interactivity](#interactivity)
-    - Fundamentals
-    - Multiple Inputs
-    - Multiple Outputs
-    - Graph Crossfiltering
-
-  ***'''),
-
-    html.H2('''
-    Installation
-    ''', id='installation'),
-
-    dcc.Markdown('''
-
-    In your terminal, install several dash libraries.
-    These libraries are under active development,
-    so install and upgrade frequently.
-    Python 2 and 3 are supported.'''.replace('    ', '')),
-
-    dcc.SyntaxHighlighter('''pip install dash=={}  # The core dash backend
-        pip install dash-renderer=={}  # The dash front-end
-        pip install dash-html-components=={}  # HTML components
-        pip install dash-core-components=={}  # Supercharged components
-        pip install plotly=={}  # Plotly graphing library used in examples
-    '''.replace('    ', '').format(
-        dash.__version__,
-        dash_renderer.__version__,
-        html.__version__,
-        dcc.__version__,
-        plotly.__version__
-    ), customStyle=styles.code_container),
-
-    html.H2('''
-    Interactivity
-    ''', id='interactivity'),
 
     dcc.Markdown('''
 
