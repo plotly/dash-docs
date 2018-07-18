@@ -27,6 +27,12 @@ source activate dash_docs
 4. open http://127.0.0.1:8000 in your browser
 
 
+on Windows systems `waitress` can be a replacement for `gunicorn`
+3. `pip install waitress`
+4. `waitress-serve --listen=*:8000 tutorial.run:server`
+5. open http://127.0.0.1:8000 in your browser
+
+
 ### Contributing
 
 PRs accepted! The Dash user guide is itself a Dash app. Each file in `tutorial` represents a "chapter" of the docs.
