@@ -20,6 +20,12 @@ layout = html.Div([
     dcc.Markdown('''
     # Interactive Visualizations
 
+    > This is the *5th* chapter of the [Dash Tutorial](/).
+    > The [previous chapter](/state) covered callbacks with `State`
+    > and the [next chapter](/sharing-data-between-callbacks) describes how to
+    > share data between callbacks.
+    > Just getting started? Make sure to [install the necessary dependencies](/installation).
+
     The `dash_core_components` library includes a component called `Graph`.
 
     `Graph` renders interactive data visualizations using the open source
@@ -122,11 +128,13 @@ layout = html.Div([
 
     ***
 
-    The final chapter of the Dash tutorial explains one last concept of dash:
-    Callbacks with `dash.dependencies.State`.
-    `State` is useful for UIs that contain forms or buttons.
+    The next chapter of the Dash User Guide explains how to share data between
+    callbacks.
     ''')),
 
-    dcc.Link('Dash Tutorial Part 4. Callbacks With State', href='/state')
+    dcc.Link(
+        'Dash Tutorial Part 6. Sharing Data Between Callbacks',
+        href='/sharing-data-between-callbacks'
+    )
 
 ])

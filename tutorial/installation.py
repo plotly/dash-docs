@@ -32,8 +32,8 @@ layout = html.Div([
     ), customStyle=styles.code_container),
 
     html.Div([
-        'Ready? Now, get started with the ',
-        dcc.Link('Dash Tutorial - Part 1', href='/getting-started'),
+        'Ready? Now, let\'s ',
+        dcc.Link('make your first Dash app', href='/getting-started'),
         '.'
     ])
 

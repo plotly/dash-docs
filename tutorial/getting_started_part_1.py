@@ -5,13 +5,14 @@ import dash_core_components as dcc
 import dash_html_components as html
 
 import plotly
+from textwrap import dedent as s
 
 import styles
 from tools import load_example
 from components import Example, Syntax
 
 examples = [
-    load_example(s) for s in [
+    load_example(example) for example in [
         'tutorial/examples/getting_started_layout_1.py',
         'tutorial/examples/getting_started_layout_2.py',
         'tutorial/examples/getting_started_table.py',
@@ -24,66 +25,29 @@ examples = [
 
 layout = html.Div([
 
-    dcc.Markdown('''
-    # Dash Tutorial - Part 1: App Layout
 
-    This tutorial will walk you through the fundamentals of creating Dash apps
-    through {} self-contained apps.
+    dcc.Markdown(s('''
+    # Dash Layout
+
+    > This is the *2nd* chapter of the [Dash Tutorial](/).
+    > The [previous chapter](/installation) covered installation
+    > and the [next chapter](/getting-started-part-2) covers Dash callbacks.
+    ''')),
+
+
+    dcc.Markdown('''
+
+    This tutorial will walk you through a fundamental aspect of Dash apps, the
+    app `layout`, through {} self-contained apps.
 
     '''.format(len(examples)).replace('    ', '')),
 
     dcc.Markdown('''***
 
-1. [Installation](#installation)
-2. [Dash App Layout](#dash-app-layout)
-    - Generating HTML with Dash
-    - Data Visualization in Dash
-    - Markdown
-    - Core Components
-    - Calling `help`
-3. [Interactivity](/getting-started-part-2)
-    - Fundamentals
-    - Multiple Inputs
-    - Multiple Outputs
-    - Graph Crossfiltering
-
-  ***'''),
-
-    html.H2('''
-    Installation
-    ''', id='installation'),
-
-    dcc.Markdown('''
-
-    In your terminal, install several dash libraries.
-    These libraries are under active development,
-    so install and upgrade frequently.
-    Python 2 and 3 are supported.'''.replace('    ', '')),
-
-    dcc.SyntaxHighlighter('''pip install dash=={}  # The core dash backend
-        pip install dash-renderer=={}  # The dash front-end
-        pip install dash-html-components=={}  # HTML components
-        pip install dash-core-components=={}  # Supercharged components
-        pip install plotly --upgrade  # Latest Plotly graphing library
-    '''.replace('    ', '').format(
-        dash.__version__,
-        dash_renderer.__version__,
-        html.__version__,
-        dcc.__version__,
-        plotly.__version__
-    ), customStyle=styles.code_container),
-
-    html.H2('''
-    Dash App Layout
-    ''', id='dash-app-layout'),
-
-    dcc.Markdown('''***
-
-    #### Generating HTML with Dash
-
     Dash apps are composed of two parts. The first part is the "`layout`" of
     the app and it describes what the application looks like.
-    The second part describes the interactivity of the application.
+    The second part describes the interactivity of the application and will be
+    covered in the [next chapter](/getting-started-part-2).
 
     Dash provides Python classes for all of the visual components of
     the application. We maintain a set of components in the
@@ -338,7 +302,7 @@ class Dropdown(dash.development.base_component.Component)
     '''),
 
     dcc.Link(
-        'Dash Tutorial - Part 2: Basic Callbacks',
+        'Dash Tutorial Part 3: Basic Callbacks',
         href="/getting-started-part-2"
     )
 

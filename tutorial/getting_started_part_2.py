@@ -5,12 +5,13 @@ import dash_core_components as dcc
 import dash_html_components as html
 
 import plotly
+from textwrap import dedent as s
 
 import styles
 from tools import load_example
 
 examples = [
-    load_example(s) for s in [
+    load_example(example) for example in [
         'tutorial/examples/getting_started_interactive_simple.py',
         'tutorial/examples/getting_started_graph.py',
         'tutorial/examples/getting_started_multiple_viz.py',
@@ -22,71 +23,28 @@ examples = [
 
 layout = html.Div([
 
-    dcc.Markdown('''
-    # Dash Tutorial - Part 2: Interactivity
+    dcc.Markdown(s('''
+    # Basic Dash Callbacks
 
-    This tutorial will walk you through the fundamentals of creating Dash apps
-    through {} self-contained apps.
+    > This is the *3rd* chapter of the [Dash Tutorial](/).
+    > The [previous chapter](/getting-started-) covered the Dash app `layout`
+    > and the [next chapter](/state) covers an additional concept of callbacks
+    > known as `state`.
+    > Just getting started? Make sure to [install the necessary dependencies](/installation).
 
-    '''.format(len(examples)).replace('    ', '')),
-
-    dcc.Markdown('''***
-
-1. [Installation](#installation)
-2. [Dash App Layout](/getting-started-part-1)
-    - Generating HTML with Dash
-    - Data Visualization in Dash
-    - Markdown
-    - Core Components
-    - Calling `help`
-3. [Interactivity](#interactivity)
-    - Fundamentals
-    - Multiple Inputs
-    - Multiple Outputs
-    - Graph Crossfiltering
-
-  ***'''),
-
-    html.H2('''
-    Installation
-    ''', id='installation'),
+    ''')),
 
     dcc.Markdown('''
 
-    In your terminal, install several dash libraries.
-    These libraries are under active development,
-    so install and upgrade frequently.
-    Python 2 and 3 are supported.'''.replace('    ', '')),
-
-    dcc.SyntaxHighlighter('''pip install dash=={}  # The core dash backend
-        pip install dash-renderer=={}  # The dash front-end
-        pip install dash-html-components=={}  # HTML components
-        pip install dash-core-components=={}  # Supercharged components
-        pip install plotly=={}  # Plotly graphing library used in examples
-    '''.replace('    ', '').format(
-        dash.__version__,
-        dash_renderer.__version__,
-        html.__version__,
-        dcc.__version__,
-        plotly.__version__
-    ), customStyle=styles.code_container),
-
-    html.H2('''
-    Interactivity
-    ''', id='interactivity'),
-
-    dcc.Markdown('''
-
-        The [first part](/getting-started) of this tutorial
-        covered the `layout` of Dash apps. The `layout` of a Dash app
-        describes what the app looks like.
-        It is a hierarchical tree of components.
+        In the [previous chapter on the `app.layout`](/getting-started) we learned
+        that the `app.layout` describes what the app looks like and is
+        a hierarchical tree of components.
         The `dash_html_components` library provides classes for all of the HTML
         tags and the keyword arguments describe the HTML attributes like `style`,
         `className`, and `id`. The `dash_core_components` library
         generates higher-level components like controls and graphs.
 
-        The second part of the tutorial describes how to make your
+        This chapter describes how to make your
         Dash apps interactive.
 
         Let's get started with a simple example.
@@ -299,14 +257,17 @@ layout = html.Div([
 
     '''.replace('    ', '')),
 
-    dcc.Markdown('''
-    The next chapter explains how to use these principles with the
-    `dash_core_components.Graph` component to make applications that
-    respond to interactions with graphs on the page.
-    '''.replace('    ', '')),
+
+    dcc.Markdown(s('''
+        The next part of the Dash tutorial covers an additional concept of
+        Dash callbacks: `State`
+        interactive.
+    ''')),
 
     dcc.Link(
-        html.A('Part 3 - Interactive Graphing'),
-        href='/interactive-graphing')
+        'Dash Tutorial Part 4: State',
+        href="/state"
+    )
+
 
 ])
