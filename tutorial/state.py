@@ -66,7 +66,7 @@ layout = html.Div([
     '''.replace('    ', '')),
 
     dcc.Link(
-        html.A('Dash Tutorial Part 5. Interactive Graphing'),
+        'Dash Tutorial Part 5. Interactive Graphing',
         href='/interactive-graphing'),
 
 ])
