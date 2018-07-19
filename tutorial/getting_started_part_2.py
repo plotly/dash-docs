@@ -261,7 +261,6 @@ layout = html.Div([
     dcc.Markdown(s('''
         The next part of the Dash tutorial covers an additional concept of
         Dash callbacks: `State`
-        interactive.
     ''')),
 
     dcc.Link(
