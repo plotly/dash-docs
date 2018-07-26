@@ -25,13 +25,15 @@ examples = {
 
 
 layout = html.Div([
+    html.H1('Adding Local CSS & JS and Overriding the Page-Load Template'),
 
     dcc.Markdown(s('''
     Dash applications are rendered in the web browser with CSS and JavaScript.
     On page load, Dash serves a small HTML template that includes references to
-    the CSS and JavaScript that is required to render the application.
+    the CSS and JavaScript that are required to render the application.
     This chapter covers everything that you need to know about configuring
-    this HTML file and about including external CSS and JavaScript in Dash.
+    this HTML file and about including external CSS and JavaScript in Dash
+    applications.
 
     **Table of Contents**
     - Adding Your Own CSS and JavaScript to Dash Apps
@@ -46,7 +48,8 @@ layout = html.Div([
     **New in dash 0.22.0**
 
     Including custom CSS or JavaScript in your Dash apps is simple.
-    Just create a folder named `assets` and include your CSS and JavaScript
+    Just create a folder named `assets` in the root of your app directory
+    and include your CSS and JavaScript
     files in that folder. Dash will automatically serve all of the files that
     are included in this folder.
 
@@ -83,11 +86,11 @@ layout = html.Div([
 
     dcc.SyntaxHighlighter(
         s('''body {
-            font-family: sans-serif;
-        }
-        h1, h2, h3, h4, h5, h6 {
-            color: hotpink
-        }
+    font-family: sans-serif;
+}
+h1, h2, h3, h4, h5, h6 {
+    color: hotpink
+}
         '''),
         language='css',
         customStyle=styles.code_container
@@ -102,15 +105,15 @@ layout = html.Div([
 
     dcc.SyntaxHighlighter(
         s('''.app-header {
-            height: 60px;
-            line-height: 60px;
-            border-bottom: thin lightgrey solid;
-        }
+    height: 60px;
+    line-height: 60px;
+    border-bottom: thin lightgrey solid;
+}
 
-        .app-header .app-header--title {
-            font-size: 22px;
-            padding-left: 5px;
-        }
+.app-header .app-header--title {
+    font-size: 22px;
+    padding-left: 5px;
+}
         '''),
         language='css',
         customStyle=styles.code_container
@@ -133,12 +136,12 @@ layout = html.Div([
 
     html.Hr(),
 
-    html.Div('''
+    dcc.Markdown(s('''
         When you run `app.py`, your app should look something like this:
         (Note that there may be some slight differences in appearance as
         the CSS from this Dash User Guide is applied to all of these embedded
         examples.)
-    '''),
+    ''')),
 
     html.Div(
         examples['local-css'][1],
@@ -154,20 +157,24 @@ layout = html.Div([
 
     There are a few things to keep in mind when including assets automatically:
     1 - Currently, the files are automatically cached by the browser. So, if
-    you make changes to the file you may need to do disable your browser's cache.
+    you make changes to the file you may need to disable your browser's cache.
     [Learn how to disable your browser cache](https://stackoverflow.com/questions/5690269/).
     Note that we plan on fixing this issue, [track our progress in dash#303](https://github.com/plotly/dash/issues/303).
+
     2 - The following file types will automatically be included:
-        - Css files suffixed with `.css`
+        - CSS files suffixed with `.css`
         - JavaScript files suffixed with `.js`
-        - Favicon files suffixed with `.ico`
+        - A single file named `favicon.io` (the page tab's icon)
+
     3 - Dash will include the files in alphanumerical order by filename.
     So, we recommend prefixing your filenames with numbers if you need to ensure
     their order (e.g. `10_typography.css`, `20_header.css`)
+
     4 - If you want to include CSS from a remote URL, then we recommend
     overriding the app's HTML template, as described in the next section.
     We are working on an easier method for including remote CSS urls in
     [dash#302](https://github.com/plotly/dash/issues/302)
+
     5 - Your custom CSS will be included _after_ the Dash component CSS
 
     ***

@@ -16,7 +16,7 @@ app.layout = html.Div([
             html.H5('Overview'),
             html.Div('''
                 This is an example of a simple Dash app with
-                some customized CSS.
+                local, customized CSS.
             ''')
         ])
     )

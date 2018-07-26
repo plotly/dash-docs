@@ -155,7 +155,7 @@ chapters = {
     'external': {
         'url': '/external-resources',
         'content': external_css_and_js.layout,
-        'name': 'Adding Local CSS and JS and Customizing the HTML Served on Page Load',
+        'name': 'Adding Local CSS & JS and Overriding the Page-Load Template',
         'description': '''
             New in dash v0.22.0! Learn how to add custom CSS and JS to your
             application with the `assets` directory. Also, learn how to
