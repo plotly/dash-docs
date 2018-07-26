@@ -155,13 +155,13 @@ chapters = {
     'external': {
         'url': '/external-resources',
         'content': external_css_and_js.layout,
-        'name': 'External CSS and JS',
-        'description': 'By default, Dash loads CSS and JS assets from a ' \
-                       'fast, global CDN - but you can optionally these ' \
-                       'resources locally, making your apps completely self ' \
-                       'contained (no internet access required!). Also, ' \
-                       'learn how to append your own CSS styleseets or JS ' \
-                       'scripts to your apps.'
+        'name': 'Adding Local CSS and JS and Customizing the HTML Served on Page Load',
+        'description': '''
+            New in dash v0.22.0! Learn how to add custom CSS and JS to your
+            application with the `assets` directory. Also, learn how to
+            customize the HTML template that Dash serves on page load in order
+            to add custom meta tags, customize the page's title, and more.
+        '''
     },
 
     'urls': {
