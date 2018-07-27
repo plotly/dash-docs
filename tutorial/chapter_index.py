@@ -280,6 +280,13 @@ chapters = {
         'description': 'Link examples, properties, and reference.'
     },
 
+    'tabs-example': {
+        'url': '/dash-core-components/tabs',
+        'content': examples.Tabs,
+        'name': 'Tabs & Tab Component',
+        'description': 'Tabs examples, properties, and reference.'
+    },
+
     'textarea-examples': {
         'url': '/dash-core-components/textarea',
         'content': examples.Textarea,

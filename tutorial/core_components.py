@@ -329,36 +329,36 @@ dcc.DatePickerRange(
 
     html.H3('Tabs'),
     dcc.Markdown('''
+    The Tabs and Tab components can be used to create tabbed sections in your app. You can let Dash handle 
+    the selection logic, or program it yourself so you have a bit more control. A simple example where you
+    set the content you want to display upon selecting a Tab as it's children, looks like this:
+    '''),
 
-    The `dcc.Tabs` component is currently available in the prerelease
-    channel of the `dash-core-components` package.
-    To try it out, see the tab component
-    [Pull Request on GitHub](https://github.com/plotly/dash-core-components/pull/74).
-    '''.replace('    ', '')),
+    dcc.SyntaxHighlighter('''import dash_core_components as dcc
+from datetime import datetime as dt
 
-    html.A(
-        className="image-link",
-        href="https://github.com/plotly/dash-core-components/pull/74",
-        children=html.Img(
-            src="https://user-images.githubusercontent.com/1280389/30461515-0022526c-998d-11e7-8fcc-66ba308c8b38.gif",
-            alt="Dash Vertical Tabs Component"
-        )
-    ),
+dcc.Tabs(id="tabs", children=[
+    dcc.Tab(label='Tab one', children=[
+        html.Div([
+            html.H1("This is the content in tab 1"),
+        ])
+    ]),
+    dcc.Tab(label='Tab two', children=[
+        html.Div([
+            html.H1("This is the content in tab 2"),
+            html.P("A graph here would be nice!")
+        ])
+    ]),
+    dcc.Tab(label='Tab three', children=[
+        html.Div([
+            html.H1("This is the content in tab 3"),
+        ])
+    ]),
+]
+''', language='python', customStyle=styles.code_container),
 
-    html.A(
-        className="image-link",
-        href="https://github.com/plotly/dash-core-components/pull/74",
-        children=html.Img(
-            src="https://user-images.githubusercontent.com/1280389/30497812-46cc1910-9a22-11e7-8baa-9df0191bc828.png",
-            alt="Dash Horizontal Tabs Component"
-        )
-    ),
-
-    dcc.Markdown('''
-    [Tab Component Pre-Release](https://github.com/plotly/dash-core-components/pull/74)
-
-    ***
-    '''.replace('    ', '')),
+    dcc.Link(html.A('More Tabs examples and Reference'),
+             href="/dash-core-components/tabs"),
 
     html.H3('Graphs'),
     dcc.Markdown('''
