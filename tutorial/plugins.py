@@ -171,8 +171,13 @@ dcc.SyntaxHighlighter('''$ python usage.py''', language='bash', customStyle=styl
 dcc.Markdown('''
 You are free to edit this file as you develop your component. Note that
 this file is importing the package locally (as it is in the root folder of
-the package). If you want to test the installation of your package and run a
-Dash app in a separate folder, you can install the package with `python setup.py install`.
+the package) via the `app.scripts.config.serve_locally = True` line. 
+If you want to test the installation of your package and run a Dash app in a 
+separate folder, you can install the package with `python setup.py install`. 
+If you do so, be aware that Dash, by default, will try to download packages from unpkg, 
+so if you haven't published your package yet, you may want to add the 
+`app.scripts.config.serve_locally = True` line to your app. More information can be found
+[here](https://dash.plot.ly/external-resources).
 
 #### Step 6 - Customize Your Component
 
@@ -184,6 +189,12 @@ Edit this source to modify the component. You can rename this file to change
 the name of the component and the Python class. If you rename the file or
 add a new file, be sure to make those changes to to the `src/index.js` file
 as well.
+
+As for styling your component, you're free to set up your preferred way of handling 
+styling in React. For example, you can use [style-loader](https://github.com/webpack-contrib/style-loader)
+to bundle .css files with your .js files, or something like [styled-jsx](https://github.com/zeit/styled-jsx)
+for a more css-in-js approach. There are a plethora of styling options for React out there, so it is
+up to you to choose what works best for you.
 
 Notice how the docstrings and keyword arguments of the Python class will
 match the comments in the React component.
