@@ -992,32 +992,32 @@ Textarea = html.Div(children=[
 # Tabs
 Tabs = html.Div(children=[
     html.H3('Tabs Examples and Reference'),
-    dcc.Markdown('''
+    dcc.Markdown(s('''
     The Tabs and Tab components can be used to create tabbed sections in your app. 
     You can let Dash handle the selection logic, or program it yourself so you have a bit more control. 
     Here's a simple example that lets Dash handle the selection logic:
-    '''),
+    ''')),
     dcc.SyntaxHighlighter(
         examples['tabs_simple'][0],
         customStyle=styles.code_container
     ),
-    dcc.Markdown('''
+    dcc.Markdown(s('''
     The drawback here is that Dash will load all the content in the Tab's children on page load,
     which could be slow if you do a lot of computationally intensive tasks.
 
     You can also attach a callback to the Tabs `value` prop, and handle selection
     yourself for more control:
-    '''),
+    ''')),
     dcc.SyntaxHighlighter(
         examples['tabs_callback'][0],
         customStyle=styles.code_container
     ),
-    dcc.Markdown('''
+    dcc.Markdown(s('''
     Here we set a value on each Tab component, which can be read in a callback. We then output the tab
     content to a div's children, so only the content we want to display is loaded. This is handy if
     you do computationally intensive tasks, because this way you have control over what to output and
     when!
-    '''),
+    ''')),
     html.H3('Tabs properties'),
     generate_prop_table('Tabs'),
     html.H3('Tab properties'),
