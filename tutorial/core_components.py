@@ -8,6 +8,7 @@ from datetime import datetime as dt
 import plotly.graph_objs as go
 import json
 import styles
+from textwrap import dedent as s
 
 import tools
 from utils.component_block import ComponentBlock
