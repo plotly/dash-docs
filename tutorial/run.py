@@ -130,5 +130,35 @@ def display_content(pathname):
 app.css.append_css({'external_url': css})
 app.scripts.append_script({'external_url': js})
 
+
+app.index_string = '''
+<!DOCTYPE html>
+<html>
+    <head>
+        {%metas%}
+        <title>{%title%}</title>
+        {%favicon%}
+        {%css%}
+        <script async>(function(s,u,m,o,j,v){j=u.createElement(m);v=u.getElementsByTagName(m)[0];j.async=1;j.src=o;j.dataset.sumoSiteId='65f20c0cbf5bacb916f00ec5d5c855a34b160f1f8e9b7a0cee41b0d954431409';v.parentNode.insertBefore(j,v)})(window,document,'script','//load.sumo.com/');</script>
+        <!-- Global site tag (gtag.js) - AdWords: 1009791370 -->
+        <script async src=""https://www.googletagmanager.com/gtag/js?id=AW-1009791370""></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'AW-1009791370');
+        </script>
+    </head>
+    <body>
+        {%app_entry%}
+        <footer>
+            {%config%}
+            {%scripts%}
+        </footer>
+    </body>
+</html>
+'''
+
 if __name__ == '__main__':
     app.run_server(debug=True, threaded=True, port=8050)
