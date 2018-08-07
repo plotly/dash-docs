@@ -16,7 +16,17 @@ released with open source licenses. For example, here are just some of the
 [table components](https://react.rocks/?q=tables) that have been published
 by the community.
 
-## From React.js to Python
+## Creating a Component
+
+To create a Dash component, fork our sample component repository and
+follow the instructions in the README.md:
+[https://github.com/plotly/dash-component-boilerplate](https://github.com/plotly/dash-component-boilerplate)
+
+If you are just getting started with React.js, check out a draft of our essay
+["React for Python Devs"](https://github.com/plotly/dash-docs/pull/116).
+
+
+### How Are Components Converted From React.js to Python?
 
 Dash provides a framework that converts React components
 (written in JavaScript) into Python classes that are
@@ -46,15 +56,6 @@ On a high level, this is how that works:
 - Dash's `layout` is serialized as JSON and served to Dash's front-end. This
   `layout` is recursively rendered with these JavaScript bundles and React.
 
-
-## Creating a Component
-
-To create a Dash component, fork our sample component repository and
-follow the instructions in the README.md:
-![https://github.com/plotly/dash-component-boilerplate](https://github.com/plotly/dash-component-boilerplate)
-
-If you are just getting started with React.js, check out a draft of our essay
-["React for Python Devs"](https://github.com/plotly/dash-docs/pull/116).
 
 ''')
 ]
