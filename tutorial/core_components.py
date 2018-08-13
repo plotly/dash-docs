@@ -343,6 +343,8 @@ dcc.DatePickerRange(
     dcc.Link('More Tabs Examples and Reference',
              href="/dash-core-components/tabs"),
 
+    html.Hr(),
+
     html.H3('Graphs'),
     dcc.Markdown('''
     The `Graph` component shares the same syntax as the open-source
