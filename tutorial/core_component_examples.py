@@ -1018,6 +1018,16 @@ Tabs = html.Div(children=[
         customStyle=styles.code_container
     ),
     dcc.Markdown(s('''
+    Note that this method has a couple of drawbacks:
+    - It requires that you compute the children property for each individual
+    tab _upfront_ and send all of the tab's content over the network _at once_.
+    The callback method allows you to compute the tab's content _on the fly_
+    (that is, when the tab is clicked).
+    - There have been some bug reports that graphs are not getting resized
+    properly if this method is being used. See [dash-core-components#256](https://github.com/plotly/dash-core-components/issues/256)
+    for more details.
+    - The second tab, instead of the first tab, is selected by default.
+    This is a bug and will be fixed. Track our progress in  [dash-core-components#262](https://github.com/plotly/dash-core-components/issues/262).
     ''')),
     html.H3('Tabs properties'),
     generate_prop_table('Tabs'),
