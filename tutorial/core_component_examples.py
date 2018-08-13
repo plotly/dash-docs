@@ -1031,6 +1031,9 @@ Tabs = html.Div(children=[
     - The second tab, instead of the first tab, is selected by default.
     This is a bug and will be fixed. Track our progress in  [dash-core-components#262](https://github.com/plotly/dash-core-components/issues/262).
     ''')),
+
+    html.Hr(),
+
     html.H3('Tabs properties'),
     generate_prop_table('Tabs'),
     html.H3('Tab properties'),
