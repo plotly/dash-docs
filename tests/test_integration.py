@@ -77,6 +77,19 @@ class Tests(IntegrationTests):
         links = [
             a.get_property('id') for a in
             self.driver.find_elements_by_css_selector('a')
+        ] + [
+            '/dash-core-components/dropdown',
+            '/dash-core-components/slider',
+            '/dash-core-components/rangeslider',
+            '/dash-core-components/input',
+            '/dash-core-components/textarea',
+            '/dash-core-components/checklist',
+            '/dash-core-components/radioitems',
+            '/dash-core-components/datepickersingle',
+            '/dash-core-components/datepickerrange',
+            '/dash-core-components/markdown',
+            '/dash-core-components/upload',
+            '/dash-core-components/tabs'
         ]
 
         def visit_and_snapshot(href):
