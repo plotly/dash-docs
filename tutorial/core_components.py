@@ -16,7 +16,8 @@ from utils.component_block import ComponentBlock
 from server import app
 
 examples = {
-    'button': tools.load_example('tutorial/examples/core_components/button.py')
+    'button': tools.load_example('tutorial/examples/core_components/button.py'),
+    'tabs': tools.load_example('tutorial/examples/core_components/tabs_callback.py')
 }
 
 

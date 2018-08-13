@@ -25,7 +25,7 @@ examples = {
     'upload-datafile':  tools.load_example('tutorial/examples/core_components/upload-datafile.py'),
     'upload-gallery':  tools.load_example('tutorial/examples/core_components/upload-gallery.py'),
     'tabs_simple':  tools.load_example('tutorial/examples/core_components/tabs_simple.py'),
-    'tabs_callback':  tools.load_example('tutorial/examples/core_components/tabs_callback.py'),
+    'tabs_callback':  tools.load_example('tutorial/examples/core_components/tabs_callback_graph.py'),
 }
 
 
@@ -1002,6 +1002,7 @@ Tabs = html.Div(children=[
         examples['tabs_callback'][0],
         customStyle=styles.code_container
     ),
+    html.Div(examples['tabs_callback'][1], className='example-container'),
     dcc.Markdown(s('''
     In the example above, our callback contains all of the content. In practice,
     we'll keep the tab's content in separate files and import the data.
@@ -1017,6 +1018,7 @@ Tabs = html.Div(children=[
         examples['tabs_simple'][0],
         customStyle=styles.code_container
     ),
+    html.Div(examples['tabs_simple'][1], className='example-container'),
     dcc.Markdown(s('''
     Note that this method has a couple of drawbacks:
     - It requires that you compute the children property for each individual
