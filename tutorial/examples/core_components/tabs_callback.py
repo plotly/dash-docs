@@ -7,7 +7,6 @@ from dash.dependencies import Input, Output
 app = dash.Dash()
 
 app.layout = html.Div([
-    html.H1('Dash Tabs component demo'),
     dcc.Tabs(id="tabs", value='tab-2', children=[
         dcc.Tab(label='Tab one', value='tab-1'),
         dcc.Tab(label='Tab two', value='tab-2'),
