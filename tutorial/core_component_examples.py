@@ -991,7 +991,8 @@ Textarea = html.Div(children=[
 
 # Tabs
 Tabs = html.Div(children=[
-    html.H3('Tabs Examples and Reference'),
+    html.H1('Tabs Examples and Reference'),
+    html.H2('Method 1. Content as Callback'),
     dcc.Markdown(s('''
     The `Tab` component controls the style and value of the individual tab
     and the `Tabs` component hold a collection of `Tab` components.
@@ -1014,6 +1015,7 @@ Tabs = html.Div(children=[
     Instead of displaying the content through a callback, you can embed the content
     directly as the `children` property in the `Tab` component:
     ''')),
+
     dcc.SyntaxHighlighter(
         examples['tabs_simple'][0],
         customStyle=styles.code_container
