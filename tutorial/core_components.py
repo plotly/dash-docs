@@ -330,33 +330,15 @@ dcc.DatePickerRange(
 
     html.H3('Tabs'),
     dcc.Markdown(s('''
-    The Tabs and Tab components can be used to create tabbed sections in your app. You can let Dash handle 
-    the selection logic, or program it yourself so you have a bit more control. A simple example where you
-    set the content you want to display upon selecting a Tab as it's children, looks like this:
+    The Tabs and Tab components can be used to create tabbed sections in your app.
     ''')),
 
-    dcc.SyntaxHighlighter('''import dash_core_components as dcc
-from datetime import datetime as dt
+    dcc.SyntaxHighlighter(
+        examples['tabs'][0],
+        customStyle=styles.code_container, language='python'
+    ),
 
-dcc.Tabs(id="tabs", children=[
-    dcc.Tab(label='Tab one', children=[
-        html.Div([
-            html.H1("This is the content in tab 1"),
-        ])
-    ]),
-    dcc.Tab(label='Tab two', children=[
-        html.Div([
-            html.H1("This is the content in tab 2"),
-            html.P("A graph here would be nice!")
-        ])
-    ]),
-    dcc.Tab(label='Tab three', children=[
-        html.Div([
-            html.H1("This is the content in tab 3"),
-        ])
-    ]),
-]
-''', language='python', customStyle=styles.code_container),
+    html.Div(examples['tabs'][1], className='example-container'),
 
     dcc.Link(html.A('More Tabs examples and Reference'),
              href="/dash-core-components/tabs"),

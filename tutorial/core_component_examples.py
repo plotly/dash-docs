@@ -993,30 +993,31 @@ Textarea = html.Div(children=[
 Tabs = html.Div(children=[
     html.H3('Tabs Examples and Reference'),
     dcc.Markdown(s('''
-    The Tabs and Tab components can be used to create tabbed sections in your app. 
-    You can let Dash handle the selection logic, or program it yourself so you have a bit more control. 
-    Here's a simple example that lets Dash handle the selection logic:
-    ''')),
-    dcc.SyntaxHighlighter(
-        examples['tabs_simple'][0],
-        customStyle=styles.code_container
-    ),
-    dcc.Markdown(s('''
-    The drawback here is that Dash will load all the content in the Tab's children on page load,
-    which could be slow if you do a lot of computationally intensive tasks.
-
-    You can also attach a callback to the Tabs `value` prop, and handle selection
-    yourself for more control:
+    The `Tab` component controls the style and value of the individual tab
+    and the `Tabs` component hold a collection of `Tab` components.
+    Attach a callback to the Tabs `value` prop and update a container's `children`
+    property in your callback.
     ''')),
     dcc.SyntaxHighlighter(
         examples['tabs_callback'][0],
         customStyle=styles.code_container
     ),
     dcc.Markdown(s('''
-    Here we set a value on each Tab component, which can be read in a callback. We then output the tab
-    content to a div's children, so only the content we want to display is loaded. This is handy if
-    you do computationally intensive tasks, because this way you have control over what to output and
-    when!
+    In the example above, our callback contains all of the content. In practice,
+    we'll keep the tab's content in separate files and import the data.
+    For an example, see the [URLs and Multi-Page App Tutorial](/urls).
+    ''')),
+
+    html.H2('Method 2. Content as Tab Children'),
+    dcc.Markdown(s('''
+    Instead of displaying the content through a callback, you can embed the content
+    directly as the `children` property in the `Tab` component:
+    ''')),
+    dcc.SyntaxHighlighter(
+        examples['tabs_simple'][0],
+        customStyle=styles.code_container
+    ),
+    dcc.Markdown(s('''
     ''')),
     html.H3('Tabs properties'),
     generate_prop_table('Tabs'),
