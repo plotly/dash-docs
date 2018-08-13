@@ -340,7 +340,7 @@ dcc.DatePickerRange(
 
     html.Div(examples['tabs'][1], className='example-container'),
 
-    dcc.Link(html.A('More Tabs examples and Reference'),
+    dcc.Link('More Tabs Examples and Reference',
              href="/dash-core-components/tabs"),
 
     html.H3('Graphs'),
