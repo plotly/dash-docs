@@ -19,10 +19,7 @@ app.layout = html.Div([
                                 'type': 'bar', 'name': 'SF'},
                             {'x': [1, 2, 3], 'y': [2, 4, 5],
                              'type': 'bar', 'name': u'Montréal'},
-                        ],
-                        'layout': {
-                            'title': 'Dash Data Visualization'
-                        }
+                        ]
                     }
                 )
             ])
@@ -30,7 +27,6 @@ app.layout = html.Div([
         dcc.Tab(label='Tab two', children=[
             html.Div([
                 html.H1("This is the content in tab 2"),
-                html.P("A graph here would be nice!")
             ])
         ]),
         dcc.Tab(label='Tab three', children=[
@@ -38,8 +34,7 @@ app.layout = html.Div([
                 html.H1("This is the content in tab 3"),
             ])
         ]),
-    ]
-    )
+    ])
 ])
 
 
