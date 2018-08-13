@@ -8,8 +8,6 @@ from dash.dependencies import Input, Output, State
 app = dash.Dash()
 
 app.layout = html.Div([
-    html.H1('Dash Tabs component demo', style={
-            'textAlign': 'center', 'margin': '48px 0', 'fontFamily': 'system-ui'}),
     dcc.Tabs(id="tabs", children=[
         dcc.Tab(label='Tab one', children=[
             html.Div([
