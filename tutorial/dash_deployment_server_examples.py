@@ -1201,9 +1201,18 @@ Redis = html.Div(children=[
 
     &nbsp;
 
-    INSERT TEXT
+    COMING SOON
 
-    '''))
+    ''')),
+
+    html.Img(
+        alt='Coming Soon',
+        src='https://github.com/plotly/dash-docs/raw/master/images/building.png',
+        style={
+            'width': '100%', 'border': 'thin lightgrey solid',
+            'border-radius': '4px'
+        }
+    ),
 ])
 
 
@@ -1217,7 +1226,15 @@ Celery = html.Div(children=[
     '''
     Coming Soon
 
-    '''))
+    ''')),
+    html.Img(
+        alt='Coming Soon',
+        src='https://github.com/plotly/dash-docs/raw/master/images/building.png',
+        style={
+            'width': '100%', 'border': 'thin lightgrey solid',
+            'border-radius': '4px'
+        }
+    ),
 ])
 
 # # # # # # #
@@ -1562,9 +1579,14 @@ StagingApp = html.Div(children=[
 # # # # # # #
 Troubleshooting = html.Div(children=[
     html.H1('Common Errors'),
+    dcc.Markdown(s(
+    '''
+    Coming Soon
+
+    ''')),
     html.Img(
         alt='Coming Soon',
-        src='/assets/images/building.png',
+        src='https://github.com/plotly/dash-docs/raw/master/images/building.png',
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
             'border-radius': '4px'
