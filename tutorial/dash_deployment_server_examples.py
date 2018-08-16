@@ -750,15 +750,6 @@ $ git init # initializes an empty git repo''', customStyle=styles.code_container
                     '''
                     ***
 
-                    #### Check Deploy Requirements
-
-                    Ensure that you have met all deploy requirements. See,
-                    [**Deploy App Requirements**](/dash-deployment-server/deploy-requirements).
-                    If you're satisfied, advance to
-                    **Configure your Dash Deployment Server to be your Git remotes**.
-
-                    ***
-
                     #### Configure your Dash Deployment Server to be your Git remote
 
                     In the root of your folder, run the following command to create a
@@ -852,6 +843,20 @@ $ git push plotly master'''), customStyle=styles.code_container, language='pytho
         If you install any other Python packages, add those packages to
         the `requirements.txt` file. Packages that are included in this
         file will be installed automatically by the Dash Deployment Server.
+        ''')),
+
+        dcc.Markdown(s(
+        '''
+
+        ***
+
+        #### Deploy Failed?
+
+        If your depoly has been unsuccesful, you can check that you have the
+        [necessary files required for deployment](/dash-deployment-server/deploy-requirements),
+        or if you have a specific error, take a look at
+        [Common Errors](/dash-deployment-server/troubleshooting).
+
         '''))
     ]
 
