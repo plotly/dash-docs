@@ -779,6 +779,14 @@ $ git init # initializes an empty git repo''', customStyle=styles.code_container
               [Input('deploy-method', 'value')])
 def display_instructions2(method):
     return [
+        dcc.Markdown(s('''
+        &nbsp;
+
+        Plotly recommends using HTTPS, but if you would like to use SSH then you
+        need to [Configure SSH Authentication](/dash-deployment-server/ssh).
+
+        ''') if method == 'SSH' else ('')),
+
         dcc.SyntaxHighlighter(s(
         '''$ git remote add plotly dokku@your-dash-deployment-server:your-dash-app-name''' if method == 'SSH' else
         '''$ git remote add plotly https://your-dash-deployment-server/GIT/your-dash-app-name'''),
