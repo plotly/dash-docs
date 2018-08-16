@@ -905,6 +905,19 @@ ConfigSys = html.Div(children=[
     Dash Deployment Server supports these actions through an
     `apt-packages` file and a `predeploy` script.
 
+    &nbsp;
+
+    We have a collection of sample apps taht install common system
+    level dependencies. These applications are _ready to deploy_:
+
+    - [Oracle cx_Oracle Database](https://github.com/plotly/dash-on-premise-sample-app#2)
+    - [Pyodbc Database Driver](https://github.com/plotly/dash-on-premise-sample-app#3)
+
+    &nbsp;
+
+    If you need help configuring complex system level dependencies, please
+    reach out to our [support](/dash-deployment-server/support) team.
+
     ***
 
     #### Install Apt Packages
@@ -988,10 +1001,21 @@ Redis = html.Div(children=[
     html.H1('Create and Link Redis Database'),
 
     dcc.Markdown(s('''
-    Redis now works out of the box with the Dash Deployment Server.
-    To see an example, check out our sample
-    [Redis App](https://github.com/plotly/dash-redis-demo). For instruction
-    on how to create and link a Redis Database, see below.
+    Redis is a powerful in memory database that is well suited for many Dash
+    applications. In particular, you can use Redis to:
+
+    - Enable queued and background processes with Celery.
+    [Redis and Celery Demo App](https://github.com/plotly/dash-redis-demo)
+    - Save application data
+    - Cache data from your callbacks across processes.
+    [Caching in Dash with Redis](/performance)
+
+    &nbsp;
+
+    While Redis is an _in memory database_, Dash Deployment Server regularly
+    backs up its data to the underlying server. So, it's safe for production
+    usage. Dash Deployment Server can dynamically spin up and manage secure
+    instances of Redis for your application.
     ''')),
 
     dcc.Markdown(s('''
@@ -999,7 +1023,9 @@ Redis = html.Div(children=[
 
     #### Enable Redis Databases
 
-    First, navigate to Plotly On-Premise Server Settings
+    In Plotly Enterprise 2.5.0, Redis Databases are always enabled.
+
+    For previous versions, navigate to Plotly On-Premise Server Settings
     (`https://<your.plotly.domain>:8800/settings`), then under **Special Options
     & Customizations** select **Enable Dash Customizations** and **Enable Redis
     Databases** for Dash Apps.
@@ -1019,6 +1045,14 @@ Redis = html.Div(children=[
 
     #### Create and Link (via UI)
 
+    You can create one redis instance that is used by multiple apps or you
+    can create a unique Redis Database for each individual app.
+    To start, we recommending creating a unique Redis Database for each
+    Dash app. It will be easier for you to ensure that one application doesn't
+    override the data from a separate application.
+
+    &nbsp;
+
     In Plotly Enterprise 2.5.0 it is possible to create and link a Redis
     Database to your dash app using the Dash Deployment Server UI.
     Here, you have two options:
@@ -1035,9 +1069,12 @@ Redis = html.Div(children=[
 
     If you haven't initialized an app yet, select **Databases** situated in the
     top navigation menu. Next, select **Create Database**, then in the
-    'Create Database' modal, add the name of your database
-    (for example, `my-first-redis-db`). Once it has been created, you'll
-    notice that it is added to your list of databases.
+    'Create Database' modal, add the name of your database. We recommend using
+    a convention like using the name of your application and adding `-redis`
+    to the end, e.g. `my-dash-app-redis`.
+
+    Once your Redis Database has been created, you'll notice that it is
+    added to your list of databases.
     ''')),
 
     html.Img(
@@ -1113,8 +1150,35 @@ Redis = html.Div(children=[
     * `APP-NAME` with the name of your app (as specified in the
     Dash App Manager).
 
+    ''')),
+
+    dcc.Markdown(s('''
+    ***
+
+    #### Referencing Redis in Your Code
+
+    You can reference you Redis Database with the `os.environ` module:
+
+    ```
+    redis_url = os.environ['REDIS_URL']
+    ```
+
+    ***
+
+    #### Running Redis on Your Local Machine
+
+    By referencing these Redis in our code, we'll need to add
+    these variables to our local environment as well. One easy way to do
+    this is to define the variables on-the-fly when you run `python app.py`.
+    That is, instead of running `python app.py`, run:
+
+    &nbsp;
+
+    INSERT TEXT
+
     '''))
 ])
+
 
 # # # # # # #
 # Linking a Celery Process
@@ -1153,8 +1217,8 @@ EnvVars = html.Div(children=[
 
     To add environment variables via the Dash Deployment Server UI,
     navigate to the application settings. Here, use the text boxes to
-    add the environmental variable name and value. For example, `DASH_APP_FID`
-    and `admin:0`.
+    add the environmental variable name and value. For example, `"DATABASE_USER"`
+    and `"DATABASE_PASSWORD"`.
 
     ''')),
 
@@ -1168,6 +1232,49 @@ EnvVars = html.Div(children=[
     ),
 
     dcc.Markdown(s('''
+
+    ***
+
+    #### Referencing Environment Variables in Your Code
+
+    You can reference these variables with the `os.environ` module:
+
+    ```
+    database_password = os.environ['DATABASE_PASSWORD']
+    ```
+
+    &nbsp;
+
+    Alternatively, if the variable isn't in your environment and you want
+    to fallback to some other value, use:
+
+    ```
+    database_password = os.environ.get('DATABASE_PASSWORD', 'my-default-database-password')
+    ```
+
+    ***
+
+    #### Defining Environment Variables In Your Local Environment
+
+    By referencing these environment variables in our code, we'll need to add
+    these variables to our local environment as well. One easy way to do
+    this is to define the variables on-the-fly when you run `python app.py`.
+    That is, instead of running `python app.py`, run:
+
+    ```
+    $ DATABASE_USER=chris DATABASE_PASSWORD=my-password python app.py
+    ```
+
+    &nbsp;
+
+    Alternatively, you can define them for your session by "exporting" them:
+
+    ```
+    $ export DATABASE_USER=chris
+    $ export DATABASE_PASSWORD=my-password
+    $ python app.py
+    ```
+
 
     ***
 
@@ -1196,22 +1303,31 @@ LocalDir = html.Div(children=[
     html.H1('Mapping Local Directories Examples and Reference'),
 
     dcc.Markdown(s('''
-    Directory mappings allow you to make directories on the Dash Deployment
-    Server available to your app. In Plotly Enterprise 2.5.0, you can add and
-    remove mappings via the Dash Deployment Server UI.
+    In Dash Deployment Server, Dash apps are run in isolated containers.
+    Dash Deployment Server builds the entire system for each individual app
+    from scratch, including installing a fresh instance of Python, installing
+    dependencies, and more. This isolation and containerization is great: it
+    allows for one app's dependencies to not impact the next apps and,
+    from a security perspective, ensures that applications can't modify or
+    access the underlying server. One part of this isolation is that each app
+    has it's own "ephemeral" filesystem. This means that:
 
-    ''')),
+    - By default, files that are saved in the app's environment aren't
+    persisted across deploys.
+    - By default, files (even networked file systems) that are on the actual
+    physical server aren't actually accessible to the application.
 
-    dcc.Markdown(s('''
+    &nbsp;
 
-    ***
+    Starting in Plotly Enterprise 2.5.0, you can map filesystems from the
+    underlying server into the application. This allows you to save files
+    persistently as well as read files from the underlying server, including
+    networked file systems.
 
-    #### Note About Directory Mapping
-
-    Only users with admin/superuser privileges are allowed to map directories
-    onto apps. Please ask your current administrator to grant you
-    admin/superuser privileges as shown below and then try
-    again.
+    Since this feature has security implications, only users with
+    admin/superuser privileges are allowed to map directories onto apps.
+    Before you get started, ask your current administrator to grant you
+    admin/superuser privileges as shown below.
 
     ***
 
@@ -1244,8 +1360,8 @@ LocalDir = html.Div(children=[
     To add a directory mapping via the Dash Deployment Server UI,
     navigate to the application **Settings** and scroll down to
     **Directory Mappings**. Here, use the text boxes to
-    add the **Host Path** and **App Path**. For example, `/etc`
-    and `/my-first-app/etc`.
+    add the **Host Path** and **App Path**. For example, `/srv/app-data`
+    and `/data`.
 
     ''')),
 
@@ -1259,6 +1375,57 @@ LocalDir = html.Div(children=[
     ),
 
     dcc.Markdown(s('''
+
+    ***
+
+    #### Referencing the File System in Your Code
+
+    If you have mapped the directory from `/srv` to `/srv/app-data`, then you
+    can read files from this folder in you application with the following code:
+
+    ```
+    import os
+    file_pathname = os.path.join('srv', 'data', 'some-file.csv')
+    ```
+
+    &nbsp;
+
+    In some cases, the filesystems that you reference in your deployed
+    application may be different from those that you reference locally.
+    In your application code, you can check which environment you are in
+    with the following code:
+
+    ```
+    if 'DASH_APP' in os.environ:
+        # this is a deployed app
+        filepath = os.path.join('srv', 'data', 'my-dataset.csv')
+    else:
+        # local file path
+        filepath = os.path.join('Users', 'chris 'data', 'my-dataset.csv')
+    ```
+
+    ***
+
+    #### Recommendations
+
+    If you are mounting a filesystem, we have the following recommendations:
+
+    - Try to isolate the data that you need into it's own, app-specific folder
+    - Do not mount the entire filesystem
+    - Don't mount system directories, like those under `/usr`.
+    - As per the
+    ["Filesystem Hierarchy Standard (FHS)"](https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard),
+    folders inside the `/srv` folder would be a good, conventional place
+    to host app level data.
+    - This feature also works with networked filesystems. Note that this
+    requires some extra configuration in the underlying server by your
+    server administrator. In particular, the network filesystem should be
+    added to the `/etc/fstab` file on the underlying server. For more
+    information, see this
+    [RHEL7 and CentOS documentation on CIFS and NFS](https://www.certdepot.net/rhel7-mount-unmount-cifs-nfs-network-file-systems/)
+    , the official [Ubuntu NFS documentation](https://help.ubuntu.com/lts/serverguide/network-file-system.html.en),
+    the official [Ubuntu CIFS documentation](https://wiki.ubuntu.com/MountWindowsSharesPermanently)
+    or [contact our support team](/dash-deployment-server/support).
 
     ***
 
