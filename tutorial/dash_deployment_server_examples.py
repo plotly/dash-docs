@@ -246,7 +246,7 @@ def display_instructions(platform):
 # Initialize
 # # # # # # #
 Initialize = html.Div(children=[
-    html.H1('Part 1. Initialize App on Plotly Enterprise'),
+    html.H1('Part 1. Initialize Dash Apps on Dash Deployment Server'),
 
     dcc.Markdown(s('''
         Before creating or deploying a dash app locally, you need to initialize
@@ -332,7 +332,7 @@ Initialize = html.Div(children=[
         &nbsp;
 
         If you have successfully initialized an app, advance to
-        [**Part 2. Deploy Dash Apps on Plotly Enterprise**](/dash-deployment-server/deployment).
+        [**Part 2. Deploy Dash Apps on Dash Deployment Server**](/dash-deployment-server/deployment).
         If you have encountered any issues see [**Troubleshooting**](/dash-deployment-server)
         for help.
 
@@ -395,7 +395,7 @@ Requirements = html.Div(children=[
 # Deploy App
 # # # # # # #
 Deploy = html.Div(children=[
-    html.H1('Part 2. Deploy Dash Apps on Plotly Enterprise'),
+    html.H1('Part 2. Deploy Dash Apps on Dash Deployment Server'),
 
     dcc.Markdown(s(
     '''
@@ -1050,6 +1050,19 @@ Redis = html.Div(children=[
     * `SERVICE-NAME` with the name you want for your Redis service
     * `APP-NAME` with the name of your app (as specified in the
     Dash App Manager).
+
+    '''))
+])
+
+# # # # # # #
+# Linking a Celery Process
+# # # # # # #
+Celery = html.Div(children=[
+    html.H1('Linking a Celery Process'),
+
+    dcc.Markdown(s(
+    '''
+    Coming Soon
 
     '''))
 ])

@@ -194,13 +194,13 @@ chapters = {
                        'app to a server'
     },
 
-    'deployment-onpremise': {
-        'url': '/deployment/on-premise',
-        'content': on_premise_deployment.layout,
-        'name': 'Deploying Dash Apps on Plotly Enterprise',
-        'description': "Plotly Enterprise is Plotly's commercial " \
-                       "offering for hosting and sharing Dash apps."
-    },
+    # 'deployment-onpremise': {
+    #     'url': '/deployment/on-premise',
+    #     'content': on_premise_deployment.layout,
+    #     'name': 'Deploying Dash Apps on Plotly Enterprise',
+    #     'description': "Plotly Enterprise is Plotly's commercial " \
+    #                    "offering for hosting and sharing Dash apps."
+    # },
 
     'dash-deployment-server': {
         'url': '/dash-deployment-server',
@@ -360,16 +360,23 @@ chapters = {
     'redis-examples': {
         'url': '/dash-deployment-server/redis-database',
         'content': dds_examples.Redis,
-        'name': 'Text Area Component',
-        'description': 'Redis Database.'
+        'name': 'Linking a Redis Database',
+        'description': 'Create and link an in-memory database to your dash apps.'
+    },
+
+    'celery-examples': {
+        'url': '/dash-deployment-server/celery-process',
+        'content': dds_examples.Celery,
+        'name': 'Linking a Celery Process',
+        'description': 'Add a task queue to your dash apps.'
     },
 
     'env-var-examples': {
         'url': '/dash-deployment-server/enviornment-variables',
         'content': dds_examples.EnvVars,
         'name': 'Setting Enviornment Variables',
-        'description': 'Environment variables are config values that ' \
-        'can affect the way your app behaves.'
+        'description': 'Environment variables are commonly used to store '
+        'secret variables like database passwords.'
     },
 
     'local-dir-examples': {
