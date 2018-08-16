@@ -330,23 +330,23 @@ chapters = {
     },
 
     'requirements-examples': {
-        'url': '/dash-deployment-server/deploy-requirements',
+        'url': '/dash-deployment-server/application-structure',
         'content': dds_examples.Requirements,
         'name': '',
-        'description': 'Dash Apps Requirements on Plotly Enterprise'
+        'description': 'Ensure that your app meets all the requirements for deployment.'
     },
 
     'create-deploy-examples': {
         'url': '/dash-deployment-server/deployment',
         'content': dds_examples.Deploy,
-        'name': '',
-        'description': 'Deploy Dash Apps on Plotly Enterprise'
+        'name': 'Deploy Dash Apps on Dash Deployment Server',
+        'description': 'Deploy Dash Apps on Dash Deployment Server'
     },
 
     'app-auth-examples': {
         'url': '/dash-deployment-server/app-authentication',
         'content': dds_examples.Authentication,
-        'name': '',
+        'name': 'Dash App Authentication',
         'description': 'Adding Authentication to your Dash App'
     },
 

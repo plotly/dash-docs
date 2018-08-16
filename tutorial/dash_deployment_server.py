@@ -29,8 +29,8 @@ layout = html.Div(className='toc', children=[
     ]),
 
     reusable_components.Section("Configuration", [
-        reusable_components.Chapter('Dash App Requirements',
-                '/dash-deployment-server/deploy-requirements',
+        reusable_components.Chapter('Application Structure',
+                '/dash-deployment-server/application-structure',
                 'Ensure that your app meets all the requirements for deployment.'),
         reusable_components.Chapter('Configuring System Dependencies',
                 '/dash-deployment-server/configure-system-dependencies',

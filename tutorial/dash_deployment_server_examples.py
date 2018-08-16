@@ -344,7 +344,7 @@ Initialize = html.Div(children=[
 # Requirements
 # # # # # # #
 Requirements = html.Div(children=[
-    html.H1('Deploy Requirements'),
+    html.H1('Application Structure'),
 
     dcc.Markdown(s(
     '''
@@ -359,9 +359,7 @@ Requirements = html.Div(children=[
     ```
     Dash_App/
     |-- assets/
-       |-- typography.css
-       |-- header.css
-       |-- custom-script.js
+       |-- app.css
     |-- app.py
     |-- .gitignore
     |-- Procfile
@@ -383,8 +381,9 @@ Requirements = html.Div(children=[
 
     `.gitignore`
 
-    Determines which files and folders are ignored. For example, its contents
-    would be:
+    Determines which files and folders are ignored in git, and therefore
+    ignored (i.e. not copied to the server) when you deploy your application.
+    An example of its contents would be:
 
     ```
     venv
@@ -448,10 +447,6 @@ Deploy = html.Div(children=[
     To deploy an app to your Dash Deployment Server, you can either choose
     to deploy a cloned sample app, create a new app following the tutorial,
     or an existing app that you created locally and are ready to deploy.
-    However, first ensure that you have
-    [initialized the app](/dash-deployment-server/initialize).
-    Additionally, check the app that you are deploying has the
-    [required files](/dash-deployment-server/deploy-requirements).
 
     ''')),
 
@@ -540,7 +535,7 @@ def display_instructions2(platform):
                     Read through `config.py` and modify the values as necessary.
                     If Dash Deployment Server was set up with "path-based routing"
                     (the default), then you will just need to change the
-                    `DASH_APP_NAME` to be equal to the name of the Dash app that you
+                    `DASH_APP_NAME` to be equal to the name of the Dash App that you
                     set earlier.
                     ''')),
 
@@ -789,22 +784,22 @@ def display_instructions2(method):
         '''
         &nbsp;
 
-        Replace `your-dash-app-name` with the name of your Dash app that you
+        Replace `your-dash-app-name` with the name of your Dash App that you
         supplied in the Dash Deployment Server and `your-dash-deployment-server`
         with the domain of the Dash Deployment Server.
 
-        For example, if your Dash app name was `my-first-dash-app`
+        For example, if your Dash App name was `my-first-dash-app`
         and the domain of your organizations Dash Deployment Server was
         `dash.plotly.acme-corporation.com`, then this command would be
         `git remote add plotly dokku@dash.plotly.acme-corporation.com:my-first-dash-app`.
             ''' if method == 'SSH' else '''
         &nbsp;
 
-        Replace `your-dash-app-name` with the name of your Dash app that
+        Replace `your-dash-app-name` with the name of your Dash App that
         you supplied in the Dash Deployment Server and `your-dash-deployment-server`
         with the domain of the Dash Deployment Server.
 
-        For example, if your Dash app name was `my-first-dash-app`
+        For example, if your Dash App name was `my-first-dash-app`
         and the domain of your organizations Dash Deployment Server was
         `dash.plotly.acme-corporation.com`, then this command would be
         `git remote add plotly https://dash.plotly.acme-corporation.com/GIT/my-first-dash-app`.
@@ -853,7 +848,7 @@ $ git push plotly master'''), customStyle=styles.code_container, language='pytho
         #### Deploy Failed?
 
         If your depoly has been unsuccesful, you can check that you have the
-        [necessary files required for deployment](/dash-deployment-server/deploy-requirements),
+        [necessary files required for deployment](/dash-deployment-server/application-structure),
         or if you have a specific error, take a look at
         [Common Errors](/dash-deployment-server/troubleshooting).
 
@@ -1048,13 +1043,13 @@ Redis = html.Div(children=[
     You can create one redis instance that is used by multiple apps or you
     can create a unique Redis Database for each individual app.
     To start, we recommending creating a unique Redis Database for each
-    Dash app. It will be easier for you to ensure that one application doesn't
+    Dash App. It will be easier for you to ensure that one application doesn't
     override the data from a separate application.
 
     &nbsp;
 
     In Plotly Enterprise 2.5.0 it is possible to create and link a Redis
-    Database to your dash app using the Dash Deployment Server UI.
+    Database to your Dash App using the Dash Deployment Server UI.
     Here, you have two options:
 
     &nbsp;
@@ -1204,7 +1199,7 @@ EnvVars = html.Div(children=[
     instead of in your application. It's good practice to keep application
     secrets like database passwords outside of your code so that they aren't
     as mistakenly exposed or shared. Instead of storing these secrets in code,
-    you can store them as environment variables and your Dash application code
+    you can store them as environment variables and your Dash Application code
     can reference them dynamically.
 
     ''')),
@@ -1303,7 +1298,7 @@ LocalDir = html.Div(children=[
     html.H1('Mapping Local Directories Examples and Reference'),
 
     dcc.Markdown(s('''
-    In Dash Deployment Server, Dash apps are run in isolated containers.
+    In Dash Deployment Server, Dash Apps are run in isolated containers.
     Dash Deployment Server builds the entire system for each individual app
     from scratch, including installing a fresh instance of Python, installing
     dependencies, and more. This isolation and containerization is great: it
@@ -1471,7 +1466,7 @@ Analytics = html.Div(children=[
     dcc.Markdown(s('''
     #### Dash App Analytics
 
-    After you have successfully deployed a dash app to the Dash Deployment
+    After you have successfully deployed a Dash App to the Dash Deployment
     Server, you can monitor app performance via the app analytics and logs.
     Here, navigate to the Dash Deployment Server UI and select the app to
     display analytics.
@@ -1498,7 +1493,7 @@ Logs = html.Div(children=[
 
     #### Dash App Logs (via UI)
 
-    If you have successfully deployed a dash app to the Dash Deployment
+    If you have successfully deployed a Dash App to the Dash Deployment
     Server, you can view the app's logs via the Dash Deployment Server UI.
     From your list of apps, open the app and then select **Logs**.
     ''')),
@@ -1518,7 +1513,7 @@ Logs = html.Div(children=[
     #### Dash App Logs (via Command Line)
 
     Alternatively, the above can be accomplished via the command line.
-    To view the logs for a specific Dash app run the following command
+    To view the logs for a specific Dash App run the following command
     in your terminal:
 
     &nbsp;
@@ -1558,7 +1553,7 @@ Support = html.Div(children=[
     If you encounter any issues deploying your app you can email
     `onpremise.support@plot.ly`. It is helpful to include any error
     messages you encounter as well as available logs. See below on how
-    to obtain Dash app logs as well as the Plotly Enterprise support
+    to obtain Dash App logs as well as the Plotly Enterprise support
     bundle.
     ''')),
 
