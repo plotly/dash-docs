@@ -20,7 +20,7 @@ Ssh = html.Div(children=[
     either HTTPS or SSH. If you are deploying with HTTPS, then you do not
     need to set up an SSH key. Thus, you can skip this tutorial and go
     straight to
-    [Initialize Dash Apps on Plotly Enterprise](https://dash.plot.ly/dash-deployment-server/initialize).
+    [Initialize Dash Apps on Plotly Enterprise](/dash-deployment-server/initialize).
 
     &nbsp;
 
@@ -160,7 +160,7 @@ def display_instructions(platform):
 
         html.Img(
             alt='Dash App Create Menu',
-            src='https://github.com/plotly/dash-docs/raw/master/images/dds/open-dds-ui.png',
+            src='/assets/images/dds/open-dds-ui.png',
             style={
                 'width': '100%', 'border': 'thin lightgrey solid',
                 'border-radius': '4px'
@@ -177,7 +177,7 @@ def display_instructions(platform):
 
         html.Img(
             alt='Add SSH Key',
-            src='https://github.com/plotly/dash-docs/raw/master/images/dds/add-ssh-key.png',
+            src='/assets/images/dds/add-ssh-key.png',
             style={
                 'width': '100%', 'border': 'thin lightgrey solid',
                 'border-radius': '4px'
@@ -193,7 +193,7 @@ def display_instructions(platform):
 
         html.Img(
             alt='List of SSH Keys',
-            src='https://github.com/plotly/dash-docs/raw/master/images/dds/list-of-ssh-keys.png',
+            src='/assets/images/dds/list-of-ssh-keys.png',
             style={
                 'width': '100%', 'border': 'thin lightgrey solid',
                 'border-radius': '4px'
@@ -238,7 +238,7 @@ def display_instructions(platform):
         ***
 
         If you have successfully added your SSH Key, advance to
-        **Initialize Dash Apps on Plotly Enterprise**.
+        [**Part 1. Initialize Dash Apps on Plotly Enterprise**](/dash-deployment-server/initialize).
         '''))
     ]
 
@@ -246,7 +246,7 @@ def display_instructions(platform):
 # Initialize
 # # # # # # #
 Initialize = html.Div(children=[
-    html.H1('Initialize App on Plotly Enterprise'),
+    html.H1('Part 1. Initialize App on Plotly Enterprise'),
 
     dcc.Markdown(s('''
         Before creating or deploying a dash app locally, you need to initialize
@@ -263,7 +263,7 @@ Initialize = html.Div(children=[
 
     html.Img(
         alt='Dash Deployment Server UI',
-        src='https://github.com/plotly/dash-docs/raw/master/images/dds/open-dds-ui.png',
+        src='/assets/images/dds/open-dds-ui.png',
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
             'border-radius': '4px'
@@ -285,7 +285,7 @@ Initialize = html.Div(children=[
 
     html.Img(
         alt='Initialize App',
-        src='https://github.com/plotly/dash-docs/raw/master/images/dds/add-app.PNG',
+        src='/assets/images/dds/add-app.PNG',
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
             'border-radius': '4px'
@@ -303,7 +303,7 @@ Initialize = html.Div(children=[
 
     html.Img(
         alt='List of Apps',
-        src='https://github.com/plotly/dash-docs/raw/master/images/dds/list-of-apps.PNG',
+        src='/assets/images/dds/list-of-apps.PNG',
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
             'border-radius': '4px'
@@ -320,7 +320,7 @@ Initialize = html.Div(children=[
 
     html.Img(
         alt='Dash App Overview',
-        src='https://github.com/plotly/dash-docs/raw/master/images/dds/app-overview.PNG',
+        src='/assets/images/dds/app-overview.PNG',
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
             'border-radius': '4px'
@@ -332,8 +332,9 @@ Initialize = html.Div(children=[
         &nbsp;
 
         If you have successfully initialized an app, advance to
-        **Deploy App Requirements**. If you have encountered any issues
-        see **Troubleshooting** for help.
+        [**Part 2. Deploy Dash Apps on Plotly Enterprise**](/dash-deployment-server/deployment).
+        If you have encountered any issues see [**Troubleshooting**](/dash-deployment-server)
+        for help.
 
     ''')),
 
@@ -383,10 +384,8 @@ Requirements = html.Div(children=[
 
     `runtime.txt` - specifies python runtime.
 
-    &nbsp;
-
-    If you would like to know more about local assests (stylesheets and
-    scripts), click [here](https://dash.plot.ly/external-resources).
+    `assets` - an optional folder that contains CSS stylesheets, images, or
+    custom JavaScript files. [Learn more about assets](/external-resources)
 
     '''))
 ])
@@ -396,7 +395,7 @@ Requirements = html.Div(children=[
 # Deploy App
 # # # # # # #
 Deploy = html.Div(children=[
-    html.H1('Deploy Dash App on Plotly Enterprise'),
+    html.H1('Part 2. Deploy Dash Apps on Plotly Enterprise'),
 
     dcc.Markdown(s(
     '''
@@ -406,9 +405,9 @@ Deploy = html.Div(children=[
     to deploy a cloned sample app, create a new app following the tutorial,
     or an existing app that you created locally and are ready to deploy.
     However, first ensure that you have
-    [initialized the app](https://dash.plot.ly/dash-deployment-server/initialize).
+    [initialized the app](/dash-deployment-server/initialize).
     Additionally, check the app that you are deploying has the
-    [required files](https://dash.plot.ly/dash-deployment-server/deploy-requirements).
+    [required files](/dash-deployment-server/deploy-requirements).
 
     ''')),
 
@@ -472,8 +471,7 @@ def display_instructions2(platform):
 
                     &nbsp;
 
-                    #### Clone the [Dash On Premise Sample App](https://github.com/plotly/dash-on-premise-sample-app)
-                    from GitHub.
+                    #### Clone the [Dash On Premise Sample App](https://github.com/plotly/dash-on-premise-sample-app) from GitHub.
 
                     ''')),
 
@@ -700,7 +698,7 @@ $ git init # initializes an empty git repo
                     #### Check Deploy Requirements
 
                     Ensure that you have met all deploy requirements. See,
-                    [**Deploy App Requirements**](https://dash.plot.ly/dash-deployment-server/deploy-requirements).
+                    [**Deploy App Requirements**](/dash-deployment-server/deploy-requirements).
                     If you're satisfied, advance to
                     **Configure your Plotly Enterprise server to be your Git remotes**.
 
@@ -947,7 +945,7 @@ Redis = html.Div(children=[
 
     html.Img(
         alt='Enable Redis Databases',
-        src='https://github.com/plotly/dash-docs/raw/master/images/dds/enable-redis.PNG',
+        src='/assets/images/dds/enable-redis.PNG',
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
             'border-radius': '4px'
@@ -982,7 +980,7 @@ Redis = html.Div(children=[
 
     html.Img(
         alt='Create Database',
-        src='https://github.com/plotly/dash-docs/raw/master/images/dds/create-redis-db.PNG',
+        src='/assets/images/dds/create-redis-db.PNG',
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
             'border-radius': '4px'
@@ -993,7 +991,7 @@ Redis = html.Div(children=[
     &nbsp;
 
     Next, navigate to **Apps** and create a new app (for more info see
-    ['Deploy an App on Plotly Enterprise'](https://www.dash.plot.ly/dash-deployment-server/deployment)),
+    ['Deploy Dash Apps on Plotly Enterprise'](/dash-deployment-server/deployment)),
     in the 'Create App' modal you have the option of linking a database.
     Here, use the dropdown to select the database that you created previously
     (see image below).
@@ -1001,7 +999,7 @@ Redis = html.Div(children=[
 
     html.Img(
         alt='Link Database',
-        src='https://github.com/plotly/dash-docs/raw/master/images/dds/link-redis-db.PNG',
+        src='/assets/images/dds/link-redis-db.PNG',
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
             'border-radius': '4px'
@@ -1021,7 +1019,7 @@ Redis = html.Div(children=[
 
     html.Img(
         alt='Create and Link Database in App',
-        src='https://github.com/plotly/dash-docs/raw/master/images/dds/create-and-link-redis-db.PNG',
+        src='/assets/images/dds/create-and-link-redis-db.PNG',
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
             'border-radius': '4px'
@@ -1085,7 +1083,7 @@ EnvVars = html.Div(children=[
 
     html.Img(
         alt='Add Environment Variables',
-        src='https://github.com/plotly/dash-docs/raw/master/images/dds/add-env-variable.PNG',
+        src='/assets/images/dds/add-env-variable.PNG',
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
             'border-radius': '4px'
@@ -1106,7 +1104,7 @@ EnvVars = html.Div(children=[
 
     html.Img(
         alt='Delete Environment Variables',
-        src='https://github.com/plotly/dash-docs/raw/master/images/dds/remove-env-variable.PNG',
+        src='/assets/images/dds/remove-env-variable.PNG',
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
             'border-radius': '4px'
@@ -1153,7 +1151,7 @@ LocalDir = html.Div(children=[
 
     html.Img(
         alt='Add Admin/Superuser Status',
-        src='https://github.com/plotly/dash-docs/raw/master/images/dds/add-superuser.PNG',
+        src='/assets/images/dds/add-superuser.PNG',
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
             'border-radius': '4px'
@@ -1176,7 +1174,7 @@ LocalDir = html.Div(children=[
 
     html.Img(
         alt='Add Directory Mapping',
-        src='https://github.com/plotly/dash-docs/raw/master/images/dds/add-dir-map.PNG',
+        src='/assets/images/dds/add-dir-map.PNG',
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
             'border-radius': '4px'
@@ -1198,7 +1196,7 @@ LocalDir = html.Div(children=[
 
     html.Img(
         alt='Remove Directory Mapping',
-        src='https://github.com/plotly/dash-docs/raw/master/images/dds/remove-dir-map.PNG',
+        src='/assets/images/dds/remove-dir-map.PNG',
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
             'border-radius': '4px'
@@ -1213,7 +1211,7 @@ Troubleshooting = html.Div(children=[
     html.H1('Common Errors'),
     html.Img(
         alt='Coming Soon',
-        src='https://github.com/plotly/dash-docs/raw/master/images/building.png',
+        src='/assets/images/building.png',
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
             'border-radius': '4px'
@@ -1237,7 +1235,7 @@ Analytics = html.Div(children=[
 
     html.Img(
         alt='App Analytics',
-        src='https://github.com/plotly/dash-docs/raw/master/images/dds/analytics.png',
+        src='/assets/images/dds/analytics.png',
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
             'border-radius': '4px'
@@ -1262,7 +1260,7 @@ Logs = html.Div(children=[
 
     html.Img(
         alt='App Logs',
-        src='https://github.com/plotly/dash-docs/raw/master/images/dds/logs.png',
+        src='/assets/images/dds/logs.png',
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
             'border-radius': '4px'
