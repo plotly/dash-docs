@@ -628,6 +628,10 @@ $ pip install plotly''', customStyle=styles.code_container),
                     Create the following files in your project folder:
 
                     **`app.py`**
+
+                    `app.py` This is the entry point to your application,
+                    it contains your Dash app code. This file must contain a
+                    line that defines the server variable: `server = app.server`
                     ''')),
 
                     dcc.SyntaxHighlighter(
@@ -666,6 +670,10 @@ if __name__ == '__main__':
                     ***
 
                     **`.gitignore`**
+
+                    `.gitignore` Determines which files and folders are
+                    ignored in git, and therefore ignored (i.e. not copied
+                    to the server) when you deploy your application.
                     ''')),
 
                     dcc.SyntaxHighlighter(
@@ -680,6 +688,13 @@ if __name__ == '__main__':
 
                     **`Procfile`**
 
+                    Declares what commands are run by app's containers. This is
+                    commonly, `web: gunicorn app:server --workers 4` where app
+                    refers to the file `app.py` and server refers to the variable
+                    named server inside that file. gunicorn is the web server
+                    that will run your application, make sure to add this in
+                    your requirements.txt file.
+
                     ''')),
 
                     dcc.SyntaxHighlighter(
@@ -687,19 +702,27 @@ if __name__ == '__main__':
 
                     dcc.Markdown(s(
                     '''
-                    (Note that `app` refers to the filename `app.py`.
-                    `server` refers to the variable `server` inside that file.)
-
                     ***
 
                     **`requirements.txt`**
 
-                    `requirements.txt` describes your Python dependencies.
+                    `requirements.txt` Describes the app's python dependencies.
                     You can fill this file in automatically with:
                     ''')),
 
                     dcc.SyntaxHighlighter(
                     '''$ pip freeze > requirements.txt''', customStyle=styles.code_container),
+
+                    dcc.Markdown(s(
+                    '''
+                    ***
+
+                    **`runtime.txt`**
+
+                    `runtime.txt` This file specifies python runtime.
+                    For example, its contents would be `python-2.7.15` or
+                    `python-3.6.6`
+                    ''')),
 
                     dcc.Markdown(s(
                     '''
@@ -1085,7 +1108,7 @@ Redis = html.Div(children=[
     &nbsp;
 
     Next, navigate to **Apps** and create a new app (for more info see
-    ['Deploy Dash Apps on Dash Deployment Server'](/dash-deployment-server/deployment)),
+    ['Part 1. Initialize Dash Apps on Dash Deployment Server'](/dash-deployment-server/initialize)),
     in the 'Create App' modal you have the option of linking a database.
     Here, use the dropdown to select the database that you created previously
     (see image below).
@@ -1129,12 +1152,16 @@ Redis = html.Div(children=[
     Dash Deployment Server UI, it is still possible to create and link a Redis
     database via the command line (using ssh):
 
-    &nbsp;
+    ''')),
 
-    ```
-    $ ssh dokku@YOUR_DASH_SERVER redis:create SERVICE-NAME
-    $ ssh dokku@YOUR_DASH_SERVER redis:link SERVICE-NAME APP-NAME
-    ```
+    dcc.SyntaxHighlighter(s(
+    """$ ssh dokku@YOUR_DASH_SERVER redis:create SERVICE-NAME
+    $ ssh dokku@YOUR_DASH_SERVER redis:link SERVICE-NAME APP-NAME"""),
+    customStyle=styles.code_container,
+    language='python'
+    ),
+
+    dcc.Markdown(s('''
 
     &nbsp;
 
@@ -1154,10 +1181,15 @@ Redis = html.Div(children=[
 
     You can reference you Redis Database with the `os.environ` module:
 
-    ```
-    redis_url = os.environ['REDIS_URL']
-    ```
+    ''')),
 
+    dcc.SyntaxHighlighter(s(
+    """redis_url = os.environ['REDIS_URL']"""),
+    customStyle=styles.code_container,
+    language='python'
+    ),
+
+    dcc.Markdown(s('''
     ***
 
     #### Running Redis on Your Local Machine
@@ -1234,19 +1266,31 @@ EnvVars = html.Div(children=[
 
     You can reference these variables with the `os.environ` module:
 
-    ```
-    database_password = os.environ['DATABASE_PASSWORD']
-    ```
+    ''')),
 
+    dcc.SyntaxHighlighter(s(
+    """database_password = os.environ['DATABASE_PASSWORD']"""),
+    customStyle=styles.code_container,
+    language='python'
+    ),
+
+    dcc.Markdown(s('''
     &nbsp;
 
     Alternatively, if the variable isn't in your environment and you want
     to fallback to some other value, use:
 
-    ```
-    database_password = os.environ.get('DATABASE_PASSWORD', 'my-default-database-password')
-    ```
+    ''')),
 
+    dcc.SyntaxHighlighter(s(
+    """database_password = os.environ.get('DATABASE_PASSWORD', 'my-default-database-password')"""),
+    customStyle=styles.code_container,
+    language='python'
+    ),
+
+
+
+    dcc.Markdown(s('''
     ***
 
     #### Defining Environment Variables In Your Local Environment
@@ -1263,14 +1307,17 @@ EnvVars = html.Div(children=[
     &nbsp;
 
     Alternatively, you can define them for your session by "exporting" them:
+    ''')),
 
-    ```
-    $ export DATABASE_USER=chris
+    dcc.SyntaxHighlighter(s("""$ export DATABASE_USER=chris
     $ export DATABASE_PASSWORD=my-password
-    $ python app.py
-    ```
+    $ python app.py"""),
+    customStyle=styles.code_container,
+    language='python'
+    ),
 
 
+    dcc.Markdown(s('''
     ***
 
     #### Delete Environment Variables
@@ -1378,11 +1425,15 @@ LocalDir = html.Div(children=[
     If you have mapped the directory from `/srv` to `/srv/app-data`, then you
     can read files from this folder in you application with the following code:
 
-    ```
-    import os
-    file_pathname = os.path.join('srv', 'data', 'some-file.csv')
-    ```
+    ''')),
 
+    dcc.SyntaxHighlighter(s("""import os
+    file_pathname = os.path.join('srv', 'data', 'some-file.csv')"""),
+    customStyle=styles.code_container,
+    language='python'
+    ),
+
+    dcc.Markdown(s('''
     &nbsp;
 
     In some cases, the filesystems that you reference in your deployed
@@ -1390,15 +1441,20 @@ LocalDir = html.Div(children=[
     In your application code, you can check which environment you are in
     with the following code:
 
-    ```
-    if 'DASH_APP' in os.environ:
+    ''')),
+
+    dcc.SyntaxHighlighter(s(
+"""if 'DASH_APP' in os.environ:
         # this is a deployed app
         filepath = os.path.join('srv', 'data', 'my-dataset.csv')
-    else:
+else:
         # local file path
-        filepath = os.path.join('Users', 'chris 'data', 'my-dataset.csv')
-    ```
+        filepath = os.path.join('Users', 'chris 'data', 'my-dataset.csv')"""),
+    customStyle=styles.code_container,
+    language='python'
+    ),
 
+    dcc.Markdown(s('''
     ***
 
     #### Recommendations
@@ -1574,11 +1630,13 @@ Logs = html.Div(children=[
     To view the logs for a specific Dash App run the following command
     in your terminal:
 
-    &nbsp;
+    ''')),
 
-    ```
-    $ ssh dokku@<your-dash-domain> logs <your-app-name> --num -1
-    ```
+    dcc.SyntaxHighlighter(s(
+    '''$ ssh dokku@<your-dash-domain> logs <your-app-name> --num -1'''),
+    customStyle=styles.code_container, language='python'),
+
+    dcc.Markdown(s('''
 
     &nbsp;
 
