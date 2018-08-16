@@ -1444,6 +1444,64 @@ LocalDir = html.Div(children=[
 ])
 
 # # # # # # #
+# Staging App
+# # # # # # #
+StagingApp = html.Div(children=[
+    html.H1('Create a Staging Dash App'),
+
+    dcc.Markdown(s(
+    '''
+    Once you have deployed your application, you're end-users will expect that
+    it is stable and ready for consumption. So, what do you do if you want to
+    test out or share some changes on the server? We recommend creating
+    separate applications: one for "production" consumption and another one
+    for testing. You will share the URL of the "production" app to your end
+    users and you will use your "testing" app to try out different changes
+    before you send them to your production app. With Dash Deployment
+    Server, creating a separate testing app is easy:
+
+    ***
+
+    ### Initialize a New Dash App
+
+    [Initialize a new app](/dash-deployment-server/initialize) in the Dash
+    Deployment Server UI. We recommend giving it the same name as your
+    other app but appending `-stage` to it (e.g. `analytics-stage`).
+
+    ***
+
+    ### Configure a New Git Remote
+
+    Add a new remote that points to this URL. In this example,
+    we'll name the remote "stage":
+
+    ''')),
+
+    dcc.SyntaxHighlighter(s(
+    '''$ git add remote stage https://your-dash-deployment-server/GIT/your-dash-app-name-testing'''),
+    customStyle=styles.code_container, language='python'),
+
+    dcc.Markdown(s(
+    '''
+    ***
+
+    ### Deploy Changes to Your Staging App
+
+    Now, you can deploy your changes to this app just like you would
+    with your other app. Instead of `$ git push plotly master`, you'll deploy
+    to your staging app with:
+
+    ''')),
+
+    dcc.SyntaxHighlighter(s(
+    '''$ git push stage master'''),
+    customStyle=styles.code_container, language='python'),
+
+])
+
+
+
+# # # # # # #
 # Common Errors
 # # # # # # #
 Troubleshooting = html.Div(children=[

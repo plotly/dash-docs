@@ -13,7 +13,7 @@ layout = html.Div(className='toc', children=[
         reusable_components.Chapter('Learn More About Dash Deployment Server',
                 'https://plot.ly/dash/pricing/',
                 """Dash Deployment Server is Plotly's commercial offering
-                   for hosting and sharing Dash apps on-premises or in the
+                   for hosting and sharing Dash Apps on-premises or in the
                    cloud. [Learn more](https://plot.ly/dash/pricing) or
                    [Request a Trial](https://plotly.typeform.com/to/rkO85m) """)
     ]),
@@ -24,7 +24,7 @@ layout = html.Div(className='toc', children=[
                 'Initialize an app via Dash Deployment Server UI.'),
         reusable_components.Chapter('Part 2. Deploy Dash Apps on Dash Deployment Server',
                 '/dash-deployment-server/deployment',
-                'Deploy Dash apps to the Dash Deployment Server using '
+                'Deploy Dash Apps to the Dash Deployment Server using '
                 'HTTPS or SSH. Start with a sample app or deploy your existing app.')
     ]),
 
@@ -48,7 +48,7 @@ layout = html.Div(className='toc', children=[
     reusable_components.Section("Advanced", [
         reusable_components.Chapter('Authenticating to Dash Deployment Server with SSH',
                 '/dash-deployment-server/ssh',
-                "There are two methods to deploy Dash apps: HTTPS and SSH "
+                "There are two methods to deploy Dash Apps: HTTPS and SSH "
                 "and we recommend getting started with the HTTPS method. "
                 "In this section, you'll learn more about deploying with SSH."),
         reusable_components.Chapter('Dash App Authentication',
@@ -57,10 +57,14 @@ layout = html.Div(className='toc', children=[
                 'Plotly Enterprise.'),
         reusable_components.Chapter('Linking a Redis Database',
                 '/dash-deployment-server/redis-database',
-                'Create and link an in-memory database to your dash apps.'),
+                'Create and link an in-memory database to your Dash Apps.'),
         reusable_components.Chapter('Linking a Celery Process',
                 '/dash-deployment-server/celery-process',
-                'Add a task queue to your dash apps.')
+                'Add a task queue to your Dash Apps.'),
+        reusable_components.Chapter('Create a Staging Dash App',
+                '/dash-deployment-server/staging-app',
+                'Use a staged Dash App to test changes before updating your '
+                'prodcution Dash App.')
     ]),
 
     reusable_components.Section("Troubleshooting", [
@@ -69,11 +73,11 @@ layout = html.Div(className='toc', children=[
                 """View app analytics such as last updated, CPU usage, Memory Usage, and more."""),
         reusable_components.Chapter('App Logs',
                 '/dash-deployment-server/logs',
-                """Check your dash app's logs via the Dash Deployment Server
+                """Check your Dash App's logs via the Dash Deployment Server
                 UI or via the command line."""),
         reusable_components.Chapter('Common Errors',
                 '/dash-deployment-server/troubleshooting',
-                """Common errors when deploying dash apps."""),
+                """Common errors when deploying Dash Apps."""),
         reusable_components.Chapter('Support',
                 '/dash-deployment-server/support',
                 """Having trouble deploying your app? Our dedicated support team is available to help you out.""")
