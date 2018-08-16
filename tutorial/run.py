@@ -115,12 +115,21 @@ def display_content(pathname):
                if chapters[c]['url'] == pathname]
 
     if matched and matched[0] != 'index':
-        content = html.Div([
-            html.Div(chapters[matched[0]]['content']),
-            html.Hr(),
-            dcc.Link(html.A('Back to the Table of Contents'), href='/'),
-            html.Div(id='wait-for-page-{}'.format(pathname)),
-        ])
+        if 'dash-deployment-server/' not in pathname:
+            content = html.Div([
+                html.Div(chapters[matched[0]]['content']),
+                html.Hr(),
+                dcc.Link(html.A('Back to the Table of Contents'), href='/'),
+                html.Div(id='wait-for-page-{}'.format(pathname)),
+            ])
+        else:
+            content = html.Div([
+                html.Div(chapters[matched[0]]['content']),
+                html.Hr(),
+                dcc.Link(html.A('Back to Dash Deployment Server Documentation'), href='/dash-deployment-server'),
+                html.Div(id='wait-for-page-{}'.format(pathname)),
+            ])
+
     else:
         content = chapters['index']['content']
 

@@ -422,7 +422,7 @@ Requirements = html.Div(children=[
     `runtime.txt`
 
     This file specifies python runtime. For example, its contents would be
-    `python-2.7.13` or `python-3.7.0"`.
+    `python-2.7.15` or `python-3.6.6"`.
 
     ***
 
@@ -910,8 +910,8 @@ ConfigSys = html.Div(children=[
     We have a collection of sample apps taht install common system
     level dependencies. These applications are _ready to deploy_:
 
-    - [Oracle cx_Oracle Database](https://github.com/plotly/dash-on-premise-sample-app#2)
-    - [Pyodbc Database Driver](https://github.com/plotly/dash-on-premise-sample-app#3)
+    - [Oracle cx_Oracle Database](https://github.com/plotly/dash-on-premise-sample-app/pull/2#issue-144246327)
+    - [Pyodbc Database Driver](https://github.com/plotly/dash-on-premise-sample-app/pull/3#issue-144272510)
 
     &nbsp;
 
