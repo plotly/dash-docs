@@ -24,7 +24,7 @@ layout = html.Div(className='toc', children=[
                 'Initialize an app via Dash Deployment Server UI.'),
         reusable_components.Chapter('Part 2. Deploy Dash Apps on Dash Deployment Server',
                 '/dash-deployment-server/deployment',
-                'Deploy dash apps to the Dash Deployment Server using ' \
+                'Deploy Dash apps to the Dash Deployment Server using '
                 'HTTPS or SSH. Start with a sample app or deploy your existing app.')
     ]),
 
@@ -48,11 +48,12 @@ layout = html.Div(className='toc', children=[
     reusable_components.Section("Advanced", [
         reusable_components.Chapter('Authenticating to Dash Deployment Server with SSH',
                 '/dash-deployment-server/ssh',
-                'In order to use SSH you need to generate and add a SSH key to ' \
-                'the Dash Deployment Server.'),
+                "There are two methods to deploy Dash apps: HTTPS and SSH "
+                "and we recommend getting started with the HTTPS method. "
+                "In this section, you'll learn more about deploying with SSH."),
         reusable_components.Chapter('Dash App Authentication',
                 '/dash-deployment-server/app-authentication',
-                'Using `dash-auth` package to provide login through ' \
+                'Using `dash-auth` package to provide login through '
                 'Plotly Enterprise.'),
         reusable_components.Chapter('Linking a Redis Database',
                 '/dash-deployment-server/redis-database',

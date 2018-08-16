@@ -9,10 +9,10 @@ def s(string_block):
     return string_block.replace('    ', '')
 
 # # # # # # #
-# Authenticating to Plotly Enterprise with SSH
+# Authenticating to Dash Deployment Server with SSH
 # # # # # # #
 Ssh = html.Div(children=[
-    html.H1('Authenticating to Plotly Enterprise with SSH'),
+    html.H1('Authenticating to Dash Deployment Server with SSH'),
 
     dcc.Markdown(s('''
 
@@ -20,7 +20,7 @@ Ssh = html.Div(children=[
     either HTTPS or SSH. If you are deploying with HTTPS, then you do not
     need to set up an SSH key. Thus, you can skip this tutorial and go
     straight to
-    [Initialize Dash Apps on Plotly Enterprise](/dash-deployment-server/initialize).
+    [Initialize Dash Apps on Dash Deployment Server](/dash-deployment-server/initialize).
 
     &nbsp;
 
@@ -81,10 +81,10 @@ def display_instructions(platform):
 
         ''')),
 
-        dcc.Markdown(
+        dcc.Markdown(s(
         '**1. Open Git Bash**' if platform == 'Windows' else
         '**1. Open Terminal**'
-        ),
+        )),
 
         dcc.Markdown(s('''
         **2. Generate Key**
@@ -151,8 +151,8 @@ def display_instructions(platform):
         dcc.Markdown(s('''
         **2. Open the Dash Deployment Server UI**
 
-        You can find the Dash Deployment Server UI by clicking on "Dash App"
-        in your Plotly Enterprise's "Create" menu.
+        You can find the Dash Deployment Server UI by selecting "Dash App"
+        from Plotly's "Create" menu.
 
         > *The Dash App item in the Create menu takes you to the Dash
         Deployment Server UI*
@@ -170,7 +170,7 @@ def display_instructions(platform):
         dcc.Markdown(s('''
         **3. Add SSH Key**
 
-        Click **SSH Keys** in the top navigation menu of the Dash
+        Select **SSH Keys** in the top navigation menu of the Dash
         Deployment Server UI. Here, select **Add Key** and in the 'Add
         SSH Key' modal, paste in your SSH Key.
         ''')),
@@ -211,34 +211,34 @@ def display_instructions(platform):
 
         This file is located in `~/.ssh/config`. If it's not there, then
         create it. Add the following lines to
-        this file, replacing `your-dash-app-manager` with the domain of
+        this file, replacing `your-dash-deployment-server` with the domain of
         your Dash Deployment Server (without `http://` or `https://`).
         ''')),
 
-        dcc.SyntaxHighlighter('''Host your-dash-app-manager
+        dcc.SyntaxHighlighter('''Host your-dash-deployment-server
         Port 3022''', customStyle=styles.code_container),
 
-        (dcc.Markdown('''
+        (dcc.Markdown(s('''
         If you're having trouble opening this file, you can run
         `$ open ~/.ssh/config` which will open the file using your default
         editor. If the file doesn't exist, then you can open that hidden
         folder with just `$ open ~/.ssh`
-        ''') if platform == 'Mac' else ''),
+        ''')) if platform == 'Mac' else ''),
 
-        (dcc.Markdown('''
+        (dcc.Markdown(s('''
         Please be careful not to save your SSH config as a .txt file as
         it will not be recognized by Git when deploying your applications.
         If you are using Notepad to create your SSH config, you can force the
         removal of the .txt extension by naming the file "config", including
         the quotes, in the Save As dialog box.
-        ''') if platform == 'Windows' else ''),
+        ''')) if platform == 'Windows' else ''),
 
 
         dcc.Markdown(s('''
         ***
 
         If you have successfully added your SSH Key, advance to
-        [**Part 1. Initialize Dash Apps on Plotly Enterprise**](/dash-deployment-server/initialize).
+        [**Part 1. Initialize Dash Apps on Dash Deployment Server**](/dash-deployment-server/initialize).
         '''))
     ]
 
@@ -250,7 +250,7 @@ Initialize = html.Div(children=[
 
     dcc.Markdown(s('''
         Before creating or deploying a dash app locally, you need to initialize
-        an app on Plotly Enterprise. This can be achieved using the Dash
+        an app on Dash Deployment Server. This can be achieved using the Dash
         Deployment Server UI.
     ''')),
 
@@ -314,7 +314,7 @@ Initialize = html.Div(children=[
 
         &nbsp;
 
-        4. Now, simply click on the dash app name to access the app overview.
+        4. Now, select the dash app to access the app overview.
 
     ''')),
 
@@ -349,42 +349,86 @@ Requirements = html.Div(children=[
     dcc.Markdown(s(
     '''
     To deploy dash apps to the Dash Deployment Server, there
-    are a few files required for successful deployment. Below, is a common
+    are a few files required for successful deployment. Below is a common
     dash app folder structure and a brief description of each files function.
 
     ***
 
-    ## Files
+    ## Folder Reference
 
     ```
-    dash_app/
+    Dash_App/
     |-- assets/
        |-- typography.css
        |-- header.css
        |-- custom-script.js
     |-- app.py
-    |-- config.py
     |-- .gitignore
     |-- Procfile
     |-- requirements.txt
     |-- runtime.txt
     ```
 
-    &nbsp;
+    ***
 
-    `app.py` - defines the dash application.
+    ## Files Reference
 
-    `config.py` - an optional file for configurations.
+    `app.py`
 
-    `.gitignore` - determines which files and folders are ignored.
+    This is the entry point to your application, it contains your Dash app code.
+    This file must contain a line that defines the `server` variable:
+    ```server = app.server```
 
-    `Procfile` - declares what commands are run by app's containers.
+    ***
 
-    `requirements.txt` - describes the app's python dependencies.
+    `.gitignore`
 
-    `runtime.txt` - specifies python runtime.
+    Determines which files and folders are ignored. For example, its contents
+    would be:
 
-    `assets` - an optional folder that contains CSS stylesheets, images, or
+    ```
+    venv
+    *.pyc
+    .DS_Store
+    .env
+    ```
+
+    ***
+
+    `Procfile`
+
+    Declares what commands are run by app's containers. This is commonly,
+    ```web: gunicorn app:server --workers 4``` where app refers to the file
+    `app.py` and server refers to the variable named server inside that file.
+    gunicorn is the web server that will run your application, make sure to
+    add this in your requirements.txt file.
+
+    ***
+
+    `requirements.txt`
+
+    Describes the app's python dependencies. For example,
+
+    ```
+    dash==0.21.1
+    dash-auth==1.0.1
+    dash-renderer==0.11.3
+    dash-core-components==0.22.1
+    dash-html-components==0.9.0
+    ```
+
+    ***
+
+    `runtime.txt`
+
+    This file specifies python runtime. For example, its contents would be
+    `python-2.7.13` or `python-3.7.0"`.
+
+    ***
+
+    `assets`
+
+    An optional folder that contains CSS stylesheets, images, or
     custom JavaScript files. [Learn more about assets](/external-resources)
 
     '''))
@@ -475,13 +519,17 @@ def display_instructions2(platform):
 
                     ''')),
 
-                    ('In Git Bash, run: ' if platform == 'Windows' else ''),
+                    (dcc.Markdown(s('''
+                    &nbsp;
+
+                    First, install [Git for Windows](https://git-scm.com/download/win).
+                    Then, in Git Bash:
+                    ''')) if platform == 'Windows' else
+                    ''),
 
                     dcc.SyntaxHighlighter(s(
-                    '''
-$ git clone https://github.com/plotly/dash-on-premise-sample-app.git
-                    '''),customStyle=styles.code_container
-                    ),
+                    '''$ git clone https://github.com/plotly/dash-on-premise-sample-app.git'''),
+                    customStyle=styles.code_container),
 
                     dcc.Markdown(s(
                     '''
@@ -500,10 +548,10 @@ $ git clone https://github.com/plotly/dash-on-premise-sample-app.git
                     '''
                     ***
 
-                    #### Configure your Plotly Enterprise server to be your Git remote
+                    #### Configure your Dash Deployment Server to be your Git remote
 
                     In the root of your folder, run the following command to create a
-                    remote host to your new app on Plotly Enterprise.
+                    remote host to your new app on Dash Deployment Server.
 
                     &nbsp;
 
@@ -514,6 +562,14 @@ $ git clone https://github.com/plotly/dash-on-premise-sample-app.git
             ]),
             dcc.Tab(label='Create New App', children=[
                 html.Div([
+                    (dcc.Markdown(s('''
+                    &nbsp;
+
+                    First, install [Git for Windows](https://git-scm.com/download/win).
+                    Then, in Git Bash:
+                    ''')) if platform == 'Windows' else
+                    ''),
+
                     dcc.Markdown(s(
                     '''
 
@@ -522,10 +578,9 @@ $ git clone https://github.com/plotly/dash-on-premise-sample-app.git
                     #### Create a New Folder
                     ''')),
 
-                    dcc.SyntaxHighlighter('''
-$ mkdir dash_app_example
-$ cd dash_app_example
-                    ''', customStyle=styles.code_container),
+                    dcc.SyntaxHighlighter(
+                    '''$ mkdir dash_app_example
+$ cd dash_app_example''', customStyle=styles.code_container),
 
                     dcc.Markdown(s(
                     '''
@@ -537,37 +592,38 @@ $ cd dash_app_example
                     ''')),
 
                     dcc.SyntaxHighlighter(
-                    '''
-$ git init # initializes an empty git repo
+                    ('''$ git init # initializes an empty git repo
 $ virtualenv venv # creates a virtualenv called "venv"
-$ source venv/bin/activate # uses the virtualenv
-                    ''', customStyle=styles.code_container),
+$ source venv/bin/activate # uses the virtualenv''') if platform != 'Windows' else (
+                    '''$ git init # initializes an empty git repo
+$ virtualenv venv # creates a virtualenv called "venv"
+$ source venv/Scripts/activate # uses the virtualenv'''), customStyle=styles.code_container),
 
                     dcc.Markdown(s(
                     '''
+                    &nbsp;
+
                     `virtualenv` creates a fresh Python instance. You will need
                     to reinstall your app's dependencies with this virtualenv:
                     ''')),
 
                     dcc.SyntaxHighlighter(
-                    '''
-$ pip install dash
+                    '''$ pip install dash
 $ pip install dash-renderer
 $ pip install dash-core-components
 $ pip install dash-html-components
-$ pip install plotly
-                    ''', customStyle=styles.code_container),
+$ pip install plotly''', customStyle=styles.code_container),
 
                     dcc.Markdown(s(
                     '''
+                    &nbsp;
+
                     You will also need a new dependency, `gunicorn`, for
                     deploying the app:
                     ''')),
 
                     dcc.SyntaxHighlighter(
-                    '''
-$ pip install gunicorn
-                    ''', customStyle=styles.code_container),
+                    '''$ pip install gunicorn''', customStyle=styles.code_container),
 
                     dcc.Markdown(s(
                     '''
@@ -580,15 +636,14 @@ $ pip install gunicorn
                     ''')),
 
                     dcc.SyntaxHighlighter(
-                    '''
-import os
+                    '''import os
 
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
+from dash.dependencies import Input, Output
 
-
-app = dash.Dash(__name__)
+app = dash.Dash(__name__, external_stylesheets=['https://codepen.io/chriddyp/pen/bWLwgP.css'])
 server = app.server
 
 app.css.append_css({"external_url": "https://codepen.io/chriddyp/pen/bWLwgP.css"})
@@ -603,14 +658,14 @@ app.layout = html.Div([
   html.Div(id='display-value')
 ])
 
-@app.callback(dash.dependencies.Output('display-value', 'children'),
-            [dash.dependencies.Input('dropdown', 'value')])
+@app.callback(Output('display-value', 'children'),
+            [Input('dropdown', 'value')])
 def display_value(value):
   return 'You have selected "{}"'.format(value)
 
 if __name__ == '__main__':
-  app.run_server(debug=True)
-                    ''', customStyle=styles.code_container, language='python'),
+  app.run_server(debug=True)''',
+                    customStyle=styles.code_container, language='python'),
 
                     dcc.Markdown(s('''
                     ***
@@ -619,12 +674,10 @@ if __name__ == '__main__':
                     ''')),
 
                     dcc.SyntaxHighlighter(
-                    '''
-venv
+                    '''venv
 *.pyc
 .DS_Store
-.env
-                    ''', customStyle=styles.code_container),
+.env''', customStyle=styles.code_container),
 
                     dcc.Markdown(s(
                     '''
@@ -635,14 +688,12 @@ venv
                     ''')),
 
                     dcc.SyntaxHighlighter(
-                    '''
-web: gunicorn app:server
-                    ''', customStyle=styles.code_container),
+                    '''web: gunicorn app:server --workers 4''', customStyle=styles.code_container),
 
                     dcc.Markdown(s(
                     '''
                     (Note that `app` refers to the filename `app.py`.
-                    `server` refers to the variable `server` inside that file).
+                    `server` refers to the variable `server` inside that file.)
 
                     ***
 
@@ -653,18 +704,16 @@ web: gunicorn app:server
                     ''')),
 
                     dcc.SyntaxHighlighter(
-                    '''
-$ pip freeze > requirements.txt
-                    ''', customStyle=styles.code_container),
+                    '''$ pip freeze > requirements.txt''', customStyle=styles.code_container),
 
                     dcc.Markdown(s(
                     '''
                     ***
 
-                    #### Configure your Plotly Enterprise server to be your Git remote
+                    #### Configure your Dash Deployment Server to be your Git remote
 
                     In the root of your folder, run the following command to create a
-                    remote host to your new app on Plotly Enterprise.
+                    remote host to your new app on Dash Deployment Server.
 
                     &nbsp;
 
@@ -675,6 +724,14 @@ $ pip freeze > requirements.txt
             ]),
             dcc.Tab(label='Deploy Existing App', children=[
                 html.Div([
+                    (dcc.Markdown(s('''
+                    &nbsp;
+
+                    First, install [Git for Windows](https://git-scm.com/download/win).
+                    Then, in Git Bash:
+                    ''')) if platform == 'Windows' else
+                    ''),
+
                     dcc.Markdown(s(
                     '''
 
@@ -686,10 +743,8 @@ $ pip freeze > requirements.txt
                     ''')),
 
                     dcc.SyntaxHighlighter(
-                    '''
-$ cd <your-folder-name>
-$ git init # initializes an empty git repo
-                    ''', customStyle=styles.code_container),
+                    '''$ cd <your-folder-name>
+$ git init # initializes an empty git repo''', customStyle=styles.code_container),
 
                     dcc.Markdown(s(
                     '''
@@ -700,14 +755,14 @@ $ git init # initializes an empty git repo
                     Ensure that you have met all deploy requirements. See,
                     [**Deploy App Requirements**](/dash-deployment-server/deploy-requirements).
                     If you're satisfied, advance to
-                    **Configure your Plotly Enterprise server to be your Git remotes**.
+                    **Configure your Dash Deployment Server to be your Git remotes**.
 
                     ***
 
-                    #### Configure your Plotly Enterprise server to be your Git remote
+                    #### Configure your Dash Deployment Server to be your Git remote
 
                     In the root of your folder, run the following command to create a
-                    remote host to your new app on Plotly Enterprise.
+                    remote host to your new app on Dash Deployment Server.
 
                     &nbsp;
 
@@ -725,11 +780,8 @@ $ git init # initializes an empty git repo
 def display_instructions2(method):
     return [
         dcc.SyntaxHighlighter(s(
-        '''
-    $ git remote add plotly dokku@your-dash-app-manager:your-dash-app-name
-        ''' if method == 'SSH' else '''
-    $ git remote add plotly https://your-dash-app-manager/GIT/your-dash-app-name
-        '''),
+        '''$ git remote add plotly dokku@your-dash-deployment-server:your-dash-app-name''' if method == 'SSH' else
+        '''$ git remote add plotly https://your-dash-deployment-server/GIT/your-dash-app-name'''),
         customStyle=styles.code_container,
         language='python'
         ),
@@ -739,7 +791,7 @@ def display_instructions2(method):
         &nbsp;
 
         Replace `your-dash-app-name` with the name of your Dash app that you
-        supplied in the Dash Deployment Server and `your-dash-app-manager`
+        supplied in the Dash Deployment Server and `your-dash-deployment-server`
         with the domain of the Dash Deployment Server.
 
         For example, if your Dash app name was `my-first-dash-app`
@@ -750,7 +802,7 @@ def display_instructions2(method):
         &nbsp;
 
         Replace `your-dash-app-name` with the name of your Dash app that
-        you supplied in the Dash Deployment Server and `your-dash-app-manager`
+        you supplied in the Dash Deployment Server and `your-dash-deployment-server`
         with the domain of the Dash Deployment Server.
 
         For example, if your Dash app name was `my-first-dash-app`
@@ -770,13 +822,11 @@ def display_instructions2(method):
         ''')),
 
         dcc.SyntaxHighlighter(s(
-        '''
-    $ git status # view the changed files
-    $ git diff # view the actual changed lines of code
-    $ git add .  # add all the changes
-    $ git commit -m 'a description of the changes'
-    $ git push plotly master
-        '''), customStyle=styles.code_container, language='python'),
+        '''$ git status # view the changed files
+$ git diff # view the actual changed lines of code
+$ git add .  # add all the changes
+$ git commit -m 'a description of the changes'
+$ git push plotly master'''), customStyle=styles.code_container, language='python'),
 
         dcc.Markdown(s(
         '''
@@ -793,8 +843,7 @@ def display_instructions2(method):
 
         If you install any other Python packages, add those packages to
         the `requirements.txt` file. Packages that are included in this
-        file will be installed automatically by the Plotly Enterprise
-        server.
+        file will be installed automatically by the Dash Deployment Server.
         '''))
     ]
 
@@ -825,7 +874,7 @@ Authentication = html.Div(children=[
 
     #### Redeploy Your App
 
-    Your app should now have a Plotly Enterprise login screen.
+    Your app should now have a Dash Deployment Server login screen.
     You can manage the permissions of the app in your list of files
     at `https://<your-plotly-domain>/organize`.
     '''))
@@ -840,7 +889,7 @@ ConfigSys = html.Div(children=[
     In some cases you may need to install and configure system
     dependencies. Examples include installing and configuring
     database drivers or the Java JRE environment.
-    Plotly Enterprise supports these actions through an
+    Dash Deployment Server supports these actions through an
     `apt-packages` file and a `predeploy` script.
 
     ***
@@ -890,7 +939,7 @@ ConfigSys = html.Div(children=[
 
     ##### Run Pre-Deploy Script Using `app.json`
 
-    Next we must instruct Plotly Enterprise to run our `setup_pyodbc`
+    Next we must instruct Dash Deployment Server to run our `setup_pyodbc`
     file by adding a JSON configuration file named `app.json`
     into the root of our application folder.
 
@@ -972,7 +1021,7 @@ Redis = html.Div(children=[
     ##### Create a Database Before Initializing an App
 
     If you haven't initialized an app yet, select **Databases** situated in the
-    top navigation menu. Next, click **Create Database**, then in the
+    top navigation menu. Next, select **Create Database**, then in the
     'Create Database' modal, add the name of your database
     (for example, `my-first-redis-db`). Once it has been created, you'll
     notice that it is added to your list of databases.
@@ -991,7 +1040,7 @@ Redis = html.Div(children=[
     &nbsp;
 
     Next, navigate to **Apps** and create a new app (for more info see
-    ['Deploy Dash Apps on Plotly Enterprise'](/dash-deployment-server/deployment)),
+    ['Deploy Dash Apps on Dash Deployment Server'](/dash-deployment-server/deployment)),
     in the 'Create App' modal you have the option of linking a database.
     Here, use the dropdown to select the database that you created previously
     (see image below).
@@ -1011,9 +1060,9 @@ Redis = html.Div(children=[
 
     ##### Create and Link a Database After an App Has Been Initialized.
 
-    In the Dash Deployment Server UI, click on the app then navigate
+    In the Dash Deployment Server UI, select the app then navigate
     to the settings page. In Databases, use the dropdown to select
-    **create and link database** then click **Add**.
+    **create and link database** then **Add**.
 
     ''')),
 
@@ -1031,15 +1080,15 @@ Redis = html.Div(children=[
 
     #### Create and Link (via Command Line)
 
-    Whilst it is now possible to create and link Redis Databases via the
+    While it is now possible to create and link Redis Databases via the
     Dash Deployment Server UI, it is still possible to create and link a Redis
     database via the command line (using ssh):
 
     &nbsp;
 
     ```
-    ssh dokku@YOUR_DASH_SERVER redis:create SERVICE-NAME
-    ssh dokku@YOUR_DASH_SERVER redis:link SERVICE-NAME APP-NAME
+    $ ssh dokku@YOUR_DASH_SERVER redis:create SERVICE-NAME
+    $ ssh dokku@YOUR_DASH_SERVER redis:link SERVICE-NAME APP-NAME
     ```
 
     &nbsp;
@@ -1074,10 +1123,12 @@ EnvVars = html.Div(children=[
     html.H1('Setting Environment Variables'),
 
     dcc.Markdown(s('''
-    Environment variables are config values that can affect the way your app
-    behaves. In Plotly Enterprise 2.5.0, you can add and remove
-    sensitive data (e.g. API keys) via the Dash Deployment Server UI,
-    rather than placing them in the repository.
+    In Plotly Enterprise 2.5.0, you can store secrets as environment variables
+    instead of in your application. It's good practice to keep application
+    secrets like database passwords outside of your code so that they aren't
+    as mistakenly exposed or shared. Instead of storing these secrets in code,
+    you can store them as environment variables and your Dash application code
+    can reference them dynamically.
 
     ''')),
 
@@ -1110,7 +1161,7 @@ EnvVars = html.Div(children=[
     #### Delete Environment Variables
 
     To remove an environment variable via the Dash Deployment Server UI,
-    navigate to the application settings. Here, simply click the red
+    navigate to the application settings. Here, simply  the red
     cross situated to the right-hand side of the environment variable.
 
     ''')),
@@ -1242,8 +1293,9 @@ Analytics = html.Div(children=[
 
     After you have successfully deployed a dash app to the Dash Deployment
     Server, you can monitor app performance via the app analytics and logs.
-    Here, navigate to the Dash Deployment Server UI, select the app to display
-    the applications analytics.
+    Here, navigate to the Dash Deployment Server UI and select the app to
+    display analytics.
+
     ''')),
 
     html.Img(
@@ -1292,13 +1344,14 @@ Logs = html.Div(children=[
     &nbsp;
 
     ```
-    ssh dokku@<your-dash-domain> logs <your-app-name> --num -1
+    $ ssh dokku@<your-dash-domain> logs <your-app-name> --num -1
     ```
 
     &nbsp;
 
-    This will work for any app you have permission on, and uses the
-    same mechanism as pushing the app via ssh.
+    This will work for any application that you own. This command
+    authenticates with the server with ssh.
+    [Configure SSH Authentication](/dash-deployment-server/ssh).
 
     &nbsp;
 
