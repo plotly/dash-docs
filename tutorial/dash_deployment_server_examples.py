@@ -445,7 +445,7 @@ Requirements = html.Div(children=[
     `runtime.txt`
 
     This file specifies python runtime. For example, its contents would be
-    `python-2.7.15` or `python-3.6.6"`.
+    `python-2.7.15` or `python-3.6.6`.
 
     ***
 
@@ -1254,14 +1254,24 @@ Redis = html.Div(children=[
 Celery = html.Div(children=[
     html.H1('Linking a Celery Process'),
 
-    html.Img(
-        alt='Coming Soon',
-        src='https://github.com/plotly/dash-docs/raw/master/images/building.png',
-        style={
-            'width': '100%', 'border': 'thin lightgrey solid',
-            'border-radius': '4px'
-        }
-    ),
+    dcc.Markdown(s(
+    '''
+    Celery is a reliable asynchronous task queue/job queue that supports both
+    real-time processing and task scheduling in production systems. This makes
+    Celery well suited for Dash Applications. For example:
+
+    - Enable queued and background processes with Celery.
+    [Redis and Celery Demo App](https://github.com/dash-redis-demo)
+    - Periodically update an App's data.
+    [Redis and Celery Periodic Updates Demo App](https://github.com/plotly/dash-redis-celery-periodic-updates)
+
+    &nbsp;
+
+    For more information about Celery, visit
+    [Celery's documentation](http://docs.celeryproject.org/en/latest/).
+
+    ''')),
+
 ])
 
 # # # # # # #
