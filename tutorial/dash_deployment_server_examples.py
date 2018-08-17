@@ -991,6 +991,8 @@ ConfigSys = html.Div(children=[
     initialization files in the application folder and then
     copy them into system paths in the pre-deploy script.
 
+    &nbsp;
+
     ##### Add A Pre-Deploy Script
     Let's generate a file to do this. Note that the file can
     have any name as we must specify the name in an application
@@ -1006,6 +1008,7 @@ ConfigSys = html.Div(children=[
     '''), customStyle=styles.code_container, language="text"),
 
     dcc.Markdown(s('''
+    &nbsp;
 
     ##### Run Pre-Deploy Script Using `app.json`
 
@@ -1753,26 +1756,6 @@ Troubleshooting = html.Div(children=[
         '''))
     ]),
 
-
-    dcc.Markdown(s(
-    '''
-
-    ***
-
-    #### Layout Errors?
-
-    Coming Soon
-    ''')),
-
-    html.Img(
-        alt='Coming Soon',
-        src='https://github.com/plotly/dash-docs/raw/master/images/building.png',
-        style={
-            'width': '100%', 'border': 'thin lightgrey solid',
-            'border-radius': '4px'
-        }
-    ),
-
 ])
 
 # # # # # # #
@@ -1871,8 +1854,8 @@ Support = html.Div(children=[
 
     If you encounter any issues deploying your app you can email
     `onpremise.support@plot.ly`. It is helpful to include any error
-    messages you encounter as well as available logs. See below on how
-    to obtain Dash App logs as well as the Plotly Enterprise support
+    messages you encounter as well as available logs. See [App Logs](/dash-deployment-server/logs) on how
+    to obtain Dash App logs. Additionally, see below for the Plotly Enterprise support
     bundle.
     ''')),
 
