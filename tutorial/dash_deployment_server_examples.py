@@ -1043,9 +1043,9 @@ Redis = html.Div(children=[
     Redis is a powerful in memory database that is well suited for many Dash
     applications. In particular, you can use Redis to:
 
+    - Save application data
     - Enable queued and background processes with Celery.
     [Redis and Celery Demo App](https://github.com/plotly/dash-redis-demo)
-    - Save application data
     - Cache data from your callbacks across processes.
     [Caching in Dash with Redis](/performance)
 
@@ -1200,13 +1200,12 @@ Redis = html.Div(children=[
 
     #### Referencing Redis in Your Code
 
-    You can reference you Redis Database with the `os.environ` module:
+    You can reference your Redis Database with the `os.environ` module:
 
     ''')),
 
     dcc.SyntaxHighlighter(s(
-    """import redis
-    redis_instance = redis.StrictRedis.from_url(os.environ["REDIS_URL"])"""),
+    """redis_instance = redis.StrictRedis.from_url(os.environ["REDIS_URL"])"""),
     customStyle=styles.code_container,
     language='python'
     ),
@@ -1216,25 +1215,31 @@ Redis = html.Div(children=[
 
     #### Running Redis on Your Local Machine
 
-    By referencing these Redis in our code, we'll need to add
-    these variables to our local environment as well. One easy way to do
-    this is to define the variables on-the-fly when you run `python app.py`.
-    That is, instead of running `python app.py`, run:
+    To get started, see the [Redis documentation](https://redis.io/documentation)
+    to download Redis and set up a local instance.
 
     &nbsp;
 
-    COMING SOON
-
+    By referencing Redis in our code, we'll need to add the variable to our
+    local environment as well. One easy way to do this is to define the
+    variable on-the-fly when you run `python app.py`.
     ''')),
 
-    html.Img(
-        alt='Coming Soon',
-        src='https://github.com/plotly/dash-docs/raw/master/images/building.png',
-        style={
-            'width': '100%', 'border': 'thin lightgrey solid',
-            'border-radius': '4px'
-        }
-    ),
+    dcc.SyntaxHighlighter(s("$ REDIS_URL=redis://<your-redis-instance-ip>:6379 python app.py"),
+    customStyle=styles.code_container,
+    language='python'),
+
+    dcc.Markdown(s('''
+    &nbsp;
+
+    ##### Windows Users
+
+    Installing Redis from source on windows can be tricky. If you have the
+    "Windows Subsystem for Linux", we recommend using that and installing
+    the Redis in that linux environment. Otherwise, we recommend installing
+    these [64-bit binary releases of Redis](https://github.com/ServiceStack/redis-windows#option-3-running-microsofts-native-port-of-redis).
+
+    '''))
 ])
 
 
@@ -1588,8 +1593,6 @@ StagingApp = html.Div(children=[
     customStyle=styles.code_container, language='python'),
 
 ])
-
-
 
 # # # # # # #
 # Common Errors
