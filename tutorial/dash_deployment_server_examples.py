@@ -270,6 +270,9 @@ Initialize = html.Div(children=[
     html.H1('Part 1. Initialize Dash Apps on Dash Deployment Server'),
 
     dcc.Markdown(s('''
+        > This is the *1st* deployment chapter of the [Dash Deployment Server Documentation](/dash-deployment-server).
+        > The [next chapter](/dash-deployment-server/deployment) covers deploying a Dash App on Dash Deployment Server.
+
         Before creating or deploying a dash app locally, you need to initialize
         an app on Dash Deployment Server. This can be achieved using the Dash
         Deployment Server UI.
@@ -463,7 +466,9 @@ Deploy = html.Div(children=[
 
     dcc.Markdown(s(
     '''
-    ***
+    > This is the *2nd* deployment chapter of the [Dash Deployment Server Documentation](/dash-deployment-server).
+    > The [previous chapter](/dash-deployment-server/initialize) covered initializing a Dash App on Dash Deployment Server.
+
 
     To deploy an app to your Dash Deployment Server, you can either choose
     to deploy a cloned sample app, create a new app following the tutorial,
