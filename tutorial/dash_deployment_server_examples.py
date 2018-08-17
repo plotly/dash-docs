@@ -36,6 +36,16 @@ Ssh = html.Div(children=[
     ''')),
 
     dcc.Markdown(s('''
+    #### Why Deploy with SSH?
+
+    We recommend deploying with HTTPS for most of our users.
+    However, if you're Dash Deployment Server is using a **self-signed
+    certificate**, deploying with HTTPS
+    [requires some extra, challenging configuration](https://stackoverflow.com/questions/11621768/).
+    In these cases, it will be easier to set up deploying with SSH.
+
+    ***
+
     #### Already Have an SSH Key?
 
     If you already have an SSH key that you've used in other
@@ -44,6 +54,9 @@ Ssh = html.Div(children=[
     Server, jump to **Copy and Add SSH Key**.
 
     ***
+
+    ## Generate and Add an SSH Key
+    
     ''')),
 
     dcc.Markdown(s('''
@@ -115,6 +128,8 @@ def display_instructions(platform):
         ),
 
         dcc.Markdown(s('''
+        &nbsp;
+
         **2. Run `ssh-add`**
 
         Replace `id_rsa` with the name of the key that you
@@ -149,6 +164,8 @@ def display_instructions(platform):
         ),
 
         dcc.Markdown(s('''
+        &nbsp;
+
         **2. Open the Dash Deployment Server UI**
 
         You can find the Dash Deployment Server UI by selecting "Dash App"
@@ -168,6 +185,8 @@ def display_instructions(platform):
         ),
 
         dcc.Markdown(s('''
+        &nbsp;
+
         **3. Add SSH Key**
 
         Select **SSH Keys** in the top navigation menu of the Dash
@@ -185,6 +204,8 @@ def display_instructions(platform):
         ),
 
         dcc.Markdown(s('''
+        &nbsp;
+
         **4. Confirm it Has Been Added**
 
         Once you've added an SSH key, it should be added to your list of SSH
@@ -428,7 +449,7 @@ Requirements = html.Div(children=[
     `assets`
 
     An optional folder that contains CSS stylesheets, images, or
-    custom JavaScript files. [Learn more about assets](/external-resources)
+    custom JavaScript files. [Learn more about assets](/external-resources).
 
     '''))
 ])
@@ -1184,7 +1205,8 @@ Redis = html.Div(children=[
     ''')),
 
     dcc.SyntaxHighlighter(s(
-    """redis_url = os.environ['REDIS_URL']"""),
+    """import redis
+    redis_instance = redis.StrictRedis.from_url(os.environ["REDIS_URL"])"""),
     customStyle=styles.code_container,
     language='python'
     ),
@@ -1222,11 +1244,6 @@ Redis = html.Div(children=[
 Celery = html.Div(children=[
     html.H1('Linking a Celery Process'),
 
-    dcc.Markdown(s(
-    '''
-    Coming Soon
-
-    ''')),
     html.Img(
         alt='Coming Soon',
         src='https://github.com/plotly/dash-docs/raw/master/images/building.png',
@@ -1247,7 +1264,7 @@ EnvVars = html.Div(children=[
     In Plotly Enterprise 2.5.0, you can store secrets as environment variables
     instead of in your application. It's good practice to keep application
     secrets like database passwords outside of your code so that they aren't
-    as mistakenly exposed or shared. Instead of storing these secrets in code,
+    mistakenly exposed or shared. Instead of storing these secrets in code,
     you can store them as environment variables and your Dash Application code
     can reference them dynamically.
 
@@ -1340,7 +1357,7 @@ EnvVars = html.Div(children=[
     #### Delete Environment Variables
 
     To remove an environment variable via the Dash Deployment Server UI,
-    navigate to the application settings. Here, simply  the red
+    navigate to the application settings. Here, simply click the red
     cross situated to the right-hand side of the environment variable.
 
     ''')),
@@ -1366,7 +1383,7 @@ LocalDir = html.Div(children=[
     Dash Deployment Server builds the entire system for each individual app
     from scratch, including installing a fresh instance of Python, installing
     dependencies, and more. This isolation and containerization is great: it
-    allows for one app's dependencies to not impact the next apps and,
+    allows for one app's dependencies to not impact the next app's and,
     from a security perspective, ensures that applications can't modify or
     access the underlying server. One part of this isolation is that each app
     has it's own "ephemeral" filesystem. This means that:
@@ -1445,7 +1462,7 @@ LocalDir = html.Div(children=[
     ''')),
 
     dcc.SyntaxHighlighter(s("""import os
-    file_pathname = os.path.join('srv', 'data', 'some-file.csv')"""),
+    file_pathname = os.path.join('data', 'some-file.csv')"""),
     customStyle=styles.code_container,
     language='python'
     ),
@@ -1460,13 +1477,13 @@ LocalDir = html.Div(children=[
 
     ''')),
 
-    dcc.SyntaxHighlighter(s(
+    dcc.SyntaxHighlighter(
 """if 'DASH_APP' in os.environ:
-        # this is a deployed app
-        filepath = os.path.join('srv', 'data', 'my-dataset.csv')
+    # this is a deployed app
+    filepath = os.path.join('data', 'my-dataset.csv')
 else:
-        # local file path
-        filepath = os.path.join('Users', 'chris 'data', 'my-dataset.csv')"""),
+    # local file path
+    filepath = os.path.join('Users', 'chris', 'data', 'my-dataset.csv')""",
     customStyle=styles.code_container,
     language='python'
     ),
@@ -1480,7 +1497,7 @@ else:
 
     - Try to isolate the data that you need into it's own, app-specific folder
     - Do not mount the entire filesystem
-    - Don't mount system directories, like those under `/usr`.
+    - Do not mount system directories, like those under `/usr`.
     - As per the
     ["Filesystem Hierarchy Standard (FHS)"](https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard),
     folders inside the `/srv` folder would be a good, conventional place
@@ -1524,7 +1541,7 @@ StagingApp = html.Div(children=[
 
     dcc.Markdown(s(
     '''
-    Once you have deployed your application, you're end-users will expect that
+    Once you have deployed your application, your end-users will expect that
     it is stable and ready for consumption. So, what do you do if you want to
     test out or share some changes on the server? We recommend creating
     separate applications: one for "production" consumption and another one
@@ -1551,7 +1568,7 @@ StagingApp = html.Div(children=[
     ''')),
 
     dcc.SyntaxHighlighter(s(
-    '''$ git add remote stage https://your-dash-deployment-server/GIT/your-dash-app-name-testing'''),
+    '''$ git add remote stage https://your-dash-deployment-server/GIT/your-dash-app-name-stage'''),
     customStyle=styles.code_container, language='python'),
 
     dcc.Markdown(s(
