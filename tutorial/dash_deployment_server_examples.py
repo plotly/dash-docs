@@ -39,7 +39,7 @@ Ssh = html.Div(children=[
     #### Why Deploy with SSH?
 
     We recommend deploying with HTTPS for most of our users.
-    However, if you're Dash Deployment Server is using a **self-signed
+    However, if your Dash Deployment Server is using a **self-signed
     certificate**, deploying with HTTPS
     [requires some extra, challenging configuration](https://stackoverflow.com/questions/11621768/).
     In these cases, it will be easier to set up deploying with SSH.
@@ -56,7 +56,7 @@ Ssh = html.Div(children=[
     ***
 
     ## Generate and Add an SSH Key
-    
+
     ''')),
 
     dcc.Markdown(s('''
@@ -1598,9 +1598,154 @@ Troubleshooting = html.Div(children=[
     html.H1('Common Errors'),
     dcc.Markdown(s(
     '''
-    Coming Soon
+    This section describes some of the common errors you may encounter when
+    trying to deploy to the Dash Deployment Server, and provides information
+    about how to resolve these errors. If you can't find the information
+    you're looking for, or need help, [contact our support team](/dash-deployment-server/support).
+
+    ***
 
     ''')),
+
+    dcc.Markdown(s(
+    '''
+    #### Deploying with Self-Signed Certificates?
+
+    ''')),
+
+    dcc.SyntaxHighlighter(s(
+    '''fatal: unable to access 'https://<your-dash-deployment-server>/GIT/your-dash-app-name/': SSL certificate problem: self signed certificate'''),
+    customStyle=styles.code_container, language='python'),
+
+    dcc.Markdown(s(
+    '''
+    &nbsp;
+
+    We recommend deploying with HTTPS for most of our users.
+    However, if your Dash Deployment Server is using a **self-signed
+    certificate**, deploying with HTTPS
+    [requires some extra, challenging configuration](https://stackoverflow.com/questions/11621768/).
+    In these cases, it will be easier to set up deploying with SSH.
+
+    ***
+
+    #### Deployment Failing?
+
+    ''')),
+
+    html.Details([
+        html.Summary("Could not find a version that satisfies the requirement"),
+
+        dcc.SyntaxHighlighter(
+        '''...
+    remote: -----> Cleaning up...
+    remote: -----> Building my-dash-app from herokuish...
+    remote: -----> Injecting apt repositories and packages ...
+    remote: -----> Adding BUILD_ENV to build environment...
+    remote:        -----> Python app detected
+    remote:        !     The latest version of Python 2 is python-2.7.15 (you are using python-2.7.13, which is unsupported).
+    remote:        !     We recommend upgrading by specifying the latest version (python-2.7.15).
+    remote:        Learn More: https://devcenter.heroku.com/articles/python-runtimes
+    remote: -----> Installing python-2.7.13
+    remote: -----> Installing pip
+    remote: -----> Installing requirements with pip
+    remote:        Collecting dash==0.29.1 (from -r /tmp/build/requirements.txt (line 1))
+    remote:        Could not find a version that satisfies the requirement dash==0.29.1 (from -r /tmp/build/requirements.txt (line 1)) (from versions: 0.17.4, 0.17.5, 0.17.7, 0.17.8rc1, 0.17.8rc2, 0.17.8rc3, 0.18.0, 0.18.1, 0.18.2, 0.18.3rc1, 0.18.3, 0.19.0, 0.20.0, 0.21.0, 0.21.1, 0.22.0rc1, 0.22.0rc2, 0.22.0, 0.23.1, 0.24.0, 0.24.1rc1, 0.24.1, 0.24.2, 0.25.0)
+    remote:        No matching distribution found for dash==0.29.1 (from -r /tmp/build/requirements.txt (line 1))''',
+        customStyle=styles.code_container, language='python'),
+
+        dcc.Markdown(s(
+        '''
+        &nbsp;
+
+        If you're seeing the error above, it is likely that there is an error in
+        your `requirements.txt` file. To resolve, check the versioning in your
+        `requirements.txt` file. For example, the above failed because
+        `dash==29.1` isn't a version of dash. If you're working in a virtualenv then
+        you can check your versioning with the command:
+        ''')),
+
+        dcc.SyntaxHighlighter('$ pip list', customStyle=styles.code_container, language='python'),
+
+        dcc.Markdown(s(
+        '''
+        &nbsp;
+
+        if it is differs to your `requirements.txt`, you can update it with the command:
+        ''')),
+
+        dcc.SyntaxHighlighter('$ pip freeze > requirements.txt', customStyle=styles.code_container, language='python'),
+
+        dcc.Markdown(s(
+        '''
+        &nbsp;
+
+        For more information see [Application Structure](/dash-deployment-server/application-structure).
+
+        &nbsp;
+        '''))
+    ]),
+
+    html.Details([
+        html.Summary("Failed to find application object 'server' in 'app"),
+
+        dcc.SyntaxHighlighter(
+        '''...
+    remote:        Failed to find application object 'server' in 'app'
+    remote:        [2018-08-16 16:00:49 +0000] [181] [INFO] Worker exiting (pid: 181)
+    remote:        [2018-08-16 16:00:49 +0000] [12] [INFO] Shutting down: Master
+    remote:        [2018-08-16 16:00:49 +0000] [12] [INFO] Reason: App failed to load.
+    remote:        [2018-08-16 16:00:51 +0000] [12] [INFO] Starting gunicorn 19.9.0
+    remote:        [2018-08-16 16:00:51 +0000] [12] [INFO] Listening at: http://0.0.0.0:5000 (12)
+    remote:        [2018-08-16 16:00:51 +0000] [12] [INFO] Using worker: sync
+    remote:        [2018-08-16 16:00:51 +0000] [179] [INFO] Booting worker with pid: 179
+    remote:        [2018-08-16 16:00:51 +0000] [180] [INFO] Booting worker with pid: 180''',
+        customStyle=styles.code_container, language='python'),
+
+        dcc.Markdown(s(
+        '''
+        &nbsp;
+
+        Deployment fails with the above message when you have failed to declare
+        `server` in your `app.py` file. Check your `app.py` file and confirm that
+        you have `server = app.server`.
+
+        &nbsp;
+
+        For more information see
+        [Application Structure](/dash-deployment-server/application-structure).
+
+        &nbsp;
+        '''))
+    ]),
+
+    html.Details([
+        html.Summary("Got permission denied while trying to connect to the Docker daemon socket"),
+
+        dcc.SyntaxHighlighter(s(
+        '''$ Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.38/containers/json?all=1&filters=%7B%22label%22%3A%7B%22dokku%22%3Atrue%7D%2C%22status%22%3A%7B%22exited%22%3Atrue%7D%7D: dial unix /var/run/docker.sock: connect: permission denied'''),
+        customStyle=styles.code_container, language='python'),
+
+        dcc.Markdown(s(
+        '''
+        &nbsp;
+
+        If you're receiving the above user permission error, please
+        [contact support](/dash-deployment-server/support)
+        '''))
+    ]),
+
+
+    dcc.Markdown(s(
+    '''
+
+    ***
+
+    #### Layout Errors?
+
+    Coming Soon
+    ''')),
+
     html.Img(
         alt='Coming Soon',
         src='https://github.com/plotly/dash-docs/raw/master/images/building.png',
@@ -1609,6 +1754,7 @@ Troubleshooting = html.Div(children=[
             'border-radius': '4px'
         }
     ),
+
 ])
 
 # # # # # # #
