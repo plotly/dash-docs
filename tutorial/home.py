@@ -54,7 +54,7 @@ layout = html.Div(className='toc', children=[
                 chapters['gallery']['url']),
         Chapter('Dash Club',
                 'http://eepurl.com/dE7CHT',
-                'A fortnightly email newsletter by the creator of Dash'),
+                'A fortnightly email newsletter by the creator of Dash.'),
     ]),
 
     Section('Dash Tutorial', [
