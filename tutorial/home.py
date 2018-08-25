@@ -52,8 +52,9 @@ layout = html.Div(className='toc', children=[
                 'https://medium.com/@plotlygraphs/introducing-dash-5ecf7191b503'),
         Chapter(chapters['gallery']['name'],
                 chapters['gallery']['url']),
-        Chapter(chapters['mailinglist']['name'],
-                'http://eepurl.com/dE7CHT'),
+        Chapter('Dash Club',
+                'http://eepurl.com/dE7CHT',
+                'A fortnightly email newsletter by the creator of Dash'),
     ]),
 
     Section('Dash Tutorial', [
