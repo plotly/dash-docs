@@ -1032,8 +1032,6 @@ Tabs = html.Div(children=[
     - There have been some bug reports that graphs are not getting resized
     properly if this method is being used. See [dash-core-components#256](https://github.com/plotly/dash-core-components/issues/256)
     for more details.
-    - The second tab, instead of the first tab, is selected by default.
-    This is a bug and will be fixed. Track our progress in  [dash-core-components#262](https://github.com/plotly/dash-core-components/issues/262).
     ''')),
 
     html.Hr(),
