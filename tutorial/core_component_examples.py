@@ -1,13 +1,17 @@
 # -*- coding: utf-8 -*-
 import dash_core_components as dcc
 import dash_html_components as html
+import plotly.graph_objs as go
+import pandas as pd
+import styles
+from datetime import datetime as dt
+import dash
 from textwrap import dedent as s
 
-from tutorial import styles
-from tutorial import tools
-from tutorial.utils.convert_props_to_table import generate_prop_table
-from tutorial.utils.component_block import ComponentBlock
-from tutorial.components import Syntax, Example
+import tools
+from utils.convert_props_to_table import generate_prop_table
+from utils.component_block import ComponentBlock
+from components import Syntax, Example
 
 examples = {
     'date_picker_single': tools.load_example('tutorial/examples/core_components/date_picker_single.py'),

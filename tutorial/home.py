@@ -2,9 +2,9 @@
 from textwrap import dedent as s
 import dash_core_components as dcc
 import dash_html_components as html
-from tutorial.chapter_index import chapters
+from chapter_index import chapters
 
-from tutorial.tools import merge
+from tools import merge
 
 styles = {
     'underline': {

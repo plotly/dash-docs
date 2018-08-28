@@ -8,6 +8,7 @@ from dash.dependencies import Input, Output
 from datetime import datetime
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from urlparse import urlparse
 import base64
 import importlib
 import io

@@ -1,8 +1,8 @@
 import dash_html_components as html
 import dash_core_components as dcc
 
-from tutorial import styles
-from tutorial import tools
+import styles
+import tools
 
 print('Loading examples')
 examples = [

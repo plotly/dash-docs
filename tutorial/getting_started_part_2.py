@@ -1,11 +1,14 @@
 # -*- coding: utf-8 -*-
+import dash
+import dash_renderer
 import dash_core_components as dcc
 import dash_html_components as html
 
+import plotly
 from textwrap import dedent as s
 
-from tutorial import styles
-from tutorial.tools import load_example
+import styles
+from tools import load_example
 
 examples = [
     load_example(example) for example in [

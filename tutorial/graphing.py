@@ -2,8 +2,8 @@ from textwrap import dedent as s
 import dash_core_components as dcc
 import dash_html_components as html
 
-from tutorial.tools import load_example
-from tutorial.components import Example, Syntax
+from tools import load_example
+from components import Example, Syntax
 
 examples = {
     'simple-graph-events': load_example(
