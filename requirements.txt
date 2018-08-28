@@ -18,6 +18,9 @@ Flask-Caching==1.4.0
 Flask-Compress==1.4.0
 Flask-Cors==3.0.3
 Flask-SeaSurf==0.2.2
+functools32==3.2.3.post2
+futures==3.2.0
+gevent==1.2.2
 greenlet==0.4.13
 gunicorn==19.8.0
 idna==2.6
@@ -30,9 +33,9 @@ lxml==4.2.1
 MarkupSafe==1.0
 mccabe==0.6.1
 nbformat==4.4.0
-numpy
-pandas
-pandas-datareader
+numpy==1.14.3
+pandas==0.22.0
+pandas-datareader==0.6.0
 percy==1.1.2
 plotly==2.2.3
 pycodestyle==2.3.1

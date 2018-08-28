@@ -1,9 +1,15 @@
 # -*- coding: utf-8 -*-
 import dash_core_components as dcc
 import dash_html_components as html
+from dash.dependencies import Input, Output, State, Event
+from pandas_datareader import data as web
+from datetime import datetime as dt
+import plotly.graph_objs as go
+import json
 
-from tutorial import styles
-from tutorial import tools
+from server import app
+import styles
+import tools
 
 examples = [
     tools.load_example(s) for s in [

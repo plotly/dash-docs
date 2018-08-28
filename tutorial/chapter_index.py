@@ -1,25 +1,26 @@
-from tutorial import auth
-from tutorial import core_component_examples as examples
-from tutorial import core_components
-from tutorial import dash_deployment_server
-from tutorial import dash_deployment_server_examples as dds_examples
-from tutorial import deployment
-from tutorial import external_css_and_js
-from tutorial import gallery
-from tutorial import getting_started_part_1
-from tutorial import getting_started_part_2
-from tutorial import graphing
-from tutorial import html_components
-from tutorial import installation
-from tutorial import introduction
-from tutorial import live_updates
-from tutorial import performance
-from tutorial import plugins
-from tutorial import search
-from tutorial import sharing_state
-from tutorial import state
-from tutorial import support
-from tutorial import urls
+import auth
+import core_component_examples as examples
+import core_components
+import dash_deployment_server
+import dash_deployment_server_examples as dds_examples
+import deployment
+import external_css_and_js
+import gallery
+import getting_started_part_1
+import getting_started_part_2
+import graphing
+import html_components
+import installation
+import introduction
+import live_updates
+import on_premise_deployment
+import performance
+import plugins
+import search
+import sharing_state
+import state
+import support
+import urls
 
 ## The chapters dict is used to generate the dash-docs search index
 ## If edited, update the search index by running `python dash_search_index.py`

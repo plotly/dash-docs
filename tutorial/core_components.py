@@ -1,12 +1,19 @@
 # -*- coding: utf-8 -*-
 import dash_core_components as dcc
 import dash_html_components as html
-from tutorial import styles
+from dash.dependencies import Input, Output, State, Event
+from pandas_datareader import data as web
+import core_component_examples as examples
+from datetime import datetime as dt
+import plotly.graph_objs as go
+import json
+import styles
 from textwrap import dedent as s
 
-from tutorial import tools
-from tutorial.utils.component_block import ComponentBlock
+import tools
+from utils.component_block import ComponentBlock
 
+from server import app
 
 examples = {
     'button': tools.load_example('tutorial/examples/core_components/button.py'),
