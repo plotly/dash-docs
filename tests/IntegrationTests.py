@@ -28,8 +28,7 @@ class IntegrationTests(unittest.TestCase):
                 os.path.join(
                     os.path.dirname(__file__),
                     '..',
-                    'assets',
-                    'dash_themes',
+                    'assets'
                 )
             )
             loader = percy.ResourceLoader(
