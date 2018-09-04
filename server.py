@@ -6,22 +6,23 @@ from flask import Flask, redirect
 import os
 
 
-server = Flask(__name__, static_url_path='/static', static_folder='./static')
-server.secret_key = os.environ.get('secret_key', 'secret')
-
 app = Dash(
     __name__,
-    server=server
+    external_stylesheets=[
+        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'
+    ]
 )
+server = app.server
 
-app.css.config.serve_locally = False
-app.scripts.config.serve_locally = False
+app.css.config.serve_locally = True
+app.scripts.config.serve_locally = True
 app.config.suppress_callback_exceptions = True
 
-@app.server.route('/deployment/on-premise')
+
+@server.route('/deployment/on-premise')
 def redirectDDS():
     return redirect("/dash-deployment-server", code=302)
 
-@app.server.route('/dash-deployment-server/enviornment-variables')
+@server.route('/dash-deployment-server/enviornment-variables')
 def redirectEnvVar():
     return redirect("/dash-deployment-server/environment-variables", code=302)

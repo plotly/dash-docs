@@ -3,7 +3,7 @@ from dash.dependencies import Input, Output
 import dash_core_components as dcc
 import dash_html_components as html
 from tutorial import styles
-from tutorial.server import app
+from server import app
 
 
 def s(string_block):
