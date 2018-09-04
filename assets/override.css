@@ -114,6 +114,7 @@ h1, h2, h3, h4, h5, h6 {
   background-color: white;
   color: #506784;
   font-family: Dosis, 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  text-decoration: none;
 }
 
 .toc ul li {
@@ -138,7 +139,7 @@ h1, h2, h3, h4, h5, h6 {
 .content a {
   color: #506784;
   background-color: rgb(245, 245, 245);
-  text-decoration: none;
+  text-decoration: underline;
   padding-left: 4px;
   padding-right: 4px;
   border-radius: 1px;
