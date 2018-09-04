@@ -2,12 +2,16 @@ from __future__ import absolute_import
 import multiprocessing
 import time
 import unittest
+import logging
 import percy
 from selenium import webdriver
 import sys
-
 import warnings
+
+log = logging.getLogger('werkzeug')
+log.disabled = True
 warnings.filterwarnings("ignore")
+
 
 class IntegrationTests(unittest.TestCase):
 
@@ -45,6 +49,7 @@ class IntegrationTests(unittest.TestCase):
             # component assets
             app.css.config.serve_locally = False
             app.scripts.config.serve_locally = False
+            app.server.logger.disabled = True
             app.run_server(
                 port=8050,
                 debug=False,
