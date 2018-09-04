@@ -2,7 +2,8 @@ import dash
 import dash_html_components as html
 
 
-external_js = [
+# external JavaScript files
+external_scripts = [
     'https://www.google-analytics.com/analytics.js',
     {'src': 'https://cdn.polyfill.io/v2/polyfill.min.js'},
     {
@@ -12,7 +13,8 @@ external_js = [
     }
 ]
 
-external_css = [
+# external CSS stylesheets
+external_stylesheets = [
     'https://codepen.io/chriddyp/pen/bWLwgP.css',
     {
         'href': 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css',
@@ -24,8 +26,8 @@ external_css = [
 
 
 app = dash.Dash(__name__,
-                external_scripts=external_js,
-                external_stylesheets=external_css)
+                external_scripts=external_scripts,
+                external_stylesheets=external_stylesheets)
 
 app.layout = html.Div()
 
