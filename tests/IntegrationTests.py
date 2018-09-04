@@ -4,6 +4,7 @@ import time
 import unittest
 import percy
 from selenium import webdriver
+import sys
 
 
 class IntegrationTests(unittest.TestCase):
@@ -13,15 +14,20 @@ class IntegrationTests(unittest.TestCase):
         super(IntegrationTests, cls).setUpClass()
 
         cls.driver = webdriver.Chrome()
-        loader = percy.ResourceLoader(webdriver=cls.driver)
-        cls.percy_runner = percy.Runner(loader=loader)
-        cls.percy_runner.initialize_build()
+
+        python_version = sys.version.split(' ')[0]
+        if '2.7' in python_version:
+            loader = percy.ResourceLoader(webdriver=cls.driver)
+            cls.percy_runner = percy.Runner(loader=loader)
+            cls.percy_runner.initialize_build()
 
     @classmethod
     def tearDownClass(cls):
         super(IntegrationTests, cls).tearDownClass()
         cls.driver.quit()
-        cls.percy_runner.finalize_build()
+        python_version = sys.version.split(' ')[0]
+        if '2.7' in python_version:
+            cls.percy_runner.finalize_build()
 
     def setUp(self):
         pass
