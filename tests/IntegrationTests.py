@@ -3,6 +3,7 @@ import multiprocessing
 import time
 import unittest
 import logging
+import os
 import percy
 from selenium import webdriver
 import sys
@@ -23,7 +24,18 @@ class IntegrationTests(unittest.TestCase):
 
         python_version = sys.version.split(' ')[0]
         if '2.7' in python_version:
-            loader = percy.ResourceLoader(webdriver=cls.driver)
+            root_static_dir = os.path.abspath(
+                os.path.join(
+                    os.path.dirname(__file__),
+                    '..',
+                    'assets',
+                    'dash_themes',
+                )
+            )
+            loader = percy.ResourceLoader(
+                webdriver=cls.driver,
+                root_dir=root_static_dir
+            )
             cls.percy_runner = percy.Runner(loader=loader)
             print('>>> initialize_build {}'.format(python_version))
             cls.percy_runner.initialize_build()
