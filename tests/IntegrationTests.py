@@ -6,6 +6,8 @@ import percy
 from selenium import webdriver
 import sys
 
+import warnings
+warnings.filterwarnings("ignore")
 
 class IntegrationTests(unittest.TestCase):
 
@@ -19,6 +21,7 @@ class IntegrationTests(unittest.TestCase):
         if '2.7' in python_version:
             loader = percy.ResourceLoader(webdriver=cls.driver)
             cls.percy_runner = percy.Runner(loader=loader)
+            print('>>> initialize_build {}'.format(python_version))
             cls.percy_runner.initialize_build()
 
     @classmethod
@@ -27,6 +30,7 @@ class IntegrationTests(unittest.TestCase):
         cls.driver.quit()
         python_version = sys.version.split(' ')[0]
         if '2.7' in python_version:
+            print('>>> finalize_build {}'.format(python_version))
             cls.percy_runner.finalize_build()
 
     def setUp(self):

@@ -59,7 +59,7 @@ class Tests(IntegrationTests):
         if 'PERCY_PROJECT' in os.environ and 'PERCY_TOKEN' in os.environ:
             python_version = sys.version.split(' ')[0]
             if '2.7' in python_version:
-                print('Percy Snapshot {}'.format(python_version))
+                print('>>> Percy Snapshot {} - {}'.format(python_version, name))
                 self.percy_runner.snapshot(name=name)
 
     def test_docs(self):
