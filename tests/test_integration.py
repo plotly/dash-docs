@@ -21,7 +21,7 @@ import unittest
 
 from .IntegrationTests import IntegrationTests
 from .utils import assert_clean_console, invincible, wait_for
-from tutorial.run import app
+from run import app
 
 # Download geckodriver: https://github.com/mozilla/geckodriver/releases
 # And add to path:
