@@ -58,8 +58,9 @@ class Tests(IntegrationTests):
     def snapshot(self, name):
         if 'PERCY_PROJECT' in os.environ and 'PERCY_TOKEN' in os.environ:
             python_version = sys.version.split(' ')[0]
-            print('Percy Snapshot {}'.format(python_version))
-            self.percy_runner.snapshot(name=name)
+            if '2.7' in python_version:
+                print('Percy Snapshot {}'.format(python_version))
+                self.percy_runner.snapshot(name=name)
 
     def test_docs(self):
         self.startServer(app, '/')
