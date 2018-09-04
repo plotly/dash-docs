@@ -173,10 +173,7 @@ h1, h2, h3, h4, h5, h6 {
     So, we recommend prefixing your filenames with numbers if you need to ensure
     their order (e.g. `10_typography.css`, `20_header.css`)
 
-    3 - If you want to include CSS from a remote URL, then we recommend
-    overriding the app's HTML template, as described in the next section.
-    We are working on an easier method for including remote CSS urls in
-    [dash#302](https://github.com/plotly/dash/issues/302)
+    3 - If you want to include CSS from a remote URL, then see the next section.
 
     4 - Your custom CSS will be included _after_ the Dash component CSS
 
