@@ -21,7 +21,7 @@ jobs:
               sudo pip install virtualenv --upgrade
               python -m venv venv || virtualenv venv
               . venv/bin/activate
-              pip install -r requirements.txt
+              pip install -r requirements.txt --no-cache
 
       - save_cache:
           key: deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}-{{ checksum "circlejob.txt" }}
