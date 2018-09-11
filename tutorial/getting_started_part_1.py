@@ -120,9 +120,9 @@ layout = html.Div([
         In this example, we modified the inline styles of the `html.Div`
         and `html.H1` components with the `style` property.
 
-        `html.H1('Hello Dash', style={'textAlign': 'center', 'color': '#7FDFF'})`
+        `html.H1('Hello Dash', style={'textAlign': 'center', 'color': '#7FDBFF'})`
         is rendered in the Dash application as
-        `<h1 style="text-align: center; color: #7FDFF">Hello Dash</h1>`.
+        `<h1 style="text-align: center; color: #7FDBFF">Hello Dash</h1>`.
 
         There are a few important differences between the `dash_html_components`
         and the HTML attributes:
