@@ -305,8 +305,7 @@ layout = html.Div(className='gallery', children=[
         )
     ]),
 
-    # MACHINE LEARNING AND COMPUTER VISION
-    SectionTitle('Machine Learning & Computer Vision'),
+    SectionTitle('Computer Vision & Image Processing'),
 
     reusable.Row([
         AppSection(
@@ -326,21 +325,6 @@ layout = html.Div(className='gallery', children=[
         ),
 
         AppSection(
-            app_name='Visualize Model Training',
-            app_link='https://dash-live-model-training.plot.ly/',
-            code_link='https://github.com/plotly/dash-live-model-training',
-            img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-live-model-training.gif',
-            description='''
-            Tracking accuracy and loss is an essential part of the training process 
-            for deep learning models. This real-time visualization app monitors 
-            core metrics of your Tensorflow graphs during the training so that you 
-            can quickly detect anomalies within your model.
-            '''
-        ),
-    ]),
-
-    reusable.Row([
-        AppSection(
             app_name='Image Processing',
             app_link='http://dash-image-processing.plot.ly/',
             code_link='https://github.com/plotly/dash-image-processing',
@@ -351,6 +335,24 @@ layout = html.Div(className='gallery', children=[
             easy-to-use GUI. All the computation is done on the back-end 
             through Dash, and image transfer is optimized through 
             session-based Redis caching and S3 storage.
+            '''
+        )
+    ]),
+
+    # MACHINE LEARNING
+    SectionTitle('Machine Learning'),
+
+    reusable.Row([
+        AppSection(
+            app_name='Visualize Model Training',
+            app_link='https://dash-live-model-training.plot.ly/',
+            code_link='https://github.com/plotly/dash-live-model-training',
+            img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-live-model-training.gif',
+            description='''
+            Tracking accuracy and loss is an essential part of the training process 
+            for deep learning models. This real-time visualization app monitors 
+            core metrics of your Tensorflow graphs during the training so that you 
+            can quickly detect anomalies within your model.
             '''
         ),
 
@@ -383,8 +385,21 @@ layout = html.Div(className='gallery', children=[
             of support vector machine) with UI input parameters. Toy datasets 
             and useful ML metrics plots are included. It is fully written in 
             Dash + scikit-learn.
-            ''',
-            width=12
+            '''
+        ),
+
+        AppSection(
+            app_name='Explore Linear Models',
+            app_link='https://dash-gallery.plotly.host/dash-regression',
+            code_link='https://github.com/plotly/dash-regression',
+            img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-regression.gif',
+            description='''
+            This Explorer lets you try out some of the most fundamental 
+            regression models, helping you gain an understanding of underfitting 
+            and overfitting through regularization. You can choose from a set 
+            of toy datasets, real datasets, and even add data points yourself! 
+            It’s fully built in Dash + scikit-learn.
+            '''
         )
     ]),
 
