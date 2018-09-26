@@ -133,9 +133,9 @@ dcc.Dropdown(
 
 dcc.Dropdown(
     options=[
-        {'label': 'New York City', 'value': 'NYC', 'disabled': 'True'},
+        {'label': 'New York City', 'value': 'NYC', 'disabled': True},
         {'label': 'Montreal', 'value': 'MTL'},
-        {'label': 'San Francisco', 'value': 'SF', 'disabled': 'True'}
+        {'label': 'San Francisco', 'value': 'SF', 'disabled': True}
     ],
 )''', customStyle=styles.code_container, language='python'),
 
