@@ -19,7 +19,6 @@ app.layout = html.Div([
         min=df['year'].min(),
         max=df['year'].max(),
         value=df['year'].min(),
-        step=None,
         marks={str(year): str(year) for year in df['year'].unique()}
     )
 ])
