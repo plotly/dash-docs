@@ -70,15 +70,20 @@ layout = html.Div([dcc.Markdown('''
 
   ## Quick intro to React
 
-  Now, let's go ahead and see what the code for our new React application looks like. In your favorite code editor open the `src/lib/components/ExampleComponent.react.js` file.
-  This is our first React component! In React, our user interfaces are composed of "components" and by convention there will usually be one main component per file. This project imports the ExampleComponent in src/demo/App.js, the demo application. 
+  Now, let's go ahead and see what the code for our new React application looks like. In your favorite code editor, open the `src/lib/components/ExampleComponent.react.js` file.
+  This is our first React component!
+  
+  In React, user interfaces are made of "components," and by convention there will usually be one main component per file. This project imports the `ExampleComponent` in `src/demo/App.js`, the demo application. 
  
   The demo application `src/demo/App.js` is what you see after you run `npm run demo`. To see how `src/demoApp.js` and `ExampleComponent.react.js` work, try adding `<h1>Hello, Dash!</h1>` inside the `render()` function of either of the files.
+  
   When you save the files, your browser should automatically refresh and you should see your change.
 
   ##### JSX
-  The `<h1>` and `<div>` tags you see look exactly like HTML tags however they are slightly different. These tags are   
-  what is called JSX - a syntax extension to JavaScript developed by the React team to have easy, inline, HTML-like markup in your JavaScript components. There are a few key differences between JSX tags and HTML tags:   
+  The `<h1>` and `<div>` tags you see look exactly like HTML tags, however, they are slightly different. These tags are 
+  what is called JSX - a syntax extension to JavaScript. JSX was developed by the React team to make easy, inline, HTML-like markup in JavaScript components.
+  
+  There are a few key differences between JSX tags and HTML tags:   
   - The `class` keyword is renamed `className` (similarly as in Dash)
   - In HTML, we write inline styles with strings like `<h1 style="color: hotpink; font-size: 12px">Hello Dash</h1>`. In JSX (as in Dash), we use objects with camelCased properties: `<h1 style={{"color": "hotpink", "fontSize": "12px"}}>Hello Dash<h1>`
   - In JSX, we can embed variables in our markup. To embed a variable in the markup, wrap the variable in `{}`. For example:
@@ -92,11 +97,11 @@ layout = html.Div([dcc.Markdown('''
   ```
   - In addition to the HTML tags like `<h1>` and `<div>`, we can also reference other React classes. For example, in our `src/demo/App.js`, we render the `ExampleComponent` component by referencing it as `<ExampleComponent>`.
 
-  ## A Quick Primer on the JavaScript Language
+  ## A quick primer on the JavaScript language
 
-  ##### Variable Declaration
+  ##### Variable declaration
 
-  In JavaScript, we have to declare our variables with `let` or `const`. `const` is used when the variable shouldn't changed, `let` is used elsewhere:
+  In JavaScript, we have to declare our variables with `let` or `const`. `const` is used when the variable shouldn't change, `let` is used elsewhere:
   ```
   const color = 'blue';
   let someText = 'Hello World';
@@ -109,7 +114,7 @@ layout = html.Div([dcc.Markdown('''
   Single line comments are prefixed with `//`. Multi-line comments are wrapped in `/* */`
   ```
   /*
-  * This is a multi line comment
+  * This is a multi-line comment
   * By convention, we use a `*` on each line, but it's
   * not strictly necessary.
   */
@@ -121,7 +126,7 @@ layout = html.Div([dcc.Markdown('''
   Strings are defined the same way in JavaScript: single or double quotes:
   ```
   const someString = 'Hello Dash';
-  const anotherString = 'Hello Dash';
+  const anotherString = "Hello Dash";
   ```
 
   Instead of Python's `format`, JavaScript allows you to embed variables directly into strings by wrapping the variable in `${}` and wrapping the string in backticks:
@@ -144,7 +149,7 @@ layout = html.Div([dcc.Markdown('''
   const myObject = {color: "blue"}; // notice how there are no strings around color
   ```
 
-  So, if you want to set a dynamic key in an object, you have to wrap it in square brackets:
+  So if you want to set a dynamic key in an object, you have to wrap it in square brackets:
   ```
   const styleProperty = "color";
   const myObject = {[styleProperty]: "blue"};
@@ -163,7 +168,7 @@ layout = html.Div([dcc.Markdown('''
 
   ##### Semicolons
 
-  In JavaScript, the convention is to end each line in a semicolon. It's not strictly necessary to do so anymore but it's still the convention.
+  In JavaScript, the convention is to end each line in a semicolon. It's not strictly necessary anymore, but it's still the convention.
 
   ##### Print Statements, Errors, and the Console
 
@@ -174,7 +179,9 @@ layout = html.Div([dcc.Markdown('''
   ```
 
   Since JavaScript runs in the web browser, we won't see these statements in our terminal like we would in Python.
-  Instead, we'll see these statements in the browser's "dev tools console". To access the console:
+  Instead, we'll see these statements in the browser's "dev tools console".
+  
+  To access the console:
   1. Right click on the web page
   2. Click "Inspect Element"
   3. Click on the "Console" tab.
@@ -204,10 +211,12 @@ layout = html.Div([dcc.Markdown('''
   ```
 
   `while`
+  ```
   let i = 0;
   while (i < 10) {
     i += 1;
   }
+  ```
 
   ##### Functions
 
@@ -293,7 +302,11 @@ layout = html.Div([dcc.Markdown('''
 
   `another_file.js`
   ```
-  import {text, color} from './some_file.js';  // note that we can't import size because we didn't export it
+  import {text, color} from './some_file.js';
+  /*
+  * note that we can't import size
+  * because we didn't export it
+  */
   ```
 
   ##### The Standard Library and Ramda
@@ -301,16 +314,21 @@ layout = html.Div([dcc.Markdown('''
   Unlike Python, JavaScript's "standard library" is pretty small. At Plotly, we use the 3rd party library [`ramda`](https://ramdajs.com/docs/) for many of our common data manipulations.
 
   ##### Virtual DOM
-  If we look at the `App` component again, we see that it is `export`ed at the bottom, and if you open up the `src/demo/index.js` file you can see that it's imported there, so it can be used in a call to `ReactDOM.render()`. 
-  This `ReactDOM.render()` method is only called here, and only once. ReactDOM.render() is what actually renders our React code into HTML on the web page. This ReactDOM.render() method is only called here, and only called once. 
+  If we look at the `App` component again, we see that it is `export`ed at the bottom. If you open up the `src/demo/index.js` file, you can see that it's imported there so that it can be used in a call to `ReactDOM.render()`.
+  
+  ReactDOM.render() is what actually renders our React code into HTML on the web page. This ReactDOM.render() method is only called here, and only called once. 
 
   ##### Classes
   We see here in our `App` component that it is defined as a `class` which `extends` from the `Component` class of React. This provides some methods to us, for example the `render()` method we're using here. `render()` is the method that is called by the *component that is rendering it*. In our case, `render()` is called
-  by the `ReactDOM.render()` call in `index.js`. Notice how the `<App />` is called in the `ReactDOM.render()` method: our `App` component is used as a JSX tag!
+  by the `ReactDOM.render()` call in `index.js`.
+  
+  Notice how the `<App />` is called in the `ReactDOM.render()` method: our `App` component is used as a JSX tag!
 
-  ##### Other methods on React.Component
-  Other methods provided by React are mostly related to component state management. We've got lifecycle hooks like `shouldComponentUpdate` and `componentDidMount` which allow you to better specify when and how a 
-  component should update. For these methods, please refer to the [React documentation](https://reactjs.org/docs/state-and-lifecycle.html).
+  ##### Other Methods on React.Component
+  Other methods provided by React are mostly related to component state management. Lifecycle hooks like `shouldComponentUpdate` and `componentDidMount` allow you to better specify when and how a 
+  component should update.
+  
+  For these methods, please refer to the [React documentation](https://reactjs.org/docs/state-and-lifecycle.html).
 
   ## Our very own React component
   ##### Creating a boilerplate component
