@@ -344,7 +344,9 @@ layout = html.Div([dcc.Markdown('''
   ```
 
   Next, we'll write a `constructor` method on our component. A class constructor in Python is usually defined as `def __init__()` on a class, but in JavaScript
-  we use the `constructor()` syntax. In the constructor, we call the `super()` method on our component's props (more on props later), and set some `state`.
+  we use the `constructor()` syntax.
+  
+  In the constructor, we call the `super()` method on our component's props (more on props later), and set some `state`.
   It will look like this: 
 
   ```
@@ -360,20 +362,21 @@ layout = html.Div([dcc.Markdown('''
   }
   ```
 
-  `props` are a component's properties. They are passed down from a component's parent, and are available as the `props` attribute. Calling `super()` on `props` in the constructor, makes our props available in the component as `this.props`. The `this` keyword in JavaScript is Python's `self`. We'll show you how to pass down
-  `props` a bit later on.
+  `props` are a component's properties. They are passed down from a component's parent, and are available as the `props` attribute. Calling `super()` on `props` in the constructor makes our props available in the component as `this.props`. The `this` keyword in JavaScript is Python's `self`.
+  
+  We'll show you how to pass down `props` a bit later on.
 
   ##### Defining the `render` method
 
-  Next, let's define our `render()` method for our new component. In React, we are declaring UI components, and the `render()` method is the method that is called
-  when React wants to render those component. 
+  Next, let's define our `render()` method for our new component. In React, we are declaring UI components, and React calls the `render()` method when it wants to render those components. 
 
-  A component's `render` method can return a basic string, for example `return "Hello, World!"`. When this component is used somewhere, it's `render()` method is called and "Hello, World!" will be displayed on our page. 
+  A component's `render` method can return a basic string, for example `return "Hello, World!"`. When this component is used somewhere, it's `render()` method is called and "Hello, World!" will be displayed on the page. 
+  
   Likewise, you can return a React element (specified using JSX) and React will render that element.
 
   ##### Exporting and importing a component
 
-  We'll also go ahead and `export` our component, as the `default`. This means whenever we're trying to `import` something from this file, and we don't specify a name, we'll get the `default` export.
+  We'll also go ahead and `export` our component as the `default`. This means whenever we're trying to `import` something from this file, and we don't specify a name, we'll get the `default` export.
 
   ```
   import React, { Component } from 'react';
@@ -393,7 +396,9 @@ layout = html.Div([dcc.Markdown('''
   export default TextInput;
   ```
 
-  Now, let's `import` that component and use it in our `App` component! Add the `import TextInput from './TextInput';` line to the top of `App.js`, and somewhere
+  Now let's `import` that component and use it in our `App` component!
+  
+  Add the `import TextInput from './TextInput';` line to the top of `App.js`, and somewhere
   in the return of our `render()` method, use our newly created `<TextInput />` component.
 
   Tada!
@@ -404,13 +409,19 @@ layout = html.Div([dcc.Markdown('''
   
   However, this input doesn't really do much - it's not connected to anything, nor does it save what you type in. Let's change our `render()` method of `TextInput` to
   set the HTML `value` attribute on our `<input />` tag, so it looks like this: `<input value='dash' />`. Save it, and we should now see that the value of our <input> tag
-  is set to 'dash'! We can also change our value to be that which is defined in our `state` object, so `<input value={this.state.value} />`. The `{}` syntax in JSX means 
-  that we want to write inline JavaScript in our JSX, so our `this.state.value` statement can be computed. Great! Now our input says 'default'! Unfortunately, our input
+  is set to 'dash'!
+  
+  We can also change our value to be that which is defined in our `state` object, so `<input value={this.state.value} />`. The `{}` syntax in JSX means 
+  that we want to write inline JavaScript in our JSX, so our `this.state.value` statement can be computed.
+  
+  Great! Now our input says 'default'! Unfortunately, our input
   is still not very useful, because we can't change our input's value, try as we might.  
   
-  It may seem odd to you that we can't type anything into the `<input/>` box. However, it's consistent with the React model: in our render method, we are telling React to render an input 
-  with a particular value set. React will faithfully render this input with that value no matter what, even if we try typing in it. In order to have the input update when we type, we have to make sure
-  that the `value` variable is updated with whatever we're typing in the input. To do that, we can listen for changes to the input and update our state accordingly: 
+  It may seem odd to you that we can't type anything into the `<input/>` box. However, this is consistent with the React model: in our render method, we are telling React to render an input 
+  with a particular value set. React will faithfully render this input with that value no matter what, even if we try typing in it.
+  
+  In order to have the input update when we type, we have to make sure that the `value` variable is updated with whatever we're typing in the input. 
+  To do that, we can listen for changes to the input and update our state accordingly: 
 
   ```
   import React, { Component } from 'react';
@@ -437,15 +448,15 @@ layout = html.Div([dcc.Markdown('''
   
   export default TextInput;
   ```
-  Here we wrote a method which we set on our input's `onChange` attribute, which will fire
-  every time we type into the input. This method has a parameter we named `e` for event, on which certain attributes are
+  Here, we wrote a method which we set on our input's `onChange` attribute, which will fire
+  every time we type into the input. This method has a parameter (named `e` for event) on which certain attributes are
   set: `target.value` is what we need. This is how the HTML DOM works - for more information check out [these docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/text).
 
-  Next, we use a method called `setState()`, that's provided by `React.Component`. This method will handle updates to our `state` object. This method is really special, it'll do two things:
-  1. It'll merge the object that you provide with whatever was currently in this.state.
+  Next, we use a method called `setState()` that's provided by `React.Component`. This method will handle updates to our `state` object. This method is really special. It'll do two things:
+  1. It'll merge the object that you provide with whatever was currently in `this.state`.
   2. Then, it'll rerender the component. That is, it'll tell React to call the components render method again with the new data set in `this.state`.
 
-  See how this now allows you to type in our input component? We can also display our state, by writing our `render()` method something like:
+  See how this now allows you to type in our input component? We can also display our state by writing our `render()` method something like:
 
   ```
   render() {
@@ -460,9 +471,12 @@ layout = html.Div([dcc.Markdown('''
 
   ##### Component props
 
-  We can also pass along properties to our components, via the before mentioned `props`. This works the same as assigning attributes on a component, as we'll demonstrate by adding a `label` prop to our `TextInput` component!
-  Let's edit our call to `<TextInput />` in `App.js` to say `<TextInput label='dash-input' />`. This means we now have a `prop` called `label` available on our `TextInput` component! 
-  In `TextInput`, we can reference this via `this.props`. Let's extend our `render()` method further so it renders our `label` prop:
+  We can also pass along properties to our components, via the aforementioned `props`. This works the same as assigning attributes on a component, as we'll demonstrate by adding a `label` prop to our `TextInput` component!
+  
+  Let's edit our call to `<TextInput />` in `App.js` to say `<TextInput label='dash-input' />`. This means we now have a `prop` called `label` available on our `TextInput` component. 
+  In `TextInput`, we can reference this via `this.props`.
+  
+  Let's extend our `render()` method further so it renders our `label` prop:
 
   ```
   render() {
@@ -474,7 +488,7 @@ layout = html.Div([dcc.Markdown('''
   }
   ``` 
 
-  Props always flow down, but you can set a method as a prop too, so that a child can call a method of a parent. For more information, please refer to the [React docs](https://reactjs.org/docs/components-and-props.html)
+  Props always flow down, but you can set a method as a prop too, so that a child can call a method of a parent. For more information, please refer to the [React docs](https://reactjs.org/docs/components-and-props.html).
 
   These are just the basics of React, if you want to know more, the [React docs](https://reactjs.org/docs) are a great place to start!
 
