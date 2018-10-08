@@ -7,47 +7,58 @@ layout = html.Div([dcc.Markdown('''
   ## Introduction
 
   If you're a Dash developer, at some point or another you probably have thought about writing your own set of components for Dash. 
-  You might have even taken a peek at some of our source code, or taken the `dash-component-boilerplate` for a spin. However, if you've 
-  never programmed in JavaScript and/or used React before, you might feel slightly confused. By the end of this guide, you should feel comfortable 
+  You might have even taken a peek at some of our source code, or taken the `dash-component-boilerplate` for a spin.
+  
+  However, if you've never programmed in JavaScript and/or used React before, you might feel slightly confused. By the end of this guide, you should feel comfortable 
   creating your own Dash component in React and JavaScript, even if you have never programmed in those languages before. [Let us know how it went by commenting in this thread](https://github.com/plotly/dash-docs/issues/194).
 
   ##### JavaScript
   JavaScript is the language of the web - all modern browsers can run it, and most modern web pages use it to make their pages interactive.
-  It is the de-facto standard of front end development, and has come a long way since its inception. Today, modern JavaScript features
+  It is the de-facto standard of front end development, and has come a long way since its inception. Today, modern JavaScript has
   a rich set of features, designed to create a development experience perfectly suited for the web. 
 
   ##### React
   React is JavaScript library for building user interfaces, written and maintained by Facebook. It has been very popular over the last few
-  years, mainly because it brings the power of reactive, declarative programming to the world of front end development. 
-  React has made it easier to reason about user interface code and it's programming model encourages code that's modular and reusable. It also has a 
-  huge, vibrant open source community that has published all sorts of reusable UI components, from sliders to data tables, dropdowns to buttons.
+  years because it brings the power of reactive, declarative programming to the world of front end development. 
+  
+  React has made it easier to think about user interface code, and it's programming model encourages code that's modular and reusable. It also has a 
+  huge, vibrant open-source community that has published all sorts of reusable UI components, from sliders to data tables, dropdowns to buttons.
 
-  It is important to realise that React is just JavaScript. React is not a language on its own, nor is it any sort of domain-specific framework
-  that takes years to master. It has a relatively small API to learn, with just a few functions and paradigms to get your head around before
-  you too can use it to write applications for the web. That being said, all unfamiliar technology will have a learning curve, but with practice
+  It is important to realise that React is just JavaScript. React is not a language on its own, nor is it a domain-specific framework
+  that takes years to master. It has a relatively small API, with just a few functions and paradigms to learn before
+  you, too, can use it to write applications for the web. That being said, all unfamiliar technology will have a learning curve, but with practice
   and patience you will master it!
 
   Dash uses React under the hood to render the user interface you see when you load a web page created with Dash. Because React allows you to write
-  your user interface in encapsulated components that manage their own state, it is easy to split up parts of code for Dash too - at the end of this
-  tutorial, you will see that Dash components and React components map 1 to 1! For now, it is important to know that Dash components are 
-  mostly just simple wrappers around existing React components. This means the entire React ecosystem is potentially usable in a Dash application!
+  your user interface in encapsulated components that manage their own state, it is easy to split up parts of code for Dash too. At the end of this
+  tutorial, you will see that Dash components and React components map one to one!
+  
+  For now, the important thing to know is that Dash components are 
+  mostly simple wrappers around existing React components. This means the entire React ecosystem is potentially usable in a Dash application!
 
   ## Installing everything you need
   Let's start by setting up our JavaScript development environment. We will use Node.js, NPM, and our `dash-component-boilerplate` to write our first React
   application. Node.js is a JavaScript runtime, which allows you to run JavaScript code outside of the browser. Just like you would run 
   `python my-code.py` to run Python code in a terminal, you'd run `node my-code.js` to run JavaScript code in a terminal. 
+  
   Node comes in very handy when developing, even when you intend to run the code in the browser.
 
   ##### NPM
   NPM is the "Node Package Manager" and it is used to install packages and run scripts. Besides being a package manager 
-  (not unlike `pip` for Python), `npm` also allows you to do other stuff like run scripts and perform tasks, such as creating a project for you by running `npm init`, 
-  starting up a project by running `npm start`, or firing custom scripts by running `npm run custom-script`. These scripts are defined in a `package.json` file, which every project 
-  that uses `npm` has. The `package.json` file holds your `requirements` and `devRequirements`, which can be installed using `npm install`, the same way `pip` has a `requirements.txt`
-  option you can use in `pip install -r requirements.txt`. `package.json` also holds a `scripts` section, where custom scripts can be defined. It is usually a good idea to check out a new project's `package.json` file to see which scripts the
+  (like `pip` for Python), `npm` also allows you to run scripts and perform tasks, such as creating a project for you (`npm init`), 
+  starting up a project (`npm start`), or firing custom scripts (`npm run custom-script`). These scripts are defined in a `package.json` file, which every project 
+  that uses `npm` has.
+  
+  The `package.json` file holds your `requirements` and `devRequirements`, which can be installed using `npm install`, the same way `pip` has a `requirements.txt`
+  option you can use in `pip install -r requirements.txt`.
+  
+  `package.json` also holds a `scripts` section where custom scripts can be defined. It is usually a good idea to check out a new project's `package.json` file to see which scripts the
   project uses.
 
-  If you go to the [dash-component-boilerplate repo](https://github.com/plotly/dash-component-boilerplate), you'll find the instructions to need to set up some React boilerplate code
-  that helps you quickly get up a React development environment, complete with the scripts that are necessary to build our React component for Dash. These scripts will use a variety of technologies (e.g. Babel, Webpack, and more) to compile
+  If you go to the [dash-component-boilerplate repo](https://github.com/plotly/dash-component-boilerplate), you'll find instructions for setting up some React boilerplate code.
+  This code will help you quickly set up a React development environment, complete with the necessary scripts for building our React component for Dash.
+  
+  These scripts will use a variety of technologies (e.g. Babel, Webpack, and more) to compile
   our code into a web-ready package.
 
   - To install Node.js, go to [the Node.js website](https://nodejs.org/en/) to download the latest version.  We recommend installing the LTS version.
