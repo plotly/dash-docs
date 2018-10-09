@@ -494,12 +494,12 @@ layout = html.Div([dcc.Markdown('''
 
   ## Using your React components in Dash
 
-  We can use most, if not all, components build in React in Dash! Dash uses React under the hood, specifically in the `dash-renderer`. The `dash-renderer` is basically just a React app, that renders the
+  We can use most, if not all, React components in Dash! Dash uses React under the hood, specifically in the `dash-renderer`. The `dash-renderer` is basically just a React app that renders the
   layout defined in your Dash app as `app.layout`. It is also responsible for assigning the callbacks you write in Dash to the proper components, and keeping everything up-to-date. 
 
   ##### Control the state in the parent
 
-  Let's modify our previous example to control `state` in the parent `App` component, instead of in the `TextInput` component. Let's start by moving the `value` in `state` up to the parent component.
+  Let's modify our previous example to control `state` in the parent `App` component instead of in the `TextInput` component. Let's start by moving the `value` in `state` up to the parent component.
 
   In `src/demo/App.js`, add state and pass the value into the component:
   ```
@@ -538,7 +538,7 @@ layout = html.Div([dcc.Markdown('''
   ```
 
   Now, as before, the `<input/>` won't actually update when you type into it. We need to update the component's `value` property as we type. To do this, we'll define a function in our parent component
-  that will update the parent's component state and we'll pass that function down into our component.
+  that will update the parent's component state, and we'll pass that function down into our component.
   We'll call this function `setProps`:
 
   ```
@@ -594,17 +594,17 @@ layout = html.Div([dcc.Markdown('''
 
   To review, this is what happens when we type into our `<input>`:
   1. The `handleInputChange` is called with whatever value we typed into the `<input/>`
-  2. `this.props.setProps` is called which in turn calls the `setState` property of the `App` component.
-  3. `this.setState` in `App` is called. This updates the `this.state` of `App` _and_ implicitly calls the `render` method of `App`
+  2. `this.props.setProps` is called, which in turn calls the `setState` property of the `App` component.
+  3. `this.setState` in `App` is called. This updates the `this.state` of `App` _and_ implicitly calls the `render` method of `App`.
   4. When `App.render` is called, it calls `TextInput.render` with the new properties, rerendering the `<input/>` with the new `value`.
 
   In Dash apps, the `dash-renderer` project is very similar to `App.js`. It contains all of the "state" of the application and it passes those properties into the individual components. When a component's properties change through user interaction (e.g. typing into an `<input/>` or hovering on a graph), the component needs to call `setProps` with the new values of the property. Dash's frontend (`dash-renderer`) will then rerender the component with the new property _and_ make the necessary API calls to Dash's Python server callbacks.
 
   ##### Handling the case when `setProps` isn't defined
 
-  In Dash, `setProps` *is only defined if the particular component is referenced in an `@app.callback`*. If the component isn't referenced in a callback, then Dash's frontend will not pass in the `setProps` property, it will be undefined.
+  In Dash, `setProps` *is only defined if the particular component is referenced in an `@app.callback`*. If the component isn't referenced in a callback, then Dash's frontend will not pass in the `setProps` property. It will be undefined.
 
-  > As an aside, why does Dash do that? In some cases, it could be computationally expensive to determine the new properties. In these cases, Dash allows component authors to skip doing these computations if the Dash app author doesn't actually need the properties. That is, if the component isn't in any `@app.callback`, then it doesn't need to through the "effort" to compute it's new properties and inform Dash.
+  > As an aside, why does Dash do that? In some cases, it could be computationally expensive to determine the new properties. In these cases, Dash allows component authors to skip doing these computations if the Dash app author doesn't actually need the properties. That is, if the component isn't in any `@app.callback`, then it doesn't need to go through the "effort" to compute it's new properties and inform Dash.
   >
 
   In most cases, this is a non-issue. After all, why would you render an `Input` on the page if you didn't want to use it as an `@app.callback`? However, sometimes we still want to be able to interact with the component, even if it isn't connected to Dash's backend. In this case, we'll manage our state locally _or_ through the parent. That is:
@@ -653,13 +653,15 @@ TextInput.propTypes = {
 }
 ```
 
-(fill that in with the actual ones)
+(You should fill that in with the actual ones.)
 
-These `propTypes` describe the input properties of the component, their types, and whether or not they are required. These are required. Dash's React-to-Python toolchain looks for these `propTypes` in order to automatically generate the Dash component Python classes. A few notes:
+You must include `propTypes` because they describe the input properties of the component, their types, and whether or not they are required. Dash's React-to-Python toolchain looks for these `propTypes` in order to automatically generate the Dash component Python classes.
+
+A few notes:
 - The comments above each property are translated directly into the Python component's docstrings. For example, compare the output of `>>> help(dcc.Dropdown)` with [that component's propTypes](https://github.com/plotly/dash-core-components/blob/c82bea0696dfa7af7f6a665bae81051523fff8b2/src/components/Dropdown.react.js).
 - The `id` property is required in all Dash components.
 - The list of available types are available [here](https://reactjs.org/docs/typechecking-with-proptypes.html).
-- In the future, we will use these propTypes to provide validation in Python. That is, if you specify that a property is a `PropTypes.string`, then Dash's Python code will throw an error if you supply something else. Track our progress in this issue: [264](https://github.com/plotly/dash/issues/264).
+- In the future, we will use these `propTypes` to provide validation in Python. That is, if you specify that a property is a `PropTypes.string`, then Dash's Python code will throw an error if you supply something else. Track our progress in this issue: [264](https://github.com/plotly/dash/issues/264).
 
 ##### Build your component in Python
 
