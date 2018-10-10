@@ -602,7 +602,7 @@ layout = html.Div([dcc.Markdown('''
 
   ##### Handling the case when `setProps` isn't defined
 
-  In Dash, `setProps` *is only defined if the particular component is referenced in an `@app.callback`*. If the component isn't referenced in a callback, then Dash's frontend will not pass in the `setProps` property. It will be undefined.
+  In Dash, `setProps` *is only defined if the particular component is referenced in an `@app.callback`*. If the component isn't referenced in a callback, then Dash's frontend will not pass in the `setProps` property and it will be undefined.
 
   > As an aside, why does Dash do that? In some cases, it could be computationally expensive to determine the new properties. In these cases, Dash allows component authors to skip doing these computations if the Dash app author doesn't actually need the properties. That is, if the component isn't in any `@app.callback`, then it doesn't need to go through the "effort" to compute it's new properties and inform Dash.
   >
