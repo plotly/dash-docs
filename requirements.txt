@@ -5,7 +5,7 @@ click==6.7
 configparser==3.5.0
 dash==0.28.2
 dash-auth==1.1.2
-dash-core-components==0.30.2
+dash-core-components==0.33.0
 dash-dangerously-set-inner-html==0.0.1
 dash-html-components==0.13.2
 dash-renderer==0.14.3
