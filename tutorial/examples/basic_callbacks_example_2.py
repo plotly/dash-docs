@@ -57,7 +57,7 @@ def update_graph(stock_ticker, column):
         data=[go.Scatter(x=df.index, y=y)],
         layout=go.Layout(
             yaxis=go.YAxis(title=column),
-            margin=go.Margin(l=40, r=0, t=10, b=30)
+            margin=go.layout.Margin(l=40, r=0, t=10, b=30)
         )
     )
 

@@ -357,7 +357,7 @@ dcc.Graph(
                 y=[219, 146, 112, 127, 124, 180, 236, 207, 236, 263,
                    350, 430, 474, 526, 488, 537, 500, 439],
                 name='Rest of world',
-                marker=go.Marker(
+                marker=go.bar.Marker(
                     color='rgb(55, 83, 109)'
                 )
             ),
@@ -367,7 +367,7 @@ dcc.Graph(
                 y=[16, 13, 10, 11, 28, 37, 43, 55, 56, 88, 105, 156, 270,
                    299, 340, 403, 549, 499],
                 name='China',
-                marker=go.Marker(
+                marker=go.bar.Marker(
                     color='rgb(26, 118, 255)'
                 )
             )
@@ -375,11 +375,11 @@ dcc.Graph(
         layout=go.Layout(
             title='US Export of Plastic Scrap',
             showlegend=True,
-            legend=go.Legend(
+            legend=go.layout.Legend(
                 x=0,
                 y=1.0
             ),
-            margin=go.Margin(l=40, r=0, t=40, b=30)
+            margin=go.layout.Margin(l=40, r=0, t=40, b=30)
         )
     ),
     style={'height': 300},
