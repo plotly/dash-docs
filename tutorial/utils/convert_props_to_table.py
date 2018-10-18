@@ -3,11 +3,8 @@ import json
 import os
 import dash_html_components as html
 import dash_core_components as dcc
+import dash_table
 import pandas as pd
-
-
-_current_path = os.path.join(os.path.dirname(os.path.abspath(dcc.__file__)),
-                             'metadata.json')
 
 
 def js_to_py_type(type_object):
@@ -132,14 +129,19 @@ def object_hook_handler(obj):
     return obj
 
 
-with open(_current_path, 'r') as f:
-    metadata = json.load(f, object_hook=object_hook_handler)
+def get_dataframe(component_name, lib=dcc):
+    path = os.path.join(os.path.dirname(os.path.abspath(lib.__file__)),
+                        'metadata.json')
+    with open(path, 'r') as f:
+        metadata = json.load(f, object_hook=object_hook_handler)
 
+    if lib is dcc:
+        prefix = 'src/components/'
+        suffix = '.react.js'
+        fullString = prefix+component_name+suffix
+    elif lib == dash_table:
+        fullString = 'src/dash-table/{}.js'.format(component_name)
 
-def get_dataframe(component_name):
-    prefix = 'src/components/'
-    suffix = '.react.js'
-    fullString = prefix+component_name+suffix
     df = pd.DataFrame(metadata[fullString]
                       ['props']).transpose()
     if 'dashEvents' in df.index.tolist():
@@ -220,5 +222,5 @@ def generate_table(dataframe):
     return table
 
 
-def generate_prop_table(component_name):
-    return generate_table(get_dataframe(component_name))
+def generate_prop_table(component_name, lib=dcc):
+    return generate_table(get_dataframe(component_name, lib))
