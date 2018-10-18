@@ -110,6 +110,10 @@ h1, h2, h3, h4, h5, h6 {
   display: block;
 }
 
+.toc--chapter {
+  list-style: none;
+}
+
 .toc--chapter .toc--chapter-link {
     background-color: white;
     color: #506784;
@@ -118,18 +122,20 @@ h1, h2, h3, h4, h5, h6 {
     padding-left: 0px;
     list-style: none;
     font-size: 26px;
-    color: #506784;    
+    color: #506784;
 }
 
-.toc .toc--chapter-content {
-  font-size: 18px;
+.toc--chapter-content {
   color: #506784;
+  font-size: 1.5rem;
 }
 
-.toc .toc--chapter-content li {
-  font-size: 14px;
-  color: #506784;
-  font-weight: 200;
+.toc--chapter-content ul {
+    font-size: 100%;
+}
+
+.toc--chapter-content ul li {
+    margin-bottom: 0.5rem;
 }
 
 /* Links
@@ -158,13 +164,9 @@ h1, h2, h3, h4, h5, h6 {
     background-color: rgb(243, 246, 251);
     border: 0.5px rgb(224, 232, 242) solid;
     border-radius: 4px;
-    font-size: 1.8rem;
+    font-size: 95%;
     padding-left: 3px;
     padding-right: 3px;
-}
-
-.toc li {
-  list-style: none;
 }
 
 .content-container {
@@ -221,10 +223,6 @@ h1, h2, h3, h4, h5, h6 {
     width: 90%;
     margin-left: auto;
     margin-right: auto;
-  }
-
-  .toc-chapters {
-    column-count: 2;
   }
 }
 
