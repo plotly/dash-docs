@@ -1,6 +1,7 @@
 import dash_html_components as html
 import dash_core_components as dcc
 import dash_table_experiments as dt
+import dash_table
 
 from dash.dependencies import Input, Output
 
@@ -67,6 +68,7 @@ app.layout = html.Div(
             ], className='container-width')
         ], className='background'),
         dcc.Location(id='location', refresh=False),
+        html.Div(dash_table.Table(id='_blank'), style={'display': 'none'}),
         html.Div(dt.DataTable(rows=[{}]), style={'display': 'none'})
     ]
 )
@@ -83,18 +85,33 @@ def display_content(pathname):
                if chapters[c]['url'] == pathname]
 
     if matched and matched[0] != 'index':
-        if 'dash-deployment-server/' not in pathname:
+        if 'dash-deployment-server/' in pathname:
             content = html.Div([
                 html.Div(chapters[matched[0]]['content']),
                 html.Hr(),
-                dcc.Link(html.A('Back to the Table of Contents'), href='/'),
+                dcc.Link(html.A('Back to Dash Deployment Server Documentation'), href='/dash-deployment-server'),
+                html.Div(id='wait-for-page-{}'.format(pathname)),
+            ])
+        elif 'dash-table/' in pathname:
+            content = html.Div([
+                html.Div(chapters[matched[0]]['content']),
+                html.Hr(),
+                dcc.Link(
+                    'Back to Dash Table Documentation',
+                    href='/dash-table'
+                ),
+                html.Br(),
+                dcc.Link(
+                    'Back to Dash Documentation',
+                    href='/'
+                ),
                 html.Div(id='wait-for-page-{}'.format(pathname)),
             ])
         else:
             content = html.Div([
                 html.Div(chapters[matched[0]]['content']),
                 html.Hr(),
-                dcc.Link(html.A('Back to Dash Deployment Server Documentation'), href='/dash-deployment-server'),
+                dcc.Link(html.A('Back to the Table of Contents'), href='/'),
                 html.Div(id='wait-for-page-{}'.format(pathname)),
             ])
 
