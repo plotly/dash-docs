@@ -74,17 +74,17 @@ layout = html.Div([
             Several examples on how to change the style and sizing of the
             table. This includes:
             - Table height, width
-            - Fixing rows and columns
             - Text alignment
             - Per-column styles
             - Conditional formatting
+            - Fixing rows and columns
 
             The styling API for the table has been particularly tricky for
             us to nail down, so be read this chapter to understand the nuances,
             limitations, and the APIs that we're exploring.
             '''),
 
-        Chapter('Part 2. Table Interactivity',
+        Chapter('Part 2. Sorting, Filtering, and Paging',
             '/dash-table/interactivity',
             '''
             The Dash Table is interactive. This chapter demonstrates the
@@ -92,30 +92,34 @@ layout = html.Div([
             interations to Python callbacks. These actions include:
             - Paging
             - Selecting Rows
-            - Editing Cells
-            - Editing Column Names
             - Sorting Columns
             - Filtering Data
-            - Deleting Rows
             '''),
 
-        Chapter('Part 3. Advanced Editing Recipes',
+        Chapter([html.Span('Part 3. Sorting, Filtering, and Paging '), html.I('with Python')],
+            '/dash-table/callbacks',
+            '''
+            Learn how to write your own filtering, sorting, and paging backends
+            in Python with Dash. This is useful for when your datasets
+            become larger than 100,000 rows.
+            '''),
+
+        Chapter('Part 4. Editable Tables',
             '/dash-table/recipes',
             '''
+            The table can be a good, flexible control for models with many
+            parameters.
+
+            If your Python model has several parameters, the table can be a
+            good, flexible control.
+
+            If your models have several inputs, the Table can be a good
             This chapter covers some more complex on how to use the table as
             an interactive input, including:
             - On edit, determining which cell has changed
             - Filtering out null values
             - Adding or removing columns
             - Keeping a minimum set of rows visible
-            '''),
-
-        Chapter('Part 4. Updating Data through Callbacks or Python-side Filtering, Paging, and Sorting',
-            '/dash-table/callbacks',
-            '''
-            Learn how to write your own filtering, sorting, and paging backends
-            in Python with Dash. This is useful for when your datasets
-            become larger than 100,000 rows.
             '''),
 
         Chapter('Part 5. Rendering Cells as Dropdowns',
