@@ -84,7 +84,7 @@ layout = html.Div([
             limitations, and the APIs that we're exploring.
             '''),
 
-        Chapter('Part 2. Sorting, Filtering, and Paging',
+        Chapter('Part 2. Sorting, Filtering, Selecting, and Paging',
             '/dash-table/interactivity',
             '''
             The Dash Table is interactive. This chapter demonstrates the
@@ -107,19 +107,18 @@ layout = html.Div([
         Chapter('Part 4. Editable Tables',
             '/dash-table/recipes',
             '''
-            The table can be a good, flexible control for models with many
-            parameters.
+            The Dash Table is editable. Like a spreadsheet, it can be used
+            as an input for controlling models with a variable number
+            of inputs.
 
-            If your Python model has several parameters, the table can be a
-            good, flexible control.
+            This chapter includes recipes for:
 
-            If your models have several inputs, the Table can be a good
-            This chapter covers some more complex on how to use the table as
-            an interactive input, including:
-            - On edit, determining which cell has changed
+            - Determining which cell has changed
             - Filtering out null values
             - Adding or removing columns
-            - Keeping a minimum set of rows visible
+            - Adding or removing rows
+            - Ensuring that a minimum set of rows are visible
+            - Running Python computations on certain columns or cells
             '''),
 
         Chapter('Part 5. Rendering Cells as Dropdowns',
