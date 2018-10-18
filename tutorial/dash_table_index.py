@@ -18,27 +18,10 @@ examples = {
 
 layout = html.Div([
 
-    dcc.Markdown(dedent(
-    '''
-    # Dash Table
-
-    ## Quickstart
-    ```
-    pip install dash-table=={}
-    ```
-    '''.format(dash_table.__version__))),
-
-    dcc.SyntaxHighlighter(
-        examples['simple.py'][0],
-        language='python',
-        customStyle=styles.code_container
-    ),
-
-    html.Div(examples['simple.py'][1], className='example-container'),
-
     dcc.Markdown(dedent('''
+    # Dash Interactive Table
 
-    ***
+    **New! Released in October, 2018**
 
     The Dash Table is an interactive table component designed for
     viewing, editing, and exploring large datasets.
@@ -67,7 +50,24 @@ layout = html.Div([
     upgrade guides, and new features.
 
     ''')),
-    Section('Dash Table User Guide', [
+
+    Section('Quickstart', [
+        dcc.SyntaxHighlighter(
+            '''pip install dash-table=={}'''.format(dash_table.__version__),
+            customStyle=styles.code_container
+        ),
+
+        dcc.SyntaxHighlighter(
+            examples['simple.py'][0],
+            language='python',
+            customStyle=styles.code_container
+        ),
+
+        html.Div(examples['simple.py'][1], className='example-container'),
+
+    ]),
+
+    Section('Dash Interactive Table User Guide', [
         Chapter('Part 1. Styling, Sizing, and Conditional Formatting',
             '/dash-table/styling',
             '''
