@@ -72,24 +72,19 @@ layout = html.Div([
             '/dash-table/styling',
             '''
             Several examples on how to change the style and sizing of the
-            table, from background colors to column widths,
-            text alignment to font familes.
+            table. This includes:
+            - Table height, width
+            - Fixing rows and columns
+            - Text alignment
+            - Per-column styles
+            - Conditional formatting
 
             The styling API for the table has been particularly tricky for
             us to nail down, so be read this chapter to understand the nuances,
             limitations, and the APIs that we're exploring.
             '''),
 
-        Chapter('Part 2. Fixing Rows and Columns',
-            '/dash-table/fixed-rows-and-columns',
-            '''
-            For long or wide datasets, use `n_fixed_rows` or `n_fixed_columns`
-            to fix a header or a left-most column as you scroll through the
-            dataset. There are a few important limitations to be aware of if
-            you use these properties.
-            '''),
-
-        Chapter('Part 3. Table Interactivity',
+        Chapter('Part 2. Table Interactivity',
             '/dash-table/interactivity',
             '''
             The Dash Table is interactive. This chapter demonstrates the
@@ -104,7 +99,7 @@ layout = html.Div([
             - Deleting Rows
             '''),
 
-        Chapter('Part 4. Advanced Editing Recipes',
+        Chapter('Part 3. Advanced Editing Recipes',
             '/dash-table/recipes',
             '''
             This chapter covers some more complex on how to use the table as
@@ -115,7 +110,7 @@ layout = html.Div([
             - Keeping a minimum set of rows visible
             '''),
 
-        Chapter('Part 5. Updating Data through Callbacks or Python-side Filtering, Paging, and Sorting',
+        Chapter('Part 4. Updating Data through Callbacks or Python-side Filtering, Paging, and Sorting',
             '/dash-table/callbacks',
             '''
             Learn how to write your own filtering, sorting, and paging backends
@@ -123,7 +118,7 @@ layout = html.Div([
             become larger than 100,000 rows.
             '''),
 
-        Chapter('Part 6. Rendering Cells as Dropdowns',
+        Chapter('Part 5. Rendering Cells as Dropdowns',
             '/dash-table/dropdowns',
             '''
             Cells can be rendered as editable Dropdowns. This is our first
@@ -133,7 +128,7 @@ layout = html.Div([
             of.
             '''),
 
-        Chapter('Part 7. Table Reference',
+        Chapter('Part 6. Table Reference',
             '/dash-table/reference',
             '''
             The full list of Table properties and their settings.

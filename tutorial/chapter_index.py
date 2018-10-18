@@ -499,12 +499,12 @@ chapters = {
         """
     },
 
-    'dash-table-fixed': {
-        'url': '/dash-table/fixed-rows-and-columns',
-        'content': tutorial.table.fixed_rows_chapter.layout,
-        'name': 'Fixed Rows and Columns - Dash Table',
+    'interactivity': {
+        'url': '/dash-table/interactivity',
+        'content': tutorial.table.interactivity_chapter.layout,
+        'name': 'Interactive Dash Table',
         'description': '''
-            How to fix rows and columns in the Dash Table component.
+        A showcase of the interactive features of the Dash Table.
         '''
     },
 
@@ -519,7 +519,7 @@ chapters = {
     },
 
     'callbacks': {
-        'url': 'dash-table/callbacks',
+        'url': '/dash-table/callbacks',
         'content': tutorial.table.table_callbacks_chapter.layout,
         'name': 'Python-Driven Filtering, Paging, Sorting - Dash Table',
         'description': '''
@@ -528,7 +528,7 @@ chapters = {
     },
 
     'dropdowns': {
-        'url': 'dash-table/dropdowns',
+        'url': '/dash-table/dropdowns',
         'content': tutorial.table.dropdowns_chapter.layout,
         'name': 'Dropdowns Inside Dash Table',
         'description': '''
@@ -537,7 +537,7 @@ chapters = {
     },
 
     'roadmap': {
-        'url': 'dash-table/reference',
+        'url': '/dash-table/reference',
         'content': tutorial.table.reference_chapter.layout,
         'name': 'Dash Table Reference',
         'description': '''
