@@ -1,6 +1,20 @@
 from server import app
 
+def exception_handler(func):
+    def wrapper(path):
+        try:
+            return func(path)
+        except Exception as e:
+            print('\nError running {}\n{}'.format(
+                path,
+                ('======================================' +
+                 '======================================')
+            ))
+            raise e
+    return wrapper
 
+
+@exception_handler
 def load_example(path):
     with open(path, 'r') as _f:
         _source = _f.read()
@@ -38,15 +52,7 @@ def load_example(path):
         )
 
         scope = {'app': app}
-        try:
-            exec(_example, scope)
-        except Exception as e:
-            print('\nError running {}\n{}'.format(
-                path,
-                ('======================================' +
-                 '======================================')
-            ))
-            raise e
+        exec(_example, scope)
 
     return (
         _source,
