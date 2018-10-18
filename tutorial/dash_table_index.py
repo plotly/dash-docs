@@ -99,9 +99,15 @@ layout = html.Div([
         Chapter([html.Span('Part 3. Sorting, Filtering, and Paging '), html.I('with Python')],
             '/dash-table/callbacks',
             '''
-            Learn how to write your own filtering, sorting, and paging backends
-            in Python with Dash. This is useful for when your datasets
-            become larger than 100,000 rows.
+            In Part 2, the paging, sorting, and filtering was done entirely
+            clientside (in the browser). This means that you need to
+            load all of the data into the table up-front. If your data is large,
+            then this can be prohibitively slow.
+
+            In this chapter, you'll learn how to write your own filtering,
+            sorting, and paging backends in Python with Dash.
+            We'll do the data processing with Pandas but you could write your
+            own routines with SQL or even generate the data on the fly!
             '''),
 
         Chapter('Part 4. Editable Tables',
