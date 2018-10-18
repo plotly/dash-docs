@@ -8,43 +8,34 @@ from textwrap import dedent
 
 import dash_table
 from .utils import section_title
+from tutorial import styles
+from tutorial import tools
 
 
-ID_PREFIX = "app_dataframe_updating_graph_be"
-IDS = {
-    "table": ID_PREFIX,
-    "container": "{}-container".format(ID_PREFIX),
-    "table-sorting": "{}-sorting".format(ID_PREFIX),
-    "table-multi-sorting": "{}-multi-sorting".format(ID_PREFIX),
-    "table-filtering": "{}-filtering".format(ID_PREFIX),
-    "table-sorting-filtering": "{}-sorting-filtering".format(ID_PREFIX),
-    "table-paging-selection": "{}-paging-selection".format(ID_PREFIX),
-    "table-paging-with-graph": "{}-table-paging-with-graph".format(ID_PREFIX),
-    "table-paging-with-graph-container": "{}-table-paging-with-graph-container".format(ID_PREFIX),
+examples = {
+    example: tools.load_example('tutorial/examples/table/{}'.format(example))
+    for example in [
+        'callbacks_paging.py',
+        'callbacks_paging_and_sorting.py',
+        'callbacks_paging_multicolumn_sorting.py',
+        'callbacks_filtering.py',
+        'callbacks_sorting_filtering.py',
+        'callbacks_filtering_graph.py'
+    ]
 }
-df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv')
-df = df[df["year"] == 2007]
-df[' index'] = range(1, len(df) + 1)
-
-
-PAGE_SIZE = 5
-
 
 layout = html.Div([
 
     section_title('Backend Paging'),
 
-    dash_table.Table(
-        id=IDS["table"],
-        columns=[
-            {"name": i, "id": i, "deletable": True} for i in sorted(df.columns)
-        ],
-        pagination_settings={
-            'displayed_pages': 1,
-            'current_page': 0,
-            'page_size': PAGE_SIZE
-        },
-        pagination_mode='be'
+    dcc.SyntaxHighlighter(
+        examples['callbacks_paging.py'][0],
+        language='python',
+        customStyle=styles.code_container
+    ),
+    html.Div(
+        examples['callbacks_paging.py'][1],
+        className='example-container'
     ),
 
     html.Hr(),
@@ -64,21 +55,14 @@ layout = html.Div([
 
     section_title('Backend Paging with Sorting'),
 
-    dash_table.Table(
-        id=IDS["table-sorting"],
-        columns=[
-            {"name": i, "id": i, "deletable": True} for i in sorted(df.columns)
-        ],
-        pagination_settings={
-            'displayed_pages': 1,
-            'current_page': 0,
-            'page_size': PAGE_SIZE
-        },
-        pagination_mode='be',
-
-        sorting='be',
-        sorting_type='single',
-        sorting_settings=[]
+    dcc.SyntaxHighlighter(
+        examples['callbacks_paging_and_sorting.py'][0],
+        language='python',
+        customStyle=styles.code_container
+    ),
+    html.Div(
+        examples['callbacks_paging_and_sorting.py'][1],
+        className='example-container'
     ),
 
     section_title('Backend Paging with Multi Column Sorting'),
@@ -92,21 +76,14 @@ layout = html.Div([
     In this example, try sorting by continent and then any other column.
     ''')),
 
-    dash_table.Table(
-        id=IDS["table-multi-sorting"],
-        columns=[
-            {"name": i, "id": i, "deletable": True} for i in sorted(df.columns)
-        ],
-        pagination_settings={
-            'displayed_pages': 1,
-            'current_page': 0,
-            'page_size': PAGE_SIZE
-        },
-        pagination_mode='be',
-
-        sorting='be',
-        sorting_type='multi',
-        sorting_settings=[]
+    dcc.SyntaxHighlighter(
+        examples['callbacks_paging_multicolumn_sorting.py'][0],
+        language='python',
+        customStyle=styles.code_container
+    ),
+    html.Div(
+        examples['callbacks_paging_multicolumn_sorting.py'][1],
+        className='example-container'
     ),
 
     section_title('Backend Paging with Filtering'),
@@ -131,42 +108,25 @@ layout = html.Div([
 
     ''')),
 
-    dash_table.Table(
-        id=IDS["table-filtering"],
-        columns=[
-            {"name": i, "id": i, "deletable": True} for i in sorted(df.columns)
-        ],
-        pagination_settings={
-            'displayed_pages': 1,
-            'current_page': 0,
-            'page_size': PAGE_SIZE
-        },
-        pagination_mode='be',
-
-        filtering='be',
-        filtering_settings=''
+    dcc.SyntaxHighlighter(
+        examples['callbacks_filtering.py'][0],
+        language='python',
+        customStyle=styles.code_container
+    ),
+    html.Div(
+        examples['callbacks_filtering.py'][1],
+        className='example-container'
     ),
 
     section_title('Backend Paging with Filtering and Multi-Column Sorting'),
-
-    dash_table.Table(
-        id=IDS["table-sorting-filtering"],
-        columns=[
-            {"name": i, "id": i, "deletable": True} for i in sorted(df.columns)
-        ],
-        pagination_settings={
-            'displayed_pages': 1,
-            'current_page': 0,
-            'page_size': PAGE_SIZE
-        },
-        pagination_mode='be',
-
-        filtering='be',
-        filtering_settings='',
-
-        sorting='be',
-        sorting_type='multi',
-        sorting_settings=[]
+    dcc.SyntaxHighlighter(
+        examples['callbacks_sorting_filtering.py'][0],
+        language='python',
+        customStyle=styles.code_container
+    ),
+    html.Div(
+        examples['callbacks_sorting_filtering.py'][1],
+        className='example-container'
     ),
 
     section_title('Connecting Backend Paging with a Graph'),
@@ -175,231 +135,14 @@ layout = html.Div([
     This final example ties it all together: the graph component
     displays the current page of the `dataframe`.
     ''')),
-
+    dcc.SyntaxHighlighter(
+        examples['callbacks_filtering_graph.py'][0],
+        language='python',
+        customStyle=styles.code_container
+    ),
     html.Div(
-        className="row",
-        children=[
-            html.Div(
-                dash_table.Table(
-                    id=IDS["table-paging-with-graph"],
-                    columns=[
-                        {"name": i, "id": i, "deletable": True} for i in sorted(df.columns)
-                    ],
-                    pagination_settings={
-                        'displayed_pages': 1,
-                        'current_page': 0,
-                        'page_size': 20
-                    },
-                    pagination_mode='be',
-
-                    filtering='be',
-                    filtering_settings='',
-
-                    sorting='be',
-                    sorting_type='multi',
-                    sorting_settings=[]
-                ),
-                style={'height': 750, 'overflowY': 'scroll'},
-                className='six columns'
-            ),
-            html.Div(
-                id=IDS["table-paging-with-graph-container"],
-                className="six columns"
-            )
-        ]
-    )
+        examples['callbacks_filtering_graph.py'][1],
+        className='example-container'
+    ),
 
 ])
-
-#
-# @app.callback(
-#     Output(IDS["table"], "dataframe"),
-#     [Input(IDS["table"], "pagination_settings")])
-# def update_graph(pagination_settings):
-#     return df.iloc[
-#         pagination_settings['current_page']*pagination_settings['page_size']:
-#         (pagination_settings['current_page'] + 1)*pagination_settings['page_size']
-#     ].to_dict('rows')
-#
-#
-# @app.callback(
-#     Output(IDS["table-sorting"], "dataframe"),
-#     [Input(IDS["table-sorting"], "pagination_settings"),
-#      Input(IDS["table-sorting"], "sorting_settings")])
-# def update_graph(pagination_settings, sorting_settings):
-#     print(sorting_settings)
-#     if len(sorting_settings):
-#         dff = df.sort_values(
-#             sorting_settings[0]['columnId'],
-#             ascending=sorting_settings[0]['direction'] == 'asc',
-#             inplace=False
-#         )
-#     else:
-#         # No sort is applied
-#         dff = df
-#
-#     return dff.iloc[
-#         pagination_settings['current_page']*pagination_settings['page_size']:
-#         (pagination_settings['current_page'] + 1)*pagination_settings['page_size']
-#     ].to_dict('rows')
-#
-#
-#
-# @app.callback(
-#     Output(IDS["table-multi-sorting"], "dataframe"),
-#     [Input(IDS["table-multi-sorting"], "pagination_settings"),
-#      Input(IDS["table-multi-sorting"], "sorting_settings")])
-# def update_graph(pagination_settings, sorting_settings):
-#     print(sorting_settings)
-#     if len(sorting_settings):
-#         dff = df.sort_values(
-#             [col['columnId'] for col in sorting_settings],
-#             ascending=[
-#                 col['direction'] == 'asc'
-#                 for col in sorting_settings
-#             ],
-#             inplace=False
-#         )
-#     else:
-#         # No sort is applied
-#         dff = df
-#
-#     return dff.iloc[
-#         pagination_settings['current_page']*pagination_settings['page_size']:
-#         (pagination_settings['current_page'] + 1)*pagination_settings['page_size']
-#     ].to_dict('rows')
-#
-#
-# @app.callback(
-#     Output(IDS["table-filtering"], "dataframe"),
-#     [Input(IDS["table-filtering"], "pagination_settings"),
-#      Input(IDS["table-filtering"], "filtering_settings")])
-# def update_graph(pagination_settings, filtering_settings):
-#     print(filtering_settings)
-#     filtering_expressions = filtering_settings.split(' && ')
-#     dff = df
-#     for filter in filtering_expressions:
-#         if ' eq ' in filter:
-#             col_name = filter.split(' eq ')[0]
-#             filter_value = filter.split(' eq ')[1]
-#             dff = dff.loc[dff[col_name] == filter_value]
-#         if ' > ' in filter:
-#             col_name = filter.split(' > ')[0]
-#             filter_value = float(filter.split(' > ')[1])
-#             dff = dff.loc[dff[col_name] > filter_value]
-#         if ' < ' in filter:
-#             col_name = filter.split(' < ')[0]
-#             filter_value = float(filter.split(' < ')[1])
-#             dff = dff.loc[dff[col_name] < filter_value]
-#
-#     return dff.iloc[
-#         pagination_settings['current_page']*pagination_settings['page_size']:
-#         (pagination_settings['current_page'] + 1)*pagination_settings['page_size']
-#     ].to_dict('rows')
-#
-#
-# @app.callback(
-#     Output(IDS["table-sorting-filtering"], "dataframe"),
-#     [Input(IDS["table-sorting-filtering"], "pagination_settings"),
-#      Input(IDS["table-sorting-filtering"], "sorting_settings"),
-#      Input(IDS["table-sorting-filtering"], "filtering_settings")])
-# def update_graph(pagination_settings, sorting_settings, filtering_settings):
-#     filtering_expressions = filtering_settings.split(' && ')
-#     dff = df
-#     for filter in filtering_expressions:
-#         if ' eq ' in filter:
-#             col_name = filter.split(' eq ')[0]
-#             filter_value = filter.split(' eq ')[1]
-#             dff = dff.loc[dff[col_name] == filter_value]
-#         if ' > ' in filter:
-#             col_name = filter.split(' > ')[0]
-#             filter_value = float(filter.split(' > ')[1])
-#             dff = dff.loc[dff[col_name] > filter_value]
-#         if ' < ' in filter:
-#             col_name = filter.split(' < ')[0]
-#             filter_value = float(filter.split(' < ')[1])
-#             dff = dff.loc[dff[col_name] < filter_value]
-#
-#     if len(sorting_settings):
-#         dff = dff.sort_values(
-#             [col['columnId'] for col in sorting_settings],
-#             ascending=[
-#                 col['direction'] == 'asc'
-#                 for col in sorting_settings
-#             ],
-#             inplace=False
-#         )
-#
-#     return dff.iloc[
-#         pagination_settings['current_page']*pagination_settings['page_size']:
-#         (pagination_settings['current_page'] + 1)*pagination_settings['page_size']
-#     ].to_dict('rows')
-#
-#
-# @app.callback(
-#     Output(IDS["table-paging-with-graph"], "dataframe"),
-#     [Input(IDS["table-paging-with-graph"], "pagination_settings"),
-#      Input(IDS["table-paging-with-graph"], "sorting_settings"),
-#      Input(IDS["table-paging-with-graph"], "filtering_settings")])
-# def update_table(pagination_settings, sorting_settings, filtering_settings):
-#     filtering_expressions = filtering_settings.split(' && ')
-#     dff = df
-#     for filter in filtering_expressions:
-#         if ' eq ' in filter:
-#             col_name = filter.split(' eq ')[0]
-#             filter_value = filter.split(' eq ')[1]
-#             dff = dff.loc[dff[col_name] == filter_value]
-#         if ' > ' in filter:
-#             col_name = filter.split(' > ')[0]
-#             filter_value = float(filter.split(' > ')[1])
-#             dff = dff.loc[dff[col_name] > filter_value]
-#         if ' < ' in filter:
-#             col_name = filter.split(' < ')[0]
-#             filter_value = float(filter.split(' < ')[1])
-#             dff = dff.loc[dff[col_name] < filter_value]
-#
-#     if len(sorting_settings):
-#         dff = dff.sort_values(
-#             [col['columnId'] for col in sorting_settings],
-#             ascending=[
-#                 col['direction'] == 'asc'
-#                 for col in sorting_settings
-#             ],
-#             inplace=False
-#         )
-#
-#     return dff.iloc[
-#         pagination_settings['current_page']*pagination_settings['page_size']:
-#         (pagination_settings['current_page'] + 1)*pagination_settings['page_size']
-#     ].to_dict('rows')
-#
-#
-# @app.callback(
-#     Output(IDS["table-paging-with-graph-container"], "children"),
-#     [Input(IDS["table-paging-with-graph"], "dataframe")])
-# def update_graph(rows):
-#     dff = pd.DataFrame(rows)
-#     return html.Div(
-#         [
-#             dcc.Graph(
-#                 id=column,
-#                 figure={
-#                     "data": [
-#                         {
-#                             "x": dff["country"],
-#                             "y": dff[column] if column in dff else [],
-#                             "type": "bar",
-#                             "marker": {"color": "#0074D9"},
-#                         }
-#                     ],
-#                     "layout": {
-#                         "xaxis": {"automargin": True},
-#                         "yaxis": {"automargin": True},
-#                         "height": 250,
-#                         "margin": {"t": 10, "l": 10, "r": 10},
-#                     },
-#                 },
-#             )
-#             for column in ["pop", "lifeExp", "gdpPercap"]
-#         ]
-#     )

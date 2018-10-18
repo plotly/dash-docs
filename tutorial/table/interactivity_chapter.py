@@ -6,39 +6,22 @@ import dash_html_components as html
 import pandas as pd
 from textwrap import dedent
 
-import dash_table
+from tutorial import tools
+from tutorial import styles
 
-ID_PREFIX = "app_dataframe_updating_graph"
-IDS = {"table": ID_PREFIX, "container": "{}-container".format(ID_PREFIX)}
-df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv')
-df = df[df["year"] == 2007]
 
+examples = {
+    example: tools.load_example('tutorial/examples/table/{}'.format(example))
+    for example in ['interactivity_simple.py', 'interactivity_connected_to_graph.py']
+}
 
 layout = html.Div(
     [
-        html.Div(
-            dash_table.Table(
-                id=IDS["table"],
-                columns=[
-                    {"name": i, "id": i, "deletable": True} for i in df.columns
-                ],
-                dataframe=df.to_dict("rows"),
-                editable=True,
-                filtering=True,
-                sorting=True,
-                sorting_type="multi",
-                row_selectable="multi",
-                row_deletable=True,
-                selected_rows=[],
-                n_fixed_rows=1,
-            ),
-            style={"height": 300, "overflowY": "scroll"},
-        ),
-        html.Div(id=IDS["container"]),
+
         dcc.Markdown(
             dedent(
                 """
-        ***
+        # Dash Table Interactivity
 
         `Table` includes several features for modifying and transforming the
         view of the data. These include:
@@ -55,7 +38,23 @@ layout = html.Div(
         > examples for this particular dataset:
         > - `lt num(50)` in the `lifeExp` column
         > - `eq "Canada"` in the `country` column
+        """
+            )
+        ),
 
+        dcc.SyntaxHighlighter(
+            examples['interactivity_simple.py'][0],
+            language='python',
+            customStyle=styles.code_container
+        ),
+
+        html.Div(
+            examples['interactivity_simple.py'][1],
+            className='example-container'
+        ),
+
+            dcc.Markdown(dedent(
+        """
         By default, these transformations are done clientside.
         Your Dash callbacks can respond to these modifications
         by listening to the `dataframe` property as an `Input`.
@@ -72,65 +71,18 @@ layout = html.Div(
         isn't getting updated on row selection and `selected_rows` doesn't
         track the underlying data (e.g. it will always be [1, 3] even after sorting or filtering)
         """
-            )
+        )),
+
+        dcc.SyntaxHighlighter(
+            examples['interactivity_connected_to_graph.py'][0],
+            language='python',
+            customStyle=styles.code_container
         ),
+
+        html.Div(
+            examples['interactivity_connected_to_graph.py'][1],
+            className='example-container'
+        ),
+
     ]
 )
-# 
-#
-# @app.callback(
-#     Output(IDS["container"], "children"),
-#     [
-#         Input(IDS["table"], "derived_virtual_dataframe"),
-#         Input(IDS["table"], "selected_rows"),
-#     ],
-# )
-# def update_graph(rows, selected_rows):
-#     # When the table is first rendered, `derived_virtual_dataframe`
-#     # will be `None`. This is due to an idiosyncracy in Dash
-#     # (unsupplied properties are always None and Dash calls the dependent
-#     # callbacks when the component is first rendered).
-#     # So, if `selected_rows` is `None`, then the component was just rendered
-#     # and its value will be the same as the component's dataframe.
-#     # Instead of setting `None` in here, you could also set
-#     # `derived_virtual_dataframe=df.to_rows('dict')` when you initialize
-#     # the component.
-#     if rows is None:
-#         dff = df
-#     else:
-#         dff = pd.DataFrame(rows)
-#
-#     colors = []
-#     for i in range(len(dff)):
-#         if i in selected_rows:
-#             colors.append("#7FDBFF")
-#         else:
-#             colors.append("#0074D9")
-#
-#     return html.Div(
-#         [
-#             dcc.Graph(
-#                 id=column,
-#                 figure={
-#                     "data": [
-#                         {
-#                             "x": dff["country"],
-#                             # check if column exists - user may have deleted it
-#                             # If `column.deletable=False`, then you don't
-#                             # need to do this check.
-#                             "y": dff[column] if column in dff else [],
-#                             "type": "bar",
-#                             "marker": {"color": colors},
-#                         }
-#                     ],
-#                     "layout": {
-#                         "xaxis": {"automargin": True},
-#                         "yaxis": {"automargin": True},
-#                         "height": 250,
-#                         "margin": {"t": 10, "l": 10, "r": 10},
-#                     },
-#                 },
-#             )
-#             for column in ["pop", "lifeExp", "gdpPercap"]
-#         ]
-#     )
