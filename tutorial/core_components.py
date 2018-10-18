@@ -394,7 +394,7 @@ dcc.Graph(
     html.H3(dcc.Link('ConfirmDialog', href='/dash-core-components/confirm')),
 
     dcc.Markdown('''
-The `dcc.ConfirmDialog` component send a dialog to the browser 
+The `dcc.ConfirmDialog` component send a dialog to the browser
 asking the user to confirm or cancel with a custom message.
     '''),
 
