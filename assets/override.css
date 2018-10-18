@@ -110,25 +110,23 @@ h1, h2, h3, h4, h5, h6 {
   display: block;
 }
 
-.toc ul li a {
-  background-color: white;
-  color: #506784;
-  font-family: Dosis, 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  text-decoration: none;
+.toc--chapter .toc--chapter-link {
+    background-color: white;
+    color: #506784;
+    font-family: Dosis, 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    text-decoration: none;
+    padding-left: 0px;
+    list-style: none;
+    font-size: 26px;
+    color: #506784;    
 }
 
-.toc ul li {
-  font-size: 26px;
-  color: #506784;
-}
-
-.toc ul ul li {
+.toc .toc--chapter-content {
   font-size: 18px;
   color: #506784;
-  display: none;
 }
 
-.toc ul ul ul li {
+.toc .toc--chapter-content li {
   font-size: 14px;
   color: #506784;
   font-weight: 200;

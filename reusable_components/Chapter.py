@@ -6,17 +6,21 @@ def s(string_block):
 
 def Chapter(name, href=None, caption=None):
     linkComponent = html.A if href.startswith('http') else dcc.Link
-    return html.Div([
+    return html.Div(className='toc--chapter', children=[
         html.Li(
             linkComponent(
                 name,
                 href=href,
-                style={'paddingLeft': 0},
-                id=href
-            )
+                id=href,
+                className='toc--chapter-link'
+            ),
         ),
-        html.Small(dcc.Markdown(s(caption or '')), style={
-            'display': 'block',
-            'marginTop': '-10px' if caption else ''
-        }) if caption else None
+        html.Small(
+            className='toc--chapter-content',
+            children=dcc.Markdown(s(caption or '')),
+            style={
+                'display': 'block',
+                'marginTop': '-10px' if caption else ''
+            }
+        ) if caption else None
     ])

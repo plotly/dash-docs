@@ -4,6 +4,7 @@ import dash_core_components as dcc
 import dash_html_components as html
 from tutorial.chapter_index import chapters
 
+from reusable_components import Section, Chapter
 from tutorial.tools import merge
 
 styles = {
@@ -12,35 +13,6 @@ styles = {
         'margin-top': '50px'
     }
 }
-
-def Chapter(name, href=None, caption=None):
-    linkComponent = html.A if href.startswith('http') else dcc.Link
-    return html.Div([
-        html.Li(
-            linkComponent(
-                name,
-                href=href,
-                style={'paddingLeft': 0},
-                id=href
-            )
-        ),
-        html.Small(dcc.Markdown(s(caption or '')), style={
-            'display': 'block',
-            'marginTop': '-10px' if caption else ''
-        }) if caption else None
-    ])
-
-
-def Section(title, links, description=None, headerStyle={}):
-    return html.Div([
-        html.H2(title, style=merge(styles['underline'], headerStyle)),
-        (
-            html.Div(description)
-            if description is not None else None
-        ),
-        html.Ul(links)
-    ])
-
 
 layout = html.Div(className='toc', children=[
     html.H1('Dash User Guide'),

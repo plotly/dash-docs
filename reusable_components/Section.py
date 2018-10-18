@@ -10,11 +10,11 @@ styles = {
 }
 
 def Section(title, links, description=None, headerStyle={}):
-    return html.Div([
+    return html.Div(className='toc--section', children=[
         html.H2(title, style=merge(styles['underline'], headerStyle)),
         (
             html.Div(description)
             if description is not None else None
         ),
-        html.Ul(links)
+        html.Ul(links, className='toc--chapters')
     ])
