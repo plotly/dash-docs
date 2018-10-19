@@ -509,12 +509,13 @@ chapters = {
     },
 
     'recipes': {
-        'url': '/dash-table/recipes',
+        'url': '/dash-table/editable',
         'content': tutorial.table.editing_recipes_chapter.layout,
-        'name': 'Advanced Editing Recipes - Dash Table',
+        'name': 'Editable Dash Table',
         'description': '''
-        Dash Table examples for determining which cell has changed,
-        filtering null values, adding or removing columns, and more.
+        Dash Table as a Spreadsheet: examples for determining which
+        cell has changed, filtering null values, adding or removing
+        columns, and more.
         '''
     },
 

@@ -111,7 +111,7 @@ layout = html.Div([
             '''),
 
         Chapter('Part 4. Editable Tables',
-            '/dash-table/recipes',
+            '/dash-table/editable',
             '''
             The Dash Table is editable. Like a spreadsheet, it can be used
             as an input for controlling models with a variable number
