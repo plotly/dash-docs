@@ -13,7 +13,8 @@ examples = {
         'editing_prune_empty_cells.py',
         'editing_uploading.py',
         'editing_columns.py',
-        'editing_rows_and_columns.py'
+        'editing_rows_and_columns.py',
+        'editing_updating_self.py'
     ]
 }
 
@@ -173,8 +174,27 @@ layout = html.Div([
     One neat application of Dash Table is being able to update the table itself
     when you edit cells.
 
-    One of the limitations
+    One of the limitations in Dash is that a callback's `Output` can't be
+    the same as the `Input` (circular depdencies aren't supported yet).
+    So, we couldn't have `Output('table', 'dataframe')` _and_
+    `Input('table', 'dataframe')` in the same `@app.callback`.
+
+    However, we can work around this by using `State('table', 'dataframe')`
+    and triggering the callback with `Input('table', 'dataframe_timestamp')`.
+
+    This example mimics a traditional spreadsheet like excel by computing
+    certain columns based off of other other columns.
     '''
-    ))
+    )),
+
+    dcc.SyntaxHighlighter(
+        examples['editing_updating_self.py'][0],
+        language='python',
+        customStyle=styles.code_container
+    ),
+    html.Div(
+        examples['editing_updating_self.py'][1],
+        className='example-container'
+    ),
 
 ])

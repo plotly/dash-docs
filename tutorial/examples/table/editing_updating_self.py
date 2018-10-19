@@ -1,0 +1,37 @@
+import dash
+from dash.dependencies import Input, Output, State
+import dash_table
+import dash_core_components as dcc
+import dash_html_components as html
+import pandas as pd
+
+app = dash.Dash(__name__)
+
+app.layout = html.Div([
+    dash_table.Table(
+        id='computed-table',
+        columns=[
+            {'name': 'Input Data', 'id': 'input-data'},
+            {'name': 'Input Squared', 'id': 'output-data'}
+        ],
+        dataframe=[{'input-data': i} for i in range(11)],
+        editable=True,
+    ),
+])
+
+
+@app.callback(
+    Output('computed-table', 'dataframe'),
+    [Input('computed-table', 'dataframe_timestamp')],
+    [State('computed-table', 'dataframe')])
+def update_columns(timestamp, rows):
+    for row in rows:
+        try:
+            row['output-data'] = float(row['input-data']) ** 2
+        except:
+            row['output-data'] = 'NA'
+    return rows
+
+
+if __name__ == '__main__':
+    app.run_server(debug=True)
