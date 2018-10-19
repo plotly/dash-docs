@@ -2,7 +2,7 @@ import dash
 import dash_html_components as html
 from dash.dependencies import Input, Output
 
-app = dash.Dash()
+app = dash.Dash(__name__)
 
 app.layout = html.Div([
     html.Button('Button 1', id='btn-1', n_clicks_timestamp='0'),
