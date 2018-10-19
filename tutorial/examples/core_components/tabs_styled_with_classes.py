@@ -4,7 +4,7 @@ import dash_core_components as dcc
 
 from dash.dependencies import Input, Output
 
-app = dash.Dash()
+app = dash.Dash(__name__)
 
 app.layout = html.Div([
     dcc.Tabs(
