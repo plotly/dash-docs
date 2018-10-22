@@ -1,4 +1,6 @@
 import dash
+from dash.dependencies import Input, Output
+import dash_html_components as html
 import dash_table
 import pandas as pd
 from collections import OrderedDict
@@ -13,33 +15,46 @@ df = pd.DataFrame(OrderedDict([
 ]))
 
 
-app.layout = dash_table.Table(
-    id='table-dropdowns',
-    dataframe=df.to_dict('rows'),
-    columns=[
-        {'id': 'climate', 'name': 'climate'},
-        {'id': 'temperature', 'name': 'temperature'},
-        {'id': 'city', 'name': 'city'},
-    ],
+app.layout = html.Div([
+    dash_table.Table(
+        id='table-dropdown',
+        dataframe=df.to_dict('rows'),
+        columns=[
+            {'id': 'climate', 'name': 'climate', 'type': 'dropdown'},
+            {'id': 'temperature', 'name': 'temperature'},
+            {'id': 'city', 'name': 'city', 'type': 'dropdown'},
+        ],
 
-    editable=True,
-    column_static_dropdown=[
-        {
-            'id': 'climate',
-            'dropdown': [
-                {'label': i, 'value': i}
-                for i in df['climate'].unique()
-            ]
-        },
-        {
-            'id': 'city',
-            'dropdown': [
-                {'label': i, 'value': i}
-                for i in df['city'].unique()
-            ]
-        },
-    ]
-)
+        editable=True,
+        column_static_dropdown=[
+            {
+                'id': 'climate',
+                'dropdown': [
+                    {'label': i, 'value': i}
+                    for i in df['climate'].unique()
+                ]
+            },
+            {
+                'id': 'city',
+                'dropdown': [
+                    {'label': i, 'value': i}
+                    for i in df['city'].unique()
+                ]
+            },
+        ]
+    ),
+    html.Div(id='table-dropdown-container')
+])
+
+
+# In order for the changes in the dropdown to persist,
+# the dropdown needs to be "connected" to the table via
+# a callback
+@app.callback(Output('table-dropdown-container', 'children'),
+              [Input('table-dropdown', 'dataframe_timestamp')])
+def update_output(timestamp):
+    return timestamp
+
 
 if __name__ == '__main__':
     app.run_server(debug=True)
