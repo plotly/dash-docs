@@ -75,7 +75,7 @@ layout = html.Div([dcc.Markdown('''
   
   In React, user interfaces are made of "components," and by convention there will usually be one main component per file. This project imports the `ExampleComponent` in `src/demo/App.js`, the demo application. 
  
-  The demo application `src/demo/App.js` is what you see after you run `npm run demo`. To see how `src/demoApp.js` and `ExampleComponent.react.js` work, try adding `<h1>Hello, Dash!</h1>` inside the `render()` function of either of the files.
+  The demo application `src/demo/App.js` is what you see after you run `npm run demo`. To see how `src/demo/App.js` and `ExampleComponent.react.js` work, try adding `<h1>Hello, Dash!</h1>` inside the `render()` function of either of the files.
   
   When you save the files, your browser should automatically refresh and you should see your change.
 
@@ -290,6 +290,7 @@ layout = html.Div([dcc.Markdown('''
   ```
 
   If we want to export multiple variables, we'll just write `export`:
+
   `some_file.js`
   ```
   const text = 'hello world';
