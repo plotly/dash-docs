@@ -1,5 +1,6 @@
 import dash
 from dash.dependencies import Input, Output
+import dash_core_components as dcc
 import dash_html_components as html
 import dash_table
 import pandas as pd
@@ -16,6 +17,8 @@ PAGE_SIZE = 5
 app.layout = html.Div(
     className="row",
     children=[
+        # embed `dcc` input in initial layout (https://github.com/plotly/dash-renderer/issues/46)
+        html.Div(dcc.Input(), style={'display': 'none'}),
         html.Div(
             dash_table.Table(
                 id='table-paging-with-graph',
