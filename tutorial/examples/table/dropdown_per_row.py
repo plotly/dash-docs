@@ -18,7 +18,7 @@ df_per_row_dropdown = pd.DataFrame(OrderedDict([
 app.layout = html.Div([
     dash_table.Table(
         id='dropdown_per_row',
-        dataframe=df_per_row_dropdown.to_dict('rows'),
+        data=df_per_row_dropdown.to_dict('rows'),
         columns=[
             {'id': 'City', 'name': 'City'},
             {'id': 'Neighborhood', 'name': 'Neighborhood', 'type': 'dropdown'},

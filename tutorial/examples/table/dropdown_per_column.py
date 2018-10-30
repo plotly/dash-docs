@@ -18,7 +18,7 @@ df = pd.DataFrame(OrderedDict([
 app.layout = html.Div([
     dash_table.Table(
         id='table-dropdown',
-        dataframe=df.to_dict('rows'),
+        data=df.to_dict('rows'),
         columns=[
             {'id': 'climate', 'name': 'climate', 'type': 'dropdown'},
             {'id': 'temperature', 'name': 'temperature'},

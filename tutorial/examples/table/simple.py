@@ -9,7 +9,7 @@ app = dash.Dash(__name__)
 app.layout = dash_table.Table(
     id='table',
     columns=[{"name": i, "id": i} for i in df.columns],
-    dataframe=df.to_dict("rows"),
+    data=df.to_dict("rows"),
 )
 
 if __name__ == '__main__':

@@ -6,15 +6,16 @@ import dash_core_components as dcc
 import dash_table
 import pandas as pd
 
-
 def js_to_py_type(type_object):
-    js_type_name = type_object['name']
+    js_type_name = type_object if (type(type_object) is str) else type_object['name']
 
     # wrapping everything in lambda to prevent immediate execution
     js_to_py_types = {
         'array': lambda: 'list',
         'bool': lambda: 'boolean',
+        'func': lambda: 'func',
         'number': lambda: 'number',
+        'string': lambda: 'string',
         'component_name': lambda: 'component_name',
         'object': lambda: 'dict',
 
@@ -56,11 +57,11 @@ def js_to_py_type(type_object):
                 ),
                 '\n. Those keys have the following types: \n{}'.format(
                     '\n'.join([
-                        '  - ' + argument_doc(
+                        '  - ' + (argument_doc(
                             prop_name,
                             prop,
-                            prop.get('description', '')
-                        ) for
+                            '' if (type(prop) is str) else prop.get('description', '')
+                        )) for
                         prop_name, prop in list(type_object['value'].items())
                     ])
                 )

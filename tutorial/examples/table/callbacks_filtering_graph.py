@@ -48,7 +48,7 @@ app.layout = html.Div(
 
 
 @app.callback(
-    Output('table-paging-with-graph', "dataframe"),
+    Output('table-paging-with-graph', "data"),
     [Input('table-paging-with-graph', "pagination_settings"),
      Input('table-paging-with-graph', "sorting_settings"),
      Input('table-paging-with-graph', "filtering_settings")])
@@ -87,7 +87,7 @@ def update_table(pagination_settings, sorting_settings, filtering_settings):
 
 @app.callback(
     Output('table-paging-with-graph', "children"),
-    [Input('table-paging-with-graph', "dataframe")])
+    [Input('table-paging-with-graph', "data")])
 def update_graph(rows):
     dff = pd.DataFrame(rows)
     return html.Div(

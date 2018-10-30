@@ -14,7 +14,7 @@ app.layout = html.Div([
             {'name': 'Input Data', 'id': 'input-data'},
             {'name': 'Input Squared', 'id': 'output-data'}
         ],
-        dataframe=[{'input-data': i} for i in range(11)],
+        data=[{'input-data': i} for i in range(11)],
         editable=True,
     ),
 ])

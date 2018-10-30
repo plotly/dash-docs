@@ -295,7 +295,7 @@ layout = html.Div(
         section_title("Dash Table - Default Styles"),
         dash_table.Table(
             id="sizing-1",
-            dataframe=df_election.to_dict("rows"),
+            data=df_election.to_dict("rows"),
             columns=[{"name": i, "id": i} for i in df_election.columns],
         ),
 
@@ -315,12 +315,12 @@ layout = html.Div(
         ),
         dash_table.Table(
             id="sizing-2",
-            dataframe=df_election.to_dict("rows"),
+            data=df_election.to_dict("rows"),
             content_style="grow",
             columns=[
                 {"name": i, "id": i, "width": "16.67%"} for i in df_election.columns
             ],
-            table_style=[
+            style_table=[
                 {"selector": ".dash-spreadsheet", "rule": "width: 100%"},
                 {
                     "selector": ".dash-cell[data-dash-column=Region]",
@@ -342,13 +342,13 @@ layout = html.Div(
         ),
         dash_table.Table(
             id="sizing-3",
-            dataframe=df_election.to_dict("rows"),
+            data=df_election.to_dict("rows"),
             content_style="grow",
             columns=[
                 {"name": i, "id": i, "width": "50%" if i == "Region" else None}
                 for i in df_election.columns
             ],
-            table_style=[
+            style_table=[
                 {"selector": ".dash-spreadsheet", "rule": "width: 100%"},
                 {
                     "selector": ".dash-cell[data-dash-column=Region]",
@@ -367,7 +367,7 @@ layout = html.Div(
         ),
         dash_table.Table(
             id="sizing-4",
-            dataframe=df_election.to_dict("rows"),
+            data=df_election.to_dict("rows"),
             columns=[
                 {
                     "name": i,
@@ -396,11 +396,11 @@ layout = html.Div(
         ),
         dash_table.Table(
             id="sizing-5",
-            dataframe=df_election.to_dict("rows"),
+            data=df_election.to_dict("rows"),
             columns=[
                 {"name": i, "id": i, "width": "100px"} for i in df_election.columns
             ],
-            table_style=[
+            style_table=[
                 {
                     "selector": ".dash-cell[data-dash-column=Region]",
                     "rule": "white-space: normal",
@@ -420,7 +420,7 @@ layout = html.Div(
         ),
         dash_table.Table(
             id="sizing-6",
-            dataframe=df_election.to_dict("rows"),
+            data=df_election.to_dict("rows"),
             columns=[
                 {
                     "name": i,
@@ -431,7 +431,7 @@ layout = html.Div(
                 }
                 for i in df_election.columns
             ],
-            table_style=[
+            style_table=[
                 {
                     "selector": ".dash-cell[data-dash-column=Region]",
                     "rule": "white-space: normal",
@@ -776,7 +776,7 @@ layout = html.Div(
                 {"name": ["Climate", "Temperature"], "id": "temp"},
                 {"name": ["Climate", "Humidity"], "id": "humidity"},
             ],
-            dataframe=[
+            data=[
                 {
                     "year": i,
                     "montreal": i * 10,

@@ -18,7 +18,7 @@ app.layout = html.Div([
             [{'id': 'Model', 'name': 'Model'}] +
             [{'id': p, 'name': p} for p in params]
         ),
-        dataframe=[
+        data=[
             dict(Model=i, **{param: 0 for param in params})
             for i in range(1, 5)
         ],

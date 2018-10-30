@@ -30,7 +30,7 @@ app.layout = dash_table.Table(
 
 
 @app.callback(
-    Output('table-filtering', "dataframe"),
+    Output('table-filtering', "data"),
     [Input('table-filtering', "pagination_settings"),
      Input('table-filtering', "filtering_settings")])
 def update_graph(pagination_settings, filtering_settings):

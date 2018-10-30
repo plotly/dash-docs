@@ -31,7 +31,7 @@ app.layout = dash_table.Table(
 
 
 @app.callback(
-    Output('table-multicol-sorting', "dataframe"),
+    Output('table-multicol-sorting', "data"),
     [Input('table-multicol-sorting', "pagination_settings"),
      Input('table-multicol-sorting', "sorting_settings")])
 def update_graph(pagination_settings, sorting_settings):
