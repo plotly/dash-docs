@@ -76,6 +76,9 @@ from dash import Dash
 # Useful import
 from flask import Flask, send_from_directory
 
+# Import main layout (e.g. placeholder elements)
+from .layouts import main_layout
+
 
 # external JavaScript files
 external_scripts = [ ... ]
@@ -90,6 +93,9 @@ app = Dash(
     external_scripts=external_scripts,
     external_stylesheets=external_stylesheets,
 )
+
+# Attach the main layout
+app.layout = main_layout
 
 # Get a reference to Flask server
 # Optional, but may be useful for routing, authentication, etc.
@@ -110,6 +116,23 @@ def favicon():
         app._assets_folder,
         'favicon.ico',
         mimetype='image/x-icon')
+```
+
+## Layouts
+Layouts are structural in nature, defining the tree of components to render on the page. For our project structure,
+we will define layouts in `layouts.py`.
+
+```py
+# Import Dash Core Components and HTML as needed
+import dash_core_components as dcc
+import dash_html_components as html
+
+# Define a main layout
+main_layout = html.Div(
+    children=[
+        # Additional HTML or DCC children
+    ]
+)
 ```
 
 ## Related resources
