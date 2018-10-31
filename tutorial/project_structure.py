@@ -70,7 +70,7 @@ server instance:
 from dash import Dash
 
 # Useful import
-from flask import Flask
+from flask import Flask, send_from_directory
 
 
 # external JavaScript files
@@ -97,6 +97,15 @@ app.scripts.config.serve_locally = True
 
 # This is necessary to prevent warnings as callbacks will be defined in separate file
 app.config.suppress_callback_exceptions = True
+
+# Optionally add server routes, e.g.
+@server.route('/favicon.ico')
+def favicon():
+    """Serve the favicon"""
+    return send_from_directory(
+        app._assets_folder,
+        'favicon.ico',
+        mimetype='image/x-icon')
 ```
 
 ## Related resources
