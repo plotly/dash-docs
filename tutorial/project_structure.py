@@ -61,6 +61,44 @@ if __name__ == '__main__':
 
 ```
 
+## Server
+`server.py` is where we actually define the Dash app instance, and possibly grab a reference to the Flask 
+server instance:
+
+```py
+# Required import
+from dash import Dash
+
+# Useful import
+from flask import Flask
+
+
+# external JavaScript files
+external_scripts = [ ... ]
+
+# external CSS stylesheets
+external_stylesheets = [ ... ]
+
+# Create Dash instance
+# optionally attach external scripts and stylesheets
+app = Dash(
+    __name__,
+    external_scripts=external_scripts,
+    external_stylesheets=external_stylesheets,
+)
+
+# Get a reference to Flask server
+# Optional, but may be useful for routing, authentication, etc.
+server = app.server
+
+# Optional settings for local development/debugging
+app.css.config.serve_locally = True
+app.scripts.config.serve_locally = True
+
+# This is necessary to prevent warnings as callbacks will be defined in separate file
+app.config.suppress_callback_exceptions = True
+```
+
 ## Related resources
 This chapter is informed and inspired by the following resource(s) and discussion(s):
 
