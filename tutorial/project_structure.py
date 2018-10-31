@@ -17,6 +17,10 @@ our code, namely:
 
 This chapter will briefly describe how to separate out your app code into multiple files, for improved maintainability.
 
+## Package initialization
+A package architecture is key to allowing Python projects to be spread across files. To tell Python that the Dash app
+folder is a package, simply add an empty `__init__.py` file to the project directory.
+
 ## Main entrypoint
 Each Dash app needs a main entrypoint, which is basically the file you run with `python app.py` in a monolithic Dash app.
 
