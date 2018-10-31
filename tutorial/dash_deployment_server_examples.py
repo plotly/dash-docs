@@ -1405,12 +1405,152 @@ Authentication = html.Div(children=[
     rc.Blockquote(),
 
     dcc.Markdown(s('''
-    The `dash-auth` package provides login through your Plotly
-    Enterprise accounts. For example, the discussion below describes how
-    `dash-auth` works in the
-    [On-Premise Sample App](https://github.com/plotly/dash-on-premise-sample-app/).
+    The `dash-auth` package provides login through your Plotly Enterprise 
+    accounts. As such, this includes sharing apps through the integrated 
+    LDAP system. Apps that you have saved will appear in your list of 
+    files at `https://<your-plotly-server>.com/organize/home`
+    and you can manage the permissions of the apps there. Viewers create and 
+    manage their own accounts. 
+    
+    In the first section we will discuss how to add `dash-auth` to your 
+    existing Dash apps. In the second, we will illustrate how `dash-auth` works 
+    for the 
+    [On-Premise Sample App](https://github.com/plotly/dash-on-premise-sample-app/). 
+    For more discussion and examples about authentication and available 
+    methods, see [authentication](/authentication). 
 
     ***
+
+    ''')),
+
+    dcc.Markdown(s('''
+
+    ## Adding `dash-auth` to an Existing Dash App
+
+    If you have previously deployed your Dash app to your Dash Deployment 
+    Server, then you can follow the instructions below to add Plotly OAuth to 
+    your Dash app. If you have an existing Dash app on your local machine that 
+    you haven't deployed yet, then you first need to 
+    [initialize](/dash-deployment-server/initialize) a Dash app on your Dash 
+    Deployment Server.
+
+
+    #### Adding Environment Variables
+
+    Plotly Auth uses the environment variables `PLOTLY_USERNAME` and 
+    `PLOTLY_API_KEY`. You can find your username and API key at 
+    `https://<your-plotly-server>.com/settings/api`.
+    You can either set these 
+    variables directly in your code or by using the Dash Deployment Server.
+
+    &nbsp;
+
+    To set these variables directly in your code:
+
+    ''')),
+
+    dcc.SyntaxHighlighter(s("""import os
+
+os.environ['PLOTLY_USERNAME'] = 'your-username'
+os.environ['PLOTLY_API_KEY'] = 'your-api-key'
+    """),
+    customStyle=styles.code_container,
+    language='python'
+    ),
+
+    dcc.Markdown(s('''
+
+    &nbsp;
+
+    However, if you prefer not to expose these variables in your code, then you 
+    can add them via the Dash Deployment Server. In the Environment Variables 
+    section of your Dash app's settings 
+    (`https://<your-dash-domain>.com/MANAGER/apps/<your-dash-app>/settings`), 
+    use the text input boxes to set the variables and their values.
+
+    ''')),
+
+    html.Img(
+        alt='Enable Redis Databases',
+        src='/assets/images/dds/auth-variables.PNG',
+        style={
+            'width': '100%', 'border': 'thin lightgrey solid',
+            'border-radius': '4px'
+        }
+    ),
+
+    dcc.Markdown(s('''
+
+    #### Adding PlotlyAuth to Your `app.py`
+
+    Once you've added the environment variables `PLOTLY_USERNAME` and 
+    `PLOTLY_API_KEY`, you can add the below code to your `app.py` file.
+
+    ''')),
+
+    dcc.SyntaxHighlighter(s(
+        """import dash_auth
+        
+        auth = dash_auth.PlotlyAuth(
+               app,
+               'add your Dash app name',
+               'private',
+               'https://<your-dash-domain>.com/MANAGER/apps/<your-dash-app>'
+        )"""),
+    customStyle=styles.code_container,
+    language='python'
+    ),
+
+    dcc.Markdown(s('''
+
+    &nbsp;
+
+    #### Adding PlotlyAuth Logout
+
+    Optionally, you may want to add a logout button to your Dash app. This 
+    can be achieved by inlcuding the following in the `app.layout`:
+
+    ''')),
+
+    dcc.SyntaxHighlighter(s(
+        """auth.create_logout_button(
+               label='Sign out',
+               redirect_to='https://<your-plotly-server>.com'
+        )"""),
+    customStyle=styles.code_container,
+    language='python'
+    ),
+
+    dcc.Markdown(s('''
+
+    &nbsp;
+
+    For more information about Plotly OAuth methods, see 
+    [authentication](/authentication). 
+
+    #### Deploy Your App
+
+    After adding PlotlyAuth to your `app.py` file, you can commit your changes 
+    and deploy your Dash app. For more information about how to deploy your 
+    Dash app, see 
+    [Part 2. Deploy Dash Apps on Dash Deployment Server](/dash-deployment-server/deployment).
+
+    #### Manage Permissions
+
+    Your app should now have a Dash Deployment Server login screen.
+    You can manage the permissions of the app in your list of files
+    at `https://<your-plotly-domain>/organize/home`.
+
+    ''')),
+
+    dcc.Markdown(s('''
+    ***
+
+    ## Using `dash-auth` in the On-Premise Sample App
+
+    This section is relevant for those that have 
+    [cloned and deployed](/deployment) the 
+    [On-Premise Sample App](https://github.com/plotly/dash-on-premise-sample-app/).
 
     #### Modify the `config.py` File
 
@@ -1422,7 +1562,7 @@ Authentication = html.Div(children=[
     ''')),
 
     dcc.Markdown(s('''
-    ***
+    
 
     #### Redeploy Your App
 

@@ -78,6 +78,10 @@ layout = html.Div(className='toc', children=[
         Chapter(chapters['plugins']['name'],
                 chapters['plugins']['url'],
                 chapters['plugins']['description']),
+        Chapter(chapters['d3-plugins']['name'],
+                chapters['d3-plugins']['url'],
+                chapters['d3-plugins']['description']),
+
     ]),
 
     Section('Beyond the Basics', [

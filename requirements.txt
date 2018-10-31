@@ -3,9 +3,9 @@ certifi==2018.4.16
 chardet==3.0.4
 click==6.7
 configparser==3.5.0
-dash==0.28.2
+dash==0.28.5
 dash-auth==1.2.0
-dash-core-components==0.34.0
+dash-core-components==0.35.1
 dash-dangerously-set-inner-html==0.0.1
 dash-html-components==0.13.2
 dash-renderer==0.14.3

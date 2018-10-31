@@ -2,6 +2,7 @@ import tutorial
 from tutorial import auth
 from tutorial import core_component_examples as examples
 from tutorial import core_components
+from tutorial import d3
 from tutorial import dash_deployment_server
 from tutorial import dash_deployment_server_examples as dds_examples
 from tutorial import dash_table_index
@@ -158,6 +159,16 @@ chapters = {
                        '[React.js](https://reactjs.org/). Dash provides ' \
                        'a React &rarr; Dash toolchain that generates a Dash-' \
                        'compatible interface to these components in Python.'
+    },
+
+    'd3-plugins': {
+        'url': '/d3-react-components',
+        'content': d3.layout,
+        'name': 'Integrating D3.js into Dash Components',
+        'description': 'Tutorials and resources on encapsulating ' \
+                       'D3.js graphs in Dash-friendly React components. '\
+                       'Includes two sample components: a D3.js network graph '\
+                       'and a D3.js sunburst chart.'
     },
 
     'performance': {
