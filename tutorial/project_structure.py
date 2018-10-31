@@ -12,6 +12,7 @@ our code, namely:
 - data - functions for fetching and preparing data
 - layouts - structure of the app
 - callbacks - the reactive event handler functions
+- routes - optional routing logic for multi-page Dash apps
 - utils - other functions, which may be shared between callbacks
 
 This chapter will briefly describe how to separate out your app code into multiple files, for improved maintainability.
