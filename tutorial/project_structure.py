@@ -16,6 +16,12 @@ our code, namely:
 - utils - other functions, which may be shared between callbacks
 
 This chapter will briefly describe how to separate out your app code into multiple files, for improved maintainability.
+
+## Related resources
+This chapter is informed and inspired by the following resource(s) and discussion(s):
+
+- [Splitting callback definitions in multiple files](https://community.plot.ly/t/splitting-callback-definitions-in-multiple-files/10583/2)
+- [Slapdash](https://github.com/ned2/slapdash) - boilerplate for bootstrapping scalable multi-page Dash applications
 """
     ),
 ]
