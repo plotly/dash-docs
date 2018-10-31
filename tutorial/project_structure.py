@@ -17,6 +17,50 @@ our code, namely:
 
 This chapter will briefly describe how to separate out your app code into multiple files, for improved maintainability.
 
+## Main entrypoint
+Each Dash app needs a main entrypoint, which is basically the file you run with `python app.py` in a monolithic Dash app.
+
+In our case, we will fall back to a long-standing convention in web development, and call our entry point `index.py`.
+The `index.py` file will be fairly minimal, containing only logic to run the app, e.g.
+
+```py
+# Import the app and server instances
+from server import app, server
+
+# Optionally set the app title
+app.title = 'My Dash app'
+
+# Optionally override the app basic HTML structure
+app.index_string = '''
+<!DOCTYPE html>
+<html>
+    <head>
+        {%metas%}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta
+            name="description"
+            content="My Dash app is great!"
+        >
+        <title>{%title%}</title>
+        {%favicon%}
+        {%css%}
+    </head>
+    <body>
+        {%app_entry%}
+        <footer>
+            {%config%}
+            {%scripts%}
+        </footer>
+    </body>
+</html>
+'''
+
+# Run the app if this file is called directly
+if __name__ == '__main__':
+    app.run_server(debug=True, threaded=True, port=8050)
+
+```
+
 ## Related resources
 This chapter is informed and inspired by the following resource(s) and discussion(s):
 
