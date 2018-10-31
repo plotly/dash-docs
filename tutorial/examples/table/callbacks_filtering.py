@@ -12,7 +12,7 @@ df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/gapmi
 PAGE_SIZE = 5
 
 
-app.layout = dash_table.Table(
+app.layout = dash_table.DataTable(
     id='table-filtering',
     columns=[
         {"name": i, "id": i, "deletable": True} for i in sorted(df.columns)

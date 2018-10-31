@@ -12,7 +12,7 @@ params = [
 ]
 
 app.layout = html.Div([
-    dash_table.Table(
+    dash_table.DataTable(
         id='table-editing-simple',
         columns=(
             [{'id': 'Model', 'name': 'Model'}] +

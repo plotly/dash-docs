@@ -11,7 +11,7 @@ df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/gapmi
 
 app = dash.Dash(__name__)
 
-app.layout = dash_table.Table(
+app.layout = dash_table.DataTable(
     id='dash-table-interactivity',
     columns=[
         {"name": i, "id": i, "deletable": True} for i in df.columns

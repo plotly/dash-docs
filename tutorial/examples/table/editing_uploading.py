@@ -25,7 +25,7 @@ app.layout = html.Div([
             'borderRadius': '5px', 'textAlign': 'center', 'margin': '10px'
         },
     ),
-    dash_table.Table(id='dash-table-upload-container'),
+    dash_table.DataTable(id='dash-table-upload-container'),
     dcc.Graph(id='dash-table-upload-graph')
 ])
 

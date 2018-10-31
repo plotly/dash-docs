@@ -14,7 +14,7 @@ app = dash.Dash(__name__)
 
 PAGE_SIZE = 5
 
-app.layout = dash_table.Table(
+app.layout = dash_table.DataTable(
     id='dash-table-paging',
     columns=[
         {"name": i, "id": i, "deletable": True} for i in sorted(df.columns)

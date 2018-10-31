@@ -293,7 +293,7 @@ layout = html.Div(
         html.Div("These same styles can be applied to the dash table"),
 
         section_title("Dash Table - Default Styles"),
-        dash_table.Table(
+        dash_table.DataTable(
             id="sizing-1",
             data=df_election.to_dict("rows"),
             columns=[{"name": i, "id": i} for i in df_election.columns],
@@ -313,7 +313,7 @@ layout = html.Div(
         allocates space.
         """
         ),
-        dash_table.Table(
+        dash_table.DataTable(
             id="sizing-2",
             data=df_election.to_dict("rows"),
             content_style="grow",
@@ -340,7 +340,7 @@ layout = html.Div(
         allocates space.
         """
         ),
-        dash_table.Table(
+        dash_table.DataTable(
             id="sizing-3",
             data=df_election.to_dict("rows"),
             content_style="grow",
@@ -365,7 +365,7 @@ layout = html.Div(
         The columns have a width/minWidth/maxWidth of 100px.
         """
         ),
-        dash_table.Table(
+        dash_table.DataTable(
             id="sizing-4",
             data=df_election.to_dict("rows"),
             columns=[
@@ -394,7 +394,7 @@ layout = html.Div(
         in that case
         """
         ),
-        dash_table.Table(
+        dash_table.DataTable(
             id="sizing-5",
             data=df_election.to_dict("rows"),
             columns=[
@@ -418,7 +418,7 @@ layout = html.Div(
         in that case
         """
         ),
-        dash_table.Table(
+        dash_table.DataTable(
             id="sizing-6",
             data=df_election.to_dict("rows"),
             columns=[
@@ -765,7 +765,7 @@ layout = html.Div(
 
         section_title('Multi-Headers'),
 
-        dash_table.Table(
+        dash_table.DataTable(
             id='multi-headers',
             columns=[
                 {"name": ["Year", ""], "id": "year"},

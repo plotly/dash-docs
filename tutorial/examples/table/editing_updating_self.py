@@ -8,7 +8,7 @@ import pandas as pd
 app = dash.Dash(__name__)
 
 app.layout = html.Div([
-    dash_table.Table(
+    dash_table.DataTable(
         id='computed-table',
         columns=[
             {'name': 'Input Data', 'id': 'input-data'},

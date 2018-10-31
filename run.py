@@ -68,7 +68,7 @@ app.layout = html.Div(
             ], className='container-width')
         ], className='background'),
         dcc.Location(id='location', refresh=False),
-        html.Div(dash_table.Table(id='_blank'), style={'display': 'none'}),
+        html.Div(dash_table.DataTable(id='_blank'), style={'display': 'none'}),
         html.Div(dt.DataTable(rows=[{}]), style={'display': 'none'})
     ]
 )

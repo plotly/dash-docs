@@ -8,7 +8,7 @@ import pprint
 app = dash.Dash(__name__)
 
 app.layout = html.Div([
-    dash_table.Table(
+    dash_table.DataTable(
         id='editing-prune-data',
         columns=[{
             'name': 'Column {}'.format(i),

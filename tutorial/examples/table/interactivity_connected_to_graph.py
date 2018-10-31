@@ -15,7 +15,7 @@ app = dash.Dash(__name__)
 app.layout = html.Div([
     # embed `dcc` input in initial layout (https://github.com/plotly/dash-renderer/issues/46)
     html.Div(dcc.Input(), style={'display': 'none'}),
-    dash_table.Table(
+    dash_table.DataTable(
         id='dash-table-interactivity',
         columns=[
             {"name": i, "id": i, "deletable": True} for i in df.columns
