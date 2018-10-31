@@ -17,6 +17,7 @@ from tutorial import introduction
 from tutorial import live_updates
 from tutorial import performance
 from tutorial import plugins
+from tutorial import project_structure
 from tutorial import search
 from tutorial import sharing_state
 from tutorial import state
@@ -195,6 +196,16 @@ chapters = {
                        '`dcc.Location`) that allow you to easily make ' \
                        'fast multipage apps using its own "Single Page ' \
                        'App (SPA)" design pattern.'
+    },
+
+    'project-structure': {
+        'url': '/project-structure',
+        'content': project_structure.layout,
+        'name': 'Structuring Dash apps for maintainability',
+        'description': 'As your Dash apps grow ' \
+                       'it becomes useful to separate the code into multiple files. ' \
+                       'This improves maintainability, ' \
+                       'by separating project code along conceptual and functional boundaries.'
     },
 
     'auth': {

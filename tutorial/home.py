@@ -121,7 +121,10 @@ layout = html.Div(className='toc', children=[
                 chapters['external']['description']),
         Chapter(chapters['urls']['name'],
                 chapters['urls']['url'],
-                chapters['urls']['description'])
+                chapters['urls']['description']),
+        Chapter(chapters['project-structure']['name'],
+                chapters['project-structure']['url'],
+                chapters['project-structure']['description']),
     ]),
 
     Section('Production', [
