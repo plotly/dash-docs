@@ -141,8 +141,8 @@ chapters = {
                        'and standard html.'
     },
 
-    'dash-table': {
-        'url': '/dash-table',
+    'datatable': {
+        'url': '/datatable',
         'content': dash_table_index.layout,
         'name': 'Dash Interactive Table',
         'description': '(New!) The Dash Interactive Table is our latest and ' \
@@ -499,8 +499,8 @@ chapters = {
 
 ### Start DataTable Docs
 
-    'dash-table-styling': {
-        'url': '/dash-table/styling',
+    'datatable-styling': {
+        'url': '/datatable/styling',
         'content': tutorial.table.styling_chapter.layout,
         'name': 'Styling and Sizing - DataTable',
         'description': """
@@ -511,7 +511,7 @@ chapters = {
     },
 
     'interactivity': {
-        'url': '/dash-table/interactivity',
+        'url': '/datatable/interactivity',
         'content': tutorial.table.interactivity_chapter.layout,
         'name': 'Interactive DataTable',
         'description': '''
@@ -520,7 +520,7 @@ chapters = {
     },
 
     'recipes': {
-        'url': '/dash-table/editable',
+        'url': '/datatable/editable',
         'content': tutorial.table.editing_recipes_chapter.layout,
         'name': 'Editable DataTable',
         'description': '''
@@ -531,7 +531,7 @@ chapters = {
     },
 
     'callbacks': {
-        'url': '/dash-table/callbacks',
+        'url': '/datatable/callbacks',
         'content': tutorial.table.table_callbacks_chapter.layout,
         'name': 'Python-Driven Filtering, Paging, Sorting - DataTable',
         'description': '''
@@ -540,7 +540,7 @@ chapters = {
     },
 
     'dropdowns': {
-        'url': '/dash-table/dropdowns',
+        'url': '/datatable/dropdowns',
         'content': tutorial.table.dropdowns_chapter.layout,
         'name': 'Dropdowns Inside DataTable',
         'description': '''
@@ -549,7 +549,7 @@ chapters = {
     },
 
     'roadmap': {
-        'url': '/dash-table/reference',
+        'url': '/datatable/reference',
         'content': tutorial.table.reference_chapter.layout,
         'name': 'DataTable Reference',
         'description': '''

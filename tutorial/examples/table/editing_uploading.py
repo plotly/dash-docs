@@ -14,7 +14,7 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 app.layout = html.Div([
     dcc.Upload(
-        id='dash-table-upload',
+        id='datatable-upload',
         children=html.Div([
             'Drag and Drop or ',
             html.A('Select Files')
@@ -25,8 +25,8 @@ app.layout = html.Div([
             'borderRadius': '5px', 'textAlign': 'center', 'margin': '10px'
         },
     ),
-    dash_table.DataTable(id='dash-table-upload-container'),
-    dcc.Graph(id='dash-table-upload-graph')
+    dash_table.DataTable(id='datatable-upload-container'),
+    dcc.Graph(id='datatable-upload-graph')
 ])
 
 
@@ -42,9 +42,9 @@ def parse_contents(contents, filename):
         return pd.read_excel(io.BytesIO(decoded))
 
 
-@app.callback(Output('dash-table-upload-container', 'dataframe'),
-              [Input('dash-table-upload', 'contents')],
-              [State('dash-table-upload', 'filename')])
+@app.callback(Output('datatable-upload-container', 'dataframe'),
+              [Input('datatable-upload', 'contents')],
+              [State('datatable-upload', 'filename')])
 def update_output(contents, filename):
     if contents is None:
         return [{}]
@@ -52,8 +52,8 @@ def update_output(contents, filename):
     return df.to_dict('rows')
 
 
-@app.callback(Output('dash-table-upload-graph', 'figure'),
-              [Input('dash-table-upload-container', 'dataframe')])
+@app.callback(Output('datatable-upload-graph', 'figure'),
+              [Input('datatable-upload-container', 'dataframe')])
 def display_graph(rows):
     df = pd.DataFrame(rows)
     return {

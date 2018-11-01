@@ -16,7 +16,7 @@ app.layout = html.Div([
     # embed `dcc` input in initial layout (https://github.com/plotly/dash-renderer/issues/46)
     html.Div(dcc.Input(), style={'display': 'none'}),
     dash_table.DataTable(
-        id='dash-table-interactivity',
+        id='datatable-interactivity',
         columns=[
             {"name": i, "id": i, "deletable": True} for i in df.columns
         ],
@@ -30,14 +30,14 @@ app.layout = html.Div([
         selected_rows=[],
         n_fixed_rows=2,
     ),
-    html.Div(id='dash-table-interactivity-container')
+    html.Div(id='datatable-interactivity-container')
 ])
 
 
 @app.callback(
-    Output('dash-table-interactivity-container', "children"),
-    [Input('dash-table-interactivity', "derived_virtual_dataframe"),
-     Input('dash-table-interactivity', "selected_rows")])
+    Output('datatable-interactivity-container', "children"),
+    [Input('datatable-interactivity', "derived_virtual_dataframe"),
+     Input('datatable-interactivity', "selected_rows")])
 def update_graph(rows, selected_rows):
     # When the table is first rendered, `derived_virtual_dataframe`
     # will be `None`. This is due to an idiosyncracy in Dash

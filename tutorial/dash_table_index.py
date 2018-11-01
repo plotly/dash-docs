@@ -73,7 +73,7 @@ layout = html.Div([
 
     Section('Dash DataTable User Guide', [
         Chapter('Part 1. Styling, Sizing, and Conditional Formatting',
-            '/dash-table/styling',
+            '/datatable/styling',
             '''
             Several examples on how to change the style and sizing of the
             table. This includes:
@@ -89,7 +89,7 @@ layout = html.Div([
             '''),
 
         Chapter('Part 2. Sorting, Filtering, Selecting, and Paging',
-            '/dash-table/interactivity',
+            '/datatable/interactivity',
             '''
             The DataTable is interactive. This chapter demonstrates the
             interactive features of the table and how to wire up these
@@ -101,7 +101,7 @@ layout = html.Div([
             '''),
 
         Chapter([html.Span('Part 3. Sorting, Filtering, and Paging '), html.I('with Python')],
-            '/dash-table/callbacks',
+            '/datatable/callbacks',
             '''
             In Part 2, the paging, sorting, and filtering was done entirely
             clientside (in the browser). This means that you need to
@@ -115,7 +115,7 @@ layout = html.Div([
             '''),
 
         Chapter('Part 4. Editable Tables',
-            '/dash-table/editable',
+            '/datatable/editable',
             '''
             The DataTable is editable. Like a spreadsheet, it can be used
             as an input for controlling models with a variable number
@@ -132,7 +132,7 @@ layout = html.Div([
             '''),
 
         Chapter('Part 5. Rendering Cells as Dropdowns',
-            '/dash-table/dropdowns',
+            '/datatable/dropdowns',
             '''
             Cells can be rendered as editable Dropdowns. This is our first
             stake in bringing a full typing system to the table.
@@ -142,7 +142,7 @@ layout = html.Div([
             '''),
 
         Chapter('Part 6. Table Reference',
-            '/dash-table/reference',
+            '/datatable/reference',
             '''
             The full list of Table properties and their settings.
             '''

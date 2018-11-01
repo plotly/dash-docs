@@ -15,7 +15,7 @@ app = dash.Dash(__name__)
 PAGE_SIZE = 5
 
 app.layout = dash_table.DataTable(
-    id='dash-table-paging',
+    id='datatable-paging',
     columns=[
         {"name": i, "id": i, "deletable": True} for i in sorted(df.columns)
     ],
@@ -29,8 +29,8 @@ app.layout = dash_table.DataTable(
 
 
 @app.callback(
-    Output('dash-table-paging', 'dataframe'),
-    [Input('dash-table-paging', 'pagination_settings')])
+    Output('datatable-paging', 'dataframe'),
+    [Input('datatable-paging', 'pagination_settings')])
 def update_graph(pagination_settings):
     return df.iloc[
         pagination_settings['current_page']*pagination_settings['page_size']:

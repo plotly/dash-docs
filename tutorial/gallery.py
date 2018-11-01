@@ -439,17 +439,14 @@ layout = html.Div(className='gallery', children=[
 
     reusable.Row([
         AppSection(
-            app_name='Join the discussion',
-            app_link='https://community.plot.ly/t/display-tables-in-dash/4707/38',
-            code_link='https://github.com/plotly/dash-table-experiments',
-            img_src='https://raw.githubusercontent.com/plotly/dash-table-experiments/master/images/DataTable.gif',
+            app_name='Dash DataTable',
+            app_link='/datatable',
+            code_link='https://github.com/plotly/dash-table',
+            img_src='https://raw.githubusercontent.com/plotly/datatable-experiments/master/images/DataTable.gif',
             description='''
-        Dash is currently incubating an interactive table component that provides
-        built-in filtering, row-selection, editing, and sorting.
-        Prototypes of this component are being developed in the
-        [`dash-table-experiments`](https://github.com/plotly/dash-table-experiments)
-        repository. Join the discussion in the
-        [Dash Community Forum](https://community.plot.ly/t/display-tables-in-dash/4707/38).
+        Dash provides an interactive `DataTable` as part of the `data-table`
+        project. This table includes built-in filtering, row-selection,
+        editing, and sorting.
 
         This example was written in ~100 lines of code.
         '''

@@ -274,12 +274,8 @@ dcc.DatePickerRange(
     [Create Your First Dash App, Part 1](/getting-started-part-1)
     for an example.
 
-    Dash is currently incubating an interactive table component that provides
-    built-in filtering, row-selection, editing, and sorting.
-    Prototypes of this component are being developed in the
-    [`dash-table-experiments`](https://github.com/plotly/dash-table-experiments)
-    repository. Join the discussion in the
-    [Dash Community Forum](https://community.plot.ly/t/display-tables-in-dash/4707/38).
+    project. This table includes built-in filtering, row-selection,
+    editing, and sorting.
 
     '''.replace('    ', '')),
 
@@ -294,7 +290,7 @@ dcc.DatePickerRange(
 
 
     dcc.Markdown('''
-    [View the Dash Table Experiments Project](https://github.com/plotly/dash-table-experiments) | [Join the discussion](https://community.plot.ly/t/display-tables-in-dash/4707/38)
+    [View the docs](/dash-datatable) or [View the source](https://github.com/plotly/datatable)
 
     ***
     '''.replace('    ', '')),

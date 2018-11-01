@@ -65,7 +65,7 @@ def parse_contents(contents, filename, date):
         html.H6(datetime.datetime.fromtimestamp(date)),
 
         # Use the DataTable prototype component:
-        # github.com/plotly/dash-table-experiments
+        # github.com/plotly/datatable-experiments
         dt.DataTable(rows=df.to_dict('records')),
 
         html.Hr(),  # horizontal line

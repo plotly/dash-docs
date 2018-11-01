@@ -92,13 +92,13 @@ def display_content(pathname):
                 dcc.Link(html.A('Back to Dash Deployment Server Documentation'), href='/dash-deployment-server'),
                 html.Div(id='wait-for-page-{}'.format(pathname)),
             ])
-        elif 'dash-table/' in pathname:
+        elif 'datatable/' in pathname:
             content = html.Div([
                 html.Div(chapters[matched[0]]['content']),
                 html.Hr(),
                 dcc.Link(
                     'Back to DataTable Documentation',
-                    href='/dash-table'
+                    href='/datatable'
                 ),
                 html.Br(),
                 dcc.Link(
