@@ -444,8 +444,6 @@ layout = html.Div(
         # dash_table.DataTable(
         #     data=df_election.to_dict('rows'),
         #     columns=[{'id': c, 'name': c} for c in df_election.columns],
-        #     style_table={'width': '100%'},
-        #     content_style='grow',
         #     style_cell_conditional=[
         #         {'if': {'column_id': 'Dem'},
         #          'width': 50},
@@ -482,8 +480,6 @@ layout = html.Div(
         # dash_table.DataTable(
         #     data=df_election.to_dict('rows'),
         #     columns=[{'id': c, 'name': c} for c in df_election.columns],
-        #     style_table={'width': '100%'},
-        #     content_style='grow',
         #     style_cell_conditional=[
         #         {'if': {'column_id': 'Dem'},
         #          'width': 20},
@@ -521,8 +517,6 @@ layout = html.Div(
             data=df_long.to_dict('rows'),
             columns=[{'id': c, 'name': c} for c in df_long.columns],
             n_fixed_rows=1,
-            style_table={'width': '100%'},
-            content_style='grow',
         )
         '''),
 
@@ -586,8 +580,6 @@ layout = html.Div(
         dash_table.DataTable(
             data=df.to_dict('rows'),
             columns=[{'id': c, 'name': c} for c in df.columns],
-            content_style='grow',
-            style_table={'width': '100%'}
         )
         '''
         ),
@@ -616,8 +608,6 @@ layout = html.Div(
         dash_table.DataTable(
             data=df.to_dict('rows'),
             columns=[{'id': c, 'name': c} for c in df.columns],
-            content_style='grow',
-            style_table={'width': '100%'},
             style_cell={'textAlign': 'left'},
             style_cell_conditional=[
                 {
@@ -657,8 +647,6 @@ layout = html.Div(
         dash_table.DataTable(
             data=df.to_dict('rows'),
             columns=[{'id': c, 'name': c} for c in df.columns],
-            content_style='grow',
-            style_table={'width': '100%'},
             style_cell_conditional=[
                 {
                     'if': {'column_id': c},
@@ -702,8 +690,6 @@ layout = html.Div(
         #     data=df.to_dict('rows'),
         #     columns=[{'id': c, 'name': c} for c in df.columns],
         #     style_cell={'padding': '5px'},
-        #     content_style='grow',
-        #     style_table={'width': '100%'}
         # )
         # '''
         # ),
@@ -745,8 +731,6 @@ layout = html.Div(
                 'backgroundColor': 'white',
                 'fontWeight': 'bold'
             },
-            content_style='grow',
-            style_table={'width': '100%'}
         )
         '''
         ),
@@ -788,8 +772,6 @@ layout = html.Div(
             data=df.to_dict('rows'),
             columns=[{'id': c, 'name': c} for c in df.columns],
 
-            content_style='grow',
-            style_table={'width': '100%'},
             style_cell_conditional=[{
                 'if': {'row_index': 'odd'},
                 'backgroundColor': 'rgb(248, 248, 248)'
@@ -813,8 +795,6 @@ layout = html.Div(
             data=df.to_dict('rows'),
             columns=[{'id': c, 'name': c} for c in df.columns],
 
-            content_style='grow',
-            style_table={'width': '100%'},
             style_header={'backgroundColor': 'rgb(30, 30, 30)'},
             style_cell={
                 'backgroundColor': 'rgb(50, 50, 50)',
@@ -830,8 +810,6 @@ layout = html.Div(
             columns=[{'id': c, 'name': c} for c in df.columns],
 
             style_as_list_view=True,
-            content_style='grow',
-            style_table={'width': '100%'},
             style_header={'backgroundColor': 'rgb(30, 30, 30)'},
             style_cell={
                 'backgroundColor': 'rgb(50, 50, 50)',
@@ -878,8 +856,6 @@ layout = html.Div(
             columns=[
                 {'name': i, 'id': i} for i in df.columns
             ],
-            content_style='grow',
-            style_table={'width': '100%'},
             style_data_conditional=[{
                 'if': {'column_id': 'Temperature'},
                 'backgroundColor': '#3D9970',
@@ -917,10 +893,6 @@ layout = html.Div(
             columns=[
                 {'name': i, 'id': i} for i in df.columns
             ],
-            content_style='grow',
-            style_table={
-                'width': '100%'
-            },
             style_data_conditional=[{
                 'if': {
                     'column_id': 'Region',
@@ -973,10 +945,6 @@ layout = html.Div(
                 {"name": ["Climate", "Temperature"], "id": "temp"},
                 {"name": ["Climate", "Humidity"], "id": "humidity"},
             ],
-            content_style='grow',
-            style_table={
-                'width': '100%'
-            },
             data=[
                 {
                     "year": i,
