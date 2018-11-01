@@ -21,6 +21,8 @@ examples = {
 layout = html.Div([
 
     dcc.Markdown(dedent('''
+    # DataTable Dropdowns
+
     The DataTable includes support for per-column and
     per-cell dropdowns. In future releases, this will
     be tightly integrated with a more formal typing system.
@@ -43,12 +45,12 @@ layout = html.Div([
 
     section_title('DataTable with Per-Row Dropdowns'),
     dcc.SyntaxHighlighter(
-        examples['dropdown_per_column.py'][0],
+        examples['dropdown_per_row.py'][0],
         language='python',
         customStyle=styles.code_container
     ),
     html.Div(
-        examples['dropdown_per_column.py'][1],
+        examples['dropdown_per_row.py'][1],
         className='example-container'
     ),
 
