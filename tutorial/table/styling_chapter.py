@@ -195,8 +195,8 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            data=df.to_dict('rows'),
-            columns=[{'id': c, 'name': c} for c in df.columns],
+            data=df_election.to_dict('rows'),
+            columns=[{'id': c, 'name': c} for c in df_election.columns],
             style_table={'width': '100%'},
             content_style='grow',
             style_cell_conditional=[
@@ -289,8 +289,8 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            data=df.to_dict('rows'),
-            columns=[{'id': c, 'name': c} for c in df.columns],
+            data=df_election.to_dict('rows'),
+            columns=[{'id': c, 'name': c} for c in df_election.columns],
             style_table={'width': '100%'},
             content_style='grow',
             style_cell_conditional=[
@@ -327,8 +327,8 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            data=df.to_dict('rows'),
-            columns=[{'id': c, 'name': c} for c in df.columns],
+            data=df_election.to_dict('rows'),
+            columns=[{'id': c, 'name': c} for c in df_election.columns],
             style_table={'width': '100%'},
             content_style='grow',
             style_cell_conditional=[
@@ -366,9 +366,11 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            data=df.to_dict('rows'),
-            columns=[{'id': c, 'name': c} for c in df.columns],
-            n_fixed_rows=1
+            data=df_long.to_dict('rows'),
+            columns=[{'id': c, 'name': c} for c in df_long.columns],
+            n_fixed_rows=1,
+            style_table={'width': '100%'},
+            content_style='grow',
         )
         '''),
 
@@ -401,7 +403,6 @@ layout = html.Div(
         )
         '''),
 
-        dcc.Markdown("### Vertical Scrolling with Height"),
         dcc.Markdown("and here is `height` with the same content"),
         # html.Div(
         #     style={"height": 300, "overflowY": "scroll"},
@@ -436,10 +437,11 @@ layout = html.Div(
         - `min-width: 100%`
         - `white-space: nowrap` (to keep the content on a single line)
         - A parent with `overflow-x: scroll`
+
+        **Baseline Example: Columns That Don't Overflow**
         '''
         )),
 
-        dcc.Markdown("### Two Columns, 100% Min-Width"),
         # html.Div(
         #     html_table(
         #         pd.DataFrame({"Column 1": [1, 2], "Column 2": [3, 3]}),
@@ -448,6 +450,7 @@ layout = html.Div(
         #     ),
         #     style={"overflowX": "scroll"},
         # ),
+
         Display(
         '''
         dash_table.DataTable(
@@ -460,19 +463,7 @@ layout = html.Div(
 
         dcc.Markdown(dedent(
         '''
-        ### Fixed Columns
-        dash_table.DataTable(
-            data=df_long.to_dict('rows'),
-            columns=[{'id': c, 'name': c} for c in df.columns],
-            n_fixed_columns=1
-        )
-        '''
-        )),
-
-        dcc.Markdown("### "),
-        dcc.Markdown(dedent(
-        '''
-        ### Long Columns, 100% Min-Width
+        **Columns That Overflow into Horizontal Scroll**
         Here is a table with several columns with long titles,
         100% min-width, and `'white-space': 'nowrap'`
         (to keep the text on a single line)
@@ -496,6 +487,21 @@ layout = html.Div(
         )
         '''),
 
+        dcc.Markdown(dedent(
+        '''
+        ### Fixing Columns
+
+        Alternatively, you can fix columns of the table.
+        '''
+        )),
+        Display(
+        '''
+        dash_table.DataTable(
+            data=df_long_columns.to_dict('rows'),
+            columns=[{'id': c, 'name': c} for c in df_long_columns.columns],
+            n_fixed_columns=1
+        )
+        '''),
 
         html.H1("Styling the DataTable"),
 
@@ -522,7 +528,7 @@ layout = html.Div(
 
         dcc.Markdown(dedent(
         """
-        ### Column Alignment and Column Fonts
+        ### Column Alignment
 
         When displaying numerical data, it's a good practice to use
         monospaced fonts, to right-align the data, and to provide the same
@@ -587,7 +593,14 @@ layout = html.Div(
             columns=[{'id': c, 'name': c} for c in df.columns],
             content_style='grow',
             style_table={'width': '100%'},
-            style_as_list_view=True
+            style_cell_conditional=[
+                {
+                    'if': {'column_id': c},
+                    'textAlign': 'left'
+                } for c in ['Date', 'Region']
+            ],
+
+            style_as_list_view=True,
         )
         '''
         ),
@@ -610,24 +623,24 @@ layout = html.Div(
         #     },
         # ),
 
-        dcc.Markdown(dedent('''
-        ## Row Padding
-
-        By default, the gridded view is pretty tight.
-        You can add some top and bottom row padding to
-        the rows to give your data a little bit more room to breathe.
-        ''')),
-        Display(
-        '''
-        dash_table.DataTable(
-            data=df.to_dict('rows'),
-            columns=[{'id': c, 'name': c} for c in df.columns],
-            style_cell={'padding': '5px'},
-            content_style='grow',
-            style_table={'width': '100%'}
-        )
-        '''
-        ),
+        # dcc.Markdown(dedent('''
+        # ## Row Padding
+        #
+        # By default, the gridded view is pretty tight.
+        # You can add some top and bottom row padding to
+        # the rows to give your data a little bit more room to breathe.
+        # ''')),
+        # Display(
+        # '''
+        # dash_table.DataTable(
+        #     data=df.to_dict('rows'),
+        #     columns=[{'id': c, 'name': c} for c in df.columns],
+        #     style_cell={'padding': '5px'},
+        #     content_style='grow',
+        #     style_table={'width': '100%'}
+        # )
+        # '''
+        # ),
 
         # html_table(
         #     df,
@@ -653,7 +666,7 @@ layout = html.Div(
         dcc.Markdown(dedent('''
         In some contexts, the grey background can look a little heavy.
         You can lighten this up by giving it a white background and
-        a thicker bottom border.
+        a bold text.
         ''')),
         Display(
         '''
@@ -664,7 +677,7 @@ layout = html.Div(
             style_cell={'padding': '5px'},
             style_header={
                 'backgroundColor': 'white',
-                'borderBottom': '2px lightgrey solid'
+                'fontWeight': 'bold'
             },
             content_style='grow',
             style_table={'width': '100%'}
