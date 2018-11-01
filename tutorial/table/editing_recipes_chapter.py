@@ -24,15 +24,15 @@ layout = html.Div([
 
     dcc.Markdown(dedent(
     '''
-    # Editable Dash Table
+    # Editable DataTable
 
-    The Dash Table is editable. Like a spreadsheet, it can be used
+    The DataTable is editable. Like a spreadsheet, it can be used
     as an input for controlling models with a variable number
     of inputs.
 
     This chapter includes recipes for:
 
-    - Reading the contents of the Dash Table
+    - Reading the contents of the DataTable
     - Filtering out null values
     - Uploading data
     - Determining which cell has changed
@@ -53,7 +53,7 @@ layout = html.Div([
     - If you copy and paste data that is larger than the rows, then the
     table will expand to contain the contents.
     Try it out by [copying and pasting this dataset](https://docs.google.com/spreadsheets/d/1MWj7AjngD_fH7vkVhEMIRo51Oty295kE36-DFnQElrg/edit?usp=sharing).
-    - Unlike other spreadsheet programs, the Dash Table has a fixed number of
+    - Unlike other spreadsheet programs, the DataTable has a fixed number of
     rows. So, your model has an arbitrary number of parameters
     (rows or columns), we recommend initializing your table with a
     large number of empty rows and columns.
@@ -71,11 +71,11 @@ layout = html.Div([
 
     dcc.Markdown(dedent('''
     ## Filtering out Empty Cells
-    The Dash Table will always return all of the cells in the table, even
+    The DataTable will always return all of the cells in the table, even
     if the cells haven't been filled out. So, you'll likely want to filter
     out the empty values.
 
-    When you clear a cell, the Dash Table will set its contents to `''`
+    When you clear a cell, the DataTable will set its contents to `''`
     (emtpy string). So, for consistency, we recommend initializing your
     empty data with `''`.
 
@@ -129,7 +129,7 @@ layout = html.Div([
     '''
     ## Adding or removing columns
 
-    In the Dash Table, we've provided a built-in UI for _deleting_ columns
+    In the DataTable, we've provided a built-in UI for _deleting_ columns
     but not for adding columns. We recommend using an external button to
     add columns.
 
@@ -151,7 +151,7 @@ layout = html.Div([
     '''
     ## Adding or removing rows
 
-    Similarly as columns, the Dash Table has a built-in UI for removing rows
+    Similarly as columns, the DataTable has a built-in UI for removing rows
     but not for adding rows. You can add rows to the table through an
     external button.
     '''
@@ -171,7 +171,7 @@ layout = html.Div([
     '''
     ## Updating Columns of the Same Table
 
-    One neat application of Dash Table is being able to update the table itself
+    One neat application of DataTable is being able to update the table itself
     when you edit cells.
 
     One of the limitations in Dash is that a callback's `Output` can't be

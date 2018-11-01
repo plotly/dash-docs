@@ -21,7 +21,7 @@ layout = html.Div(
         dcc.Markdown(
             dedent(
                 """
-        # Dash Table Interactivity
+        # DataTable Interactivity
 
         `Table` includes several features for modifying and transforming the
         view of the data. These include:

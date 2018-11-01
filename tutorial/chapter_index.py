@@ -497,14 +497,14 @@ chapters = {
     },
 ### End Dash Deployment Server ###
 
-### Start Dash Table Docs
+### Start DataTable Docs
 
     'dash-table-styling': {
         'url': '/dash-table/styling',
         'content': tutorial.table.styling_chapter.layout,
-        'name': 'Styling and Sizing - Dash Table',
+        'name': 'Styling and Sizing - DataTable',
         'description': """
-            All about sizing and styling the Dash table.
+            All about sizing and styling the DataTable.
             Examples on how to change the size of the column widths,
             the colors, and more.
         """
@@ -513,18 +513,18 @@ chapters = {
     'interactivity': {
         'url': '/dash-table/interactivity',
         'content': tutorial.table.interactivity_chapter.layout,
-        'name': 'Interactive Dash Table',
+        'name': 'Interactive DataTable',
         'description': '''
-        A showcase of the interactive features of the Dash Table.
+        A showcase of the interactive features of the DataTable.
         '''
     },
 
     'recipes': {
         'url': '/dash-table/editable',
         'content': tutorial.table.editing_recipes_chapter.layout,
-        'name': 'Editable Dash Table',
+        'name': 'Editable DataTable',
         'description': '''
-        Dash Table as a Spreadsheet: examples for determining which
+        DataTable as a Spreadsheet: examples for determining which
         cell has changed, filtering null values, adding or removing
         columns, and more.
         '''
@@ -533,7 +533,7 @@ chapters = {
     'callbacks': {
         'url': '/dash-table/callbacks',
         'content': tutorial.table.table_callbacks_chapter.layout,
-        'name': 'Python-Driven Filtering, Paging, Sorting - Dash Table',
+        'name': 'Python-Driven Filtering, Paging, Sorting - DataTable',
         'description': '''
         Examples on filtering, sorting, and paging data with Python.
         '''
@@ -542,22 +542,22 @@ chapters = {
     'dropdowns': {
         'url': '/dash-table/dropdowns',
         'content': tutorial.table.dropdowns_chapter.layout,
-        'name': 'Dropdowns Inside Dash Table',
+        'name': 'Dropdowns Inside DataTable',
         'description': '''
-        Learn how to embed dropdowns inside the Dash Table.
+        Learn how to embed dropdowns inside the DataTable.
         '''
     },
 
     'roadmap': {
         'url': '/dash-table/reference',
         'content': tutorial.table.reference_chapter.layout,
-        'name': 'Dash Table Reference',
+        'name': 'DataTable Reference',
         'description': '''
-        A comprehensive list of all of the Dash Table properties.
+        A comprehensive list of all of the DataTable properties.
         '''
     },
 
-### End Dash Table Docs
+### End DataTable Docs
 
     'search': {
         'url': '/search',

@@ -19,11 +19,11 @@ examples = {
 layout = html.Div([
 
     dcc.Markdown(dedent('''
-    # Dash Interactive Table
+    # Dash DataTable
 
     > **New! Released in November 2, 2018**
     >
-    > The Dash Table is an interactive table component designed for
+    > The DataTable is an interactive table component designed for
     viewing, editing, and exploring large datasets.
     >
     > It's rendered with standard, semantic `<table/>` markup, making it
@@ -38,7 +38,7 @@ layout = html.Div([
     It's already feature-rich and we're excited to
     continue to invest in its future.
     >
-    > Dash Table is in `alpha`. This is more of a statement on its API rather
+    > DataTable is in `alpha`. This is more of a statement on its API rather
     than on its features. The table works really well right now, we just
     expect to make a few more breaking changes to its API and behavior
     within the next couple of months. Once the community feels good about its API,
@@ -91,7 +91,7 @@ layout = html.Div([
         Chapter('Part 2. Sorting, Filtering, Selecting, and Paging',
             '/dash-table/interactivity',
             '''
-            The Dash Table is interactive. This chapter demonstrates the
+            The DataTable is interactive. This chapter demonstrates the
             interactive features of the table and how to wire up these
             interations to Python callbacks. These actions include:
             - Paging
@@ -117,7 +117,7 @@ layout = html.Div([
         Chapter('Part 4. Editable Tables',
             '/dash-table/editable',
             '''
-            The Dash Table is editable. Like a spreadsheet, it can be used
+            The DataTable is editable. Like a spreadsheet, it can be used
             as an input for controlling models with a variable number
             of inputs.
 

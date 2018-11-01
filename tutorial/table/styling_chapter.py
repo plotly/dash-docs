@@ -496,13 +496,13 @@ layout = html.Div(
         '''),
 
 
-        html.H1("Styling the Dash Table"),
+        html.H1("Styling the DataTable"),
 
         dcc.Markdown("### Gridded"),
 
         html.Div(
         """
-        By default, the Dash table has grey headers and borders
+        By default, the DataTable has grey headers and borders
         around each cell. It resembles a spreadsheet and the headers are
         clearly defined.
         """

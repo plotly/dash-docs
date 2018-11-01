@@ -97,7 +97,7 @@ def display_content(pathname):
                 html.Div(chapters[matched[0]]['content']),
                 html.Hr(),
                 dcc.Link(
-                    'Back to Dash Table Documentation',
+                    'Back to DataTable Documentation',
                     href='/dash-table'
                 ),
                 html.Br(),

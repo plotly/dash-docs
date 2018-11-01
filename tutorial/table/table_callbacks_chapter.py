@@ -89,7 +89,7 @@ layout = html.Div([
     section_title('Backend Paging with Filtering'),
 
     dcc.Markdown(dedent('''
-    Dash Table's front-end filtering has its own filtering expression
+    DataTable's front-end filtering has its own filtering expression
     language.
 
     Currently, backend filtering must parse the same filtering language.

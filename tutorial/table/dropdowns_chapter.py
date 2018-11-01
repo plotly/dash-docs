@@ -21,7 +21,7 @@ examples = {
 layout = html.Div([
 
     dcc.Markdown(dedent('''
-    The Dash table includes support for per-column and
+    The DataTable includes support for per-column and
     per-cell dropdowns. In future releases, this will
     be tightly integrated with a more formal typing system.
 
@@ -30,7 +30,7 @@ layout = html.Div([
 
     ''')),
 
-    section_title('Dash Table with Per-Column Dropdowns'),
+    section_title('DataTable with Per-Column Dropdowns'),
     dcc.SyntaxHighlighter(
         examples['dropdown_per_column.py'][0],
         language='python',
@@ -41,7 +41,7 @@ layout = html.Div([
         className='example-container'
     ),
 
-    section_title('Dash Table with Per-Row Dropdowns'),
+    section_title('DataTable with Per-Row Dropdowns'),
     dcc.SyntaxHighlighter(
         examples['dropdown_per_column.py'][0],
         language='python',
