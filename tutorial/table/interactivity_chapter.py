@@ -61,15 +61,8 @@ layout = html.Div(
 
         Note that if `dataframe` is an `Input` then the entire
         `dataframe` will be passed over the network: if your dataframe is
-        large, then this will become slow. For large dataframes, you have
-        two options:
-        - Use `dataframe_indicies` instead
-        - Perform the sorting or filtering in Python instead
-
-        Issues with this example:
-        - Row selection callbacks don't work yet: `derived_viewport_indices`
-        isn't getting updated on row selection and `selected_rows` doesn't
-        track the underlying data (e.g. it will always be [1, 3] even after sorting or filtering)
+        large, then this will become slow. For large dataframes, you can
+        perform the [sorting or filtering in Python instead](/datatable/callbacks).
         """
         )),
 
