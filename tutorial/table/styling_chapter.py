@@ -881,7 +881,8 @@ layout = html.Div(
         ### Multi-Headers
         '''
         )),
-
+        Display(
+        '''
         dash_table.DataTable(
             columns=[
                 {"name": ["", "Year"], "id": "year"},
@@ -910,6 +911,6 @@ layout = html.Div(
             ],
             merge_duplicate_headers=True,
         )
-
+        ''')
     ]
 )
