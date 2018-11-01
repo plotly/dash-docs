@@ -71,7 +71,7 @@ layout = html.Div([
 
     ]),
 
-    Section('Dash Interactive Table User Guide', [
+    Section('Dash DataTable User Guide', [
         Chapter('Part 1. Styling, Sizing, and Conditional Formatting',
             '/dash-table/styling',
             '''
@@ -157,7 +157,7 @@ layout = html.Div([
     to see what's coming next.
 
     Many thanks to all of our customers who have sponsored the
-    development of this table <3. Interested in steering the roadmap?
+    development of this table. Interested in steering the roadmap?
     [Get in touch](https://plot.ly/products/consulting-and-oem/)
     '''
     )))
