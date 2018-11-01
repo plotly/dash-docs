@@ -38,7 +38,7 @@ app.layout = dash_table.DataTable(
 def update_graph(pagination_settings, sorting_settings):
     if len(sorting_settings):
         dff = df.sort_values(
-            sorting_settings[0]['columnId'],
+            sorting_settings[0]['column_id'],
             ascending=sorting_settings[0]['direction'] == 'asc',
             inplace=False
         )

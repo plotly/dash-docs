@@ -57,7 +57,7 @@ def update_graph(pagination_settings, sorting_settings, filtering_settings):
 
     if len(sorting_settings):
         dff = dff.sort_values(
-            [col['columnId'] for col in sorting_settings],
+            [col['column_id'] for col in sorting_settings],
             ascending=[
                 col['direction'] == 'asc'
                 for col in sorting_settings

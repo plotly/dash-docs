@@ -73,7 +73,7 @@ def update_table(pagination_settings, sorting_settings, filtering_settings):
 
     if len(sorting_settings):
         dff = dff.sort_values(
-            [col['columnId'] for col in sorting_settings],
+            [col['column_id'] for col in sorting_settings],
             ascending=[
                 col['direction'] == 'asc'
                 for col in sorting_settings
@@ -88,7 +88,7 @@ def update_table(pagination_settings, sorting_settings, filtering_settings):
 
 
 @app.callback(
-    Output('table-paging-with-graph', "children"),
+    Output('table-paging-with-graph-container', "children"),
     [Input('table-paging-with-graph', "data")])
 def update_graph(rows):
     dff = pd.DataFrame(rows)
