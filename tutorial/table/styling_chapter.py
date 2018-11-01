@@ -72,7 +72,8 @@ def Display(example_string):
             'df': df,
             'df_election': df_election,
             'df_long': df_long,
-            'df_long_columns': df_long_columns
+            'df_long_columns': df_long_columns,
+            'pd': pd
         })
     ])
 
