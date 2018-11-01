@@ -182,6 +182,10 @@ h2, h3, h4, h5, h6 {
   margin-bottom: 100px;
 }
 
+.content-container table {
+    font-size: 1.4rem;
+}
+
 @media (min-width: 0px) {
   .content {
      margin-left: 20px;
