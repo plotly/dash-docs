@@ -365,7 +365,7 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            data=df_long.to_dict('rows'),
+            data=df.to_dict('rows'),
             columns=[{'id': c, 'name': c} for c in df.columns],
             n_fixed_rows=1
         )
@@ -450,8 +450,8 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            data=df_long.to_dict('rows'),
-            columns=[{'id': c, 'name': c} for c in df.columns],
+            data=pd.DataFrame({"Column 1": [1, 2], "Column 2": [3, 3]}).to_dict('rows'),
+            columns=[{'id': c, 'name': c} for c in ['Column 1', 'Column 2']],
             style_table={'minWidth': '100%'},
             style_cell={'whiteSpace': 'nowrap'}
         )
