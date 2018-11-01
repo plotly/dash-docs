@@ -20,7 +20,6 @@ app.layout = dash_table.DataTable(
         {'name': i, 'id': i, 'deletable': True} for i in sorted(df.columns)
     ],
     pagination_settings={
-        'displayed_pages': 1,
         'current_page': 0,
         'page_size': PAGE_SIZE
     },
@@ -33,7 +32,7 @@ app.layout = dash_table.DataTable(
 
 
 @app.callback(
-    Output('table-paging-and-sorting', 'dataframe'),
+    Output('table-paging-and-sorting', 'data'),
     [Input('table-paging-and-sorting', 'pagination_settings'),
      Input('table-paging-and-sorting', 'sorting_settings')])
 def update_graph(pagination_settings, sorting_settings):

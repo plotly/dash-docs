@@ -18,7 +18,6 @@ app.layout = dash_table.DataTable(
         {"name": i, "id": i, "deletable": True} for i in sorted(df.columns)
     ],
     pagination_settings={
-        'displayed_pages': 1,
         'current_page': 0,
         'page_size': PAGE_SIZE
     },

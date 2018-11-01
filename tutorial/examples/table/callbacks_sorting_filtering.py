@@ -18,7 +18,6 @@ app.layout = dash_table.DataTable(
         {'name': i, 'id': i, 'deletable': True} for i in sorted(df.columns)
     ],
     pagination_settings={
-        'displayed_pages': 1,
         'current_page': 0,
         'page_size': PAGE_SIZE
     },
@@ -35,7 +34,7 @@ app.layout = dash_table.DataTable(
 
 
 @app.callback(
-    Output('table-sorting-filtering', 'dataframe'),
+    Output('table-sorting-filtering', 'data'),
     [Input('table-sorting-filtering', 'pagination_settings'),
      Input('table-sorting-filtering', 'sorting_settings'),
      Input('table-sorting-filtering', 'filtering_settings')])

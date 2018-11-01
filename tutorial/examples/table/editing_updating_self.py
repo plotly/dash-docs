@@ -21,7 +21,7 @@ app.layout = html.Div([
 
 
 @app.callback(
-    Output('computed-table', 'dataframe'),
+    Output('computed-table', 'data'),
     [Input('computed-table', 'dataframe_timestamp')],
     [State('computed-table', 'dataframe')])
 def update_columns(timestamp, rows):
