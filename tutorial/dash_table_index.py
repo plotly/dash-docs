@@ -21,33 +21,37 @@ layout = html.Div([
     dcc.Markdown(dedent('''
     # Dash Interactive Table
 
-    **New! Released in October, 2018**
-
-    The Dash Table is an interactive table component designed for
+    > **New! Released in November 2, 2018**
+    >
+    > The Dash Table is an interactive table component designed for
     viewing, editing, and exploring large datasets.
-
-    It's rendered with standard, semantic `<table/>` markup, making it
+    >
+    > It's rendered with standard, semantic `<table/>` markup, making it
     easy to style, accessible, and responsive.
-
-    This component was written from scratch in React.js
+    >
+    > This component was written from scratch in React.js
     specifically for the Dash community. Its API was designed to be
     ergonomic and its behavior is completely customizable through its
     properties.
-
-    This is the most complex component that we've written as a pure React
-    Dash component. It's already feature-rich and we're excited to
+    >
+    > 7 months in the making, this is the most complex component that we've written in React!
+    It's already feature-rich and we're excited to
     continue to invest in its future.
-
-    Dash Table is in `alpha`. This is more of a statement on its API rather
+    >
+    > Dash Table is in `alpha`. This is more of a statement on its API rather
     than on its features. The table works really well right now, we just
     expect to make a few more breaking changes to its API and behavior
-    within the next 6 months. Once the community feels good about its API,
+    within the next couple of months. Once the community feels good about its API,
     we'll lock it down and we'll commit to reducing the
     frequency of breaking changes.
-
-    So, use the table and let us know what you think. Keep an eye
+    >
+    > So, use the table and let us know what you think. Keep an eye
     on the [CHANGELOG.md](/CHANGELOG.md) to be aware of breaking changes,
     upgrade guides, and new features.
+    >
+    > Many thanks,
+    >
+    > chriddyp
 
     ''')),
 
