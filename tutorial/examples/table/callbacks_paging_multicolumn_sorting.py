@@ -15,7 +15,7 @@ PAGE_SIZE = 5
 app.layout = dash_table.DataTable(
     id='table-multicol-sorting',
     columns=[
-        {"name": i, "id": i, "deletable": True} for i in sorted(df.columns)
+        {"name": i, "id": i} for i in sorted(df.columns)
     ],
     pagination_settings={
         'current_page': 0,

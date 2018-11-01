@@ -23,7 +23,7 @@ app.layout = html.Div(
             dash_table.DataTable(
                 id='table-paging-with-graph',
                 columns=[
-                    {"name": i, "id": i, "deletable": True} for i in sorted(df.columns)
+                    {"name": i, "id": i} for i in sorted(df.columns)
                 ],
                 pagination_settings={
                     'current_page': 0,
