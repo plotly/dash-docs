@@ -35,10 +35,10 @@ def display_output(rows):
             pruned_rows.append(row)
 
     return html.Div([
-        html.B('Raw Data'),
+        html.Div('Raw Data'),
         html.Pre(pprint.pformat(rows)),
         html.Hr(),
-        html.B('Pruned Data'),
+        html.Div('Pruned Data'),
         html.Pre(pprint.pformat(pruned_rows)),
     ])
 
