@@ -144,9 +144,10 @@ chapters = {
     'datatable': {
         'url': '/datatable',
         'content': dash_table_index.layout,
-        'name': 'Dash Interactive Table',
-        'description': '(New!) The Dash Interactive Table is our latest and ' \
-                       'most advanced component. It supports rich styling, ' \
+        'name': 'Dash DataTable',
+        'description': '(New! Released Nov 2, 2018) The Dash DataTable is our latest and ' \
+                       'most advanced component. It is an interactive table that ' \
+                       'supports rich styling, ' \
                        'conditional formatting, editing, sorting, filtering, ' \
                        'and more.'
     },
