@@ -10,11 +10,11 @@ from .utils import html_table
 
 data = OrderedDict(
     [
-        ("Date", ["2015-01-01", "2015-10-24", "2016-05-10"] * 2),
-        ("Region", ["Montreal", "Vermont", "New York City"] * 2),
-        ("Temperature", [1, -20, 3.512] * 2),
-        ("Humidity", [10, 20, 30] * 2),
-        ("Pressure", [2, 10924, 3912] * 2),
+        ("Date", ["2015-01-01", "2015-10-24", "2016-05-10", "2017-01-10", "2018-05-10", "2018-08-15"]),
+        ("Region", ["Montreal", "Toronto", "New York City", "Miami", "San Francisco", "London"]),
+        ("Temperature", [1, -20, 3.512, 4, 10423, -441.2]),
+        ("Humidity", [10, 20, 30, 40, 50, 60]),
+        ("Pressure", [2, 10924, 3912, -10, 3591.2, 15]),
     ]
 )
 
@@ -84,12 +84,12 @@ layout = html.Div(
 
         html.H1('Sizing and Styling'),
 
-        html.H3('Default Style'),
+        html.H3('Default Styles'),
         dcc.Markdown(dedent(
         '''
-        By default, the width of the table's columns will expand to
-        size of the cell's contents. The content will be displayed on a
-        single line.
+        By default, the table will expand to the width of its container.
+        The width of the columns is determined automatically in order to
+        accommodate the content in the cells.
         '''
         )),
         Display(
@@ -101,30 +101,93 @@ layout = html.Div(
         '''
         ),
 
-        html.H3('Responsive Table'),
         dcc.Markdown(dedent(
         '''
-        This responsive table will expand to the container's width.
-        If you resize your browser, the table will resize and the text
-        will become cut-off.
+        > The set of examples on this page are rendered with a few different
+        > dataframes that have different sizes and shapes. In particular,
+        > some of the dataframes have a large number of columns or have cells
+        > with long contents. If you'd like to follow along on your own
+        > machine, then open up the menu below to copy and paste
+        > the code behind these datasets.
         '''
         )),
-        Display(
-        '''
-        dash_table.DataTable(
-            style_table={'width': '100%'},
-            content_style='grow',
-            data=df.to_dict('rows'),
-            columns=[{'id': c, 'name': c} for c in df.columns]
-        )
-        '''
-        ),
 
-        html.H3('Responsive Table - Overflowing Into Multiple Lines'),
+        html.Details(open=False, children=[
+            html.Summary('View the Datasets'),
+            dcc.SyntaxHighlighter(dedent(
+            '''
+            data = OrderedDict(
+                [
+                    ("Date", ["2015-01-01", "2015-10-24", "2016-05-10", "2017-01-10", "2018-05-10", "2018-08-15"]),
+                    ("Region", ["Montreal", "Toronto", "New York City", "Miami", "San Francisco", "London"]),
+                    ("Temperature", [1, -20, 3.512, 4, 10423, -441.2]),
+                    ("Humidity", [10, 20, 30, 40, 50, 60]),
+                    ("Pressure", [2, 10924, 3912, -10, 3591.2, 15]),
+                ]
+            )
+
+            df = pd.DataFrame(data)
+
+            election_data = OrderedDict(
+                [
+                    (
+                        "Date",
+                        [
+                            "July 12th, 2013 - July 25th, 2013",
+                            "July 12th, 2013 - August 25th, 2013",
+                            "July 12th, 2014 - August 25th, 2014",
+                        ],
+                    ),
+                    (
+                        "Election Polling Organization",
+                        ["The New York Times", "Pew Research", "The Washington Post"],
+                    ),
+                    ("Rep", [1, -20, 3.512]),
+                    ("Dem", [10, 20, 30]),
+                    ("Ind", [2, 10924, 3912]),
+                    (
+                        "Region",
+                        [
+                            "Northern New York State to the Southern Appalachian Mountains",
+                            "Canada",
+                            "Southern Vermont",
+                        ],
+                    ),
+                ]
+            )
+
+            df_election = pd.DataFrame(election_data)
+            df_long = pd.DataFrame(
+                OrderedDict([(name, col_data * 10) for (name, col_data) in election_data.items()])
+            )
+            df_long_columns = pd.DataFrame(
+                {
+                    "This is Column {} Data".format(i): [1, 2]
+                    for i in range(10)
+                }
+            )
+            '''))
+        ]),
+
         dcc.Markdown(dedent(
         '''
-        Instead of cutting off the text, you can break the text into multiple
-        lines on the word breaks.
+        The default styles work well for a small number of columns and short
+        text. However, if you are rendering a large number of columns or
+        cells with long contents, then you'll need to employ one of the
+        following "overflow strategies" to keep the table within its container.
+
+        > Heads up! In the future, we may modify our default styles to
+        > better accommodate wide content while keeping the table full-width
+        > and responsive. Subscribe to [plotly/dash-table#197](https://github.com/plotly/dash-table/issues/197) for more.
+        '''
+        )),
+
+        dcc.Markdown(dedent(
+        '''
+        ### Overflow Strategies - Multiple Lines
+
+        If your cells contain contain text with spaces, then you can overflow
+        your content into multiple lines.
 
         > We find that this interface is a little too complex.
         > We're looking at simplifying this in this issue:
@@ -134,9 +197,7 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            style_table={'width': '100%'},
             style_data={'whiteSpace': 'normal'},
-            content_style='grow',
             css=[{
                 'selector': '.dash-cell div.dash-cell-value',
                 'rule': 'display: inline; white-space: inherit; overflow: inherit; text-overflow: inherit;'
@@ -145,17 +206,20 @@ layout = html.Div(
             columns=[{'id': c, 'name': c} for c in df_election.columns]
         )
         '''),
-        # html_table(df_election, table_style={"width": "100%"}),
 
-        dcc.Markdown("### Responsive Table - Overflowing Into Ellipses"),
         dcc.Markdown(dedent(
         """
-        With `max-width`, the content can collapse into
-        ellipses once the content doesn't fit.
+        ### Overflow Strategies - Overflowing Into Ellipses
+
+        Alternatively, you can keep the content on a single line but display
+        a set of ellipses if the content is too long to fit into the cell.
 
         Here, `max-width` is set to 0. It could be any number, the only
         important thing is that it is supplied. The behaviour will be
         the same whether it is 0 or 50.
+
+        If you want to just hide the content instead of displaying ellipses,
+        then set `textOverflow` to `'clip'` instead of `'ellipsis'`.
         """
         )),
         Display(
@@ -163,8 +227,6 @@ layout = html.Div(
         dash_table.DataTable(
             data=df_election.to_dict('rows'),
             columns=[{'id': c, 'name': c} for c in df_election.columns],
-            style_table={'width': '100%'},
-            content_style='grow',
             css=[{
                 'selector': '.dash-cell div.dash-cell-value',
                 'rule': 'display: inline; white-space: inherit; overflow: inherit; text-overflow: inherit;'
@@ -178,43 +240,163 @@ layout = html.Div(
         )
         '''),
 
-        dcc.Markdown("### All Column Widths defined by Percent"),
-        html.Div('The column widths can be definied by percents rather than pixels.'),
-        # html_table(
-        #     df,
-        #     table_style={"width": "100%"},
-        #     column_style={
-        #         "Date": {"width": "30%"},
-        #         "Election Polling Organization": {"width": "25%"},
-        #         "Dem": {"width": "5%"},
-        #         "Rep": {"width": "5%"},
-        #         "Ind": {"width": "5%"},
-        #         "Region": {"width": "30%"},
-        #     },
-        # ),
+        dcc.Markdown(dedent(
+        '''
+        ### Overflow Strategies - Horizontal Scroll
+
+        Instead of trying to fit all of the content in the container, you could
+        overflow the entire container into a scrollable container.
+        '''
+        )),
+
         Display(
         '''
         dash_table.DataTable(
             data=df_election.to_dict('rows'),
             columns=[{'id': c, 'name': c} for c in df_election.columns],
-            style_table={'width': '100%'},
-            content_style='grow',
-            style_cell_conditional=[
-                {'if': {'column_id': 'Date'},
-                 'width': '30%'},
-                {'if': {'column_id': 'Election Polling Organization'},
-                 'width': '25%'},
-                {'if': {'column_id': 'Dem'},
-                 'width': '5%'},
-                {'if': {'column_id': 'Rep'},
-                 'width': '5%'},
-                {'if': {'column_id': 'Ind'},
-                 'width': '5%'},
-                {'if': {'column_id': 'Region'},
-                 'width': '30%'},
-            ]
+            style_table={'overflowX': 'scroll'},
         )
         '''),
+
+        dcc.Markdown(dedent(
+        '''
+        Note how we haven't explicitly set the width of the individual columns
+        yet. The widths of the columns have been computed dynamically depending
+        on the width of the table and the width of the cells contents.
+        In the example above, by providing a scrollbar, we're effectively
+        giving the table as much width as needs in order to fit the entire
+        width of the cell contents on a single line.
+
+        We can combine some of these strategies by bounding the `maxWidth` of
+        a column and overflowing into multiple lines (or ellipses) if the
+        content exceeds that width while rendering the table within a
+        scrollable horizontal container. If the column's contents don't
+        exceed the `maxWidth`, then the column will only take up the
+        necessary amount of horizontal space.
+        '''
+        )),
+
+        Display(
+        '''
+        dash_table.DataTable(
+            data=df_election.to_dict('rows'),
+            columns=[{'id': c, 'name': c} for c in df_election.columns],
+            style_table={'overflowX': 'scroll'},
+            style_cell={
+                'minWidth': '0px', 'maxWidth': '180px',
+                'whiteSpace': 'normal'
+            },
+            css=[{
+                'selector': '.dash-cell div.dash-cell-value',
+                'rule': 'display: inline; white-space: inherit; overflow: inherit; text-overflow: inherit;'
+            }],
+        )
+        '''),
+
+        Display(
+        '''
+        dash_table.DataTable(
+            data=df_election.to_dict('rows'),
+            columns=[{'id': c, 'name': c} for c in df_election.columns],
+            style_table={'overflowX': 'scroll'},
+            style_cell={
+                'minWidth': '0px', 'maxWidth': '180px',
+                'whiteSpace': 'no-wrap',
+                'overflow': 'hidden',
+                'textOverflow': 'ellipsis',
+            },
+            css=[{
+                'selector': '.dash-cell div.dash-cell-value',
+                'rule': 'display: inline; white-space: inherit; overflow: inherit; text-overflow: inherit;'
+            }],
+        )
+        '''),
+
+        dcc.Markdown(dedent(
+        '''
+        Alternatively, you can fix the width of each column by adding `width`.
+        In this case, the column's width will be constant, even if its contents
+        are shorter or wider.
+        '''
+        )),
+
+        Display(
+        '''
+        dash_table.DataTable(
+            data=df_election.to_dict('rows'),
+            columns=[{'id': c, 'name': c} for c in df_election.columns],
+            style_table={'overflowX': 'scroll'},
+            style_cell={
+                # all three widths are needed
+                'minWidth': '180px', 'width': '180px', 'maxWidth': '180px',
+                'whiteSpace': 'normal'
+            },
+            css=[{
+                'selector': '.dash-cell div.dash-cell-value',
+                'rule': 'display: inline; white-space: inherit; overflow: inherit; text-overflow: inherit;'
+            }],
+        )
+        '''),
+
+        Display(
+        '''
+        dash_table.DataTable(
+            data=df_election.to_dict('rows'),
+            columns=[{'id': c, 'name': c} for c in df_election.columns],
+            style_table={'overflowX': 'scroll'},
+            style_cell={
+                # all three widths are needed
+                'minWidth': '180px', 'width': '180px', 'maxWidth': '180px',
+                'whiteSpace': 'no-wrap',
+                'overflow': 'hidden',
+                'textOverflow': 'ellipsis',
+            },
+            css=[{
+                'selector': '.dash-cell div.dash-cell-value',
+                'rule': 'display: inline; white-space: inherit; overflow: inherit; text-overflow: inherit;'
+            }],
+        )
+        '''),
+
+        # dcc.Markdown("### Individual Column Widths"),
+        # dcc.Markdown(dedent('''
+        # The column widths can be defined by
+        # percents rather than pixels and the columns
+        # can be styled independently with `style_cell_conditional`
+        # ''')),
+        # Display(
+        # '''
+        # dash_table.DataTable(
+        #     data=df_election.to_dict('rows'),
+        #     columns=[{'id': c, 'name': c} for c in df_election.columns],
+        #     style_cell_conditional=[
+        #         {'if': {'column_id': 'Date'},
+        #          'width': '30%'},
+        #         {'if': {'column_id': 'Election Polling Organization'},
+        #          'width': '25%'},
+        #         {'if': {'column_id': 'Dem'},
+        #          'width': '5%'},
+        #         {'if': {'column_id': 'Rep'},
+        #          'width': '5%'},
+        #         {'if': {'column_id': 'Ind'},
+        #          'width': '5%'},
+        #         {'if': {'column_id': 'Region'},
+        #          'width': '30%'},
+        #     ],
+        #     style_cell={
+        #         # all three widths are needed
+        #         'minWidth': '180px', 'width': '180px', 'maxWidth': '180px',
+        #         'whiteSpace': 'no-wrap',
+        #         'overflow': 'hidden',
+        #         'textOverflow': 'ellipsis',
+        #     },
+        #     css=[{
+        #         'selector': '.dash-cell div.dash-cell-value',
+        #         'rule': 'display: inline; white-space: inherit; overflow: inherit; text-overflow: inherit;'
+        #     }],
+        #
+        # )
+        # '''),
 
         dcc.Markdown("### Single Column Width Defined by Percent"),
 
@@ -229,8 +411,6 @@ layout = html.Div(
         dash_table.DataTable(
             data=df.to_dict('rows'),
             columns=[{'id': c, 'name': c} for c in df.columns],
-            style_table={'width': '100%'},
-            content_style='grow',
             style_cell_conditional=[
                 {'if': {'column_id': 'Region'},
                  'width': '50%'},
@@ -238,111 +418,83 @@ layout = html.Div(
         )
         '''),
 
-        dcc.Markdown("### Columns with min-width"),
-        dcc.Markdown(dedent(
-        '''
-        Here, the min-width for the first column is 130px, or about the width of this line:
-        ''')),
-        html.Div(
-            style={"width": 130, "height": 10, "backgroundColor": "hotpink"}
-        ),
-        # html_table(
-        #     df,
-        #     table_style={"width": "100%"},
-        #     column_style={"Date": {"minWidth": "130"}},
+        # dcc.Markdown("### Underspecified Widths"),
+        # dcc.Markdown(dedent(
+        # '''
+        # The widths can be under-specified. Here, we're only setting the width for
+        # the three columns in the middle, the rest of the columns are
+        # automatically sized to fit the rest of the container.
+        # The columns have a width of 50px, or the width of this line:
+        # '''
+        # )),
+        # html.Div(
+        #     style={"width": 50, "height": 10, "backgroundColor": "hotpink"}
         # ),
-        Display(
-        '''
-        dash_table.DataTable(
-            data=df.to_dict('rows'),
-            columns=[{'id': c, 'name': c} for c in df.columns],
-            style_table={'width': '100%'},
-            content_style='grow',
-            style_cell_conditional=[
-                {'if': {'column_id': 'Date'},
-                 'minWidth': 130},
-            ]
-        )
-        '''),
+        # # html_table(
+        # #     df,
+        # #     table_style={"width": "100%"},
+        # #     column_style={
+        # #         "Dem": {"width": 50},
+        # #         "Rep": {"width": 50},
+        # #         "Ind": {"width": 50},
+        # #     },
+        # # ),
+        # Display(
+        # '''
+        # dash_table.DataTable(
+        #     data=df_election.to_dict('rows'),
+        #     columns=[{'id': c, 'name': c} for c in df_election.columns],
+        #     style_table={'width': '100%'},
+        #     content_style='grow',
+        #     style_cell_conditional=[
+        #         {'if': {'column_id': 'Dem'},
+        #          'width': 50},
+        #         {'if': {'column_id': 'Rep'},
+        #          'width': 50},
+        #         {'if': {'column_id': 'Ind'},
+        #          'width': 50},
+        #     ]
+        # )
+        # '''),
 
-        dcc.Markdown("### Underspecified Widths"),
-        dcc.Markdown(dedent(
-        '''
-        The widths can be under-specified. Here, we're only setting the width for
-        the three columns in the middle, the rest of the columns are
-        automatically sized to fit the rest of the container.
-        The columns have a width of 50px, or the width of this line:
-        '''
-        )),
-        html.Div(
-            style={"width": 50, "height": 10, "backgroundColor": "hotpink"}
-        ),
-        # html_table(
-        #     df,
-        #     table_style={"width": "100%"},
-        #     column_style={
-        #         "Dem": {"width": 50},
-        #         "Rep": {"width": 50},
-        #         "Ind": {"width": 50},
-        #     },
+        # dcc.Markdown("### Widths that are smaller than the content"),
+        # dcc.Markdown(dedent(
+        # '''
+        # In this case, we're setting the width to 20px, which is smaller
+        # than the "10924" number in the "Ind" column.
+        # The table does not allow it.
+        # '''
+        # )),
+        # html.Div(
+        #     style={"width": 20, "height": 10, "backgroundColor": "hotpink"}
         # ),
-        Display(
-        '''
-        dash_table.DataTable(
-            data=df_election.to_dict('rows'),
-            columns=[{'id': c, 'name': c} for c in df_election.columns],
-            style_table={'width': '100%'},
-            content_style='grow',
-            style_cell_conditional=[
-                {'if': {'column_id': 'Dem'},
-                 'width': 50},
-                {'if': {'column_id': 'Rep'},
-                 'width': 50},
-                {'if': {'column_id': 'Ind'},
-                 'width': 50},
-            ]
-        )
-        '''),
+        # # html_table(
+        # #     df,
+        # #     table_style={"width": "100%"},
+        # #     column_style={
+        # #         "Dem": {"width": 20},
+        # #         "Rep": {"width": 20},
+        # #         "Ind": {"width": 20},
+        # #     },
+        # # ),
+        # Display(
+        # '''
+        # dash_table.DataTable(
+        #     data=df_election.to_dict('rows'),
+        #     columns=[{'id': c, 'name': c} for c in df_election.columns],
+        #     style_table={'width': '100%'},
+        #     content_style='grow',
+        #     style_cell_conditional=[
+        #         {'if': {'column_id': 'Dem'},
+        #          'width': 20},
+        #         {'if': {'column_id': 'Rep'},
+        #          'width': 20},
+        #         {'if': {'column_id': 'Ind'},
+        #          'width': 20},
+        #     ]
+        # )
+        # '''),
 
-        dcc.Markdown("### Widths that are smaller than the content"),
-        dcc.Markdown(dedent(
-        '''
-        In this case, we're setting the width to 20px, which is smaller
-        than the "10924" number in the "Ind" column.
-        The table does not allow it.
-        '''
-        )),
-        html.Div(
-            style={"width": 20, "height": 10, "backgroundColor": "hotpink"}
-        ),
-        # html_table(
-        #     df,
-        #     table_style={"width": "100%"},
-        #     column_style={
-        #         "Dem": {"width": 20},
-        #         "Rep": {"width": 20},
-        #         "Ind": {"width": 20},
-        #     },
-        # ),
-        Display(
-        '''
-        dash_table.DataTable(
-            data=df_election.to_dict('rows'),
-            columns=[{'id': c, 'name': c} for c in df_election.columns],
-            style_table={'width': '100%'},
-            content_style='grow',
-            style_cell_conditional=[
-                {'if': {'column_id': 'Dem'},
-                 'width': 20},
-                {'if': {'column_id': 'Rep'},
-                 'width': 20},
-                {'if': {'column_id': 'Ind'},
-                 'width': 20},
-            ]
-        )
-        '''),
-
-        dcc.Markdown("### "),
         dcc.Markdown(dedent(
         '''
         ## Vertical Scrolling
@@ -414,92 +566,6 @@ layout = html.Div(
             data=df.to_dict('rows'),
             columns=[{'id': c, 'name': c} for c in df.columns],
             style_table={'height': '300', 'overflowY': 'scroll'},
-        )
-        '''),
-
-        dcc.Markdown(dedent(
-        '''
-        ## Horizontal Scrolling
-        With HTML tables, we can set `min-width` to be 100%.
-        If the content is small, then the columns will have some extra
-        space.
-        But if the content of any of the cells is really large, then the
-        cells will expand beyond the container and a scrollbar will appear.
-
-        In this way, `min-width` and `overflow-x: scroll` is an alternative
-        to `text-overflow: ellipses`. With scroll, the content that can't
-        fit in the container will get pushed out into a scrollable zone.
-        With text-overflow: ellipses, the content will get truncated by
-        ellipses. Both strategies work with or without line breaks on the
-        white spaces (`white-space: normal` or `white-space: nowrap`).
-
-        These next two examples have the same styles applied:
-        - `min-width: 100%`
-        - `white-space: nowrap` (to keep the content on a single line)
-        - A parent with `overflow-x: scroll`
-
-        **Baseline Example: Columns That Don't Overflow**
-        '''
-        )),
-
-        # html.Div(
-        #     html_table(
-        #         pd.DataFrame({"Column 1": [1, 2], "Column 2": [3, 3]}),
-        #         table_style={"minWidth": "100%"},
-        #         cell_style={"whiteSpace": "nowrap"},
-        #     ),
-        #     style={"overflowX": "scroll"},
-        # ),
-
-        Display(
-        '''
-        dash_table.DataTable(
-            data=pd.DataFrame({"Column 1": [1, 2], "Column 2": [3, 3]}).to_dict('rows'),
-            columns=[{'id': c, 'name': c} for c in ['Column 1', 'Column 2']],
-            style_table={'minWidth': '100%'},
-            style_cell={'whiteSpace': 'nowrap'}
-        )
-        '''),
-
-        dcc.Markdown(dedent(
-        '''
-        **Columns That Overflow into Horizontal Scroll**
-        Here is a table with several columns with long titles,
-        100% min-width, and `'white-space': 'nowrap'`
-        (to keep the text on a single line)
-        '''
-        )),
-        # html.Div(
-        #     html_table(
-        #         df_long_columns,
-        #         table_style={"minWidth": "100%", "overflowX": "scroll"},
-        #         cell_style={"whiteSpace": "nowrap"},
-        #     ),
-        #     style={"overflowX": "scroll"},
-        # ),
-        Display(
-        '''
-        dash_table.DataTable(
-            data=df_long_columns.to_dict('rows'),
-            columns=[{'id': c, 'name': c} for c in df_long_columns.columns],
-            style_table={'minWidth': '100%', 'overflowX': 'scroll'},
-            style_cell={'whiteSpace': 'nowrap'}
-        )
-        '''),
-
-        dcc.Markdown(dedent(
-        '''
-        ### Fixing Columns
-
-        Alternatively, you can fix columns of the table.
-        '''
-        )),
-        Display(
-        '''
-        dash_table.DataTable(
-            data=df_long_columns.to_dict('rows'),
-            columns=[{'id': c, 'name': c} for c in df_long_columns.columns],
-            n_fixed_columns=1
         )
         '''),
 
