@@ -180,7 +180,7 @@ layout = html.Div([
     `Input('table', 'data')` in the same `@app.callback`.
 
     However, we can work around this by using `State('table', 'data')`
-    and triggering the callback with `Input('table', 'dataframe_timestamp')`.
+    and triggering the callback with `Input('table', 'data_timestamp')`.
 
     This example mimics a traditional spreadsheet like excel by computing
     certain columns based off of other other columns.

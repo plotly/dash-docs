@@ -80,7 +80,7 @@ app.layout = html.Div([
 # the dropdown needs to be "connected" to the table via
 # a callback
 @app.callback(Output('dropdown_per_row_container', 'children'),
-              [Input('dropdown_per_row', 'dataframe_timestamp')])
+              [Input('dropdown_per_row', 'data_timestamp')])
 def update_output(timestamp):
     return timestamp
 
