@@ -274,6 +274,7 @@ dcc.DatePickerRange(
     [Create Your First Dash App, Part 1](/getting-started-part-1)
     for an example.
 
+    Dash provides an interactive `DataTable` as part of the `data-table`
     project. This table includes built-in filtering, row-selection,
     editing, and sorting.
 
