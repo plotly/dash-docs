@@ -43,7 +43,7 @@ app.layout = html.Div(
         ),
         html.Div(
             id='table-paging-with-graph-container',
-            className="six columns"
+            className="five columns"
         )
     ]
 )
