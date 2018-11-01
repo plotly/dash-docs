@@ -25,7 +25,7 @@ app.layout = html.Div([
 
 
 @app.callback(Output('editing-prune-data-output', 'children'),
-              [Input('editing-prune-data', 'dataframe')])
+              [Input('editing-prune-data', 'data')])
 def display_output(rows):
     pruned_rows = []
     for row in rows:

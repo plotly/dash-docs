@@ -53,7 +53,7 @@ def update_output(contents, filename):
 
 
 @app.callback(Output('datatable-upload-graph', 'figure'),
-              [Input('datatable-upload-container', 'dataframe')])
+              [Input('datatable-upload-container', 'data')])
 def display_graph(rows):
     df = pd.DataFrame(rows)
     return {
