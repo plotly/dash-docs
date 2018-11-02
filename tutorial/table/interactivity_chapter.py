@@ -12,7 +12,7 @@ from tutorial import styles
 
 examples = {
     example: tools.load_example('tutorial/examples/table/{}'.format(example))
-    for example in ['interactivity_simple.py', 'interactivity_connected_to_graph.py']
+    for example in ['interactivity_connected_to_graph.py']
 }
 
 layout = html.Div(
