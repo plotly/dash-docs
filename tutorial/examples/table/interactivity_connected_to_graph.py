@@ -3,12 +3,9 @@ from dash.dependencies import Input, Output
 import dash_table
 import dash_core_components as dcc
 import dash_html_components as html
-
 import pandas as pd
 
-
 df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/gapminder2007.csv')
-
 
 app = dash.Dash(__name__)
 
@@ -32,7 +29,6 @@ app.layout = html.Div([
     ),
     html.Div(id='datatable-interactivity-container')
 ])
-
 
 @app.callback(
     Output('datatable-interactivity-container', "children"),
