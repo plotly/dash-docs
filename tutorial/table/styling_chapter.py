@@ -367,6 +367,15 @@ layout = html.Div(
         You can also highlight certain cells. For example, you may want to
         highlight certain cells that exceed a threshold or that match
         a filter elsewhere in the app.
+
+        The `filter` keyword in `style_data_conditional` uses the same
+        filtering expression language as the table's interactive filter UI.
+        See the [DataTable filtering chapter](/datatable/filtering) for more
+        info.
+
+        > Note, the filtering expression language is subject to change.
+        > Please subscribe to [dash-table#169](https://github.com/plotly/dash-table/issues/169)
+        > for more info.
         ''')),
 
         Display(
@@ -376,21 +385,32 @@ layout = html.Div(
             columns=[
                 {'name': i, 'id': i} for i in df.columns
             ],
-            style_data_conditional=[{
-                'if': {
-                    'column_id': 'Region',
-                    'filter': 'Region eq str(Montreal)'
+            style_data_conditional=[
+                {
+                    'if': {
+                        'column_id': 'Region',
+                        'filter': 'Region eq "Montreal"'
+                    },
+                    'backgroundColor': '#3D9970',
+                    'color': 'white',
                 },
-                'backgroundColor': '#3D9970',
-                'color': 'white',
-            }, {
-                'if': {
-                    'column_id': 'Humidity',
-                    'filter': 'Humidity eq num(20)'
+                {
+                    'if': {
+                        'column_id': 'Humidity',
+                        'filter': 'Humidity eq num(20)'
+                    },
+                    'backgroundColor': '#3D9970',
+                    'color': 'white',
                 },
-                'backgroundColor': '#3D9970',
-                'color': 'white',
-            }]
+                {
+                    'if': {
+                        'column_id': 'Temperature',
+                        'filter': 'Temperature > num(3.9)'
+                    },
+                    'backgroundColor': '#3D9970',
+                    'color': 'white',
+                },
+            ]
         )
         '''
         ),
