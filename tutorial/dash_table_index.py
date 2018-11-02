@@ -21,13 +21,13 @@ layout = html.Div([
     dcc.Markdown(dedent('''
     # Dash DataTable
 
-    > **New! Released in November 2, 2018**
+    > **New! Released on November 2, 2018**
     >
     > The DataTable is an interactive table component designed for
     viewing, editing, and exploring large datasets.
     >
     > It's rendered with standard, semantic `<table/>` markup, making it
-    easy to style, accessible, and responsive.
+    > accessible, responsive, and easy to style.
     >
     > This component was written from scratch in React.js
     specifically for the Dash community. Its API was designed to be
@@ -96,7 +96,7 @@ layout = html.Div([
             - Changing the colors (including a dark theme!)
 
             The sizing API for the table has been particularly tricky for
-            us to nail down, so be read this chapter to understand the nuances,
+            us to nail down, so be sure to read this chapter to understand the nuances,
             limitations, and the APIs that we're exploring.
 
             '''),

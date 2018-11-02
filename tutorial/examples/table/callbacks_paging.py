@@ -8,7 +8,7 @@ import pandas as pd
 
 df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/gapminder2007.csv')
 
-df[' index'] = range(1, len(df) + 1)
+df['row index'] = range(1, len(df) + 1)
 
 app = dash.Dash(__name__)
 
