@@ -51,17 +51,6 @@ layout = html.Div(
             )
         ),
 
-        dcc.SyntaxHighlighter(
-            examples['interactivity_simple.py'][0],
-            language='python',
-            customStyle=styles.code_container
-        ),
-
-        html.Div(
-            examples['interactivity_simple.py'][1],
-            className='example-container'
-        ),
-
             dcc.Markdown(dedent(
         """
         By default, these transformations are done clientside.
