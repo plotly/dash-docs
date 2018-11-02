@@ -43,10 +43,11 @@ layout = html.Div([
     expect to make a few more breaking changes to its API and behavior
     within the next couple of months. Once the community feels good about its API,
     we'll lock it down and we'll commit to reducing the
-    frequency of breaking changes.
+    frequency of breaking changes. Subscribe to [dash-table#207](https://github.com/plotly/dash-table/issues/207)
+    > to stay up-to-date with breaking changes.
     >
     > So, use the table and let us know what you think. Keep an eye
-    on the [CHANGELOG.md](/CHANGELOG.md) to be aware of breaking changes,
+    on the [CHANGELOG.md](https://github.com/plotly/dash-table/blob/master/CHANGELOG.md) to be aware of breaking changes,
     upgrade guides, and new features.
     >
     > Many thanks,
