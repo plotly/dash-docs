@@ -48,8 +48,6 @@ layout = html.Div([
     `data` property.
 
     A few notes:
-    - You can restrict certain columns from being editable by
-    setting `editable=False` wi.
     - If you copy and paste data that is larger than the rows, then the
     table will expand to contain the contents.
     Try it out by [copying and pasting this dataset](https://docs.google.com/spreadsheets/d/1MWj7AjngD_fH7vkVhEMIRo51Oty295kE36-DFnQElrg/edit?usp=sharing).
