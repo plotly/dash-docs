@@ -5,9 +5,7 @@ import pandas as pd
 from textwrap import dedent
 
 import dash_table
-from .utils import section_title
-from tutorial import styles
-from tutorial import tools
+from tutorial import styles, tools
 
 
 examples = {
@@ -23,8 +21,9 @@ examples = {
 }
 
 layout = html.Div([
+    dcc.Markdown('# DataTable - Python Callbacks'),
 
-    section_title('Backend Paging'),
+    dcc.Markdown('### Backend Paging'),
 
     dcc.SyntaxHighlighter(
         examples['callbacks_paging.py'][0],
@@ -51,7 +50,7 @@ layout = html.Div([
     backend as well. That is, on the entire underlying dataset.
     ''')),
 
-    section_title('Backend Paging with Sorting'),
+    dcc.Markdown('### Backend Paging with Sorting'),
 
     dcc.SyntaxHighlighter(
         examples['callbacks_paging_and_sorting.py'][0],
@@ -63,7 +62,7 @@ layout = html.Div([
         className='example-container'
     ),
 
-    section_title('Backend Paging with Multi Column Sorting'),
+    dcc.Markdown('### Backend Paging with Multi Column Sorting'),
 
     dcc.Markdown(dedent('''
     Multi-column sort allows you to sort by multiple columns.
@@ -84,7 +83,7 @@ layout = html.Div([
         className='example-container'
     ),
 
-    section_title('Backend Paging with Filtering'),
+    dcc.Markdown('### Backend Paging with Filtering'),
 
     dcc.Markdown(dedent('''
     DataTable's front-end filtering has its own filtering expression
@@ -123,7 +122,7 @@ layout = html.Div([
         className='example-container'
     ),
 
-    section_title('Backend Paging with Filtering and Multi-Column Sorting'),
+    dcc.Markdown('### Backend Paging with Filtering and Multi-Column Sorting'),
     dcc.SyntaxHighlighter(
         examples['callbacks_sorting_filtering.py'][0],
         language='python',
@@ -134,7 +133,7 @@ layout = html.Div([
         className='example-container'
     ),
 
-    section_title('Connecting Backend Paging with a Graph'),
+    dcc.Markdown('### Connecting Backend Paging with a Graph'),
 
     dcc.Markdown(dedent('''
     This final example ties it all together: the graph component
