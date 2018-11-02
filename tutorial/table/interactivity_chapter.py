@@ -23,7 +23,7 @@ layout = html.Div(
                 """
         # DataTable Interactivity
 
-        `Table` includes several features for modifying and transforming the
+        `DataTable` includes several features for modifying and transforming the
         view of the data. These include:
 
         - Sorting by column (`sorting=True`)
