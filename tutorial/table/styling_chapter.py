@@ -304,7 +304,7 @@ layout = html.Div(
         '''),
 
         dcc.Markdown(dedent('''
-        ## Highlighting Certain Rows
+        ## Conditional Formatting - Highlighting Certain Rows
         You can draw attention to certain rows by providing a unique
         background color, bold text, or colored text.
         ''')),
@@ -339,7 +339,7 @@ layout = html.Div(
         )
         '''),
 
-        dcc.Markdown('## Highlighting Certain Columns'),
+        dcc.Markdown('## Conditional Formatting - Highlighting Columns'),
 
         dcc.Markdown(dedent('''
         Similarly, certain columns can be highlighted.
@@ -361,7 +361,7 @@ layout = html.Div(
         '''
         ),
 
-        dcc.Markdown('## Highlighting Certain Cells'),
+        dcc.Markdown('## Conditional Formatting - Highlighting Cells'),
 
         dcc.Markdown(dedent('''
         You can also highlight certain cells. For example, you may want to
