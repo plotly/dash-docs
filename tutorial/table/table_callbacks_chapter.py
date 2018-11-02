@@ -23,7 +23,18 @@ examples = {
 layout = html.Div([
     dcc.Markdown('# DataTable - Python Callbacks'),
 
-    dcc.Markdown('### Backend Paging'),
+    dcc.Markdown(dedent(
+    '''
+    ### Backend Paging
+
+    With backend paging, we can load data into our table progressively.
+    Instead of loading all of the data at once, we'll only load data
+    as the user requests it when they click on the "previous" and "next"
+    buttons.
+
+    Since backend paging integrates directly with your Dash callbacks, you can
+    load your data from any Python data source.
+    ''')),
 
     dcc.SyntaxHighlighter(
         examples['callbacks_paging.py'][0],

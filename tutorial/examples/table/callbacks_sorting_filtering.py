@@ -8,9 +8,7 @@ app = dash.Dash(__name__)
 
 df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/gapminder2007.csv')
 
-
 PAGE_SIZE = 5
-
 
 app.layout = dash_table.DataTable(
     id='table-sorting-filtering',
@@ -30,8 +28,6 @@ app.layout = dash_table.DataTable(
     sorting_type='multi',
     sorting_settings=[]
 )
-
-
 
 @app.callback(
     Output('table-sorting-filtering', 'data'),

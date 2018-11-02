@@ -8,9 +8,7 @@ app = dash.Dash(__name__)
 
 df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/gapminder2007.csv')
 
-
 PAGE_SIZE = 5
-
 
 app.layout = dash_table.DataTable(
     id='table-multicol-sorting',

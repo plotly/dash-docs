@@ -5,14 +5,11 @@ import dash_html_components as html
 import dash_table
 import pandas as pd
 
-
 app = dash.Dash(__name__)
 
 df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/gapminder2007.csv')
 
-
 PAGE_SIZE = 5
-
 
 app.layout = html.Div(
     className="row",
@@ -47,7 +44,6 @@ app.layout = html.Div(
         )
     ]
 )
-
 
 @app.callback(
     Output('table-paging-with-graph', "data"),
