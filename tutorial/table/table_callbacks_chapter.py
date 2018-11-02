@@ -104,6 +104,13 @@ layout = html.Div([
     - Enter `> 5000` in the "gdpPercap" column
     - Enter `< 80` in the `lifeExp` column
 
+    > Note that unlike the front-end filtering, our backend filtering
+    > expression language doesn't require or support `num()` or wrapping
+    > items in double quotes (`"`).
+    > We will improve this syntax in the future,
+    > follow [dash-table#169](https://github.com/plotly/dash-table/issues/169)
+    > for more.
+
     ''')),
 
     dcc.SyntaxHighlighter(

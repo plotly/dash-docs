@@ -33,11 +33,20 @@ layout = html.Div(
         - Deleting columns (`columns[i].deletable=True`)
         - Selecting rows (`row_selectable='single' | 'multi'`)
 
-        > A quick note on filtering. We have defined our own
-        > syntax for performing filtering operations. Here are some
-        > examples for this particular dataset:
-        > - `lt num(50)` in the `lifeExp` column
-        > - `eq "Canada"` in the `country` column
+        A quick note on filtering. We have defined our own
+        syntax for performing filtering operations. Here are some
+        examples for this particular dataset:
+
+        - Enter `eq "Asia"` in the "continent" column
+        - Enter `> num(5000)` in the "gdpPercap" column
+        - Enter `< num(80)` in the `lifeExp` column
+
+        > Note that you need to wrap strings in double quotes (`"`) and
+        > numbers in `num`.
+        > We will improve this syntax in the future,
+        > follow [dash-table#169](https://github.com/plotly/dash-table/issues/169)
+        > for more.
+
         """
             )
         ),
