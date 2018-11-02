@@ -8,7 +8,8 @@ import pandas as pd
 app = dash.Dash(__name__)
 
 params = [
-    'Weight', 'Torque', 'Width', 'Height', 'Efficiency', 'Power', 'Displacement'
+    'Weight', 'Torque', 'Width', 'Height',
+    'Efficiency', 'Power', 'Displacement'
 ]
 
 app.layout = html.Div([
