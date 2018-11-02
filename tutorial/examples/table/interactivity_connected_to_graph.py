@@ -25,7 +25,6 @@ app.layout = html.Div([
         row_selectable="multi",
         row_deletable=True,
         selected_rows=[],
-        n_fixed_rows=2,
     ),
     html.Div(id='datatable-interactivity-container')
 ])
