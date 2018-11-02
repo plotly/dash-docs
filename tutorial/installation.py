@@ -23,7 +23,7 @@ layout = html.Div([
     dcc.SyntaxHighlighter('''pip install dash=={}  # The core dash backend
         pip install dash-html-components=={}  # HTML components
         pip install dash-core-components=={}  # Supercharged components
-        pip install dash-table=={}  # Interactive table component (new!)
+        pip install dash-table=={}  # Interactive DataTable component (new!)
     '''.replace('    ', '').format(
         dash.__version__,
         html.__version__,
