@@ -21,6 +21,16 @@ layout = html.Div([
     dcc.Markdown(dedent('''
     # Dash DataTable
 
+    ''')),
+
+    html.Iframe(
+        src="https://ghbtns.com/github-btn.html?user=plotly&repo=dash-table&type=star&count=true&size=large",
+        width="160px",
+        height="30px",
+        style={'border': 'none'}
+    ),
+
+    dcc.Markdown(dedent('''
     > **New! Released on November 2, 2018**
     >
     > The DataTable is an interactive table component designed for
