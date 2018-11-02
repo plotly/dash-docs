@@ -154,12 +154,18 @@ layout = html.Div([
             of.
             '''),
 
-        Chapter('Part 7. Table Reference',
+        Chapter('Part 7. Filtering Syntax',
+            '/datatable/filtering',
+            '''
+            An explanation and examples of filtering syntax for both frontend
+            and backend filtering in the DataTable.
+            '''),
+
+        Chapter('Part 8. Table Reference',
             '/datatable/reference',
             '''
             The full list of Table properties and their settings.
-            '''
-        )
+            ''')
     ]),
 
     Section('Roadmap, Sponsorships, and Contact', dcc.Markdown(dedent(
