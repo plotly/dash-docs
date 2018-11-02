@@ -100,13 +100,5 @@ layout = html.Div(
             examples['filtering_be.py'][1],
             className='example-container'
         ),
-
-        dcc.Markdown(dedent(
-        """
-        ## Style Filtering
-
-        COMING SOON 
-        """
-        )),
     ]
 )
