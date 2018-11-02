@@ -75,15 +75,15 @@ layout = html.Div(
 
         html.H1("Styling the DataTable"),
 
-        dcc.Markdown("### Gridded"),
+        dcc.Markdown("## Default Styles"),
 
-        html.Div(
+        dcc.Markdown(dedent(
         """
         By default, the DataTable has grey headers and borders
         around each cell. It resembles a spreadsheet and the headers are
         clearly defined.
         """
-        ),
+        )),
 
         Display(
         '''
@@ -96,7 +96,7 @@ layout = html.Div(
 
         dcc.Markdown(dedent(
         """
-        ### Column Alignment
+        ## Column Alignment
 
         When displaying numerical data, it's a good practice to use
         monospaced fonts, to right-align the data, and to provide the same
@@ -128,27 +128,10 @@ layout = html.Div(
         )
         '''
         ),
-        # html_table(
-        #     df,
-        #     table_style={'width': '100%'},
-        #     column_style={'width': '20%', 'paddingLeft': 20},
-        #     cell_style={"paddingLeft": 5, "paddingRight": 5, 'border': 'thin lightgrey solid'},
-        #     header_style_by_column={
-        #         "Temperature": {"textAlign": "right", "fontFamily": "monospaced"},
-        #         "Humidity": {"textAlign": "right", "fontFamily": "monospaced"},
-        #         "Pressure": {"textAlign": "right", "fontFamily": "monospaced"},
-        #     },
-        #     cell_style_by_column={
-        #         "Temperature": {"textAlign": "right", "fontFamily": "monospaced"},
-        #         "Humidity": {"textAlign": "right", "fontFamily": "monospaced"},
-        #         "Pressure": {"textAlign": "right", "fontFamily": "monospaced"},
-        #     },
-        #     header_style={'backgroundColor': 'rgb(235, 235, 235)'}
-        # ),
 
         dcc.Markdown(dedent('''
         ## Styling the Table as a List
-        The gridded view is a good default view for an editable table, like a spreadsheet.
+        The gridded view is a good default view for an editable table as it looks and feels like a spreadsheet.
         If your table isn't editable, then in many cases it can look cleaner without the
         vertical grid lines.
         ''')),
@@ -169,61 +152,7 @@ layout = html.Div(
         '''
         ),
 
-        # html_table(
-        #     df,
-        #     table_style={'width': '100%'},
-        #     column_style={'width': '20%', 'paddingLeft': 20},
-        #     cell_style={"paddingLeft": 5, "paddingRight": 5},
-        #     header_style={'backgroundColor': 'rgb(235, 235, 235)', 'borderTop': 'thin lightgrey solid', 'borderBottom': 'thin lightgrey solid'},
-        #     header_style_by_column={
-        #         "Temperature": {"textAlign": "right", "fontFamily": "monospaced"},
-        #         "Humidity": {"textAlign": "right", "fontFamily": "monospaced"},
-        #         "Pressure": {"textAlign": "right", "fontFamily": "monospaced"},
-        #     },
-        #     cell_style_by_column={
-        #         "Temperature": {"textAlign": "right", "fontFamily": "monospaced"},
-        #         "Humidity": {"textAlign": "right", "fontFamily": "monospaced"},
-        #         "Pressure": {"textAlign": "right", "fontFamily": "monospaced"},
-        #     },
-        # ),
-
-        # dcc.Markdown(dedent('''
-        # ## Row Padding
-        #
-        # By default, the gridded view is pretty tight.
-        # You can add some top and bottom row padding to
-        # the rows to give your data a little bit more room to breathe.
-        # ''')),
-        # Display(
-        # '''
-        # dash_table.DataTable(
-        #     data=df.to_dict('rows'),
-        #     columns=[{'id': c, 'name': c} for c in df.columns],
-        #     style_cell={'padding': '5px'},
-        # )
-        # '''
-        # ),
-
-        # html_table(
-        #     df,
-        #     table_style={'width': '100%'},
-        #     column_style={'width': '20%', 'paddingLeft': 20},
-        #     cell_style={"paddingLeft": 5, "paddingRight": 5},
-        #     header_style={'backgroundColor': 'rgb(235, 235, 235)', 'borderTop': 'thin lightgrey solid', 'borderBottom': 'thin lightgrey solid'},
-        #     header_style_by_column={
-        #         "Temperature": {"textAlign": "right", "fontFamily": "monospaced"},
-        #         "Humidity": {"textAlign": "right", "fontFamily": "monospaced"},
-        #         "Pressure": {"textAlign": "right", "fontFamily": "monospaced"},
-        #     },
-        #     cell_style_by_column={
-        #         "Temperature": {"textAlign": "right", "fontFamily": "monospaced"},
-        #         "Humidity": {"textAlign": "right", "fontFamily": "monospaced"},
-        #         "Pressure": {"textAlign": "right", "fontFamily": "monospaced"},
-        #     },
-        #     row_style={'paddingTop': 10, 'paddingBottom': 10}
-        # ),
-
-        dcc.Markdown('### List Style with Minimal Headers'),
+        dcc.Markdown('## List Style with Minimal Headers'),
 
         dcc.Markdown(dedent('''
         In some contexts, the grey background can look a little heavy.
@@ -241,28 +170,15 @@ layout = html.Div(
                 'backgroundColor': 'white',
                 'fontWeight': 'bold'
             },
+            style_cell_conditional=[
+                {
+                    'if': {'column_id': c},
+                    'textAlign': 'left'
+                } for c in ['Date', 'Region']
+            ],
         )
         '''
         ),
-
-        # html_table(
-        #     df,
-        #     table_style={'width': '100%'},
-        #     column_style={'width': '20%', 'paddingLeft': 20},
-        #     cell_style={"paddingLeft": 5, "paddingRight": 5},
-        #     header_style={'borderBottom': '2px lightgrey solid'},
-        #     header_style_by_column={
-        #         "Temperature": {"textAlign": "right", "fontFamily": "monospaced"},
-        #         "Humidity": {"textAlign": "right", "fontFamily": "monospaced"},
-        #         "Pressure": {"textAlign": "right", "fontFamily": "monospaced"},
-        #     },
-        #     cell_style_by_column={
-        #         "Temperature": {"textAlign": "right", "fontFamily": "monospaced"},
-        #         "Humidity": {"textAlign": "right", "fontFamily": "monospaced"},
-        #         "Pressure": {"textAlign": "right", "fontFamily": "monospaced"},
-        #     },
-        #     row_style={'paddingTop': 10, 'paddingBottom': 10}
-        # ),
 
         dcc.Markdown(dedent('''
         ## Striped Rows
@@ -272,10 +188,31 @@ layout = html.Div(
         alternating background colors.
         We recommend using colors that are faded so as to
         not attract too much attention to the stripes.
-
-        In particular, here are some suggested colors:
-        - TODO - suggested colors
         ''')),
+        Display(
+        '''
+        dash_table.DataTable(
+            data=df.to_dict('rows'),
+            columns=[{'id': c, 'name': c} for c in df.columns],
+
+            style_cell_conditional=[
+                {
+                    'if': {'row_index': 'odd'},
+                    'backgroundColor': 'rgb(248, 248, 248)'
+                }
+            ] + [
+                {
+                    'if': {'column_id': c},
+                    'textAlign': 'left'
+                } for c in ['Date', 'Region']
+            ],
+            style_header={
+                'backgroundColor': 'white',
+                'fontWeight': 'bold'
+            }
+        )
+        '''),
+
         Display(
         '''
         dash_table.DataTable(
@@ -289,8 +226,46 @@ layout = html.Div(
         )
         '''),
 
+        dcc.Markdown(dedent(
+        '''
+        ## Multi-Headers
 
-        dcc.Markdown('### Dark Theme with Cells'),
+        Multi-headers are natively supported in the `DataTable`.
+        Just set `name` inside `columns` as a list of strings instead of a
+        single string and toggle `merge_duplicate_headers=True`.
+        `DataTable` will check the neighbors of each header row and, if they
+        match, will merge them into a single cell automatically.
+        '''
+        )),
+        Display(
+        '''
+        dash_table.DataTable(
+            columns=[
+                {"name": ["", "Year"], "id": "year"},
+                {"name": ["City", "Montreal"], "id": "montreal"},
+                {"name": ["City", "Toronto"], "id": "toronto"},
+                {"name": ["City", "Ottawa"], "id": "ottawa", "hidden": True},
+                {"name": ["City", "Vancouver"], "id": "vancouver"},
+                {"name": ["Climate", "Temperature"], "id": "temp"},
+                {"name": ["Climate", "Humidity"], "id": "humidity"},
+            ],
+            data=[
+                {
+                    "year": i,
+                    "montreal": i * 10,
+                    "toronto": i * 100,
+                    "ottawa": i * -1,
+                    "vancouver": i * -10,
+                    "temp": i * -100,
+                    "humidity": i * 5,
+                }
+                for i in range(10)
+            ],
+            merge_duplicate_headers=True,
+        )
+        '''),
+
+        dcc.Markdown('## Dark Theme with Cells'),
 
         dcc.Markdown(dedent(
         """
@@ -329,7 +304,7 @@ layout = html.Div(
         '''),
 
         dcc.Markdown(dedent('''
-        ### Highlighting Certain Rows
+        ## Highlighting Certain Rows
         You can draw attention to certain rows by providing a unique
         background color, bold text, or colored text.
         ''')),
@@ -341,10 +316,6 @@ layout = html.Div(
             columns=[
                 {"name": i, "id": i} for i in df.columns
             ],
-            content_style="grow",
-            style_table={
-                "width": "100%"
-            },
             style_data_conditional=[{
                 "if": {"row_index": 4},
                 "backgroundColor": "#3D9970",
@@ -353,7 +324,22 @@ layout = html.Div(
         )
         '''),
 
-        dcc.Markdown('### Highlighting Certain Columns'),
+        Display(
+        '''
+        dash_table.DataTable(
+            data=df.to_dict("rows"),
+            columns=[
+                {"name": i, "id": i} for i in df.columns
+            ],
+            style_as_list_view=True,
+            style_data_conditional=[{
+                "if": {"row_index": 4},
+                "fontWeight": "bold"
+            }]
+        )
+        '''),
+
+        dcc.Markdown('## Highlighting Certain Columns'),
 
         dcc.Markdown(dedent('''
         Similarly, certain columns can be highlighted.
@@ -375,20 +361,7 @@ layout = html.Div(
         '''
         ),
 
-        # html_table(
-        #     df,
-        #     cell_style={'border': 'thin lightgrey solid', 'color': 'rgb(60, 60, 60)'},
-        #     table_style={'width': '100%'},
-        #     column_style={'width': '20%', 'paddingLeft': 20},
-        #     header_style={'backgroundColor': 'rgb(235, 235, 235)'},
-        #     cell_style_by_column={
-        #         "Temperature": {
-        #             "backgroundColor": "yellow"
-        #         },
-        #     }
-        # ),
-
-        dcc.Markdown('### Highlighting Certain Cells'),
+        dcc.Markdown('## Highlighting Certain Cells'),
 
         dcc.Markdown(dedent('''
         You can also highlight certain cells. For example, you may want to
@@ -422,53 +395,5 @@ layout = html.Div(
         '''
         ),
 
-        # html_table(
-        #     df,
-        #     cell_style={'border': 'thin lightgrey solid', 'color': 'rgb(60, 60, 60)'},
-        #     table_style={'width': '100%'},
-        #     column_style={'width': '20%', 'paddingLeft': 20},
-        #     header_style={'backgroundColor': 'rgb(235, 235, 235)'},
-        #     conditional_cell_style=lambda cell, column: (
-        #         {'backgroundColor': 'yellow'}
-        #         if (
-        #             (column == 'Region' and cell == 'Montreal')
-        #             or
-        #             (cell == 20)
-        #         ) else {}
-        #     )
-        # ),
-
-        dcc.Markdown(dedent(
-        '''
-        ### Multi-Headers
-        '''
-        )),
-        Display(
-        '''
-        dash_table.DataTable(
-            columns=[
-                {"name": ["", "Year"], "id": "year"},
-                {"name": ["City", "Montreal"], "id": "montreal"},
-                {"name": ["City", "Toronto"], "id": "toronto"},
-                {"name": ["City", "Ottawa"], "id": "ottawa", "hidden": True},
-                {"name": ["City", "Vancouver"], "id": "vancouver"},
-                {"name": ["Climate", "Temperature"], "id": "temp"},
-                {"name": ["Climate", "Humidity"], "id": "humidity"},
-            ],
-            data=[
-                {
-                    "year": i,
-                    "montreal": i * 10,
-                    "toronto": i * 100,
-                    "ottawa": i * -1,
-                    "vancouver": i * -10,
-                    "temp": i * -100,
-                    "humidity": i * 5,
-                }
-                for i in range(10)
-            ],
-            merge_duplicate_headers=True,
-        )
-        ''')
     ]
 )
