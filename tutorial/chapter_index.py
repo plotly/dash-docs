@@ -561,6 +561,15 @@ chapters = {
         '''
     },
 
+    'filtering': {
+        'url': '/datatable/filtering',
+        'content': tutorial.table.filtering_chapter.layout,
+        'name': 'Filtering Syntax',
+        'description': '''
+        Reference for frontend and backend filtering syntax for the DataTable.
+        '''
+    },
+
     'roadmap': {
         'url': '/datatable/reference',
         'content': tutorial.table.reference_chapter.layout,
