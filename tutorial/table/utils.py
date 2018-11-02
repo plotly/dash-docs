@@ -1,4 +1,20 @@
+import dash_core_components as dcc
 import dash_html_components as html
+from textwrap import dedent
+
+
+
+def CreateDisplay(scope):
+    def Display(example_string):
+        return html.Div([
+            dcc.SyntaxHighlighter(
+                dedent(example_string).strip(),
+                language='python',
+                customStyle={'marginBottom': 10, 'borderLeft': 'thin #C8D4E3 solid'}
+            ),
+            eval(dedent(example_string), scope)
+        ])
+    return Display
 
 
 def merge(*args):

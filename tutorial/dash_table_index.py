@@ -72,23 +72,36 @@ layout = html.Div([
     ]),
 
     Section('Dash DataTable User Guide', [
-        Chapter('Part 1. Styling, Sizing, and Conditional Formatting',
-            '/datatable/styling',
+        Chapter('Part 1. Sizing',
+            '/datatable/sizing',
             '''
-            Several examples on how to change the style and sizing of the
-            table. This includes:
-            - Table height, width
-            - Text alignment
-            - Per-column styles
-            - Conditional formatting
+            All about sizing the DataTable. Examples include:
+            - Setting the width and the height of the table
+            - Responsive table design
+            - Setting the widths of individual columns
+            - Handling long text
             - Fixing rows and columns
 
-            The styling API for the table has been particularly tricky for
-            us to nail down, so be read this chapter to understand the nuances,
-            limitations, and the APIs that we're exploring.
             '''),
 
-        Chapter('Part 2. Sorting, Filtering, Selecting, and Paging',
+        Chapter('Part 2. Styling',
+            '/datatable/style',
+            '''
+            The style of the DataTable is highly customizable. This chapter
+            includes examples for:
+            - Conditional formatting
+            - Displaying multiple rows of headers
+            - Highlighting rows, columns, and cells
+            - Styling the table as a list view
+            - Changing the colors (including a dark theme!)
+
+            The sizing API for the table has been particularly tricky for
+            us to nail down, so be read this chapter to understand the nuances,
+            limitations, and the APIs that we're exploring.
+
+            '''),
+
+        Chapter('Part 3. Sorting, Filtering, Selecting, and Paging',
             '/datatable/interactivity',
             '''
             The DataTable is interactive. This chapter demonstrates the
@@ -100,10 +113,10 @@ layout = html.Div([
             - Filtering Data
             '''),
 
-        Chapter([html.Span('Part 3. Sorting, Filtering, and Paging '), html.I('with Python')],
+        Chapter([html.Span('Part 4. Sorting, Filtering, and Paging '), html.I('with Python')],
             '/datatable/callbacks',
             '''
-            In Part 2, the paging, sorting, and filtering was done entirely
+            In Part 3, the paging, sorting, and filtering was done entirely
             clientside (in the browser). This means that you need to
             load all of the data into the table up-front. If your data is large,
             then this can be prohibitively slow.
@@ -114,7 +127,7 @@ layout = html.Div([
             own routines with SQL or even generate the data on the fly!
             '''),
 
-        Chapter('Part 4. Editable Tables',
+        Chapter('Part 5. Editable Tables',
             '/datatable/editable',
             '''
             The DataTable is editable. Like a spreadsheet, it can be used
@@ -131,7 +144,7 @@ layout = html.Div([
             - Running Python computations on certain columns or cells
             '''),
 
-        Chapter('Part 5. Rendering Cells as Dropdowns',
+        Chapter('Part 6. Rendering Cells as Dropdowns',
             '/datatable/dropdowns',
             '''
             Cells can be rendered as editable Dropdowns. This is our first
@@ -141,7 +154,7 @@ layout = html.Div([
             of.
             '''),
 
-        Chapter('Part 6. Table Reference',
+        Chapter('Part 7. Table Reference',
             '/datatable/reference',
             '''
             The full list of Table properties and their settings.

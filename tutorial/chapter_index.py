@@ -500,14 +500,26 @@ chapters = {
 
 ### Start DataTable Docs
 
-    'datatable-styling': {
-        'url': '/datatable/styling',
-        'content': tutorial.table.styling_chapter.layout,
-        'name': 'Styling and Sizing - DataTable',
+    'datatable-sizing': {
+        'url': '/datatable/sizing',
+        'content': tutorial.table.sizing_chapter.layout,
+        'name': 'Sizing - DataTable',
         'description': """
-            All about sizing and styling the DataTable.
-            Examples on how to change the size of the column widths,
-            the colors, and more.
+            All about sizing the DataTable.
+            Examples on how to change the width and height of the table,
+            the widths of the individual columns columns, handling
+            text overflow, and more.
+        """
+    },
+
+    'datatable-styling': {
+        'url': '/datatable/style',
+        'content': tutorial.table.styling_chapter.layout,
+        'name': 'Style - DataTable',
+        'description': """
+            All about styling the DataTable.
+            Examples on how to change the colors, conditional formatting,
+            styling the table as a list view, and more.
         """
     },
 
