@@ -45,7 +45,7 @@ layout = html.Div([
 
     In this example, we initialize a table with 10 blank rows and
     a few predefined columns. To retrieve the data, just listen to the
-    `dataframe` property.
+    `data` property.
 
     A few notes:
     - You can restrict certain columns from being editable by

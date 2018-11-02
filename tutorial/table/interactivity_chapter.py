@@ -57,10 +57,10 @@ layout = html.Div(
         """
         By default, these transformations are done clientside.
         Your Dash callbacks can respond to these modifications
-        by listening to the `dataframe` property as an `Input`.
+        by listening to the `data` property as an `Input`.
 
-        Note that if `dataframe` is an `Input` then the entire
-        `dataframe` will be passed over the network: if your dataframe is
+        Note that if `data` is an `Input` then the entire
+        `data` will be passed over the network: if your dataframe is
         large, then this will become slow. For large dataframes, you can
         perform the [sorting or filtering in Python instead](/datatable/callbacks).
         """

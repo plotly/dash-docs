@@ -131,7 +131,7 @@ layout = html.Div([
 
     dcc.Markdown(dedent('''
     This final example ties it all together: the graph component
-    displays the current page of the `dataframe`.
+    displays the current page of the `data`.
     ''')),
     dcc.SyntaxHighlighter(
         examples['callbacks_filtering_graph.py'][0],
