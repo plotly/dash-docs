@@ -42,8 +42,9 @@ if __name__ == '__main__':
 
     dcc.Markdown("""
 ## Server
-`server.py` is where we actually define the Dash app instance, and possibly grab a reference to the Flask 
-server instance:"""),
+`server.py` is where we actually define the Dash app instance and attach the app layout. 
+
+    """),
 
     dcc.SyntaxHighlighter("""
 # Required import
