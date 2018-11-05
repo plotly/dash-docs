@@ -58,10 +58,6 @@ app = Dash()
 
 # Attach the main layout
 app.layout = main_layout
-
-# This is necessary to prevent warnings 
-# as callbacks will be defined in separate file
-app.config.suppress_callback_exceptions = True
     """, customStyle=styles.code_container),
 
 
