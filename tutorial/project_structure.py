@@ -96,7 +96,7 @@ from server import app
 # Create one or more callbacks
 @app.callback(Output(...),
                [Input(...)])
-def do something(n_intervals):
+def do something(input_argument):
     pass
 )
 """, customStyle=styles.code_container),
