@@ -84,6 +84,26 @@ main_layout = html.Div(
 )
 """, customStyle=styles.code_container),
 
+dcc.Markdown("""
+## Callbacks
+Callbacks are functional, responding to user input or other events. We will define callbacks in `callbacks.py`.
+    """),
+
+    dcc.SyntaxHighlighter("""
+# Import Dash Input and Output
+from dash.dependencies import Input, Output
+
+# Import app instance
+from server import app
+
+# Create one or more callbacks
+@app.callback(Output(...),
+               [Input(...)])
+def do something(n_intervals):
+    pass
+)
+""", customStyle=styles.code_container),
+
     dcc.Markdown("""
 ## Related resources
 This chapter is informed and inspired by the following resource(s) and discussion(s):
