@@ -1,5 +1,7 @@
 import dash_core_components as dcc
 
+from tutorial import styles
+
 layout = [
     dcc.Markdown(
 """
@@ -26,8 +28,9 @@ Each Dash app needs a main entrypoint, which is basically the file you run with 
 
 In our case, we will fall back to a long-standing convention in web development, and call our entry point `index.py`.
 The `index.py` file will be fairly minimal, containing only logic to run the app, e.g.
+"""),
 
-```py
+    dcc.SyntaxHighlighter("""
 # Import the app and server instances
 from server import app, server
 
@@ -63,13 +66,15 @@ app.index_string = '''
 if __name__ == '__main__':
     app.run_server(debug=True, threaded=True, port=8050)
 
-```
+""", customStyle=styles.code_container),
+
+    dcc.Markdown("""
 
 ## Server
 `server.py` is where we actually define the Dash app instance, and possibly grab a reference to the Flask 
-server instance:
+server instance:"""),
 
-```py
+    dcc.SyntaxHighlighter("""
 # Required import
 from dash import Dash
 
@@ -105,24 +110,28 @@ server = app.server
 app.css.config.serve_locally = True
 app.scripts.config.serve_locally = True
 
-# This is necessary to prevent warnings as callbacks will be defined in separate file
+# This is necessary to prevent warnings 
+# as callbacks will be defined in separate file
 app.config.suppress_callback_exceptions = True
 
 # Optionally add server routes, e.g.
 @server.route('/favicon.ico')
 def favicon():
-    """Serve the favicon"""
+    '''Serve the favicon'''
     return send_from_directory(
         app._assets_folder,
         'favicon.ico',
         mimetype='image/x-icon')
-```
+    """, customStyle=styles.code_container),
 
+
+    dcc.Markdown("""
 ## Layouts
 Layouts are structural in nature, defining the tree of components to render on the page. For our project structure,
 we will define layouts in `layouts.py`.
+    """),
 
-```py
+    dcc.SyntaxHighlighter("""
 # Import Dash Core Components and HTML as needed
 import dash_core_components as dcc
 import dash_html_components as html
@@ -133,8 +142,9 @@ main_layout = html.Div(
         # Additional HTML or DCC children
     ]
 )
-```
+""", customStyle=styles.code_container),
 
+    dcc.Markdown("""
 ## Related resources
 This chapter is informed and inspired by the following resource(s) and discussion(s):
 
