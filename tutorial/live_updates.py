@@ -146,7 +146,7 @@ import dash_html_components as html
 app.layout = html.H1('The time is: ' + str(datetime.datetime.now()))
 
 if __name__ == '__main__':
-    app.run_server()
+    app.run_server(debug=True)
 ```
 
 then your app would display the time when the app was started.
@@ -166,7 +166,7 @@ def serve_layout():
 app.layout = serve_layout
 
 if __name__ == '__main__':
-    app.run_server()
+    app.run_server(debug=True)
 ```
 
 You can combine this with [time-expiring caching](/performance) and serve

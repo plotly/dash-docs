@@ -201,7 +201,7 @@ layout = html.Div([
     ### All callbacks must be defined before the server starts
 
     All your callbacks must be defined before your Dash app's server starts
-    running, which is to say, before you call `app.run_server()`. This means
+    running, which is to say, before you call `app.run_server(debug=True)`. This means
     that while you can assemble changed layout fragments dynamically during the
     handling of a callback, you can't define dynamic callbacks in response to
     user input during the handling of a callback. If you have a dynamic
