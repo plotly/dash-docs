@@ -121,7 +121,7 @@ h2, h3, h4, h5, h6 {
 .toc--chapter .toc--chapter-link {
     background-color: white;
     font-family: Dosis, 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    text-decoration: none;
+    text-decoration: underline;
     padding-left: 0px;
     list-style: none;
     font-size: 26px;
