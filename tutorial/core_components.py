@@ -291,7 +291,7 @@ dcc.DatePickerRange(
 
 
     dcc.Markdown('''
-    [View the docs](/datatable) or [View the source](https://github.com/plotly/datatable)
+    [View the docs](/datatable) or [View the source](https://github.com/plotly/dash-table)
 
     ***
     '''.replace('    ', '')),
