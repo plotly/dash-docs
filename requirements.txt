@@ -9,7 +9,7 @@ dash-core-components==0.38.0
 dash-dangerously-set-inner-html==0.0.1
 dash-html-components==0.13.2
 dash-renderer==0.15.1
-dash_table==3.1.6
+dash_table==3.1.7
 dash-table-experiments==0.6.0
 decorator==4.3.0
 enum34==1.1.6
