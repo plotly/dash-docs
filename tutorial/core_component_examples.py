@@ -1167,8 +1167,8 @@ Upload = html.Div([
     Syntax(examples['upload-datafile'][0], summary=dcc.Markdown(s('''
         Here's an example that parses CSV or Excel files and displays
         the results in a table. Note that this example uses the
-        `DataTable` prototype from the
-        [dash-table-experiments](https://github.com/plotly/dash-table-experiments)
+        `DataTable` from the
+        [dash-table](https://github.com/plotly/dash-table)
         project.
     '''))),
 
@@ -1381,15 +1381,15 @@ Store = html.Div([
                   [Input('memory-countries', 'value')])
     def filter_countries(countries_selected):
         if not countries_selected:
-            # Return all the records on initial load/no country selected.
-            return df.to_dict('records')
-    
+            # Return all the rows on initial load/no country selected.
+            return df.to_dict('rows')
+
         filtered = df.query('country in @countries_selected')
-    
-        return filtered.to_dict('records')
-    
-    
-    @app.callback(Output('memory-table', 'rows'),
+
+        return filtered.to_dict('rows')
+
+
+    @app.callback(Output('memory-table', 'data'),
                   [Input('memory-output', 'data')])
     def on_data_set_table(data):
         if data is None:

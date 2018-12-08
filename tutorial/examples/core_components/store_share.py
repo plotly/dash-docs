@@ -7,7 +7,7 @@ from dash.exceptions import PreventUpdate
 
 import dash_html_components as html
 import dash_core_components as dcc
-import dash_table_experiments as dte
+import dash_table
 
 app = dash.Dash(__name__)
 
@@ -29,7 +29,7 @@ app.layout = html.Div([
     ], value='lifeExp'),
     html.Div([
         dcc.Graph(id='memory-graph'),
-        dte.DataTable(rows=[{}], id='memory-table'),
+        dash_table.DataTable(id='memory-table'),
     ])
 ])
 
@@ -38,15 +38,15 @@ app.layout = html.Div([
               [Input('memory-countries', 'value')])
 def filter_countries(countries_selected):
     if not countries_selected:
-        # Return all the records on initial load/no country selected.
-        return df.to_dict('records')
+        # Return all the rows on initial load/no country selected.
+        return df.to_dict('rows')
 
     filtered = df.query('country in @countries_selected')
 
-    return filtered.to_dict('records')
+    return filtered.to_dict('rows')
 
 
-@app.callback(Output('memory-table', 'rows'),
+@app.callback(Output('memory-table', 'data'),
               [Input('memory-output', 'data')])
 def on_data_set_table(data):
     if data is None:
