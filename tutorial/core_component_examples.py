@@ -1228,25 +1228,25 @@ Store = html.Div([
     html.H1('Store component'),
     dcc.Markdown(s('''
     Store json data in the browser.
-    
+
     ## limitations.
-    
+
     - The store will not work properly if there is no callback associated.
     - `modified_timestamp` is read only.
-    
+
     ### local/session specifics
     - The store will not work properly if it's not included in the initial layout.
     - The total data of all stores should not exceed 10MB.
-    
+
     ### Retrieving the initial store data
-    
-    If you use the `data` prop as an output, you cannot get the 
-    initial data on load with the `data` prop. To counter this, 
+
+    If you use the `data` prop as an output, you cannot get the
+    initial data on load with the `data` prop. To counter this,
     you can use the `modified_timestamp` as `Input` and the `data` as `State`.
-    
+
     This limitation is due to the initial None callbacks blocking the true
     data callback in the request queue.
-    
+
     See https://github.com/plotly/dash-renderer/pull/81 for further discussion.
     ''')),
     html.H2('Store clicks example'),
@@ -1257,12 +1257,12 @@ Store = html.Div([
     import dash_core_components as dcc
     from dash.dependencies import Output, Input, State
     from dash.exceptions import PreventUpdate
-    
+
     # This stylesheet makes the buttons and table pretty.
     external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
-    
+
     app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
-    
+
     app.layout = html.Div([
         # The memory store will always get the default on page refreshes
         dcc.Store(id='memory'),
@@ -1270,16 +1270,16 @@ Store = html.Div([
         # only the first time the page is loaded
         # and keep it until it is cleared.
         dcc.Store(id='local', storage_type='local'),
-        # Same as the local store but will lose the data 
+        # Same as the local store but will lose the data
         # when the browser/tab closes.
         dcc.Store(id='session', storage_type='session'),
-    
+
         html.Div([
             html.Button('Click to store in memory', id='memory-button'),
             html.Button('Click to store in localStorage', id='local-button'),
             html.Button('Click to store in sessionStorage', id='session-button')
         ]),
-    
+
         html.Div([
             html.Table([
                 html.Thead([
@@ -1299,10 +1299,10 @@ Store = html.Div([
             ])
         ])
     ])
-    
+
     # Create two callback for every store.
     for store in ('memory', 'local', 'session'):
-    
+
         # add a click to the appropriate store.
         @app.callback(Output(store, 'data'),
                       [Input('{}-button'.format(store), 'n_clicks')],
@@ -1312,13 +1312,13 @@ Store = html.Div([
                 # Preventing the None callbacks is important with the store component,
                 # you don't want to update the store for nothing.
                 raise PreventUpdate
-    
+
             # Give a default data dict with 0 clicks if there's no data.
             data = data or {'clicks': 0}
-    
+
             data['clicks'] = data['clicks'] + 1
             return data
-    
+
         # output the stored clicks in the table cell.
         @app.callback(Output('{}-clicks'.format(store), 'children'),
                       [Input(store, 'modified_timestamp')],
@@ -1326,12 +1326,12 @@ Store = html.Div([
         def on_data(ts, data):
             if ts is None:
                 raise PreventUpdate
-    
+
             data = data or {}
-    
+
             return data.get('clicks', 0)
-    
-    
+
+
     if __name__ == '__main__':
         app.run_server(debug=True, port=8077, threaded=True)
 
@@ -1344,23 +1344,23 @@ Store = html.Div([
     import collections
     import dash
     import pandas as pd
-    
+
     from dash.dependencies import Output, Input
     from dash.exceptions import PreventUpdate
-    
+
     import dash_html_components as html
     import dash_core_components as dcc
-    import dash_table_experiments as dte
-    
+    import dash_table
+
     app = dash.Dash(__name__)
-    
+
     df = pd.read_csv(
         'https://raw.githubusercontent.com/'
         'plotly/datasets/master/gapminderDataFiveYear.csv')
-    
+
     countries = set(df['country'])
-    
-    
+
+
     app.layout = html.Div([
         dcc.Store(id='memory-output'),
         dcc.Dropdown(id='memory-countries', options=[
@@ -1372,11 +1372,11 @@ Store = html.Div([
         ], value='lifeExp'),
         html.Div([
             dcc.Graph(id='memory-graph'),
-            dte.DataTable(rows=[{}], id='memory-table'),
+            dash_table.DataTable(id='memory-table'),
         ])
     ])
-    
-    
+
+
     @app.callback(Output('memory-output', 'data'),
                   [Input('memory-countries', 'value')])
     def filter_countries(countries_selected):
@@ -1394,36 +1394,36 @@ Store = html.Div([
     def on_data_set_table(data):
         if data is None:
             raise PreventUpdate
-    
+
         return data
-    
-    
+
+
     @app.callback(Output('memory-graph', 'figure'),
                   [Input('memory-output', 'data'),
                    Input('memory-field', 'value')])
     def on_data_set_graph(data, field):
         if data is None:
             raise PreventUpdate
-    
+
         aggregation = collections.defaultdict(
             lambda: collections.defaultdict(list)
         )
-    
+
         for row in data:
-    
+
             a = aggregation[row['country']]
-    
+
             a['name'] = row['country']
             a['mode'] = 'lines+markers'
-    
+
             a['x'].append(row[field])
             a['y'].append(row['year'])
-    
+
         return {
             'data': aggregation.values()
         }
-    
-    
+
+
     if __name__ == '__main__':
         app.run_server(debug=True, threaded=True, port=10450)
     ''')),
