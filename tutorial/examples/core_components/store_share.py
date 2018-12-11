@@ -29,7 +29,10 @@ app.layout = html.Div([
     ], value='lifeExp'),
     html.Div([
         dcc.Graph(id='memory-graph'),
-        dash_table.DataTable(id='memory-table'),
+        dash_table.DataTable(
+            id='memory-table',
+            columns=[{'name': i, 'id': i} for i in df.columns]
+        ),
     ])
 ])
 

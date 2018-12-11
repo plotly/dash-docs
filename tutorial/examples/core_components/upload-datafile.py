@@ -61,7 +61,10 @@ def parse_contents(contents, filename, date):
         html.H5(filename),
         html.H6(datetime.datetime.fromtimestamp(date)),
 
-        dash_table.DataTable(data=df.to_dict('rows')),
+        dash_table.DataTable(
+            data=df.to_dict('rows'),
+            columns=[{'name': i, 'id': i} for i in df.columns]
+        ),
 
         html.Hr(),  # horizontal line
 
