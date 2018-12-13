@@ -3,12 +3,12 @@ certifi==2018.4.16
 chardet==3.0.4
 click==6.7
 configparser==3.5.0
-dash==0.32.2
+dash==0.32.0rc2
 dash-auth==1.2.0
-dash-core-components==0.40.3
+dash-core-components==0.39.0rc103
 dash-dangerously-set-inner-html==0.0.1
-dash-html-components==0.13.2
-dash-renderer==0.16.0
+dash-html-components==0.14.0rc4
+dash-renderer==0.15.0rc1
 dash_table==3.1.11
 decorator==4.3.0
 enum34==1.1.6
