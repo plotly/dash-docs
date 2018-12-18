@@ -7,7 +7,7 @@ dash==0.35.0rc1
 dash-auth==1.2.0
 dash-core-components==0.42.0rc1
 dash-dangerously-set-inner-html==0.0.1
-dash-html-components==0.14.0rc4
+dash-html-components==0.14.0rc5
 dash-renderer==0.15.0rc1
 dash_table==3.1.11
 decorator==4.3.0
