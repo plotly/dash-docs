@@ -116,11 +116,14 @@ class Tests(IntegrationTests):
 
         def visit_and_snapshot(href):
             print(href)
-            self.driver.get('http://localhost:8050{}'.format(href))
-            self.wait_for_element_by_id('wait-for-page-{}'.format(href))
-            time.sleep(25)
-            self.snapshot(href)
-            self.driver.back()
+            if href == '/dash-daq':
+                pass
+            else:
+                self.driver.get('http://localhost:8050{}'.format(href))
+                self.wait_for_element_by_id('wait-for-page-{}'.format(href))
+                time.sleep(10)
+                self.snapshot(href)
+                self.driver.back()
 
         for link in links:
             if link.startswith('/'):
