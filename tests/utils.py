@@ -1,7 +1,7 @@
 import time
 
 
-TIMEOUT = 20  # Seconds
+TIMEOUT = 30  # Seconds
 
 
 def invincible(func):
