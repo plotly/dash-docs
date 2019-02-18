@@ -5,7 +5,8 @@
   "env": {
     "accesstoken": {
       "required": true
-    }
+    },
+    "WEB_CONCURRENCY": 2
   },
   "formation": {
   },
