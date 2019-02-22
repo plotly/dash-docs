@@ -1482,8 +1482,8 @@ LoadingComponent = html.Div([
 
     Syntax(examples['loading_component'][0]),
     Example(examples['loading_component'][1]),
-    # html.H2('Loading with data attrib'),
-
-
+    dcc.Markdown(s('''
+    Please also check out [this section on loading states](/loading-states) if you want a more customizable experience.
+    ''')),
     generate_prop_table('Loading')
 ])

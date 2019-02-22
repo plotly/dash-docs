@@ -31,6 +31,7 @@ from tutorial import urls
 from tutorial import react_for_python_developers
 from tutorial import table
 from tutorial import devtools
+from tutorial import loading_states
 
 
 ## The chapters dict is used to generate the dash-docs search index
@@ -284,6 +285,12 @@ chapters = {
         'content': react_for_python_developers.layout,
         'name': 'React for Python Developers',
         'description': 'A tutorial on how to program in React and JavaScript for Python developers.'
+    },
+    'loading-states': {
+        'url': '/loading-states',
+        'content': loading_states.layout,
+        'name': 'Loading states',
+        'description': 'Getting the loading state of a component'
     },
 ### End of home.py ###
 
