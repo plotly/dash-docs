@@ -34,7 +34,8 @@ examples = {
     'upload-image':  tools.load_example('tutorial/examples/core_components/upload-image.py'),
     'button_basic': tools.load_example('tutorial/examples/core_components/button_basic.py'),
     'button_n_clicks_timestamp': tools.load_example('tutorial/examples/core_components/button_n_clicks_timestamp.py'),
-    'logout_button': tools.load_example('tutorial/examples/core_components/logout_button.py')
+    'logout_button': tools.load_example('tutorial/examples/core_components/logout_button.py'),
+    'loading_component': tools.load_example('tutorial/examples/core_components/loading_component.py')
 }
 
 
@@ -1443,18 +1444,18 @@ LogoutButton = html.Div([
     dcc.Markdown(s('''
     Please note that no authentication is performed in Dash by default
     and you have to implement the authentication yourself.
-    
+
     ## List of packages that provide authentication methods:
-    
+
     - [flask-login](https://flask-login.readthedocs.io/en/latest/)
     - [dash-auth](https://github.com/plotly/dash-auth)
-    
+
     You can also use these packages for custom authentication:
-    
+
     ### Password hashes:
     - [bcrypt](https://github.com/pyca/bcrypt/)
     - [passlib](https://passlib.readthedocs.io/en/stable/)
-    
+
     ### Session/cookies
     - [flask-session](https://pythonhosted.org/Flask-Session/)
     - [itsdangerous](https://pythonhosted.org/itsdangerous/)
@@ -1467,4 +1468,22 @@ LogoutButton = html.Div([
     Example(examples['logout_button'][1]),
 
     generate_prop_table('LogoutButton')
+])
+
+LoadingComponent = html.Div([
+    html.H1('Loading Component'),
+
+    dcc.Markdown(s('''
+    Here’s a small example that wraps the outputs for a couple of `Input` components in the `Loading` component. As you can see,
+    you can define the type of spinner you would like to show (refer to table below for all possible types of spinners) and some other kinds
+    of attributes, such as `fullscreen` if you would like the spinner to be displayed fullscreen. Notice that, the Loading component traverses all
+    of it's children to find a loading state, as demonstrated in the second callback, so that even nested children will get picked up.
+    ''')),
+
+    Syntax(examples['loading_component'][0]),
+    Example(examples['loading_component'][1]),
+    # html.H2('Loading with data attrib'),
+
+
+    generate_prop_table('Loading')
 ])

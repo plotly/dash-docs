@@ -758,7 +758,7 @@ chapters = {
         'content': tutorial.cytoscape.elements_chapter.layout,
         'name': 'Cytoscape Elements',
         'description': '''
-        Overview of element declaration and manipulation. 
+        Overview of element declaration and manipulation.
         '''
     },
 
@@ -767,7 +767,7 @@ chapters = {
         'content': tutorial.cytoscape.layout_chapter.layout,
         'name': 'Cytoscape Layouts',
         'description': '''
-        Description of built-in layouts, and how to modify their properties. 
+        Description of built-in layouts, and how to modify their properties.
         '''
     },
 
@@ -859,6 +859,13 @@ chapters = {
         'content': examples.LogoutButton,
         'name': 'Logout button',
         'description': 'LogoutButton examples, properties and reference'
+    },
+
+    'loading-component': {
+        'url': '/dash-core-components/loading_component',
+        'content': examples.LoadingComponent,
+        'name': 'Loading component',
+        'description': 'Loading component examples, properties and reference'
     }
 
 }
