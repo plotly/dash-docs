@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from dash.dependencies import Input, Output
 import dash_core_components as dcc
 import dash_html_components as html
@@ -113,7 +114,7 @@ layout = html.Div([
     u'''
     This table contains columns with type `numeric` and `datetime`. The "max" columns have the default
     behavior and will not allow for invalid data to be passed in. The "min" columns are more permissive.
-    The "Min Temperature (˚F) column will default invalid entries to `None` and display "N/A". The "Min
+    The "Min Temperature (˚F)" column will default invalid entries to `None` and display "N/A". The "Min
     Temperature (Date)" column will validate the data but let invalid input go through as-is.
 
     Both temperature columns are using the Format helper object to create the desired formatting. The
