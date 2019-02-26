@@ -722,6 +722,15 @@ chapters = {
         '''
     },
 
+    'typing': {
+        'url': '/datatable/typing',
+        'content': tutorial.table.table_typing_chapter.layout,
+        'name': 'Typing and User Input Processing',
+        'description': '''
+        Column typing and user input validation, coercing, defaulting.
+        '''
+    },
+
     'dropdowns': {
         'url': '/datatable/dropdowns',
         'content': tutorial.table.dropdowns_chapter.layout,
@@ -767,7 +776,7 @@ chapters = {
         'content': tutorial.cytoscape.elements_chapter.layout,
         'name': 'Cytoscape Elements',
         'description': '''
-        Overview of element declaration and manipulation. 
+        Overview of element declaration and manipulation.
         '''
     },
 
@@ -776,7 +785,7 @@ chapters = {
         'content': tutorial.cytoscape.layout_chapter.layout,
         'name': 'Cytoscape Layouts',
         'description': '''
-        Description of built-in layouts, and how to modify their properties. 
+        Description of built-in layouts, and how to modify their properties.
         '''
     },
 
