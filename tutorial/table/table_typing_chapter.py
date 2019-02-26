@@ -11,7 +11,7 @@ from tutorial import styles, tools
 
 
 examples = {
-    example: tools.load_example('tutorial/examples/table/{}'.format(example))
+    example: tools.load_example(u'tutorial/examples/table/{}'.format(example))
     for example in [
         'typing_formatting.py',
         'typing_formatting.1.py'
