@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from server import app
 
 def exception_handler(func):
