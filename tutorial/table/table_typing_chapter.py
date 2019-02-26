@@ -110,7 +110,7 @@ layout = html.Div([
 
     section_title('DataTable with formatting'),
     dcc.Markdown(dedent(
-    '''
+    u'''
     This table contains columns with type `numeric` and `datetime`. The "max" columns have the default
     behavior and will not allow for invalid data to be passed in. The "min" columns are more permissive.
     The "Min Temperature (˚F) column will default invalid entries to `None` and display "N/A". The "Min

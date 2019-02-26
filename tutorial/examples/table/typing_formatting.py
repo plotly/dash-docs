@@ -26,13 +26,13 @@ app.layout = html.Div([
             'type': 'text'
         }, {
             'id': 'max',
-            'name': 'Max Temperature (˚F)',
+            'name': u'Max Temperature (˚F)',
             'type': 'numeric',
             'format': Format(
                 precision=0,
                 scheme=Scheme.fixed,
                 symbol=Symbol.yes,
-                symbol_suffix='˚F'
+                symbol_suffix=u'˚F'
             ),
             # 'format': {
             #     'locale': {
@@ -46,7 +46,7 @@ app.layout = html.Div([
             'type': 'datetime'
         }, {
             'id': 'min',
-            'name': 'Min Temperature (˚F)',
+            'name': u'Min Temperature (˚F)',
             'type': 'numeric',
             'format': Format(
                 nully='N/A',
@@ -54,7 +54,7 @@ app.layout = html.Div([
                 scheme=Scheme.fixed,
                 sign=Sign.parantheses,
                 symbol=Symbol.yes,
-                symbol_suffix='˚F'
+                symbol_suffix=u'˚F'
             ),
             # 'format': {
             #     'locale': {
