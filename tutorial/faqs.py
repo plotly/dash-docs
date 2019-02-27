@@ -44,7 +44,7 @@ layout = html.Div([
       class names of your components. Both `dash-html-components` and
       `dash-core-components` accept the attribute `className`, which corresponds
       to the HTML element attribute `class`.
-     
+
       The [Dash HTML Components](/dash-html-components) section in the Dash User
       Guide explains how to supply `dash-html-components` with both inline
       styles and CSS class names that you can target with CSS style sheets. The
@@ -53,7 +53,7 @@ layout = html.Div([
       can link your own style sheets to Dash apps.
 
     ------------------------
-    
+
     **Q:** *How can I add JavaScript to my Dash app?*
 
     **A:** You can add your own scripts to your Dash app, just like you would
@@ -62,42 +62,52 @@ layout = html.Div([
       Dash Guide.
 
     ------------------------
-    
+
     **Q:** *Can I make a Dash app with multiple pages?*
-    
+
     **A:** Yes! Dash has support for multi-page apps. See the [Multi-Page Apps
       and URL Support](/urls) section in the Dash User Guide.
-    
+
     ------------------------
 
     **Q:** *How I can I organise my Dash app into multiple files?*
-    
+
     **A:** A strategy for doing this can be found in the [Multi-Page Apps
       and URL Support](/urls) section in the Dash User Guide.
-    
+
     ------------------------
 
     **Q:** *How do I determine which `Input` has changed?*
 
-    **A:** In addition to the `n_clicks` property (which tracks the number of
-    times a component has been clicked), all `dash-html-components` have an
-    `n_clicks_timestamp` property, which records the time that the component was
-    last clicked. This provides a convenient way for detecting which
-    `html.Button` was clicked in order to trigger the current callback. Here's
-    an example of how this can be done:''')),
+    **A:** *New in v0.38.0!* In addition to event properties like `n_clicks`
+    that change whenever an event happens (in this case a click), there is a
+    global variable `dash.callback_context`, available only inside a callback.
+    It has properties:
+    - `triggered`: list of changed properties. This will be empty on initial
+      load, unless an `Input` prop got its value from another initial callback.
+      After a user action it is a length-1 list, unless two properties of a
+      single component update simultaneously, such as a value and a timestamp
+      or event counter.
+    - `inputs` and `states`: allow you to access the callback params
+      by id and prop instead of through the function args. These have the form
+      of dictionaries `{ 'component_id.prop_name': value }`
+
+    Here's an example of how this can be done:''')),
     Syntax(examples['last_clicked_button'][0]),
     Example(examples['last_clicked_button'][1]),
     dcc.Markdown(s('''
 
-    Note that `n_clicks` is the only property that has this timestamp
-    property. We will add general support for "determining which input changed"
-    in the future, you can track our progress in this [GitHub
-    Issue](https://github.com/plotly/dash/issues/291).
-    
+    Prior to v0.38.0, you needed to compare timestamp properties like
+    `n_clicks_timestamp` to find the most recent click. While existing uses of
+    `*_timestamp` continue to work for now, this approach is deprecated, and
+    may be removed in a future update. The one exception is
+    `modified_timestamp` from `dcc.Store`, which is safe to use, it is NOT
+    deprecated.
+
     ------------------------
 
     **Q:** *Can I use Jinja2 templates with Dash?*
-    
+
     **A:** Jinja2 templates are rendered on the server (often in a Flask app)
       before being sent to the client as HTML pages. Dash apps, on the other
       hand, are rendered on the client using React. This makes these
@@ -132,9 +142,9 @@ layout = html.Div([
       of people discussing Dash topics, helping each other with questions, and
       sharing Dash creations. Jump on over and join the discussion.
 
-    
+
     ## Gotchas
-    
+
     There are some aspects of how Dash works that can be counter-intuitive. This
     can be especially true of how the callback system works. This section
     outlines some common Dash gotchas that you might encounter as you start
@@ -143,7 +153,7 @@ layout = html.Div([
     good section to read through. If you still have residual questions, the
     [Dash Community forums](https://community.plot.ly/c/dash) is a great place
     to ask them.
-    
+
     ### Callbacks require their `Inputs`, `States`, and `Output` to be present in the layout
 
     By default, Dash applies validation to your callbacks, which performs checks
@@ -162,7 +172,7 @@ layout = html.Div([
 
 
     ### Callbacks require *all* `Inputs`, `States`, and `Output` to be rendered on the page
-    
+
     If you have disabled callback validation in order to support dynamic
     layouts, then you won't be automatically alerted to the situation where a
     component within a callback is not found within a layout. In this situation,
@@ -171,7 +181,7 @@ layout = html.Div([
     a subset of the specified `Inputs` present in the current page layout, the
     callback will simply not fire at all.
 
-    
+
     ### Callbacks can only target a single `Output` component/property pair
 
     Currently, for a given callback, it can only have a single `Output`, which
@@ -184,7 +194,7 @@ layout = html.Div([
     There are plans to remove this limitation. You can track the status of this
     in this [GitHub Issue](https://github.com/plotly/dash/issues/149).
 
-    
+
     ### A component/property pair can only be the `Output` of one callback
 
     For a given component/property pair (eg `'my-graph'`, `'figure'`), it can
@@ -196,7 +206,7 @@ layout = html.Div([
     triggered the callback ca be done using the `n_clicks_timestamp`
     property. For an example of this, see the question in the FAQ, *How do I
     determine which `Input` has changed?*.
-    
+
 
     ### All callbacks must be defined before the server starts
 
