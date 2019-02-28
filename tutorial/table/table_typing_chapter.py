@@ -68,7 +68,7 @@ layout = html.Div([
     configured on a per-column basis.
 
     See the table's [reference](/datatable/reference) `on_change.action`, `on_change.failure`
-    and `vaidation` column nested properties for details.
+    and `validation` column nested properties for details.
     ''')),
 
     dcc.Markdown(dedent(
@@ -96,7 +96,7 @@ layout = html.Div([
     '''
     This table contains two columns formatted by templates. The `Variation (%)` column is further
     configured by changing the sign behavior so that both the "+" and "-" sign are visible. Additional
-    configuration changes can be chained after a Format(...) and a FormatTemplate.<template>(...) calls.
+    configuration changes can be chained after a ```Format(...)``` and a ```FormatTemplate.<template>(...)``` calls.
     ''')),
     dcc.SyntaxHighlighter(
         examples['typing_formatting.1.py'][0],
@@ -114,11 +114,11 @@ layout = html.Div([
     This table contains columns with type `numeric` and `datetime`. The "max" columns have the default
     behavior and will not allow for invalid data to be passed in. The "min" columns are more permissive.
     The "Min Temperature (F)" column will default invalid entries to `None` and display "N/A". The "Min
-    Temperature (Date)" column will validate the data but let invalid input go through as-is.
+    Temperature (Date)" column will not try to validate or coerce the data.
 
     Both temperature columns are using the Format helper object to create the desired formatting. The
-    equivalent manual configuration is shown below. One can always see the resulting configuration for a
-    given Format object by using ```Format(...).to_plotly_json()```.
+    equivalent manual configuration is shown as comments in the code below. One can always see the resulting
+    configuration for a given Format object by using ```Format(...).to_plotly_json()```.
     ''')),
     dcc.SyntaxHighlighter(
         examples['typing_formatting.py'][0],

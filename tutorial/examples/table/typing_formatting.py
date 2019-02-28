@@ -35,6 +35,7 @@ app.layout = html.Div([
                 symbol=Symbol.yes,
                 symbol_suffix=u'˚F'
             ),
+            # equivalent manual configuration
             # 'format': {
             #     'locale': {
             #         'symbol': ['', '˚F']
@@ -57,6 +58,7 @@ app.layout = html.Div([
                 symbol=Symbol.yes,
                 symbol_suffix=u'˚F'
             ),
+            # equivalent manual configuration
             # 'format': {
             #     'locale': {
             #         'symbol': ['', '˚F']
@@ -76,8 +78,7 @@ app.layout = html.Div([
             'name': 'Min Temperature (Date)',
             'type': 'datetime',
             'on_change': {
-                'action': 'validate',
-                'failure': 'accept'
+                'action': 'none'
             }
         }],
         editable=True

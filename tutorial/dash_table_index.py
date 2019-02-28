@@ -145,7 +145,7 @@ layout = html.Div([
             '/datatable/typing',
             '''
             In this chapter, you'll learn how to configure the table to
-            - type the columns
+            - assign the column type
             - change the data presentation
             - change the data formatting
             - validate or coerce user data input
