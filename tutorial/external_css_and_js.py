@@ -429,7 +429,8 @@ if __name__ == '__main__':
     ## Customizing dash-renderer with request hooks
 
     To instantiate your own version of `dash-renderer`, you can override Dash's HTML Index Template and provide your own script that will be used instead of the standard script. This script should
-    somewhere call `var renderer = new DashRenderer();`, which instantiates the `DashRenderer` class.
+    somewhere call `var renderer = new DashRenderer();`, which instantiates the `DashRenderer` class. You can add this script to your index HTML when you're setting
+    `app.index_string`, or you could simply override `app.renderer` like so:
 
     ''')),
 
@@ -454,8 +455,9 @@ if __name__ == '__main__':
 
     dcc.Markdown(s('''
     Notice the `request_pre` function takes the payload of the request being sent as its argument, and the `request_post` fuction takes both the payload and the response of the server
-    as arguments. In the example above, the `request_pre` function is fired before each server call, and in the case of this example, it will `console.log()` the request parameter. The
-    `request_post` function will fire __after__ each server call, and in our example will also print out the response parameter.
+    as arguments. These can be altered in our function, allowing you to modify the response and request objects that Dash sends to the server. In the example above, the `request_pre`
+    function is fired before each server call, and in the case of this example, it will `console.log()` the request parameter. The `request_post` function will fire __after__ each server
+    call, and in our example will also print out the response parameter.
 
     ***
 
