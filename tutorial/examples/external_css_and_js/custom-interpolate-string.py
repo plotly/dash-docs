@@ -18,13 +18,15 @@ class CustomDash(dash.Dash):
                 {app_entry}
                 {config}
                 {scripts}
+                {renderer}
                 <div id="custom-footer">My custom footer</div>
             </body>
         </html>
         '''.format(
             app_entry=kwargs['app_entry'],
             config=kwargs['config'],
-            scripts=kwargs['scripts'])
+            scripts=kwargs['scripts'],
+            renderer=kwargs['renderer'])
 
 app = CustomDash()
 

@@ -15,14 +15,16 @@ app.index_string = '''
         {%css%}
     </head>
     <body>
-        <div>My Custom header</div>
+        <div>Testing custom DashRenderer</div>
         {%app_entry%}
         <footer>
             {%config%}
             {%scripts%}
-            {%renderer%}
+            <script id="_dash-renderer" type="application/javascript">
+                var renderer = new DashRenderer();
+            </script>
         </footer>
-        <div>My Custom footer</div>
+        <div>With request hooks</div>
     </body>
 </html>
 '''
