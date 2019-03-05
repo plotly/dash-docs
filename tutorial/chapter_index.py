@@ -550,8 +550,8 @@ chapters = {
     'app-auth-examples': {
         'url': '/dash-deployment-server/app-authentication',
         'content': dds_examples.Authentication,
-        'name': 'Dash App Authentication',
-        'description': 'Adding Authentication to your Dash App'
+        'name': 'Dash Enterprise Auth Features',
+        'description': 'Accessing User Authentication Data in your Dash App'
     },
 
     'app-privacy': {
