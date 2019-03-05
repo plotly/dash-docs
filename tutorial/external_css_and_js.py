@@ -58,9 +58,9 @@ layout = html.Div([
     are included in this folder. By default the url to request the assets will
     be `/assets` but you can customize this with the `assets_url_path` argument
     to `dash.Dash`.
-    
+
     **Important: For these examples, you need to include `__name__` in your Dash constructor.**
-    
+
     That is, `app = dash.Dash(__name__)` instead of `app = dash.Dash()`. [Here's why](https://community.plot.ly/t/dash-app-does-not-load-assets-and-app-index-string/12178/10?u=chriddyp).
 
     ### Example: Including Local CSS and JavaScript
@@ -178,9 +178,9 @@ h1, h2, h3, h4, h5, h6 {
     2 - Dash will include the files in alphanumerical order by filename.
     So, we recommend prefixing your filenames with numbers if you need to ensure
     their order (e.g. `10_typography.css`, `20_header.css`)
-    
-    3 - You can ignore certain files in your `assets` folder with a regex filter 
-    using `app = dash.Dash(assets_ignore='.*ignored.*')`. This will prevent Dash from 
+
+    3 - You can ignore certain files in your `assets` folder with a regex filter
+    using `app = dash.Dash(assets_ignore='.*ignored.*')`. This will prevent Dash from
     loading files which contain the above pattern.
 
     4 - If you want to include CSS from a remote URL, then see the next section.
@@ -191,18 +191,18 @@ h1, h2, h3, h4, h5, h6 {
     in the assets folder are loaded, eg: `app = dash.Dash(__name__, meta_tags=[...])`.
     When you run your application through some other command line (like the
     flask command or gunicorn/waitress), the `__main__` module wil no
-    longer located where `app.py` is. By explicitly setting `__name__`, 
+    longer located where `app.py` is. By explicitly setting `__name__`,
     Dash will be able to locate the relative `assets` folder correctly.
-    
+
     ### Hot Reloading
 
     By default, Dash includes "hot-reloading". This means that Dash will automatically refresh your browser when you make a change in your Python code _and_ your CSS code.
-    
+
     Give it a try: Change the color in `typography.css` from `hotpink` to `orange` and see your application update.
-    
-    > Don't like hot-reloading? You can turn this off with `app.run_server(dev_tools_hot_reload=False)`. 
+
+    > Don't like hot-reloading? You can turn this off with `app.run_server(dev_tools_hot_reload=False)`.
     > Learn more in [Dash Dev Tools documentation](/devtools). Questions? See the [community forum hot reloading discussion](https://community.plot.ly/t/announcing-hot-reload/14177).
-    
+
     ''')),
 
     dcc.Markdown(s('''
@@ -210,12 +210,12 @@ h1, h2, h3, h4, h5, h6 {
 
 ## Load Assets from a Folder Hosted on a CDN
 
-If you duplicate the file structure of your local assets folder to a folder hosted 
-externally to your Dash app, you can use `assets_external_path='http://your-external-assets-folder-url'` 
+If you duplicate the file structure of your local assets folder to a folder hosted
+externally to your Dash app, you can use `assets_external_path='http://your-external-assets-folder-url'`
 in the Dash constructor to load the files from there instead of locally. Dash will index your local
-assets folder to find all of your assets, map their relative path onto `assets_external_path` 
-and then request the resources from there. 
-`app.scripts.config.serve_locally = False` must also be set in order for this to work. 
+assets folder to find all of your assets, map their relative path onto `assets_external_path`
+and then request the resources from there.
+`app.scripts.config.serve_locally = False` must also be set in order for this to work.
 
 **Example:**
 ''')),
@@ -225,7 +225,7 @@ and then request the resources from there.
 import dash_html_components as html
 
 app = dash.Dash(
-    __name__, 
+    __name__,
     assets_external_path='http://your-external-assets-folder-url/'
 )
 app.scripts.config.serve_locally = False
@@ -398,7 +398,7 @@ if __name__ == '__main__':
     'app_entry': '\\n<div id="react-entry-point">\\n    <div class="_dash-loading">\\n        Loading...\\n    </div>\\n</div>\\n',
     'favicon': '',
     'metas': '<meta charset="UTF-8"/>',
-    'scripts': '<script src="https://unpkg.com/react@15.4.2/dist/react.min.js"></script>\\n<script src="https://unpkg.com/react-dom@15.4.2/dist/react-dom.min.js"></script>\\n<script src="https://unpkg.com/dash-html-components@0.11.0/dash_html_components/bundle.js"></script>\\n<script src="https://unpkg.com/dash-renderer@0.13.0/dash_renderer/bundle.js"></script>',
+    'scripts': '<script src="https://unpkg.com/react@15.4.2/dist/react.min.js"></script>\\n<script src="https://unpkg.com/react-dom@15.4.2/dist/react-dom.min.js"></script>\\n<script src="https://unpkg.com/dash-html-components@0.14.0/dash_html_components/bundle.js"></script>\\n<script src="https://unpkg.com/dash-renderer@0.20.0/dash_renderer/bundle.js"></script>',
     'config': '<script id="_dash-config" type="application/json">{"requests_pathname_prefix": "/", "url_base_pathname": "/"}</script>',
     'css': ''
 }
