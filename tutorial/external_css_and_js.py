@@ -413,7 +413,7 @@ if __name__ == '__main__':
     'app_entry': '\\n<div id="react-entry-point">\\n    <div class="_dash-loading">\\n        Loading...\\n    </div>\\n</div>\\n',
     'favicon': '',
     'metas': '<meta charset="UTF-8"/>',
-    'scripts': '<script src="https://unpkg.com/react@15.4.2/dist/react.min.js"></script>\\n<script src="https://unpkg.com/react-dom@15.4.2/dist/react-dom.min.js"></script>\\n<script src="https://unpkg.com/dash-html-components@0.11.0/dash_html_components/bundle.js"></script>\\n<script src="https://unpkg.com/dash-renderer@0.13.0/dash_renderer/bundle.js"></script>',
+    'scripts': '<script src="https://unpkg.com/react@15.4.2/dist/react.min.js"></script>\\n<script src="https://unpkg.com/react-dom@15.4.2/dist/react-dom.min.js"></script>\\n<script src="https://unpkg.com/dash-html-components@0.14.0/dash_html_components/bundle.js"></script>\\n<script src="https://unpkg.com/dash-renderer@0.20.0/dash_renderer/bundle.js"></script>',
     'renderer': '<script id="_dash-renderer" type="application/javascript">var renderer = new DashRenderer();</script>',
     'config': '<script id="_dash-config" type="application/json">{"requests_pathname_prefix": "/", "url_base_pathname": "/"}</script>',
     'css': ''
