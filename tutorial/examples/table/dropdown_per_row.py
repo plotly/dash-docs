@@ -21,7 +21,7 @@ app.layout = html.Div([
         data=df_per_row_dropdown.to_dict('rows'),
         columns=[
             {'id': 'City', 'name': 'City'},
-            {'id': 'Neighborhood', 'name': 'Neighborhood', 'type': 'dropdown'},
+            {'id': 'Neighborhood', 'name': 'Neighborhood', 'presentation': 'dropdown'},
             {'id': 'Temperature (F)', 'name': 'Temperature (F)'}
         ],
 

@@ -142,7 +142,7 @@ def get_dataframe(component_name, lib=dcc):
         suffix = '.react.js'
         fullString = prefix+component_name+suffix
     elif lib == dash_table:
-        fullString = 'src/dash-table/{}.js'.format(component_name)
+        fullString = 'src/dash-table/dash/{}.js'.format(component_name)
     elif lib == dash_cytoscape:
         prefix = 'src/lib/components/'
         suffix = '.react.js'

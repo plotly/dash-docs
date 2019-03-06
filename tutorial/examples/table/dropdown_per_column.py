@@ -20,9 +20,9 @@ app.layout = html.Div([
         id='table-dropdown',
         data=df.to_dict('rows'),
         columns=[
-            {'id': 'climate', 'name': 'climate', 'type': 'dropdown'},
+            {'id': 'climate', 'name': 'climate', 'presentation': 'dropdown'},
             {'id': 'temperature', 'name': 'temperature'},
-            {'id': 'city', 'name': 'city', 'type': 'dropdown'},
+            {'id': 'city', 'name': 'city', 'presentation': 'dropdown'},
         ],
 
         editable=True,
