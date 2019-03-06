@@ -249,6 +249,7 @@ app.scripts.config.serve_locally = False
         |-- image.png
 
     ```
+    &nbsp;
 
     In your `app.py` file you can use the relative path to that image:
     ''')),
