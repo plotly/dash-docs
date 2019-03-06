@@ -279,6 +279,7 @@ Since JavaScript runs in the web browser, we won't see these statements in our t
 Instead, we'll see these statements in the browser's "dev tools console".
 
 To access the console:
+
 1. Right click on the web page
 2. Click "Inspect Element"
 3. Click on the "Console" tab.
@@ -553,6 +554,7 @@ every time we type into the input. This method has a parameter (named `e` for ev
 set: `target.value` is what we need. This is how the HTML DOM works - for more information check out [these docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/text).
 
 Next, we use a method called `setState()` that's provided by `React.Component`. This method will handle updates to our `state` object. This method is really special. It'll do two things:
+
 1. It'll merge the object that you provide with whatever was currently in `this.state`.
 2. Then, it'll rerender the component. That is, it'll tell React to call the components render method again with the new data set in `this.state`.
 
@@ -693,6 +695,7 @@ component TextInput extends Component {
 ```
 
 To review, this is what happens when we type into our `<input>`:
+
 1. The `handleInputChange` is called with whatever value we typed into the `<input/>`
 2. `this.props.setProps` is called, which in turn calls the `setState` property of the `App` component.
 3. `this.setState` in `App` is called. This updates the `this.state` of `App` _and_ implicitly calls the `render` method of `App`.
@@ -708,6 +711,7 @@ In Dash, `setProps` *is only defined if the particular component is referenced i
 >
 
 In most cases, this is a non-issue. After all, why would you render an `Input` on the page if you didn't want to use it as an `@app.callback`? However, sometimes we still want to be able to interact with the component, even if it isn't connected to Dash's backend. In this case, we'll manage our state locally _or_ through the parent. That is:
+
 1. If `setProps` is defined, then the component will call this function when its properties change and Dash will faithfully rerender the component with the new properties that it passed up.
 2. If `setProps` isn't defined, then the component isn't "connected" to Dash's backend through a callback and it will manage its state locally.
 

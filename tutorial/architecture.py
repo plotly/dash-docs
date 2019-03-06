@@ -46,6 +46,7 @@ Here's what happens when a user types a value into the input:
 
 In `dash`, updating the values in a component can update other components
 ("observers") through API calls to a dash server. Here's the flow:
+
 1. User types a value into the input
 2. `setProps` is called.
 3. The new properties are merged into the store and the input gets re-rendered.

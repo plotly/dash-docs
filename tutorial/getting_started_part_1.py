@@ -142,6 +142,7 @@ HTML tag as well as keyword arguments for all of the HTML arguments.
 
         There are a few important differences between the `dash_html_components`
         and the HTML attributes:
+
         1. The `style` property in HTML is a semicolon-separated string. In Dash,
            you can just supply a dictionary.
         2. The keys in the `style` dictionary are [camelCased](https://en.wikipedia.org/wiki/Camel_case).
