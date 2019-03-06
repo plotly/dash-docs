@@ -7,26 +7,25 @@ from tutorial import styles
 from tutorial.tools import load_example, read_file
 
 layout = html.Div([
-    html.H1(["Loading states"]),
+    html.H1(["Loading States"]),
     dcc.Markdown('''
-Every component in either `dash_core_components` or `dash_html_components` comes equipped with
-a `loading_state` prop. This prop contains an `is_loading` bool, along with a `component_name` and `prop_name`
-that tell you if the component is loading, the name of that component and the name of the property that is loading (i.e. "layout")
-so that component authors can use that prop to determine what to do if the component is still loading. Dash uses this prop
+Every component in `dash_core_components` or `dash_html_components` comes equipped with
+a `loading_state` prop. This prop contains an is_loading bool that tells you if the component is loading.
+Additionally, the component_name and prop_name attributes return the name of that component and the name of the
+property that is loading (i.e. "layout"). Component authors can use this prop to determine what to do if the component is still loading Dash uses this prop
 with the `Loading` component to display spinners if a component is loading.
 
 Aside from using the [`Loading`](/dash-core-components/loading_component) component, you can check if a certain component
-(either from `dash_core_components` or `html_components`) is loading by checking the
+(either from `dash_core_components` or `dash_html_components`) is loading by checking the
 `data-dash-is-loading` attribute set on that component's HTML output. This means that
 you can target those components yourself with CSS, and create your own custom spinner
-for them. Here's an example:
+for them. Here's an example of what that could look like:
     '''),
     dcc.SyntaxHighlighter('''
 # -*- coding: utf-8 -*-
 import dash
 import dash_html_components as html
 import dash_core_components as dcc
-import plotly.graph_objs as go
 import time
 
 from dash.dependencies import Input, Output, State

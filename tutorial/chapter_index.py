@@ -289,7 +289,7 @@ chapters = {
     'loading-states': {
         'url': '/loading-states',
         'content': loading_states.layout,
-        'name': 'Loading states',
+        'name': 'Loading States',
         'description': 'Getting the loading state of a component'
     },
 ### End of home.py ###

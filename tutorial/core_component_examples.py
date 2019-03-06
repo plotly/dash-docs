@@ -1474,9 +1474,8 @@ LoadingComponent = html.Div([
     html.H1('Loading Component'),
 
     dcc.Markdown(s('''
-    Here’s a small example that wraps the outputs for a couple of `Input` components in the `Loading` component. As you can see,
-    you can define the type of spinner you would like to show (refer to table below for all possible types of spinners) and some other kinds
-    of attributes, such as `fullscreen` if you would like the spinner to be displayed fullscreen. Notice that, the Loading component traverses all
+    Here’s a simple example that wraps the outputs for a couple of `Input` components in the `Loading` component. As you can see, you can define the type of spinner you would like to show (refer to the reference table below for all possible types of spinners).
+    You can modify other attributes as well, such as fullscreen if you would like the spinner to be displayed fullscreen. Notice that, the Loading component traverses all
     of it's children to find a loading state, as demonstrated in the second callback, so that even nested children will get picked up.
     ''')),
 
