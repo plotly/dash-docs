@@ -73,9 +73,10 @@ layout = html.Div([
         |-- typography.css
         |-- header.css
         |-- custom-script.js
-
-
     ```
+    &nbsp;
+
+    &nbsp;
 
     `app.py`
 
