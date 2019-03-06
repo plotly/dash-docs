@@ -76,8 +76,6 @@ layout = html.Div([
     ```
     &nbsp;
 
-    &nbsp;
-
     `app.py`
 
     ''')),
