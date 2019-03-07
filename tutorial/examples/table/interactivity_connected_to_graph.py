@@ -23,6 +23,13 @@ app.layout = html.Div([
         row_selectable="multi",
         row_deletable=True,
         selected_rows=[],
+        pagination_mode="fe",
+            pagination_settings={
+                "displayed_pages": 1,
+                "current_page": 0,
+                "page_size": 35,
+            },
+            navigation="page",
     ),
     html.Div(id='datatable-interactivity-container')
 ])
