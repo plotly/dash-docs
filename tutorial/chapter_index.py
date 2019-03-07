@@ -32,6 +32,7 @@ from tutorial import react_for_python_developers
 from tutorial import table
 from tutorial import devtools
 from tutorial import loading_states
+from tutorial import integrating_dash
 
 
 ## The chapters dict is used to generate the dash-docs search index
@@ -253,6 +254,14 @@ chapters = {
         'name': 'Deployment',
         'description': 'To share a Dash app, you need to "deploy" your Dash ' \
                        'app to a server'
+    },
+
+    'integrating-dash': {
+        'url': '/integrating-dash',
+        'content': integrating_dash.layout,
+        'name': 'Integrating Dash with Existing Web Apps',
+        'description': 'Strategies for integrating Dash apps with existing web ' \
+                       'apps.'
     },
 
     # 'deployment-onpremise': {
@@ -548,8 +557,8 @@ chapters = {
     'app-auth-examples': {
         'url': '/dash-deployment-server/app-authentication',
         'content': dds_examples.Authentication,
-        'name': 'Dash App Authentication',
-        'description': 'Adding Authentication to your Dash App'
+        'name': 'Dash Enterprise Auth Features',
+        'description': 'Accessing User Authentication Data in your Dash App'
     },
 
     'app-privacy': {
@@ -717,6 +726,15 @@ chapters = {
         'name': 'Python-Driven Filtering, Paging, Sorting - DataTable',
         'description': '''
         Examples on filtering, sorting, and paging data with Python.
+        '''
+    },
+
+    'typing': {
+        'url': '/datatable/typing',
+        'content': tutorial.table.table_typing_chapter.layout,
+        'name': 'Typing and User Input Processing',
+        'description': '''
+        Column typing and user input validation, coercing, defaulting.
         '''
     },
 

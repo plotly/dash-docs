@@ -173,7 +173,7 @@ layout = html.Div([
     when you edit cells.
 
     One of the limitations in Dash is that a callback's `Output` can't be
-    the same as the `Input` (circular depdencies aren't supported yet).
+    the same as the `Input` (circular dependencies aren't supported yet).
     So, we couldn't have `Output('table', 'data')` _and_
     `Input('table', 'data')` in the same `@app.callback`.
 

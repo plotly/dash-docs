@@ -141,7 +141,18 @@ layout = html.Div([
             own routines with SQL or even generate the data on the fly!
             '''),
 
-        Chapter('Part 5. Editable Tables',
+        Chapter([html.Span('Part 5. Typing ')],
+            '/datatable/typing',
+            '''
+            In this chapter, you'll learn how to configure the table to
+            - assign the column type
+            - change the data presentation
+            - change the data formatting
+            - validate or coerce user data input
+            - apply default behavior for valid and invalid data
+            '''),
+
+        Chapter('Part 6. Editable Tables',
             '/datatable/editable',
             '''
             The DataTable is editable. Like a spreadsheet, it can be used
@@ -158,7 +169,7 @@ layout = html.Div([
             - Running Python computations on certain columns or cells
             '''),
 
-        Chapter('Part 6. Rendering Cells as Dropdowns',
+        Chapter('Part 7. Rendering Cells as Dropdowns',
             '/datatable/dropdowns',
             '''
             Cells can be rendered as editable Dropdowns. This is our first
@@ -168,20 +179,20 @@ layout = html.Div([
             of.
             '''),
 
-        Chapter('Part 7. Virtualization',
+        Chapter('Part 8. Virtualization',
             '/datatable/virtualization',
             '''
             Examples using DataTable virtualization.
             '''),
 
-        Chapter('Part 8. Filtering Syntax',
+        Chapter('Part 9. Filtering Syntax',
             '/datatable/filtering',
             '''
             An explanation and examples of filtering syntax for both frontend
             and backend filtering in the DataTable.
             '''),
 
-        Chapter('Part 9. Table Reference',
+        Chapter('Part 10. Table Reference',
             '/datatable/reference',
             '''
             The full list of Table properties and their settings.

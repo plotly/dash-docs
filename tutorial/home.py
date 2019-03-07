@@ -113,6 +113,8 @@ layout = html.Div(className='toc', children=[
                 chapters['auth']['url']),
         Chapter(chapters['deployment']['name'],
                 chapters['deployment']['url']),
+        Chapter(chapters['integrating-dash']['name'],
+                chapters['integrating-dash']['url']),
     ]),
 
     Section('Getting Help', [

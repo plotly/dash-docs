@@ -4,7 +4,7 @@ import dash_html_components as html
 import dash
 from dash.dependencies import Input, Output
 
-from datetime import datetime
+
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import base64
@@ -15,7 +15,6 @@ import os
 import pandas as pd
 import percy
 import sys
-import time
 import unittest
 
 from .IntegrationTests import IntegrationTests
@@ -120,7 +119,6 @@ class Tests(IntegrationTests):
             else:
                 self.driver.get('http://localhost:8050{}'.format(href))
                 self.wait_for_element_by_id('wait-for-page-{}'.format(href))
-                time.sleep(5)
                 self.snapshot(href)
                 self.driver.back()
 
@@ -135,5 +133,5 @@ class Tests(IntegrationTests):
         search_element = self.driver.find_element_by_id('search-input')
         search_element.clear()
         search_element.send_keys('dropdown')
-        time.sleep(5)
+        self.wait_for_element_by_id('hits')
         self.snapshot('search-dropdown')

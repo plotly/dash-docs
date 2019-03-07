@@ -651,7 +651,7 @@ DatePickerRange = html.Div(children=[
 from datetime import datetime as dt
 
 dcc.DatePickerRange(
-    end_date=dt.now(),
+    end_date=dt(2017,6,21),
     display_format='MMM Do, YY',
     start_date_placeholder_text='MMM Do, YY'
 )'''),
@@ -763,7 +763,7 @@ dcc.DatePickerRange(
     minimum_nights=5,
     clearable=True,
     with_portal=True,
-    start_date=dt.now()
+    start_date=dt(2017,6,21)
 )'''),
 
     html.Hr(),
@@ -781,7 +781,7 @@ from datetime import datetime as dt
 dcc.DatePickerRange(
     is_RTL=True,
     first_day_of_week=3,
-    start_date=dt.now()
+    start_date=dt(2017,6,21)
 )''', language='python', customStyle=styles.code_container),
     html.Hr(),
     html.H3('DatePickerRange Properties'),
@@ -895,7 +895,7 @@ DatePickerSingle = html.Div(children=[
 from datetime import datetime as dt
 
 dcc.DatePickerSingle(
-    date=dt.now(),
+    date=dt(2017,6,21),
     display_format='MMM Do, YY'
 )'''),
 
@@ -903,7 +903,7 @@ dcc.DatePickerSingle(
 from datetime import datetime as dt
 
 dcc.DatePickerSingle(
-    date=dt.now(),
+    date=dt(2017,6,21),
     display_format='M-D-Y-Q',
 )'''),
 
@@ -911,7 +911,7 @@ dcc.DatePickerSingle(
 from datetime import datetime as dt
 
 dcc.DatePickerSingle(
-    date=dt.now(),
+    date=dt(2017,6,21),
     display_format='MMMM Y, DD'
 )'''),
 
@@ -919,7 +919,7 @@ dcc.DatePickerSingle(
 from datetime import datetime as dt
 
 dcc.DatePickerSingle(
-    date=dt.now(),
+    date=dt(2017,6,21),
     display_format='X',
 )''', language='python', customStyle=styles.code_container),
     html.Br(),
@@ -934,7 +934,7 @@ from datetime import datetime as dt
 dcc.DatePickerSingle(
     month_format='MMM Do, YY',
     placeholder='MMM Do, YY',
-    date=dt.now()
+    date=dt(2017,6,21)
 )'''),
     ComponentBlock('''import dash_core_components as dcc
 from datetime import datetime as dt
@@ -942,7 +942,7 @@ from datetime import datetime as dt
 dcc.DatePickerSingle(
     month_format='M-D-Y-Q',
     placeholder='M-D-Y-Q',
-    date=dt.now()
+    date=dt(2017,6,21)
 )'''),
 
     ComponentBlock('''import dash_core_components as dcc
@@ -951,7 +951,7 @@ from datetime import datetime as dt
 dcc.DatePickerSingle(
     month_format='MMMM Y',
     placeholder='MMMM Y',
-    date=dt.now()
+    date=dt(2017,6,21)
 )'''),
 
     ComponentBlock('''import dash_core_components as dcc
@@ -960,7 +960,7 @@ from datetime import datetime as dt
 dcc.DatePickerSingle(
     month_format='X',
     placeholder='X',
-    date=dt.now()
+    date=dt(2017,6,21)
 )''', language='python', customStyle=styles.code_container),
     html.Hr(),
     html.H3("Vertical Calendar and Placeholder Text"),
@@ -978,7 +978,7 @@ from datetime import datetime as dt
 dcc.DatePickerSingle(
     calendar_orientation='vertical',
     placeholder='Select a date',
-    date=dt.now()
+    date=dt(2017,6,21)
 )'''),
 
     html.Hr(),
@@ -997,7 +997,7 @@ from datetime import datetime as dt
 dcc.DatePickerSingle(
     clearable=True,
     with_portal=True,
-    date=dt.now()
+    date=dt(2017,6,21)
 )'''),
 
     html.Hr(),
@@ -1015,7 +1015,7 @@ from datetime import datetime as dt
 dcc.DatePickerSingle(
     is_RTL=True,
     first_day_of_week=3,
-    date=dt.now()
+    date=dt(2017,6,21)
 )'''),
 
     html.Hr(),
