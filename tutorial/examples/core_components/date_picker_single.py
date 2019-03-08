@@ -12,7 +12,7 @@ app.layout = html.Div([
         min_date_allowed=dt(1995, 8, 5),
         max_date_allowed=dt(2017, 9, 19),
         initial_visible_month=dt(2017, 8, 5),
-        date=dt(2017, 8, 25)
+        date=str(dt(2017, 8, 25, 23, 59, 59))
     ),
     html.Div(id='output-container-date-picker-single')
 ])

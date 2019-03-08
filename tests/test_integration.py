@@ -114,16 +114,16 @@ class Tests(IntegrationTests):
         ]
 
         def visit_and_snapshot(href):
-            if href == '/dash-daq':
-                pass
-            else:
-                self.driver.get('http://localhost:8050{}'.format(href))
-                self.wait_for_element_by_id('wait-for-page-{}'.format(href))
-                self.snapshot(href)
-                self.driver.back()
+            self.driver.get('http://localhost:8050{}'.format(href))
+            # stub elem at the bottom of browser
+            self.wait_for_element_by_id('wait-for-page-{}'.format(href))
+            if href == '/external-resources':
+                self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+            self.snapshot(href)
+            self.driver.back()
 
         for link in links:
-            if link.startswith('/'):
+            if link.startswith('/') and link != '/dash-daq':
                 visit_and_snapshot(link)
 
         # test search page
@@ -133,5 +133,5 @@ class Tests(IntegrationTests):
         search_element = self.driver.find_element_by_id('search-input')
         search_element.clear()
         search_element.send_keys('dropdown')
-        self.wait_for_element_by_id('hits')
+        self.wait_for_element_by_css_selector('#hits .ais-hits--item')
         self.snapshot('search-dropdown')
