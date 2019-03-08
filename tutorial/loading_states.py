@@ -10,8 +10,8 @@ layout = html.Div([
     html.H1(["Loading States"]),
     dcc.Markdown('''
 Every component in `dash_core_components` or `dash_html_components` comes equipped with
-a `loading_state` prop. This prop contains an is_loading bool that tells you if the component is loading.
-Additionally, the component_name and prop_name attributes return the name of that component and the name of the
+a `loading_state` prop. This prop contains an `is_loading` bool that tells you if the component is loading.
+Additionally, the `component_name` and `prop_name` attributes return the name of that component and the name of the
 property that is loading (i.e. "layout"). Component authors can use this prop to determine what to do if the component is still loading.
 Dash uses this prop in the `Loading` component to display spinners if a component is loading. This means you can use the `Loading` component
 to wrap other components that you want to display a loading spinner for. Here's an example of what that looks like:
@@ -64,6 +64,8 @@ if __name__ == "__main__":
 
 '''),
 dcc.Markdown('''
+Please also check out the docs for the [Loading component](/dash-core-components/loading_component) for more information on how to use the Loading component.
+
 Aside from using the [`Loading`](/dash-core-components/loading_component) component, you can check if a certain component
 (either from `dash_core_components` or `dash_html_components`) is loading by checking the
 `data-dash-is-loading` attribute set on that component's HTML output. This means that
@@ -123,8 +125,5 @@ if __name__ == "__main__":
     color: magenta;
     visibility: visible;
 }
-    ''', language='css'),
-    dcc.Markdown('''
-Please also check out the docs for the [Loading component](/dash-core-components/loading_component) for more information on how to use the Loading component.
-    ''')
+    ''', language='css')
 ])
