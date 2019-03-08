@@ -442,21 +442,21 @@ confirm = dcc.ConfirmDialogProvider(
     html.H3(dcc.Link('Store', href='/dash-core-components/store')),
 
     dcc.Markdown(s('''
-    The store component can be used to keep data in the visitor's browser. 
+    The store component can be used to keep data in the visitor's browser.
     The data is scoped to the user accessing the page.
-    
+
     **Three types of storage (`storage_type` prop):**
-    
+
     - `memory`: default, keep the data as long the page is not refreshed.
     - `local`: keep the data until it is manually cleared.
     - `session`: keep the data until the browser/tab closes.
-    
+
     _For `local`/`session`, the data is serialized as json when stored._
     ''')),
 
     ComponentBlock(s('''
     import dash_core_components as dcc
-    
+
     store = dcc.Store(id='my-store', data={'my-data': 'data'})
     ''')),
 
@@ -473,10 +473,10 @@ confirm = dcc.ConfirmDialogProvider(
 
     dcc.Markdown(s('''
     The logout button can be used to perform logout mechanism.
-    
+
     It's a simple form with a submit button, when the button is clicked,
     it will submit the form to the `logout_url` prop.
-    
+
     Please note that no authentication is performed in Dash by default
     and you have to implement the authentication yourself.
     ''')),
@@ -484,5 +484,28 @@ confirm = dcc.ConfirmDialogProvider(
     dcc.Link('More Logout Button Examples and Reference',
              href='/dash-core-components/logout_button'),
 
-    html.Div(id='hidden', style={'display': 'none'})
+    html.Div(id='hidden', style={'display': 'none'}),
+
+    html.Br(),
+
+    dcc.Markdown('***'),
+    html.H3(dcc.Link('Loading component',
+                     href='/dash-core-components/loading_component')),
+
+    dcc.Markdown(s('''
+    The Loading component can be used to wrap components that you want to display a spinner for, if they take too long to load.
+    It does this by checking if any of the Loading components' children have a `loading_state` prop set where `is_loading` is true.
+    If true, it will display one of the built-in CSS spinners.
+    ''')),
+    ComponentBlock(s('''
+    import dash_core_components as dcc
+    import dash_html_components as html
+
+    loading = dcc.Loading([
+        # ...
+    ])
+    ''')),
+
+    dcc.Link('More Loading Component Examples and Reference',
+             href='/dash-core-components/loading_component'),
 ])
