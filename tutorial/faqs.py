@@ -218,5 +218,5 @@ layout = html.Div([
     pre-define up front every permutation of callback that a user can
     potentially trigger. For an example of how this can be done programmatically
     using the `callback` decorator, see this [Dash Community forum
-    post](https://community.plot.ly/t/callback-for-dynamically-created-graph/5511).
+    post](https://community.plot.ly/t/callback-for-dynamically-created-graph/5511). '''))
 ])
