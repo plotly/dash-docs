@@ -700,6 +700,49 @@ layout = html.Div([dcc.Markdown('''
 
   In Dash apps, the `dash-renderer` project is very similar to `App.js`. It contains all of the "state" of the application and it passes those properties into the individual components. When a component's properties change through user interaction (e.g. typing into an `<input/>` or hovering on a graph), the component needs to call `setProps` with the new values of the property. Dash's frontend (`dash-renderer`) will then rerender the component with the new property _and_ make the necessary API calls to Dash's Python server callbacks.
 
+  ##### Handling the case when `setProps` isn't defined
+
+  Note: This section is present for legacy purposes. As of v0.40.0, setProps is always defined.
+  Learn more in this [community forum topic](TBD).
+
+  In Dash, `setProps` *is only defined if the particular component is referenced in an `@app.callback`*. If the component isn't referenced in a callback, then Dash's frontend will not pass in the `setProps` property and it will be undefined.
+  > As an aside, why does Dash do that? In some cases, it could be computationally expensive to determine the new properties. In these cases, Dash allows component authors to skip doing these computations if the Dash app author doesn't actually need the properties. That is, if the component isn't in any `@app.callback`, then it doesn't need to go through the "effort" to compute it's new properties and inform Dash.
+  >
+
+  In most cases, this is a non-issue. After all, why would you render an `Input` on the page if you didn't want to use it as an `@app.callback`? However, sometimes we still want to be able to interact with the component, even if it isn't connected to Dash's backend. In this case, we'll manage our state locally _or_ through the parent. That is:
+  1. If `setProps` is defined, then the component will call this function when its properties change and Dash will faithfully rerender the component with the new properties that it passed up.
+  2. If `setProps` isn't defined, then the component isn't "connected" to Dash's backend through a callback and it will manage its state locally.
+
+  Here's an example with our `TextInput` component:
+  ```
+  component TextInput extends Component {
+    constructor() {
+      super(props)
+      this.state = props;
+    }
+
+      handleInputChange = (e) => {
+        const newValue = e.target.value;
+        this.props.setProps({value: newValue});
+      }
+      render() {
+        let value;
+        if (this.props.setProps) {
+          value = this.props.value;
+        } else {
+          value = this.state.value;
+        }
+        return (
+            <div>
+              <label>{this.props.label}</label>
+              <input value={value} onChange={this.handleInputChange}/>
+              <p>{value}</p>
+            </div>
+          )
+      }
+  }
+  ```
+
 ##### Annotate your function with `propTypes`
 
 The final step in authoring your Dash component is to describe which properties are available.
