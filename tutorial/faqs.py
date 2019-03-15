@@ -219,15 +219,4 @@ layout = html.Div([
     potentially trigger. For an example of how this can be done programmatically
     using the `callback` decorator, see this [Dash Community forum
     post](https://community.plot.ly/t/callback-for-dynamically-created-graph/5511).
-
-
-    ### All Dash Core Components in a layout should be registered with a callback.
-
-    If a Dash Core Component is present in the layout but not registered with a
-    callback (either as an `Input`, `State`, or `Output`) then any changes to its
-    value by the user will be reset to the original value when any callback
-    updates the page.
-
-    This is a known issue and you can track its status in this [GitHub
-    Issue](https://github.com/plotly/dash-renderer/issues/40). '''))
 ])
