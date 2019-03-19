@@ -128,7 +128,6 @@ layout = html.Div([
       which is frequently why one might want to use jQuery. You can however use
       parts of jQuery's functionality that do not touch the DOM, such as
       registering event listeners to cause a page redirect on a keystroke.
-
       In general, if you are looking to add custom clientside behavior in your
       application, we recommend encapsulating that behavior in a [custom Dash
       component](https://dash.plot.ly/plugins).
