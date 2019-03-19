@@ -18,12 +18,12 @@ or view the tutorial on deploying to Heroku below.
 ### Dash Deployment Server
 
 [Dash Deployment Server](https://plot.ly/dash/pricing/)
-is Plotly's commercial product for deploying 
+is Plotly's commercial product for deploying
 Dash Apps on your company's servers or on AWS, Google Cloud, or Azure.
 It offers an enterprise-wide Dash App Portal,
 easy git-based deployment, automatic URL namespacing,
 built-in SSL support, LDAP authentication, and more.
-[Learn more about Dash Deployment Server](https://plot.ly/dash/pricing) or 
+[Learn more about Dash Deployment Server](https://plot.ly/dash/pricing) or
 [get in touch to start a trial](https://plotly.typeform.com/to/rkO85m).
 
 For existing customers, see the [Dash Deployment Server Documentation](/dash-deployment-server).
@@ -98,9 +98,6 @@ app's dependencies with this virtualenv:
 '''),
 
           dcc.SyntaxHighlighter('''$ pip install dash
-$ pip install dash-renderer
-$ pip install dash-core-components
-$ pip install dash-html-components
 $ pip install plotly
 ''', customStyle=styles.code_container),
 

@@ -22,15 +22,9 @@ layout = html.Div([
     Python 2 and 3 are supported.'''.replace('    ', '')),
 
     dcc.SyntaxHighlighter('''pip install dash=={}  # The core dash backend
-        pip install dash-html-components=={}  # HTML components
-        pip install dash-core-components=={}  # Supercharged components
-        pip install dash-table=={}  # Interactive DataTable component (new!)
         pip install dash-daq=={}  # DAQ components (newly open-sourced!)
     '''.replace('    ', '').format(
         dash.__version__,
-        html.__version__,
-        dcc.__version__,
-        dash_table.__version__,
         dash_daq.__version__
     ), customStyle=styles.code_container),
 
