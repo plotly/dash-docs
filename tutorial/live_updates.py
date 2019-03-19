@@ -1,9 +1,5 @@
 import dash_core_components as dcc
 
-# examples = [load_example(s) for s in [
-#     'tutorial/examples/live_updates.py'
-# ]]
-
 
 layout = [dcc.Markdown('''
 # Live Updating Components
@@ -32,7 +28,7 @@ import dash_core_components as dcc
 import dash_html_components as html
 import plotly
 from dash.dependencies import Input, Output
-    
+
 # pip install pyorbital
 from pyorbital.orbital import Orbital
 satellite = Orbital('TERRA')

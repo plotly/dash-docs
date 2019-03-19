@@ -20,6 +20,12 @@ examples = {
     'dash-meta-tags': read_file(
         'tutorial/examples/external_css_and_js/dash-meta-tags.py'
     ),
+    'custom-dash-renderer': read_file(
+        'tutorial/examples/external_css_and_js/custom-dash-renderer.py'
+    ),
+    'custom-dash-renderer-hooks': read_file(
+        'tutorial/examples/external_css_and_js/custom-dash-renderer-hooks.py'
+    ),
     'external-resources-init': read_file(
         'tutorial/examples/external_css_and_js/external-resources-init.py'
     ),
@@ -313,6 +319,10 @@ if __name__ == '__main__':
     include the CSS _before_ the Dash component CSS
     - Include custom meta tags in your app. Note that meta tags can also be
     added with the `meta_tags` argument (example below).
+    - Include a custom version of `dash-renderer`, by instantiating the
+    `DashRenderer` class yourself. You can add request hooks this way, by providing
+    a `hooks` config object as in the example below.
+
 
     #### Usage
 
@@ -366,6 +376,11 @@ if __name__ == '__main__':
     This includes the Dash component JavaScript files as well as any
     JavaScript files found in the `assets` folder.
 
+    `{%renderer%}` (required)
+
+    The JavaScript script that instantiates `dash-renderer` by calling
+    `new DashRenderer()`
+
     **Option 2 - `interpolate_index`**
 
     If your HTML content isn't static or if you would like to introspect or modify
@@ -399,6 +414,7 @@ if __name__ == '__main__':
     'favicon': '',
     'metas': '<meta charset="UTF-8"/>',
     'scripts': '<script src="https://unpkg.com/react@15.4.2/dist/react.min.js"></script>\\n<script src="https://unpkg.com/react-dom@15.4.2/dist/react-dom.min.js"></script>\\n<script src="https://unpkg.com/dash-html-components@0.14.0/dash_html_components/bundle.js"></script>\\n<script src="https://unpkg.com/dash-renderer@0.20.0/dash_renderer/bundle.js"></script>',
+    'renderer': '<script id="_dash-renderer" type="application/javascript">var renderer = new DashRenderer();</script>',
     'config': '<script id="_dash-config" type="application/json">{"requests_pathname_prefix": "/", "url_base_pathname": "/"}</script>',
     'css': ''
 }
@@ -407,6 +423,41 @@ if __name__ == '__main__':
     The values of the `scripts` and `css` keys may be different depending on
     which component libraries you have included or which files
     might be in your assets folder.
+
+    ***
+
+    ## Customizing dash-renderer with request hooks
+
+    To instantiate your own version of `dash-renderer`, you can override Dash's HTML Index Template and provide your own script that will be used instead of the standard script. This script should
+    somewhere call `var renderer = new DashRenderer();`, which instantiates the `DashRenderer` class. You can add this script to your index HTML when you're setting
+    `app.index_string`, or you could simply override `app.renderer` like so:
+
+    ''')),
+
+    dcc.SyntaxHighlighter(
+        examples['custom-dash-renderer'],
+        language='python',
+        customStyle=styles.code_container
+    ),
+
+    dcc.Markdown(s('''
+
+    When you provide your own DashRenderer, you can also pass in a `hooks` object that holds `request_pre` and `request_post` functions. These request hooks will be fired
+    before and after Dash makes a request to its backend. Here's an example:
+
+    ''')),
+
+    dcc.SyntaxHighlighter(
+        examples['custom-dash-renderer-hooks'],
+        language='python',
+        customStyle=styles.code_container
+    ),
+
+    dcc.Markdown(s('''
+    Notice the `request_pre` function takes the payload of the request being sent as its argument, and the `request_post` fuction takes both the payload and the response of the server
+    as arguments. These can be altered in our function, allowing you to modify the response and request objects that Dash sends to the server. In the example above, the `request_pre`
+    function is fired before each server call, and in the case of this example, it will `console.log()` the request parameter. The `request_post` function will fire __after__ each server
+    call, and in our example will also print out the response parameter.
 
     ***
 

@@ -6,7 +6,6 @@ import dash_core_components as dcc
 import dash_html_components as html
 
 from tutorial.components import Example, Syntax
-from tutorial import styles
 from tutorial import tools
 
 
@@ -180,19 +179,6 @@ layout = html.Div([
     callback will fail to fire. For example, if you define a callback with only
     a subset of the specified `Inputs` present in the current page layout, the
     callback will simply not fire at all.
-
-
-    ### Callbacks can only target a single `Output` component/property pair
-
-    Currently, for a given callback, it can only have a single `Output`, which
-    targets one component/property pair eg `'my-graph'`, `'figure'`. If you
-    wanted, say, four `Graph` components to be updated based on a particular
-    user input, you either need to create four separate callbacks which each
-    target an individual `Graph`, or have the callback return a `html.Div`
-    container that holds the updated four Graphs.
-
-    There are plans to remove this limitation. You can track the status of this
-    in this [GitHub Issue](https://github.com/plotly/dash/issues/149).
 
 
     ### A component/property pair can only be the `Output` of one callback

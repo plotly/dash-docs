@@ -31,6 +31,7 @@ from tutorial import urls
 from tutorial import react_for_python_developers
 from tutorial import table
 from tutorial import devtools
+from tutorial import loading_states
 from tutorial import integrating_dash
 
 
@@ -293,6 +294,12 @@ chapters = {
         'content': react_for_python_developers.layout,
         'name': 'React for Python Developers',
         'description': 'A tutorial on how to program in React and JavaScript for Python developers.'
+    },
+    'loading-states': {
+        'url': '/loading-states',
+        'content': loading_states.layout,
+        'name': 'Loading States',
+        'description': 'Getting the loading state of a component and adding a loading component'
     },
 ### End of home.py ###
 
@@ -877,6 +884,13 @@ chapters = {
         'content': examples.LogoutButton,
         'name': 'Logout button',
         'description': 'LogoutButton examples, properties and reference'
+    },
+
+    'loading-component': {
+        'url': '/dash-core-components/loading_component',
+        'content': examples.LoadingComponent,
+        'name': 'Loading component',
+        'description': 'Loading component examples, properties and reference'
     }
 
 }

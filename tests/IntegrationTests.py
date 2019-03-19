@@ -21,6 +21,7 @@ class IntegrationTests(unittest.TestCase):
         super(IntegrationTests, cls).setUpClass()
 
         cls.driver = webdriver.Chrome()
+        cls.driver.implicitly_wait(2)
 
         python_version = sys.version.split(' ')[0]
         if '2.7' in python_version:
@@ -70,11 +71,11 @@ class IntegrationTests(unittest.TestCase):
         # Run on a separate process so that it doesn't block
         self.server_process = multiprocessing.Process(target=run)
         self.server_process.start()
-        time.sleep(5)
+        time.sleep(2)
 
         # Visit the dash page
         self.driver.get('http://localhost:8050{}'.format(path))
-        time.sleep(0.5)
+
 
         # Inject an error and warning logger
         logger = '''
