@@ -23,14 +23,16 @@ layout = html.Div([
 
     dcc.SyntaxHighlighter('''pip install dash=={}  # The core dash backend
         pip install dash-daq=={}  # DAQ components (newly open-sourced!)
-
-        **Note**: starting with dash 0.37.0, dash automatically installs dash-renderer, dash-core-components,
-        dash-html-components, and dash-table, using known-compatible versions of each. You need not and
-        should not install these separately any longer, only dash itself.
     '''.replace('    ', '').format(
         dash.__version__,
         dash_daq.__version__
     ), customStyle=styles.code_container),
+
+    dcc.Markdown(s('''
+    > **Note**: starting with dash 0.37.0, dash automatically installs dash-renderer, dash-core-components,
+    > dash-html-components, and dash-table, using known-compatible versions of each. You need not and
+    > should not install these separately any longer, only dash itself.
+    ''')),
 
     html.Div([
         'Ready? Now, let\'s ',
