@@ -6,7 +6,7 @@ click==6.7
 configparser==3.5.0
 dash==0.39.0
 dash-auth==1.2.0
-dash-cytoscape==0.0.4
+dash-cytoscape==0.0.5
 dash-dangerously-set-inner-html==0.0.1
 dash-daq==0.1.0
 decorator==4.3.0
