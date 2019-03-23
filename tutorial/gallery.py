@@ -282,8 +282,20 @@ layout = html.Div(className='gallery', children=[
             description='''
             Interactively explore the propagation of six viruses, by time and/or by location.
             In the online app, you can select a virus to display its evolution as a phylogeny tree, along with a map and time series of the virus's global spread.
-        ''',
-            width=12
+        '''
+        ),
+        AppSection(
+            app_name='Biopython Integration',
+            app_link='https://dash-gallery.plotly.host/cytoscape-phylogeny/',
+            code_link='/cytoscape/biopython',
+            img_src='assets/images/gallery/dash-cytoscape-phylogeny.gif',
+            description='''
+            Automatically parse phylogeny trees stored in the PhyloXML format using Biopython's 
+            Phylo API, and display it using the 
+            [Dash Cytoscape](https://github.com/plotly/dash-cytoscape) 
+            network visualization library. You can zoom in, drag the tree, and hover over clades 
+            to highlight subclades. 
+            '''
         )
     ]),
 
@@ -474,8 +486,18 @@ layout = html.Div(className='gallery', children=[
             description='''
         Dash comes with a set of rich components like sliders, dropdowns, graphs, and more.
         [View the official Dash documentation to learn more](https://dash.plot.ly/dash-core-components).
-        ''',
-            width=12
+        '''
+        ),
+        AppSection(
+            app_name='Dash Cytoscape',
+            app_link='/cytoscape',
+            code_link='https://github.com/plotly/dash-cytoscape',
+            img_src='assets/images/gallery/dash-cytoscape.gif',
+            description='''
+            Dash Cytoscape is a graph visualization component for creating easily customizable, 
+            high-performance, interactive, and web-based networks. It is built on top of 
+            Cytoscape.js and can be easily integrated with other Dash components.
+            '''
         )
 
     ]),
