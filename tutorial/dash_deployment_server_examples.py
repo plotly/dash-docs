@@ -299,9 +299,6 @@ $ source venv/Scripts/activate # uses the virtualenv'''), customStyle=styles.cod
 
                     dcc.SyntaxHighlighter(
                     '''$ pip install dash
-$ pip install dash-renderer
-$ pip install dash-core-components
-$ pip install dash-html-components
 $ pip install plotly''', customStyle=styles.code_container),
 
                     dcc.Markdown(s(
@@ -397,16 +394,16 @@ if __name__ == '__main__':
 
                     dcc.Markdown(s(
                     '''
-                    For some applications, you may require using the `worker` 
-                    process. For example, the [Dash Redis Demo](https://github.com/plotly/dash-redis-demo) 
-                    includes Celery - an asynchronous task queue/job queue. 
-                    When using a `worker` process in your `Procfile`, 
-                    you will have to explicitly start it after deploying. To 
-                    scale a `worker` process: 
+                    For some applications, you may require using the `worker`
+                    process. For example, the [Dash Redis Demo](https://github.com/plotly/dash-redis-demo)
+                    includes Celery - an asynchronous task queue/job queue.
+                    When using a `worker` process in your `Procfile`,
+                    you will have to explicitly start it after deploying. To
+                    scale a `worker` process:
 
-                    `ssh dokku@dash-server ps:scale APP-NAME worker=1`. 
-                    
-                    Note that this requires 
+                    `ssh dokku@dash-server ps:scale APP-NAME worker=1`.
+
+                    Note that this requires
                     [Authenticating to Dash Deployment Server with SSH](/dash-deployment-server/ssh).
 
                     ''')),
@@ -1419,7 +1416,7 @@ Authentication = html.Div(children=[
     rc.Blockquote(),
 
     dcc.Markdown(s('''
-    DDS will automatically implement user authentication if your 
+    DDS will automatically implement user authentication if your
     [Dash app's privacy](/dash-deployment-server/privacy) is set to *Restricted* (the default setting)
     or *Authorized* but not if is set to *Unauthorized*. You can access the authentication data within your app
     using the [`dash-enterprise-auth`](https://github.com/plotly/dash-enterprise-auth/) package.
@@ -1432,19 +1429,19 @@ Authentication = html.Div(children=[
 
     ## Using `dash-enterprise-auth` in an Existing Dash App
 
-    If you have previously deployed your Dash app to your Dash Deployment 
+    If you have previously deployed your Dash app to your Dash Deployment
     Server, simply add `dash-enterprise-auth` to your `requirements.txt` file.
-    
+
     `dash-enterprise-auth` includes the method `create_logout_button` which allows you to
     add a logout button to your app's layout and it also includes three other methods,
     `get_username`, `get_user_data` and `get_kerberos_ticket_cache` (only applicable for
     certain server configurations), which provide information about the app's viewer and so
     must be called from within callbacks.
-    
+
     The example below demonstrates how to use these callbacks. Note that in order to use
     `create_logout_button` locally you will have to set an environment variable called
     `DASH_LOGOUT_URL`. You can do this by running your code with `DASH_LOGOUT_URL=plot.ly python app.py`.
-    
+
     ''')),
 
 
@@ -1497,7 +1494,7 @@ def update_title(_):
 
     # print user data to the logs
     print(auth.get_user_data())
-    
+
     # update header with username
     return 'Hello {}'.format(auth.get_username())
 
@@ -1540,7 +1537,7 @@ AppPrivacy = html.Div(children=[
     &nbsp;
 
     Starting in Version 3.0.0 of Dash Deployment Server, you can restrict who is able to view your app
-    from the app's management page. Find a list of links to these pages for your apps at 
+    from the app's management page. Find a list of links to these pages for your apps at
     `https://<your-dash-deployment-server>.com/Manager/apps`. Contact support
     if you have any questions about privacy in previous versions of Dash Deployment Server.
 
@@ -2321,17 +2318,17 @@ Troubleshooting = html.Div(children=[
         dcc.SyntaxHighlighter(
             '''
             $ git push multipage master
-            dokku@dash.local's password: 
+            dokku@dash.local's password:
             ''',
             customStyle=styles.code_container, language='python'),
 
         dcc.Markdown(s(
             '''
             &nbsp;
-    
+
             If you're seeing a request for a password for dokku@your-dash-server, that
-            means that the ssh authentication has failed. This can be for a variety of 
-            reasons so it is useful to run git push again with ssh debugging enabled by 
+            means that the ssh authentication has failed. This can be for a variety of
+            reasons so it is useful to run git push again with ssh debugging enabled by
             adding `GIT_SSH_COMMAND='ssh -v'` before your `git push` command.
             ''')),
 
@@ -2358,24 +2355,24 @@ Troubleshooting = html.Div(children=[
         # debug1: Trying private key: /home/michael/.ssh/id_ecdsa
         # debug1: Trying private key: /home/michael/.ssh/id_ed25519
         # debug1: Next authentication method: password
-        dokku@dash.local's password:  
+        dokku@dash.local's password:
         ''', customStyle=styles.code_container, language='python'),
 
         dcc.Markdown(s(
             '''
             &nbsp;
-    
-            Above, you can see the output of the debugging logs where unimportant lines 
-            have been commented out or omitted. Check the first uncommented out line in the sample 
-            output above to ensure that the domain is your Dash server's domain and that port is 3022. 
+
+            Above, you can see the output of the debugging logs where unimportant lines
+            have been commented out or omitted. Check the first uncommented out line in the sample
+            output above to ensure that the domain is your Dash server's domain and that port is 3022.
             If it isn't, you will need to update your `~/.ssh/config` file to set the
             correct port. You can see how to do that in our [ssh chapter](/dash-deployment-server/ssh)
             under the "Modify SSH Config" heading.
-    
+
             The next two emphasized lines show the public keys that were offered (and
             in this case rejected) by the server. If the RSA key that you added to Dash Deployment
             Server is not among those offered you will need to add it to your `ssh-agent`
-            with `ssh-add ~/path/to/your/key`. More details on `ssh-agent` are included in the 
+            with `ssh-add ~/path/to/your/key`. More details on `ssh-agent` are included in the
             [ssh chapter](/dash-deployment-server/ssh).
             '''))
     ]),
@@ -2411,13 +2408,13 @@ Troubleshooting = html.Div(children=[
             This error might occur if you are trying to push from a branch
             that is not your `master` branch. Get the name of your current
             branch by running `git branch`. Then, to push from this branch
-            to the remote server, run `git push plotly your-branch-name:master`. 
+            to the remote server, run `git push plotly your-branch-name:master`.
 
-            &nbsp; 
+            &nbsp;
             '''
         )),
     ]),
-        
+
     dcc.Markdown(s('''
     ***
 
@@ -2432,17 +2429,17 @@ Troubleshooting = html.Div(children=[
 
         dcc.Markdown(s(
             '''
-            These applications require using a `worker` 
-            process. When using a `worker` process in your `Procfile`, 
-            you will have to explicitly start it after deploying. To 
-            scale a `worker` process: 
+            These applications require using a `worker`
+            process. When using a `worker` process in your `Procfile`,
+            you will have to explicitly start it after deploying. To
+            scale a `worker` process:
             ''')),
 
         dcc.SyntaxHighlighter('$ ssh dokku@dash-server ps:scale APP-NAME worker=1',
                               customStyle=styles.code_container, language='python'),
         dcc.Markdown(s(
             '''
-            
+
             If you have multiple `worker` processes in your `Procfile`
             (e.g `worker-default` *and* `worker-beat`) you can scale them
             up simultaneously with:
@@ -2453,7 +2450,7 @@ Troubleshooting = html.Div(children=[
 
         dcc.Markdown(s(
             '''
-            Note that this requires 
+            Note that this requires
             [Authenticating to Dash Deployment Server with SSH](/dash-deployment-server/ssh).
              ''')),
     ]),
@@ -2469,12 +2466,12 @@ Portal = html.Div(children=[
 
     rc.Blockquote(),
 
-    dcc.Markdown(s('''    
+    dcc.Markdown(s('''
     Located at `https://your-dash-deployment-server/Portal`,
     the Dash App Portal is the front page for your Dash Deployment Server.
     It allows multiple users to prominently display their selected apps in
     one central location.
-    
+
     The portal and apps have a default style which can
     be customized.
 
@@ -2490,17 +2487,17 @@ Portal = html.Div(children=[
         }
     ),
 
-    dcc.Markdown(s('''    
-    
+    dcc.Markdown(s('''
+
     ### Dash Apps on the Portal
-    
+
     In order for your app to appear on the Dash App Portal, you need
     enable the *Show in Portal* Toggle in your app's settings from
     within the DDS app manager and then edit your app's metadata to
     make it easier to find/customize its appearance.
 
     &nbsp;
-    
+
     ''')),
 
     html.Img(
@@ -2514,12 +2511,12 @@ Portal = html.Div(children=[
 
     dcc.Markdown(s('''
     &nbsp;
-    
+
     ### Customize the Portal
-    
+
     From the DDS app Manager, access the *Portal* tab
     to see its settings (or go to `/Manager/settings/portal/general`).
-    
+
     &nbsp;
     ''')),
 
@@ -2534,10 +2531,10 @@ Portal = html.Div(children=[
 
     dcc.Markdown(s('''
     &nbsp;
-    
+
     Here, you can decide who can view the portal and customize
     its appearance.
-    
+
     &nbsp;
     ''')),
 
@@ -2806,7 +2803,7 @@ Git = html.Div(children=[
     dcc.SyntaxHighlighter(s(
     '''$ git remote rename <existing-name> <new-name> '''),
     customStyle=styles.code_container, language='python'),
-    
+
     dcc.Markdown(s('''
 
     &nbsp;
@@ -2842,14 +2839,14 @@ Git = html.Div(children=[
     ''')),
 
     rc.Notebox(s('''
-    `git status` and `git diff` are optional and are only required if you 
+    `git status` and `git diff` are optional and are only required if you
     wish to inspect before adding changes.
     ''')),
 
     dcc.Markdown(s('''
 
-    &nbsp; 
-    
+    &nbsp;
+
     The demonstration below is a common way to deploy your changes:
 
     ''')),
