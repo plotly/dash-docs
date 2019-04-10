@@ -217,11 +217,15 @@ layout = html.Div([
     `Inputs` or `States` is determined by a user's input, then you must
     pre-define up front every permutation of callback that a user can
     potentially trigger. For an example of how this can be done programmatically
-    using the `callback` decorator, see this [Dash Community forum
+  using the `callback` decorator, see this [Dash Community forum
     post](https://community.plot.ly/t/callback-for-dynamically-created-graph/5511).
 
-
     ### All Dash Core Components in a layout should be registered with a callback.
+
+    Note: This section is present for legacy purposes. Prior to v0.40.0, setProps was only defined if the component was connected to a
+    callback. This required complex state management within the component like [this](https://github.com/plotly/dash-core-components/blob/63be1c258c15b419a82fb66366e1a31e66fbfaef/src/components/Input.react.js#L51-L59).
+    Now, setProps is always defined which should simplify your component's state
+    management. Learn more in this [community forum topic](TBD).
 
     If a Dash Core Component is present in the layout but not registered with a
     callback (either as an `Input`, `State`, or `Output`) then any changes to its

@@ -195,8 +195,8 @@ h1, h2, h3, h4, h5, h6 {
     6 - It is recommended to add `__name__` to the dash init to ensure the resources
     in the assets folder are loaded, eg: `app = dash.Dash(__name__, meta_tags=[...])`.
     When you run your application through some other command line (like the
-    flask command or gunicorn/waitress), the `__main__` module wil no
-    longer located where `app.py` is. By explicitly setting `__name__`,
+    flask command or gunicorn/waitress), the `__main__` module will no
+    longer be located where `app.py` is. By explicitly setting `__name__`,
     Dash will be able to locate the relative `assets` folder correctly.
 
     ### Hot Reloading
