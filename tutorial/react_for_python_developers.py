@@ -359,14 +359,14 @@ class MyComponent(Component):
 would be written in JavaScript as:
 ```
 class MyComponent extends Component {
-    init() {
-        super();
-        this.a = a;
-    }
+  init() {
+      super();
+      this.a = a;
+  }
 
-    render() {
-        return this.a;
-    }
+  render() {
+      return this.a;
+  }
 }
 ```
 
@@ -614,9 +614,9 @@ component App extends Component {
     };
   }
 
-    render() {
-      return <TextInput label={'Dash'} value={this.state.value}/>
-    }
+  render() {
+    return <TextInput label={'Dash'} value={this.state.value}/>
+  }
 }
 ```
 
@@ -627,15 +627,15 @@ component TextInput extends Component {
     super(props)
   }
 
-    render() {
-      return (
-          <div>
-            <label>{this.props.label}</label>
-            <input value={this.props.value}/>
-            <p>{this.props.value}</p>
-          </div>
-        )
-    }
+  render() {
+    return (
+        <div>
+          <label>{this.props.label}</label>
+          <input value={this.props.value}/>
+          <p>{this.props.value}</p>
+        </div>
+      )
+  }
 }
 ```
 
@@ -653,18 +653,18 @@ component App extends Component {
     };
   }
 
-    setProps(newProps) {
-      this.setState(newProps);
-    }
+  setProps(newProps) {
+    this.setState(newProps);
+  }
 
-    render() {
-      return (
-        <TextInput
-          label={'Dash'}
-          value={this.state.value}
-          setProps={this.setProps}
-        />
-    }
+  render() {
+    return (
+      <TextInput
+        label={'Dash'}
+        value={this.state.value}
+        setProps={this.setProps}
+      />
+  }
 }
 ```
 
@@ -677,21 +677,21 @@ component TextInput extends Component {
 
   }
 
-    handleInputChange = (e) => {
-      const newValue = e.target.value;
-      this.props.setProps({value: newValue});
-    }
-    
+  handleInputChange = (e) => {
+    const newValue = e.target.value;
+    this.props.setProps({value: newValue});
+  }
 
-    render() {
-      return (
-          <div>
-            <label>{this.props.label}</label>
-            <input value={this.props.value} onChange={this.handleInputChange}/>
-            <p>{this.props.value}</p>
-          </div>
-        )
-    }
+
+  render() {
+    return (
+        <div>
+          <label>{this.props.label}</label>
+          <input value={this.props.value} onChange={this.handleInputChange}/>
+          <p>{this.props.value}</p>
+        </div>
+      )
+  }
 }
 ```
 
