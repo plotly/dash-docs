@@ -284,6 +284,7 @@ To access the console:
 2. Click "Inspect Element"
 3. Click on the "Console" tab.
 
+
 To see for yourself, add a `console.log` statement inside the `render` method of `ExampleComponent`, refresh the page, and then inspect your browser's console.
 
 Like Python, error messages and exceptions will also appear inside this console.
@@ -702,6 +703,7 @@ To review, this is what happens when we type into our `<input>`:
 3. `this.setState` in `App` is called. This updates the `this.state` of `App` _and_ implicitly calls the `render` method of `App`.
 4. When `App.render` is called, it calls `TextInput.render` with the new properties, rerendering the `<input/>` with the new `value`.
 
+
 In Dash apps, the `dash-renderer` project is very similar to `App.js`. It contains all of the "state" of the application and it passes those properties into the individual components. When a component's properties change through user interaction (e.g. typing into an `<input/>` or hovering on a graph), the component needs to call `setProps` with the new values of the property. Dash's frontend (`dash-renderer`) will then rerender the component with the new property _and_ make the necessary API calls to Dash's Python server callbacks.
 
 ##### Handling the case when `setProps` isn't defined
@@ -717,6 +719,7 @@ In most cases, this is a non-issue. After all, why would you render an `Input` o
 
 1. If `setProps` is defined, then the component will call this function when its properties change and Dash will faithfully rerender the component with the new properties that it passed up.
 2. If `setProps` isn't defined, then the component isn't "connected" to Dash's backend through a callback and it will manage its state locally.
+
 
 Here's an example with our `TextInput` component:
 ```
