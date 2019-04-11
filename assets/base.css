@@ -265,7 +265,7 @@ textarea {
 input[type="email"]:focus,
 input[type="number"]:focus,
 input[type="search"]:focus,
-input[type="text"]:focus:not(.DateInput_input),
+input[type="text"]:not(.DateInput_input):focus,
 input[type="tel"]:focus,
 input[type="url"]:focus,
 input[type="password"]:focus,
