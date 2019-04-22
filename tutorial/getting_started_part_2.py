@@ -63,6 +63,7 @@ layout = html.Div([
     dcc.Markdown(s('''
     Try typing in the text box. The children of the output component updates
     right away. Let's break down what's happening here:
+
     1. The "inputs" and "outputs" of our application interface are described
        declaratively through the `app.callback` decorator.
     2. In Dash, the inputs and outputs of our application are simply the
@@ -129,6 +130,7 @@ layout = html.Div([
     and returns it to the Dash application.
 
     There are a few nice patterns in this example:
+
     1. We're using the [Pandas](http://pandas.pydata.org/) library for
        importing and filtering datasets in memory.
     2. We load our dataframe at the start of the app:
@@ -215,6 +217,7 @@ layout = html.Div([
     dcc.Markdown(s('''
     A word of caution: it's not always a good idea to combine Outputs, even if
     you can:
+	
     - If the Outputs depend on some but not all of the same Inputs, keeping
       them separate can avoid unnecessary updates.
     - If they have the same Inputs but do independent computations with these
