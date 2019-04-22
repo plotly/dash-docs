@@ -338,14 +338,6 @@ dcc.RangeSlider(
     value=[1, 3, 4, 5, 12, 17]
 )
     ''', customStyle=styles.code_container, language='python'),
-    html.Div([
-        dcc.RangeSlider(
-            min=0,
-            max=30,
-            value=[1, 3, 4, 5, 12, 17]
-        ),
-    ], className='example-container',
-       style={'overflow': 'hidden'}),
     html.Hr(),
     html.H3('Pushable Handles'),
     dcc.Markdown("The `pushable` property is either a `boolean` or a numerical value. \
