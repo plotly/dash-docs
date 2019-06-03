@@ -422,7 +422,7 @@ layout = html.Div(
         props, rules for higher index will be prioritized over lower index rules.  Previously 
         applied styles of equal priority will win over later ones (applied top to bottom, left to right)
 
-        These are the prorioty of style_* props in decreasing orders:
+        These are the priority of style_* props in decreasing orders:
 
             1. style_data_conditional
             2. style_data
