@@ -417,7 +417,7 @@ layout = html.Div(
 
         dcc.Markdown(dedent(
         """
-        There are a specific order of priority for the style\_\* properties. If there
+        There is a specific order of priority for the style\_\* properties. If there
         are multiple style_* props, the one with higher priority will take precedence. Within each 
         props, rules for higher index will be priorized over lower index rules.  Previously 
         applied styles of equal priority will win over later ones (applied top to bottom, left to right)
