@@ -115,7 +115,7 @@ header = html.Div(
             html.A(html.Img(
                 src='/assets/images/logo.png',
                 className='logo'
-            ), href='https://plot.ly/products/dash', className='logo-link'),
+            ), href='https://plot.ly/products/dash'),
 
             html.Div(className='links', children=[
                 html.A('pricing', className='link', href='https://plot.ly/dash/pricing'),
