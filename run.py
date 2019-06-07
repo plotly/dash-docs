@@ -113,7 +113,7 @@ header = html.Div(
         style={'height': '100%'},
         children=[
             html.A(html.Img(
-                src='https://cdn.rawgit.com/plotly/dash-docs/b1178b4e/images/dash-logo-stripe.svg',
+                src='/assets/images/logo.png',
                 className='logo'
             ), href='https://plot.ly/products/dash', className='logo-link'),
 
