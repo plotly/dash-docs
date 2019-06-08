@@ -540,4 +540,85 @@ however if this were imported from `index.py`, the initial loading of `index.py`
 would ultimately require itself to be already imported, which cannot be
 satisfied.
 '''),
+
+          dcc.Markdown('''***
+# Build a Multi-Page App with Flask
+
+Instead of using a conditional to serve different apps you can also use Flask's
+inbuilt routing via blueprints.
+To do so you have to combine different dash apps in one parent flask app.
+
+File structure:
+```
+- app.py
+- page_1.py
+- page_2.py
+```
+
+***
+
+`app.py`
+'''),
+
+          dcc.SyntaxHighlighter("""from flask import Flask, redirect, url_for
+
+# create application
+app = Flask(__name__)
+
+# Import dash apps after the definition of the flask app, so they can actually use it
+import page_1
+import page_2
+
+# Forward to Page 1 if no path is given
+@app.route('/')
+def index():
+    return redirect(url_for('/page-1/'))
+
+""", language='python', customStyle=styles.code_container),
+
+          dcc.Markdown("""
+***
+
+`page_1.py`
+"""),
+
+          dcc.SyntaxHighlighter("""import dash
+import dash_html_components as html
+
+from app import app
+
+# This internally creates a blueprint with the passed flask app
+dash_app = dash.Dash(__name__, server=app, url_base_pathname='/page-1/')
+
+dash_app.title = 'Page 1'
+dash_app.layout = html.Div(id='title', children='Page 1')
+
+""", language='python', customStyle=styles.code_container),
+
+          dcc.Markdown("""
+***
+
+`page_2.py`
+"""),
+
+          dcc.SyntaxHighlighter("""
+import dash
+import dash_html_components as html
+
+from app import app
+
+# This internally creates a blueprint with the passed flask app
+dash_app = dash.Dash(__name__, server=app, url_base_pathname='/page-2/')
+
+dash_app.title = 'Page 2'
+dash_app.layout = html.Div(id='title', children='Page 2')
+
+
+""", language='python', customStyle=styles.code_container),
+
+          dcc.Markdown("""
+***
+
+Then you can start the flask app in your preferred way, e.g. with `gunicorn app:app`.
+"""),
 ]
