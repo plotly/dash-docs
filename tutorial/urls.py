@@ -548,6 +548,13 @@ Instead of using a conditional to serve different apps you can also use Flask's
 inbuilt routing via blueprints.
 To do so you have to combine different dash apps in one parent flask app.
 
+The solution above using a callback is easy to setup and understand.
+Once you want to have a couple of pages it gets a bit messy in code though.
+Also it can have a small impact on performance as you have to evaluate the decision tree on every request.
+
+On the other hand, setting up another flask app to combine all dash apps adds a bit more complexity to your code,
+this is how it looks like:
+
 File structure:
 ```
 - app.py
