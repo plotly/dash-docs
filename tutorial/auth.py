@@ -52,7 +52,7 @@ layout = html.Div([
     '''.replace('    ', '')),
 
     html.Img(
-        src='https://github.com/plotly/dash-docs/raw/master/images/basic-auth.gif',
+        src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/basic-auth.gif',
         alt='Dash Basic Auth Example',
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
@@ -134,7 +134,7 @@ if __name__ == '__main__':
     '''.replace('   ', '')),
 
     html.Img(
-        src='https://github.com/plotly/dash-docs/raw/master/images/plotly-auth.gif',
+        src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/plotly-auth.gif',
         alt='Dash Plotly OAuth Example',
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
