@@ -18,5 +18,7 @@ cache
 bundle.js
 .idea
 .env
+.Rhistory
+.RData
 
 ignore/indicators.csv
