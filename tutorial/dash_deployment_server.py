@@ -75,7 +75,7 @@ reusable_components.Section("User Interface", [
                 'Learn about Dash App privacy and how to manage collaborators.'),
         reusable_components.Chapter('Adding Private Python Packages',
                 '/dash-deployment-server/private-packages',
-                'Intsall private python packages in your Dash Apps.'),
+                'Install private python packages in your Dash Apps.'),
         reusable_components.Chapter('Linking a Celery Process',
                 '/dash-deployment-server/celery-process',
                 'Add a task queue to your Dash Apps.'),

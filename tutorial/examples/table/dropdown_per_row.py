@@ -1,5 +1,4 @@
 import dash
-from dash.dependencies import Input, Output
 import dash_html_components as html
 import dash_table
 import pandas as pd
@@ -18,7 +17,7 @@ df_per_row_dropdown = pd.DataFrame(OrderedDict([
 app.layout = html.Div([
     dash_table.DataTable(
         id='dropdown_per_row',
-        data=df_per_row_dropdown.to_dict('rows'),
+        data=df_per_row_dropdown.to_dict('records'),
         columns=[
             {'id': 'City', 'name': 'City'},
             {'id': 'Neighborhood', 'name': 'Neighborhood', 'presentation': 'dropdown'},
@@ -33,7 +32,7 @@ app.layout = html.Div([
                 'dropdowns': [
                     {
                         # these are filter strings
-                        'condition': 'City eq "NYC"',
+                        'condition': '{City} eq "NYC"',
                         'dropdown': [
                             {'label': i, 'value': i}
                             for i in [
@@ -45,7 +44,7 @@ app.layout = html.Div([
                     },
 
                     {
-                        'condition': 'City eq "Montreal"',
+                        'condition': '{City} eq "Montreal"',
                         'dropdown': [
                             {'label': i, 'value': i}
                             for i in [
@@ -57,7 +56,7 @@ app.layout = html.Div([
                     },
 
                     {
-                        'condition': 'City eq "Los Angeles"',
+                        'condition': '{City} eq "Los Angeles"',
                         'dropdown': [
                             {'label': i, 'value': i}
                             for i in [
@@ -74,15 +73,6 @@ app.layout = html.Div([
     ),
     html.Div(id='dropdown_per_row_container')
 ])
-
-
-# In order for the changes in the dropdown to persist,
-# the dropdown needs to be "connected" to the table via
-# a callback
-@app.callback(Output('dropdown_per_row_container', 'children'),
-              [Input('dropdown_per_row', 'data_timestamp')])
-def update_output(timestamp):
-    return timestamp
 
 
 if __name__ == '__main__':

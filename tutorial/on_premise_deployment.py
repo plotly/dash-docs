@@ -137,7 +137,7 @@ def generate_instructions(chapter, platform):
 
             html.Img(
                 alt='Dash App Create Menu',
-                src='https://github.com/plotly/dash-docs/raw/master/images/dash-create-menu.png',
+                src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-create-menu.png',
                 style={
                     'width': '100%', 'border': 'thin lightgrey solid',
                     'border-radius': '4px'
@@ -155,7 +155,7 @@ def generate_instructions(chapter, platform):
 
             html.Img(
                 alt='Dash Deployment Server Public Key Interface',
-                src='https://github.com/plotly/dash-docs/raw/master/images/dash-app-manager-ssh-key.png',
+                src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-app-manager-ssh-key.png',
                 style={
                     'width': '100%', 'border': 'thin lightgrey solid',
                     'border-radius': '4px'
@@ -210,7 +210,7 @@ def generate_instructions(chapter, platform):
 
             html.Img(
                 alt='Dash Deployment Server Add App Interface',
-                src='https://github.com/plotly/dash-docs/raw/master/images/dash-app-manager-empty.png',
+                src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-app-manager-empty.png',
                 style={
                     'width': '100%', 'border': 'thin lightgrey solid',
                     'border-radius': '4px'
@@ -416,7 +416,7 @@ def generate_instructions(chapter, platform):
 
             To see this example code in action
             [check out our ODBC example](https://github.com/plotly/dash-on-premise-sample-app/pull/3#issue-144272510)
-             On-Premise application.
+             On-Premises application.
             '''))
         ]
 

@@ -856,7 +856,7 @@ ConfigSys = html.Div(children=[
 
     To see this example code in action
     [check out our ODBC example](https://github.com/plotly/dash-on-premise-sample-app/pull/3#issue-144272510)
-     On-Premise application.
+     On-Premises application.
     '''))
 ])
 
@@ -1677,7 +1677,7 @@ Redis = html.Div(children=[
 
     In Plotly Enterprise 2.5.0, Redis Databases are always enabled.
 
-    For previous versions, navigate to Plotly On-Premise Server Settings
+    For previous versions, navigate to Plotly On-Premises Server Settings
     (`https://<your.plotly.domain>:8800/settings`), then under **Special Options
     & Customizations** select **Enable Dash Customizations** and **Enable Redis
     Databases** for Dash Apps.

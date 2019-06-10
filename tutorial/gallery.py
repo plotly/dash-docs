@@ -116,7 +116,7 @@ layout = html.Div(className='gallery', children=[
         ),
         AppSection(
             app_name='3-D Yield Curve',
-            app_link='https://dash-yield-curve.plot.ly',
+            app_link='https://dash-gallery.plotly.host/dash-yield-curve/',
             code_link='https://github.com/plotly/dash-yield-curve',
             img_src='assets/images/gallery/dash-yield-curve-app.png',
             description='''
@@ -132,25 +132,17 @@ layout = html.Div(className='gallery', children=[
 
     reusable.Row([
         AppSection(
-            app_name='Vanguard Report',
-            app_link='https://dash-gallery.plotly.host/dash-vanguard-report',
-            code_link='https://github.com/plotly/dash-vanguard-report',
-            img_src='assets/images/gallery/vanguard.gif',
+            app_name='Financial Report',
+            app_link='https://dash-gallery.plotly.host/dash-financial-report',
+            code_link='https://github.com/plotly/dash-financial-report',
+            img_src='assets/images/gallery/dash-financial-report.gif',
             description='''
-            This app recreates the look and feel of a Vanguard report.
-            It includes a Print to PDF button and the styles were optimized
-            to look good on the web and in PDF form.
-
+            This app recreates the look and feel of a financial report.
             The charts in the report on the web version are interactive.
             You can hover over points to see their values and zoom into
             regions. Since this report was built on top of Dash, you could
             adapt this report to include even more interactive elements, like
             a dropdown or a search box.
-
-            With PDF styles, you can hide and show elements depending on whether
-            the app is being viewed in the web browser or in print, using the
-            same framework for both the rich interactive applications and the static
-            PDF reports.
             '''
         )
         ,
@@ -191,7 +183,7 @@ layout = html.Div(className='gallery', children=[
     reusable.Row([
         AppSection(
             app_name='Natural Gas Well Production',
-            app_link='https://dash-oil-and-gas.plot.ly',
+            app_link='https://dash-gallery.plotly.host/dash-oil-and-gas/',
             code_link='https://github.com/plotly/dash-oil-and-gas-demo',
             img_src='assets/images/gallery/oil-and-gas.gif',
             description='''
@@ -211,7 +203,7 @@ layout = html.Div(className='gallery', children=[
 
         AppSection(
             app_name='NYC Uber Rides',
-            app_link='https://dash-uber-rides.plot.ly',
+            app_link='https://dash-gallery.plotly.host/dash-uber-rides/',
             code_link='https://github.com/plotly/dash-uber-rides-demo',
             img_src='assets/images/gallery/uber-rides.gif',
             description='''
@@ -227,7 +219,7 @@ layout = html.Div(className='gallery', children=[
         AppSection(
             app_name='LAStoDash',
             app_link='https://dash-gallery.plotly.host/dash-lastodash',
-            code_link='https://github.com/n-riesco/lastodash',
+            code_link='https://github.com/plotly/lastodash',
             img_src='assets/images/gallery/dash-lastodash.gif',
             description='''
             This dash app takes a Log ASCII Standard (LAS) file, and generates a
@@ -245,7 +237,7 @@ layout = html.Div(className='gallery', children=[
     reusable.Row([
         AppSection(
             app_name='Drug Precursors',
-            app_link='https://dash-drug-explorer.plot.ly',
+            app_link='https://dash-gallery.plotly.host/dash-drug-discovery/',
             code_link='https://github.com/plotly/dash-drug-discovery-demo/',
             img_src='assets/images/gallery/drug-discovery-app.gif',
             description='''
@@ -262,7 +254,7 @@ layout = html.Div(className='gallery', children=[
 
         AppSection(
             app_name='MRI Reconstruction',
-            app_link='http://brain-surface-viewer.herokuapp.com/',
+            app_link='https://dash-gallery.plotly.host/dash-brain-surface-viewer/',
             code_link='https://github.com/plotly/dash-brain-surface-viewer',
             img_src='assets/images/gallery/dash-brain-surface-viewer.png',
             description='''
@@ -276,7 +268,7 @@ layout = html.Div(className='gallery', children=[
     reusable.Row([
         AppSection(
             app_name='Phylogeny trees and global spread of six viruses',
-            app_link='https://dash-phylogeny.herokuapp.com/',
+            app_link='https://dash-gallery.plotly.host/dash-phylogeny/',
             code_link='https://github.com/plotly/dash-phylogeny',
             img_src='assets/images/gallery/dash-phylo-tree.gif',
             description='''
@@ -305,7 +297,7 @@ layout = html.Div(className='gallery', children=[
     reusable.Row([
         AppSection(
             app_name='US Opioid Epidemic',
-            app_link='https://opioid-epidemic.herokuapp.com/',
+            app_link='https://dash-gallery.plotly.host/dash-opioid-epidemic/',
             code_link='https://github.com/plotly/dash-opioid-epidemic-demo',
             img_src='assets/images/gallery/opioid-epidemic.png',
             description='''
@@ -321,7 +313,7 @@ layout = html.Div(className='gallery', children=[
     reusable.Row([
         AppSection(
             app_name='Object Detection',
-            app_link='https://dash-object-detection.plot.ly/',
+            app_link='https://dash-gallery.plotly.host/dash-object-detection/',
             code_link='https://github.com/plotly/dash-object-detection',
             img_src='assets/images/gallery/dash-object-detection.gif',
             description='''
@@ -337,7 +329,7 @@ layout = html.Div(className='gallery', children=[
 
         AppSection(
             app_name='Visualize Model Training',
-            app_link='https://dash-live-model-training.plot.ly/',
+            app_link='https://dash-gallery.plotly.host/dash-live-model-training/',
             code_link='https://github.com/plotly/dash-live-model-training',
             img_src='assets/images/gallery/dash-live-model-training.gif',
             description='''
@@ -352,7 +344,7 @@ layout = html.Div(className='gallery', children=[
     reusable.Row([
         AppSection(
             app_name='Image Processing',
-            app_link='http://dash-image-processing.plot.ly/',
+            app_link='https://dash-gallery.plotly.host/dash-image-processing/',
             code_link='https://github.com/plotly/dash-image-processing',
             img_src='assets/images/gallery/dash-image-processing.gif',
             description='''
@@ -366,7 +358,7 @@ layout = html.Div(className='gallery', children=[
 
         AppSection(
             app_name='Interactive t-SNE',
-            app_link='https://dash-tsne.plot.ly/',
+            app_link='https://dash-gallery.plotly.host/dash-tsne/',
             code_link='https://github.com/plotly/dash-tsne',
             img_src='assets/images/gallery/dash-tsne.gif',
             description='''
@@ -385,7 +377,7 @@ layout = html.Div(className='gallery', children=[
     reusable.Row([
         AppSection(
             app_name='Explore SVMs',
-            app_link='https://dash-svm.plot.ly/',
+            app_link='https://dash-gallery.plotly.host/dash-svm/',
             code_link='https://github.com/plotly/dash-svm',
             img_src='assets/images/gallery/dash-svm.gif',
             description='''
@@ -404,7 +396,7 @@ layout = html.Div(className='gallery', children=[
     reusable.Row([
         AppSection(
             app_name='Dash Datashader',
-            app_link='https://dash-datashader.herokuapp.com',
+            app_link='https://dash-gallery.plotly.host/dash-datashader/',
             code_link='https://github.com/plotly/dash-datashader',
             img_src='assets/images/gallery/dash-datashader.png',
             description='''
@@ -452,7 +444,7 @@ layout = html.Div(className='gallery', children=[
             app_name='Dash DataTable',
             app_link='/datatable',
             code_link='https://github.com/plotly/dash-table',
-            img_src='assets/images/gallery/DataTable.gif',
+            img_src='assets/images/gallery/dash-datatable.gif',
             description='''
         Dash provides an interactive `DataTable` as part of the `data-table`
         project. This table includes built-in filtering, row-selection,
@@ -655,7 +647,7 @@ layout = html.Div(className='gallery', children=[
             app_name='B&K Precision Power Supply',
             app_link='https://www.dashdaq.io/control-bk-precision-1785b-power-supply-in-python',
             code_name_display_text='Try the app',
-            code_link='http://dash-daq-bkprecision.herokuapp.com/',
+            code_link='https://dash-gallery.plotly.host/dash-bk-precision/',
             img_src='assets/images/gallery/Dash-DAQ-BKprecision.jpg',
             description='''
             This Dash DAQ app controls a B&K Precision power supply using a
@@ -699,21 +691,6 @@ layout = html.Div(className='gallery', children=[
             In just over 300 lines of code, this app helps you control
             and read a Pfeiffer vacuum gauge controller.
             '''
-        )
-    ]),
-
-    reusable.Row([
-        AppSection(
-            app_name='Analyze Frequency Responses using a Tektronix Function Generator and Oscilloscope',
-            app_link='https://www.dashdaq.io/analyze-frequency-responses-in-python-using-a-tektronix-function-generator-and-oscilloscope',
-            code_name_display_text='Try the app',
-            code_link='https://freq-response-plotter.herokuapp.com/',
-            img_src='assets/images/gallery/Dash-DAQ-Frequency-Response.jpg',
-            description='''
-            With this Dash DAQ app, you can create a user-friendly GUI for
-            analyzing the frequency responses of circuits.
-            ''',
-            width=12
         )
     ]),
 

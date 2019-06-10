@@ -72,52 +72,53 @@ layout = html.Div([
     Example(examples[0][1]),
 
     dcc.Markdown('''
-        Note:
-        1. The `layout` is composed of a tree of "components" like `html.Div`
-           and `dcc.Graph`.
-        2. The `dash_html_components` library has a component for every HTML
-           tag. The `html.H1(children='Hello Dash')` component generates
-           a `<h1>Hello Dash</h1>` HTML element in your application.
-        3. Not all components are pure HTML. The `dash_core_components` describe
-           higher-level components that are interactive and are generated with
-           JavaScript, HTML, and CSS through the React.js library.
-        4. Each component is described entirely through keyword attributes.
-           Dash is _declarative_: you will primarily describe your application
-           through these attributes.
-        5. The `children` property is special. By convention, it's always the
-           first attribute which means that you can omit it:
-           `html.H1(children='Hello Dash')` is the same as `html.H1('Hello Dash')`.
-           Also, it can contain a string, a number, a single component, or a
-           list of components.
-        6. The fonts in your application will look a little bit different than
-           what is displayed here. This application is using a
-           custom CSS stylesheet to modify the default styles of the elements.
-           You can learn more in the [css tutorial](/external-resources),
-           but for now you can initialize your app with
-           ```
-           external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
-           
-           app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
-           ```
-           to get the same look and feel of these examples.
-           
-    ### Making your first change
-    
-    **New in dash 0.30.0 and dash-renderer 0.15.0**
+    Note:
 
-    Dash includes "hot-reloading", this features is activated by default when
-    you run your app with `app.run_server(debug=True)`. This means that Dash
-    will automatically refresh your browser when you make a change in your code.
+    1. The `layout` is composed of a tree of "components" like `html.Div`
+        and `dcc.Graph`.
+    2. The `dash_html_components` library has a component for every HTML
+        tag. The `html.H1(children='Hello Dash')` component generates
+        a `<h1>Hello Dash</h1>` HTML element in your application.
+    3. Not all components are pure HTML. The `dash_core_components` describe
+        higher-level components that are interactive and are generated with
+        JavaScript, HTML, and CSS through the React.js library.
+    4. Each component is described entirely through keyword attributes.
+        Dash is _declarative_: you will primarily describe your application
+        through these attributes.
+    5. The `children` property is special. By convention, it's always the
+        first attribute which means that you can omit it:
+        `html.H1(children='Hello Dash')` is the same as `html.H1('Hello Dash')`.
+        Also, it can contain a string, a number, a single component, or a
+        list of components.
+    6. The fonts in your application will look a little bit different than
+        what is displayed here. This application is using a
+        custom CSS stylesheet to modify the default styles of the elements.
+        You can learn more in the [css tutorial](/external-resources),
+        but for now you can initialize your app with
+    ```
+    external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
-    Give it a try: change the title "Hello Dash" in your application or change the `x` or the `y` data. Your app should auto-refresh with your change.
+    app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+    ```
+    to get the same look and feel of these examples.
 
-    > Don't like hot-reloading? You can turn this off with `app.run_server(dev_tools_hot_reload=False)`. 
-    > Learn more in [Dash Dev Tools documentation](/devtools) Questions? See the [community forum hot reloading discussion](https://community.plot.ly/t/announcing-hot-reload/14177).
+### Making your first change
 
-    #### More about HTML
+**New in dash 0.30.0 and dash-renderer 0.15.0**
 
-    The `dash_html_components` library contains a component class for every
-    HTML tag as well as keyword arguments for all of the HTML arguments.
+Dash includes "hot-reloading", this features is activated by default when
+you run your app with `app.run_server(debug=True)`. This means that Dash
+will automatically refresh your browser when you make a change in your code.
+
+Give it a try: change the title "Hello Dash" in your application or change the `x` or the `y` data. Your app should auto-refresh with your change.
+
+> Don't like hot-reloading? You can turn this off with `app.run_server(dev_tools_hot_reload=False)`.
+> Learn more in [Dash Dev Tools documentation](/devtools) Questions? See the [community forum hot reloading discussion](https://community.plot.ly/t/announcing-hot-reload/14177).
+
+#### More about HTML
+
+The `dash_html_components` library contains a component class for every
+HTML tag as well as keyword arguments for all of the HTML arguments.
 
     '''.replace('    ', '')),
 
@@ -141,6 +142,7 @@ layout = html.Div([
 
         There are a few important differences between the `dash_html_components`
         and the HTML attributes:
+
         1. The `style` property in HTML is a semicolon-separated string. In Dash,
            you can just supply a dictionary.
         2. The keys in the `style` dictionary are [camelCased](https://en.wikipedia.org/wiki/Camel_case).
@@ -149,6 +151,7 @@ layout = html.Div([
         4. The children of the HTML tag is specified through the `children` keyword
            argument. By convention, this is always the _first_ argument and
            so it is often omitted.
+
 
         Besides that, all of the available HTML attributes and tags are available
         to you within your Python context.

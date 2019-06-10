@@ -1,12 +1,11 @@
 from collections import OrderedDict
-from dash.dependencies import Input, Output
 import dash_core_components as dcc
 import dash_html_components as html
 import pandas as pd
 from textwrap import dedent
 
 import dash_table
-from .utils import html_table, CreateDisplay
+from .utils import CreateDisplay
 
 data = OrderedDict(
     [
@@ -86,7 +85,7 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            data=df.to_dict('rows'),
+            data=df.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df.columns]
         )
         '''
@@ -195,7 +194,7 @@ layout = html.Div(
                 'selector': '.dash-cell div.dash-cell-value',
                 'rule': 'display: inline; white-space: inherit; overflow: inherit; text-overflow: inherit;'
             }],
-            data=df_election.to_dict('rows'),
+            data=df_election.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df_election.columns]
         )
         '''),
@@ -218,7 +217,7 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            data=df_election.to_dict('rows'),
+            data=df_election.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df_election.columns],
             css=[{
                 'selector': '.dash-cell div.dash-cell-value',
@@ -245,7 +244,7 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            data=df_election.to_dict('rows'),
+            data=df_election.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df_election.columns],
             style_table={'overflowX': 'scroll'},
         )
@@ -272,7 +271,7 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            data=df_election.to_dict('rows'),
+            data=df_election.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df_election.columns],
             style_table={'overflowX': 'scroll'},
             style_cell={
@@ -289,7 +288,7 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            data=df_election.to_dict('rows'),
+            data=df_election.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df_election.columns],
             style_table={'overflowX': 'scroll'},
             style_cell={
@@ -316,7 +315,7 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            data=df_election.to_dict('rows'),
+            data=df_election.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df_election.columns],
             style_table={'overflowX': 'scroll'},
             style_cell={
@@ -334,7 +333,7 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            data=df_election.to_dict('rows'),
+            data=df_election.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df_election.columns],
             style_table={'overflowX': 'scroll'},
             style_cell={
@@ -368,7 +367,7 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            data=df_election.to_dict('rows'),
+            data=df_election.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df_election.columns],
             n_fixed_columns=1,
         )
@@ -377,7 +376,7 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            data=df_election.to_dict('rows'),
+            data=df_election.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df_election.columns],
             n_fixed_columns=1,
             style_cell={
@@ -414,7 +413,7 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            data=df.to_dict('rows'),
+            data=df.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df.columns],
             style_cell_conditional=[
                 {'if': {'column_id': 'Date'},
@@ -428,7 +427,7 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            data=df.to_dict('rows'),
+            data=df.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df.columns],
             style_cell_conditional=[
                 {'if': {'column_id': 'Temperature'},
@@ -465,7 +464,7 @@ layout = html.Div(
         # Display(
         # '''
         # dash_table.DataTable(
-        #     data=df_election.to_dict('rows'),
+        #     data=df_election.to_dict('records'),
         #     columns=[{'id': c, 'name': c} for c in df_election.columns],
         #     style_cell_conditional=[
         #         {'if': {'column_id': 'Dem'},
@@ -501,7 +500,7 @@ layout = html.Div(
         # Display(
         # '''
         # dash_table.DataTable(
-        #     data=df_election.to_dict('rows'),
+        #     data=df_election.to_dict('records'),
         #     columns=[{'id': c, 'name': c} for c in df_election.columns],
         #     style_cell_conditional=[
         #         {'if': {'column_id': 'Dem'},
@@ -529,7 +528,7 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            data=df_long.to_dict('rows'),
+            data=df_long.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df.columns],
             style_table={
                 'maxHeight': '300',
@@ -556,7 +555,7 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            data=df_long.to_dict('rows'),
+            data=df_long.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df_long.columns],
             n_fixed_rows=1,
             style_cell={'width': '150px'}
@@ -584,7 +583,7 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            data=df.to_dict('rows'),
+            data=df.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df.columns],
             style_table={
                 'maxHeight': '300px',
@@ -606,7 +605,7 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            data=df.to_dict('rows'),
+            data=df.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df.columns],
             style_table={
                 'height': '300px',

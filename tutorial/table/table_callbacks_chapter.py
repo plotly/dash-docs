@@ -59,6 +59,10 @@ layout = html.Div([
 
     Instead, we recommend implmenting sorting and filtering on the
     backend as well. That is, on the entire underlying dataset.
+
+    **Note for returning users - changed property names:**
+    - Sorted fields are now in `sort_by`, not `sorting_settings`
+    - The filter string is now in `filter`, not `filtering_settings`
     ''')),
 
     dcc.Markdown('### Backend Paging with Sorting'),

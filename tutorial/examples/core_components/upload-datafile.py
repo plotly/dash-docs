@@ -62,7 +62,7 @@ def parse_contents(contents, filename, date):
         html.H6(datetime.datetime.fromtimestamp(date)),
 
         dash_table.DataTable(
-            data=df.to_dict('rows'),
+            data=df.to_dict('records'),
             columns=[{'name': i, 'id': i} for i in df.columns]
         ),
 

@@ -1,7 +1,5 @@
 import dash
-from dash.dependencies import Input, Output
 import dash_table
-import dash_html_components as html
 
 import pandas as pd
 
@@ -15,7 +13,7 @@ app.layout = dash_table.DataTable(
     columns=[
         {"name": i, "id": i, "deletable": True} for i in df.columns
     ],
-    data=df.to_dict("rows"),
+    data=df.to_dict('records'),
     editable=True,
     filtering=True,
     sorting=True,

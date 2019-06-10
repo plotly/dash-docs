@@ -113,9 +113,9 @@ header = html.Div(
         style={'height': '100%'},
         children=[
             html.A(html.Img(
-                src='https://cdn.rawgit.com/plotly/dash-docs/b1178b4e/images/dash-logo-stripe.svg',
+                src='/assets/images/logo.png',
                 className='logo'
-            ), href='https://plot.ly/products/dash', className='logo-link'),
+            ), href='https://plot.ly/products/dash'),
 
             html.Div(className='links', children=[
                 html.A('pricing', className='link', href='https://plot.ly/dash/pricing'),
@@ -152,7 +152,7 @@ app.layout = html.Div(
 
 
 @app.callback(Output('chapter', 'children'),
-    [Input('location', 'pathname')])
+              [Input('location', 'pathname')])
 def display_content(pathname):
     if pathname is None:
         return ''
@@ -266,8 +266,8 @@ def display_content(pathname):
 
     return content
 
-app.index_string = '''
-<!DOCTYPE html>
+
+app.index_string = '''<!DOCTYPE html>
 <html>
     <head>
         {%metas%}
@@ -297,8 +297,7 @@ app.index_string = '''
             {%renderer%}
         </footer>
     </body>
-</html>
-'''
+</html>'''
 
 if __name__ == '__main__':
     app.run_server(debug=True, threaded=True, port=8060)

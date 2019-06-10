@@ -178,7 +178,7 @@ layout = html.Div([
     [`grid` layout](http://js.cytoscape.org/#layouts/grid) 
     will accept `row` and `cols`, the 
     [`circle` layout](http://js.cytoscape.org/#layouts/circle) accepts `radius` 
-    and `startAngle`, and so forth. Here's is the grid layout 
+    and `startAngle`, and so forth. Here is the grid layout 
     with the same graph as above, but with different layout options:
     ''')),
 

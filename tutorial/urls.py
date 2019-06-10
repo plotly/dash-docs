@@ -11,7 +11,7 @@ the application does not completely reload when the user navigates the
 application, making browsing very fast.
 
 There are two new components that aid page navigation:
-`dash_core_components.Location` and `dash_core_components.Link`.
+[`dash_core_components.Location`](/dash-core-components/location) and `dash_core_components.Link`.
 
 `dash_core_components.Location` represents the location bar in your web browser
 through the `pathname` property. Here's a simple example:
@@ -66,7 +66,7 @@ the page would refresh.
 Here is a GIF of what this example looks like. Note how clicking on the `Link`
 doesn't refresh the page even though it updates the URL!
 
-![Example of a multi-page Dash app using the Location and Link components](https://github.com/plotly/dash-docs/raw/master/images/url-support.gif)
+![Example of a multi-page Dash app using the Location and Link components](https://raw.githubusercontent.com/plotly/dash-docs/master/images/url-support.gif)
 
 ***
 
@@ -160,7 +160,7 @@ if __name__ == '__main__':
     app.run_server(debug=True)
 ''', language='python', customStyle=styles.code_container),
 
-          dcc.Markdown('''![Dash app with multiple pages](https://github.com/plotly/dash-docs/raw/master/images/url-support-pages.gif)
+          dcc.Markdown('''![Dash app with multiple pages](https://raw.githubusercontent.com/plotly/dash-docs/master/images/url-support-pages.gif)
 
 In this example, we're displaying different layouts through the `display_page`
 function. A few notes:
@@ -398,9 +398,9 @@ app.layout = html.Div([
               [Input('url', 'pathname')])
 def display_page(pathname):
     if pathname == '/apps/app1':
-         return app1.layout
+        return app1.layout
     elif pathname == '/apps/app2':
-         return app2.layout
+        return app2.layout
     else:
         return '404'
 

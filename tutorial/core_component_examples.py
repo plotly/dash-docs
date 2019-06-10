@@ -338,14 +338,6 @@ dcc.RangeSlider(
     value=[1, 3, 4, 5, 12, 17]
 )
     ''', customStyle=styles.code_container, language='python'),
-    html.Div([
-        dcc.RangeSlider(
-            min=0,
-            max=30,
-            value=[1, 3, 4, 5, 12, 17]
-        ),
-    ], className='example-container',
-       style={'overflow': 'hidden'}),
     html.Hr(),
     html.H3('Pushable Handles'),
     dcc.Markdown("The `pushable` property is either a `boolean` or a numerical value. \
@@ -1390,11 +1382,11 @@ Store = html.Div([
     def filter_countries(countries_selected):
         if not countries_selected:
             # Return all the rows on initial load/no country selected.
-            return df.to_dict('rows')
+            return df.to_dict('records')
 
         filtered = df.query('country in @countries_selected')
 
-        return filtered.to_dict('rows')
+        return filtered.to_dict('records')
 
 
     @app.callback(Output('memory-table', 'data'),
@@ -1489,4 +1481,23 @@ LoadingComponent = html.Div([
     Please also check out [this section on loading states](/loading-states) if you want a more customizable experience.
     ''')),
     generate_prop_table('Loading')
+])
+
+# Location
+Location = html.Div([
+    html.H1('Location Component'),
+
+    dcc.Markdown(s('''
+    The location component represents the location bar in your web browser. Through its `href`, `pathname`,
+    `search` and `hash` properties you can access different portions of your app's url.
+    
+    For example, given the url `http://127.0.0.1:8050/page-2?a=test#quiz`:
+
+    - `href` = `"http://127.0.0.1:8050/page-2?a=test#quiz"`
+    - `pathname` = `"/page-2"`
+    - `search` = `"?a=test"`
+    - `hash` = `"#quiz"`
+    ''')),
+
+    generate_prop_table('Location')
 ])

@@ -38,6 +38,14 @@ layout = html.Div([
     and medical sciences, quantification of phases in materials and
     geosciences, construction of training sets for machine learning, etc.
 
+    Install dash-canvas with
+
+    ```pip install -U dash-canvas```
+
+    The source is on GitHub at [plotly/dash-canvas](https://github.com/plotly/dash-canvas).
+
+    A gallery of examples is hosted at https://dash-canvas.plotly.host/.
+
     ### DashCanvas: a canvas object for annotations
 
     Let's get started with a simple canvas object.
@@ -157,8 +165,9 @@ layout = html.Div([
 
     ### More examples
 
-    A gallery of examples using ``DashCanvas`` is available on
-    https://github.com/plotly/canvas-gallery.
+    A gallery of examples using ``DashCanvas`` is deployed on
+    https://dash-canvas.plotly.host/, its source code is
+    [plotly/canvas-portal](https://github.com/plotly/canvas-portal).
     ''')),
 
 ])
