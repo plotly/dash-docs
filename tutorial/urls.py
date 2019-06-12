@@ -66,7 +66,7 @@ the page would refresh.
 Here is a GIF of what this example looks like. Note how clicking on the `Link`
 doesn't refresh the page even though it updates the URL!
 
-![Example of a multi-page Dash app using the Location and Link components](https://github.com/plotly/dash-docs/raw/master/images/url-support.gif)
+![Example of a multi-page Dash app using the Location and Link components](https://raw.githubusercontent.com/plotly/dash-docs/master/images/url-support.gif)
 
 ***
 
@@ -160,7 +160,7 @@ if __name__ == '__main__':
     app.run_server(debug=True)
 ''', language='python', customStyle=styles.code_container),
 
-          dcc.Markdown('''![Dash app with multiple pages](https://github.com/plotly/dash-docs/raw/master/images/url-support-pages.gif)
+          dcc.Markdown('''![Dash app with multiple pages](https://raw.githubusercontent.com/plotly/dash-docs/master/images/url-support-pages.gif)
 
 In this example, we're displaying different layouts through the `display_page`
 function. A few notes:

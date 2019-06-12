@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 import dash
-from dash.dependencies import Input, Output
 import dash_html_components as html
 import dash_table
 from dash_table.Format import Format, Scheme, Sign, Symbol

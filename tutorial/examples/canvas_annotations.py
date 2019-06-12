@@ -20,13 +20,13 @@ app.layout = html.Div([
                filename=filename,
                width=canvas_width,
                ),
-    DataTable(id='table',
+    DataTable(id='annot-canvas-table',
               style_cell={'textAlign': 'left'},
               columns=[{"name": i, "id": i} for i in columns]),
     ])
 
 
-@app.callback(Output('table', 'data'),
+@app.callback(Output('annot-canvas-table', 'data'),
               [Input('annot-canvas', 'json_data')])
 def update_data(string):
     if string:

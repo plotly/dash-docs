@@ -1,5 +1,4 @@
 import dash
-from dash.dependencies import Input, Output
 import dash_table
 import pandas as pd
 

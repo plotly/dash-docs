@@ -36,7 +36,7 @@ layout = html.Div([
     The following types are currently supported:
     - `numeric`: includes both integers and floats
     - `text`: string, sequence of characters
-    - `datatime`: string in the form 'YYYY-MM-DD HH:MM:SS.ssssss' or some truncation thereof
+    - `datetime`: string in the form 'YYYY-MM-DD HH:MM:SS.ssssss' or some truncation thereof
     - `any`: any type of data
 
     Additional types and specialized sub-types will be added in the future.

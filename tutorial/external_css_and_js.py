@@ -46,6 +46,7 @@ layout = html.Div([
     **Table of Contents**
     - Adding Your Own CSS and JavaScript to Dash Apps
     - Embedding Images in Your Dash Apps
+    - Changing the Favicon
     - Adding External CSS and JavaScript
     - Customizing Dash's HTML Index Template
     - Adding Meta Tags
@@ -275,6 +276,24 @@ if __name__ == '__main__':
         language='python',
         customStyle=styles.code_container
     ),
+
+    dcc.Markdown(s('''
+    ***
+
+    ## Changing the Favicon
+
+    It is possible to override the default favicon by adding
+    a file named `favicon.ico` to your `/assets` folder. Changes to 
+    this file will implement cache-busting automatically.
+
+    ```
+    - app.py
+    - assets/
+        |-- favicon.ico
+
+    ```
+    ''')),
+
 
     dcc.Markdown(s('''
     ***

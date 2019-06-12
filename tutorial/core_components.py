@@ -208,7 +208,9 @@ dcc.RadioItems(
     dcc.Link(html.A('More Button Examples and Reference'),
              href="/dash-core-components/button"),
     html.P([
-        '''For more on `dash.dependencies.State`, see the tutorial on ''',
+        'For more on ',
+        html.Code('dash.dependencies.State'),
+        ', see the tutorial on ',
         dcc.Link('Dash State', href='/state'),
         '.'
     ]),

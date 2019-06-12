@@ -116,14 +116,17 @@ class Tests(IntegrationTests):
         def visit_and_snapshot(href):
             self.driver.get('http://localhost:8050{}'.format(href))
             # stub elem at the bottom of browser
-            self.wait_for_element_by_id('wait-for-page-{}'.format(href))
-            if href == '/external-resources':
-                self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-            self.snapshot(href)
-            self.driver.back()
-
+            try:
+                self.wait_for_element_by_id('wait-for-page-{}'.format(href))
+                if href == '/external-resources':
+                    self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+                self.snapshot(href)
+                self.driver.back()
+            except Exception as e:
+                print(href)  # determine which page is having issues
+                raise e
         for link in links:
-            if link.startswith('/') and link != '/dash-daq':
+            if link.startswith('/') and link != '/dash-daq' and link != '/dash-bio':
                 visit_and_snapshot(link)
 
         # test search page

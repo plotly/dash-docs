@@ -1,12 +1,8 @@
-import dash_html_components as html
-
-from dash.dependencies import Input, Output
-import dash_core_components as dcc
-import dash_html_components as html
-import pandas as pd
 from textwrap import dedent
 
-import dash_table
+import dash_core_components as dcc
+import dash_html_components as html
+
 from .utils import section_title
 from tutorial import tools
 from tutorial import styles

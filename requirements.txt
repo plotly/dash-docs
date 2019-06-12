@@ -4,8 +4,9 @@ certifi==2018.4.16
 chardet==3.0.4
 click==6.7
 configparser==3.5.0
-dash==0.42.0
+dash==0.43.0
 dash-auth==1.2.0
+dash-bio==0.0.10
 dash-cytoscape==0.0.5
 dash-daq==0.1.0
 dash-canvas>=0.0.10

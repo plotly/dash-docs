@@ -1,5 +1,4 @@
 import dash
-from dash.dependencies import Input, Output
 import dash_html_components as html
 import dash_table
 import pandas as pd
@@ -45,15 +44,6 @@ app.layout = html.Div([
     ),
     html.Div(id='table-dropdown-container')
 ])
-
-
-# In order for the changes in the dropdown to persist,
-# the dropdown needs to be "connected" to the table via
-# a callback
-@app.callback(Output('table-dropdown-container', 'children'),
-              [Input('table-dropdown', 'data_timestamp')])
-def update_output(timestamp):
-    return timestamp
 
 
 if __name__ == '__main__':

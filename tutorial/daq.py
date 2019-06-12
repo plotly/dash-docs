@@ -68,6 +68,10 @@ dash_daq_components = {
             'color': '\"#00cc96\"'
         }
     },
+    'Joystick': {
+        'description': '''A joystick that can be used to apply direction and \
+        force.'''
+    },
     'Knob': {
         'description': '''A knob component that can be turned to a value \
         between some range.''',
