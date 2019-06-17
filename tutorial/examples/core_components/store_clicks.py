@@ -1,7 +1,7 @@
 import dash
 
 import dash_html_components as html
-import dash_core_components as dcc
+import dash_core_components as dcc  # no-exec
 from dash.dependencies import Output, Input, State
 from dash.exceptions import PreventUpdate
 
@@ -11,29 +11,34 @@ external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 app.layout = html.Div([
-
-
-    html.Div([
-        html.Button('Click to store in memory', id='memory-button'),
-        html.Button('Click to store in localStorage', id='local-button'),
-        html.Button('Click to store in sessionStorage', id='session-button')
-    ]),
-
-    html.Div([
-        html.Table([
-            html.Thead([
-                html.Tr([
-                    html.Th('Memory clicks'),
-                    html.Th('Local clicks'),
-                    html.Th('Session clicks')
-                ])
+    # The memory store reverts to the default on every page refresh
+    dcc.Store(id='memory'),  # no-exec - stores are loaded from the beginning
+    # The local store will take the initial data
+    # only the first time the page is loaded
+    # and keep it until it is cleared.
+    dcc.Store(id='local', storage_type='local'),  # no-exec
+    # Same as the local store but will lose the data
+    # when the browser/tab closes.
+    dcc.Store(id='session', storage_type='session'),  # no-exec
+    html.Table([
+        html.Thead([
+            html.Tr(html.Th('Click to store in:', colSpan="3")),
+            html.Tr([
+                html.Th(html.Button('memory', id='memory-button')),
+                html.Th(html.Button('localStorage', id='local-button')),
+                html.Th(html.Button('sessionStorage', id='session-button'))
             ]),
-            html.Tbody([
-                html.Tr([
-                    html.Td(0, id='memory-clicks'),
-                    html.Td(0, id='local-clicks'),
-                    html.Td(0, id='session-clicks')
-                ])
+            html.Tr([
+                html.Th('Memory clicks'),
+                html.Th('Local clicks'),
+                html.Th('Session clicks')
+            ])
+        ]),
+        html.Tbody([
+            html.Tr([
+                html.Td(0, id='memory-clicks'),
+                html.Td(0, id='local-clicks'),
+                html.Td(0, id='session-clicks')
             ])
         ])
     ])

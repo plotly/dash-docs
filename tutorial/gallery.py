@@ -132,25 +132,17 @@ layout = html.Div(className='gallery', children=[
 
     reusable.Row([
         AppSection(
-            app_name='Vanguard Report',
-            app_link='https://dash-gallery.plotly.host/dash-vanguard-report',
-            code_link='https://github.com/plotly/dash-vanguard-report',
-            img_src='assets/images/gallery/vanguard.gif',
+            app_name='Financial Report',
+            app_link='https://dash-gallery.plotly.host/dash-financial-report',
+            code_link='https://github.com/plotly/dash-financial-report',
+            img_src='assets/images/gallery/dash-financial-report.gif',
             description='''
-            This app recreates the look and feel of a Vanguard report.
-            It includes a Print to PDF button and the styles were optimized
-            to look good on the web and in PDF form.
-
+            This app recreates the look and feel of a financial report.
             The charts in the report on the web version are interactive.
             You can hover over points to see their values and zoom into
             regions. Since this report was built on top of Dash, you could
             adapt this report to include even more interactive elements, like
             a dropdown or a search box.
-
-            With PDF styles, you can hide and show elements depending on whether
-            the app is being viewed in the web browser or in print, using the
-            same framework for both the rich interactive applications and the static
-            PDF reports.
             '''
         )
         ,

@@ -52,7 +52,7 @@ layout = html.Div([
     '''.replace('    ', '')),
 
     html.Img(
-        src='https://github.com/plotly/dash-docs/raw/master/images/basic-auth.gif',
+        src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/basic-auth.gif',
         alt='Dash Basic Auth Example',
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
@@ -80,9 +80,9 @@ import dash_html_components as html
 import plotly
 
 # Keep this out of source code repository - save in a file or a database
-VALID_USERNAME_PASSWORD_PAIRS = [
-    ['hello', 'world']
-]
+VALID_USERNAME_PASSWORD_PAIRS = {
+    'hello': 'world'
+}
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
@@ -134,7 +134,7 @@ if __name__ == '__main__':
     '''.replace('   ', '')),
 
     html.Img(
-        src='https://github.com/plotly/dash-docs/raw/master/images/plotly-auth.gif',
+        src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/plotly-auth.gif',
         alt='Dash Plotly OAuth Example',
         style={
             'width': '100%', 'border': 'thin lightgrey solid',

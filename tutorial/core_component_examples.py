@@ -15,6 +15,7 @@ examples = {
     'date_picker_single': tools.load_example('tutorial/examples/core_components/date_picker_single.py'),
     'date_picker_range': tools.load_example('tutorial/examples/core_components/date_picker_range.py'),
     'dropdown': tools.load_example('tutorial/examples/core_components/dropdown.py'),
+    'graph-config': tools.load_example('tutorial/examples/core_components/export_graph_to_chart_studio.py'),
     'input-basic': tools.load_example('tutorial/examples/core_components/input-basic.py'),
     'input-n_submit': tools.load_example('tutorial/examples/core_components/input-n_submit.py'),
     'rangeslider': tools.load_example('tutorial/examples/core_components/rangeslider.py'),
@@ -1146,6 +1147,21 @@ Tabs = html.Div(children=[
     generate_prop_table('Tab')
 ])
 
+# Graphs
+Graphs = html.Div([
+    html.H1('Graph Reference'),
+    dcc.Markdown(s('''
+    Custimize the [Plotly.js config options](https://plot.ly/javascript/configuration-options/) of your graph using
+    the `config` property. The example below uses the `showSendToCloud` and `plotlyServerURL` options include a
+    save button in the modebar of the graph which exports the figure to URL specified by `plotlyServerURL`.
+    
+    ''')),
+    Syntax(examples['graph-config'][0]),
+    Example(examples['graph-config'][1]),
+    html.H3('Graph Properties'),
+    generate_prop_table('Graph')
+])
+
 # Upload
 Upload = html.Div([
     html.H1('Upload Component'),
@@ -1247,186 +1263,12 @@ Store = html.Div([
     See https://github.com/plotly/dash-renderer/pull/81 for further discussion.
     ''')),
     html.H2('Store clicks example'),
-    Syntax(s('''
-    import dash
-
-    import dash_html_components as html
-    import dash_core_components as dcc
-    from dash.dependencies import Output, Input, State
-    from dash.exceptions import PreventUpdate
-
-    # This stylesheet makes the buttons and table pretty.
-    external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
-
-    app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
-
-    app.layout = html.Div([
-        # The memory store will always get the default on page refreshes
-        dcc.Store(id='memory'),
-        # The local store will take the initial data
-        # only the first time the page is loaded
-        # and keep it until it is cleared.
-        dcc.Store(id='local', storage_type='local'),
-        # Same as the local store but will lose the data
-        # when the browser/tab closes.
-        dcc.Store(id='session', storage_type='session'),
-
-        html.Div([
-            html.Button('Click to store in memory', id='memory-button'),
-            html.Button('Click to store in localStorage', id='local-button'),
-            html.Button('Click to store in sessionStorage', id='session-button')
-        ]),
-
-        html.Div([
-            html.Table([
-                html.Thead([
-                    html.Tr([
-                        html.Th('Memory clicks'),
-                        html.Th('Local clicks'),
-                        html.Th('Session clicks')
-                    ])
-                ]),
-                html.Tbody([
-                    html.Tr([
-                        html.Td(0, id='memory-clicks'),
-                        html.Td(0, id='local-clicks'),
-                        html.Td(0, id='session-clicks')
-                    ])
-                ])
-            ])
-        ])
-    ])
-
-    # Create two callback for every store.
-    for store in ('memory', 'local', 'session'):
-
-        # add a click to the appropriate store.
-        @app.callback(Output(store, 'data'),
-                      [Input('{}-button'.format(store), 'n_clicks')],
-                      [State(store, 'data')])
-        def on_click(n_clicks, data):
-            if n_clicks is None:
-                # Preventing the None callbacks is important with the store component,
-                # you don't want to update the store for nothing.
-                raise PreventUpdate
-
-            # Give a default data dict with 0 clicks if there's no data.
-            data = data or {'clicks': 0}
-
-            data['clicks'] = data['clicks'] + 1
-            return data
-
-        # output the stored clicks in the table cell.
-        @app.callback(Output('{}-clicks'.format(store), 'children'),
-                      [Input(store, 'modified_timestamp')],
-                      [State(store, 'data')])
-        def on_data(ts, data):
-            if ts is None:
-                raise PreventUpdate
-
-            data = data or {}
-
-            return data.get('clicks', 0)
-
-
-    if __name__ == '__main__':
-        app.run_server(debug=True, port=8077, threaded=True)
-
-    ''')),
+    Syntax(examples['store-clicks'][0]),
     Example(examples['store-clicks'][1]),
 
     html.H2('Share data between callbacks'),
 
-    Syntax(s('''
-    import collections
-    import dash
-    import pandas as pd
-
-    from dash.dependencies import Output, Input
-    from dash.exceptions import PreventUpdate
-
-    import dash_html_components as html
-    import dash_core_components as dcc
-    import dash_table
-
-    app = dash.Dash(__name__)
-
-    df = pd.read_csv(
-        'https://raw.githubusercontent.com/'
-        'plotly/datasets/master/gapminderDataFiveYear.csv')
-
-    countries = set(df['country'])
-
-
-    app.layout = html.Div([
-        dcc.Store(id='memory-output'),
-        dcc.Dropdown(id='memory-countries', options=[
-            {'value': x, 'label': x} for x in countries
-        ], multi=True, value=['Canada', 'United States']),
-        dcc.Dropdown(id='memory-field', options=[
-            {'value': 'lifeExp', 'label': 'Life expectancy'},
-            {'value': 'gdpPercap', 'label': 'GDP per capita'},
-        ], value='lifeExp'),
-        html.Div([
-            dcc.Graph(id='memory-graph'),
-            dash_table.DataTable(
-                id='memory-table',
-                columns=[{'name': i, 'id': i} for i in df.columns]
-            ),
-        ])
-    ])
-
-
-    @app.callback(Output('memory-output', 'data'),
-                  [Input('memory-countries', 'value')])
-    def filter_countries(countries_selected):
-        if not countries_selected:
-            # Return all the rows on initial load/no country selected.
-            return df.to_dict('records')
-
-        filtered = df.query('country in @countries_selected')
-
-        return filtered.to_dict('records')
-
-
-    @app.callback(Output('memory-table', 'data'),
-                  [Input('memory-output', 'data')])
-    def on_data_set_table(data):
-        if data is None:
-            raise PreventUpdate
-
-        return data
-
-
-    @app.callback(Output('memory-graph', 'figure'),
-                  [Input('memory-output', 'data'),
-                   Input('memory-field', 'value')])
-    def on_data_set_graph(data, field):
-        if data is None:
-            raise PreventUpdate
-
-        aggregation = collections.defaultdict(
-            lambda: collections.defaultdict(list)
-        )
-
-        for row in data:
-
-            a = aggregation[row['country']]
-
-            a['name'] = row['country']
-            a['mode'] = 'lines+markers'
-
-            a['x'].append(row[field])
-            a['y'].append(row['year'])
-
-        return {
-            'data': aggregation.values()
-        }
-
-
-    if __name__ == '__main__':
-        app.run_server(debug=True, threaded=True, port=10450)
-    ''')),
+    Syntax(examples['store-share'][0]),
     Example(examples['store-share'][1]),
 
     generate_prop_table('Store'),
@@ -1490,7 +1332,7 @@ Location = html.Div([
     dcc.Markdown(s('''
     The location component represents the location bar in your web browser. Through its `href`, `pathname`,
     `search` and `hash` properties you can access different portions of your app's url.
-    
+
     For example, given the url `http://127.0.0.1:8050/page-2?a=test#quiz`:
 
     - `href` = `"http://127.0.0.1:8050/page-2?a=test#quiz"`

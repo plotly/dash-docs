@@ -213,6 +213,11 @@ layout = html.Div([
     ),
 
     dcc.Markdown(dedent('''
+    > Notice we did not include an animation for `preset`. As discussed in the layout chapter, you 
+    > will need to specify the position of the nodes inside of the `layout` dictionary. Check out
+    > [this example](https://github.com/plotly/dash-cytoscape/blob/master/demos/usage-preset-animation.py)
+    > for more details. 
+    
     ## Interactively update styles
     
     Updating the stylesheet using Dash components is similar to updating
@@ -404,7 +409,7 @@ layout = html.Div([
     removes nodes if there is any remaining (so we don't remove any edge). If
     neither conditions are met, we simply return the current elements.
     
-    It`s important to *mutate* the `elements` object by passing it into the 
+    It's important to *mutate* the `elements` object by passing it into the 
     callbacks as `State` (which is what we are doing here) rather than making 
     it a `global` variable. In general, `global` variables should be avoided 
     as they won't work when multiple users are viewing the app or when the app 

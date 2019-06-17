@@ -25,8 +25,8 @@ examples = {
     'tank': tools.load_example('tutorial/examples/daq_components/tank.py'),
     'thermometer': tools.load_example('tutorial/examples/daq_components/thermometer.py'),
     'toggle-switch': tools.load_example('tutorial/examples/daq_components/toggle_switch.py'),
-    'dark-theme-provider': tools.load_example('tutorial/examples/daq_components/dark_theme_provider.py')
-
+    'dark-theme-provider': tools.load_example('tutorial/examples/daq_components/dark_theme_provider.py'),
+    'joystick': tools.load_example('tutorial/examples/daq_components/joystick.py')
 }
 
 
@@ -49,7 +49,8 @@ BooleanSwitch = html.Div(children=[
 
     html.Hr(),
     html.H3('Color'),
-    dcc.Markdown("Set the color of the boolean switch with `color=#<hex_value>`."),
+    dcc.Markdown("Set the color of the boolean switch with \
+    `color=#<hex_value>`."),
     ComponentBlock('''import dash_daq as daq
 
 daq.BooleanSwitch(
@@ -77,7 +78,7 @@ daq.BooleanSwitch(
   label="Vertical",
   vertical=True
 )''', customStyle=styles.code_container, language='python'),
-html.Hr(),
+    html.Hr(),
     html.H3('Disabled Switch'),
     dcc.Markdown("To disable the Boolean Switch set the property `disabled` to `True`."),
     ComponentBlock('''import dash_daq as daq
@@ -423,6 +424,50 @@ daq.Indicator(
     html.H3("Indicator Properties"),
     generate_prop_table('Indicator')
 ])
+
+# Joystick
+Joystick = html.Div(children=[
+    html.H1('Joystick Examples and Reference'),
+    html.Hr(),
+    html.H3('Default Joystick'),
+    dcc.Markdown("An example of a default Joystick without \
+    any extra properties."),
+    dcc.SyntaxHighlighter(
+        examples['joystick'][0],
+        customStyle=styles.code_container
+    ),
+    html.Div(
+        examples['joystick'][1],
+        style={'overflow=x': 'initial'}
+    ),
+
+    html.Hr(),
+    html.H3('Label'),
+    dcc.Markdown(
+        "Change the label and label orientation with `label` and `labelPosition`."),
+    ComponentBlock('''import dash_daq as daq
+
+daq.Joystick(
+  label="Label",
+  labelPosition="bottom"
+)''', customStyle=styles.code_container, language='python'),
+
+    html.Hr(),
+    html.H3('Size'),
+    dcc.Markdown(
+        "Change the size of the joystick with `size`."),
+    ComponentBlock('''import dash_daq as daq
+
+daq.Joystick(
+  size=250
+)''', customStyle=styles.code_container, language='python'),
+
+    html.Hr(),
+
+    html.H3('Joystick Properties'),
+    generate_prop_table('Joystick')
+])
+
 # Knob
 Knob = html.Div(children=[
     html.H1('Knob Examples and Reference'),
@@ -843,7 +888,7 @@ daq.Slider(
     ComponentBlock('''import dash_daq as daq
 
 daq.Slider(
-    id='my-daq-slider', 
+    id='my-daq-slider',
     value=17,
     handleLabel='Handle'
 )''', customStyle=styles.code_container, language='python'),

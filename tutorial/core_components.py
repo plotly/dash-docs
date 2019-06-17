@@ -208,7 +208,9 @@ dcc.RadioItems(
     dcc.Link(html.A('More Button Examples and Reference'),
              href="/dash-core-components/button"),
     html.P([
-        '''For more on `dash.dependencies.State`, see the tutorial on ''',
+        'For more on ',
+        html.Code('dash.dependencies.State'),
+        ', see the tutorial on ',
         dcc.Link('Dash State', href='/state'),
         '.'
     ]),
@@ -338,7 +340,7 @@ dcc.DatePickerRange(
 
     html.Hr(),
 
-    html.H3('Graphs'),
+    html.H3(dcc.Link('Graphs', href='/dash-core-components/graph')),
     dcc.Markdown('''
     The `Graph` component shares the same syntax as the open-source
     `plotly.py` library. View the [plotly.py docs](https://plot.ly/python)
@@ -385,6 +387,9 @@ dcc.Graph(
     id='my-graph'
 )''', language='python', customStyle=styles.code_container),
 
+    html.Br(),
+    dcc.Link('More Graphs Examples and Reference',
+             href="/dash-core-components/graph"),
     html.Br(),
     dcc.Markdown('View the [plotly.py docs](https://plot.ly/python).'),
 

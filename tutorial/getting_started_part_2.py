@@ -253,7 +253,7 @@ layout = html.Div([
     If you change the `value` of the countries `RadioItems` component, Dash
     will wait until the `value` of the cities component is updated
     before calling the final callback. This prevents your callbacks from being
-    called with inconsistent state like with `"USA"` and `"Montréal"`.
+    called with inconsistent state like with `"America"` and `"Montréal"`.
 
     ''')),
 
