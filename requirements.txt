@@ -6,7 +6,7 @@ click==6.7
 configparser==3.5.0
 dash==0.43.0
 dash-auth==1.2.0
-dash-bio==0.0.10
+dash-bio==0.0.11
 dash-cytoscape==0.0.5
 dash-daq==0.1.0
 dash-canvas>=0.0.10
