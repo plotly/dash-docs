@@ -24,3 +24,8 @@ def redirectDDS():
 @server.route('/dash-deployment-server/enviornment-variables')
 def redirectEnvVar():
     return redirect("/dash-deployment-server/environment-variables", code=302)
+
+
+@server.route('/dash-1-0-migration.')
+def redirectMigration():
+    return redirect("/dash-1-0-migration", code=302)
