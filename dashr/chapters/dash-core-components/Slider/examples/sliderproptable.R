@@ -2,8 +2,8 @@ library(dash)
 library(dashCoreComponents)
 library(dashHtmlComponents)
 
-test =utils$props_to_list('dccSlider')
-sliderproptable <- data.table::rbindlist(sliderproptable, fill = TRUE)
+sliderproptable =utils$props_to_list('dccSlider')
+x <- data.table::rbindlist(sliderproptable, fill = TRUE)
 
 app = Dash$new()
 

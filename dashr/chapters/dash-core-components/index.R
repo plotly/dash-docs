@@ -35,7 +35,7 @@ dccMarkdown(
   The source is on GitHub at [plotly/dash-core-components](https://github.com/plotly/dash-core-components).
 ```{r}
 install.packages('dashCoreComponents')
-sessionInfo('dashCoreComponents')
+install.packages('dashCoreComponents')
 ```
   "
 ),
@@ -348,7 +348,7 @@ htmlDiv(titleLink('UploadComponent')),
 
 dccMarkdown("
 The `dccUpload` component allows users to upload files into your app
-    through drag-and-drop or the systems native file explorer.
+through drag-and-drop or the systems native file explorer.
 "),
 htmlBr(),
 
