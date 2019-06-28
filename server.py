@@ -29,3 +29,8 @@ def redirectEnvVar():
 @server.route('/dash-1-0-migration.')
 def redirectMigration():
     return redirect("/dash-1-0-migration", code=302)
+
+
+@server.route('/gallery')
+def redirectGallery():
+    return redirect("https://dash-gallery.plotly.host/Portal/", code=302)
