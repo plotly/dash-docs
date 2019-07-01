@@ -35,7 +35,6 @@ dccMarkdown(
   The source is on GitHub at [plotly/dash-core-components](https://github.com/plotly/dash-core-components).
 ```{r}
 install.packages('dashCoreComponents')
-install.packages('dashCoreComponents')
 ```
   "
 ),
