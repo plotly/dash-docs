@@ -363,7 +363,7 @@ htmlBr(),
                   'align' = 'left')),
 
 htmlBr(),
-htmlDiv(referenceLink('UploadComponent', 'More Markdown Examples and Reference')),
+htmlDiv(referenceLink('UploadComponent', 'More Upload Examples and Reference')),
 htmlHr(),
 #--------------------------------
 
@@ -515,7 +515,7 @@ loading = dccLoading(list(list(
   ))),
 
 htmlBr(),
-htmlDiv(referenceLink('LoadingComponenet', 'More Loading Component Examples and Reference')),
+htmlDiv(referenceLink('LoadingComponent', 'More Loading Component Examples and Reference')),
 htmlHr(),
 
 #--------------------------------
