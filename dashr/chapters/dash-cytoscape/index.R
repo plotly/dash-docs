@@ -37,29 +37,6 @@ layout <- htmlDiv(list(
   examples$quickStart$source,
   examples$quickStart$layout,
 
-  ####################################################################################################
-  # htmlH2("Dash Cytoscape User Guide"),
-  # htmlHr(),
-  # dccMarkdown("
-  # > Dash Cytoscape graphs are interactive! Scroll to zoom and drag on the canvas to
-  # > move the entire graph around. You can move nodes by dragging it, or by clicking,
-  # > holding, and moving your mouse to the desired location (and click again to release).
-  # >
-  # > This also work in mobile! Tap-and-hold on a node to move it, or on the canvas to
-  # > move the entire graph. Pinch your fingers outwards to zoom in, or pinch them together
-  # > to zoom out.
-  # "),
-  # components$SubTitleLink("Part 1", "Elements"),
-  # dccMarkdown("
-  # Elements in Cytoscape are designed to be clear, simple and declarative. This chapter
-  # will get you started with examples for:
-  # - Data and position named lists
-  # - Mutability properties
-  # - Defining groups and classes
-  # - Compound nodes
-  # "),
-  ####################################################################################################
-
   components$Header("Dash Cytoscape User Guide"),
   dccMarkdown("
   > Dash Cytoscape graphs are interactive! Scroll to zoom and drag on the canvas to
