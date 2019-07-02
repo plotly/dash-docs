@@ -74,6 +74,24 @@ chapters.dashDataTablePart1 <- new.env()
 chapters.Whats_dash <- new.env()
 source('dashr/chapters/Whats_dash/introduction.R', local=chapters.Whats_dash)
 
+# dash-cytoscape docs
+chapters.dashCytoscape <- new.env()
+source('dashr/chapters/dash-cytoscape/index.R', local=chapters.dashCytoscape)
+chapters.dashCytoscape1 <- new.env()
+source('dashr/chapters/dash-cytoscape/elements/index.R', local=chapters.dashCytoscape1)
+chapters.dashCytoscape2 <- new.env()
+source('dashr/chapters/dash-cytoscape/layout/index.R', local=chapters.dashCytoscape2)
+chapters.dashCytoscape3 <- new.env()
+source('dashr/chapters/dash-cytoscape/styling/index.R', local=chapters.dashCytoscape3)
+chapters.dashCytoscape4 <- new.env()
+source('dashr/chapters/dash-cytoscape/callbacks/index.R', local=chapters.dashCytoscape4)
+chapters.dashCytoscape5 <- new.env()
+source('dashr/chapters/dash-cytoscape/events/index.R', local=chapters.dashCytoscape5)
+chapters.dashCytoscape6 <- new.env()
+source('dashr/chapters/dash-cytoscape/phylogeny/index.R', local=chapters.dashCytoscape6)
+chapters.dashCytoscape7 <- new.env()
+source('dashr/chapters/dash-cytoscape/reference/index.R', local=chapters.dashCytoscape7)
+
 header <- htmlDiv(
   className = 'header',
   list(
@@ -155,6 +173,15 @@ app$callback(
       '/dashDataTable' = return(chapters.dashDataTable$layout),
       '/dashDataTable/Part1' = return(chapters.dashDataTablePart1$layout),
       '/external-resources' = return(chapters.external_resources$layout),
+      # dash cytoscape docs
+      '/dash-cytoscape' = return(chapters.dashCytoscape$layout),
+      '/dash-cytoscape/elements' = return(chapters.dashCytoscape1$layout),
+      '/dash-cytoscape/layout' = return(chapters.dashCytoscape2$layout),
+      '/dash-cytoscape/styling' = return(chapters.dashCytoscape3$layout),
+      '/dash-cytoscape/callbacks' = return(chapters.dashCytoscape4$layout),
+      '/dash-cytoscape/events' = return(chapters.dashCytoscape5$layout),
+      '/dash-cytoscape/phylogeny' = return(chapters.dashCytoscape6$layout),
+      '/dash-cytoscape/reference' = return(chapters.dashCytoscape7$layout),
       {
         htmlDiv(
           list(
@@ -256,6 +283,12 @@ app$callback(
                   href='/dashDataTable',
                   caption="(New! Released Nov 2, 2018) The Dash DataTable is our latest and most advanced component.
                   It is an interactive table that supports rich styling, conditional formatting, editing, sorting, filtering, and more."
+                ),
+                components$Chapter(
+                  'Dash Cytoscape',
+                  href='/dash-cytoscape',
+                  caption="(New! Released Feb 5, 2019) Dash Cytoscape is our new network visualization component. It offers a declarative and
+                  pythonic interface to create beautiful, customizable, interactive and reactive graphs."
                 )
               )
             ),
