@@ -80,7 +80,7 @@ which justifies the name of event callbacks. You can find props such as
 `tapNode`, which returns a complete description of the node object when
 the user clicks or taps on a node, `mouseoverEdgeData`, which returns only
 the data dictionary of the edge that was most recently hovered by the user.
-The complete list can be found in the [Dash Cytoscape Reference](/cytoscape/reference).
+The complete list can be found in the [Dash Cytoscape Reference](/dash-cytoscape/reference).
   "),
 
   htmlH2("Simple callback construction"),
@@ -163,7 +163,7 @@ is done through a callback that retrieves the followers (outgoing) or following
   dccMarkdown("
 To see more examples of events, check out the [event callbacks demo](https://dash-gallery.plotly.host/cytoscape-events)
 (the source file is available as [`usage-events.py`](https://github.com/plotly/dash-cytoscape/blob/master/usage-events.py) on the project repo)
-and the [Cytoscape references](/cytoscape/reference).
+and the [Cytoscape references](/dash-cytoscape/reference).
   "),
 
   htmlHr(),
