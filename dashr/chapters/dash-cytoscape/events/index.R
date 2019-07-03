@@ -87,7 +87,6 @@ The complete list can be found in the [Dash Cytoscape Reference](/dash-cytoscape
   dccMarkdown("
 Let's look back at the same city example as the previous chapter:
   "),
-  # BLOCK (display)
   utils$LoadAndDisplayComponent("
 cytoCytoscape(
   id = 'cytoscape-event-callbacks',
@@ -101,7 +100,6 @@ cytoCytoscape(
 This time, we will use the `tapNodeData` properties as input
 to our callbacks, which will simply dump the content into an `htmlPre`:
   "),
-  # BLOCK (example)
   examples$p5e1$source,
   examples$p5e1$layout,
   dccMarkdown("
@@ -116,7 +114,6 @@ dictionary), rather than just its `data`.
 Let's now display the data generated whenever you click or hover over a node
 or an edge. Simply replace the previous layout and callbacks by this:
   "),
-  # BLOCK (example)
   examples$p5e2$source,
   examples$p5e2$layout,
 
@@ -126,45 +123,74 @@ Additionally, you can also display all the data currently selected, either
 through a box selection (Shift+Click and drag) or by individually selecting
 multiple elements while holding Shift:
   "),
-  # BLOCK (example)
   examples$p5e3$source,
   examples$p5e3$layout,
-  htmlH2("Advanced usage of callbacks"),
-  dccMarkdown("
-Those event callbacks enable more advanced interactions between components.
-In fact, you can even use them to update other `Cytoscape` arguments. The
-[`usage-stylesheet.py`](https://github.com/plotly/dash-cytoscape/blob/master/usage-stylesheet.py)
-example (hosted on the `dash-cytoscape` Github repo) lets you click to change the
-color of a node to purple, its targeted
-nodes to red, and its incoming nodes to blue. All of this is done using a
-single callback function, which takes as input the `tapNode` prop of the
-`Cytoscape` component along with a few dropdowns, and outputs to the
-`stylesheet` prop. You can try out this
-[interactive stylesheet demo](https://dash-gallery.plotly.host/cytoscape-stylesheet)
-hosted on the [Dash Deployment Servers](https://plot.ly/products/dash/).
-  "),
-  # BLOCK (arrow down snippet)
-  dccMarkdown("
-Additionally, [`usage-elements.py`](https://github.com/plotly/dash-cytoscape/blob/master/usage-elements.py)
-lets you progressively expand your graph
-by using `tapNodeData` as the input and `elements` as the output.
-The app initially pre-loads the entire dataset, but only loads the graph
-with a single node. It then constructs four dictionaries that maps every
-single node ID to its following nodes, following edges, followers nodes,
-followers edges.
-Then, it lets you expand the incoming or the outgoing
-neighbors by clicking the node you want to expand. This
-is done through a callback that retrieves the followers (outgoing) or following
-(incoming) from the dictionaries, and add the to the `elements`.
-[Click here for the online demo](https://dash-gallery.plotly.host/cytoscape-elements).
-  "),
-  # BLOCK (arrow down snippet)
-  # BLOCK (arrow down snippet)
-  dccMarkdown("
-To see more examples of events, check out the [event callbacks demo](https://dash-gallery.plotly.host/cytoscape-events)
-(the source file is available as [`usage-events.py`](https://github.com/plotly/dash-cytoscape/blob/master/usage-events.py) on the project repo)
-and the [Cytoscape references](/dash-cytoscape/reference).
-  "),
+
+####################################################################################################
+#   htmlH2("Advanced usage of callbacks"),
+#   dccMarkdown("
+# Those event callbacks enable more advanced interactions between components.
+# In fact, you can even use them to update other `Cytoscape` arguments. The
+# [`usage-stylesheet.py`](https://github.com/plotly/dash-cytoscape/blob/master/usage-stylesheet.py)
+# example (hosted on the `dash-cytoscape` Github repo) lets you click to change the
+# color of a node to purple, its targeted
+# nodes to red, and its incoming nodes to blue. All of this is done using a
+# single callback function, which takes as input the `tapNode` prop of the
+# `Cytoscape` component along with a few dropdowns, and outputs to the
+# `stylesheet` prop. You can try out this
+# [interactive stylesheet demo](https://dash-gallery.plotly.host/cytoscape-stylesheet)
+# hosted on the [Dash Deployment Servers](https://plot.ly/products/dash/).
+#   "),
+#   # BLOCK (arrow down snippet)
+#   htmlDetails(
+#     open = FALSE,
+#     children = list(
+#       htmlSummary('Expand to see how to interactively style your elements'),
+#       utils$LoadAndDisplayComponent("
+#       INSERT
+#       ")
+#     )
+#   ),
+#   dccMarkdown("
+# Additionally, [`usage-elements.py`](https://github.com/plotly/dash-cytoscape/blob/master/usage-elements.py)
+# lets you progressively expand your graph
+# by using `tapNodeData` as the input and `elements` as the output.
+# The app initially pre-loads the entire dataset, but only loads the graph
+# with a single node. It then constructs four dictionaries that maps every
+# single node ID to its following nodes, following edges, followers nodes,
+# followers edges.
+# Then, it lets you expand the incoming or the outgoing
+# neighbors by clicking the node you want to expand. This
+# is done through a callback that retrieves the followers (outgoing) or following
+# (incoming) from the dictionaries, and add the to the `elements`.
+# [Click here for the online demo](https://dash-gallery.plotly.host/cytoscape-elements).
+#   "),
+#   # BLOCK (arrow down snippet)
+#   htmlDetails(
+#     open = FALSE,
+#     children = list(
+#       htmlSummary('Expand to see how to construct the dictionaries'),
+#       utils$LoadAndDisplayComponent("
+#       INSERT
+#       ")
+#     )
+#   ),
+#   # BLOCK (arrow down snippet)
+#   htmlDetails(
+#     open = FALSE,
+#     children = list(
+#       htmlSummary('Expand to see how to generate elements'),
+#       utils$LoadAndDisplayComponent("
+#       INSERT
+#       ")
+#     )
+#   ),
+#   dccMarkdown("
+# To see more examples of events, check out the [event callbacks demo](https://dash-gallery.plotly.host/cytoscape-events)
+# (the source file is available as [`usage-events.py`](https://github.com/plotly/dash-cytoscape/blob/master/usage-events.py) on the project repo)
+# and the [Cytoscape references](/dash-cytoscape/reference).
+#   "),
+####################################################################################################
 
   htmlHr(),
   dccMarkdown("[Back to Cytoscape Documentation](/dash-cytoscape)"),
