@@ -10,7 +10,8 @@ source('dashr/utils.R', local=utils)
 layout <- htmlDiv(list(
   htmlH1("Cytoscape Reference"),
 
-  htmlH2("Properties"),
+  htmlH2("Cytoscape"),
+  htmlH3("Properties"),
   utils$generate_table(rbindlist(utils$props_to_list('cytoCytoscape'), fill = TRUE)),
 
   htmlHr(),
