@@ -110,21 +110,28 @@ layout <- htmlDiv(list(
   "
   ),
   components$Chapter(
-  "Part 6: Cytoscape for Phylogeny Trees",
-  "dash-cytoscape/phylogeny",
-  "
-  We show how Dash Cytoscape can be applied can be applied in bioinformatics and
-  computational biology. We will go through the process of building a phylogeny tree
-  using relevant packages in R.
-  "
-  ),
-  components$Chapter(
-  "Part 7: Component Reference",
+  "Part 6: Component Reference",
   "dash-cytoscape/reference",
   "
   You can find here all the properties of the Cytoscape component.
   "
   ),
+  # components$Chapter(
+  # "Part 6: Cytoscape for Phylogeny Trees",
+  # "dash-cytoscape/phylogeny",
+  # "
+  # We show how Dash Cytoscape can be applied can be applied in bioinformatics and
+  # computational biology. We will go through the process of building a phylogeny tree
+  # using relevant packages in R.
+  # "
+  # ),
+  # components$Chapter(
+  # "Part 7: Component Reference",
+  # "dash-cytoscape/reference",
+  # "
+  # You can find here all the properties of the Cytoscape component.
+  # "
+  # ),
 
   components$Header("Roadmap, Sponsorships, and Contact"),
   dccMarkdown("
