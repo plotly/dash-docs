@@ -260,7 +260,7 @@ cytoCytoscape(
 > Notice here that we are not giving the ID of the nodes to the `roots`
 > key, but instead using a specific syntax to select the desired elements.
 > This concept of [selector is extensively documented in Cytoscape.js](http://js.cytoscape.org/#selectors),
-> and will be further explored in [part 3](/cytoscape/styling).
+> and will be further explored in [part 3](/dash-cytoscape/styling).
 > We follow the same syntax as the Javascript library.
 
 For preset layouts, you can also specify the positions for which you would like to render each
