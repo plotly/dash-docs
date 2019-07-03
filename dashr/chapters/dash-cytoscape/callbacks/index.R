@@ -228,10 +228,9 @@ Piecing everything together, we get:
   examples$p4e1$layout,
   dccMarkdown("
 > Notice we did not include an animation for `preset`. As discussed in the layout chapter, you
-> will need to specify the position of the nodes inside of the `layout` dictionary. Check out
-> [this example](https://github.com/plotly/dash-cytoscape/blob/master/demos/usage-preset-animation.py)
-> for more details.
+> will need to specify the position of the nodes inside of the `layout` dictionary.
   "),
+# ADD LATER: Check out [this example](https://github.com/plotly/dash-cytoscape/blob/master/demos/usage-preset-animation.py) for more details.
 
   htmlH2("Interactively update styles"),
   dccMarkdown("
@@ -336,7 +335,7 @@ app$callback(
   "),
   dccMarkdown("
 Notice that we are setting the line and background color to an empty
-string when they are set to `None`; this is to avoid feeding `None`
+string when they are set to `NULL`; this is to avoid feeding `NULL`
 to the dictionary, since it is not accepted by `Cytoscape`.
 
 However, passing any string value to the dictionary is accepted, even when
@@ -357,12 +356,12 @@ directly to the default style, but instead concatenating
 to `default_stylesheet` will be permanent, which is not a good thing if you
 are hosting your app for many users (since `default_stylesheet` is shared
 across all user sessions).
-
-If you want to find more examples of styling using callbacks,
-check out the [`usage-stylesheet.py`](https://github.com/plotly/dash-cytoscape/blob/master/usage-stylesheet.py),
-example in the `dash-cytoscape` Github project. It presents a comprehensive
-overview of techniques for manipulating stylesheets in Dash Cytoscape.
   "),
+# ADD LATER:
+# If you want to find more examples of styling using callbacks,
+# check out the [`usage-stylesheet.py`](https://github.com/plotly/dash-cytoscape/blob/master/usage-stylesheet.py),
+# example in the `dash-cytoscape` Github project. It presents a comprehensive
+# overview of techniques for manipulating stylesheets in Dash Cytoscape.
 
   htmlH2("Adding and removing elements"),
   dccMarkdown("
