@@ -129,13 +129,15 @@ edge, or many more.
 
 Both [the selector string](http://js.cytoscape.org/#selectors) and
 [the style named list](http://js.cytoscape.org/#style/node-body) are
-exhaustively documented in the Cytoscape.js docs. We will show examples
-that can be easily modified for any type of design, and you can create
-your own styles with the
-[online style editor](https://dash-gallery.plotly.host/cytoscape-advanced)
-(which you can use locally by running
-[`usage-advanced.py`](https://github.com/plotly/dash-cytoscape/blob/master/usage-advanced.py).
+exhaustively documented in the Cytoscape.js docs.
   "),
+# ADD LATER:
+# We will show examples
+# that can be easily modified for any type of design, and you can create
+# your own styles with the
+# [online style editor](https://dash-gallery.plotly.host/cytoscape-advanced)
+# (which you can use locally by running
+# [`usage-advanced.py`](https://github.com/plotly/dash-cytoscape/blob/master/usage-advanced.py).
 
   htmlH2("Basic selectors and styles"),
   dccMarkdown("
