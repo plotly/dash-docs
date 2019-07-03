@@ -41,19 +41,19 @@ layout <- htmlDiv(list(
   dccMarkdown("
 Each element is defined by a named list declaring its purpose and
 describing its properties. Usually, you specify what group the
-element belongs to (i.e., if it's a node or an edge), indicate what
+element belongs to (i.e. if it's a node or an edge), indicate what
 position you want to give to your element (if it's a node), or what data
-it contains. In fact, the `data` and `position` keys are themselves mapped
-to named lists, where each item specify an aspect of the data or
+it contains. In fact, the `data` and `position` names themselves refer
+to named lists, where each item specifies an aspect of the data or
 position.
 
-In the case of `data`, the typical keys fed to the named lists are:
+In the case of `data`, the typical names fed to the named lists are:
 - `id`: The index of the element, useful when you want to reference it
 - `label`: The name associated with the element if you wish to display it
 
-If your element is an edge, the following keys are required in your data
+If your element is an edge, the following names are required in your `data`
 named list:
-- `source`: The `id` of the source node, which is where the edge starts
+- `source`: The `id` of the source node, where the edge starts
 - `target`: The `id` of the target node, where the edge ends
 
 The `position` named list takes as items the `x` and `y` position of the
@@ -178,7 +178,7 @@ cytoCytoscape(
 )
   "),
   dccMarkdown("
-> The stylesheet parameter will be described in depth in [part 3](/cytoscape/styling)
+> The stylesheet parameter will be described in depth in [part 3](/dash-cytoscape/styling)
 > of this guide. We will show extensive examples of using selectors to
 > style groups, classes, and data values. Expand below if you still
 > want to take a look at the stylesheet used previously.
