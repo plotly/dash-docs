@@ -1,3 +1,4 @@
+
 source('app.R')
 library(dash)
 library(dashCoreComponents)
@@ -89,6 +90,14 @@ chapters.dashDataTablePart9 <- new.env()
 source('dashr/chapters/dashDataTable/part9/index.R', local=chapters.dashDataTablePart9)
 chapters.Whats_dash <- new.env()
 source('dashr/chapters/Whats_dash/introduction.R', local=chapters.Whats_dash)
+chapters.plugins <- new.env()
+source('dashr/chapters/plugins/index.R', local=chapters.plugins)
+chapters.d3 <- new.env()
+source('dashr/chapters/d3-react-components/index.R', local=chapters.d3)
+chapters.support <- new.env()
+source('dashr/chapters/support/index.R', local=chapters.support)
+chapters.search <- new.env()
+source('dashr/chapters/search/index.R', local=chapters.search)
 
 header <- htmlDiv(
   className = 'header',
@@ -125,7 +134,7 @@ header <- htmlDiv(
           htmlA('pricing', className='link', href = 'https://plot.ly/dash/pricing'),
           htmlA('user guide', className='link', href = '/'),
           htmlA('plotly', className='link', href = 'https://plot.ly/'),
-          htmlA('🔎', className='link', href='https://dash.plot.ly/search')
+          htmlA('🔎', className='link', href='/search')
         ))
       ))
   ))
@@ -203,12 +212,16 @@ app$callback(
       '/dashDataTable/Part8' = return(chapters.dashDataTablePart8$layout),
       '/dashDataTable/Part9' = return(chapters.dashDataTablePart9$layout),
       '/external-resources' = return(chapters.external_resources$layout),
+      '/plugins' = return(chapters.plugins$layout),
+      '/d3-react-components' = return(chapters.d3$layout),
+      '/support' = return(chapters.support$layout),
+      '/search' = return(chapters.search$layout),
       {
         htmlDiv(
           list(
             htmlH1('Dash for R User Guide'),
-
-
+            
+            
             components$Section(
               'What\'s Dash?',
               list(
@@ -234,8 +247,8 @@ app$callback(
                 )
               )
             ),
-
-
+            
+            
             components$Section(
               'Dash Tutorial',
               list(
@@ -283,8 +296,8 @@ app$callback(
                 )
               )
             ),
-
-
+            
+            
             components$Section(
               'Component Libraries',
               list(
@@ -307,15 +320,29 @@ app$callback(
                 )
               )
             ),
-
-
+            
+            
             components$Section(
               'Creating Your Own Components',
-              list(),
-              description="IN PROGRESS..."
+              list(
+                components$Chapter(
+                  'Build Your Own Components',
+                  href='/plugins',
+                  caption="Dash components are built with React.js. Dash provides 
+                  a React → Dash toolchain that generates a Dash-compatible interface to 
+                  these components in Python."
+                ),
+                components$Chapter(
+                  'Integrating D3.js into Dash Components',
+                  href='/d3-react-components',
+                  caption="Tutorials and resources on encapsulating D3.js graphs in Dash-friendly
+                  React components. Includes two sample components: a D3.js network graph and a D3.js 
+                  sunburst chart."
+                )
+              )
             ),
-
-
+            
+            
             components$Section(
               'Beyond the Basics',
               list(
@@ -327,22 +354,34 @@ app$callback(
                 )
               )
             ),
-
-
+            
+            
             components$Section(
               'Production',
-              list(),
-              description="IN PROGRESS..."
+              list(
+                components$Chapter(
+                  'See Our Products Page',
+                  href='https://plot.ly/products/dash/'
+                )
+              )
             ),
-
-
+            
+            
             components$Section(
               'Getting Help',
-              list(),
-              description="IN PROGRESS..."
+              list(
+                components$Chapter(
+                  'The Dash Community Forum',
+                  href='https://community.plot.ly/c/dash?_ga=2.35982368.1800098105.1562085881-85134653.1547603472'
+                ),
+                components$Chapter(
+                  'Support and Contact',
+                  href='/support'
+                )
+              )
             ),
-
-
+            
+            
             components$Section(
               'Dash Deployment Server',
               list(
@@ -365,5 +404,6 @@ app$callback(
     )
   }
 )
+
 
 app$run_server(host = "0.0.0.0", port = Sys.getenv('PORT', 8050))
