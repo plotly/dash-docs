@@ -7,6 +7,7 @@ library(jsonlite)
 
 components <- new.env()
 source('dashr/components.R', local=components)
+source('allcallbacks.R')
 
 chapters.installation <- new.env()
 source('dashr/chapters/installation/index.R', local=chapters.installation)
@@ -370,6 +371,7 @@ app$callback(
                   'About Dash Deployment Server',
                   href='/faq-gotchas'
                 ),
+                htmlBr(),
                 components$Chapter(
                   'Dash Deployment Server Documentation',
                   href='/faq-gotchas'

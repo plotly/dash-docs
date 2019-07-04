@@ -23,7 +23,7 @@ Chapter <- function(name, href = NA, caption = NA) {
   divCaption <- htmlSmall(
     className = 'toc--chapter-content',
     children = dccMarkdown(caption),
-    style = list('display' = 'block', 'marginTop' = '-8px')
+    style = list('display' = 'block', 'marginTop' = '2px')
   )
   # return (
   #   htmlDiv(
