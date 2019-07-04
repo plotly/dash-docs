@@ -1,16 +1,3 @@
-appName <- Sys.getenv("DASH_APP_NAME")
-
-if (appName != ""){
-  
-  pathPrefix <- sprintf("/%s/", appName)
-  
-  Sys.setenv(DASH_ROUTES_PATHNAME_PREFIX = pathPrefix,
-             DASH_REQUESTS_PATHNAME_PREFIX = pathPrefix)
-  
-  setwd(sprintf("/app/apps/%s", appName))
-  
-}
-
 #Source assets
 source("assets/utils.R")
 source("DashBioDocsMain.R")
@@ -71,10 +58,10 @@ header <- htmlDiv(list(
   ), className = 'container-width')
 ), className = "header")
 
-app$layout(
-  header,
+layout <-
   htmlDiv(
     list(
+      header,      
       dccLocation(id='url'),
       htmlDiv(
         className='background',
