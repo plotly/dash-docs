@@ -14,13 +14,11 @@ Header <- function(title) {
 }
 
 Chapter <- function(name, href = NA, caption = NA) {
-  divTitle <- htmlLi(
-    dccLink(
-      name,
-      href = href,
-      id = href,
-      className = 'toc--chapter-link'
-    ),
+  divTitle <- htmlA( 
+    name,
+    href = href,
+    id = href,
+    className = 'toc--chapter-link'
   )
   divCaption <- htmlSmall(
     className = 'toc--chapter-content',
@@ -92,4 +90,5 @@ Example <- function(example){
     )
   )
 }
+
 

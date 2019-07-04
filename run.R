@@ -114,26 +114,6 @@ header <- htmlDiv(
           htmlA('pricing', className='link', href = 'https://plot.ly/dash/pricing'),
           htmlA('user guide', className='link', href = '/'),
           htmlA('plotly', className='link', href = 'https://plot.ly/'),
-          htmlA(children=list(htmlI(className="fa fa-search")), className='link', href='https://dash.plot.ly/search')
-        ))
-      ))
-  ))
-
-header <- htmlDiv(
-  className = 'header',
-  list(
-    htmlDiv(
-      style = list(height = '95%'),
-      className = 'container-width',
-      children = list(
-        htmlA(htmlImg(
-          style = list(height = '100%'),
-          src = 'assets/images/logo.png'
-        ), href = 'https://plot.ly/products/dash', className='logo-link'),
-        htmlDiv(className='links', children = list(
-          htmlA('pricing', className='link', href = 'https://plot.ly/dash/pricing'),
-          htmlA('user guide', className='link', href = '/'),
-          htmlA('plotly', className='link', href = 'https://plot.ly/'),
           htmlA('🔎', className='link', href='/search')
         ))
       ))
@@ -186,7 +166,7 @@ app$callback(
       '/dash-core-components/Input' = return(chapters.Input$layout),
       '/dash-core-components/Textarea' = return(chapters.TextArea$layout),
       '/dash-core-components/Checklist' = return(chapters.Checklist$layout),
-      '/dash-core-components/RadioItems' = return(chapters.RadioItems$layout),
+      '/dash-core-components/Radioitems' = return(chapters.RadioItems$layout),
       '/dash-core-components/Button' = return(chapters.Button$layout),
       '/dash-core-components/DatePickerSingle' = return(chapters.DatePickerSingle$layout),
       '/dash-core-components/DatePickerRange' = return(chapters.DatePickerRange$layout),
@@ -227,7 +207,7 @@ app$callback(
               list(
                 components$Chapter(
                   'Introduction',
-                  href='https://dash.plot.ly/introduction',
+                  href='/Whats_dash',
                   caption="A quick paragraph about Dash and a link to the talk at Plotcon that started it all."
                 ),
                 components$Chapter(
@@ -371,9 +351,10 @@ app$callback(
               'Getting Help',
               list(
                 components$Chapter(
-                  'The Dash Community Forum',
+                'The Dash Community Forum',
                   href='https://community.plot.ly/c/dash?_ga=2.35982368.1800098105.1562085881-85134653.1547603472'
                 ),
+                htmlBr(),
                 components$Chapter(
                   'Support and Contact',
                   href='/support'
@@ -404,6 +385,4 @@ app$callback(
     )
   }
 )
-
-
 app$run_server(host = "0.0.0.0", port = Sys.getenv('PORT', 8050))
