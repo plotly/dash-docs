@@ -11,9 +11,9 @@ library(dashTable)
 
 
 utils <- new.env()
-source('assets/styles.R')
-source('assets/utils.R')
-source('assets/utils.R', local=utils)
+source('dashr/styles.R')
+source('dashr/utils.R')
+source('dashr/utils.R', local=utils)
 
 
 examples <- list(
