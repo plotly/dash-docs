@@ -79,7 +79,7 @@ dashbioCircos(
 
 
 
-circos_props <- propsToList("dashbioCircos")
+circos_props <- props_to_list("dashbioCircos")
 
 circosPropsDF <- rbindlist(circos_props, fill = TRUE)
 

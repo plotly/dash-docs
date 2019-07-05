@@ -87,7 +87,7 @@ dccGraph(
 
 
 
-manhattanProps <- propsToList("dashbioManhattan")
+manhattanProps <- props_to_list("dashbioManhattan")
 
 manhattanPropsDF <- rbindlist(manhattanProps, fill = TRUE)
 

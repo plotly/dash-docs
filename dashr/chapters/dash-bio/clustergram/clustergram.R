@@ -225,7 +225,7 @@ dccGraph(figure = heatmaply(df[, -c(8,9)],
 ))
 
 
-heatmaply_props <- propsToList("heatmaply")
+heatmaply_props <- props_to_list("heatmaply")
 
 heatmaplyPropsDF <- rbindlist(heatmaply_props, fill = TRUE)
 

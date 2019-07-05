@@ -80,7 +80,7 @@ consensusAlignment <-  htmlDiv(list(
 
 
 
-alignmentprops <- propsToList("dashbioAlignmentChart")
+alignmentprops <- props_to_list("dashbioAlignmentChart")
 
 alignmentPropsDF <- rbindlist(alignmentprops, fill = TRUE)
 

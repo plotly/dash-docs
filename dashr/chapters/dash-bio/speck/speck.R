@@ -113,7 +113,7 @@ dashbioSpeck(
 ))
 
 
-speckProps <- propsToList("dashbioSpeck")
+speckProps <- props_to_list("dashbioSpeck")
 
 speckPropsDF <- rbindlist(speckProps, fill = TRUE)
 

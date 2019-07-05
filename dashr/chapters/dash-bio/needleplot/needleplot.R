@@ -88,7 +88,7 @@ dashbioNeedlePlot(
 
 
 
-needleProps <- propsToList("dashbioNeedlePlot")
+needleProps <- props_to_list("dashbioNeedlePlot")
 
 needlePropsDF <- rbindlist(needleProps, fill = TRUE)
 

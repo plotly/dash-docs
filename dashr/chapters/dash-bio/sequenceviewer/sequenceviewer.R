@@ -132,7 +132,7 @@ dashbioSequenceViewer(
 ))
 
 
-sequenceProps <- propsToList("dashbioSequenceViewer")
+sequenceProps <- props_to_list("dashbioSequenceViewer")
 
 sequencePropsDF <- rbindlist(sequenceProps, fill = TRUE)
 

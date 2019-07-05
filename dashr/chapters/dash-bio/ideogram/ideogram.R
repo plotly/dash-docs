@@ -132,7 +132,7 @@ dashbioIdeogram(
 
 
 
-ideogramprops <- propsToList("dashbioIdeogram")
+ideogramprops <- props_to_list("dashbioIdeogram")
 
 ideogramPropsDF <- rbindlist(ideogramprops, fill = TRUE)
 

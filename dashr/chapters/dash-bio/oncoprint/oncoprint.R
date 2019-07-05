@@ -106,7 +106,7 @@ dashbioOncoPrint(
 
 
 
-oncoProps <- propsToList("dashbioOncoPrint")
+oncoProps <- props_to_list("dashbioOncoPrint")
 
 oncoPropsDF <- rbindlist(oncoProps, fill = TRUE)
 

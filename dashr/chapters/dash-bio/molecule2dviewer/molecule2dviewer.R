@@ -89,7 +89,7 @@ dashbioMolecule2dViewer(
 ))
 
 
-molecule2dviewerProps <- propsToList("dashbioMolecule2dViewer")
+molecule2dviewerProps <- props_to_list("dashbioMolecule2dViewer")
 
 molecule2dviewerPropsDF <- rbindlist(molecule2dviewerProps, fill = TRUE)
 
