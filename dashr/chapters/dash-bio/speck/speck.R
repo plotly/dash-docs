@@ -14,6 +14,34 @@ source('dashr/styles.R')
 source('dashr/utils.R')
 source('dashr/utils.R', local=utils)
 
+importSpeck <- function(filepath,
+                        
+                        header = FALSE,
+                        
+                        skip = 2) {
+  
+  textdata <- read.table(
+    
+    text = paste0(
+      
+      readLines(filepath), collapse="\n"
+      
+    ),
+    
+    header = header,
+    
+    skip = skip,
+    
+    col.names = c("symbol", "x", "y", "z"),
+    
+    stringsAsFactors = FALSE)
+  
+  return(dashTable::df_to_list(textdata))
+  
+}
+
+
+
 examples <- list(
   defaultSpeck=utils$LoadExampleCode('dashr/chapters/dash-bio/speck/examples/defaultSpeck.R')
 )
