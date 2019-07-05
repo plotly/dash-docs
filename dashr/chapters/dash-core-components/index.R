@@ -13,14 +13,14 @@ examples <- list(
 titleLink <- function(componentName) {
   return(htmlH2(dccLink(
     paste(componentName),
-    href=paste('/dash-core-components/', componentName, sep='')
+    href=paste('/dash-core-components/', tolower(componentName), sep='')
   )))
 }
 
 referenceLink <- function(componentName, Title) {
   return(dccLink(
     paste(Title),
-    href=paste('/dash-core-components/', componentName, sep='')
+    href=paste('/dash-core-components/', tolower(componentName), sep='')
   ))
 }
 
@@ -264,7 +264,7 @@ dccDatePickerSingle(
     id="date-picker-single",
     date=as.Date("1997/5/10")
 )
-  
+
   '
 ))),
 
@@ -283,7 +283,7 @@ dccDatePickerRange(
   start_date = as.Date("1997/5/10"),
   end_date_placeholder_text="Select a date!"
 )
-  
+
   '
 ))),
 
@@ -304,7 +304,7 @@ It includes a syntax for things like **bold text** and *italics*,
 [links](http://commonmark.org/help), inline `code` snippets, lists,
 quotes, and more.
 ")
-  
+
   '
 ))),
 htmlBr(),
@@ -315,7 +315,7 @@ htmlHr(),
 htmlDiv(htmlH3('Interactive Tables')),
 
 
-htmlDiv(list(dccMarkdown("    
+htmlDiv(list(dccMarkdown("
 The `dashHtmlComponents` library exposes all of the HTML tags.
 This includes the `Table`, `Tr`, and `Tbody` tags that can be used
 to create an HTML table. See
@@ -340,7 +340,7 @@ style = list('overflow' = 'hidden',
 
 dccMarkdown("
     [View the docs](/datatable) or [View the source](https://github.com/plotly/dash-table)"),
-             
+
 
 #--------------------------------
 htmlDiv(titleLink('UploadComponent')),
@@ -383,29 +383,29 @@ library(plotly)
 
 year = c(1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
   2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012)
-  
+
   Rest_of_world = c(219, 146, 112, 127, 124, 180, 236, 207, 236, 263,
   350, 430, 474, 526, 488, 537, 500, 439)
-  
+
   china = c(16, 13, 10, 11, 28, 37, 43, 55, 56, 88, 105, 156, 270,
   299, 340, 403, 549, 499)
-  
+
   data = data.frame(year, Rest_of_world, china)
 
   dccGraph(
-    figure = plot_ly(data, x = ~year, y = ~Rest_of_world, type = "bar", 
+    figure = plot_ly(data, x = ~year, y = ~Rest_of_world, type = "bar",
       name = "Rest of World", marker = list(
       color = "rgb(55, 83, 109)")) %>%
-  
-      add_trace(y = ~china, name = "China", 
+
+      add_trace(y = ~china, name = "China",
       marker = list(color = "rgb(26, 118, 255)")) %>%
-  
+
     layout(yaxis = list(title = "Count"), barmode = "group",
       title="US Export of Plastic Scrap"),
-  
+
   style = list("height" = 300),
   id = "my_graph"
-  
+
   )
   '
   ))),
@@ -424,7 +424,7 @@ htmlDiv(list(utils$LoadAndDisplayComponent(
   id = "confirm",
   message = "Danger danger! Are you sure you want to continue?"
   )
-  
+
   '
 ))),
 
@@ -436,7 +436,7 @@ htmlHr(),
 
 dccMarkdown(
   " There is also a `dccConfirmDialogProvider`,
-     it will automatically wrap a child component 
+     it will automatically wrap a child component
     to send a `dccConfirmDialog` when clicked.
   "
 ),
@@ -449,7 +449,7 @@ htmlDiv(list(utils$LoadAndDisplayComponent(
   id = "danger-danger",
   message = "Danger danger! Are you sure you want to continue?"
   )
-  
+
   '
 ))),
 
@@ -509,7 +509,7 @@ library(dashCoreComponents)
 loading = dccLoading(list(list(
     # ...
 )))
-  
+
   '
   ))),
 
@@ -523,7 +523,7 @@ htmlDiv(titleLink('Location')),
 dccMarkdown(
   " The location component represents the location bar in your web browser. Through its `href`, `pathname`,
     `search` and `hash` properties you can access different portions of your app's url.
-  
+
   For example, given the url `http://127.0.0.1:8050/page-2?a=test#quiz`:
 
   - `href` = `http://127.0.0.1:8050/page-2?a=test#quiz\`

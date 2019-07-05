@@ -7,6 +7,9 @@ library(jsonlite)
 components <- new.env()
 source('dashr/components.R', local=components)
 
+chapters.Whats_dash <- new.env()
+source('dashr/chapters/Whats_dash/introduction.R', local=chapters.Whats_dash)
+# Dash Tutorial
 chapters.installation <- new.env()
 source('dashr/chapters/installation/index.R', local=chapters.installation)
 chapters.getting_started <- new.env()
@@ -21,6 +24,7 @@ chapters.data_callbacks <- new.env()
 source('dashr/chapters/data-callbacks/index.R', local=chapters.data_callbacks)
 chapters.faq_gotchas <- new.env()
 source('dashr/chapters/faq-gotchas/index.R', local=chapters.faq_gotchas)
+# Component Libraries (Dash Core Components)
 chapters.dashCoreComponents <- new.env()
 source('dashr/chapters/dash-core-components/index.R', local=chapters.dashCoreComponents)
 chapters.dccDropdown <- new.env()
@@ -64,9 +68,10 @@ source('dashr/chapters/dash-core-components/Tabs/index.R', local=chapters.Tabs)
 chapters.UploadComponent  <- new.env()
 source('dashr/chapters/dash-core-components/UploadComponent/index.R', local=chapters.UploadComponent )
 chapters.dashHtmlComponents <- new.env()
+# Component Libraries (Dash HTML Components)
 source('dashr/chapters/dash-html-components/index.R', local=chapters.dashHtmlComponents)
 chapters.external_resources <- new.env()
-source('dashr/chapters/external-resources/index.R', local=chapters.external_resources)
+# Component Libraries (Dash DataTable)
 chapters.dashDataTable <- new.env()
 source('dashr/chapters/dashDataTable/index.R', local=chapters.dashDataTable)
 chapters.dashDataTablePart1 <- new.env()
@@ -87,34 +92,15 @@ chapters.dashDataTablePart8 <- new.env()
 source('dashr/chapters/dashDataTable/part8/index.R', local=chapters.dashDataTablePart8)
 chapters.dashDataTablePart9 <- new.env()
 source('dashr/chapters/dashDataTable/part9/index.R', local=chapters.dashDataTablePart9)
-chapters.dashBio <- new.env()
-source('dashr/chapters/dash-bio/index.R', local=chapters.dashBio)
-chapters.alignment <- new.env()
-source('dashr/chapters/dash-bio/alignment-chart/alignment-chart.R', local=chapters.alignment)
-chapters.circos <- new.env()
-source('dashr/chapters/dash-bio/circos/circos.R', local=chapters.circos)
-chapters.clustergram <- new.env()
-source('dashr/chapters/dash-bio/clustergram/clustergram.R', local=chapters.clustergram)
-chapters.ideogram <- new.env()
-source('dashr/chapters/dash-bio/ideogram/ideogram.R', local=chapters.ideogram)
-chapters.volcanoplot <- new.env()
-source('dashr/chapters/dash-bio/volcanoplot/volcano.R', local=chapters.volcanoplot)
-chapters.manhattan <- new.env()
-source('dashr/chapters/dash-bio/manhattan/manhattan.R', local = chapters.manhattan)
-chapters.molecule3dviewer <- new.env()
-source('dashr/chapters/dash-bio/molecule3dviewer/molecule3dviewer.R', local=chapters.molecule3dviewer)
-chapters.molecule2dviewer <- new.env()
-source('dashr/chapters/dash-bio/molecule2dviewer/molecule2dviewer.R', local=chapters.molecule2dviewer)
-chapters.needleplot <- new.env()
-source('dashr/chapters/dash-bio/needleplot/needleplot.R', local=chapters.needleplot)
-chapters.oncoprint <- new.env()
-source('dashr/chapters/dash-bio/oncoprint/oncoprint.R', local=chapters.oncoprint)
-chapters.sequenceviewer <- new.env()
-source('dashr/chapters/dash-bio/sequenceviewer/sequenceviewer.R', local=chapters.sequenceviewer)
-chapters.speck <- new.env()
-source("dashr/chapters/dash-bio/speck/speck.R", local=chapters.speck)
-chapters.Whats_dash <- new.env()
-source('dashr/chapters/Whats_dash/introduction.R', local=chapters.Whats_dash)
+# Component Libraries (Dash DAQ Components)
+# Component Libraries (Dash Canvas)
+# Component Libraries (Dash Cytoscape)
+# Component Libraries (Dash Bio)
+# chapters.dashBio <- new.env()
+# source('dashr/chapters/dash-bio/index.R', local=chapters.dashBio)
+# Beyond the Basics
+source('dashr/chapters/external-resources/index.R', local=chapters.external_resources)
+chapters.dashDataTable <- new.env()
 
 
 header <- htmlDiv(
@@ -164,62 +150,58 @@ app$callback(output=list(id='chapter', property='children'),
              function(pathname) {
                switch(
                  pathname,
-                 "/Whats_dash" = return(chapters.Whats_dash$layout),
-                 "/installation" = return(chapters.installation$layout),
-                 "/getting-started" = return(chapters.getting_started$layout),
-                 "/getting-started-part-2" = return(chapters.callbacks$layout),
-                 "/state" = return(chapters.state$layout),
-                 "/graph-crossfiltering" = return(chapters.graph_crossfiltering$layout),
-                 "/data-callbacks" = return(chapters.data_callbacks$layout),
-                 "/faq-gotchas" = return(chapters.faq_gotchas$layout),
+                 '/introduction' = return(chapters.Whats_dash$layout),
+                 # Dash Tutorial
+                 '/installation' = return(chapters.installation$layout),
+                 '/getting-started' = return(chapters.getting_started$layout),
+                 '/getting-started-part-2' = return(chapters.callbacks$layout),
+                 '/state' = return(chapters.state$layout),
+                 '/interactive-graphing' = return(chapters.graph_crossfiltering$layout),
+                 '/sharing-data-between-callbacks' = return(chapters.data_callbacks$layout),
+                 '/faqs' = return(chapters.faq_gotchas$layout),
+                 # Component Libraries (Dash Core Components)
                  '/dash-core-components' = return(chapters.dashCoreComponents$layout),
-                 '/dash-core-components/Dropdown' = return(chapters.dccDropdown$layout),
-                 '/dash-core-components/Slider' = return(chapters.dccSlider$layout),
-                 '/dash-core-components/RangeSlider' = return(chapters.RangeSlider$layout),
-                 '/dash-core-components/Input' = return(chapters.Input$layout),
-                 '/dash-core-components/Textarea' = return(chapters.TextArea$layout),
-                 '/dash-core-components/Checklist' = return(chapters.Checklist$layout),
-                 '/dash-core-components/RadioItems' = return(chapters.RadioItems$layout),
-                 '/dash-core-components/Button' = return(chapters.Button$layout),
-                 '/dash-core-components/DatePickerSingle' = return(chapters.DatePickerSingle$layout),
-                 '/dash-core-components/DatePickerRange' = return(chapters.DatePickerRange$layout),
-                 '/dash-core-components/Markdown' = return(chapters.Markdown$layout),
-                 '/dash-core-components/UploadComponent' = return(chapters.UploadComponent$layout),
-                 '/dash-core-components/ConfirmDialog' = return(chapters.ConfirmDialog$layout),
-                 '/dash-core-components/ConfirmDialogProvider' = return(chapters.ConfirmDialogProvider$layout),
-                 '/dash-core-components/Store' = return(chapters.Store$layout),
-                 '/dash-core-components/Location' = return(chapters.Location$layout),
-                 '/dash-core-components/LoadingComponent' = return(chapters.LoadingComponent$layout),
-                 '/dash-core-components/Graph' = return(chapters.Graph$layout),
-                 '/dash-core-components/Tabs' = return(chapters.Tabs$layout),
-                 '/dash-core-components/UploadComponent' = return(chapters.UploadComponent$layout),
+                 '/dash-core-components/dropdown' = return(chapters.dccDropdown$layout),
+                 '/dash-core-components/slider' = return(chapters.dccSlider$layout),
+                 '/dash-core-components/rangeslider' = return(chapters.RangeSlider$layout),
+                 '/dash-core-components/input' = return(chapters.Input$layout),
+                 '/dash-core-components/textarea' = return(chapters.TextArea$layout),
+                 '/dash-core-components/checklist' = return(chapters.Checklist$layout),
+                 '/dash-core-components/radioitems' = return(chapters.RadioItems$layout),
+                 '/dash-core-components/button' = return(chapters.Button$layout),
+                 '/dash-core-components/datepickersingle' = return(chapters.DatePickerSingle$layout),
+                 '/dash-core-components/datepickerrange' = return(chapters.DatePickerRange$layout),
+                 '/dash-core-components/markdown' = return(chapters.Markdown$layout),
+                 '/dash-core-components/uploadcomponent' = return(chapters.UploadComponent$layout),
+                 '/dash-core-components/confirmdialog' = return(chapters.ConfirmDialog$layout),
+                 '/dash-core-components/confirmdialogprovider' = return(chapters.ConfirmDialogProvider$layout),
+                 '/dash-core-components/store' = return(chapters.Store$layout),
+                 '/dash-core-components/location' = return(chapters.Location$layout),
+                 '/dash-core-components/loadingcomponent' = return(chapters.LoadingComponent$layout),
+                 '/dash-core-components/graph' = return(chapters.Graph$layout),
+                 '/dash-core-components/tabs' = return(chapters.Tabs$layout),
+                 '/dash-core-components/uploadcomponent' = return(chapters.UploadComponent$layout),
+                 # Component Libraries (Dash HTML Components)
                  '/dash-html-components' = return(chapters.dashHtmlComponents$layout),
-                 '/dashDataTable' = return(chapters.dashDataTable$layout),
-                 '/dashDataTable/Part1' = return(chapters.dashDataTablePart1$layout),
-                 '/dashDataTable/Part2' = return(chapters.dashDataTablePart2$layout),
-                 '/dashDataTable/Part3' = return(chapters.dashDataTablePart3$layout),
-                 '/dashDataTable/Part4' = return(chapters.dashDataTablePart4$layout),
-                 '/dashDataTable/Part5' = return(chapters.dashDataTablePart5$layout),
-                 '/dashDataTable/Part6' = return(chapters.dashDataTablePart6$layout),
-                 '/dashDataTable/Part7' = return(chapters.dashDataTablePart7$layout),
-                 '/dashDataTable/Part8' = return(chapters.dashDataTablePart8$layout),
-                 '/dashDataTable/Part9' = return(chapters.dashDataTablePart9$layout),
+                 # Component Libraries (Dash DataTable)
+                 '/datatable' = return(chapters.dashDataTable$layout),
+                 '/datatable/Part1' = return(chapters.dashDataTablePart1$layout),
+                 '/datatable/Part2' = return(chapters.dashDataTablePart2$layout),
+                 '/datatable/Part3' = return(chapters.dashDataTablePart3$layout),
+                 '/datatable/Part4' = return(chapters.dashDataTablePart4$layout),
+                 '/datatable/Part5' = return(chapters.dashDataTablePart5$layout),
+                 '/datatable/Part6' = return(chapters.dashDataTablePart6$layout),
+                 '/datatable/Part7' = return(chapters.dashDataTablePart7$layout),
+                 '/datatable/Part8' = return(chapters.dashDataTablePart8$layout),
+                 '/datatable/Part9' = return(chapters.dashDataTablePart9$layout),
+                 # Component Libraries (Dash DAQ Components)
+                 # Component Libraries (Dash Canvas)
+                 # Component Libraries (Dash Cytoscape)
+                 # Component Libraries (Dash Bio)
+                 # Beyond the Basics
                  '/external-resources' = return(chapters.external_resources$layout),
-                 "/dash-bio" = return(chapters.dashBio$layout),
-                 "/dash-bio/alignmentchart" = return(chapters.alignment$layout),
-                 "/dash-bio/circos" = return(chapters.circos$layout),
-                 "/dash-bio/clustergram" = return(chapters.clustergram$layout),
-                 "/dash-bio/ideogram" = return(chapters.ideogram$layout),
-                 "/dash-bio/manhattanplot" = return(chapters.manhattan$layout),
-                 "/dash-bio/molecule2dviewer" = return(chapters.molecule2dviewer$layout),
-                 "/dash-bio/molecule3dviewer" = return(chapters.molecule3dviewer$layout),
-                 "/dash-bio/volcanoplot" = return(chapters.volcanoplot$layout),
-                 "/dash-bio/needleplot" = return(chapters.needleplot$layout),
-                 "/dash-bio/oncoprint" = return(chapters.oncoprint$layout),
-                 "/dash-bio/sequenceviewer" = return(chapters.sequenceviewer$layout),
-                 "/dash-bio/speck" = return(chapters.speck$layout),
                  {
-                   
+
                    htmlDiv(
                      list(
                        htmlH1('Dash for R User Guide'),
@@ -248,8 +230,8 @@ app$callback(output=list(id='chapter', property='children'),
                            )
                          )
                        ),
-                       
-                       
+
+
                        components$Section(
                          'Dash Tutorial',
                          list(
@@ -278,27 +260,27 @@ app$callback(output=list(id='chapter', property='children'),
                            ),
                            components$Chapter(
                              'Part 5. Interactive Graphing and Crossfiltering',
-                             href='/graph-crossfiltering',
+                             href='/interactive-graphing',
                              caption="Bind interactivity to the Dash `Graph` component whenever you hover, click, or
                              select points on your chart."
                            ),
                            components$Chapter(
                              'Part 6. Sharing Data Between Callbacks',
-                             href='/data-callbacks',
+                             href='/sharing-data-between-callbacks',
                              caption="`global` variables will break your Dash apps.
                              However, there are other ways to share data between callbacks.
                              This chapter is useful for callbacks that run expensive data processing tasks or process large data."
                            ),
                            components$Chapter(
                              'Part 7. FAQs and Gotchas',
-                             href='/faq-gotchas',
+                             href='/faqs',
                              caption="If you have read through the rest of the tutorial and still have questions
                              or are encountering unexpected behaviour,this chapter may be useful."
                            )
-                           )
-                           ),
-                       
-                       
+                         )
+                       ),
+
+
                        components$Section(
                          'Component Libraries',
                          list(
@@ -315,26 +297,21 @@ app$callback(output=list(id='chapter', property='children'),
                            ),
                            components$Chapter(
                              'Dash DataTable',
-                             href='/dashDataTable',
+                             href='/datatable',
                              caption="(New! Released Nov 2, 2018) The Dash DataTable is our latest and most advanced component.
                              It is an interactive table that supports rich styling, conditional formatting, editing, sorting, filtering, and more."
-                           ),
-                           components$Chapter(
-                             'Dash Bio Components',
-                             href='/dash-bio',
-                             caption="(New! Released April 2019) Components dedicated to visualizing bioinformatics data." 
                            )
-                           )
-                           ),
-                       
-                       
+                         )
+                       ),
+
+
                        components$Section(
                          'Creating Your Own Components',
                          list(),
                          description="IN PROGRESS..."
                        ),
-                       
-                       
+
+
                        components$Section(
                          'Beyond the Basics',
                          list(
@@ -344,42 +321,42 @@ app$callback(output=list(id='chapter', property='children'),
                              caption="Learn how to add custom CSS and JS to your application with the `assets` directory.
                              Also, learn how to customize the HTML template that Dash serves on page load in order to add custom meta tags, customize the page's title, and more."
                            )
-                           )
-                         ),
-                       
-                       
+                         )
+                       ),
+
+
                        components$Section(
                          'Production',
                          list(),
                          description="IN PROGRESS..."
                        ),
-                       
-                       
+
+
                        components$Section(
                          'Getting Help',
                          list(),
                          description="IN PROGRESS..."
                        ),
-                       
-                       
+
+
                        components$Section(
                          'Dash Deployment Server',
                          list(
                            components$Chapter(
                              'About Dash Deployment Server',
-                             href='/faq-gotchas'
+                             href='/faqs'
                            ),
                            components$Chapter(
                              'Dash Deployment Server Documentation',
-                             href='/faq-gotchas'
+                             href='/faqs'
                            )
                          ),
                          description="Dash Deployment Server is Plotly's commercial offering for hosting and sharing
                          Dash apps on-premises or in the cloud.",
                          headerStyle=list('color'='#0D76BF')
                        )
-                       )
-                       )
+                     )
+                   )
                  }
                        )
              })
