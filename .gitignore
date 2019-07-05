@@ -21,3 +21,4 @@ bundle.js
 .mypy_cache/
 
 ignore/indicators.csv
+.Rhistory
