@@ -1,7 +1,3 @@
-library(dash)
-library(dashCoreComponents)
-library(dashHtmlComponents)
-library(dashBio)
 library(jsonlite)
 library(readr)
 library(heatmaply)
@@ -10,17 +6,17 @@ library(dashTable)
 
 
 utils <- new.env()
-source('assets/styles.R')
-source('assets/utils.R')
-source('assets/utils.R', local=utils)
+source('dashr/styles.R')
+source('dashr/utils.R')
+source('dashr/utils.R', local=utils)
 
 
 examples <- list(
-  defaultAlignmentChart=utils$LoadExampleCode('alignment-chart/examples/defaultAlignmentChart.R'),
-  colorScaleAlignmentChart=utils$LoadExampleCode('alignment-chart/examples/colorscaleAlignmentChart.R'),
-  hideBarPlots=utils$LoadExampleCode('alignment-chart/examples/hideBarPlots.R'),
-  tileAlignmentChart=utils$LoadExampleCode('alignment-chart/examples/tileAlignmentChart.R'),
-  consensusAlignmentChart=utils$LoadExampleCode('alignment-chart/examples/consensusAlignmentChart.R')
+  defaultAlignmentChart=utils$LoadExampleCode('dashr/chapters/dash-bio/alignment-chart/examples/defaultAlignmentChart.R'),
+  colorScaleAlignmentChart=utils$LoadExampleCode('dashr/chapters/dash-bio/alignment-chart/examples/colorscaleAlignmentChart.R'),
+  hideBarPlots=utils$LoadExampleCode('dashr/chapters/dash-bio/alignment-chart/examples/hideBarPlots.R'),
+  tileAlignmentChart=utils$LoadExampleCode('dashr/chapters/dash-bio/alignment-chart/examples/tileAlignmentChart.R'),
+  consensusAlignmentChart=utils$LoadExampleCode('dashr/chapters/dash-bio/alignment-chart/examples/consensusAlignmentChart.R')
 )
 
 # Header and Introduction
@@ -103,9 +99,6 @@ consensusAlignment <-  htmlDiv(list(
 
 
 
-library(dashTable)
-
-
 alignmentprops <- propsToList("dashbioAlignmentChart")
 
 alignmentPropsDF <- rbindlist(alignmentprops, fill = TRUE)
@@ -126,7 +119,7 @@ layout <- htmlDiv(list(
       consensusAlignment,
       dccMarkdown('## AlignmentChart Properties'),
       alignmentPropsTable,
-      htmlA("Back to the Table of Contents", href = "/")
+      htmlA("Back to the Table of Contents", href = "/dash-bio/")
 ))
 
 
