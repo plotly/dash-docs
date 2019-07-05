@@ -1,5 +1,6 @@
 #Source assets
-source("dashr/utils.R")
+utils <- new.env()
+source('dashr/utils.R', local=utils)
 
 # Load Necessary Packages
 library('dash')
@@ -12,7 +13,6 @@ library('heatmaply')
 library('data.table')
 library('jsonlite')
 library('rjson')
-
 
 # Necessary Functions:
 
@@ -272,7 +272,7 @@ mainLayout <- htmlDiv(list(
 ))
 
 
-
+layout <- mainLayout
 
 
 app$callback(
