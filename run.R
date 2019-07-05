@@ -322,8 +322,7 @@ app$callback(output=list(id='chapter', property='children'),
                            components$Chapter(
                              'Dash Bio Components',
                              href='/dash-bio',
-                             caption="(New! Released Nov 2, 2018) The Dash DataTable is our latest and most advanced component.
-                             It is an interactive table that supports rich styling, conditional formatting, editing, sorting, filtering, and more."
+                             caption="(New! Released April 2019) Components dedicated to visualizing bioinformatics data." 
                            )
                            )
                            ),
