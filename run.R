@@ -205,6 +205,19 @@ app$callback(output=list(id='chapter', property='children'),
                  '/dashDataTable/Part8' = return(chapters.dashDataTablePart8$layout),
                  '/dashDataTable/Part9' = return(chapters.dashDataTablePart9$layout),
                  '/external-resources' = return(chapters.external_resources$layout),
+                 "/dash-bio" = return(chapters.dashBio$layout),
+                 "/dash-bio/alignmentchart" = return(chapters.alignment$layout),
+                 "/dash-bio/circos" = return(chapters.circos$layout),
+                 "/dash-bio/clustergram" = return(chapters.clustergram$layout),
+                 "/dash-bio/ideogram" = return(chapters.ideogram$layout),
+                 "/dash-bio/manhattanplot" = return(chapters.manhattan$layout),
+                 "/dash-bio/molecule2dviewer" = return(chapters.molecule2dviewer$layout),
+                 "/dash-bio/molecule3dviewer" = return(chapters.molecule3dviewer$layout),
+                 "/dash-bio/volcanoplot" = return(chapters.volcanoplot$layout),
+                 "/dash-bio/needleplot" = return(chapters.needleplot$layout),
+                 "/dash-bio/oncoprint" = return(chapters.oncoprint$layout),
+                 "/dash-bio/sequenceviewer" = return(chapters.sequenceviewer$layout),
+                 "/dash-bio/speck" = return(chapters.speck$layout),
                  {
                    
                    htmlDiv(
@@ -305,7 +318,13 @@ app$callback(output=list(id='chapter', property='children'),
                              href='/dashDataTable',
                              caption="(New! Released Nov 2, 2018) The Dash DataTable is our latest and most advanced component.
                              It is an interactive table that supports rich styling, conditional formatting, editing, sorting, filtering, and more."
-                           )
+                           ),
+                           components$Chapter(
+                             'Dash Bio Components',
+                             href='/dash-bio',
+                             caption="(New! Released Nov 2, 2018) The Dash DataTable is our latest and most advanced component.
+                             It is an interactive table that supports rich styling, conditional formatting, editing, sorting, filtering, and more."
+                           ),
                            )
                            ),
                        
