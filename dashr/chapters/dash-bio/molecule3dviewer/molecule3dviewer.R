@@ -11,10 +11,10 @@ source('assets/utils.R', local=utils)
 
 
 examples <- list(
-  default = utils$LoadExampleCode('molecule3dviewer/examples/default.R'),
-  selectionType = utils$LoadExampleCode('molecule3dviewer/examples/selectionType.R'),
+  default = utils$LoadExampleCode('dashr/chapters/dash-bio/molecule3dviewer/examples/default.R'),
+  selectionType = utils$LoadExampleCode('dashr/chapters/dash-bio/molecule3dviewer/examples/selectionType.R'),
   # selectionTypePseudo = utils$LoadExampleCode('molecule3dviewer/examples/selectionTypePseudo.R'),
-  table = utils$LoadExampleCode('molecule3dviewer/examples/table.R')
+  table = utils$LoadExampleCode('dashr/chapters/dash-bio/molecule3dviewer/examples/table.R')
 )
 
 layout <- htmlDiv(
@@ -72,7 +72,7 @@ dashbioMolecule3dViewer(
     
     htmlHr(),
     dccMarkdown("
-[Back to the Dash Documentation](/)
+[Back to the Dash Documentation](/dash-bio/)
               ")
     
   )

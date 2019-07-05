@@ -16,7 +16,7 @@ source('assets/utils.R', local=utils)
 
 
 examples <- list(
-  defaultManhattan=utils$LoadExampleCode('manhattan/examples/defaultManhattan.R')
+  defaultManhattan=utils$LoadExampleCode('dashr/chapters/dash-bio/manhattan/examples/defaultManhattan.R')
 )
 
 
@@ -87,9 +87,6 @@ dccGraph(
 
 
 
-library(dashTable)
-
-
 manhattanProps <- propsToList("dashbioManhattan")
 
 manhattanPropsDF <- rbindlist(manhattanProps, fill = TRUE)
@@ -112,7 +109,7 @@ layout <- htmlDiv(list(
   htmlHr(),
   dccMarkdown('## ManhattanPlot Properties'),
   manhattanPropsTable,
-  htmlA("Back to the Table of Contents", href = "/")
+  htmlA("Back to the Table of Contents", href = "/dash-bio/")
 ))
 
 

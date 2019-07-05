@@ -12,12 +12,12 @@ source('assets/utils.R')
 source('assets/utils.R', local=utils)
 
 examples <- list(
-  default = utils$LoadExampleCode('volcanoplot/examples/default.R'),
-  colors = utils$LoadExampleCode('volcanoplot/examples/colors.R'),
+  default = utils$LoadExampleCode('dashr/chapters/dash-bio/volcanoplot/examples/default.R'),
+  colors = utils$LoadExampleCode('dashr/chapters/dash-bio/volcanoplot/examples/colors.R'),
   # colorsPseudo = utils$LoadExampleCode('volcanoplot/examples/colorsPseudo.R'),
-  pointSizesLineWidths = utils$LoadExampleCode('volcanoplot/examples/pointSizesLineWidths.R'),
+  pointSizesLineWidths = utils$LoadExampleCode('dashr/chapters/dash-bio/volcanoplot/examples/pointSizesLineWidths.R'),
   # pointSizesLineWidthsPseudo = utils$LoadExampleCode('volcanoplot/examples/pointSizesLineWidthsPseudo.R'),
-  table = utils$LoadExampleCode('volcanoplot/examples/table.R')
+  table = utils$LoadExampleCode('dashr/chapters/dash-bio/volcanoplot/examples/table.R')
 )
 
 layout <- htmlDiv(
@@ -73,7 +73,7 @@ and the widths of the effect lines and genome-wide line.
     
     htmlHr(),
     dccMarkdown("
-[Back to the Dash Documentation](/)
+[Back to the Dash Documentation](/dash-bio/)
                 ")
     
   )

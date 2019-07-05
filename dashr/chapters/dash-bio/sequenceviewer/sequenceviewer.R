@@ -16,7 +16,7 @@ source('assets/utils.R', local=utils)
 
 
 examples <- list(
-  defaultSequence=utils$LoadExampleCode('sequenceviewer/examples/defaultSequence.R')
+  defaultSequence=utils$LoadExampleCode('dashr/chapters/dash-bio/sequenceviewer/examples/defaultSequence.R')
 )
 
 
@@ -132,10 +132,6 @@ dashbioSequenceViewer(
 ))
 
 
-
-library(dashTable)
-
-
 sequenceProps <- propsToList("dashbioSequenceViewer")
 
 sequencePropsDF <- rbindlist(sequenceProps, fill = TRUE)
@@ -162,7 +158,7 @@ layout <- htmlDiv(list(
   htmlHr(),
   dccMarkdown('## SequenceViewer Properties'),
   sequencePropsTable,
-  htmlA("Back to the Table of Contents", href = "/")
+  htmlA("Back to the Table of Contents", href = "/dash-bio/")
 ))
 
 # app <- Dash$new()

@@ -17,7 +17,7 @@ source('assets/utils.R', local=utils)
 
 
 examples <- list(
-  defaultMolecule2dViewer=utils$LoadExampleCode('molecule2dviewer/examples/defaultMolecule2dviewer.R')
+  defaultMolecule2dViewer=utils$LoadExampleCode('dashr/chapters/dash-bio/molecule2dviewer/examples/defaultMolecule2dviewer.R')
 )
 
 
@@ -89,12 +89,6 @@ dashbioMolecule2dViewer(
 ))
 
 
-
-
-
-library(dashTable)
-
-
 molecule2dviewerProps <- propsToList("dashbioMolecule2dViewer")
 
 molecule2dviewerPropsDF <- rbindlist(molecule2dviewerProps, fill = TRUE)
@@ -117,7 +111,7 @@ layout <- htmlDiv(list(
   htmlHr(),
   dccMarkdown('## Molecule2dViewer Properties'),
   molecule2dviewerPropsTable,
-  htmlA("Back to the Table of Contents", href = "/")
+  htmlA("Back to the Table of Contents", href = "/dash-bio/")
 ))
 
 

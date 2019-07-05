@@ -16,7 +16,7 @@ source('assets/utils.R', local=utils)
 
 
 examples <- list(
-  defaultNeedle=utils$LoadExampleCode('needleplot/examples/defaultNeedle.R')
+  defaultNeedle=utils$LoadExampleCode('dashr/chapters/dash-bio/needleplot/examples/defaultNeedle.R')
 )
 
 
@@ -88,8 +88,6 @@ dashbioNeedlePlot(
 ))
 
 
-library(dashTable)
-
 
 needleProps <- propsToList("dashbioNeedlePlot")
 
@@ -113,7 +111,7 @@ layout <- htmlDiv(list(
   htmlHr(),
   dccMarkdown('## NeedlePlot Properties'),
   needlePropsTable,
-  htmlA("Back to the Table of Contents", href = "/")
+  htmlA("Back to the Table of Contents", href = "/dash-bio/")
 ))
 
 

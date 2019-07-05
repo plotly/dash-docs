@@ -16,7 +16,7 @@ source('assets/utils.R', local=utils)
 
 
 examples <- list(
-  defaultSpeck=utils$LoadExampleCode('speck/examples/defaultSpeck.R')
+  defaultSpeck=utils$LoadExampleCode('dashr/chapters/dash-bio/speck/examples/defaultSpeck.R')
 )
 
 
@@ -86,10 +86,6 @@ dashbioSpeck(
 ))
 
 
-
-library(dashTable)
-
-
 speckProps <- propsToList("dashbioSpeck")
 
 speckPropsDF <- rbindlist(speckProps, fill = TRUE)
@@ -112,7 +108,7 @@ layout <- htmlDiv(list(
   htmlHr(),
   dccMarkdown('## Speck Properties'),
   speckPropsTable,
-  htmlA("Back to the Table of Contents", href = "/")
+  htmlA("Back to the Table of Contents", href = "/dash-bio/")
 ))
 # 
 # app$layout(htmlDiv(list(

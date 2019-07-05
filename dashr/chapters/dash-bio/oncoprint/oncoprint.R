@@ -16,7 +16,7 @@ source('assets/utils.R', local=utils)
 
 
 examples <- list(
-  defaultOnco=utils$LoadExampleCode('oncoprint/examples/defaultOnco.R')
+  defaultOnco=utils$LoadExampleCode('dashr/chapters/dash-bio/oncoprint/examples/defaultOnco.R')
 )
 
 
@@ -104,7 +104,6 @@ dashbioOncoPrint(
   )
 ))
 
-library(dashTable)
 
 
 oncoProps <- propsToList("dashbioOncoPrint")
@@ -131,7 +130,7 @@ layout <- htmlDiv(list(
   htmlHr(),
   dccMarkdown('## OncoPrint Properties'),
   oncoPropsTable,
-  htmlA("Back to the Table of Contents", href = "/")
+  htmlA("Back to the Table of Contents", href = "/dash-bio/")
 ))
 
 # app$layout(htmlDiv(list(

@@ -19,28 +19,9 @@ source('assets/utils.R', local=utils)
 
 
 examples <- list(
-  defaultClustergram=utils$LoadExampleCode('clustergram/examples/defaultClustergram.R')
+  defaultClustergram=utils$LoadExampleCode('dashr/chapters/dash-bio/clustergram/examples/defaultClustergram.R')
 )
 
-# Header and Introduction
-
-header <- htmlDiv(list(
-  htmlDiv(list(
-    htmlDiv(list(
-      htmlA(className = "logo-link", href = "https://plot.ly/products/dash",
-            children= htmlImg(src="assets/logo.png",
-                              style = list("height" = "60px", "width" = "230px"))),
-      htmlDiv(className = "links", children = list(
-        htmlA(className = "link", children = "pricing", href = "https://plot.ly/dash/pricing?_ga=2.241429382.584183071.1559580389-2135338473.1556993734"),
-        htmlA(className = 'link', children = 'user guide', href = "/"),
-        htmlA(className = 'link', children = 'plotly', href = "https://plot.ly/"),
-        htmlA(className = 'link', href="https://dash.plot.ly/search", children = 
-                htmlI(className = 'fa fa-search'))
-        
-      ))
-    ))
-  ), className = 'container-width')
-), className = "header")
 
 
 dashbio_intro <- htmlDiv(list(
@@ -243,6 +224,7 @@ dccGraph(figure = heatmaply(df[, -c(8,9)],
   )
 ))
 
+
 heatmaply_props <- propsToList("heatmaply")
 
 heatmaplyPropsDF <- rbindlist(heatmaply_props, fill = TRUE)
@@ -271,7 +253,7 @@ layout <- htmlDiv(list(
       htmlHr(),
       dccMarkdown('## Clustergram Properties'),
       heatmaply_props_table,
-      htmlA("Back to the Table of Contents", href = "/")
+      htmlA("Back to the Table of Contents", href = "/dash-bio/")
 ))
 
 
