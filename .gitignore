@@ -19,7 +19,9 @@ bundle.js
 .idea
 .env
 .mypy_cache/
-
-ignore/indicators.csv
 .Rhistory
+.RData
+ignore/indicators.csv
 Rplot001.jpg
+.Rproj.user
+dash-docs.Rproj

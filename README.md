@@ -10,10 +10,9 @@ To run an app locally:
 
 1. (optional) create and activate new virtualenv or conda env:
 
-```
-pip install virtualenv
-virtualenv venv
-source venv/bin/activate
+```r
+library(dash)
+heroku_app_template()
 ```
 
 or, with conda:

@@ -93,7 +93,7 @@ LoadAndDisplayComponent2 <- function(example_string) {
   )
 }
 
-propsToList <- function(componentName) {
+props_to_list <- function(componentName) {
   Rd <- utils:::.getHelpFile(do.call(`?`, 
                                      list(componentName)))
   
@@ -126,26 +126,25 @@ propsToList <- function(componentName) {
                          "List",
                          sep="|")
       
-      attribute <- x[[1]]
+      Argument <- x[[1]]
       
       descstring <- paste(gsub("\n", "", x[[2]]), collapse=" ")
       
-      description <- gsub("Logical\\. |Numeric\\. |Named list\\. |Unnamed list\\. | Character\\.", 
+      Description <- gsub("Logical\\. |Numeric\\. |Named list\\. |Unnamed list\\. | Character\\.", 
                           "", 
                           descstring)
-      type <- regmatches(descstring, regexpr(all_types, descstring))
-      default <- NULL
-      return(c(attribute=attribute, 
-               description=description, 
-               type=type,
-               default=default))
+      Type <- regmatches(descstring, regexpr(all_types, descstring))
+      Default <- NULL
+      return(c(Argument=Argument, 
+               Description=Description, 
+               Type=Type,
+               Default=Default))
     }
   }))
   
   # strip NULL values
   props_as_list[lengths(props_as_list) != 0]
 }
-
 
 generate_props_table <- function(df) {
   return(

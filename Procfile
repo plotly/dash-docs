@@ -1,1 +1,1 @@
-web: gunicorn --preload run:server
+web: chmod u+x web.sh && ./web.sh
