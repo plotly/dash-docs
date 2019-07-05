@@ -20,7 +20,7 @@ titleLink <- function(componentName) {
   return(htmlH2(
     dccLink(
       componentName,
-      href=paste('/', tolower(componentName), sep='')
+      href=paste('/dash-bio/', tolower(componentName), sep='')
     )
   ))
 }
@@ -28,7 +28,7 @@ titleLink <- function(componentName) {
 referenceLink <- function(componentName) {
   return(dccLink(
     'More examples & reference',
-    href=paste('/', tolower(componentName), sep='')
+    href=paste('/dash-bio/', tolower(componentName), sep='')
   ))
 }
 
