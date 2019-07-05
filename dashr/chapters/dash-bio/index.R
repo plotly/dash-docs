@@ -13,6 +13,25 @@ library('data.table')
 library('jsonlite')
 library('rjson')
 
+
+# Necessary Functions:
+
+titleLink <- function(componentName) {
+  return(htmlH2(
+    dccLink(
+      componentName,
+      href=paste('/', tolower(componentName), sep='')
+    )
+  ))
+}
+
+referenceLink <- function(componentName) {
+  return(dccLink(
+    'More examples & reference',
+    href=paste('/', tolower(componentName), sep='')
+  ))
+}
+
 # Header and Introduction
 
 dashbio_intro <- htmlDiv(list(
