@@ -1,5 +1,5 @@
 #Source assets
-source("assets/utils.R")
+source("dashr/utils.R")
 source("DashBioDocsMain.R")
 source("app.R")
 
@@ -130,7 +130,7 @@ data = data
     
     
     else if(value == FALSE) {
-      return(list(htmlImg(src = "assets/images/alignment.PNG", style = list("height" = "100%", "width" = "100%"))))
+      return(list(htmlImg(src = "assets/images/bio/alignment.PNG", style = list("height" = "100%", "width" = "100%"))))
     }
     
     
@@ -184,7 +184,7 @@ tracks = list(list(
     
     
     else if(value == FALSE) {
-      return(list(htmlImg(src = "assets/images/circos.PNG", style = list("height" = "100%", "width" = "100%"))))
+      return(list(htmlImg(src = "assets/images/bio/circos.PNG", style = list("height" = "100%", "width" = "100%"))))
     }
     
     
@@ -224,7 +224,7 @@ dccGraph(figure = heatmaply(df,
       )
     }
     else if(value == FALSE) {
-      return(list(htmlImg(src = "assets/images/clustergram.PNG", style = list("height" = "100%", "width" = "100%"))))
+      return(list(htmlImg(src = "assets/images/bio/clustergram.PNG", style = list("height" = "100%", "width" = "100%"))))
     }
   }
 )
@@ -252,7 +252,7 @@ chrHeight = 300
       )
     }
     else if(value == FALSE) {
-      return(list(htmlImg(src = "assets/images/ideogram.PNG", style = list("height" = "100%", "width" = "100%"))))
+      return(list(htmlImg(src = "assets/images/bio/ideogram.PNG", style = list("height" = "100%", "width" = "100%"))))
     }
   }
 )
@@ -282,7 +282,7 @@ dccGraph(figure = dashbioManhattan(
       )
     }
     else if(value == FALSE) {
-      return(list(htmlImg(src = "assets/images/manhattan.PNG", style = list("height" = "100%", "width" = "100%"))))
+      return(list(htmlImg(src = "assets/images/bio/manhattan.PNG", style = list("height" = "100%", "width" = "100%"))))
     }
   }
 )
@@ -313,7 +313,7 @@ modelData = model_data
       )
     }
     else if(value == FALSE) {
-      return(list(htmlImg(src = "assets/images/molecule2d.PNG", style = list("height" = "100%", "width" = "100%"))))
+      return(list(htmlImg(src = "assets/images/bio/molecule2d.PNG", style = list("height" = "100%", "width" = "100%"))))
     }
   }
 )
@@ -347,7 +347,7 @@ dashbioMolecule3dViewer(
       )
     }
     else if(value == FALSE) {
-      return(list(htmlImg(src = "assets/images/molecule3d.PNG", style = list("height" = "100%", "width" = "100%"))))
+      return(list(htmlImg(src = "assets/images/bio/molecule3d.PNG", style = list("height" = "100%", "width" = "100%"))))
     }
   }
 )
@@ -378,7 +378,7 @@ mutationData = mdata
       )
     }
     else if(value == FALSE) {
-      return(list(htmlImg(src = "assets/images/needle.PNG", style = list("height" = "100%", "width" = "100%"))))
+      return(list(htmlImg(src = "assets/images/bio/needle.PNG", style = list("height" = "100%", "width" = "100%"))))
     }
   }
 )
@@ -409,7 +409,7 @@ data = data
       )
     }
     else if(value == FALSE) {
-      return(list(htmlImg(src = "assets/images/oncoprint.PNG", style = list("height" = "100%", "width" = "100%"))))
+      return(list(htmlImg(src = "assets/images/bio/oncoprint.PNG", style = list("height" = "100%", "width" = "100%"))))
     }
   }
 )
@@ -441,7 +441,7 @@ sequence = sequence
       )
     }
     else if(value == FALSE) {
-      return(list(htmlImg(src = "assets/images/sequence.PNG", style = list("height" = "100%", "width" = "100%"))))
+      return(list(htmlImg(src = "assets/images/bio/sequence.PNG", style = list("height" = "100%", "width" = "100%"))))
     }
   }
 )
@@ -500,7 +500,7 @@ dashbioSpeck(
       )
     }
     else if(value == FALSE) {
-      return(list(htmlImg(src = "assets/images/speck.PNG", style = list("height" = "100%", "width" = "100%"))))
+      return(list(htmlImg(src = "assets/images/bio/speck.PNG", style = list("height" = "100%", "width" = "100%"))))
     }
   }
 )
@@ -533,7 +533,7 @@ dccGraph(figure = dashbioVolcano(
       )
     }
     else if(value == FALSE) {
-      return(list(htmlImg(src = "assets/images/volcano.PNG", style = list("height" = "100%", "width" = "100%"))))
+      return(list(htmlImg(src = "assets/images/bio/volcano.PNG", style = list("height" = "100%", "width" = "100%"))))
     }
   }
 )
