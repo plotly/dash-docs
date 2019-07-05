@@ -66,11 +66,10 @@ source('dashr/chapters/dash-core-components/Graph/index.R', local=chapters.Graph
 chapters.Tabs  <- new.env()
 source('dashr/chapters/dash-core-components/Tabs/index.R', local=chapters.Tabs)
 chapters.UploadComponent  <- new.env()
-source('dashr/chapters/dash-core-components/UploadComponent/index.R', local=chapters.UploadComponent )
-chapters.dashHtmlComponents <- new.env()
+source('dashr/chapters/dash-core-components/UploadComponent/index.R', local=chapters.UploadComponent)
 # Component Libraries (Dash HTML Components)
+chapters.dashHtmlComponents <- new.env()
 source('dashr/chapters/dash-html-components/index.R', local=chapters.dashHtmlComponents)
-chapters.external_resources <- new.env()
 # Component Libraries (Dash DataTable)
 chapters.dashDataTable <- new.env()
 source('dashr/chapters/dashDataTable/index.R', local=chapters.dashDataTable)
@@ -96,11 +95,35 @@ source('dashr/chapters/dashDataTable/part9/index.R', local=chapters.dashDataTabl
 # Component Libraries (Dash Canvas)
 # Component Libraries (Dash Cytoscape)
 # Component Libraries (Dash Bio)
-# chapters.dashBio <- new.env()
-# source('dashr/chapters/dash-bio/index.R', local=chapters.dashBio)
+chapters.dashBio <- new.env()
+source('dashr/chapters/dash-bio/index.R', local=chapters.dashBio)
+chapters.alignment <- new.env()
+source('dashr/chapters/dash-bio/alignment-chart/alignment-chart.R', local=chapters.alignment)
+chapters.circos <- new.env()
+source('dashr/chapters/dash-bio/circos/circos.R', local=chapters.circos)
+chapters.clustergram <- new.env()
+source('dashr/chapters/dash-bio/clustergram/clustergram.R', local=chapters.clustergram)
+chapters.ideogram <- new.env()
+source('dashr/chapters/dash-bio/ideogram/ideogram.R', local=chapters.ideogram)
+chapters.volcanoplot <- new.env()
+source('dashr/chapters/dash-bio/volcanoplot/volcano.R', local=chapters.volcanoplot)
+chapters.manhattan <- new.env()
+source('dashr/chapters/dash-bio/manhattan/manhattan.R', local = chapters.manhattan)
+chapters.molecule3dviewer <- new.env()
+source('dashr/chapters/dash-bio/molecule3dviewer/molecule3dviewer.R', local=chapters.molecule3dviewer)
+chapters.molecule2dviewer <- new.env()
+source('dashr/chapters/dash-bio/molecule2dviewer/molecule2dviewer.R', local=chapters.molecule2dviewer)
+chapters.needleplot <- new.env()
+source('dashr/chapters/dash-bio/needleplot/needleplot.R', local=chapters.needleplot)
+chapters.oncoprint <- new.env()
+source('dashr/chapters/dash-bio/oncoprint/oncoprint.R', local=chapters.oncoprint)
+chapters.sequenceviewer <- new.env()
+source('dashr/chapters/dash-bio/sequenceviewer/sequenceviewer.R', local=chapters.sequenceviewer)
+chapters.speck <- new.env()
+source("dashr/chapters/dash-bio/speck/speck.R", local=chapters.speck)
 # Beyond the Basics
+chapters.external_resources <- new.env()
 source('dashr/chapters/external-resources/index.R', local=chapters.external_resources)
-chapters.dashDataTable <- new.env()
 
 
 header <- htmlDiv(
@@ -198,6 +221,19 @@ app$callback(output=list(id='chapter', property='children'),
                  # Component Libraries (Dash Canvas)
                  # Component Libraries (Dash Cytoscape)
                  # Component Libraries (Dash Bio)
+                 "/dash-bio" = return(chapters.dashBio$layout),
+                 "/dash-bio/alignmentchart" = return(chapters.alignment$layout),
+                 "/dash-bio/circos" = return(chapters.circos$layout),
+                 "/dash-bio/clustergram" = return(chapters.clustergram$layout),
+                 "/dash-bio/ideogram" = return(chapters.ideogram$layout),
+                 "/dash-bio/manhattanplot" = return(chapters.manhattan$layout),
+                 "/dash-bio/molecule2dviewer" = return(chapters.molecule2dviewer$layout),
+                 "/dash-bio/molecule3dviewer" = return(chapters.molecule3dviewer$layout),
+                 "/dash-bio/volcanoplot" = return(chapters.volcanoplot$layout),
+                 "/dash-bio/needleplot" = return(chapters.needleplot$layout),
+                 "/dash-bio/oncoprint" = return(chapters.oncoprint$layout),
+                 "/dash-bio/sequenceviewer" = return(chapters.sequenceviewer$layout),
+                 "/dash-bio/speck" = return(chapters.speck$layout),
                  # Beyond the Basics
                  '/external-resources' = return(chapters.external_resources$layout),
                  {
@@ -300,6 +336,27 @@ app$callback(output=list(id='chapter', property='children'),
                              href='/datatable',
                              caption="(New! Released Nov 2, 2018) The Dash DataTable is our latest and most advanced component.
                              It is an interactive table that supports rich styling, conditional formatting, editing, sorting, filtering, and more."
+                           ),
+                           # components$Chapter(
+                           #   'Dash DAQ Components',
+                           #   href='/dash-daq',
+                           #   caption="Beautifully styled technical components for data acquisition and engineering applications."
+                           # ),
+                           # components$Chapter(
+                           #   'Dash Canvas',
+                           #   href='/canvas',
+                           #   caption="(New! Released March 2019) Drawing and annotations for image processing."
+                           # ),
+                           # components$Chapter(
+                           #   'Dash Cytoscape',
+                           #   href='/cytoscape',
+                           #   caption="(New! Released Feb 5, 2019) Dash Cytoscape is our new network visualization component. It offers a declarative and
+                           #   pythonic interface to create beautiful, customizable, interactive and reactive graphs."
+                           # ),
+                           components$Chapter(
+                             'Dash Bio Components',
+                             href='/dash-bio',
+                             caption="(New! Released April 2019) Components dedicated to visualizing bioinformatics data."
                            )
                          )
                        ),
