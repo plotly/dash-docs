@@ -31,38 +31,38 @@ df_election <- data.frame(
 df_long <- df[rep(1:6, 10),]
 
 examples <- list(
-  example1 = utils$LoadExampleCode('dashr/chapters/dashDataTable/part1/examples/example.R'),
-  examplePseudo1 = utils$LoadExampleCode('dashr/chapters/dashDataTable/part1/examples/examplePseudo.R'),
-  multipleLines = utils$LoadExampleCode('dashr/chapters/dashDataTable/part1/examples/multipleLines.R'),
-  multipleLinesPseudo = utils$LoadExampleCode('dashr/chapters/dashDataTable/part1/examples/multipleLinesPseudo.R'),
-  ellipses = utils$LoadExampleCode('dashr/chapters/dashDataTable/part1/examples/ellipses.R'),
-  ellipsesPseudo = utils$LoadExampleCode('dashr/chapters/dashDataTable/part1/examples/ellipsesPseudo.R'),
-  horizontalScroll1 = utils$LoadExampleCode('dashr/chapters/dashDataTable/part1/examples/horizontalScroll1.R'),
-  horizontalScrollPseudo1 = utils$LoadExampleCode('dashr/chapters/dashDataTable/part1/examples/horizontalScrollPseudo1.R'),
-  horizontalScroll2 = utils$LoadExampleCode('dashr/chapters/dashDataTable/part1/examples/horizontalScroll2.R'),
-  horizontalScrollPseudo2 = utils$LoadExampleCode('dashr/chapters/dashDataTable/part1/examples/horizontalScrollPseudo2.R'),
-  horizontalScroll3 = utils$LoadExampleCode('dashr/chapters/dashDataTable/part1/examples/horizontalScroll3.R'),
-  horizontalScrollPseudo3 = utils$LoadExampleCode('dashr/chapters/dashDataTable/part1/examples/horizontalScrollPseudo3.R'),
-  horizontalScroll4 = utils$LoadExampleCode('dashr/chapters/dashDataTable/part1/examples/horizontalScroll4.R'),
-  horizontalScrollPseudo4 = utils$LoadExampleCode('dashr/chapters/dashDataTable/part1/examples/horizontalScrollPseudo4.R'),
-  horizontalScroll5 = utils$LoadExampleCode('dashr/chapters/dashDataTable/part1/examples/horizontalScroll5.R'),
-  horizontalScrollPseudo5 = utils$LoadExampleCode('dashr/chapters/dashDataTable/part1/examples/horizontalScrollPseudo5.R'),
-  fixedColumns1 = utils$LoadExampleCode('dashr/chapters/dashDataTable/part1/examples/fixedColumns1.R'),
-  fixedColumnsPseudo1 = utils$LoadExampleCode('dashr/chapters/dashDataTable/part1/examples/fixedColumnsPseudo1.R'),
-  fixedColumns2 = utils$LoadExampleCode('dashr/chapters/dashDataTable/part1/examples/fixedColumns2.R'),
-  fixedColumnsPseudo2 = utils$LoadExampleCode('dashr/chapters/dashDataTable/part1/examples/fixedColumnsPseudo2.R'),
-  individualColumnWidths1 = utils$LoadExampleCode('dashr/chapters/dashDataTable/part1/examples/individualColumnWidths1.R'),
-  individualColumnWidthsPseudo1 = utils$LoadExampleCode('dashr/chapters/dashDataTable/part1/examples/individualColumnWidthsPseudo1.R'),
-  individualColumnWidths2 = utils$LoadExampleCode('dashr/chapters/dashDataTable/part1/examples/individualColumnWidths2.R'),
-  individualColumnWidthsPseudo2 = utils$LoadExampleCode('dashr/chapters/dashDataTable/part1/examples/individualColumnWidthsPseudo2.R'),
-  verticalScrolling = utils$LoadExampleCode('dashr/chapters/dashDataTable/part1/examples/verticalScrolling.R'),
-  verticalScrollingPseudo = utils$LoadExampleCode('dashr/chapters/dashDataTable/part1/examples/verticalScrollingPseudo.R'),
-  fixedRows = utils$LoadExampleCode('dashr/chapters/dashDataTable/part1/examples/fixedRows.R'),
-  fixedRowsPseudo = utils$LoadExampleCode('dashr/chapters/dashDataTable/part1/examples/fixedRowsPseudo.R'),
-  maxHeight = utils$LoadExampleCode('dashr/chapters/dashDataTable/part1/examples/maxHeight.R'),
-  maxHeightPseudo = utils$LoadExampleCode('dashr/chapters/dashDataTable/part1/examples/maxHeightPseudo.R'),
-  height = utils$LoadExampleCode('dashr/chapters/dashDataTable/part1/examples/height.R'),
-  heightPseudo = utils$LoadExampleCode('dashr/chapters/dashDataTable/part1/examples/heightPseudo.R')
+  example1 = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/example.R'),
+  examplePseudo1 = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/examplePseudo.R'),
+  multipleLines = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/multipleLines.R'),
+  multipleLinesPseudo = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/multipleLinesPseudo.R'),
+  ellipses = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/ellipses.R'),
+  ellipsesPseudo = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/ellipsesPseudo.R'),
+  horizontalScroll1 = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/horizontalScroll1.R'),
+  horizontalScrollPseudo1 = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/horizontalScrollPseudo1.R'),
+  horizontalScroll2 = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/horizontalScroll2.R'),
+  horizontalScrollPseudo2 = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/horizontalScrollPseudo2.R'),
+  horizontalScroll3 = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/horizontalScroll3.R'),
+  horizontalScrollPseudo3 = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/horizontalScrollPseudo3.R'),
+  horizontalScroll4 = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/horizontalScroll4.R'),
+  horizontalScrollPseudo4 = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/horizontalScrollPseudo4.R'),
+  horizontalScroll5 = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/horizontalScroll5.R'),
+  horizontalScrollPseudo5 = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/horizontalScrollPseudo5.R'),
+  fixedColumns1 = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/fixedColumns1.R'),
+  fixedColumnsPseudo1 = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/fixedColumnsPseudo1.R'),
+  fixedColumns2 = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/fixedColumns2.R'),
+  fixedColumnsPseudo2 = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/fixedColumnsPseudo2.R'),
+  individualColumnWidths1 = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/individualColumnWidths1.R'),
+  individualColumnWidthsPseudo1 = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/individualColumnWidthsPseudo1.R'),
+  individualColumnWidths2 = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/individualColumnWidths2.R'),
+  individualColumnWidthsPseudo2 = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/individualColumnWidthsPseudo2.R'),
+  verticalScrolling = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/verticalScrolling.R'),
+  verticalScrollingPseudo = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/verticalScrollingPseudo.R'),
+  fixedRows = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/fixedRows.R'),
+  fixedRowsPseudo = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/fixedRowsPseudo.R'),
+  maxHeight = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/maxHeight.R'),
+  maxHeightPseudo = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/maxHeightPseudo.R'),
+  height = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/height.R'),
+  heightPseudo = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/heightPseudo.R')
 )
 
 layout <- htmlDiv(
@@ -76,10 +76,10 @@ By default, the table will expand to the width of its container.
 The width of the columns is determined automatically in order to accommodate the content in the cells.
                 "
     ),
-    
+
     examples$examplePseudo1$source_code,
     examples$example1$layout,
-    
+
     dccMarkdown("
 > The examples on this page are rendered with a few different dataframes that have different sizes
 > and shapes. In particular,
@@ -87,7 +87,7 @@ The width of the columns is determined automatically in order to accommodate the
 > If you'd like to follow along on your own machine,
 > then open up the menu below to copy and paste the code behind these datasets.
                 "),
-    
+
     htmlHr(),
     dccMarkdown("
 The default styles work well for a small number of columns and short text.
@@ -100,8 +100,8 @@ then you'll need to employ one of the following \"overflow strategies\" to keep 
 > [plotly/dash-table#197](https://github.com/plotly/dash-table/issues/197) for more.
 
 View Datasets
-                "), 
-    
+                "),
+
     dccMarkdown("
 ```
 df_election <- data.frame(
@@ -131,7 +131,7 @@ then you can overflow your content into multiple lines.
                 "),
   examples$multipleLinesPseudo$source_code,
   examples$multipleLines$layout,
-  
+
   dccMarkdown("
 ## Overflow Strategies - Overflowing Into Ellipses
 
@@ -143,17 +143,17 @@ then set `textOverflow` to `'clip'` instead of `'ellipsis'`.
                 "),
   examples$ellipsesPseudo$source_code,
   examples$ellipses$layout,
-  
+
   dccMarkdown("
 ## Overflow Strategies - Horizontal Scroll
 
 Instead of trying to fit all of the content in the container,
 you could change the container by making it scrollable.
                 "),
-  
+
   examples$horizontalScrollPseudo1$source_code,
   examples$horizontalScroll1$layout,
-  
+
   dccMarkdown("
 Note how we haven't explicitly set the widths of the individual columns yet.
 The widths of the columns have been computed dynamically; they depend
@@ -169,24 +169,24 @@ within a scrollable horizontal container.
 If the contents of each cell within the column don't exceed the `maxWidth`,
 then the column will only take up the necessary amount of horizontal space.
               "),
-  
+
   examples$horizontalScrollPseudo2$source_code,
   examples$horizontalScroll2$layout,
-  
+
   examples$horizontalScrollPseudo3$source_code,
   examples$horizontalScroll3$layout,
-  
+
   dccMarkdown("
 Alternatively, you can fix the width of each column by adding `width`.
 In this case, the column's width will be constant, even if its contents are shorter or wider.
               "),
-  
+
   examples$horizontalScrollPseudo4$source_code,
   examples$horizontalScroll4$layout,
-  
+
   examples$horizontalScrollPseudo5$source_code,
   examples$horizontalScroll5$layout,
-  
+
   dccMarkdown("
 ## Horizontal Scrolling via Fixed Columns
 
@@ -197,13 +197,13 @@ fixing the leftmost columns with `fixed_columns`.
 > and may impact the way that your columns are rendered or sized.
 > For more information, subscribe to [`dash-table#201`](https://github.com/plotly/dash-table/issues/201).
               "),
-  
+
   examples$fixedColumnsPseudo1$source_code,
   examples$fixedColumns1$layout,
-  
+
   examples$fixedColumnsPseudo2$source_code,
   examples$fixedColumns2$layout,
-  
+
   dccMarkdown("
 ## Individual Column Widths
 
@@ -213,7 +213,7 @@ You can supply the widths for all of the columns or just a few of them.
 
 View Datasets
               "),
-  
+
   dccMarkdown("
 ```R
 df <- data.frame(
@@ -274,18 +274,18 @@ examples$fixedRows$layout,
 
 dccMarkdown("
 ## Height vs Max Height
-With `max-height`, if the table's contents are shorter than the 
+With `max-height`, if the table's contents are shorter than the
 `max-height`, then the container will have the height of the table (plus any padding or margins you may have added).
-If you want a container with a constant height 
+If you want a container with a constant height
 no matter the contents, then use `height`.
 
-Here, we're setting max-height to 300, which corresponds to the height of the pink line. 
+Here, we're setting max-height to 300, which corresponds to the height of the pink line.
 Note how the table renders shorter than this line.
               "),
 
 htmlDiv(
-  style = list(width = 5, 
-               height = 300, 
+  style = list(width = 5,
+               height = 300,
                backgroundColor = "hotpink")
 ),
 
@@ -293,7 +293,7 @@ examples$maxHeightPseudo$source_code,
 examples$maxHeight$layout,
 
 dccMarkdown("
-Here, we are using the `height` property with the same content. 
+Here, we are using the `height` property with the same content.
 Note how the table's container takes up all 300px.
             "),
 examples$heightPseudo$source_code,
@@ -301,7 +301,7 @@ examples$height$layout,
 
 htmlHr(),
 dccMarkdown("
-[Back to the DashTable Documentation](/dashDataTable)
+[Back to the DashTable Documentation](/datatable)
                 "),
 dccMarkdown("
 [Back to the Dash Documentation](/)

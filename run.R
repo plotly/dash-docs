@@ -72,25 +72,25 @@ chapters.dashHtmlComponents <- new.env()
 source('dashr/chapters/dash-html-components/index.R', local=chapters.dashHtmlComponents)
 # Component Libraries (Dash DataTable)
 chapters.dashDataTable <- new.env()
-source('dashr/chapters/dashDataTable/index.R', local=chapters.dashDataTable)
-chapters.dashDataTablePart1 <- new.env()
-source('dashr/chapters/dashDataTable/part1/index.R', local=chapters.dashDataTablePart1)
-chapters.dashDataTablePart2 <- new.env()
-source('dashr/chapters/dashDataTable/part2/index.R', local=chapters.dashDataTablePart2)
-chapters.dashDataTablePart3 <- new.env()
-source('dashr/chapters/dashDataTable/part3/index.R', local=chapters.dashDataTablePart3)
-chapters.dashDataTablePart4 <- new.env()
-source('dashr/chapters/dashDataTable/part4/index.R', local=chapters.dashDataTablePart4)
-chapters.dashDataTablePart5 <- new.env()
-source('dashr/chapters/dashDataTable/part5/index.R', local=chapters.dashDataTablePart5)
-chapters.dashDataTablePart6 <- new.env()
-source('dashr/chapters/dashDataTable/part6/index.R', local=chapters.dashDataTablePart6)
-chapters.dashDataTablePart7 <- new.env()
-source('dashr/chapters/dashDataTable/part7/index.R', local=chapters.dashDataTablePart7)
-chapters.dashDataTablePart8 <- new.env()
-source('dashr/chapters/dashDataTable/part8/index.R', local=chapters.dashDataTablePart8)
-chapters.dashDataTablePart9 <- new.env()
-source('dashr/chapters/dashDataTable/part9/index.R', local=chapters.dashDataTablePart9)
+source('dashr/chapters/datatable/index.R', local=chapters.dashDataTable)
+chapters.dashDataTable1 <- new.env()
+source('dashr/chapters/datatable/part1/index.R', local=chapters.dashDataTable1)
+chapters.dashDataTable2 <- new.env()
+source('dashr/chapters/datatable/part2/index.R', local=chapters.dashDataTable2)
+chapters.dashDataTable3 <- new.env()
+source('dashr/chapters/datatable/part3/index.R', local=chapters.dashDataTable3)
+chapters.dashDataTable4 <- new.env()
+source('dashr/chapters/datatable/part4/index.R', local=chapters.dashDataTable4)
+chapters.dashDataTable5 <- new.env()
+source('dashr/chapters/datatable/part5/index.R', local=chapters.dashDataTable5)
+chapters.dashDataTable6 <- new.env()
+source('dashr/chapters/datatable/part6/index.R', local=chapters.dashDataTable6)
+chapters.dashDataTable7 <- new.env()
+source('dashr/chapters/datatable/part7/index.R', local=chapters.dashDataTable7)
+chapters.dashDataTable8 <- new.env()
+source('dashr/chapters/datatable/part8/index.R', local=chapters.dashDataTable8)
+chapters.dashDataTable9 <- new.env()
+source('dashr/chapters/datatable/part9/index.R', local=chapters.dashDataTable9)
 # Component Libraries (Dash DAQ Components)
 # Component Libraries (Dash Canvas)
 # Component Libraries (Dash Cytoscape)
@@ -208,15 +208,15 @@ app$callback(output=list(id='chapter', property='children'),
                  '/dash-html-components' = return(chapters.dashHtmlComponents$layout),
                  # Component Libraries (Dash DataTable)
                  '/datatable' = return(chapters.dashDataTable$layout),
-                 '/datatable/Part1' = return(chapters.dashDataTablePart1$layout),
-                 '/datatable/Part2' = return(chapters.dashDataTablePart2$layout),
-                 '/datatable/Part3' = return(chapters.dashDataTablePart3$layout),
-                 '/datatable/Part4' = return(chapters.dashDataTablePart4$layout),
-                 '/datatable/Part5' = return(chapters.dashDataTablePart5$layout),
-                 '/datatable/Part6' = return(chapters.dashDataTablePart6$layout),
-                 '/datatable/Part7' = return(chapters.dashDataTablePart7$layout),
-                 '/datatable/Part8' = return(chapters.dashDataTablePart8$layout),
-                 '/datatable/Part9' = return(chapters.dashDataTablePart9$layout),
+                 '/datatable/Part1' = return(chapters.dashDataTable1$layout),
+                 '/datatable/Part2' = return(chapters.dashDataTable2$layout),
+                 '/datatable/Part3' = return(chapters.dashDataTable3$layout),
+                 '/datatable/Part4' = return(chapters.dashDataTable4$layout),
+                 '/datatable/Part5' = return(chapters.dashDataTable5$layout),
+                 '/datatable/Part6' = return(chapters.dashDataTable6$layout),
+                 '/datatable/Part7' = return(chapters.dashDataTable7$layout),
+                 '/datatable/Part8' = return(chapters.dashDataTable8$layout),
+                 '/datatable/Part9' = return(chapters.dashDataTable9$layout),
                  # Component Libraries (Dash DAQ Components)
                  # Component Libraries (Dash Canvas)
                  # Component Libraries (Dash Cytoscape)

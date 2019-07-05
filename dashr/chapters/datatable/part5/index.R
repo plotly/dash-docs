@@ -7,8 +7,8 @@ utils <- new.env()
 source('dashr/utils.R', local=utils)
 
 examples <- list(
-  example1 = utils$LoadExampleCode('dashr/chapters/dashDataTable/part5/examples/example1.R'),
-  example2 = utils$LoadExampleCode('dashr/chapters/dashDataTable/part5/examples/example2.R')
+  example1 = utils$LoadExampleCode('dashr/chapters/datatable/part5/examples/example1.R'),
+  example2 = utils$LoadExampleCode('dashr/chapters/datatable/part5/examples/example2.R')
 )
 
 layout <- htmlDiv(
@@ -16,13 +16,13 @@ layout <- htmlDiv(
     dccMarkdown("
 # DataTable - Typing
 
-This section will provide an overview of the DataTable's 
+This section will provide an overview of the DataTable's
 capabilities for typing, formatting, presentation, and user input processing.
 
 ## Typing
 
-The DataTable provides support for per-column typing and allows for 
-data validation and coercion behaviors to be 
+The DataTable provides support for per-column typing and allows for
+data validation and coercion behaviors to be
 configured on a per-column basis, so as to fit the needs of various usage scenarios.
 
 The following types are currently supported:
@@ -41,37 +41,37 @@ By default, the column type is `any`.
 
 ## Presentation
 
-The DataTable provides multiple presentation schemes that can vary 
+The DataTable provides multiple presentation schemes that can vary
 depending on the column's type.
 
 The following types are supported by all types:
-              
+
 - `input`: a text input field
 
 - `dropdown`: see [DataTable Dropdowns] for more details
 Additional presentations will be added in the future.
-              
+
 By default, the column presentation is `input`.
 
 ## User Input Processing
 
-The DataTable provides a configurable input processing system that can accept, 
-reject or apply a default value when an input is provided. 
-It can be configured to validate or coerce the input to make it fit 
-with the expected data type. 
+The DataTable provides a configurable input processing system that can accept,
+reject or apply a default value when an input is provided.
+It can be configured to validate or coerce the input to make it fit
+with the expected data type.
 Specific validation cases can be configured on a per-column basis.
 
 See the table's [reference]
-`on_change.action`, `on_change.failure` and `validation` column 
+`on_change.action`, `on_change.failure` and `validation` column
 nested properties for details.
 
 ## Formatting
 
-The DataTable provides a configurable data formatting system that modifies 
+The DataTable provides a configurable data formatting system that modifies
 how the data is presented to the user.
 
 The formatting can be configured by:
-              
+
 - explicitly writing the column `format` nested property
 
 - using preconfigured Format Templates (only in Python at the moment)
@@ -84,35 +84,35 @@ At the moment, only `type = 'numeric'` formatting can be configured.
 
 ### DataTable with template formatting
 
-This table contains two columns formatted by templates. 
-The `Variation (%)` column is further configured by changing the 
-sign behavior so that both the \"+\" and \"-\" sign are visible. 
+This table contains two columns formatted by templates.
+The `Variation (%)` column is further configured by changing the
+sign behavior so that both the \"+\" and \"-\" sign are visible.
               "),
-    
+
     examples$example1$source_code,
     examples$example1$layout,
-    
+
     dccMarkdown("
 ### DataTable with Formatting
 
-This table contains columns with type `numeric` and `datetime`. 
-The \"max\" columns have the default behavior and will not allow for 
-invalid data to be passed in. The \"min\" columns are more permissive. 
-The \"Min Temperature (F)\" column will default invalid entries to 
-`None` and display \"N/A\". 
-The \"Min Temperature (Date)\" column will not try to 
+This table contains columns with type `numeric` and `datetime`.
+The \"max\" columns have the default behavior and will not allow for
+invalid data to be passed in. The \"min\" columns are more permissive.
+The \"Min Temperature (F)\" column will default invalid entries to
+`None` and display \"N/A\".
+The \"Min Temperature (Date)\" column will not try to
 validate or coerce the data.
 
-Both temperature columns are using the manual configuration to 
+Both temperature columns are using the manual configuration to
 create the desired formatting.
               "),
-    
+
     examples$example2$source_code,
     examples$example2$layout,
-    
+
     htmlHr(),
     dccMarkdown("
-[Back to the DashTable Documentation](/dashDataTable)
+[Back to the DashTable Documentation](/datatable)
               "),
     dccMarkdown("
 [Back to the Dash Documentation](/)
