@@ -26,11 +26,11 @@ app$layout(
           ),
           list(
             id = 'max',
-            name = 'Max Temperature (°F)',
+            name = 'Max Temperature (?F)',
             type = 'numeric',
             format = list(
               locale = list(
-                symbol = list('', '°F')
+                symbol = list('', '?F')
               ),
               specifier = '$.0f'
             )
@@ -42,11 +42,11 @@ app$layout(
           ),
           list(
             id = 'min',
-            name = 'Min Temperature (°F)',
+            name = 'Min Temperature (?F)',
             type = 'numeric',
             format = list(
               locale = list(
-                symbol = list('', '°F')
+                symbol = list('', '?F')
               ),
               nully = 'N/A',
               specifier = '$.0f'
