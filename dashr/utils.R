@@ -151,51 +151,37 @@ props_to_list <- function(componentName) {
   props_as_list[lengths(props_as_list) != 0]
 }
 
-generate_props_table <- function(df) {
-  return(
-    dashDataTable(
-
-      id = 'table',
-
-      columns = lapply(colnames(df), function(x) {
-
-        list(name = x, id = x)
-
-      }),
-
-      data = setNames(lapply(split(df, seq(nrow(df))), FUN = function (x) {as.list(x)}), NULL),
-
-      style_as_list_view = TRUE,
-
-      style_data = list('whiteSpace' = 'normal'),
-
-      style_cell = list(
-        'whiteSpace'= 'no-wrap',
-        'overflow'='inherit',
-        'textOverflow'= 'inherit',
-        'textAlign' = 'left'
-      ),
-
-
-      style_header=(list("fontWeight"="bold",
-                         "text-transform"="capitalize"))
-
-
-    )
-  )
-}
-
-generate_table <- function(df, nrows=10)
-{
+generate_table <- function(df, nrows=10) {
   n <- min(nrows, nrow(df))
   rows <- lapply(seq(1, n), function(i) {
     htmlTr(children = lapply(as.character(df[i,]), htmlTd))
   })
-
   header <- htmlTr(children = lapply(names(df), htmlTh))
-
   htmlTable(
     children = c(list(header), rows)
   )
-
 }
+
+# Delete below function? Any issues with above function? (None for Aanika!)
+
+# generate_props_table <- function(df) {
+#   return(
+#     dashDataTable(
+#       id = 'table',
+#       columns = lapply(colnames(df), function(x) {
+#         list(name = x, id = x)
+#       }),
+#       data = setNames(lapply(split(df, seq(nrow(df))), FUN = function (x) {as.list(x)}), NULL),
+#       style_as_list_view = TRUE,
+#       style_data = list('whiteSpace' = 'normal'),
+#       style_cell = list(
+#         'whiteSpace'= 'no-wrap',
+#         'overflow'='inherit',
+#         'textOverflow'= 'inherit',
+#         'textAlign' = 'left'
+#       ),
+#       style_header = (list("fontWeight"="bold", "text-transform"="capitalize"))
+#
+#     )
+#   )
+# }
