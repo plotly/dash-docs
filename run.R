@@ -7,8 +7,8 @@ library(jsonlite)
 components <- new.env()
 source('dashr/components.R', local=components)
 
-chapters.Whats_dash <- new.env()
-source('dashr/chapters/Whats_dash/introduction.R', local=chapters.Whats_dash)
+chapters.whats_dash <- new.env()
+source('dashr/chapters/whats-dash/introduction.R', local=chapters.whats_dash)
 # Dash Tutorial
 chapters.installation <- new.env()
 source('dashr/chapters/installation/index.R', local=chapters.installation)
@@ -196,7 +196,7 @@ app$callback(
   function(pathname) {
     switch(
       pathname,
-      '/introduction' = return(chapters.Whats_dash$layout),
+      '/introduction' = return(chapters.Wwats_dash$layout),
       # Dash Tutorial
       '/installation' = return(chapters.installation$layout),
       '/getting-started' = return(chapters.getting_started$layout),
@@ -240,7 +240,7 @@ app$callback(
       '/datatable/dropdowns' = return(chapters.dashDataTable7$layout),
       '/datatable/virtualization' = return(chapters.dashDataTable8$layout),
       '/datatable/filtering' = return(chapters.dashDataTable9$layout),
-      #/datatable/reference' = return(chapters.dashDataTable10$layout),
+      '/datatable/reference' = return(chapters.dashDataTable10$layout),
       # Component Libraries (Dash DAQ Components)
       # '/dash-daq' = return(chapters.dashDaq$layout),
       # Component Libraries (Dash Canvas)
