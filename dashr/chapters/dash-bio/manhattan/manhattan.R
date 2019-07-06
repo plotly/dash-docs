@@ -84,13 +84,9 @@ manhattanPropsTable <- generate_table(manhattanPropsDF)
 layout <- htmlDiv(
   list(
     dashbio_intro,
-    htmlHr(),
     defaultManhattan,
-    htmlHr(),
     lineColors,
-    htmlHr(),
     highlightedPoints,
-    htmlHr(),
     dccMarkdown('## ManhattanPlot Properties'),
     manhattanPropsTable,
     htmlHr(),

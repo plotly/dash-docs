@@ -102,15 +102,10 @@ oncoPropsTable <- generate_table(oncoPropsDF)
 layout <- htmlDiv(
   list(
     dashbio_intro,
-    htmlHr(),
     defaultOncoPrint,
-    htmlHr(),
     oncoColors,
-    htmlHr(),
     oncoSize,
-    htmlHr(),
     oncoLegend,
-    htmlHr(),
     dccMarkdown('## OncoPrint Properties'),
     oncoPropsTable,
     htmlHr(),

@@ -86,13 +86,9 @@ molecule2dviewerPropsTable <- generate_table(molecule2dviewerPropsDF)
 layout <- htmlDiv(
   list(
     dashbio_intro,
-    htmlHr(),
     defaultMolecule2dViewer,
-    htmlHr(),
     selectedAtom,
-    htmlHr(),
     modelData,
-    htmlHr(),
     dccMarkdown('## Molecule2dViewer Properties'),
     molecule2dviewerPropsTable,
     htmlHr(),

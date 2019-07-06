@@ -18,55 +18,41 @@ examples <- list(
 
 layout <- htmlDiv(
   list(
+    htmlH1("Molecule3dViewer Examples and Reference"),
     dccMarkdown("
-# Molecule3dViewer Examples and Reference
+See Molecule 3D Viewer in action [here](https://dash-bio.plotly.host/dash-molecule3d/).
+    "),
 
-See Molecule 3D Viewer in action
-[here](https://dash-bio.plotly.host/dash-molecule3d/).
-
-## Default Molecule 3D Viewer
-
+    htmlH2("Default Molecule 3D Viewer"),
+    dccMarkdown("
 An example of a default molecule 3d viewer component without any extra properties.
-                "),
-
+    "),
     examples$default$source,
     examples$default$layout,
 
-    htmlHr(),
-
+    htmlH2("Selection Type"),
     dccMarkdown("
-## Selection Type
-
 Choose what gets highlighted with the same color upon selection.
-                "),
-
+    "),
     examples$selectionTypePseudo$source,
     examples$selectionType$layout,
 
-    htmlHr(),
-
+    htmlH2("Background Color/Opacity"),
     dccMarkdown("
-## Background Color/Opacity
+    Change the background color and opacity of the canvas on which Mol3D is rendered.
+    ```r
+    dashbioMolecule3dViewer(
+        id = 'my-dashbio-molecule3d',
+                    styles = styles_data,
+                    modelData = model_data,
+                    selectionType = 'Chain',
+                    backgroundColor='#FF0000',
+                    backgroundOpacity=0.2
+        )
+    ```
+    "),
 
-Change the background color and opacity of the canvas on which Mol3D is rendered.
-```r
-dashbioMolecule3dViewer(
-    id = 'my-dashbio-molecule3d',
-                styles = styles_data,
-                modelData = model_data,
-                selectionType = 'Chain',
-                backgroundColor='#FF0000',
-                backgroundOpacity=0.2
-    )
-```
-                "),
-
-    htmlHr(),
-
-    dccMarkdown("
-## Molecule3dViewer Properties
-                "),
-
+    htmlH2("Molecule3dViewer Properties"),
     examples$table$layout,
 
     htmlHr(),

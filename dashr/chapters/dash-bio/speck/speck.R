@@ -13,9 +13,7 @@ source('dashr/styles.R')
 source('dashr/utils.R')
 source('dashr/utils.R', local=utils)
 
-importSpeck <- function(filepath,
-                        header = FALSE,
-                        skip = 2) {
+importSpeck <- function(filepath, header = FALSE, skip = 2) {
   textdata <- read.table(
     text = paste0(
       readLines(filepath), collapse="\n"
@@ -99,13 +97,9 @@ speckPropsTable <- generate_table(speckPropsDF)
 layout <- htmlDiv(
   list(
     dashbio_intro,
-    htmlHr(),
     defaultSpeck,
-    htmlHr(),
     speckRender,
-    htmlHr(),
     scrollZoom,
-    htmlHr(),
     dccMarkdown('## Speck Properties'),
     speckPropsTable,
     htmlHr(),

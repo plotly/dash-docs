@@ -86,13 +86,9 @@ needlePropsTable <- generate_table(needlePropsDF)
 layout <- htmlDiv(
   list(
     dashbio_intro,
-    htmlHr(),
     defaultNeedle,
-    htmlHr(),
     needleStyle,
-    htmlHr(),
     domainStyle,
-    htmlHr(),
     dccMarkdown('## NeedlePlot Properties'),
     needlePropsTable,
     htmlHr(),

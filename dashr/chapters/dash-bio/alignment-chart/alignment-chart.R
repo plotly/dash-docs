@@ -76,7 +76,6 @@ alignmentPropsTable <- generate_table(alignmentPropsDF)
 layout <- htmlDiv(
   list(
     dashbio_intro,
-    htmlHr(),
     defaultAlignment,
     colorscaleAlignment,
     hideAlignment,

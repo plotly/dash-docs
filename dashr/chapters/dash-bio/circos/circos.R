@@ -75,7 +75,6 @@ circos_props_table <- generate_table(circosPropsDF)
 layout <- htmlDiv(
   list(
     dashbio_intro,
-    htmlHr(),
     defaultCircos,
     inner_outer_radii,
     dccMarkdown('## Circos Properties'),

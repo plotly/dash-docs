@@ -129,17 +129,11 @@ sequencePropsTable <- generate_table(sequencePropsDF)
 layout <- htmlDiv(list(
 
   dashbio_intro,
-  htmlHr(),
   defaultSequenceViewer,
-  htmlHr(),
   sequenceLine,
-  htmlHr(),
   subsequence,
-  htmlHr(),
   toolbar,
-  htmlHr(),
   titleandbadge,
-  htmlHr(),
   dccMarkdown('## SequenceViewer Properties'),
   sequencePropsTable,
   htmlHr(),
