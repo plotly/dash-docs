@@ -7,8 +7,8 @@ utils <- new.env()
 source('dashr/utils.R', local=utils)
 
 examples <- list(
-  example1 = utils$LoadExampleCode('dashr/chapters/datatable/part5/examples/example1.R'),
-  example2 = utils$LoadExampleCode('dashr/chapters/datatable/part5/examples/example2.R')
+  example1 = utils$LoadExampleCode('dashr/chapters/dash-datatable/part5/examples/example1.R'),
+  example2 = utils$LoadExampleCode('dashr/chapters/dash-datatable/part5/examples/example2.R')
 )
 
 layout <- htmlDiv(
@@ -111,11 +111,7 @@ create the desired formatting.
     examples$example2$layout,
 
     htmlHr(),
-    dccMarkdown("
-[Back to the DashTable Documentation](/datatable)
-              "),
-    dccMarkdown("
-[Back to the Dash Documentation](/)
-              ")
+    dccMarkdown("[Back to Cytoscape Documentation](/datatable)"),
+    dccMarkdown("[Back to Dash Documentation](/)")
   )
 )

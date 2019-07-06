@@ -15,38 +15,38 @@ df <- data.frame(
 )
 
 examples <- list(
-  example = utils$LoadExampleCode('dashr/chapters/datatable/part2/examples/example.R'),
-  examplePseudo = utils$LoadExampleCode('dashr/chapters/datatable/part2/examples/examplePseudo.R'),
-  highlight1 = utils$LoadExampleCode('dashr/chapters/datatable/part2/examples/highlight1.R'),
-  highlightPseudo1 = utils$LoadExampleCode('dashr/chapters/datatable/part2/examples/highlightPseudo1.R'),
-  highlight2 = utils$LoadExampleCode('dashr/chapters/datatable/part2/examples/highlight2.R'),
-  highlightPseudo2 = utils$LoadExampleCode('dashr/chapters/datatable/part2/examples/highlightPseudo2.R'),
-  highlight3 = utils$LoadExampleCode('dashr/chapters/datatable/part2/examples/highlight3.R'),
-  highlightPseudo3 = utils$LoadExampleCode('dashr/chapters/datatable/part2/examples/highlightPseudo3.R'),
-  highlight4 = utils$LoadExampleCode('dashr/chapters/datatable/part2/examples/highlight4.R'),
-  highlightPseudo4 = utils$LoadExampleCode('dashr/chapters/datatable/part2/examples/highlightPseudo4.R'),
-  darkTheme1 = utils$LoadExampleCode('dashr/chapters/datatable/part2/examples/darkTheme1.R'),
-  darkThemePseudo1 = utils$LoadExampleCode('dashr/chapters/datatable/part2/examples/darkThemePseudo1.R'),
-  darkTheme2 = utils$LoadExampleCode('dashr/chapters/datatable/part2/examples/darkTheme2.R'),
-  darkThemePseudo2 = utils$LoadExampleCode('dashr/chapters/datatable/part2/examples/darkThemePseudo2.R'),
-  stripedRows1 = utils$LoadExampleCode('dashr/chapters/datatable/part2/examples/stripedRows1.R'),
-  stripedRowsPseudo1 = utils$LoadExampleCode('dashr/chapters/datatable/part2/examples/stripedRowsPseudo1.R'),
-  stripedRows2 = utils$LoadExampleCode('dashr/chapters/datatable/part2/examples/stripedRows2.R'),
-  stripedRowsPseudo2 = utils$LoadExampleCode('dashr/chapters/datatable/part2/examples/stripedRowsPseudo2.R'),
-  columnAlignment = utils$LoadExampleCode('dashr/chapters/datatable/part2/examples/columnAlignment.R'),
-  columnAlignmentPseudo = utils$LoadExampleCode('dashr/chapters/datatable/part2/examples/columnAlignmentPseudo.R'),
-  minimalHeaders = utils$LoadExampleCode('dashr/chapters/datatable/part2/examples/minimalHeaders.R'),
-  minimalHeadersPseudo = utils$LoadExampleCode('dashr/chapters/datatable/part2/examples/minimalHeadersPseudo.R'),
-  multiHeaders = utils$LoadExampleCode('dashr/chapters/datatable/part2/examples/multiHeaders.R'),
-  multiHeadersPseudo = utils$LoadExampleCode('dashr/chapters/datatable/part2/examples/multiHeadersPseudo.R'),
-  stylingAsList = utils$LoadExampleCode('dashr/chapters/datatable/part2/examples/stylingAsList.R'),
-  stylingAsListPseudo = utils$LoadExampleCode('dashr/chapters/datatable/part2/examples/stylingAsListPseudo.R'),
-  stylesPriority = utils$LoadExampleCode('dashr/chapters/datatable/part2/examples/stylesPriority.R'),
-  stylesPriorityPseudo = utils$LoadExampleCode('dashr/chapters/datatable/part2/examples/stylesPriorityPseudo.R'),
-  addingBorders = utils$LoadExampleCode('dashr/chapters/datatable/part2/examples/addingBorders.R'),
-  addingBordersPseudo = utils$LoadExampleCode('dashr/chapters/datatable/part2/examples/addingBordersPseudo.R'),
-  stylingEditable = utils$LoadExampleCode('dashr/chapters/datatable/part2/examples/stylingEditable.R'),
-  stylingEditablePseudo = utils$LoadExampleCode('dashr/chapters/datatable/part2/examples/stylingEditablePseudo.R')
+  example = utils$LoadExampleCode('dashr/chapters/dash-datatable/part2/examples/example.R'),
+  examplePseudo = utils$LoadExampleCode('dashr/chapters/dash-datatable/part2/examples/examplePseudo.R'),
+  highlight1 = utils$LoadExampleCode('dashr/chapters/dash-datatable/part2/examples/highlight1.R'),
+  highlightPseudo1 = utils$LoadExampleCode('dashr/chapters/dash-datatable/part2/examples/highlightPseudo1.R'),
+  highlight2 = utils$LoadExampleCode('dashr/chapters/dash-datatable/part2/examples/highlight2.R'),
+  highlightPseudo2 = utils$LoadExampleCode('dashr/chapters/dash-datatable/part2/examples/highlightPseudo2.R'),
+  highlight3 = utils$LoadExampleCode('dashr/chapters/dash-datatable/part2/examples/highlight3.R'),
+  highlightPseudo3 = utils$LoadExampleCode('dashr/chapters/dash-datatable/part2/examples/highlightPseudo3.R'),
+  highlight4 = utils$LoadExampleCode('dashr/chapters/dash-datatable/part2/examples/highlight4.R'),
+  highlightPseudo4 = utils$LoadExampleCode('dashr/chapters/dash-datatable/part2/examples/highlightPseudo4.R'),
+  darkTheme1 = utils$LoadExampleCode('dashr/chapters/dash-datatable/part2/examples/darkTheme1.R'),
+  darkThemePseudo1 = utils$LoadExampleCode('dashr/chapters/dash-datatable/part2/examples/darkThemePseudo1.R'),
+  darkTheme2 = utils$LoadExampleCode('dashr/chapters/dash-datatable/part2/examples/darkTheme2.R'),
+  darkThemePseudo2 = utils$LoadExampleCode('dashr/chapters/dash-datatable/part2/examples/darkThemePseudo2.R'),
+  stripedRows1 = utils$LoadExampleCode('dashr/chapters/dash-datatable/part2/examples/stripedRows1.R'),
+  stripedRowsPseudo1 = utils$LoadExampleCode('dashr/chapters/dash-datatable/part2/examples/stripedRowsPseudo1.R'),
+  stripedRows2 = utils$LoadExampleCode('dashr/chapters/dash-datatable/part2/examples/stripedRows2.R'),
+  stripedRowsPseudo2 = utils$LoadExampleCode('dashr/chapters/dash-datatable/part2/examples/stripedRowsPseudo2.R'),
+  columnAlignment = utils$LoadExampleCode('dashr/chapters/dash-datatable/part2/examples/columnAlignment.R'),
+  columnAlignmentPseudo = utils$LoadExampleCode('dashr/chapters/dash-datatable/part2/examples/columnAlignmentPseudo.R'),
+  minimalHeaders = utils$LoadExampleCode('dashr/chapters/dash-datatable/part2/examples/minimalHeaders.R'),
+  minimalHeadersPseudo = utils$LoadExampleCode('dashr/chapters/dash-datatable/part2/examples/minimalHeadersPseudo.R'),
+  multiHeaders = utils$LoadExampleCode('dashr/chapters/dash-datatable/part2/examples/multiHeaders.R'),
+  multiHeadersPseudo = utils$LoadExampleCode('dashr/chapters/dash-datatable/part2/examples/multiHeadersPseudo.R'),
+  stylingAsList = utils$LoadExampleCode('dashr/chapters/dash-datatable/part2/examples/stylingAsList.R'),
+  stylingAsListPseudo = utils$LoadExampleCode('dashr/chapters/dash-datatable/part2/examples/stylingAsListPseudo.R'),
+  stylesPriority = utils$LoadExampleCode('dashr/chapters/dash-datatable/part2/examples/stylesPriority.R'),
+  stylesPriorityPseudo = utils$LoadExampleCode('dashr/chapters/dash-datatable/part2/examples/stylesPriorityPseudo.R'),
+  addingBorders = utils$LoadExampleCode('dashr/chapters/dash-datatable/part2/examples/addingBorders.R'),
+  addingBordersPseudo = utils$LoadExampleCode('dashr/chapters/dash-datatable/part2/examples/addingBordersPseudo.R'),
+  stylingEditable = utils$LoadExampleCode('dashr/chapters/dash-datatable/part2/examples/stylingEditable.R'),
+  stylingEditablePseudo = utils$LoadExampleCode('dashr/chapters/dash-datatable/part2/examples/stylingEditablePseudo.R')
 )
 
 layout <- htmlDiv(
@@ -229,11 +229,7 @@ See the [Editable DataTable chapter](/datatable/Part6) for more info.
     examples$stylingEditable$layout,
 
     htmlHr(),
-    dccMarkdown("
-[Back to the DashTable Documentation](/datatable)
-                "),
-    dccMarkdown("
-[Back to the Dash Documentation](/)
-                ")
+    dccMarkdown("[Back to Cytoscape Documentation](/datatable)"),
+    dccMarkdown("[Back to Dash Documentation](/)")
   )
 )

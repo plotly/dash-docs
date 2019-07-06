@@ -7,7 +7,7 @@ utils <- new.env()
 source('dashr/utils.R', local=utils)
 
 examples <- list(
-  virtualization = utils$LoadExampleCode('dashr/chapters/datatable/part8/examples/virtualization.R')
+  virtualization = utils$LoadExampleCode('dashr/chapters/dash-datatable/part8/examples/virtualization.R')
 )
 
 layout <- htmlDiv(
@@ -37,11 +37,7 @@ setting the white-space CSS property in the cells to normal.
     examples$virtualization$layout,
 
     htmlHr(),
-    dccMarkdown("
-[Back to the DashTable Documentation](/datatable)
-                "),
-    dccMarkdown("
-[Back to the Dash Documentation](/)
-                ")
+    dccMarkdown("[Back to Cytoscape Documentation](/datatable)"),
+    dccMarkdown("[Back to Dash Documentation](/)")
   )
 )

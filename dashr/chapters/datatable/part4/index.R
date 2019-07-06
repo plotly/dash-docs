@@ -7,12 +7,12 @@ utils <- new.env()
 source('dashr/utils.R', local=utils)
 
 examples <- list(
-  backendPaging = utils$LoadExampleCode('dashr/chapters/datatable/part4/examples/backendPaging.R'),
-  backendPagingWithSorting = utils$LoadExampleCode('dashr/chapters/datatable/part4/examples/backendPagingWithSorting.R'),
-  backendPagingWithMultiSorting = utils$LoadExampleCode('dashr/chapters/datatable/part4/examples/backendPagingWithMultiSorting.R'),
-  backendPagingWithFiltering = utils$LoadExampleCode('dashr/chapters/datatable/part4/examples/backendPagingWithFiltering.R'),
-  backendPagingWithFilteringMultiSorting = utils$LoadExampleCode('dashr/chapters/datatable/part4/examples/backendPagingWithFilteringMultiSorting.R'),
-  filteringSortingwithGraph = utils$LoadExampleCode('dashr/chapters/datatable/part4/examples/filteringSortingwithGraph.R')
+  backendPaging = utils$LoadExampleCode('dashr/chapters/dash-datatable/part4/examples/backendPaging.R'),
+  backendPagingWithSorting = utils$LoadExampleCode('dashr/chapters/dash-datatable/part4/examples/backendPagingWithSorting.R'),
+  backendPagingWithMultiSorting = utils$LoadExampleCode('dashr/chapters/dash-datatable/part4/examples/backendPagingWithMultiSorting.R'),
+  backendPagingWithFiltering = utils$LoadExampleCode('dashr/chapters/dash-datatable/part4/examples/backendPagingWithFiltering.R'),
+  backendPagingWithFilteringMultiSorting = utils$LoadExampleCode('dashr/chapters/dash-datatable/part4/examples/backendPagingWithFilteringMultiSorting.R'),
+  filteringSortingwithGraph = utils$LoadExampleCode('dashr/chapters/dash-datatable/part4/examples/filteringSortingwithGraph.R')
 )
 
 layout <- htmlDiv(
@@ -122,12 +122,8 @@ the graph component displays the current page of the `data`.
     examples$filteringSortingwithGraph$layout,
 
     htmlHr(),
-    dccMarkdown("
-[Back to the DashTable Documentation](/datatable)
-              "),
-    dccMarkdown("
-[Back to the Dash Documentation](/)
-              ")
+    dccMarkdown("[Back to Cytoscape Documentation](/datatable)"),
+    dccMarkdown("[Back to Dash Documentation](/)")
 
   )
 )

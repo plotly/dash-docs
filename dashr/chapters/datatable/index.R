@@ -9,7 +9,7 @@ components <- new.env()
 source('dashr/components.R', local=components)
 
 examples <- list(
-  quickStart = utils$LoadExampleCode('dashr/chapters/datatable/examples/quickstart.R')
+  quickStart = utils$LoadExampleCode('dashr/chapters/dash-datatable/examples/quickStart.R')
 )
 
 layout <- htmlDiv(
@@ -152,7 +152,6 @@ layout <- htmlDiv(
     "The full list of Table properties and their settings can be achieved by
     `help('dashDataTable')` or https://dash.plot.ly/datatable/reference"
     ),
-
 
     components$Header("Roadmap, Sponsorships, and Contact"),
     dccMarkdown("

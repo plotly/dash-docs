@@ -7,12 +7,12 @@ utils <- new.env()
 source('dashr/utils.R', local=utils)
 
 examples <- list(
-  addRemoveColumns = utils$LoadExampleCode('dashr/chapters/datatable/part6/examples/addRemoveColumns.R'),
-  addRemoveRows = utils$LoadExampleCode('dashr/chapters/datatable/part6/examples/addRemoveRows.R'),
-  filteringOutEmptyCells = utils$LoadExampleCode('dashr/chapters/datatable/part6/examples/filteringOutEmptyCells.R'),
-  predefinedColumns = utils$LoadExampleCode('dashr/chapters/datatable/part6/examples/predefinedColumns.R'),
-  updatingColumnsofSameTable = utils$LoadExampleCode('dashr/chapters/datatable/part6/examples/updatingColumnsofSameTable.R'),
-  uploadData = utils$LoadExampleCode('dashr/chapters/datatable/part6/examples/uploadData.R')
+  addRemoveColumns = utils$LoadExampleCode('dashr/chapters/dash-datatable/part6/examples/addRemoveColumns.R'),
+  addRemoveRows = utils$LoadExampleCode('dashr/chapters/dash-datatable/part6/examples/addRemoveRows.R'),
+  filteringOutEmptyCells = utils$LoadExampleCode('dashr/chapters/dash-datatable/part6/examples/filteringOutEmptyCells.R'),
+  predefinedColumns = utils$LoadExampleCode('dashr/chapters/dash-datatable/part6/examples/predefinedColumns.R'),
+  updatingColumnsofSameTable = utils$LoadExampleCode('dashr/chapters/dash-datatable/part6/examples/updatingColumnsofSameTable.R'),
+  uploadData = utils$LoadExampleCode('dashr/chapters/dash-datatable/part6/examples/uploadData.R')
 )
 
 layout <- htmlDiv(
@@ -140,11 +140,7 @@ computing certain columns based off of other other columns.
     examples$updatingColumnsofSameTable$layout,
 
     htmlHr(),
-    dccMarkdown("
-[Back to the DashTable Documentation](/datatable)
-              "),
-    dccMarkdown("
-[Back to the Dash Documentation](/)
-              ")
+    dccMarkdown("[Back to Cytoscape Documentation](/datatable)"),
+    dccMarkdown("[Back to Dash Documentation](/)")
   )
 )

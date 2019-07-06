@@ -7,8 +7,8 @@ utils <- new.env()
 source('dashr/utils.R', local=utils)
 
 examples <- list(
-  columnDropdowns = utils$LoadExampleCode('dashr/chapters/datatable/part7/examples/columnDropdowns.R'),
-  rowDropdowns = utils$LoadExampleCode('dashr/chapters/datatable/part7/examples/rowDropdowns.R')
+  columnDropdowns = utils$LoadExampleCode('dashr/chapters/dash-datatable/part7/examples/columnDropdowns.R'),
+  rowDropdowns = utils$LoadExampleCode('dashr/chapters/dash-datatable/part7/examples/rowDropdowns.R')
 )
 
 layout <- htmlDiv(
@@ -37,11 +37,7 @@ when editing the values with an editable table.
     examples$rowDropdowns$layout,
 
     htmlHr(),
-    dccMarkdown("
-[Back to the DashTable Documentation](/datatable)
-                "),
-    dccMarkdown("
-[Back to the Dash Documentation](/)
-                ")
+    dccMarkdown("[Back to Cytoscape Documentation](/datatable)"),
+    dccMarkdown("[Back to Dash Documentation](/)")
   )
 )

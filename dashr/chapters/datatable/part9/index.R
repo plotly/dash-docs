@@ -7,8 +7,8 @@ utils <- new.env()
 source('dashr/utils.R', local=utils)
 
 examples <- list(
-  backendFiltering = utils$LoadExampleCode('dashr/chapters/datatable/part9/examples/backendFiltering.R'),
-  frontedFiltering = utils$LoadExampleCode('dashr/chapters/datatable/part9/examples/frontedFiltering.R')
+  backendFiltering = utils$LoadExampleCode('dashr/chapters/dash-datatable/part9/examples/backendFiltering.R'),
+  frontedFiltering = utils$LoadExampleCode('dashr/chapters/dash-datatable/part9/examples/frontedFiltering.R')
 )
 
 layout <- htmlDiv(
@@ -100,11 +100,7 @@ Example:
     examples$backendFiltering$layout,
 
     htmlHr(),
-    dccMarkdown("
-[Back to the DashTable Documentation](/datatable)
-                "),
-    dccMarkdown("
-[Back to the Dash Documentation](/)
-                ")
+    dccMarkdown("[Back to Cytoscape Documentation](/datatable)"),
+    dccMarkdown("[Back to Dash Documentation](/)")
   )
 )

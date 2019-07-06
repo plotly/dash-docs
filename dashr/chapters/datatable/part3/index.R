@@ -7,8 +7,8 @@ utils <- new.env()
 source('dashr/utils.R', local=utils)
 
 examples <- list(
-  example1 = utils$LoadExampleCode('dashr/chapters/datatable/part3/examples/example1.R'),
-  example2 = utils$LoadExampleCode('dashr/chapters/datatable/part3/examples/example2.R')
+  example1 = utils$LoadExampleCode('dashr/chapters/dash-datatable/part3/examples/example1.R'),
+  example2 = utils$LoadExampleCode('dashr/chapters/dash-datatable/part3/examples/example2.R')
 )
 
 layout <- htmlDiv(
@@ -122,12 +122,9 @@ Even the full set of IDs is only necessary in order to sync with sorting and fil
               "),
   examples$example2$source_code,
   examples$example2$layout,
+
   htmlHr(),
-  dccMarkdown("
-[Back to the DashTable Documentation](/datatable)
-                "),
-  dccMarkdown("
-[Back to the Dash Documentation](/)
-                ")
+  dccMarkdown("[Back to Cytoscape Documentation](/datatable)"),
+  dccMarkdown("[Back to Dash Documentation](/)")
   )
 )

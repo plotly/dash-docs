@@ -6,7 +6,6 @@ library(dashTable)
 utils <- new.env()
 source('dashr/utils.R', local=utils)
 
-
 df <- data.frame(
   Date = c("2015-01-01", "2015-10-24", "2016-05-10", "2017-01-10", "2018-05-10", "2018-08-15"),
   Region = c("Montreal", "Toronto", "New York City", "Miami", "San Francisco", "London"),
@@ -31,38 +30,38 @@ df_election <- data.frame(
 df_long <- df[rep(1:6, 10),]
 
 examples <- list(
-  example1 = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/example.R'),
-  examplePseudo1 = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/examplePseudo.R'),
-  multipleLines = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/multipleLines.R'),
-  multipleLinesPseudo = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/multipleLinesPseudo.R'),
-  ellipses = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/ellipses.R'),
-  ellipsesPseudo = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/ellipsesPseudo.R'),
-  horizontalScroll1 = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/horizontalScroll1.R'),
-  horizontalScrollPseudo1 = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/horizontalScrollPseudo1.R'),
-  horizontalScroll2 = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/horizontalScroll2.R'),
-  horizontalScrollPseudo2 = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/horizontalScrollPseudo2.R'),
-  horizontalScroll3 = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/horizontalScroll3.R'),
-  horizontalScrollPseudo3 = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/horizontalScrollPseudo3.R'),
-  horizontalScroll4 = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/horizontalScroll4.R'),
-  horizontalScrollPseudo4 = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/horizontalScrollPseudo4.R'),
-  horizontalScroll5 = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/horizontalScroll5.R'),
-  horizontalScrollPseudo5 = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/horizontalScrollPseudo5.R'),
-  fixedColumns1 = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/fixedColumns1.R'),
-  fixedColumnsPseudo1 = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/fixedColumnsPseudo1.R'),
-  fixedColumns2 = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/fixedColumns2.R'),
-  fixedColumnsPseudo2 = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/fixedColumnsPseudo2.R'),
-  individualColumnWidths1 = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/individualColumnWidths1.R'),
-  individualColumnWidthsPseudo1 = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/individualColumnWidthsPseudo1.R'),
-  individualColumnWidths2 = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/individualColumnWidths2.R'),
-  individualColumnWidthsPseudo2 = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/individualColumnWidthsPseudo2.R'),
-  verticalScrolling = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/verticalScrolling.R'),
-  verticalScrollingPseudo = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/verticalScrollingPseudo.R'),
-  fixedRows = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/fixedRows.R'),
-  fixedRowsPseudo = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/fixedRowsPseudo.R'),
-  maxHeight = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/maxHeight.R'),
-  maxHeightPseudo = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/maxHeightPseudo.R'),
-  height = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/height.R'),
-  heightPseudo = utils$LoadExampleCode('dashr/chapters/datatable/part1/examples/heightPseudo.R')
+  example1 = utils$LoadExampleCode('dashr/chapters/dash-datatable/part1/examples/example.R'),
+  examplePseudo1 = utils$LoadExampleCode('dashr/chapters/dash-datatable/part1/examples/examplePseudo.R'),
+  multipleLines = utils$LoadExampleCode('dashr/chapters/dash-datatable/part1/examples/multipleLines.R'),
+  multipleLinesPseudo = utils$LoadExampleCode('dashr/chapters/dash-datatable/part1/examples/multipleLinesPseudo.R'),
+  ellipses = utils$LoadExampleCode('dashr/chapters/dash-datatable/part1/examples/ellipses.R'),
+  ellipsesPseudo = utils$LoadExampleCode('dashr/chapters/dash-datatable/part1/examples/ellipsesPseudo.R'),
+  horizontalScroll1 = utils$LoadExampleCode('dashr/chapters/dash-datatable/part1/examples/horizontalScroll1.R'),
+  horizontalScrollPseudo1 = utils$LoadExampleCode('dashr/chapters/dash-datatable/part1/examples/horizontalScrollPseudo1.R'),
+  horizontalScroll2 = utils$LoadExampleCode('dashr/chapters/dash-datatable/part1/examples/horizontalScroll2.R'),
+  horizontalScrollPseudo2 = utils$LoadExampleCode('dashr/chapters/dash-datatable/part1/examples/horizontalScrollPseudo2.R'),
+  horizontalScroll3 = utils$LoadExampleCode('dashr/chapters/dash-datatable/part1/examples/horizontalScroll3.R'),
+  horizontalScrollPseudo3 = utils$LoadExampleCode('dashr/chapters/dash-datatable/part1/examples/horizontalScrollPseudo3.R'),
+  horizontalScroll4 = utils$LoadExampleCode('dashr/chapters/dash-datatable/part1/examples/horizontalScroll4.R'),
+  horizontalScrollPseudo4 = utils$LoadExampleCode('dashr/chapters/dash-datatable/part1/examples/horizontalScrollPseudo4.R'),
+  horizontalScroll5 = utils$LoadExampleCode('dashr/chapters/dash-datatable/part1/examples/horizontalScroll5.R'),
+  horizontalScrollPseudo5 = utils$LoadExampleCode('dashr/chapters/dash-datatable/part1/examples/horizontalScrollPseudo5.R'),
+  fixedColumns1 = utils$LoadExampleCode('dashr/chapters/dash-datatable/part1/examples/fixedColumns1.R'),
+  fixedColumnsPseudo1 = utils$LoadExampleCode('dashr/chapters/dash-datatable/part1/examples/fixedColumnsPseudo1.R'),
+  fixedColumns2 = utils$LoadExampleCode('dashr/chapters/dash-datatable/part1/examples/fixedColumns2.R'),
+  fixedColumnsPseudo2 = utils$LoadExampleCode('dashr/chapters/dash-datatable/part1/examples/fixedColumnsPseudo2.R'),
+  individualColumnWidths1 = utils$LoadExampleCode('dashr/chapters/dash-datatable/part1/examples/individualColumnWidths1.R'),
+  individualColumnWidthsPseudo1 = utils$LoadExampleCode('dashr/chapters/dash-datatable/part1/examples/individualColumnWidthsPseudo1.R'),
+  individualColumnWidths2 = utils$LoadExampleCode('dashr/chapters/dash-datatable/part1/examples/individualColumnWidths2.R'),
+  individualColumnWidthsPseudo2 = utils$LoadExampleCode('dashr/chapters/dash-datatable/part1/examples/individualColumnWidthsPseudo2.R'),
+  verticalScrolling = utils$LoadExampleCode('dashr/chapters/dash-datatable/part1/examples/verticalScrolling.R'),
+  verticalScrollingPseudo = utils$LoadExampleCode('dashr/chapters/dash-datatable/part1/examples/verticalScrollingPseudo.R'),
+  fixedRows = utils$LoadExampleCode('dashr/chapters/dash-datatable/part1/examples/fixedRows.R'),
+  fixedRowsPseudo = utils$LoadExampleCode('dashr/chapters/dash-datatable/part1/examples/fixedRowsPseudo.R'),
+  maxHeight = utils$LoadExampleCode('dashr/chapters/dash-datatable/part1/examples/maxHeight.R'),
+  maxHeightPseudo = utils$LoadExampleCode('dashr/chapters/dash-datatable/part1/examples/maxHeightPseudo.R'),
+  height = utils$LoadExampleCode('dashr/chapters/dash-datatable/part1/examples/height.R'),
+  heightPseudo = utils$LoadExampleCode('dashr/chapters/dash-datatable/part1/examples/heightPseudo.R')
 )
 
 layout <- htmlDiv(
@@ -300,11 +299,7 @@ examples$heightPseudo$source_code,
 examples$height$layout,
 
 htmlHr(),
-dccMarkdown("
-[Back to the DashTable Documentation](/datatable)
-                "),
-dccMarkdown("
-[Back to the Dash Documentation](/)
-                ")
+dccMarkdown("[Back to Cytoscape Documentation](/datatable)"),
+dccMarkdown("[Back to Dash Documentation](/)")
   )
 )
