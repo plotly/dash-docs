@@ -470,11 +470,11 @@ app$callback(
               list(
                 components$Chapter(
                 'About Dash Deployment Server',
-                href='/faqs'
+                href='https://plot.ly/dash/pricing/?_ga=2.180458663.1075922756.1562168385-916141078.1562168385'
                 ),
                 components$Chapter(
                 'Dash Deployment Server Documentation',
-                href='/faqs'
+                href='https://dash.plot.ly/dash-deployment-server'
                 )
               ),
               description="Dash Deployment Server is Plotly's commercial offering for hosting and sharing
