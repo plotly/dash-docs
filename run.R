@@ -167,7 +167,7 @@ app$callback(
       '/dash-core-components/Input' = return(chapters.Input$layout),
       '/dash-core-components/Textarea' = return(chapters.TextArea$layout),
       '/dash-core-components/Checklist' = return(chapters.Checklist$layout),
-      '/dash-core-components/Radioitems' = return(chapters.RadioItems$layout),
+      '/dash-core-components/RadioItems' = return(chapters.RadioItems$layout),
       '/dash-core-components/Button' = return(chapters.Button$layout),
       '/dash-core-components/DatePickerSingle' = return(chapters.DatePickerSingle$layout),
       '/dash-core-components/DatePickerRange' = return(chapters.DatePickerRange$layout),
@@ -208,7 +208,7 @@ app$callback(
               list(
                 components$Chapter(
                   'Introduction',
-                  href='/Whats_dash',
+                  href='/introduction',
                   caption="A quick paragraph about Dash and a link to the talk at Plotcon that started it all."
                 ),
                 components$Chapter(
