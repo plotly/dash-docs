@@ -48,7 +48,7 @@ layout <- htmlDiv(list(
   "),
   components$Chapter(
   "Part 1: Elements",
-  "dash-cytoscape/elements",
+  "cytoscape/elements",
   "
   Elements in Cytoscape are designed to be clear, simple and
   declarative. This chapter will get you started with examples
@@ -61,7 +61,7 @@ layout <- htmlDiv(list(
   ),
   components$Chapter(
   "Part 2: Layout",
-  "dash-cytoscape/layout",
+  "cytoscape/layout",
   "
   Make your graphs interpretable by using the built-in collection of easy-to-modify
   layouts. We show you how to:
@@ -73,7 +73,7 @@ layout <- htmlDiv(list(
   ),
   components$Chapter(
   "Part 3: Styling",
-  "dash-cytoscape/styling",
+  "cytoscape/styling",
   "
   Modify the color, shape and style of your elements with a syntax similar to CSS.
   Cytoscape includes a wide variety of properties, equiping you with everything you
@@ -87,7 +87,7 @@ layout <- htmlDiv(list(
   ),
   components$Chapter(
   "Part 4: Dash Callbacks",
-  "dash-cytoscape/callbacks",
+  "cytoscape/callbacks",
   "
   Update your layout, elements, or style with other Dash components using callbacks.
   This chapter covers:
@@ -98,7 +98,7 @@ layout <- htmlDiv(list(
   ),
   components$Chapter(
   "Part 5: Event Callbacks for User Interactions",
-  "dash-cytoscape/events",
+  "cytoscape/events",
   "
   Dash Cytoscape fires callbacks whenever the user interact with the graph you created,
   which can be used to update the graph itself, or to interact with other components.
@@ -111,14 +111,14 @@ layout <- htmlDiv(list(
   ),
   components$Chapter(
   "Part 6: Component Reference",
-  "dash-cytoscape/reference",
+  "cytoscape/reference",
   "
   You can find here all the properties of the Cytoscape component.
   "
   ),
   # components$Chapter(
   # "Part 6: Cytoscape for Phylogeny Trees",
-  # "dash-cytoscape/phylogeny",
+  # "cytoscape/phylogeny",
   # "
   # We show how Dash Cytoscape can be applied can be applied in bioinformatics and
   # computational biology. We will go through the process of building a phylogeny tree
@@ -127,7 +127,7 @@ layout <- htmlDiv(list(
   # ),
   # components$Chapter(
   # "Part 7: Component Reference",
-  # "dash-cytoscape/reference",
+  # "cytoscape/reference",
   # "
   # You can find here all the properties of the Cytoscape component.
   # "
