@@ -100,7 +100,7 @@ Example:
     examples$backendFiltering$layout,
 
     htmlHr(),
-    dccMarkdown("[Back to Cytoscape Documentation](/datatable)"),
+    dccMarkdown("[Back to DataTable Documentation](/datatable)"),
     dccMarkdown("[Back to Dash Documentation](/)")
   )
 )

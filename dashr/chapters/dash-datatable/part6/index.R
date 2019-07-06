@@ -140,7 +140,7 @@ computing certain columns based off of other other columns.
     examples$updatingColumnsofSameTable$layout,
 
     htmlHr(),
-    dccMarkdown("[Back to Cytoscape Documentation](/datatable)"),
+    dccMarkdown("[Back to DataTable Documentation](/datatable)"),
     dccMarkdown("[Back to Dash Documentation](/)")
   )
 )

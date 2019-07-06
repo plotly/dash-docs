@@ -124,7 +124,7 @@ Even the full set of IDs is only necessary in order to sync with sorting and fil
   examples$example2$layout,
 
   htmlHr(),
-  dccMarkdown("[Back to Cytoscape Documentation](/datatable)"),
+  dccMarkdown("[Back to DataTable Documentation](/datatable)"),
   dccMarkdown("[Back to Dash Documentation](/)")
   )
 )

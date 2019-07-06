@@ -91,8 +91,8 @@ chapters.dashDataTable8 <- new.env()
 source('dashr/chapters/dash-datatable/part8/index.R', local=chapters.dashDataTable8)
 chapters.dashDataTable9 <- new.env()
 source('dashr/chapters/dash-datatable/part9/index.R', local=chapters.dashDataTable9)
-# chapters.dashDataTable10 <- new.env()
-# source('dashr/chapters/dash-datatable/part10/index.R', local=chapters.dashDataTable10)
+chapters.dashDataTable10 <- new.env()
+source('dashr/chapters/dash-datatable/part10/index.R', local=chapters.dashDataTable10)
 # Component Libraries (Dash DAQ Components)
 # chapters.dashDaq <- new.env()
 # source('dashr/chapters/dash-daq/index.R', local=chapters.dashDaq)
@@ -240,7 +240,7 @@ app$callback(
       '/datatable/dropdowns' = return(chapters.dashDataTable7$layout),
       '/datatable/virtualization' = return(chapters.dashDataTable8$layout),
       '/datatable/filtering' = return(chapters.dashDataTable9$layout),
-      # '/datatable/reference' = return(chapters.dashDataTable10$layout),
+      #/datatable/reference' = return(chapters.dashDataTable10$layout),
       # Component Libraries (Dash DAQ Components)
       # '/dash-daq' = return(chapters.dashDaq$layout),
       # Component Libraries (Dash Canvas)

@@ -229,7 +229,7 @@ See the [Editable DataTable chapter](/datatable/Part6) for more info.
     examples$stylingEditable$layout,
 
     htmlHr(),
-    dccMarkdown("[Back to Cytoscape Documentation](/datatable)"),
+    dccMarkdown("[Back to DataTable Documentation](/datatable)"),
     dccMarkdown("[Back to Dash Documentation](/)")
   )
 )

@@ -122,7 +122,7 @@ the graph component displays the current page of the `data`.
     examples$filteringSortingwithGraph$layout,
 
     htmlHr(),
-    dccMarkdown("[Back to Cytoscape Documentation](/datatable)"),
+    dccMarkdown("[Back to DataTable Documentation](/datatable)"),
     dccMarkdown("[Back to Dash Documentation](/)")
 
   )

@@ -37,7 +37,7 @@ setting the white-space CSS property in the cells to normal.
     examples$virtualization$layout,
 
     htmlHr(),
-    dccMarkdown("[Back to Cytoscape Documentation](/datatable)"),
+    dccMarkdown("[Back to DataTable Documentation](/datatable)"),
     dccMarkdown("[Back to Dash Documentation](/)")
   )
 )
