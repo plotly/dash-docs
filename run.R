@@ -94,24 +94,28 @@ source('dashr/chapters/datatable/part9/index.R', local=chapters.dashDataTable9)
 # chapters.dashDataTable10 <- new.env()
 # source('dashr/chapters/datatable/part10/index.R', local=chapters.dashDataTable10)
 # Component Libraries (Dash DAQ Components)
+# chapters.dashDaq <- new.env()
+# source('dashr/chapters/dash-daq/index.R', local=chapters.dashDaq)
 # Component Libraries (Dash Canvas)
+# chapters.dashCanvas <- new.env()
+# source('dashr/chapters/dash-canvas/index.R', local=chapters.dashCanvas)
 # Component Libraries (Dash Cytoscape)
 # chapters.dashCytoscape <- new.env()
-# source('dashr/chapters/cytoscape/index.R', local=chapters.dashCytoscape)
+# source('dashr/chapters/dash-cytoscape/index.R', local=chapters.dashCytoscape)
 # chapters.dashCytoscape1 <- new.env()
-# source('dashr/chapters/cytoscape/elements/index.R', local=chapters.dashCytoscape1)
+# source('dashr/chapters/dash-cytoscape/elements/index.R', local=chapters.dashCytoscape1)
 # chapters.dashCytoscape2 <- new.env()
-# source('dashr/chapters/cytoscape/layout/index.R', local=chapters.dashCytoscape2)
+# source('dashr/chapters/dash-cytoscape/layout/index.R', local=chapters.dashCytoscape2)
 # chapters.dashCytoscape3 <- new.env()
-# source('dashr/chapters/cytoscape/styling/index.R', local=chapters.dashCytoscape3)
+# source('dashr/chapters/dash-cytoscape/styling/index.R', local=chapters.dashCytoscape3)
 # chapters.dashCytoscape4 <- new.env()
-# source('dashr/chapters/cytoscape/callbacks/index.R', local=chapters.dashCytoscape4)
+# source('dashr/chapters/dash-cytoscape/callbacks/index.R', local=chapters.dashCytoscape4)
 # chapters.dashCytoscape5 <- new.env()
-# source('dashr/chapters/cytoscape/events/index.R', local=chapters.dashCytoscape5)
+# source('dashr/chapters/dash-cytoscape/events/index.R', local=chapters.dashCytoscape5)
 # chapters.dashCytoscape6 <- new.env()
-# source('dashr/chapters/cytoscape/phylogeny/index.R', local=chapters.dashCytoscape6)
+# source('dashr/chapters/dash-cytoscape/phylogeny/index.R', local=chapters.dashCytoscape6)
 # chapters.dashCytoscape7 <- new.env()
-# source('dashr/chapters/cytoscape/reference/index.R', local=chapters.dashCytoscape7)
+# source('dashr/chapters/dash-cytoscape/reference/index.R', local=chapters.dashCytoscape7)
 # Component Libraries (Dash Bio)
 chapters.dashBio <- new.env()
 source('dashr/chapters/dash-bio/index.R', local=chapters.dashBio)
@@ -161,8 +165,8 @@ header <- htmlDiv(
           htmlA('plotly', className='link', href = 'https://plot.ly/'),
           htmlA('🔎', className='link', href='https://dash.plot.ly/search')
         ))
-      ))
-  ))
+    ))
+))
 
 app$layout(
   header,
@@ -238,7 +242,9 @@ app$callback(
       '/datatable/filtering' = return(chapters.dashDataTable9$layout),
       # '/datatable/reference' = return(chapters.dashDataTable10$layout),
       # Component Libraries (Dash DAQ Components)
+      # '/dash-daq' = return(chapters.dashDaq$layout),
       # Component Libraries (Dash Canvas)
+      # '/canvas' = return(chapters.dashCanvas$layout),
       # Component Libraries (Dash Cytoscape)
       # '/cytoscape' = return(chapters.dashCytoscape$layout),
       # '/cytoscape/elements' = return(chapters.dashCytoscape1$layout),
