@@ -22,8 +22,8 @@ examples <- list(
 
 dashbio_intro <- htmlDiv(list(
   dccMarkdown('# Sequence Viewer Examples and Reference'),
-  
-  
+
+
   dccMarkdown('
   See Sequence Viewer in action [here](https://dash-bio.plotly.host/dash-sequence-viewer/)
   ')
@@ -47,7 +47,7 @@ sequenceLine <- htmlDiv(list(
   htmlP('Change the characters per line, and toggle the display of line numbers.'),
   utils$LoadAndDisplayComponent(
     '
-    
+
 library(dashBio)
 
 fasta_str = "MALWMRLLPLLALLALWGPDPAAAFVNQHLCGSHLVEALYLVCGERGFFYTPKTRREAED
@@ -69,7 +69,7 @@ subsequence <- htmlDiv(list(
   htmlP('Highlight a part of the sequence with a defined color.'),
   utils$LoadAndDisplayComponent(
     '
-    
+
 library(dashBio)
 
 fasta_str = "MALWMRLLPLLALLALWGPDPAAAFVNQHLCGSHLVEALYLVCGERGFFYTPKTRREAED
@@ -92,7 +92,7 @@ toolbar <- htmlDiv(list(
   htmlP('Display a toolbar to change the line length from the component itself.'),
   utils$LoadAndDisplayComponent(
     '
-    
+
 library(dashBio)
 
 fasta_str = "MALWMRLLPLLALLALWGPDPAAAFVNQHLCGSHLVEALYLVCGERGFFYTPKTRREAED
@@ -114,7 +114,7 @@ titleandbadge <- htmlDiv(list(
   htmlP('Show a title or a badge with the nucleotide or amino acid count of the protein.'),
   utils$LoadAndDisplayComponent(
     '
-    
+
 library(dashBio)
 
 fasta_str = "MALWMRLLPLLALLALWGPDPAAAFVNQHLCGSHLVEALYLVCGERGFFYTPKTRREAED
@@ -136,14 +136,14 @@ sequenceProps <- props_to_list("dashbioSequenceViewer")
 
 sequencePropsDF <- rbindlist(sequenceProps, fill = TRUE)
 
-sequencePropsTable <- generate_props_table(sequencePropsDF)
+sequencePropsTable <- generate_table(sequencePropsDF)
 
 
 
 # Main docs layout
 
 layout <- htmlDiv(list(
-  
+
   dashbio_intro,
   htmlHr(),
   defaultSequenceViewer,
@@ -162,7 +162,7 @@ layout <- htmlDiv(list(
 ))
 
 # app <- Dash$new()
-# 
+#
 # app$layout(htmlDiv(list(
 #   layout
 # )))

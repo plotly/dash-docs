@@ -23,8 +23,8 @@ examples <- list(
 
 dashbio_intro <- htmlDiv(list(
   dccMarkdown('# Molecule2dViewer Examples and Reference'),
-  
-  
+
+
   dccMarkdown('
   See Molecule2dViewer in action [here](http://dash-bio.plotly.host/dash-molecule-2d-viewer)
   ')
@@ -93,14 +93,14 @@ molecule2dviewerProps <- props_to_list("dashbioMolecule2dViewer")
 
 molecule2dviewerPropsDF <- rbindlist(molecule2dviewerProps, fill = TRUE)
 
-molecule2dviewerPropsTable <- generate_props_table(molecule2dviewerPropsDF)
+molecule2dviewerPropsTable <- generate_table(molecule2dviewerPropsDF)
 
 
 
 # Main docs layout
 
 layout <- htmlDiv(list(
-  
+
   dashbio_intro,
   htmlHr(),
   defaultMolecule2dViewer,

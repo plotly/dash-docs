@@ -23,8 +23,8 @@ examples <- list(
 
 dashbio_intro <- htmlDiv(list(
   dccMarkdown('# AlignmentChart Examples and Reference'),
-  
-  
+
+
   dccMarkdown('
   See AlignmentChart in action [here](https://dash-bio.plotly.host/dash-alignment-viewer/)
   ')
@@ -79,12 +79,9 @@ consensusAlignment <-  htmlDiv(list(
 ))
 
 
-
 alignmentprops <- props_to_list("dashbioAlignmentChart")
-
 alignmentPropsDF <- rbindlist(alignmentprops, fill = TRUE)
-
-alignmentPropsTable <- generate_props_table(alignmentPropsDF)
+alignmentPropsTable <- generate_table(alignmentPropsDF)
 
 
 # Main docs layout

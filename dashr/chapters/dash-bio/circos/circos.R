@@ -25,8 +25,8 @@ examples <- list(
 
 dashbio_intro <- htmlDiv(list(
   dccMarkdown('# Circos Examples and Reference'),
-  
-  
+
+
   dccMarkdown('
   See Circos in action [here](https://dash-bio.plotly.host/dash-circos/)
   ')
@@ -54,11 +54,11 @@ inner_outer_radii <- htmlDiv(list(
 library(dashBio)
 library(readr)
 library(jsonlite)
-    
+
 data <- "assets/sample_data/circos_graph_data.json"
 
 circos_graph_data = read_json(data)
-     
+
 dashbioCircos(
   id = "circos_radii_example",
   layout = circos_graph_data[["GRCh37"]],
@@ -84,7 +84,7 @@ circos_props <- props_to_list("dashbioCircos")
 circosPropsDF <- rbindlist(circos_props, fill = TRUE)
 
 
-circos_props_table <- generate_props_table(circosPropsDF)
+circos_props_table <- generate_table(circosPropsDF)
 
 
 

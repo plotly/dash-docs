@@ -22,8 +22,8 @@ examples <- list(
 
 dashbio_intro <- htmlDiv(list(
   dccMarkdown('# ManhattanPlot Examples and Reference'),
-  
-  
+
+
   dccMarkdown('
   See ManhattanPlot in action [here](https://dash-bio.plotly.host/dash-manhattan-plot/)
   ')
@@ -91,14 +91,14 @@ manhattanProps <- props_to_list("dashbioManhattan")
 
 manhattanPropsDF <- rbindlist(manhattanProps, fill = TRUE)
 
-manhattanPropsTable <- generate_props_table(manhattanPropsDF)
+manhattanPropsTable <- generate_table(manhattanPropsDF)
 
 
 
 # Main docs layout
 
 layout <- htmlDiv(list(
-  
+
   dashbio_intro,
   htmlHr(),
   defaultManhattan,

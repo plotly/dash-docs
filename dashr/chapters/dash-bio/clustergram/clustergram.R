@@ -26,8 +26,8 @@ examples <- list(
 
 dashbio_intro <- htmlDiv(list(
   dccMarkdown('# Clustergram Examples and Reference'),
-  
-  
+
+
   dccMarkdown('
   See Clustergram in action [here](https://dash-bio.plotly.host/dash-clustergram/)
   ')
@@ -57,12 +57,12 @@ library(dashHtmlComponents)
 library(dashBio)
 library(heatmaply)
 library(data.table)
-    
+
 df = read.table("assets/sample_data/clustergram_mtcars.tsv",
                         skip = 4, sep ="\t",  row.names = 1, header = TRUE)
-                        
-                        
-dccGraph(figure = heatmaply(df, 
+
+
+dccGraph(figure = heatmaply(df,
                             row_labels = list(row.names(data)),
                             hide_labels = list("row"),
                             column_labels = as.list(colnames(data)),
@@ -91,16 +91,16 @@ library(dashHtmlComponents)
 library(dashBio)
 library(heatmaply)
 library(data.table)
-    
+
 df = read.table("assets/sample_data/clustergram_mtcars.tsv",
                         skip = 4, sep ="\t",  row.names = 1, header = TRUE)
-                        
+
 
 # The following is a color palette.
 
 rc <- colorspace::rainbow_hcl(nrow(df))
-                        
-dccGraph(figure = heatmaply(df, 
+
+dccGraph(figure = heatmaply(df,
                             row_labels = list(row.names(data)),
                             hide_labels = list("row"),
                             column_labels = as.list(colnames(data)),
@@ -131,12 +131,12 @@ library(dashHtmlComponents)
 library(dashBio)
 library(heatmaply)
 library(data.table)
-    
+
 df = read.table("assets/sample_data/clustergram_mtcars.tsv",
                         skip = 4, sep ="\t",  row.names = 1, header = TRUE)
-                        
-                        
-dccGraph(figure = heatmaply(df, 
+
+
+dccGraph(figure = heatmaply(df,
                             row_labels = list(row.names(data)),
                             hide_labels = list("row"),
                             column_labels = as.list(colnames(data)),
@@ -166,12 +166,12 @@ library(dashHtmlComponents)
 library(dashBio)
 library(heatmaply)
 library(data.table)
-    
+
 df = read.table("assets/sample_data/clustergram_mtcars.tsv",
                         skip = 4, sep ="\t",  row.names = 1, header = TRUE)
-                        
-                        
-dccGraph(figure = heatmaply(df, 
+
+
+dccGraph(figure = heatmaply(df,
                             row_labels = list(row.names(data)),
                             hide_labels = list("row"),
                             column_labels = as.list(colnames(data)),
@@ -200,12 +200,12 @@ library(dashHtmlComponents)
 library(dashBio)
 library(heatmaply)
 library(data.table)
-    
+
 df = read.table("assets/sample_data/clustergram_mtcars.tsv",
                         skip = 4, sep ="\t",  row.names = 1, header = TRUE)
-                        
-                        
-dccGraph(figure = heatmaply(df[, -c(8,9)], 
+
+
+dccGraph(figure = heatmaply(df[, -c(8,9)],
                             row_labels = list(row.names(data)),
                             hide_labels = list("row"),
                             column_labels = as.list(colnames(data)),
@@ -216,7 +216,7 @@ dccGraph(figure = heatmaply(df[, -c(8,9)],
                             seriate = "mean",
                             col_side_colors = c(rep(0,5), rep(1,4)),
                             row_side_colors = df[,8:9],
-                            
+
 
           )
         )
@@ -230,8 +230,8 @@ heatmaply_props <- props_to_list("heatmaply")
 heatmaplyPropsDF <- rbindlist(heatmaply_props, fill = TRUE)
 
 
-heatmaply_props_table <- generate_props_table(heatmaplyPropsDF)
-  
+heatmaply_props_table <- generate_table(heatmaplyPropsDF)
+
 
 
 # Main docs layout

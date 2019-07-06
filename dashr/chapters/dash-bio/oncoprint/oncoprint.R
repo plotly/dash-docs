@@ -22,8 +22,8 @@ examples <- list(
 
 dashbio_intro <- htmlDiv(list(
   dccMarkdown('# OncoPrint Examples and Reference'),
-  
-  
+
+
   dccMarkdown('
   See OncoPrint in action [here](https://dash-bio.plotly.host/dash-onco-print/)
   ')
@@ -57,7 +57,7 @@ dashbioOncoPrint(
     "MISSENSE" = "#e763fa",
     "INFRAME"  = "#E763FA"
   ),
-  
+
   backgroundcolor = "#F3F6FA"
 )
     '
@@ -110,14 +110,14 @@ oncoProps <- props_to_list("dashbioOncoPrint")
 
 oncoPropsDF <- rbindlist(oncoProps, fill = TRUE)
 
-oncoPropsTable <- generate_props_table(oncoPropsDF)
+oncoPropsTable <- generate_table(oncoPropsDF)
 
 
 
 # Main docs layout
 
 layout <- htmlDiv(list(
-  
+
   dashbio_intro,
   htmlHr(),
   defaultOncoPrint,

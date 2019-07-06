@@ -15,29 +15,29 @@ source('dashr/utils.R')
 source('dashr/utils.R', local=utils)
 
 importSpeck <- function(filepath,
-                        
+
                         header = FALSE,
-                        
+
                         skip = 2) {
-  
+
   textdata <- read.table(
-    
+
     text = paste0(
-      
+
       readLines(filepath), collapse="\n"
-      
+
     ),
-    
+
     header = header,
-    
+
     skip = skip,
-    
+
     col.names = c("symbol", "x", "y", "z"),
-    
+
     stringsAsFactors = FALSE)
-  
+
   return(dashTable::df_to_list(textdata))
-  
+
 }
 
 
@@ -49,8 +49,8 @@ examples <- list(
 
 dashbio_intro <- htmlDiv(list(
   dccMarkdown('# Speck Examples and Reference'),
-  
-  
+
+
   dccMarkdown('
   See Speck in action [here](https://dash-bio.plotly.host/dash-speck/)
   ')
@@ -117,14 +117,14 @@ speckProps <- props_to_list("dashbioSpeck")
 
 speckPropsDF <- rbindlist(speckProps, fill = TRUE)
 
-speckPropsTable <- generate_props_table(speckPropsDF)
+speckPropsTable <- generate_table(speckPropsDF)
 
 
 
 # Main docs layout
 
 layout <- htmlDiv(list(
-  
+
   dashbio_intro,
   htmlHr(),
   defaultSpeck,
@@ -137,7 +137,7 @@ layout <- htmlDiv(list(
   speckPropsTable,
   htmlA("Back to the Table of Contents", href = "/dash-bio/")
 ))
-# 
+#
 # app$layout(htmlDiv(list(
 #   layout
 # )))

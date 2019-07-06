@@ -21,8 +21,8 @@ examples <- list(
 
 dashbio_intro <- htmlDiv(list(
   dccMarkdown('# NeedlePlot Examples and Reference'),
-  
-  
+
+
   dccMarkdown('
   See Needleplot in action [here](https://dash-bio.plotly.host/dash-needle-plot/)
   ')
@@ -92,14 +92,14 @@ needleProps <- props_to_list("dashbioNeedlePlot")
 
 needlePropsDF <- rbindlist(needleProps, fill = TRUE)
 
-needlePropsTable <- generate_props_table(needlePropsDF)
+needlePropsTable <- generate_table(needlePropsDF)
 
 
 
 # Main docs layout
 
 layout <- htmlDiv(list(
-  
+
   dashbio_intro,
   htmlHr(),
   defaultNeedle,

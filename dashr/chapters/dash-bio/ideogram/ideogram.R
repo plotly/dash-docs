@@ -24,8 +24,8 @@ examples <- list(
 
 dashbio_intro <- htmlDiv(list(
   dccMarkdown('# Ideogram Examples and Reference'),
-  
-  
+
+
   dccMarkdown('
   See Ideogram in action [here](https://dash-bio.plotly.host/dash-ideogram/)
   ')
@@ -136,14 +136,14 @@ ideogramprops <- props_to_list("dashbioIdeogram")
 
 ideogramPropsDF <- rbindlist(ideogramprops, fill = TRUE)
 
-ideogramPropsTable <- generate_props_table(ideogramPropsDF)
+ideogramPropsTable <- generate_table(ideogramPropsDF)
 
 
 
 # Main docs layout
 
 layout <- htmlDiv(list(
-  
+
   dashbio_intro,
   htmlHr(),
   defaultIdeogram,
