@@ -8,30 +8,23 @@ library(heatmaply)
 library(data.table)
 library(dashTable)
 
-
 utils <- new.env()
 source('dashr/styles.R')
 source('dashr/utils.R')
 source('dashr/utils.R', local=utils)
 
-
 examples <- list(
   defaultOnco=utils$LoadExampleCode('dashr/chapters/dash-bio/oncoprint/examples/defaultOnco.R')
 )
 
-
 dashbio_intro <- htmlDiv(list(
   dccMarkdown('# OncoPrint Examples and Reference'),
-
-
   dccMarkdown('
   See OncoPrint in action [here](https://dash-bio.plotly.host/dash-onco-print/)
   ')
 ))
 
-
 # Individual Components and Examples
-
 
 defaultOncoPrint <- htmlDiv(list(
   dccMarkdown('## Default OncoPrint'),
@@ -40,7 +33,6 @@ defaultOncoPrint <- htmlDiv(list(
     examples$defaultOnco$source_code,
     examples$defaultOnco$layout))
 ))
-
 
 oncoColors <- htmlDiv(list(
   dccMarkdown('## Colors'),
@@ -64,8 +56,6 @@ dashbioOncoPrint(
   )
 ))
 
-
-
 oncoSize <- htmlDiv(list(
   dccMarkdown('## Size and Spacing'),
   htmlP('Change the height and width of the component and adjust the spacing between adjacent tracks.'),
@@ -85,7 +75,6 @@ dashbioOncoPrint(
   )
 ))
 
-
 oncoLegend <- htmlDiv(list(
   dccMarkdown('## Legend and Overview'),
   htmlP('Show or hide the legend and/or overview heatmap.'),
@@ -104,36 +93,29 @@ dashbioOncoPrint(
   )
 ))
 
-
-
 oncoProps <- props_to_list("dashbioOncoPrint")
-
 oncoPropsDF <- rbindlist(oncoProps, fill = TRUE)
-
 oncoPropsTable <- generate_table(oncoPropsDF)
-
-
 
 # Main docs layout
 
-layout <- htmlDiv(list(
+layout <- htmlDiv(
+  list(
+    dashbio_intro,
+    htmlHr(),
+    defaultOncoPrint,
+    htmlHr(),
+    oncoColors,
+    htmlHr(),
+    oncoSize,
+    htmlHr(),
+    oncoLegend,
+    htmlHr(),
+    dccMarkdown('## OncoPrint Properties'),
+    oncoPropsTable,
+    htmlHr(),
+    dccMarkdown("[Back to Dash Bio Documentation](/dash-bio)"),
+    dccMarkdown("[Back to Dash Documentation](/)")
+  )
+)
 
-  dashbio_intro,
-  htmlHr(),
-  defaultOncoPrint,
-  htmlHr(),
-  oncoColors,
-  htmlHr(),
-  oncoSize,
-  htmlHr(),
-  oncoLegend,
-  htmlHr(),
-  dccMarkdown('## OncoPrint Properties'),
-  oncoPropsTable,
-  htmlA("Back to the Table of Contents", href = "/dash-bio/")
-))
-
-# app$layout(htmlDiv(list(
-#   layout
-# )))
-# app$run_server(showcase = TRUE)

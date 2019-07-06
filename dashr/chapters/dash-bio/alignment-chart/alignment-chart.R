@@ -4,12 +4,10 @@ library(heatmaply)
 library(data.table)
 library(dashTable)
 
-
 utils <- new.env()
 source('dashr/styles.R')
 source('dashr/utils.R')
 source('dashr/utils.R', local=utils)
-
 
 examples <- list(
   defaultAlignmentChart=utils$LoadExampleCode('dashr/chapters/dash-bio/alignment-chart/examples/defaultAlignmentChart.R'),
@@ -19,20 +17,15 @@ examples <- list(
   consensusAlignmentChart=utils$LoadExampleCode('dashr/chapters/dash-bio/alignment-chart/examples/consensusAlignmentChart.R')
 )
 
-
-
 dashbio_intro <- htmlDiv(list(
   dccMarkdown('# AlignmentChart Examples and Reference'),
-
 
   dccMarkdown('
   See AlignmentChart in action [here](https://dash-bio.plotly.host/dash-alignment-viewer/)
   ')
 ))
 
-
 # Individual Components and Examples
-
 
 defaultAlignment <- htmlDiv(list(
   dccMarkdown('## Default Alignment Chart'),
@@ -42,7 +35,6 @@ defaultAlignment <- htmlDiv(list(
     examples$defaultAlignmentChart$layout))
 ))
 
-
 colorscaleAlignment <-  htmlDiv(list(
   dccMarkdown('## Color Scales'),
   htmlP('The colors used for the heatmap can be changed by adjusting the colorscale property.'),
@@ -50,7 +42,6 @@ colorscaleAlignment <-  htmlDiv(list(
     examples$colorScaleAlignmentChart$source_code,
     examples$colorScaleAlignmentChart$layout))
 ))
-
 
 hideAlignment <-  htmlDiv(list(
   dccMarkdown('## Show/Hide Barplots'),
@@ -60,7 +51,6 @@ hideAlignment <-  htmlDiv(list(
     examples$hideBarPlots$layout))
 ))
 
-
 tileAlignment <-  htmlDiv(list(
   dccMarkdown('## Tile Size'),
   htmlP('Change the height and/or width of the tiles.'),
@@ -68,7 +58,6 @@ tileAlignment <-  htmlDiv(list(
     examples$tileAlignmentChart$source_code,
     examples$tileAlignmentChart$layout))
 ))
-
 
 consensusAlignment <-  htmlDiv(list(
   dccMarkdown('## Consensus Sequence'),
@@ -78,29 +67,25 @@ consensusAlignment <-  htmlDiv(list(
     examples$consensusAlignmentChart$layout))
 ))
 
-
 alignmentprops <- props_to_list("dashbioAlignmentChart")
 alignmentPropsDF <- rbindlist(alignmentprops, fill = TRUE)
 alignmentPropsTable <- generate_table(alignmentPropsDF)
 
-
 # Main docs layout
 
-layout <- htmlDiv(list(
-      dashbio_intro,
-      htmlHr(),
-      defaultAlignment,
-      colorscaleAlignment,
-      hideAlignment,
-      tileAlignment,
-      consensusAlignment,
-      dccMarkdown('## AlignmentChart Properties'),
-      alignmentPropsTable,
-      htmlA("Back to the Table of Contents", href = "/dash-bio/")
-))
-
-
-
-
-
-
+layout <- htmlDiv(
+  list(
+    dashbio_intro,
+    htmlHr(),
+    defaultAlignment,
+    colorscaleAlignment,
+    hideAlignment,
+    tileAlignment,
+    consensusAlignment,
+    dccMarkdown('## AlignmentChart Properties'),
+    alignmentPropsTable,
+    htmlHr(),
+    dccMarkdown("[Back to Dash Bio Documentation](/dash-bio)"),
+    dccMarkdown("[Back to Dash Documentation](/)")
+  )
+)

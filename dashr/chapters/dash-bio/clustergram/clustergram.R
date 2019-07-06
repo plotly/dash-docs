@@ -8,34 +8,24 @@ library(heatmaply)
 library(data.table)
 library(dashTable)
 
-
 utils <- new.env()
 source('dashr/styles.R')
 source('dashr/utils.R')
 source('dashr/utils.R', local=utils)
 
-
-# app <- Dash$new()
-
-
 examples <- list(
   defaultClustergram=utils$LoadExampleCode('dashr/chapters/dash-bio/clustergram/examples/defaultClustergram.R')
 )
 
-
-
 dashbio_intro <- htmlDiv(list(
   dccMarkdown('# Clustergram Examples and Reference'),
-
 
   dccMarkdown('
   See Clustergram in action [here](https://dash-bio.plotly.host/dash-clustergram/)
   ')
 ))
 
-
 # Individual Components and Examples
-
 
 defaultClustergram <- htmlDiv(list(
   dccMarkdown('## Default Clustergram'),
@@ -44,7 +34,6 @@ defaultClustergram <- htmlDiv(list(
     examples$defaultClustergram$source_code,
     examples$defaultClustergram$layout))
 ))
-
 
 heatmapColorScale <- htmlDiv(list(
   dccMarkdown('## Heatmap Color Scale'),
@@ -60,7 +49,6 @@ library(data.table)
 
 df = read.table("assets/sample_data/clustergram_mtcars.tsv",
                         skip = 4, sep ="\t",  row.names = 1, header = TRUE)
-
 
 dccGraph(figure = heatmaply(df,
                             row_labels = list(row.names(data)),
@@ -95,7 +83,6 @@ library(data.table)
 df = read.table("assets/sample_data/clustergram_mtcars.tsv",
                         skip = 4, sep ="\t",  row.names = 1, header = TRUE)
 
-
 # The following is a color palette.
 
 rc <- colorspace::rainbow_hcl(nrow(df))
@@ -118,8 +105,6 @@ dccGraph(figure = heatmaply(df,
   )
 ))
 
-
-
 dendrogramRelativeSize <- htmlDiv(list(
   dccMarkdown('## Relative Dendrogram Size'),
   htmlP('Change the relative width and height of, respectively, the row and column dendrograms compared to the width and height of the heatmap.'),
@@ -134,7 +119,6 @@ library(data.table)
 
 df = read.table("assets/sample_data/clustergram_mtcars.tsv",
                         skip = 4, sep ="\t",  row.names = 1, header = TRUE)
-
 
 dccGraph(figure = heatmaply(df,
                             row_labels = list(row.names(data)),
@@ -154,7 +138,6 @@ dccGraph(figure = heatmaply(df,
   )
 ))
 
-
 hiddenLabels <- htmlDiv(list(
   dccMarkdown('## Hidden Labels'),
   htmlP('Hide the labels along one or both dimensions.'),
@@ -169,7 +152,6 @@ library(data.table)
 
 df = read.table("assets/sample_data/clustergram_mtcars.tsv",
                         skip = 4, sep ="\t",  row.names = 1, header = TRUE)
-
 
 dccGraph(figure = heatmaply(df,
                             row_labels = list(row.names(data)),
@@ -186,8 +168,6 @@ dccGraph(figure = heatmaply(df,
     '
   )
 ))
-
-
 
 heatmapAnnotations <- htmlDiv(list(
   dccMarkdown('## Annotations'),
@@ -224,15 +204,9 @@ dccGraph(figure = heatmaply(df[, -c(8,9)],
   )
 ))
 
-
 heatmaply_props <- props_to_list("heatmaply")
-
 heatmaplyPropsDF <- rbindlist(heatmaply_props, fill = TRUE)
-
-
 heatmaply_props_table <- generate_table(heatmaplyPropsDF)
-
-
 
 # Main docs layout
 
@@ -253,9 +227,7 @@ layout <- htmlDiv(list(
       htmlHr(),
       dccMarkdown('## Clustergram Properties'),
       heatmaply_props_table,
-      htmlA("Back to the Table of Contents", href = "/dash-bio/")
+      htmlHr(),
+      dccMarkdown("[Back to Dash Bio Documentation](/dash-bio)"),
+      dccMarkdown("[Back to Dash Documentation](/)")
 ))
-
-
-# app$run_server(showcase = TRUE)
-

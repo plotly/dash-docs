@@ -8,7 +8,6 @@ library(heatmaply)
 library(data.table)
 library(dashTable)
 
-
 utils <- new.env()
 source('dashr/styles.R')
 source('dashr/utils.R')
@@ -18,19 +17,14 @@ examples <- list(
   defaultNeedle=utils$LoadExampleCode('dashr/chapters/dash-bio/needleplot/examples/defaultNeedle.R')
 )
 
-
 dashbio_intro <- htmlDiv(list(
   dccMarkdown('# NeedlePlot Examples and Reference'),
-
-
   dccMarkdown('
   See Needleplot in action [here](https://dash-bio.plotly.host/dash-needle-plot/)
   ')
 ))
 
-
 # Individual Components and Examples
-
 
 defaultNeedle <- htmlDiv(list(
   dccMarkdown('## Default NeedlePlot'),
@@ -39,7 +33,6 @@ defaultNeedle <- htmlDiv(list(
     examples$defaultNeedle$source_code,
     examples$defaultNeedle$layout))
 ))
-
 
 needleStyle <- htmlDiv(list(
   dccMarkdown('## Needle Style'),
@@ -64,8 +57,6 @@ dashbioNeedlePlot(
   )
 ))
 
-
-
 domainStyle <- htmlDiv(list(
   dccMarkdown('## Domain Style'),
   htmlP('Change the appearance of the domain.'),
@@ -86,31 +77,28 @@ dashbioNeedlePlot(
   )
 ))
 
-
-
 needleProps <- props_to_list("dashbioNeedlePlot")
-
 needlePropsDF <- rbindlist(needleProps, fill = TRUE)
-
 needlePropsTable <- generate_table(needlePropsDF)
-
-
 
 # Main docs layout
 
-layout <- htmlDiv(list(
-
-  dashbio_intro,
-  htmlHr(),
-  defaultNeedle,
-  htmlHr(),
-  needleStyle,
-  htmlHr(),
-  domainStyle,
-  htmlHr(),
-  dccMarkdown('## NeedlePlot Properties'),
-  needlePropsTable,
-  htmlA("Back to the Table of Contents", href = "/dash-bio/")
-))
+layout <- htmlDiv(
+  list(
+    dashbio_intro,
+    htmlHr(),
+    defaultNeedle,
+    htmlHr(),
+    needleStyle,
+    htmlHr(),
+    domainStyle,
+    htmlHr(),
+    dccMarkdown('## NeedlePlot Properties'),
+    needlePropsTable,
+    htmlHr(),
+    dccMarkdown("[Back to Dash Bio Documentation](/dash-bio)"),
+    dccMarkdown("[Back to Dash Documentation](/)")
+  )
+)
 
 

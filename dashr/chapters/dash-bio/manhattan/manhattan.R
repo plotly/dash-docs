@@ -8,30 +8,23 @@ library(heatmaply)
 library(data.table)
 library(dashTable)
 
-
 utils <- new.env()
 source('dashr/styles.R')
 source('dashr/utils.R')
 source('dashr/utils.R', local=utils)
 
-
 examples <- list(
   defaultManhattan=utils$LoadExampleCode('dashr/chapters/dash-bio/manhattan/examples/defaultManhattan.R')
 )
 
-
 dashbio_intro <- htmlDiv(list(
   dccMarkdown('# ManhattanPlot Examples and Reference'),
-
-
   dccMarkdown('
   See ManhattanPlot in action [here](https://dash-bio.plotly.host/dash-manhattan-plot/)
   ')
 ))
 
-
 # Individual Components and Examples
-
 
 defaultManhattan <- htmlDiv(list(
   dccMarkdown('## Default ManhattanPlot'),
@@ -40,7 +33,6 @@ defaultManhattan <- htmlDiv(list(
     examples$defaultManhattan$source_code,
     examples$defaultManhattan$layout))
 ))
-
 
 lineColors <- htmlDiv(list(
   dccMarkdown('## Line Colors'),
@@ -63,8 +55,6 @@ dccGraph(
   )
 ))
 
-
-
 highlightedPoints <- htmlDiv(list(
   dccMarkdown('## Highlighted Points Color'),
   htmlP('Change the color of the points that are considered significant.'),
@@ -85,32 +75,26 @@ dccGraph(
   )
 ))
 
-
-
 manhattanProps <- props_to_list("dashbioManhattan")
-
 manhattanPropsDF <- rbindlist(manhattanProps, fill = TRUE)
-
 manhattanPropsTable <- generate_table(manhattanPropsDF)
-
-
 
 # Main docs layout
 
-layout <- htmlDiv(list(
-
-  dashbio_intro,
-  htmlHr(),
-  defaultManhattan,
-  htmlHr(),
-  lineColors,
-  htmlHr(),
-  highlightedPoints,
-  htmlHr(),
-  dccMarkdown('## ManhattanPlot Properties'),
-  manhattanPropsTable,
-  htmlA("Back to the Table of Contents", href = "/dash-bio/")
-))
-
-
-
+layout <- htmlDiv(
+  list(
+    dashbio_intro,
+    htmlHr(),
+    defaultManhattan,
+    htmlHr(),
+    lineColors,
+    htmlHr(),
+    highlightedPoints,
+    htmlHr(),
+    dccMarkdown('## ManhattanPlot Properties'),
+    manhattanPropsTable,
+    htmlHr(),
+    dccMarkdown("[Back to Dash Bio Documentation](/dash-bio)"),
+    dccMarkdown("[Back to Dash Documentation](/)")
+  )
+)

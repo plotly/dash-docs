@@ -1,4 +1,3 @@
-
 library(dash)
 library(dashCoreComponents)
 library(dashHtmlComponents)
@@ -9,18 +8,14 @@ library(heatmaply)
 library(data.table)
 library(dashTable)
 
-
 utils <- new.env()
 source('dashr/styles.R')
 source('dashr/utils.R')
 source('dashr/utils.R', local=utils)
 
-
-
 examples <- list(
   defaultIdeogram=utils$LoadExampleCode('dashr/chapters/dash-bio/ideogram/examples/defaultIdeogram.R')
 )
-
 
 dashbio_intro <- htmlDiv(list(
   dccMarkdown('# Ideogram Examples and Reference'),
@@ -31,9 +26,7 @@ dashbio_intro <- htmlDiv(list(
   ')
 ))
 
-
 # Individual Components and Examples
-
 
 defaultIdeogram <- htmlDiv(list(
   dccMarkdown('## Default Ideogram'),
@@ -42,7 +35,6 @@ defaultIdeogram <- htmlDiv(list(
     examples$defaultIdeogram$source_code,
     examples$defaultIdeogram$layout))
 ))
-
 
 heightWidthIdeogram <- htmlDiv(list(
   dccMarkdown('## Height/Width'),
@@ -60,8 +52,6 @@ dashbioIdeogram(
   )
 ))
 
-
-
 annotationsIdeogram <- htmlDiv(list(
   dccMarkdown('## Annotations'),
   htmlP('Display annotations that are loaded from a JSON file.'),
@@ -78,7 +68,6 @@ dashbioIdeogram(
   )
 ))
 
-
 rotationIdeogram <- htmlDiv(list(
   dccMarkdown('## Rotatability'),
   htmlP('Enable or disable rotation of the chromosome upon clicking on it.'),
@@ -94,8 +83,6 @@ dashbioIdeogram(
   )
 ))
 
-
-
 orientationIdeogram <- htmlDiv(list(
   dccMarkdown('## Orientation'),
   htmlP('Display chromosomes horizontally or vertically.'),
@@ -110,7 +97,6 @@ dashbioIdeogram(
     '
   )
 ))
-
 
 brushIdeogram <- htmlDiv(list(
   dccMarkdown('## Brush Highlights'),
@@ -129,42 +115,32 @@ dashbioIdeogram(
   )
 ))
 
-
-
-
 ideogramprops <- props_to_list("dashbioIdeogram")
-
 ideogramPropsDF <- rbindlist(ideogramprops, fill = TRUE)
-
 ideogramPropsTable <- generate_table(ideogramPropsDF)
-
-
 
 # Main docs layout
 
-layout <- htmlDiv(list(
-
-  dashbio_intro,
-  htmlHr(),
-  defaultIdeogram,
-  htmlHr(),
-  heightWidthIdeogram,
-  htmlHr(),
-  annotationsIdeogram,
-  htmlHr(),
-  rotationIdeogram,
-  htmlHr(),
-  orientationIdeogram,
-  htmlHr(),
-  brushIdeogram,
-  htmlHr(),
-  dccMarkdown('## Ideogram Properties'),
-  ideogramPropsTable,
-  htmlA("Back to the Table of Contents", href = "/dash-bio/")
-))
-
-
-
-
-
-
+layout <- htmlDiv(
+  list(
+    dashbio_intro,
+    htmlHr(),
+    defaultIdeogram,
+    htmlHr(),
+    heightWidthIdeogram,
+    htmlHr(),
+    annotationsIdeogram,
+    htmlHr(),
+    rotationIdeogram,
+    htmlHr(),
+    orientationIdeogram,
+    htmlHr(),
+    brushIdeogram,
+    htmlHr(),
+    dccMarkdown('## Ideogram Properties'),
+    ideogramPropsTable,
+    htmlHr(),
+    dccMarkdown("[Back to Dash Bio Documentation](/dash-bio)"),
+    dccMarkdown("[Back to Dash Documentation](/)")
+  )
+)

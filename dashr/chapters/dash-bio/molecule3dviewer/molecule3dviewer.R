@@ -9,7 +9,6 @@ source('dashr/styles.R')
 source('dashr/utils.R')
 source('dashr/utils.R', local=utils)
 
-
 examples <- list(
   default = utils$LoadExampleCode('dashr/chapters/dash-bio/molecule3dviewer/examples/default.R'),
   selectionType = utils$LoadExampleCode('dashr/chapters/dash-bio/molecule3dviewer/examples/selectionType.R'),
@@ -22,30 +21,30 @@ layout <- htmlDiv(
     dccMarkdown("
 # Molecule3dViewer Examples and Reference
 
-See Molecule 3D Viewer in action 
+See Molecule 3D Viewer in action
 [here](https://dash-bio.plotly.host/dash-molecule3d/).
 
 ## Default Molecule 3D Viewer
 
 An example of a default molecule 3d viewer component without any extra properties.
                 "),
-    
+
     examples$default$source,
     examples$default$layout,
-    
+
     htmlHr(),
-    
+
     dccMarkdown("
 ## Selection Type
 
 Choose what gets highlighted with the same color upon selection.
                 "),
-    
+
     examples$selectionTypePseudo$source,
     examples$selectionType$layout,
-    
+
     htmlHr(),
-    
+
     dccMarkdown("
 ## Background Color/Opacity
 
@@ -61,19 +60,17 @@ dashbioMolecule3dViewer(
     )
 ```
                 "),
-    
+
     htmlHr(),
-    
+
     dccMarkdown("
 ## Molecule3dViewer Properties
                 "),
-    
+
     examples$table$layout,
-    
+
     htmlHr(),
-    dccMarkdown("
-[Back to the Dash Documentation](/dash-bio/)
-              ")
-    
+    dccMarkdown("[Back to Dash Bio Documentation](/dash-bio)"),
+    dccMarkdown("[Back to Dash Documentation](/)")
   )
 )

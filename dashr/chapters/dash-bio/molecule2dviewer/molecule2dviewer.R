@@ -8,31 +8,23 @@ library(heatmaply)
 library(data.table)
 library(dashTable)
 
-
-
 utils <- new.env()
 source('dashr/styles.R')
 source('dashr/utils.R')
 source('dashr/utils.R', local=utils)
 
-
 examples <- list(
   defaultMolecule2dViewer=utils$LoadExampleCode('dashr/chapters/dash-bio/molecule2dviewer/examples/defaultMolecule2dviewer.R')
 )
 
-
 dashbio_intro <- htmlDiv(list(
   dccMarkdown('# Molecule2dViewer Examples and Reference'),
-
-
   dccMarkdown('
   See Molecule2dViewer in action [here](http://dash-bio.plotly.host/dash-molecule-2d-viewer)
   ')
 ))
 
-
 # Individual Components and Examples
-
 
 defaultMolecule2dViewer <- htmlDiv(list(
   dccMarkdown('## Default Molecule2dViewer'),
@@ -41,7 +33,6 @@ defaultMolecule2dViewer <- htmlDiv(list(
     examples$defaultMolecule2dViewer$source_code,
     examples$defaultMolecule2dViewer$layout))
 ))
-
 
 selectedAtom <- htmlDiv(list(
   dccMarkdown('## Selected Atom IDs'),
@@ -59,8 +50,6 @@ dashbioMolecule2dViewer(
     '
   )
 ))
-
-
 
 modelData <- htmlDiv(list(
   dccMarkdown('## Model Data'),
@@ -88,30 +77,26 @@ dashbioMolecule2dViewer(
   )
 ))
 
-
 molecule2dviewerProps <- props_to_list("dashbioMolecule2dViewer")
-
 molecule2dviewerPropsDF <- rbindlist(molecule2dviewerProps, fill = TRUE)
-
 molecule2dviewerPropsTable <- generate_table(molecule2dviewerPropsDF)
-
-
 
 # Main docs layout
 
-layout <- htmlDiv(list(
-
-  dashbio_intro,
-  htmlHr(),
-  defaultMolecule2dViewer,
-  htmlHr(),
-  selectedAtom,
-  htmlHr(),
-  modelData,
-  htmlHr(),
-  dccMarkdown('## Molecule2dViewer Properties'),
-  molecule2dviewerPropsTable,
-  htmlA("Back to the Table of Contents", href = "/dash-bio/")
-))
-
-
+layout <- htmlDiv(
+  list(
+    dashbio_intro,
+    htmlHr(),
+    defaultMolecule2dViewer,
+    htmlHr(),
+    selectedAtom,
+    htmlHr(),
+    modelData,
+    htmlHr(),
+    dccMarkdown('## Molecule2dViewer Properties'),
+    molecule2dviewerPropsTable,
+    htmlHr(),
+    dccMarkdown("[Back to Dash Bio Documentation](/dash-bio)"),
+    dccMarkdown("[Back to Dash Documentation](/)")
+  )
+)
