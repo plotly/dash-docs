@@ -1,4 +1,3 @@
-
 source('app.R')
 library(dash)
 library(dashCoreComponents)
@@ -408,11 +407,11 @@ app$callback(output=list(id='chapter', property='children'),
                          list(
                            components$Chapter(
                              'About Dash Deployment Server',
-                             href='/faq-gotchas'
+                             href='https://plot.ly/dash/pricing/?_ga=2.210434837.1075922756.1562168385-916141078.1562168385'
                            ),
                            components$Chapter(
                              'Dash Deployment Server Documentation',
-                             href='/faq-gotchas'
+                             href='https://dash.plot.ly/dash-deployment-server'
                            )
                          ),
                          description="Dash Deployment Server is Plotly's commercial offering for hosting and sharing
