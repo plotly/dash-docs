@@ -91,6 +91,8 @@ chapters.dashDataTable8 <- new.env()
 source('dashr/chapters/datatable/part8/index.R', local=chapters.dashDataTable8)
 chapters.dashDataTable9 <- new.env()
 source('dashr/chapters/datatable/part9/index.R', local=chapters.dashDataTable9)
+# chapters.dashDataTable10 <- new.env()
+# source('dashr/chapters/datatable/part10/index.R', local=chapters.dashDataTable10)
 # Component Libraries (Dash DAQ Components)
 # Component Libraries (Dash Canvas)
 # Component Libraries (Dash Cytoscape)
@@ -208,15 +210,16 @@ app$callback(output=list(id='chapter', property='children'),
                  '/dash-html-components' = return(chapters.dashHtmlComponents$layout),
                  # Component Libraries (Dash DataTable)
                  '/datatable' = return(chapters.dashDataTable$layout),
-                 '/datatable/Part1' = return(chapters.dashDataTable1$layout),
-                 '/datatable/Part2' = return(chapters.dashDataTable2$layout),
-                 '/datatable/Part3' = return(chapters.dashDataTable3$layout),
-                 '/datatable/Part4' = return(chapters.dashDataTable4$layout),
-                 '/datatable/Part5' = return(chapters.dashDataTable5$layout),
-                 '/datatable/Part6' = return(chapters.dashDataTable6$layout),
-                 '/datatable/Part7' = return(chapters.dashDataTable7$layout),
-                 '/datatable/Part8' = return(chapters.dashDataTable8$layout),
-                 '/datatable/Part9' = return(chapters.dashDataTable9$layout),
+                 '/datatable/sizing' = return(chapters.dashDataTable1$layout),
+                 '/datatable/style' = return(chapters.dashDataTable2$layout),
+                 '/datatable/interactivity' = return(chapters.dashDataTable3$layout),
+                 '/datatable/callbacks' = return(chapters.dashDataTable4$layout),
+                 '/datatable/typing' = return(chapters.dashDataTable5$layout),
+                 '/datatable/editable' = return(chapters.dashDataTable6$layout),
+                 '/datatable/dropdowns' = return(chapters.dashDataTable7$layout),
+                 '/datatable/virtualization' = return(chapters.dashDataTable8$layout),
+                 '/datatable/filtering' = return(chapters.dashDataTable9$layout),
+                 # '/datatable/reference' = return(chapters.dashDataTable10$layout),
                  # Component Libraries (Dash DAQ Components)
                  # Component Libraries (Dash Canvas)
                  # Component Libraries (Dash Cytoscape)
