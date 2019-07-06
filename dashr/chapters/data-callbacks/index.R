@@ -1,6 +1,6 @@
+library(dash)
 library(dashCoreComponents)
 library(dashHtmlComponents)
-library(dash)
 
 utils <- new.env()
 source('dashr/utils.R', local=utils)
@@ -8,12 +8,12 @@ source('dashr/styles.R')
 source('dashr/components.R')
 
 examples <- list(
-  scoping_wrong = utils$LoadExampleCode('dashr/chapters/data-callbacks/examples/scoping_wrong.R'),
-  scoping = utils$LoadExampleCode('dashr/chapters/data-callbacks/examples/scoping.R'),
-  ex1 = utils$LoadExampleCode('dashr/chapters/data-callbacks/examples/Example1.R'),
-  ex2 = utils$LoadExampleCode('dashr/chapters/data-callbacks/examples/Example2.R'),
-  ex3 = utils$LoadExampleCode('dashr/chapters/data-callbacks/examples/Example3.R'),
-  ex4 = utils$LoadExampleCode('dashr/chapters/data-callbacks/examples/Example4.R')
+   scoping_wrong = utils$LoadExampleCode('dashr/chapters/data-callbacks/examples/scoping_wrong.R'),
+   scoping = utils$LoadExampleCode('dashr/chapters/data-callbacks/examples/scoping.R')
+#   ex1 = utils$LoadExampleCode('dashr/chapters/data-callbacks/examples/Example1.R'),
+#   ex2 = utils$LoadExampleCode('dashr/chapters/data-callbacks/examples/Example2.R'),
+#   ex3 = utils$LoadExampleCode('dashr/chapters/data-callbacks/examples/Example3.R'),
+#   ex4 = utils$LoadExampleCode('dashr/chapters/data-callbacks/examples/Example4.R')
 )
 
 layout <- htmlDiv(

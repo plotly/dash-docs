@@ -48,7 +48,6 @@ app$callback(
   params = list(input(id = "memory-output", property = 'data'),
                 input(id = "memory-field", property = 'value')),
   function(data, field){
-    #browser()
     data = data.frame(matrix(unlist(data), nrow=length(data), byrow=T))
     colnames(data)[1:ncol(data)] = c('country', 'year','pop','continent','lifeExp', 'gdpPercap')
     if(is.null(data) == TRUE){

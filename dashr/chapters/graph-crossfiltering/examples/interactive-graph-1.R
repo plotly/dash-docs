@@ -38,7 +38,7 @@ app$layout(
           )
         ),
         layout = list(
-            clickmode = 'event+select'
+          clickmode = 'event+select'
         )
       )
     ),
@@ -51,10 +51,8 @@ app$layout(
           list(
             dccMarkdown(
               "
-**Hover Data**
-
-
-Mouse over values in the graph.
+              **Hover Data**
+              Mouse over values in the graph.
               "
             ), htmlPre(id='hover-data', style=styles$pre)
           ), className='three columns'
@@ -64,9 +62,8 @@ Mouse over values in the graph.
           list(
             dccMarkdown(
               "
- **Click Data**
-
-Click on points in the graph.
+              **Click Data**
+              Click on points in the graph.
               "
             ), htmlPre(id='click-data', style=styles$pre)
           ), className='three columns'
@@ -74,28 +71,24 @@ Click on points in the graph.
         
         htmlDiv(list(
           dccMarkdown("
-**Selection Data**
-
-
-Choose the lasso or rectangle tool in the graph's menu
-bar and then select points in the graph.
-Selection data also accumulates (or un-accumulates) selected
-data if you hold down the shift button while clicking.
-           "), htmlPre(id='selected-data', style=styles$pre)
+                      **Selection Data**
+                      Choose the lasso or rectangle tool in the graph's menu
+                      bar and then select points in the graph.
+                      Selection data also accumulates (or un-accumulates) selected
+                      data if you hold down the shift button while clicking.
+                      "), htmlPre(id='selected-data', style=styles$pre)
         ), className='three columns'
         ),
         
         htmlDiv(list(
           dccMarkdown("
-**Zoom and Relayout Data**
-
-
-Click and drag on the graph to zoom or click on the zoom
-buttons in the graph's menu bar.
-Clicking on legend items will also fire
-this event.
-           "), htmlPre(id='relayout-data', style=styles$pre)
-          ), className='three columns'
+                      **Zoom and Relayout Data**
+                      Click and drag on the graph to zoom or click on the zoom
+                      buttons in the graph's menu bar.
+                      Clicking on legend items will also fire
+                      this event.
+                      "), htmlPre(id='relayout-data', style=styles$pre)
+        ), className='three columns'
         )
       )
     )

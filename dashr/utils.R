@@ -6,6 +6,7 @@ LoadExampleCode <- function(filename, wd = NULL) {
   # Take a self-contained DashR example filename,
   # eval it, and return that example's `layout`
   # and the source code.
+
   example.file.as.string <- readChar(filename, file.info(filename)$size);
 
   # modify the example code so that it can run within
@@ -31,15 +32,15 @@ LoadExampleCode <- function(filename, wd = NULL) {
   }
 
   example.ready.for.eval <- paste(unlist(strsplit(example.ready.for.eval, "\r")), collapse = " ")
-  
+
   if(!is.null(wd)) {
 
     currentWd <- getwd()
     newWd <- paste(c(currentWd, wd),collapse =  "/")
-    
-    example.ready.for.eval <- paste(c("setwd(newWd)", 
-                                      example.ready.for.eval, 
-                                      "setwd(currentWd)"), 
+
+    example.ready.for.eval <- paste(c("setwd(newWd)",
+                                      example.ready.for.eval,
+                                      "setwd(currentWd)"),
                                     collapse = "\n")
   }
 
@@ -47,11 +48,14 @@ LoadExampleCode <- function(filename, wd = NULL) {
   eval(parse(text=example.ready.for.eval))
 
   list(
-    layout=htmlDiv(className='example-container', children=layout,
-                   style=list('overflow-x' = 'initial')),
+    layout=htmlDiv(
+      className='example-container', children=layout,
+      style=list('margin-bottom' = '10px', 'overflow-x' = 'initial')
+    ),
     source_code=htmlDiv(
-      children=dccMarkdown(sprintf("```r %s```", example.file.as.string)),
-      className='code-container'
+      children=dccMarkdown(sprintf("```r\n%s```", example.file.as.string)),
+      className='code-container',
+      style=list('border-left' = 'thin lightgrey solid')
     )
   )
 }
@@ -62,12 +66,32 @@ LoadAndDisplayComponent <- function(example_string) {
       list(
         htmlDiv(
           children=dccMarkdown(sprintf("```r %s```", example_string)),
-          className='code-container'
+          className='code-container',
+          style=list('border-left' = 'thin lightgrey solid')
         ),
         htmlDiv(
           className='example-container',
           children=eval(parse(text=example_string)),
-          style=list('overflow-x' = 'initial')
+          style=list('margin-bottom' = '10px', 'overflow-x' = 'initial')
+        )
+      )
+    )
+  )
+}
+
+LoadAndDisplayComponent2 <- function(example_string) {
+  return(
+    htmlDiv(
+      list(
+        htmlDiv(
+          children=dccMarkdown(sprintf("```r %s```", example_string)),
+          className='code-container',
+          style=list('border-left' = 'thin lightgrey solid')
+        ),
+        htmlDiv(
+          className='example-container',
+          children=eval(parse(text=example_string)),
+          style=list('margin-bottom' = '10px', 'padding-bottom' = '30px')
         )
       )
     )
@@ -75,23 +99,23 @@ LoadAndDisplayComponent <- function(example_string) {
 }
 
 props_to_list <- function(componentName) {
-  Rd <- utils:::.getHelpFile(do.call(`?`, 
+  Rd <- utils:::.getHelpFile(do.call(`?`,
                                      list(componentName)))
-  
+
   containsArgs <- vapply(Rd, function(x) {
     attr(x, "Rd_tag")=="\\arguments"
-  }, 
+  },
   logical(1))
-  
+
   # Subset the help data to function arguments only
   args  <- Rd[containsArgs]
-  
-  # Assemble a list of function arguments, stripping linefeeds  
-  list_of_args <- lapply(unlist(args, 
-                                recursive=FALSE), 
+
+  # Assemble a list of function arguments, stripping linefeeds
+  list_of_args <- lapply(unlist(args,
+                                recursive=FALSE),
                          function(x) x[x != "\n"])
-  
-  # Extract the prop metadata for tabulation  
+
+  # Extract the prop metadata for tabulation
   props_as_list <- invisible(sapply(list_of_args, function(x) {
     if (any(sapply(x, is.list))) {
       all_types <- paste("List of numerics",
@@ -106,39 +130,58 @@ props_to_list <- function(componentName) {
                          "Logical \\| numeric \\| character \\| named list \\| unnamed list",
                          "List",
                          sep="|")
-      
+
       Argument <- x[[1]]
-      
+
       descstring <- paste(gsub("\n", "", x[[2]]), collapse=" ")
-      
-      Description <- gsub("Logical\\. |Numeric\\. |Named list\\. |Unnamed list\\. | Character\\.", 
-                          "", 
+
+      Description <- gsub("Logical\\. |Numeric\\. |Named list\\. |Unnamed list\\. | Character\\.",
+                          "",
                           descstring)
       Type <- regmatches(descstring, regexpr(all_types, descstring))
       Default <- NULL
-      return(c(Argument=Argument, 
-               Description=Description, 
+      return(c(Argument=Argument,
+               Description=Description,
                Type=Type,
                Default=Default))
     }
   }))
-  
+
   # strip NULL values
   props_as_list[lengths(props_as_list) != 0]
 }
 
-
-generate_table <- function(df, nrows=10)
-{
+generate_table <- function(df, nrows=10) {
   n <- min(nrows, nrow(df))
   rows <- lapply(seq(1, n), function(i) {
     htmlTr(children = lapply(as.character(df[i,]), htmlTd))
   })
-  
   header <- htmlTr(children = lapply(names(df), htmlTh))
-  
   htmlTable(
     children = c(list(header), rows)
   )
-  
 }
+
+# Delete below function? Any issues with above function? (None for Aanika!)
+
+# generate_props_table <- function(df) {
+#   return(
+#     dashDataTable(
+#       id = 'table',
+#       columns = lapply(colnames(df), function(x) {
+#         list(name = x, id = x)
+#       }),
+#       data = setNames(lapply(split(df, seq(nrow(df))), FUN = function (x) {as.list(x)}), NULL),
+#       style_as_list_view = TRUE,
+#       style_data = list('whiteSpace' = 'normal'),
+#       style_cell = list(
+#         'whiteSpace'= 'no-wrap',
+#         'overflow'='inherit',
+#         'textOverflow'= 'inherit',
+#         'textAlign' = 'left'
+#       ),
+#       style_header = (list("fontWeight"="bold", "text-transform"="capitalize"))
+#
+#     )
+#   )
+# }

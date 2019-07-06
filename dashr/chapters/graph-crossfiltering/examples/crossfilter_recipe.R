@@ -34,87 +34,87 @@ app$layout(htmlDiv(list(
       id='g3',
       config=list(displayModeBar = FALSE)
     ), className='four columns')
-  ), className='row')
+), className='row')
 )
 callback = function(g1,g2,g3,x,y){
   selectedDatas = na.omit(c(g1,g2,g3))
-    selectedpoints = as.numeric(rownames(df))
-    selected_index =  lapply(1:length(selectedDatas[['points']]), 
-           function(i) {selectedDatas[['points']][[i]][['customdata']]
-           })
-    if(length(selected_index) > 0){
-      selectedpoints = intersect(selectedpoints, selected_index)
-    }
-    
-      data = list(
-          x = df[[x]],
-          y = df[[y]],
-          text = as.numeric(rownames(df)),
-          textposition = 'top',
-          selectedpoints = unlist(lapply(selectedpoints, function(x){x-1})),
-          customdata = as.numeric(rownames(df)),
-          type = 'scatter',
-          mode = 'markers+text',
-          marker = list(
-            color = 'rgb(0, 116, 217, 0.7)',
-            size = 12,
-            line = list(
-              color = 'rgb(0, 116, 217)',
-              width = 0.5
-            )
-          ),
-          textfont = list(
-            color = 'rgb(30, 30, 30, 1)'
-          ),
-          unselected = list(
-            marker =list(
-              opacity = 0.3
-            ),
-            textfont = list(
-              # make text transparent when not selected
-              color = 'rgb(0, 0, 0, 0)'
-            )
-          )
-      )
-      layout = list(
-        clickmode = 'event+select',
-        margin = list('l' = 15, 'r' = 0, 'b' = 15, 't' = 5),
-        dragmode = 'select',
-        hovermode = 'closest',
-        xaxis = list(range = list(min(df[x]),max(df[x]))),
-        yaxis = list(range = list(min(df[y]),max(df[y]))),
-        showlegend = FALSE
-      )
-      figure = list(
-        data = list(data
-        ),
-        layout = layout
-      )    
-    shape = list(
-      type = 'rect',
+  selectedpoints = as.numeric(rownames(df))
+  selected_index =  lapply(1:length(selectedDatas[['points']]), 
+                           function(i) {selectedDatas[['points']][[i]][['customdata']]
+                           })
+  if(length(selected_index) > 0){
+    selectedpoints = intersect(selectedpoints, selected_index)
+  }
+  
+  data = list(
+    x = df[[x]],
+    y = df[[y]],
+    text = as.numeric(rownames(df)),
+    textposition = 'top',
+    selectedpoints = unlist(lapply(selectedpoints, function(x){x-1})),
+    customdata = as.numeric(rownames(df)),
+    type = 'scatter',
+    mode = 'markers+text',
+    marker = list(
+      color = 'rgb(0, 116, 217, 0.7)',
+      size = 12,
       line = list(
-        width = 1,
-        dash = 'dot',
-        color = 'darkgrey'
+        color = 'rgb(0, 116, 217)',
+        width = 0.5
+      )
+    ),
+    textfont = list(
+      color = 'rgb(30, 30, 30, 1)'
+    ),
+    unselected = list(
+      marker =list(
+        opacity = 0.3
+      ),
+      textfont = list(
+        # make text transparent when not selected
+        color = 'rgb(0, 0, 0, 0)'
       )
     )
-    if(is.null(selectedDatas[['range']]) == FALSE){
-      figure[['layout']]['shapes'] = list(list(list(
-        'x0' = unlist(selectedDatas[['range']][['x']][1]),
-        'x1' = unlist(selectedDatas[['range']][['x']][2]),
-        'y0' = unlist(selectedDatas[['range']][['y']][1]),
-        'y1' = unlist(selectedDatas[['range']][['y']][2]),shape)))
-    }
-    else{
-      figure[['layout']]['shapes'] = list(list(list(
-        'type' = 'rect',
-        'x0' = min(df[x], na.rm = TRUE),
-        'x1' = max(df[x], na.rm = TRUE),
-        'y0' = min(df[y], na.rm = TRUE),
-        'y1' = max(df[y], na.rm = TRUE),shape)))
-    }
-    return(figure)
+  )
+  layout = list(
+    clickmode = 'event+select',
+    margin = list('l' = 15, 'r' = 0, 'b' = 15, 't' = 5),
+    dragmode = 'select',
+    hovermode = 'closest',
+    xaxis = list(range = list(min(df[x]),max(df[x]))),
+    yaxis = list(range = list(min(df[y]),max(df[y]))),
+    showlegend = FALSE
+  )
+  figure = list(
+    data = list(data
+    ),
+    layout = layout
+  )    
+  shape = list(
+    type = 'rect',
+    line = list(
+      width = 1,
+      dash = 'dot',
+      color = 'darkgrey'
+    )
+  )
+  if(is.null(selectedDatas[['range']]) == FALSE){
+    figure[['layout']]['shapes'] = list(list(list(
+      'x0' = unlist(selectedDatas[['range']][['x']][1]),
+      'x1' = unlist(selectedDatas[['range']][['x']][2]),
+      'y0' = unlist(selectedDatas[['range']][['y']][1]),
+      'y1' = unlist(selectedDatas[['range']][['y']][2]),shape)))
   }
+  else{
+    figure[['layout']]['shapes'] = list(list(list(
+      'type' = 'rect',
+      'x0' = min(df[x], na.rm = TRUE),
+      'x1' = max(df[x], na.rm = TRUE),
+      'y0' = min(df[y], na.rm = TRUE),
+      'y1' = max(df[y], na.rm = TRUE),shape)))
+  }
+  return(figure)
+}
 
 app$callback(
   output = list(id='g1', property='figure'),

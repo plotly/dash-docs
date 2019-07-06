@@ -3002,7 +3002,7 @@ Git = html.Div(children=[
     #### Cloning a Repository
 
     If you have an existing repository hosted on Github, or would like to
-    utilize one the demo Dash Apps from [Plotly's Gallery](/gallery), then you
+    utilize one the demo Dash Apps from [Plotly's Gallery](https://dash-gallery.plotly.host/Portal/), then you
     you'll need to clone the repository. You can achieve this by using the
     `git clone` command:
 

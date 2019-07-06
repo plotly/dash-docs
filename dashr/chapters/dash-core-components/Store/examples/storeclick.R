@@ -38,23 +38,22 @@ app$layout(htmlDiv(list(
   ))
 )))
 
-for (store in c('memory', 'local', 'session')) {
   
   app$callback(
     output = list(id=store, property = 'data'),
     params = list(input(id = sprintf('%s-button', store), property = 'n_clicks'),
                   state(store, 'data')),
     function(n_clicks, data){
-      if(is.null(n_clicks) == TRUE){
+      if(is.null(n_clicks)){
         return()
       }
       
-      if(is.null(data) == TRUE){
+      if(is.null(data[[1]])){
         data = list('clicks' = 0)
       } else{
         data = data
       }  
-      data['clicks'] = data['clicks'] + 1
+      data['clicks'] = data$clicks + 1
       return(data)
     }
   )
@@ -64,18 +63,17 @@ for (store in c('memory', 'local', 'session')) {
     params = list(input(id = store, property = 'modified_timestamp'),
                   state(store, 'data')),
     function(ts, data){
-      if(is.null(ts) == TRUE){
+      if(is.null(ts)){
         return()
       }
-      if(is.null(data) == TRUE){
+      if(is.null(data[[1]])){
         data = list()
       } else{
         data = data
       }  
-      return(data['clicks' == 0])
+      return(data$clicks[[1]])
     })
 
-}
 
 app$run_server()
 

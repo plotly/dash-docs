@@ -1,3 +1,9 @@
+library(dash)
+library(dashCoreComponents)
+library(dashHtmlComponents)
+
+app <- Dash$new()
+
 markdown_text <- "
 > help('dccDropdown')
 Dropdown is an interactive dropdown element for selecting one or more items. 

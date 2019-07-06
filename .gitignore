@@ -21,5 +21,7 @@ bundle.js
 .mypy_cache/
 .Rhistory
 .RData
-
 ignore/indicators.csv
+Rplot001.jpg
+.Rproj.user
+dash-docs.Rproj

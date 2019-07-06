@@ -26,7 +26,7 @@ layout = htmlDiv(list(
                  then the slider will only be able to select values that \
               have been predefined by the `marks`."),
   
-  utils$LoadAndDisplayComponent(
+  utils$LoadAndDisplayComponent2(
     '
 library(dashCoreComponents)
 dccRangeSlider(
@@ -52,7 +52,7 @@ dccRangeSlider(
               discrete value set `included=FALSE`. To style `marks`, \
               include a style css attribute alongside the key value."),
   
-  htmlDiv(list(utils$LoadAndDisplayComponent(
+  htmlDiv(list(utils$LoadAndDisplayComponent2(
     '
 library(dashCoreComponents)
 dccRangeSlider(
@@ -69,7 +69,7 @@ dccRangeSlider(
     '
   ))),
   
-  htmlDiv(list(utils$LoadAndDisplayComponent(
+  htmlDiv(list(utils$LoadAndDisplayComponent2(
     '
 library(dashCoreComponents)
 dccRangeSlider(
@@ -93,7 +93,7 @@ dccRangeSlider(
   dccMarkdown("To create multiple handles \
                   just define more values for `value`!"),
   
-  htmlDiv(list(utils$LoadAndDisplayComponent(
+  htmlDiv(list(utils$LoadAndDisplayComponent2(
     '
 library(dashCoreComponents)
 dccRangeSlider(
@@ -110,7 +110,7 @@ dccRangeSlider(
   dccMarkdown("The `pushable` property is either a `boolean` or a numerical value. \
                 The numerical value determines the minimum distance between \
               the handles. Try moving the handles around!"),
-  htmlDiv(list(utils$LoadAndDisplayComponent(
+  htmlDiv(list(utils$LoadAndDisplayComponent2(
     '
 library(dashCoreComponents)
 dccRangeSlider(
@@ -127,7 +127,7 @@ dccRangeSlider(
   
   dccMarkdown("If `allowCross=FALSE`, the handles will not be allowed to\
                   cross over each other"),
-  htmlDiv(list(utils$LoadAndDisplayComponent(
+  htmlDiv(list(utils$LoadAndDisplayComponent2(
     '
 library(dashCoreComponents)
 dccRangeSlider(

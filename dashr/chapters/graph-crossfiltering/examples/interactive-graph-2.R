@@ -25,7 +25,7 @@ app$layout(
           labelStyle = list(display = 'inline-block')
         )
       ), style = list(width = '49%', display = 'inline-block')),
-
+      
       htmlDiv(list(
         dccDropdown(
           id = 'crossfilter-yaxis-column',
@@ -45,7 +45,7 @@ app$layout(
       backgroundColor = 'rgb(250, 250, 250)',
       padding = '10px 5px')
     ),
-
+    
     htmlDiv(list(
       dccGraph(
         id = 'crossfilter-indicator-scatter',
@@ -55,12 +55,12 @@ app$layout(
         display = 'inline-block',
         padding = '0 20')
     ),
-
+    
     htmlDiv(list(
       dccGraph(id='x-time-series'),
       dccGraph(id='y-time-series')
     ), style = list(display = 'inline-block', width = '49%')),
-
+    
     htmlDiv(list(
       dccSlider(
         id = 'crossfilter-year--slider',
@@ -99,7 +99,7 @@ app$callback(
           'line' = list('width' = 0.5, 'color' = 'white')
         )
       )
-
+      
       return (list(
         'data' = traces,
         'layout'= list(

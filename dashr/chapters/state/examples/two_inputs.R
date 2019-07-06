@@ -9,13 +9,13 @@ app$layout(
     list(
       dccInput(id = 'input-1', type = 'text', value = 'Montreal'),
       dccInput(id = 'input-2', type = 'text', value = 'Canada'),
-      htmlDiv(id = 'output')
+      htmlDiv(id = 'output_keywords')
     )
   )
 )
 
 
-app$callback(output(id = 'output', property = 'children'),
+app$callback(output(id = 'output_keywords', property = 'children'),
              list(input(id = 'input-1', property = 'value'),
                   input(id = 'input-2', property = 'value')),
              function(input1, input2) {

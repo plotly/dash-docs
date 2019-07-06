@@ -25,30 +25,30 @@ layout <- htmlDiv(list(
 > and the [next chapter](/getting-started-part-2) covers Dash callbacks.
 
 
-This tutorial will walk you through a fundamental aspect of Dash apps, 
+This tutorial will walk you through a fundamental aspect of Dash apps,
 the app `layout`, through 6 self-contained apps.
 "),
-  
+
 htmlBr(),
 
 dccMarkdown("
 Dash apps are composed of two parts.
-The first part is the \"`layout`\" of the app and 
-it describes what the application looks like. 
-The second part describes the interactivity of the application 
+The first part is the \"`layout`\" of the app and
+it describes what the application looks like.
+The second part describes the interactivity of the application
 and will be covered in the [next chapter](/getting-started-part-2).
 
 
-Dash provides R functions for all of the visual components of the application. 
-We maintain a set of components in the `dashCoreComponents` 
-and `dashHtmlComponents` package 
+Dash provides R functions for all of the visual components of the application.
+We maintain a set of components in the `dashCoreComponents`
+and `dashHtmlComponents` package
 but you can also [build your own](https://github.com/plotly/dash-components-archetype) with JavaScript and React.js.
 
 
 To get started, create a file named `app.R` containing the following code:
 "),
 examples$hello.world$source_code,
-  
+
 dccMarkdown("
 Run the app with
 
@@ -120,16 +120,15 @@ There are a few important differences between the `dashHtmlComponents`
 and the HTML attributes:
 
 1.The `style` property in HTML is a semicolon-separated string. In Dash,
-you can just supply a dictionary.
+you can just supply a named list.
 
-2.The keys in the `style` dictionary are [camelCased](https://en.wikipedia.org/wiki/Camel_case).
+2.The keys in the `style` named list are [camelCased](https://en.wikipedia.org/wiki/Camel_case).
 So, instead of `text-align`, it's `textAlign`.
 
 3.The HTML `class` attribute is `className` in Dash.
 
-4.The children of the HTML tag is specified through the `children` keyword
-argument. By convention, this is always the _first_ argument and
-so it is often omitted.
+4.The children of the HTML tag is specified through the `children` keyword argument.
+By convention, this is always the _first_ argument and so it is often omitted.
 Besides that, all of the available HTML attributes and tags are available
 to you within your R context.
 
@@ -194,8 +193,8 @@ Here are a few of the available components:
 
   dccMarkdown("
 #### Calling help
-Dash components are declarative: every configurable aspect of these components 
-is set during instantiation as a keyword argument. Call help in your R console 
+Dash components are declarative: every configurable aspect of these components
+is set during instantiation as a keyword argument. Call help in your R console
 on any of the components to learn more about a component and its available arguments.
   "),
   # dropdown help with example
@@ -203,10 +202,10 @@ on any of the components to learn more about a component and its available argum
 
   dccMarkdown("
 # Summary
-The layout of a Dash app describes what the app looks like. 
-The layout is a hierarchical tree of components. The `dashHtmlComponents` package provides 
-classes for all of the HTML tags and the keyword arguments describe the HTML 
-attributes like style, className, and id. The `dashCoreComponents` package generates 
+The layout of a Dash app describes what the app looks like.
+The layout is a hierarchical tree of components. The `dashHtmlComponents` package provides
+classes for all of the HTML tags and the keyword arguments describe the HTML
+attributes like style, className, and id. The `dashCoreComponents` package generates
 higher-level components like controls and graphs.
 For reference, see:
 - [dashCoreComponents gallery](https://dash.plot.ly/dash-core-components)
@@ -218,7 +217,7 @@ The next part of the Dash tutorial covers how to make these apps interactive.
 Dash Tutorial Part 3: Basic Callbacks
 [Dash Tutorial Part 3: Basic Callbacks](/getting-started-part-2)
   "),
-  
+
   htmlHr(),
   dccMarkdown("
 [Back to the Table of Contents](/)
