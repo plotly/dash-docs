@@ -662,6 +662,6 @@ an interactive tree of animal phylogeny using images from Wikimedia.
   examples$p3e1$layout,
 
   htmlHr(),
-  dccMarkdown("[Back to Cytoscape Documentation](/dash-cytoscape)"),
+  dccMarkdown("[Back to Cytoscape Documentation](/cytoscape)"),
   dccMarkdown("[Back to Dash Documentation](/)")
 ))

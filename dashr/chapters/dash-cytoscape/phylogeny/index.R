@@ -2,17 +2,23 @@ library(dash)
 library(dashCoreComponents)
 library(dashHtmlComponents)
 library(dashCytoscape)
-library(data.table)
 
 utils <- new.env()
 source('dashr/utils.R', local=utils)
 
-layout <- htmlDiv(list(
-  htmlH1("Cytoscape Reference"),
+examples <- list(
+  #example = utils$LoadExampleCode('dashr/chapters/dash-cytoscape/phylogeny/examples/example.R')
+)
 
-  htmlH2("Cytoscape"),
-  htmlH3("Properties"),
-  utils$generate_table(rbindlist(utils$props_to_list('cytoCytoscape'), fill = TRUE)),
+layout <- htmlDiv(list(
+  htmlH1("Main Title"),
+
+  htmlH2("Subtitle"),
+  dccMarkdown("
+  Sample Text
+  "),
+  # Block 6.1
+  utils$LoadAndDisplayComponent("htmlH2('BLOCK 6.1 (LoadAndDisplayComponent)')"),
 
   htmlHr(),
   dccMarkdown("[Back to Cytoscape Documentation](/cytoscape)"),

@@ -446,6 +446,6 @@ You can find the complete app below:
   examples$p4e3$layout,
 
   htmlHr(),
-  dccMarkdown("[Back to Cytoscape Documentation](/dash-cytoscape)"),
+  dccMarkdown("[Back to Cytoscape Documentation](/cytoscape)"),
   dccMarkdown("[Back to Dash Documentation](/)")
 ))

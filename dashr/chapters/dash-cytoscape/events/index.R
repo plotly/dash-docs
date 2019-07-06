@@ -70,7 +70,7 @@ default_stylesheet <- list(
 layout <- htmlDiv(list(
   htmlH1("Cytoscape Event Callbacks"),
   dccMarkdown("
-In [part 4](/dash-cytoscape/callbacks), we showed how to update Cytoscape with
+In [part 4](/cytoscape/callbacks), we showed how to update Cytoscape with
 other components by assigning callbacks that output to `'elements',
 'stylesheet', 'layout'`. Moreover, it is also possible to use properties
 of Cytoscape as an input to callbacks, which can be used to update other
@@ -80,7 +80,7 @@ which justifies the name of event callbacks. You can find props such as
 `tapNode`, which returns a complete description of the node object when
 the user clicks or taps on a node, `mouseoverEdgeData`, which returns only
 the data dictionary of the edge that was most recently hovered by the user.
-The complete list can be found in the [Dash Cytoscape Reference](/dash-cytoscape/reference).
+The complete list can be found in the [Dash Cytoscape Reference](/cytoscape/reference).
   "),
 
   htmlH2("Simple callback construction"),
@@ -188,11 +188,11 @@ multiple elements while holding Shift:
 #   dccMarkdown("
 # To see more examples of events, check out the [event callbacks demo](https://dash-gallery.plotly.host/cytoscape-events)
 # (the source file is available as [`usage-events.py`](https://github.com/plotly/dash-cytoscape/blob/master/usage-events.py) on the project repo)
-# and the [Cytoscape references](/dash-cytoscape/reference).
+# and the [Cytoscape references](/cytoscape/reference).
 #   "),
 ####################################################################################################
 
   htmlHr(),
-  dccMarkdown("[Back to Cytoscape Documentation](/dash-cytoscape)"),
+  dccMarkdown("[Back to Cytoscape Documentation](/cytoscape)"),
   dccMarkdown("[Back to Dash Documentation](/)")
 ))

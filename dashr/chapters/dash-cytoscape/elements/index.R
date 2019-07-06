@@ -178,7 +178,7 @@ cytoCytoscape(
 )
   "),
   dccMarkdown("
-> The stylesheet parameter will be described in depth in [part 3](/dash-cytoscape/styling)
+> The stylesheet parameter will be described in depth in [part 3](/cytoscape/styling)
 > of this guide. We will show extensive examples of using selectors to
 > style groups, classes, and data values. Expand below if you still
 > want to take a look at the stylesheet used previously.
@@ -229,6 +229,6 @@ Here is the example of an app using compound nodes:
   examples$p1e1$layout,
 
   htmlHr(),
-  dccMarkdown("[Back to Cytoscape Documentation](/dash-cytoscape)"),
+  dccMarkdown("[Back to Cytoscape Documentation](/cytoscape)"),
   dccMarkdown("[Back to Dash Documentation](/)")
 ))
