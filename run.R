@@ -6,6 +6,7 @@ library(jsonlite)
 
 components <- new.env()
 source('dashr/components.R', local=components)
+source('allcallbacks.R')
 
 chapters.whats_dash <- new.env()
 source('dashr/chapters/whats-dash/introduction.R', local=chapters.whats_dash)
@@ -146,7 +147,16 @@ source("dashr/chapters/dash-bio/speck/speck.R", local=chapters.speck)
 # Beyond the Basics
 chapters.external_resources <- new.env()
 source('dashr/chapters/external-resources/index.R', local=chapters.external_resources)
-
+chapters.Whats_dash <- new.env()
+source('dashr/chapters/Whats_dash/introduction.R', local=chapters.Whats_dash)
+chapters.plugins <- new.env()
+source('dashr/chapters/plugins/index.R', local=chapters.plugins)
+chapters.d3 <- new.env()
+source('dashr/chapters/d3-react-components/index.R', local=chapters.d3)
+chapters.support <- new.env()
+source('dashr/chapters/support/index.R', local=chapters.support)
+chapters.search <- new.env()
+source('dashr/chapters/search/index.R', local=chapters.search)
 
 header <- htmlDiv(
   className = 'header',
@@ -163,7 +173,7 @@ header <- htmlDiv(
           htmlA('pricing', className='link', href = 'https://plot.ly/dash/pricing'),
           htmlA('user guide', className='link', href = '/'),
           htmlA('plotly', className='link', href = 'https://plot.ly/'),
-          htmlA('🔎', className='link', href='https://dash.plot.ly/search')
+          htmlA('\U{1F50E}', className='link', href='/search')
         ))
     ))
 ))
@@ -396,12 +406,26 @@ app$callback(
 
 
             components$Section(
-              'Creating Your Own Components',
-              list(),
-              description="IN PROGRESS..."
+            'Creating Your Own Components',
+                list(
+                components$Chapter(
+                'Build Your Own Components',
+                href='/plugins',
+                caption="Dash components are built with React.js. Dash provides 
+                a React → Dash toolchain that generates a Dash-compatible interface to 
+                these components in Python."
+                ),
+                components$Chapter(
+                'Integrating D3.js into Dash Components',
+                href='/d3-react-components',
+                caption="Tutorials and resources on encapsulating D3.js graphs in Dash-friendly
+                React components. Includes two sample components: a D3.js network graph and a D3.js 
+                sunburst chart."
+                )
+              )
             ),
 
-
+        
             components$Section(
               'Beyond the Basics',
               list(
@@ -417,20 +441,32 @@ app$callback(
 
             components$Section(
               'Production',
-              list(),
-              description="IN PROGRESS..."
+              list(
+                components$Chapter(
+                'See Our Products Page',
+                href='https://plot.ly/products/dash/'
+                )
+              )
             ),
 
+        
+            components$Section(
+            'Getting Help',
+              list(
+                components$Chapter(
+                'The Dash Community Forum',
+                href='https://community.plot.ly/c/dash?_ga=2.35982368.1800098105.1562085881-85134653.1547603472'
+                ),
+                htmlBr(),
+                components$Chapter(
+                'Support and Contact',
+                href='/support'
+                )
+              )
+            ),                       
 
             components$Section(
-              'Getting Help',
-              list(),
-              description="IN PROGRESS..."
-            ),
-
-
-            components$Section(
-              'Dash Deployment Server',
+            'Dash Deployment Server',
               list(
                 components$Chapter(
                 'About Dash Deployment Server',
