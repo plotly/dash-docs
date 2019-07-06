@@ -1,0 +1,116 @@
+library(dash)
+library(dashCoreComponents)
+library(dashHtmlComponents)
+library(dashBio)
+library(jsonlite)
+library(readr)
+library(heatmaply)
+library(data.table)
+library(dashTable)
+
+
+utils <- new.env()
+source('dashr/styles.R')
+source('dashr/utils.R')
+source('dashr/utils.R', local=utils)
+
+examples <- list(
+  defaultNeedle=utils$LoadExampleCode('dashr/chapters/dash-bio/needleplot/examples/defaultNeedle.R')
+)
+
+
+dashbio_intro <- htmlDiv(list(
+  dccMarkdown('# NeedlePlot Examples and Reference'),
+  
+  
+  dccMarkdown('
+  See Needleplot in action [here](https://dash-bio.plotly.host/dash-needle-plot/)
+  ')
+))
+
+
+# Individual Components and Examples
+
+
+defaultNeedle <- htmlDiv(list(
+  dccMarkdown('## Default NeedlePlot'),
+  htmlP('An example of a default NeedlePlot component without any extra properties.'),
+  htmlDiv(list(
+    examples$defaultNeedle$source_code,
+    examples$defaultNeedle$layout))
+))
+
+
+needleStyle <- htmlDiv(list(
+  dccMarkdown('## Needle Style'),
+  htmlP('Change the appearance of the needles.'),
+  utils$LoadAndDisplayComponent(
+    '
+library(dashBio)
+
+data = read_json("assets/sample_data/needle_PIK3CA.json")
+
+dashbioNeedlePlot(
+  mutationData = data,
+  needleStyle = list(
+    "stemColor" = "#FF8888",
+    "stemThickness" = 2,
+    "stemConstHeight" = TRUE,
+    "headSize" = 10,
+    "headColor" = list("#FFDD00", "#000000")
+  )
+)
+    '
+  )
+))
+
+
+
+domainStyle <- htmlDiv(list(
+  dccMarkdown('## Domain Style'),
+  htmlP('Change the appearance of the domain.'),
+  utils$LoadAndDisplayComponent(
+    '
+library(dashBio)
+
+data = read_json("assets/sample_data/needle_PIK3CA.json")
+
+dashbioNeedlePlot(
+  mutationData = data,
+  domainStyle = list(
+    "displayMinorDomains" = TRUE,
+    "domainColor" = list("#FFDD00", "#00FFDD", "#0F0F0F", "#D3D3D3")
+  )
+)
+    '
+  )
+))
+
+
+
+needleProps <- props_to_list("dashbioNeedlePlot")
+
+needlePropsDF <- rbindlist(needleProps, fill = TRUE)
+
+needlePropsTable <- generate_props_table(needlePropsDF)
+
+
+
+# Main docs layout
+
+layout <- htmlDiv(list(
+  
+  dashbio_intro,
+  htmlHr(),
+  defaultNeedle,
+  htmlHr(),
+  needleStyle,
+  htmlHr(),
+  domainStyle,
+  htmlHr(),
+  dccMarkdown('## NeedlePlot Properties'),
+  needlePropsTable,
+  htmlA("Back to the Table of Contents", href = "/dash-bio/")
+))
+
+

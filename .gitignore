@@ -22,5 +22,6 @@ bundle.js
 .Rhistory
 .RData
 ignore/indicators.csv
+Rplot001.jpg
 .Rproj.user
 dash-docs.Rproj

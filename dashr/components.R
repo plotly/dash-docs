@@ -25,12 +25,6 @@ Chapter <- function(name, href = NA, caption = NA) {
     children = dccMarkdown(caption),
     style = list('display' = 'block', 'marginTop' = '2px')
   )
-  # return (
-  #   htmlDiv(
-  #     className = 'toc--chapter',
-  #     children = ifelse(!is.na(caption), list(divTitle, divCaption), list(divTitle))
-  #   )
-  # )
   if (!is.na(caption)) {
     return (htmlDiv(className = 'toc--chapter', children = list(divTitle, divCaption)))
   } else {
@@ -90,5 +84,3 @@ Example <- function(example){
     )
   )
 }
-
-
