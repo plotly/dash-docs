@@ -288,6 +288,7 @@ app$callback(
       '/support' = return(chapters.support$layout),
       '/plugins' = return(chapters.plugins$layout),
       '/d3-react-components' = return(chapters.d3$layout),
+      '/search' = return(chapters.search$layout),
       {
         htmlDiv(
           list(
