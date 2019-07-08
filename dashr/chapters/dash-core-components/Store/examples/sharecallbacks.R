@@ -6,7 +6,7 @@ library(dashTable)
 app = Dash$new()
 
 #You can download the dataset at 
-#https://raw.githubusercontent.com/plotly/datasets/master/gapminderDatahttps://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv
+#https://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv
 #and put the csv in your assets folder!
 
 df <- read.csv(
