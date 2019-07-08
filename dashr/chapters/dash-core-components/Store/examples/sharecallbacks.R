@@ -1,3 +1,8 @@
+library(dash)
+library(dashCoreComponents)
+library(dashHtmlComponents)
+library(dashTable)
+
 app = Dash$new()
 
 df = read.csv('https://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv')
