@@ -5,7 +5,15 @@ library(dashTable)
 
 app = Dash$new()
 
-df = read.csv('https://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv')
+#You can download the dataset at 
+#https://raw.githubusercontent.com/plotly/datasets/master/gapminderDatahttps://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv
+#and put the csv in your assets folder!
+
+df <- read.csv(
+  file = "assets/gapminderDataFiveYear.csv",
+  stringsAsFactor=FALSE,
+  check.names=FALSE
+)
 
 countries = as.list(unique(df$country))
 

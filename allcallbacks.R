@@ -75,6 +75,12 @@ app$callback(
 
 #STORE ---------------------------------
 
+df <- read.csv(
+  file = "assets/gapminderDataFiveYear.csv",
+  stringsAsFactor=FALSE,
+  check.names=FALSE
+)
+
 for (store in c('memory', 'local', 'session')) {
   
   app$callback(
