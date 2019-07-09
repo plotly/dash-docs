@@ -4,7 +4,7 @@ import dash_cytoscape as cyto
 import dash_core_components as dcc
 import dash_html_components as html
 
-from .utils import CreateDisplay, PythonSnippet
+from .utils import CreateDisplay
 from tutorial import tools, styles
 
 
@@ -136,7 +136,8 @@ layout = html.Div([
     or an edge. Simply replace the previous layout and callbacks by this:
     ''')),
 
-    PythonSnippet('''
+    dcc.Markdown(dedent('''
+    ```py
         app.layout = html.Div([
             cyto.Cytoscape(
                 id='cytoscape-event-callbacks-2',
@@ -178,7 +179,8 @@ layout = html.Div([
         def displayTapEdgeData(data):
             if data:
                 return "You recently hovered over the edge between " + data['source'].upper() + " and " + data['target'].upper()
-    '''),
+    ```
+    '''), style=styles.code_container),
 
     html.Div(
         examples['event_callbacks_2.py'][1],
@@ -194,7 +196,8 @@ layout = html.Div([
     multiple elements while holding Shift:
     ''')),
 
-    PythonSnippet('''
+    dcc.Markdown(dedent('''
+    ```py
         app.layout = html.Div([
             cyto.Cytoscape(
                 id='cytoscape-event-callbacks-3',
@@ -215,7 +218,8 @@ layout = html.Div([
 
             cities_list = [data['label'] for data in data_list]
             return "You selected the following cities: " + "\\n* ".join(cities_list)
-    '''),
+    ```
+    '''), style=styles.code_container),
 
     html.Div(
         examples['event_callbacks_3.py'][1],
@@ -240,7 +244,8 @@ layout = html.Div([
 
     html.Details(open=False, children=[
         html.Summary('Expand to see how to interactively style your elements'),
-        PythonSnippet('''
+        dcc.Markdown(dedent('''
+        ```py
         @app.callback(Output('cytoscape', 'stylesheet'),
                       [Input('cytoscape', 'tapNode'),
                        Input('input-follower-color', 'value'),
@@ -320,7 +325,8 @@ layout = html.Div([
                     })
 
             return stylesheet
-        ''')
+        ```
+        '''), style=styles.code_container),
     ]),
 
     dcc.Markdown(dedent('''
@@ -343,7 +349,8 @@ layout = html.Div([
 
     html.Details(open=False, children=[
         html.Summary('Expand to see how to construct the dictionaries'),
-        PythonSnippet('''
+        dcc.Markdown(dedent('''
+        ```py
         with open('demos/data/sample_network.txt', 'r') as f:
             data = f.read().split('\\n')
 
@@ -394,12 +401,14 @@ layout = html.Div([
 
             followers_node_di[target].append(cy_source)
             followers_edges_di[target].append(cy_edge)
-        ''')
+        ```
+        '''), style=styles.code_container),
     ]),
 
     html.Details(open=False, children=[
         html.Summary('Expand to see how to generate elements'),
-        PythonSnippet('''
+        dcc.Markdown(dedent('''
+        ```py
         @app.callback(Output('cytoscape', 'elements'),
                       [Input('cytoscape', 'tapNodeData')],
                       [State('cytoscape', 'elements'),
@@ -450,7 +459,8 @@ layout = html.Div([
                     elements.extend(following_edges)
 
             return elements
-        ''')
+        ```
+        '''), style=styles.code_container),
     ]),
 
     dcc.Markdown(dedent('''

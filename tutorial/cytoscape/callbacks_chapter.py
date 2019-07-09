@@ -4,7 +4,7 @@ import dash_cytoscape as cyto
 import dash_core_components as dcc
 import dash_html_components as html
 
-from .utils import CreateDisplay, PythonSnippet
+from .utils import CreateDisplay
 from tutorial import tools, styles
 
 
@@ -101,7 +101,8 @@ layout = html.Div([
 
     html.Details(open=False, children=[
         html.Summary('View Elements Declaration'),
-        PythonSnippet('''
+        dcc.Markdown(dedent('''
+        ```py
         nodes = [
             {
                 'data': {'id': short, 'label': label},
@@ -136,7 +137,8 @@ layout = html.Div([
         ]
 
         elements = nodes + edges
-        ''')
+        ```
+        '''), style=styles.code_container),
     ]),
 
     Display('''
@@ -174,12 +176,14 @@ layout = html.Div([
     a function as such:
     ''')),
 
-    PythonSnippet('''
+    dcc.Markdown(dedent('''
+    ```py
     @app.callback(Output('cytoscape-callbacks-1', 'layout'),
                   [Input('dropdown-callbacks-1', 'value')])
         def update_layout(layout):
             return {'name': layout}
-    '''),
+    ```
+    '''), style=styles.code_container),
 
     dcc.Markdown(dedent('''
     In fact, it is even possible to animate the layouts after an update!
@@ -187,7 +191,8 @@ layout = html.Div([
 
     ''')),
 
-    PythonSnippet('''
+    dcc.Markdown(dedent('''
+    ```py
     @app.callback(Output('cytoscape-callbacks-1', 'layout'),
                   [Input('dropdown-callbacks-1', 'value')])
     def update_layout(layout):
@@ -195,7 +200,8 @@ layout = html.Div([
             'name': layout,
             'animate': True
         }
-    '''),
+    ```
+    '''), style=styles.code_container),
 
     dcc.Markdown(dedent('''
     Piecing everything together, we get:
@@ -226,7 +232,8 @@ layout = html.Div([
 
     ''')),
 
-    PythonSnippet('''
+    dcc.Markdown(dedent('''
+    ```py
     default_stylesheet = [
         {
             'selector': 'node',
@@ -242,7 +249,8 @@ layout = html.Div([
             }
         }
     ]
-    '''),
+    ```
+    '''), style=styles.code_container),
 
     dcc.Markdown(dedent('''
 
@@ -286,7 +294,8 @@ layout = html.Div([
 
     ''')),
 
-    PythonSnippet('''
+    dcc.Markdown(dedent('''
+    ```py
     @app.callback(Output('cytoscape-callbacks-2', 'stylesheet'),
               [Input('input-line-color', 'value'),
                Input('input-bg-color', 'value')])
@@ -313,7 +322,8 @@ layout = html.Div([
         ]
 
         return default_stylesheet + new_styles
-    '''),
+    ```
+    '''), style=styles.code_container),
 
     dcc.Markdown(dedent('''
 
@@ -375,7 +385,8 @@ layout = html.Div([
 
     ''')),
 
-    PythonSnippet('''
+    dcc.Markdown(dedent('''
+    ```py
     @app.callback(Output('cytoscape-callbacks-2', 'elements'),
                   [Input('btn-add-node-example', 'n_clicks_timestamp'),
                    Input('btn-remove-node-example', 'n_clicks_timestamp')],
@@ -392,7 +403,8 @@ layout = html.Div([
                 return elements[:-1]
 
         return elements
-    '''),
+    ```
+    '''), style=styles.code_container),
 
     dcc.Markdown(dedent('''
 

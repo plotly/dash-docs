@@ -4,7 +4,7 @@ import dash_cytoscape as cyto
 import dash_core_components as dcc
 import dash_html_components as html
 
-from .utils import CreateDisplay, PythonSnippet
+from .utils import CreateDisplay
 from tutorial import tools, styles
 
 
@@ -128,7 +128,8 @@ layout = html.Div([
 
     html.Details(open=False, children=[
         html.Summary('View simple elements'),
-        PythonSnippet('''
+        dcc.Markdown(dedent('''
+        ```py
         simple_elements = [
             {
                 'data': {'id': 'one', 'label': 'Modified Color'},
@@ -154,7 +155,8 @@ layout = html.Div([
             {'data': {'source': 'three', 'target': 'four'}, 'classes': 'red'},
             {'data': {'source': 'two', 'target': 'four'}},
         ]
-        ''')
+        ```
+        '''), style=styles.code_container),
     ]),
 
     Display('''
@@ -228,7 +230,8 @@ layout = html.Div([
 
     html.Details(open=False, children=[
         html.Summary('View weighted elements'),
-        PythonSnippet('''
+        dcc.Markdown(dedent('''
+        ```py
         weighted_elements = [
             {'data': {'id': 'A'}},
             {'data': {'id': 'B'}},
@@ -243,7 +246,8 @@ layout = html.Div([
             {'data': {'source': 'C', 'target': 'E', 'weight': 5}},
             {'data': {'source': 'D', 'target': 'A', 'weight': 6}}
         ]
-        ''')
+        ```
+        '''), style=styles.code_container),
     ]),
 
     dcc.Markdown(dedent('''
@@ -315,7 +319,8 @@ layout = html.Div([
 
     html.Details(open=False, children=[
         html.Summary('View named elements'),
-        PythonSnippet('''
+        dcc.Markdown(dedent('''
+        ```py
         named_elements = [
             {'data': {'id': 'A', 'firstname': 'Albert'}},
             {'data': {'id': 'B', 'firstname': 'Bert'}},
@@ -330,7 +335,8 @@ layout = html.Div([
             {'data': {'source': 'C', 'target': 'E'}},
             {'data': {'source': 'D', 'target': 'A'}}
         ]
-        ''')
+        ```
+        '''), style=styles.code_container),
     ]),
 
     Display('''
@@ -458,14 +464,16 @@ layout = html.Div([
 
     html.Details(open=False, children=[
         html.Summary('View double-edged elements'),
-        PythonSnippet('''
+        dcc.Markdown(dedent('''
+        ```py
         double_edges = [
             {'data': {'id': src+tgt, 'source': src, 'target': tgt}}
             for src, tgt in ['AB', 'BA', 'BC', 'CB', 'CD', 'DC', 'DA', 'AD']
         ]
 
         double_edged_el = [{'data': {'id': id_}} for id_ in 'ABCD'] + double_edges
-        ''')
+        ```
+        '''), style=styles.code_container),
     ]),
 
     Display('''
@@ -524,14 +532,16 @@ layout = html.Div([
 
     html.Details(open=False, children=[
         html.Summary('View directed elements'),
-        PythonSnippet('''
+        dcc.Markdown(dedent('''
+        ```py
         directed_edges = [
             {'data': {'id': src+tgt, 'source': src, 'target': tgt}}
             for src, tgt in ['BA', 'BC', 'CD', 'DA']
         ]
 
         directed_elements = [{'data': {'id': id_}} for id_ in 'ABCD'] + directed_edges
-        ''')
+        ```
+        '''), style=styles.code_container),
     ]),
 
     Display('''

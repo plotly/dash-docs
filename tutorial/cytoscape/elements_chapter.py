@@ -4,7 +4,7 @@ import dash_cytoscape as cyto
 import dash_core_components as dcc
 import dash_html_components as html
 
-from .utils import CreateDisplay, PythonSnippet
+from .utils import CreateDisplay
 from tutorial import tools, styles
 
 
@@ -203,7 +203,8 @@ layout = html.Div([
 
     html.Details(open=False, children=[
         html.Summary('View the Stylesheet'),
-        PythonSnippet('''
+        dcc.Markdown(dedent('''
+        ```py
         my_stylesheet = [
             # Group selectors
             {
@@ -228,7 +229,8 @@ layout = html.Div([
                 }
             }
         ]
-        ''')
+        ```
+        '''), style=styles.code_container),
     ]),
 
     html.Hr(),

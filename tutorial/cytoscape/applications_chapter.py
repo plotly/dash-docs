@@ -3,8 +3,7 @@ from textwrap import dedent
 import dash_core_components as dcc
 import dash_html_components as html
 
-from tutorial import tools
-from .utils import PythonSnippet
+from tutorial import tools, styles
 
 examples = {
     example: tools.load_example(
@@ -37,10 +36,12 @@ layout = html.Div([
     
     ''')),
 
-    PythonSnippet('''
+    dcc.Markdown(dedent('''
+    ```py
     from Bio import Phylo
     tree = Phylo.read('data/apaf.xml', 'phyloxml')
-    '''),
+    ```
+    '''), style=styles.code_container),
 
     dcc.Markdown(dedent('''
     
@@ -54,7 +55,8 @@ layout = html.Div([
 
     html.Details(open=False, children=[
         html.Summary('get_col_positions() function definition'),
-        PythonSnippet('''
+        dcc.Markdown(dedent('''
+        ```py
         def get_col_positions(tree, column_width=80):
             taxa = tree.get_terminals()
     
@@ -73,12 +75,14 @@ layout = html.Div([
                                     float(max(depths.values())))
             return dict((clade, int(blen * cols_per_branch_unit + 1.0))
                         for clade, blen in depths.items())
-    ''')
+        ```
+        '''), style=styles.code_container),
     ]),
 
     html.Details(open=False, children=[
         html.Summary('get_row_positions() function definition'),
-        PythonSnippet('''
+        dcc.Markdown(dedent('''
+        ```py
         def get_row_positions(tree):
             taxa = tree.get_terminals()
             positions = dict((taxon, 2 * idx) for idx, taxon in enumerate(taxa))
@@ -91,13 +95,15 @@ layout = html.Div([
                                      positions[clade.clades[-1]]) // 2)
     
             calc_row(tree.root)
-            return positions        
-        ''')
+            return positions
+        ```        
+        '''), style=styles.code_container),
     ]),
 
     html.Details(open=False, children=[
         html.Summary('add_to_elements() function definition'),
-        PythonSnippet('''
+        dcc.Markdown(dedent('''
+        ```py
         def add_to_elements(clade, clade_id):
             children = clade.clades
     
@@ -157,7 +163,8 @@ layout = html.Div([
                 edges.extend([cy_support_edge, cy_edge])
     
                 add_to_elements(child, child_id)
-        ''')
+        ```
+        '''), style=styles.code_container),
     ]),
 
     dcc.Markdown(dedent('''
@@ -168,7 +175,8 @@ layout = html.Div([
     Finally, we finish building `generate_elements` with the following code:
     ''')),
 
-    PythonSnippet('''
+    dcc.Markdown(dedent('''
+    ```py
     import math
     
     def generate_elements(tree, xlen=30, ylen=30, grabbable=False):
@@ -190,7 +198,8 @@ layout = html.Div([
         add_to_elements(tree.clade, 'r')
         
         return nodes, edges
-    '''),
+    ```
+    '''), style=styles.code_container),
 
 
     dcc.Markdown(dedent('''
@@ -203,7 +212,8 @@ layout = html.Div([
     phylogeny trees to match aesthetically the traditional methods. We define:
     ''')),
 
-    PythonSnippet("""
+    dcc.Markdown(dedent('''
+    ```py
     layout = {'name': 'preset'}
 
     stylesheet = [
@@ -239,7 +249,8 @@ layout = html.Div([
             }
         }
     ]
-    """),
+    ```
+    '''), style=styles.code_container),
 
     dcc.Markdown(dedent('''
     ## Layout and Callbacks
@@ -252,7 +263,8 @@ layout = html.Div([
     by the number 0 or 1, since there are two subclades per clade.
     ''')),
 
-    PythonSnippet('''
+    dcc.Markdown(dedent('''
+    ```py
     # Start the app
     app = dash.Dash(__name__)
     
@@ -289,7 +301,8 @@ layout = html.Div([
         }]
     
         return stylesheet + children_style
-    '''),
+    ```
+    '''), style=styles.code_container),
 
     dcc.Markdown(dedent('''
     This results in the following app:
@@ -297,7 +310,10 @@ layout = html.Div([
 
     html.Details(open=False, children=[
         html.Summary('View the complete source code'),
-        PythonSnippet(examples['usage-phylogeny.py'][0])
+        dcc.Markdown(
+            examples['usage-phylogeny.py'][0],
+            style=styles.code_container
+        )
     ]),
 
     html.Div(

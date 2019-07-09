@@ -5,7 +5,8 @@ import dash_cytoscape as cyto
 import dash_core_components as dcc
 import dash_html_components as html
 
-from .utils import CreateDisplay, PythonSnippet
+from .utils import CreateDisplay
+from tutorial import tools, styles
 
 
 nodes = [
@@ -102,7 +103,8 @@ layout = html.Div([
 
     html.Details(open=False, children=[
         html.Summary('View Elements Declaration'),
-        PythonSnippet('''
+        dcc.Markdown(dedent('''
+        ```py
         nodes = [
             {
                 'data': {'id': short, 'label': label},
@@ -137,7 +139,8 @@ layout = html.Div([
         ]
 
         elements = nodes + edges
-        ''')
+        ```
+        '''), style=styles.code_container),
     ]),
 
     dcc.Markdown(dedent('''
@@ -316,7 +319,8 @@ layout = html.Div([
     `dash_cytoscape`:
     ''')),
 
-    PythonSnippet('''
+    dcc.Markdown(dedent('''
+    ```py
     import dash
     from dash.dependencies import Input, Output, State
     import dash_core_components as dcc
@@ -329,7 +333,8 @@ layout = html.Div([
 
     app = dash.Dash(__name__)
     server = app.server
-    '''),
+    ```
+    '''), style=styles.code_container),
 
     dcc.Markdown(dedent('''
     We also provided a
