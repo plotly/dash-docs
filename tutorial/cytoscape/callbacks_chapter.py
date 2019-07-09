@@ -80,7 +80,7 @@ Display = CreateDisplay({
 
 layout = html.Div([
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
     # Dash Callbacks for Cytoscape
 
     [Dash callbacks](/getting-started-part-2) allow you to update your
@@ -97,11 +97,11 @@ layout = html.Div([
     user to interactively update the layouts?
 
     Recall the declaration of the graph:
-    ''')),
+    '''),
 
     html.Details(open=False, children=[
         html.Summary('View Elements Declaration'),
-        dcc.Markdown(dedent('''
+        dcc.Markdown('''
         ```py
         nodes = [
             {
@@ -138,7 +138,7 @@ layout = html.Div([
 
         elements = nodes + edges
         ```
-        '''), style=styles.code_container),
+        ''', style=styles.code_container),
     ]),
 
     Display('''
@@ -152,12 +152,12 @@ layout = html.Div([
     )
     '''),
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
     What we want to modify is the argument to `layout`. To do so, we could use
     a `dash_core_components.Dropdown` with the name of the layouts as options.
     We could set the default value to 'grid', and force it to be unclearable
     (since we do not want to pass a dictionary with null value to `Cytoscape`).
-    ''')),
+    '''),
 
     Display('''
     dcc.Dropdown(
@@ -171,27 +171,27 @@ layout = html.Div([
     )
     '''),
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
     The construction of the callback becomes extremely easy. We simply create
     a function as such:
-    ''')),
+    '''),
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
     ```py
     @app.callback(Output('cytoscape-callbacks-1', 'layout'),
                   [Input('dropdown-callbacks-1', 'value')])
         def update_layout(layout):
             return {'name': layout}
     ```
-    '''), style=styles.code_container),
+    ''', style=styles.code_container),
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
     In fact, it is even possible to animate the layouts after an update!
     Simply enable `animate`:
 
-    ''')),
+    '''),
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
     ```py
     @app.callback(Output('cytoscape-callbacks-1', 'layout'),
                   [Input('dropdown-callbacks-1', 'value')])
@@ -201,11 +201,11 @@ layout = html.Div([
             'animate': True
         }
     ```
-    '''), style=styles.code_container),
+    ''', style=styles.code_container),
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
     Piecing everything together, we get:
-    ''')),
+    '''),
 
     dcc.Markdown(
         examples['update_layout.py'][0],
@@ -217,7 +217,7 @@ layout = html.Div([
         className='example-container'
     ),
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
     > Notice we did not include an animation for `preset`. As discussed in the layout chapter, you
     > will need to specify the position of the nodes inside of the `layout` dictionary. Check out
     > [this example](https://github.com/plotly/dash-cytoscape/blob/master/demos/usage-preset-animation.py)
@@ -230,9 +230,9 @@ layout = html.Div([
     a default stylesheet, and append new styles to that stylesheet every time
     a designated callback is fired. Let's take the following stylesheet:
 
-    ''')),
+    '''),
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
     ```py
     default_stylesheet = [
         {
@@ -250,14 +250,14 @@ layout = html.Div([
         }
     ]
     ```
-    '''), style=styles.code_container),
+    ''', style=styles.code_container),
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
 
     This is generally declared at the beginning of your script, before layout
     declaration (therefore it is shared accross sessions). The city graph will
     look something like this:
-    ''')),
+    '''),
 
     Display('''
     cyto.Cytoscape(
@@ -271,9 +271,9 @@ layout = html.Div([
     )
     '''),
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
     We might want to use text fields to input the color we want to add:
-    ''')),
+    '''),
 
     Display('''
     html.Div([
@@ -288,13 +288,13 @@ layout = html.Div([
     ])
     '''),
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
     All we need now is to assign a callback that will add new styles to the
     default stylesheet in order to change the default color:
 
-    ''')),
+    '''),
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
     ```py
     @app.callback(Output('cytoscape-callbacks-2', 'stylesheet'),
               [Input('input-line-color', 'value'),
@@ -323,9 +323,9 @@ layout = html.Div([
 
         return default_stylesheet + new_styles
     ```
-    '''), style=styles.code_container),
+    ''', style=styles.code_container),
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
 
     Notice that we are setting the line and background color to an empty
     string when they are set to `None`; this is to avoid feeding `None`
@@ -338,7 +338,7 @@ layout = html.Div([
     a color, the hex code, or the rgb function.
 
     Below, we show how the entire app is constructed:
-    ''')),
+    '''),
 
     dcc.Markdown(
         examples['stylesheet_callbacks.py'][0],
@@ -350,7 +350,7 @@ layout = html.Div([
         className='example-container'
     ),
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
     In this example, we are not appending the new styles
     directly to the default style, but instead concatenating
     `default_stylesheet` with `new_styles`. This is because any modification
@@ -371,7 +371,7 @@ layout = html.Div([
 
     Let's take as an example a simple app where you can add and remove nodes
     by clicking two html buttons (with the same graph as above):
-    ''')),
+    '''),
 
     Display('''
     html.Div([
@@ -380,12 +380,12 @@ layout = html.Div([
     ])
     '''),
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
     The following callback would be needed:
 
-    ''')),
+    '''),
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
     ```py
     @app.callback(Output('cytoscape-callbacks-2', 'elements'),
                   [Input('btn-add-node-example', 'n_clicks_timestamp'),
@@ -404,9 +404,9 @@ layout = html.Div([
 
         return elements
     ```
-    '''), style=styles.code_container),
+    ''', style=styles.code_container),
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
 
     The first conditional `if int(btn_add) > int(btn_remove)` verifies whether
     the add button was just clicked. If it wasn't, then the remove button is
@@ -426,7 +426,7 @@ layout = html.Div([
     is deployed with multiple gunicorn workers.
 
     You can find the complete app below:
-    ''')),
+    '''),
 
     dcc.Markdown(
         examples['elements_callbacks.py'][0],

@@ -28,7 +28,7 @@ layout = html.Div([
     html.H3('Properties'),
     component_doc(cyto.Cytoscape),
     html.H3('Default Values'),
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
     * *style*: {'width': '600px', 'height': '600px'}
     * *layout*: {'name': 'grid'}
     * *pan*: {'x': 0, 'y': 0}
@@ -44,9 +44,9 @@ layout = html.Div([
     * *autolock*: False
     * *autounselectify*: False
     * *autoRefreshLayout*: True
-    ''')),
+    '''),
     html.H2('utils.Tree'),
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
     A class to facilitate tree manipulation in Cytoscape.
     
     **param** node_id: The ID of this tree, passed to the node data dict
@@ -105,6 +105,6 @@ layout = html.Div([
     
     **return:** Dictionary mapping node_id to Tree object.
     
-    '''))
+    ''')
 
 ])

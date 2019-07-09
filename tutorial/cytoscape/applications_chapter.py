@@ -17,7 +17,7 @@ examples = {
 
 layout = html.Div([
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
     # Cytoscape with Biopython
     
     In this chapter, we will show an example of automatically generating a 
@@ -34,16 +34,16 @@ layout = html.Div([
     To load the file, run this (after you made sure that
     biopython was correctly installed):
     
-    ''')),
+    '''),
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
     ```py
     from Bio import Phylo
     tree = Phylo.read('data/apaf.xml', 'phyloxml')
     ```
-    '''), style=styles.code_container),
+    ''', style=styles.code_container),
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
     
     Then, we need to use a function to parse the data. We will construct a 
     function `generate_elements(...)`, which will first generate the column
@@ -51,11 +51,11 @@ layout = html.Div([
     `get_col_positions` and `get_row_positions`, and recursively parse the
     tree and add the clades to the list of elements, using a helper function
     called `add_to_elements`.
-    ''')),
+    '''),
 
     html.Details(open=False, children=[
         html.Summary('get_col_positions() function definition'),
-        dcc.Markdown(dedent('''
+        dcc.Markdown('''
         ```py
         def get_col_positions(tree, column_width=80):
             taxa = tree.get_terminals()
@@ -76,12 +76,12 @@ layout = html.Div([
             return dict((clade, int(blen * cols_per_branch_unit + 1.0))
                         for clade, blen in depths.items())
         ```
-        '''), style=styles.code_container),
+        ''', style=styles.code_container),
     ]),
 
     html.Details(open=False, children=[
         html.Summary('get_row_positions() function definition'),
-        dcc.Markdown(dedent('''
+        dcc.Markdown('''
         ```py
         def get_row_positions(tree):
             taxa = tree.get_terminals()
@@ -97,12 +97,12 @@ layout = html.Div([
             calc_row(tree.root)
             return positions
         ```        
-        '''), style=styles.code_container),
+        ''', style=styles.code_container),
     ]),
 
     html.Details(open=False, children=[
         html.Summary('add_to_elements() function definition'),
-        dcc.Markdown(dedent('''
+        dcc.Markdown('''
         ```py
         def add_to_elements(clade, clade_id):
             children = clade.clades
@@ -164,18 +164,18 @@ layout = html.Div([
     
                 add_to_elements(child, child_id)
         ```
-        '''), style=styles.code_container),
+        ''', style=styles.code_container),
     ]),
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
     > You might notice that we use something called support clades. Those are 
     > simply used to modify the shape of the tree so that it resembles 
     > traditional phylogeny tree layouts.
      
     Finally, we finish building `generate_elements` with the following code:
-    ''')),
+    '''),
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
     ```py
     import math
     
@@ -199,10 +199,10 @@ layout = html.Div([
         
         return nodes, edges
     ```
-    '''), style=styles.code_container),
+    ''', style=styles.code_container),
 
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
     > Note that `add_to_elements` changes the `nodes` and `edges` lists in place.
     
     ## Defining layout and stylesheet
@@ -210,9 +210,9 @@ layout = html.Div([
     Since we are assigning a position to the nodes, we have to use the `preset`
     layout. Additionally, we need to add specific styles in order to make the
     phylogeny trees to match aesthetically the traditional methods. We define:
-    ''')),
+    '''),
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
     ```py
     layout = {'name': 'preset'}
 
@@ -250,9 +250,9 @@ layout = html.Div([
         }
     ]
     ```
-    '''), style=styles.code_container),
+    ''', style=styles.code_container),
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
     ## Layout and Callbacks
     
     At this point, we simply need to create the layout of the app, which will
@@ -261,9 +261,9 @@ layout = html.Div([
     is accomplished by filtering the IDs, which are sequences of 
     *s*'s and *c*'s, which stand for *support* and *children*, intersected
     by the number 0 or 1, since there are two subclades per clade.
-    ''')),
+    '''),
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
     ```py
     # Start the app
     app = dash.Dash(__name__)
@@ -302,11 +302,11 @@ layout = html.Div([
     
         return stylesheet + children_style
     ```
-    '''), style=styles.code_container),
+    ''', style=styles.code_container),
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
     This results in the following app:
-    ''')),
+    '''),
 
     html.Details(open=False, children=[
         html.Summary('View the complete source code'),
