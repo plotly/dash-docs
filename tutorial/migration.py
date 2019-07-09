@@ -155,6 +155,7 @@ layout = html.Div([
     |`column_conditional_tooltips`|`tooltip_conditional`|Just renamed, structure is unchanged.|
     |`column_static_dropdown`|`dropdown`     |Changed from an array of objects to an object of objects. Keys are column IDs, values are `{clearable: boolean, options: array of {label, value}}`.|
     |`column_static_tooltip`|`tooltip`       |Renamed, values are unchanged.|
+    |`content_style`   |**REMOVED**          |Unnecessary. If a use case arises that isn't covered by normal CSS, let us know and we can consider re-adding.|
     |`dropdown_properties`|`dropdown_data`   |Structure changed to match `data`: an array of objects, keys are column IDs, values are `{clearable: boolean, options: array of {label, value}}`.|
     |`derived_filter_structure`|`derived_filter_query_structure`|Just renamed, values are unchanged.|
     |`filter`          |`filter_query`       |Renamed, values are unchanged.|

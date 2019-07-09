@@ -804,6 +804,13 @@ chapters = {
         'name': 'Dash App Portal',
         'description': 'Learn about the Dash App Portal '
     },
+
+    'admin-panel': {
+        'url': '/dash-deployment-server/admin-panel',
+        'content': dds_examples.AdminPanel,
+        'name': 'Admin Panel',
+        'description': 'Manage users in the Admin Panel '
+    },
 ### End Dash Deployment Server ###
 
 ### Start DataTable Docs

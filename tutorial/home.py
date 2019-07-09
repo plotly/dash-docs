@@ -26,7 +26,7 @@ layout = html.Div(className='toc', children=[
                 ("Our extended essay on Dash. An extended discussion of Dash's architecture "
                  "and our motivation behind the project.")),
         Chapter(chapters['gallery']['name'],
-                chapters['gallery']['url'],
+                "https://dash-gallery.plotly.host/Portal/",
                 "A glimpse into what's possible with Dash."),
         Chapter('Dash Club',
                 'http://eepurl.com/dE7CHT',

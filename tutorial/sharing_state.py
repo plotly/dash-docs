@@ -109,7 +109,7 @@ def update_output_1(value):
 
 ''', summary='''
     Here is a sketch of an app with a callback that modifies data
-    out of it's scope. This type of pattern *will not work reliably*
+    out of its scope. This type of pattern *will not work reliably*
     for the reasons outlined above.'''),
 
     Syntax('''df = pd.DataFrame({

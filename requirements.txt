@@ -3,7 +3,7 @@ certifi==2018.4.16
 chardet==3.0.4
 click==6.7
 configparser==3.5.0
-dash==1.0.0
+dash==1.0.1
 dash-auth==1.2.0
 dash-bio==0.1.2rc3
 dash-bio-utils==0.0.3rc2
