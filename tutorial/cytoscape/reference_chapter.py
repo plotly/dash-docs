@@ -1,10 +1,8 @@
 import re
-from textwrap import dedent
 
 import dash_html_components as html
 import dash_core_components as dcc
 import dash_cytoscape as cyto
-
 
 def component_doc(component):
     trimmed_docs = re.sub(
