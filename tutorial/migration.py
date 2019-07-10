@@ -169,5 +169,10 @@ layout = html.Div([
     |`sorting_treat_empty_string_as_none`|`sort_as_null`|Now accepts an array of string, number or booleans that can be ignored during sort. Can also be set per column with `column.sort_as_null`.|
     |`style_data_conditional`|               |Renamed nested prop `if.filter` to `if.filter_query`.|
     |`tooltips`        |`tooltip_data`       |Structure changed to match `data`: an array of objects, keys are column IDs, values are `{delay, duration, type, value}` as before.|
+
+    ### Additional notes
+
+    `style_cell_conditional`: In prior versions `if.row_index` was evaluated for this prop but should not have been.
+    Use `style_data_conditional` and `style_header_conditional` instead for `if.row_index` based styling.
     '''))
 ])
