@@ -52,7 +52,7 @@ layout = html.Div([
     table will expand to contain the contents.
     Try it out by [copying and pasting this dataset](https://docs.google.com/spreadsheets/d/1MWj7AjngD_fH7vkVhEMIRo51Oty295kE36-DFnQElrg/edit?usp=sharing).
     - Unlike other spreadsheet programs, the DataTable has a fixed number of
-    rows. So, your model has an arbitrary number of parameters
+    rows. So, if your model has an arbitrary number of parameters
     (rows or columns), we recommend initializing your table with a
     large number of empty rows and columns.
     ''')),
@@ -82,7 +82,7 @@ layout = html.Div([
     > data and we may initialize emty data to `None` instead.
 
     In this example, we prune away any rows that have empty cells in them.
-    This is just one way to prune data, you may want to clean your data
+    This is just one way to prune data; you may want to clean your data
     differently in your application.
 
     ''')),
