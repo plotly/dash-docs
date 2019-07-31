@@ -169,7 +169,7 @@ header <- htmlDiv(
       children = list(
         htmlA(htmlImg(
           style = list(height = '100%'),
-          src = 'https://dash.plot.ly/assets/images/logo.png'          
+          src = 'https://dash.plot.ly/assets/images/logo.png'
         ), href = 'https://plot.ly/products/dash', className='logo-link'),
         htmlDiv(className='links', children = list(
           htmlA('pricing', className='link', href = 'https://plot.ly/dash/pricing'),
@@ -475,7 +475,6 @@ app$callback(
                 'The Dash Community Forum',
                 href='https://community.plot.ly/c/dash?_ga=2.35982368.1800098105.1562085881-85134653.1547603472'
                 ),
-                htmlBr(),
                 components$Chapter(
                 'Support and Contact',
                 href='/support'

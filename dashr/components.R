@@ -14,7 +14,7 @@ Header <- function(title) {
 }
 
 Chapter <- function(name, href = NA, caption = NA) {
-  divTitle <- htmlA( 
+  divTitle <- htmlA(
     name,
     href = href,
     id = href,
@@ -23,12 +23,24 @@ Chapter <- function(name, href = NA, caption = NA) {
   divCaption <- htmlSmall(
     className = 'toc--chapter-content',
     children = dccMarkdown(caption),
-    style = list('display' = 'block', 'marginTop' = '2px')
+    style = list('display' = 'block', 'marginTop' = '3px')
   )
   if (!is.na(caption)) {
-    return (htmlDiv(className = 'toc--chapter', children = list(divTitle, divCaption)))
+    return (
+      htmlDiv(
+        className = 'toc--chapter',
+        style = list('marginTop' = '10px'),
+        children = list(divTitle, divCaption)
+      )
+    )
   } else {
-    return (htmlDiv(className = 'toc--chapter', children = list(divTitle)))
+    return (
+      htmlDiv(
+        className = 'toc--chapter',
+        style = list('marginTop' = '10px'),
+        children = list(divTitle)
+      )
+    )
   }
 }
 
