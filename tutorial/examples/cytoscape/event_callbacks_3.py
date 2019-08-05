@@ -63,7 +63,7 @@ default_stylesheet = [
 
 app.layout = html.Div([
     cyto.Cytoscape(
-        id='cytoscape-event-callbacks',
+        id='cytoscape-event-callbacks-3',
         layout={'name': 'preset'},
         elements=edges+nodes,
         stylesheet=default_stylesheet,
@@ -74,13 +74,13 @@ app.layout = html.Div([
 
 
 @app.callback(Output('cytoscape-selectedNodeData-markdown', 'children'),
-              [Input('cytoscape-event-callbacks', 'selectedNodeData')])
+              [Input('cytoscape-event-callbacks-3', 'selectedNodeData')])
 def displaySelectedNodeData(data_list):
     if data_list is None:
         return "No city selected."
 
     cities_list = [data['label'] for data in data_list]
-    return "You selected the following cities:" + "\n* ".join(cities_list)
+    return "You selected the following cities: " + "\n* ".join(cities_list)
 
 
 if __name__ == '__main__':

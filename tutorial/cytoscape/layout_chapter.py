@@ -1,11 +1,11 @@
 import math
-from textwrap import dedent
 
 import dash_cytoscape as cyto
 import dash_core_components as dcc
 import dash_html_components as html
 
-from .utils import CreateDisplay, PythonSnippet
+from .utils import CreateDisplay
+from tutorial import tools, styles
 
 
 nodes = [
@@ -54,7 +54,7 @@ Display = CreateDisplay({
 
 layout = html.Div([
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
     # Cytoscape Layouts
 
     The layout parameter of `cyto.Cytoscape` takes as argument a
@@ -80,7 +80,7 @@ layout = html.Div([
     Cytoscape.js behind the scene, based on the given items of the layout
     dictionary. Let's start with an example of declaring a graph with a preset
     layout:
-    ''')),
+    '''),
 
     Display('''
     cyto.Cytoscape(
@@ -93,16 +93,17 @@ layout = html.Div([
     )
     '''),
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
     > Here, we provided toy elements using geographically positioned nodes. If
     > you'd like to reproduce this example by yourself, check out the code
     > below.
 
-    ''')),
+    '''),
 
     html.Details(open=False, children=[
         html.Summary('View Elements Declaration'),
-        dcc.Markdown(dedent('''
+        dcc.Markdown('''
+        ```py
         nodes = [
             {
                 'data': {'id': short, 'label': label},
@@ -137,16 +138,17 @@ layout = html.Div([
         ]
 
         elements = nodes + edges
-        '''))
+        ```
+        ''', style=styles.code_container),
     ]),
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
     ## Display Methods
 
     In most cases, the position of the nodes will not be given. In these
     cases, one of the built-in methods can be used. Let's see what happens
     when the value of `name` is set to `'circle'` or `'grid'`
-    ''')),
+    '''),
 
     Display('''
     cyto.Cytoscape(
@@ -170,7 +172,7 @@ layout = html.Div([
     )
     '''),
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
 
     ## Fine-tuning the Layouts
 
@@ -181,7 +183,7 @@ layout = html.Div([
     [`circle` layout](http://js.cytoscape.org/#layouts/circle) `radius`
     and `startAngle`, and so forth. Here is the grid layout
     with the same graph as above, but with different layout options:
-    ''')),
+    '''),
 
     Display('''
     cyto.Cytoscape(
@@ -195,10 +197,10 @@ layout = html.Div([
     )
     '''),
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
     In the case of the circle layout, we can force the nodes to start and end
     at a certain angle in radians (import `math` for this example):
-    ''')),
+    '''),
 
     Display('''
     cyto.Cytoscape(
@@ -214,12 +216,12 @@ layout = html.Div([
     )
     '''),
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
     For the `breadthfirst` layout, a tree is created from the existing nodes
     by performing a breadth-first search of the graph. By default, the root(s)
     of the tree is inferred, but can also be specified as an option. Here is
     how the graph would look like if we choose New York City as the root:
-    ''')),
+    '''),
 
     Display('''
     cyto.Cytoscape(
@@ -233,9 +235,9 @@ layout = html.Div([
     )
     '''),
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
     Here is what would happen if we chose Montreal and Vancouver instead:
-    ''')),
+    '''),
 
     Display('''
     cyto.Cytoscape(
@@ -249,7 +251,7 @@ layout = html.Div([
     )
     '''),
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
     > Notice here that we are not giving the ID of the nodes to the `roots`
     > key, but instead using a specific syntax to select the desired elements.
     > This concept of [selector is extensively documented in Cytoscape.js](http://js.cytoscape.org/#selectors),
@@ -258,7 +260,7 @@ layout = html.Div([
 
     For preset layouts, you can also specify the positions for which you would like to render each
     of your nodes:
-    ''')),
+    '''),
 
     Display('''
     cyto.Cytoscape(
@@ -275,7 +277,7 @@ layout = html.Div([
     )
     '''),
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
     > In the callbacks chapter, you will learn how to interactively update your layout; in order
     > to use `preset`, you will need to specify the position of each node.
 
@@ -285,7 +287,7 @@ layout = html.Div([
     a force-directed layout by simulating attraction and repulsion among the
     elements, based on the paper by
     [Dogrusoz et al, 2009](https://dl.acm.org/citation.cfm?id=1498047).
-    ''')),
+    '''),
 
     Display('''
     cyto.Cytoscape(
@@ -298,7 +300,7 @@ layout = html.Div([
     )
     '''),
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
     ## Loading External Layout
 
     > External layouts are now available! Update your `dash-cytoscape` to
@@ -314,9 +316,10 @@ layout = html.Div([
 
     In order to use them, you will need to use the `load_extra_layouts()` function from
     `dash_cytoscape`:
-    ''')),
+    '''),
 
-    PythonSnippet('''
+    dcc.Markdown('''
+    ```py
     import dash
     from dash.dependencies import Input, Output, State
     import dash_core_components as dcc
@@ -329,9 +332,10 @@ layout = html.Div([
 
     app = dash.Dash(__name__)
     server = app.server
-    '''),
+    ```
+    ''', style=styles.code_container),
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
     We also provided a
     [demo app directly derived from `usage-elements`](https://github.com/plotly/dash-cytoscape/blob/master/demos/usage-elements-extra.py),
     but with the option to use the external layouts.
@@ -341,5 +345,5 @@ layout = html.Div([
     > load your apps, especially on slower networks.
     > [This image](https://github.com/plotly/dash-cytoscape/blob/master/demos/images/fast3g-cytoscape.PNG)
     > shows how long it would take to load the dev package on a slower network.
-    '''))
+    ''')
 ])

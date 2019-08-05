@@ -1,10 +1,8 @@
-from textwrap import dedent
-
 import dash_cytoscape as cyto
 import dash_core_components as dcc
 import dash_html_components as html
 
-from .utils import CreateDisplay, PythonSnippet
+from .utils import CreateDisplay
 from tutorial import tools, styles
 
 
@@ -79,7 +77,7 @@ Display = CreateDisplay({
 
 layout = html.Div([
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
     # Cytoscape Event Callbacks
 
     In [part 4](/cytoscape/callbacks), we showed how to update Cytoscape with
@@ -97,7 +95,7 @@ layout = html.Div([
     ## Simple callback construction
 
     Let's look back at the same city example as the previous chapter:
-    ''')),
+    '''),
 
     Display('''
     cyto.Cytoscape(
@@ -109,10 +107,10 @@ layout = html.Div([
     )
     '''),
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
     This time, we will use the `tapNodeData` properties as input
     to our callbacks, which will simply dump the content into an `html.Pre`:
-    ''')),
+    '''),
 
     dcc.Markdown(
         examples['event_callbacks.py'][0],
@@ -124,7 +122,7 @@ layout = html.Div([
         className='example-container'
     ),
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
     Notice that the `html.Div` is updated every time you click or tap a node,
     and returns the data dictionary of the node. Alternatively, you can use
     `tapNode` to obtain the entire element specification (given as a
@@ -134,12 +132,13 @@ layout = html.Div([
 
     Let's now display the data generated whenever you click or hover over a node
     or an edge. Simply replace the previous layout and callbacks by this:
-    ''')),
+    '''),
 
-    PythonSnippet('''
+    dcc.Markdown('''
+    ```py
         app.layout = html.Div([
             cyto.Cytoscape(
-                id='cytoscape-event-callbacks',
+                id='cytoscape-event-callbacks-2',
                 layout={'name': 'preset'},
                 elements=edges+nodes,
                 stylesheet=default_stylesheet,
@@ -153,51 +152,53 @@ layout = html.Div([
 
 
         @app.callback(Output('cytoscape-tapNodeData-output', 'children'),
-                      [Input('cytoscape-event-callbacks', 'tapNodeData')])
+                      [Input('cytoscape-event-callbacks-2', 'tapNodeData')])
         def displayTapNodeData(data):
             if data:
                 return "You recently clicked/tapped the city: " + data['label']
 
 
         @app.callback(Output('cytoscape-tapEdgeData-output', 'children'),
-                      [Input('cytoscape-event-callbacks', 'tapEdgeData')])
+                      [Input('cytoscape-event-callbacks-2', 'tapEdgeData')])
         def displayTapEdgeData(data):
             if data:
                 return "You recently clicked/tapped the edge between " + data['source'].upper() + " and " + data['target'].upper()
 
 
         @app.callback(Output('cytoscape-mouseoverNodeData-output', 'children'),
-                      [Input('cytoscape-event-callbacks', 'mouseoverNodeData')])
+                      [Input('cytoscape-event-callbacks-2', 'mouseoverNodeData')])
         def displayTapNodeData(data):
             if data:
                 return "You recently hovered over the city: " + data['label']
 
 
         @app.callback(Output('cytoscape-mouseoverEdgeData-output', 'children'),
-                      [Input('cytoscape-event-callbacks', 'mouseoverEdgeData')])
+                      [Input('cytoscape-event-callbacks-2', 'mouseoverEdgeData')])
         def displayTapEdgeData(data):
             if data:
                 return "You recently hovered over the edge between " + data['source'].upper() + " and " + data['target'].upper()
-    '''),
+    ```
+    ''', style=styles.code_container),
 
     html.Div(
         examples['event_callbacks_2.py'][1],
         className='example-container'
     ),
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
 
     ## Selecting multiple elements
 
     Additionally, you can also display all the data currently selected, either
     through a box selection (Shift+Click and drag) or by individually selecting
     multiple elements while holding Shift:
-    ''')),
+    '''),
 
-    PythonSnippet('''
+    dcc.Markdown('''
+    ```py
         app.layout = html.Div([
             cyto.Cytoscape(
-                id='cytoscape-event-callbacks',
+                id='cytoscape-event-callbacks-3',
                 layout={'name': 'preset'},
                 elements=edges+nodes,
                 stylesheet=default_stylesheet,
@@ -208,21 +209,22 @@ layout = html.Div([
 
 
         @app.callback(Output('cytoscape-selectedNodeData-markdown', 'children'),
-                      [Input('cytoscape-event-callbacks', 'selectedNodeData')])
+                      [Input('cytoscape-event-callbacks-3', 'selectedNodeData')])
         def displaySelectedNodeData(data_list):
             if not data_list:
                 return
 
             cities_list = [data['label'] for data in data_list]
-            return "You selected the following cities:" + "\\n* ".join(cities_list)
-    '''),
+            return "You selected the following cities: " + "\\n* ".join(cities_list)
+    ```
+    ''', style=styles.code_container),
 
     html.Div(
         examples['event_callbacks_3.py'][1],
         className='example-container'
     ),
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
     ## Advanced usage of callbacks
 
     Those event callbacks enable more advanced interactions between components.
@@ -236,11 +238,12 @@ layout = html.Div([
     `stylesheet` prop. You can try out this
     [interactive stylesheet demo](https://dash-gallery.plotly.host/cytoscape-stylesheet)
     hosted on the [Dash Deployment Servers](https://plot.ly/products/dash/).
-    ''')),
+    '''),
 
     html.Details(open=False, children=[
         html.Summary('Expand to see how to interactively style your elements'),
-        PythonSnippet('''
+        dcc.Markdown('''
+        ```py
         @app.callback(Output('cytoscape', 'stylesheet'),
                       [Input('cytoscape', 'tapNode'),
                        Input('input-follower-color', 'value'),
@@ -320,10 +323,11 @@ layout = html.Div([
                     })
 
             return stylesheet
-        ''')
+        ```
+        ''', style=styles.code_container),
     ]),
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
     Additionally, [`usage-elements.py`](https://github.com/plotly/dash-cytoscape/blob/master/usage-elements.py)
     lets you progressively expand your graph
     by using `tapNodeData` as the input and `elements` as the output.
@@ -338,12 +342,13 @@ layout = html.Div([
     is done through a callback that retrieves the followers (outgoing) or following
     (incoming) from the dictionaries, and add the to the `elements`.
     [Click here for the online demo](https://dash-gallery.plotly.host/cytoscape-elements).
-    ''')),
+    '''),
 
 
     html.Details(open=False, children=[
         html.Summary('Expand to see how to construct the dictionaries'),
-        PythonSnippet('''
+        dcc.Markdown('''
+        ```py
         with open('demos/data/sample_network.txt', 'r') as f:
             data = f.read().split('\\n')
 
@@ -394,12 +399,14 @@ layout = html.Div([
 
             followers_node_di[target].append(cy_source)
             followers_edges_di[target].append(cy_edge)
-        ''')
+        ```
+        ''', style=styles.code_container),
     ]),
 
     html.Details(open=False, children=[
         html.Summary('Expand to see how to generate elements'),
-        PythonSnippet('''
+        dcc.Markdown('''
+        ```py
         @app.callback(Output('cytoscape', 'elements'),
                       [Input('cytoscape', 'tapNodeData')],
                       [State('cytoscape', 'elements'),
@@ -450,14 +457,15 @@ layout = html.Div([
                     elements.extend(following_edges)
 
             return elements
-        ''')
+        ```
+        ''', style=styles.code_container),
     ]),
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
     To see more examples of events, check out the [event callbacks demo](https://dash-gallery.plotly.host/cytoscape-events)
     (the source file is available as [`usage-events.py`](https://github.com/plotly/dash-cytoscape/blob/master/usage-events.py) on the project repo)
     and the [Cytoscape references](/cytoscape/reference).
-    '''))
+    ''')
 
 ])
 

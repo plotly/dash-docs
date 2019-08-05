@@ -10,7 +10,7 @@ developed and maintained by [Plotly](https://plot.ly).
 ### Dash Demos and Enterprise Trials
 
 If you would like to trial or purchase a Dash Deployment Server,
-[get in touch with us directly](https://plotly.typeform.com/to/rkO85m).
+[get in touch with us directly](https://go.plot.ly/dash-doc).
 
 Our sales engineering team is happy to give you or your team
 a demo of Dash and Dash Deployment Server too.

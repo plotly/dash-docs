@@ -46,7 +46,7 @@ DASHBIO_COMPONENTS = {
             'parameter': 'data'
         },
         'iframe_info': {
-            'location': 'https://dash-bio.plotly.host/docs-demos-dashbio/alignment_chart',
+            'location': 'https://dash-gallery.plotly.host/docs-demos-dashbio/alignment_chart',
             'height': 950
         }
     },
@@ -79,7 +79,7 @@ DASHBIO_COMPONENTS = {
         },
         'setup_code': '''circos_graph_data = json.loads(data)''',
         'iframe_info': {
-            'location': 'https://dash-bio.plotly.host/docs-demos-dashbio/circos',
+            'location': 'https://dash-gallery.plotly.host/docs-demos-dashbio/circos',
             'height': 700
         }
     },
@@ -111,7 +111,7 @@ DASHBIO_COMPONENTS = {
 data = df.values
 ''',
         'iframe_info': {
-            'location': 'https://dash-bio.plotly.host/docs-demos-dashbio/clustergram',
+            'location': 'https://dash-gallery.plotly.host/docs-demos-dashbio/clustergram',
             'height': 850
         }
     },
@@ -122,7 +122,7 @@ data = df.values
             'chrHeight': '250'
         },
         'iframe_info': {
-            'location': 'https://dash-bio.plotly.host/docs-demos-dashbio/ideogram'
+            'location': 'https://dash-gallery.plotly.host/docs-demos-dashbio/ideogram'
         }
     },
 
@@ -143,7 +143,7 @@ data = df.values
     '/tests/dashbio_demos/sample_data/manhattan_data.csv'
 )''',
         'iframe_info': {
-            'location': 'https://dash-bio.plotly.host/docs-demos-dashbio/manhattan',
+            'location': 'https://dash-gallery.plotly.host/docs-demos-dashbio/manhattan',
             'width': 800
         }
     },
@@ -187,7 +187,7 @@ model_data = json.loads(model_data)
 styles_data = json.loads(styles_data)
 ''',
         'iframe_info': {
-            'location': 'https://dash-bio.plotly.host/docs-demos-dashbio/mol3d'
+            'location': 'https://dash-gallery.plotly.host/docs-demos-dashbio/mol3d'
         }
     },
     'NeedlePlot': {
@@ -204,7 +204,7 @@ styles_data = json.loads(styles_data)
         },
         'setup_code': '''mdata = json.loads(data)''',
         'iframe_info': {
-            'location': 'https://dash-bio.plotly.host/docs-demos-dashbio/needle_plot',
+            'location': 'https://dash-gallery.plotly.host/docs-demos-dashbio/needle_plot',
             'width': 850
         }
     },
@@ -222,7 +222,7 @@ styles_data = json.loads(styles_data)
         'setup_code': '''data = json.loads(data)
 ''',
         'iframe_info': {
-            'location': 'https://dash-bio.plotly.host/docs-demos-dashbio/oncoprint',
+            'location': 'https://dash-gallery.plotly.host/docs-demos-dashbio/oncoprint',
             'width': 900
         }
     },
@@ -235,7 +235,7 @@ styles_data = json.loads(styles_data)
         'datafile': {
             'name': 'sequence_viewer_P01308.fasta'
         },
-        'setup_code': '''seq = protein_reader.read_fasta(data_string=data)[0]['sequence']''',
+        'setup_code': '''seq = protein_reader.read_fasta(data, is_datafile=False)[0]['sequence']''',
         'params': {
             'sequence': 'seq'
         },
@@ -255,7 +255,7 @@ styles_data = json.loads(styles_data)
         ],
         'setup_code': '''data = xyz_reader.read_xyz(data_string=data)''',
         'iframe_info': {
-            'location': 'https://dash-bio.plotly.host/docs-demos-dashbio/speck',
+            'location': 'https://dash-gallery.plotly.host/docs-demos-dashbio/speck',
             'height': 500
         }
     },
@@ -277,7 +277,7 @@ styles_data = json.loads(styles_data)
         },
         'component_wrap': 'dcc.Graph(figure=_)',
         'iframe_info': {
-            'location': 'https://dash-bio.plotly.host/docs-demos-dashbio/volcano',
+            'location': 'https://dash-gallery.plotly.host/docs-demos-dashbio/volcano',
             'width': 800
         }
     }

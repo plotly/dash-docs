@@ -16,7 +16,7 @@ layout = html.Div(className='toc', children=[
                 """Dash Deployment Server is Plotly's commercial offering
                    for hosting and sharing Dash Apps on-premises or in the
                    cloud. [Learn more](https://plot.ly/dash/pricing) or
-                   [request a trial](https://plotly.typeform.com/to/rkO85m).""")
+                   [request a trial](https://go.plot.ly/dash-doc).""")
     ]),
 
     reusable_components.Section("Deployment", [
@@ -45,6 +45,9 @@ reusable_components.Section("User Interface", [
         reusable_components.Chapter('Dash App Portal',
                 '/dash-deployment-server/portal',
                 'Learn about the Dash App Portal.'),
+        reusable_components.Chapter('Admin Panel',
+                '/dash-deployment-server/admin-panel',
+                'Manage users in the Admin Panel.'),
         reusable_components.Chapter('Dash App Privacy',
                 '/dash-deployment-server/privacy',
                 'Learn about Dash App privacy and how to manage collaborators.'),

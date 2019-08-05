@@ -11,6 +11,6 @@ def Blockquote():
     [Dash Deployment Server](https://plot.ly/dash/pricing),
     Plotly's commercial platform for deploying and managing Dash applications.
     [View the docs](https://dash.plot.ly/dash-deployment-server/) or
-    [request a trial](https://plotly.typeform.com/to/rkO85m).
+    [request a trial](https://go.plot.ly/dash-doc).
     '''
     ))

@@ -8,7 +8,7 @@ The Dash Userguide is hosted online at: [https://plot.ly/dash](https://plot.ly/d
 
 To run an app locally:
 
-1. (optional) create and activate new virtualenv or conda env (Python 2.7):
+1. (optional) create and activate new virtualenv or conda env:
 
 ```
 pip install virtualenv
@@ -18,7 +18,7 @@ source venv/bin/activate
 
 or, with conda:
 ```
-conda create --yes -n dash_docs python=2.7
+conda create --yes -n dash_docs
 source activate dash_docs
 ```
 

@@ -30,7 +30,7 @@ layout = html.Div([
     ),
 
     dcc.Markdown(dedent('''
-    > **New! Released on November 2, 2018**
+    > **Released on November 2, 2018**
     >
     > Dash DataTable is an interactive table component designed for
     > viewing, editing, and exploring large datasets.
@@ -50,19 +50,16 @@ layout = html.Div([
     > We're excited to continue to work with users and companies
     > that [invest in DataTable's future](https://plot.ly/products/consulting-and-oem/).
     >
-    > DataTable is in `Alpha`. This is more of a statement on the
-    > DataTable API rather than on its features.
-    > The table currently works beautifully and is already
-    > used in production at F500 companies. However, we
-    > expect to make a few more breaking changes to its API and
-    > behavior within the next couple of months.
-    > Once the community feels good about its API, we'll lock it down
-    >  and we'll commit to reducing the frequency of breaking changes.
-    > Please subscribe to [dash-table#207](https://github.com/plotly/dash-table/issues/207)
-    > and the [CHANGELOG.md](https://github.com/plotly/dash-table/blob/master/CHANGELOG.md) to stay up-to-date with any breaking changes.
+    > With `dash-table v4.0.0` - included in `dash v1.0.0` and released on
+    > June 20, 2019 - we consider the API stable. We don't expect any
+    > breaking changes any time soon, but if there are they will be
+    > accompanied by a new major version of dash. If you've been using
+    > DataTable with `dash v0.x` / `dash-table v3.x`, check out the
+    > [Dash 1.0 Migration Guide](/dash-1-0-migration) for the full list of
+    > changes.
     >
-    > So, check out DataTable and let us know what you think.
-    > Or even better, share your DataTable Dash apps
+    > Otherwise, check out DataTable in the docs below.
+    > If you make something cool with it, we'd love to see it! Share it
     > on the [community forum](https://community.plot.ly/t/show-and-tell-community-thread/7554)!
     >
     > -- chriddyp

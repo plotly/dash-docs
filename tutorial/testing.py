@@ -1,14 +1,6 @@
 import dash_html_components as html
 import dash_core_components as dcc
 
-logs = '''
-14:05:41 | DEBUG | selenium.webdriver.remote.remote_connection:388 | DELETE http://127.0.0.1:53672/session/87b6f1ed3710173eff8037447e2b8f56 {"sessionId": "87b6f1ed3710173eff8037447e2b8f56"}
-14:05:41 | DEBUG | urllib3.connectionpool:393 | http://127.0.0.1:53672 "DELETE /session/87b6f1ed3710173eff8037447e2b8f56 HTTP/1.1" 200 72
-14:05:41 | DEBUG | selenium.webdriver.remote.remote_connection:440 | Finished Request
-14:05:41 | INFO | dash.testing.application_runners:80 | killing the app runner
-14:05:41 | DEBUG | urllib3.connectionpool:205 | Starting new HTTP connection (1): localhost:8050
-14:05:41 | DEBUG | urllib3.connectionpool:393 | http://localhost:8050 "GET /_stop-3ef0e64e8688436caced44e9f39d4263 HTTP/1.1" 200 29
-'''
 
 layout = html.Div([
     dcc.Markdown(u"""
@@ -33,8 +25,8 @@ layout = html.Div([
     ## Install
 
     The Dash testing is now part of the main Dash package. After
-    `pip install dash`, the Dash `pytest` fixtures are available, you just
-    need to install the WebDrivers and you are ready to test.
+    `pip install dash[testing]`, the Dash `pytest` fixtures are available, you
+    just need to install the WebDrivers and you are ready to test.
 
     - [Chrome Driver](http://chromedriver.chromium.org/getting-started)
     - [Firefox Gecko Driver](https://github.com/mozilla/geckodriver/releases)
@@ -42,6 +34,12 @@ layout = html.Div([
     FYI, We run Dash integration tests with Chrome WebDriver.
     But the fixture allows you to choose another browser from the command line,
     e.g. `pytest --webdriver Firefox -k bsly001`.
+
+    Headless mode is added in Dash *1.0.1*, run `pytest --headless -k bsly001`
+    to start test in headless mode. First time hearing about `headless mode`? The
+    main benefit for us is it's lighter and faster to run without a UI. You
+    can check the details from both [Firefox](https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Headless_mode)
+    and [Chrome](https://developers.google.com/web/updates/2017/04/headless-chrome).
 
     **Notes**:
 

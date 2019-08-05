@@ -155,6 +155,7 @@ layout = html.Div([
     |`column_conditional_tooltips`|`tooltip_conditional`|Just renamed, structure is unchanged.|
     |`column_static_dropdown`|`dropdown`     |Changed from an array of objects to an object of objects. Keys are column IDs, values are `{clearable: boolean, options: array of {label, value}}`.|
     |`column_static_tooltip`|`tooltip`       |Renamed, values are unchanged.|
+    |`content_style`   |**REMOVED**          |Deemed unnecessary. NOTE - This was added back in 1.0.2 (dash-table==4.0.2) under the name the "fill_width" property name.|
     |`dropdown_properties`|`dropdown_data`   |Structure changed to match `data`: an array of objects, keys are column IDs, values are `{clearable: boolean, options: array of {label, value}}`.|
     |`derived_filter_structure`|`derived_filter_query_structure`|Just renamed, values are unchanged.|
     |`filter`          |`filter_query`       |Renamed, values are unchanged.|
@@ -168,5 +169,10 @@ layout = html.Div([
     |`sorting_treat_empty_string_as_none`|`sort_as_null`|Now accepts an array of string, number or booleans that can be ignored during sort. Can also be set per column with `column.sort_as_null`.|
     |`style_data_conditional`|               |Renamed nested prop `if.filter` to `if.filter_query`.|
     |`tooltips`        |`tooltip_data`       |Structure changed to match `data`: an array of objects, keys are column IDs, values are `{delay, duration, type, value}` as before.|
+
+    ### Additional notes
+
+    `style_cell_conditional`: In prior versions `if.row_index` was evaluated for this prop but should not have been.
+    Use `style_data_conditional` and `style_header_conditional` instead for `if.row_index` based styling.
     '''))
 ])

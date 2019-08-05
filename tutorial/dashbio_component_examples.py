@@ -672,7 +672,7 @@ fasta_str = urlreq.urlopen(
 if PY3:
     fasta_str = fasta_str.decode('utf-8')
 
-seq = protein_reader.read_fasta(data_string=fasta_str)[0]['sequence']
+seq = protein_reader.read_fasta(fasta_str, is_datafile=False)[0]['sequence']
 
 dashbio.SequenceViewer(
     id='sequence-viewer-lines',
@@ -698,7 +698,7 @@ fasta_str = urlreq.urlopen(
 if PY3:
     fasta_str = fasta_str.decode('utf-8')
 
-seq = protein_reader.read_fasta(data_string=fasta_str)[0]['sequence']
+seq = protein_reader.read_fasta(fasta_str, is_datafile=False)[0]['sequence']
 
 dashbio.SequenceViewer(
     id='sequence-viewer-selection',
@@ -723,7 +723,7 @@ fasta_str = urlreq.urlopen(
 if PY3:
     fasta_str = fasta_str.decode('utf-8')
 
-seq = protein_reader.read_fasta(data_string=fasta_str)[0]['sequence']
+seq = protein_reader.read_fasta(fasta_str, is_datafile=False)[0]['sequence']
 
 dashbio.SequenceViewer(
     id='sequence-viewer-toolbar',
@@ -749,7 +749,7 @@ fasta_str = urlreq.urlopen(
 if PY3:
     fasta_str = fasta_str.decode('utf-8')
 
-seq = protein_reader.read_fasta(data_string=fasta_str)[0]['sequence']
+seq = protein_reader.read_fasta(fasta_str, is_datafile=False)[0]['sequence']
 
 dashbio.SequenceViewer(
     id='sequence-viewer-titlebadge',
@@ -781,7 +781,7 @@ data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio/master/
 if PY3:
     data = data.decode('utf-8')
 
-data = xyz_reader.read_xyz(data_string=data)
+data = xyz_reader.read_xyz(data, is_datafile=False)
 
 dashbio.Speck(
     data=data,
@@ -811,7 +811,7 @@ data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio/master/
 if PY3:
     data = data.decode('utf-8')
 
-data = xyz_reader.read_xyz(data_string=data)
+data = xyz_reader.read_xyz(data, is_datafile=False)
 
 dashbio.Speck(
     data=data,

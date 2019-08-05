@@ -1,5 +1,3 @@
-from textwrap import dedent
-
 import dash_cytoscape as cyto
 import dash_core_components as dcc
 import dash_html_components as html
@@ -46,7 +44,7 @@ Display = CreateDisplay({
 
 layout = html.Div([
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
     # Cytoscape Elements
 
     ## Element Declaration
@@ -74,7 +72,7 @@ layout = html.Div([
 
     If we want a graph with two nodes, and an edge connecting those two nodes,
     we effectively need three of those element dictionaries, grouped as a list:
-    ''')),
+    '''),
 
     Display('''
     cyto.Cytoscape(
@@ -94,7 +92,7 @@ layout = html.Div([
     )
     '''),
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
     Notice that we also need to specify the `id`, the `layout`, and the `style`
     of Cytoscape. The `id` parameter is needed for assigning callbacks,
     `style` lets you specify the CSS style of the component (similarly to core
@@ -111,7 +109,7 @@ layout = html.Div([
     also accept boolean items that specify its state. We extend the previous
     example in the following way:
 
-    ''')),
+    '''),
 
     Display('''
     cyto.Cytoscape(
@@ -147,7 +145,7 @@ layout = html.Div([
     )
     '''),
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
     > Note that those boolean properties can be overwritten by certain Cytoscape
     > parameters such as `autoungrabify` or `autounselectify`. Please refer to
     > [the reference](/cytoscape/reference) for more information.
@@ -158,7 +156,7 @@ layout = html.Div([
     elements using a selector. We modify the previous example by giving
     the elements a class or multiple classes (separated by a space), and
     define a stylesheet that modifies the elements based on those classes.
-    ''')),
+    '''),
 
     Display('''
     cyto.Cytoscape(
@@ -194,16 +192,17 @@ layout = html.Div([
     )
     '''),
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
     > The stylesheet parameter will be described in depth in [part 3](/cytoscape/styling)
     > of this guide. We will show extensive examples of using selectors to
     > style groups, classes, and data values. Expand below if you still
     > want to take a look at the stylesheet used previously.
-    ''')),
+    '''),
 
     html.Details(open=False, children=[
         html.Summary('View the Stylesheet'),
-        dcc.Markdown(dedent('''
+        dcc.Markdown('''
+        ```py
         my_stylesheet = [
             # Group selectors
             {
@@ -228,12 +227,13 @@ layout = html.Div([
                 }
             }
         ]
-        '''))
+        ```
+        ''', style=styles.code_container),
     ]),
 
     html.Hr(),
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
     ## Compound Nodes
 
     A concept introduced in Cytoscape.js, compound nodes are nodes that
@@ -242,7 +242,7 @@ layout = html.Div([
     automatically calculated based on how the children nodes are configured.
 
     Here is the example of an app using compound nodes:
-    ''')),
+    '''),
 
     dcc.Markdown(
         examples['compound.py'][0],

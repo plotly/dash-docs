@@ -17,7 +17,7 @@ fasta_str = urlreq.urlopen(
 if PY3:
     fasta_str = fasta_str.decode('utf-8')
 
-seq = protein_reader.read_fasta(data_string=fasta_str)[0]['sequence']
+seq = protein_reader.read_fasta(fasta_str, is_datafile=False)[0]['sequence']
 
 app.layout = html.Div([
     dashbio.SequenceViewer(

@@ -63,7 +63,7 @@ default_stylesheet = [
 
 app.layout = html.Div([
     cyto.Cytoscape(
-        id='cytoscape-event-callbacks',
+        id='cytoscape-event-callbacks-1',
         layout={'name': 'preset'},
         elements=edges+nodes,
         stylesheet=default_stylesheet,
@@ -74,7 +74,7 @@ app.layout = html.Div([
 
 
 @app.callback(Output('cytoscape-tapNodeData-json', 'children'),
-              [Input('cytoscape-event-callbacks', 'tapNodeData')])
+              [Input('cytoscape-event-callbacks-1', 'tapNodeData')])
 def displayTapNodeData(data):
     return json.dumps(data, indent=2)
 

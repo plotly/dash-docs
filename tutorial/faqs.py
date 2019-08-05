@@ -180,7 +180,7 @@ layout = html.Div([
     appearing in your callbacks will be included in the initial layout. You can
     remove this restriction by disabling callback validation like this:
 
-        app.config.supress_callback_exceptions = True
+        app.config.suppress_callback_exceptions = True
 
 
     ### Callbacks require *all* `Inputs`, `States`, and `Output` to be rendered on the page
@@ -238,7 +238,7 @@ layout = html.Div([
     Note: This section is present for legacy purposes. Prior to v0.40.0, setProps was only defined if the component was connected to a
     callback. This required complex state management within the component like [this](https://github.com/plotly/dash-core-components/blob/63be1c258c15b419a82fb66366e1a31e66fbfaef/src/components/Input.react.js#L51-L59).
     Now, setProps is always defined which should simplify your component's state
-    management. Learn more in this [community forum topic](TBD).
+    management. Learn more in this [community forum topic](https://community.plot.ly/t/callbacks-clearing-all-unconnected-core-components-values/7631).
 
     If a Dash Core Component is present in the layout but not registered with a
     callback (either as an `Input`, `State`, or `Output`) then any changes to its

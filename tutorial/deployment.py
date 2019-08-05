@@ -24,7 +24,7 @@ It offers an enterprise-wide Dash App Portal,
 easy git-based deployment, automatic URL namespacing,
 built-in SSL support, LDAP authentication, and more.
 [Learn more about Dash Deployment Server](https://plot.ly/dash/pricing) or
-[get in touch to start a trial](https://plotly.typeform.com/to/rkO85m).
+[get in touch to start a trial](https://go.plot.ly/dash-doc).
 
 For existing customers, see the [Dash Deployment Server Documentation](/dash-deployment-server).
 
@@ -255,6 +255,6 @@ to git and push those changes to heroku.
 
 This workflow for deploying apps on heroku is very similar to how deployment
 works with the Plotly Enterprise's Dash Deployment Server.
-[Learn more](https://plot.ly/dash/pricing/) or [get in touch](https://plotly.typeform.com/to/rkO85m).
+[Learn more](https://plot.ly/dash/pricing/) or [get in touch](https://go.plot.ly/dash-doc).
 ''')
 ]

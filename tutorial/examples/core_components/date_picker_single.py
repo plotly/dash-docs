@@ -1,5 +1,6 @@
 from datetime import datetime as dt
 import dash
+from dash.dependencies import Input, Output
 import dash_html_components as html
 import dash_core_components as dcc
 
@@ -19,12 +20,12 @@ app.layout = html.Div([
 
 
 @app.callback(
-    dash.dependencies.Output('output-container-date-picker-single', 'children'),
-    [dash.dependencies.Input('my-date-picker-single', 'date')])
+    Output('output-container-date-picker-single', 'children'),
+    [Input('my-date-picker-single', 'date')])
 def update_output(date):
     string_prefix = 'You have selected: '
     if date is not None:
-        date = dt.strptime(date, '%Y-%m-%d')
+        date = dt.strptime(date.split(' ')[0], '%Y-%m-%d')
         date_string = date.strftime('%B %d, %Y')
         return string_prefix + date_string
 

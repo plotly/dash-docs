@@ -1,5 +1,3 @@
-from textwrap import dedent
-
 import dash_cytoscape as cyto
 import dash_core_components as dcc
 import dash_html_components as html
@@ -98,7 +96,7 @@ Display = CreateDisplay({
 
 layout = html.Div([
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
     # Cytoscape Styling
 
     ## The `stylesheet` parameter
@@ -124,11 +122,12 @@ layout = html.Div([
 
     We start by looking at the same example shown in the elements
     chapter, but this time we examine the stylesheet:
-    ''')),
+    '''),
 
     html.Details(open=False, children=[
         html.Summary('View simple elements'),
-        dcc.Markdown(dedent('''
+        dcc.Markdown('''
+        ```py
         simple_elements = [
             {
                 'data': {'id': 'one', 'label': 'Modified Color'},
@@ -154,7 +153,8 @@ layout = html.Div([
             {'data': {'source': 'three', 'target': 'four'}, 'classes': 'red'},
             {'data': {'source': 'two', 'target': 'four'}},
         ]
-        '''))
+        ```
+        ''', style=styles.code_container),
     ]),
 
     Display('''
@@ -190,7 +190,7 @@ layout = html.Div([
     )
     '''),
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
     In this example, we use the group and class selectors. Group selectors
     consist of either the string `'node'` or the string `'edge'`, since an
     element can only be one or the other.
@@ -224,11 +224,12 @@ layout = html.Div([
     where the `'weight'` key indicates the weight of your edge. You can find
     the declaration below:
 
-    ''')),
+    '''),
 
     html.Details(open=False, children=[
         html.Summary('View weighted elements'),
-        dcc.Markdown(dedent('''
+        dcc.Markdown('''
+        ```py
         weighted_elements = [
             {'data': {'id': 'A'}},
             {'data': {'id': 'B'}},
@@ -243,13 +244,14 @@ layout = html.Div([
             {'data': {'source': 'C', 'target': 'E', 'weight': 5}},
             {'data': {'source': 'D', 'target': 'A', 'weight': 6}}
         ]
-        '''))
+        ```
+        ''', style=styles.code_container),
     ]),
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
     If you want to highlight all the of the edges above a certain weight
     (e.g. 3), use the selector `'[weight > 3]'`. For example:
-    ''')),
+    '''),
 
     Display('''
     cyto.Cytoscape(
@@ -274,10 +276,10 @@ layout = html.Div([
     )
     '''),
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
     Similarly, if you want to have weights smaller or equal to 3, you would
     write:
-    ''')),
+    '''),
 
     Display('''
     cyto.Cytoscape(
@@ -302,7 +304,7 @@ layout = html.Div([
     )
     '''),
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
     Comparisons also work for string matching problems. Given the same graph
     as before, but with a data key `'firstname'` for each node:
     ```
@@ -311,11 +313,12 @@ layout = html.Div([
     We can select all the elements that match a specific pattern. For instance,
     to style nodes where `'firstname'` contains the substring `'ert'`, we
     declare:
-    ''')),
+    '''),
 
     html.Details(open=False, children=[
         html.Summary('View named elements'),
-        dcc.Markdown(dedent('''
+        dcc.Markdown('''
+        ```py
         named_elements = [
             {'data': {'id': 'A', 'firstname': 'Albert'}},
             {'data': {'id': 'B', 'firstname': 'Bert'}},
@@ -330,7 +333,8 @@ layout = html.Div([
             {'data': {'source': 'C', 'target': 'E'}},
             {'data': {'source': 'D', 'target': 'A'}}
         ]
-        '''))
+        ```
+        ''', style=styles.code_container),
     ]),
 
     Display('''
@@ -357,10 +361,10 @@ layout = html.Div([
     )
     '''),
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
     Now, if we want to select all the elements where `'firstname'` *does not*
     contain `'ert'`, then we can run:
-    ''')),
+    '''),
 
     Display('''
     cyto.Cytoscape(
@@ -386,10 +390,10 @@ layout = html.Div([
     )
     '''),
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
     Other options also exist for matching specific parts of the string. For
     example, if we want to only select the prefix, we can use `^=` as such:
-    ''')),
+    '''),
 
     Display('''
     cyto.Cytoscape(
@@ -415,10 +419,10 @@ layout = html.Div([
     )
     '''),
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
     This can also be prepended by modifiers. For example, `@` added in front
     of an operator will render the string matched case insensitive.
-    ''')),
+    '''),
 
     Display('''
     cyto.Cytoscape(
@@ -444,7 +448,7 @@ layout = html.Div([
     )
     '''),
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
     View the [complete list of matching operations](http://js.cytoscape.org/#selectors/data)
      for data selectors.
 
@@ -454,18 +458,20 @@ layout = html.Div([
 
     Many methods exist to style edges in Dash Cytoscape. In some cases, you
     might want different ways to display double-edged
-    ''')),
+    '''),
 
     html.Details(open=False, children=[
         html.Summary('View double-edged elements'),
-        dcc.Markdown(dedent('''
+        dcc.Markdown('''
+        ```py
         double_edges = [
             {'data': {'id': src+tgt, 'source': src, 'target': tgt}}
             for src, tgt in ['AB', 'BA', 'BC', 'CB', 'CD', 'DC', 'DA', 'AD']
         ]
 
         double_edged_el = [{'data': {'id': id_}} for id_ in 'ABCD'] + double_edges
-        '''))
+        ```
+        ''', style=styles.code_container),
     ]),
 
     Display('''
@@ -509,7 +515,7 @@ layout = html.Div([
     )
     '''),
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
     Many curve styles are accepted, and support further customization such as
     the distance between edges and curvature radius. You can find them in
     the [JavaScript docs](http://js.cytoscape.org/#style/bezier-edges).
@@ -520,18 +526,20 @@ layout = html.Div([
     shapes, colors, and positions onto the edges. This is an example of using
     different types of arrows, with the same graph above, but with certain
     edges removed:
-    ''')),
+    '''),
 
     html.Details(open=False, children=[
         html.Summary('View directed elements'),
-        dcc.Markdown(dedent('''
+        dcc.Markdown('''
+        ```py
         directed_edges = [
             {'data': {'id': src+tgt, 'source': src, 'target': tgt}}
             for src, tgt in ['BA', 'BC', 'CD', 'DA']
         ]
 
         directed_elements = [{'data': {'id': id_}} for id_ in 'ABCD'] + directed_edges
-        '''))
+        ```
+        ''', style=styles.code_container),
     ]),
 
     Display('''
@@ -592,7 +600,7 @@ layout = html.Div([
     )
     '''),
 
-    dcc.Markdown(dedent('''
+    dcc.Markdown('''
     Notice here that we prepend a position indicator for the color and shape
     keys. In the previous example, all four possible positions are displayed.
     In fact, you can even the edges with multiple arrows, all with different
@@ -604,7 +612,7 @@ layout = html.Div([
     It is possible to [display images inside nodes](http://js.cytoscape.org/#style/background-image),
     as documented in Cytoscape.js. We show below a complete example of display
     an interactive tree of animal phylogeny using images from Wikimedia.
-    ''')),
+    '''),
 
     dcc.Markdown(
         examples['images.py'][0],

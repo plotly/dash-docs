@@ -8,7 +8,7 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 app.layout = html.Div([
     daq.Slider(
-        id='my-daq-slider',
+        id='my-daq-slider-ex',
         value=17
     ),
     html.Div(id='slider-output')
@@ -17,7 +17,7 @@ app.layout = html.Div([
 
 @app.callback(
     dash.dependencies.Output('slider-output', 'children'),
-    [dash.dependencies.Input('my-daq-slider', 'value')])
+    [dash.dependencies.Input('my-daq-slider-ex', 'value')])
 def update_output(value):
     return 'The slider is currently at {}.'.format(value)
 
