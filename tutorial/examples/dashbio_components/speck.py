@@ -19,7 +19,7 @@ data = urlreq.urlopen(
 if PY3:
     data = data.decode('utf-8')
 
-data = xyz_reader.read_xyz(data, is_datafile=False)
+data = xyz_reader.read_xyz(datapath_or_datastring=data, is_datafile=False)
 
 app.layout = html.Div([
     dcc.Dropdown(

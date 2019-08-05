@@ -235,7 +235,7 @@ styles_data = json.loads(styles_data)
         'datafile': {
             'name': 'sequence_viewer_P01308.fasta'
         },
-        'setup_code': '''seq = protein_reader.read_fasta(data, is_datafile=False)[0]['sequence']''',
+        'setup_code': '''seq = protein_reader.read_fasta(datapath_or_datastring=data, is_datafile=False)[0]['sequence']''',
         'params': {
             'sequence': 'seq'
         },
@@ -253,7 +253,7 @@ styles_data = json.loads(styles_data)
         'library_imports': [
             ['dash_bio_utils.xyz_reader', 'xyz_reader']
         ],
-        'setup_code': '''data = xyz_reader.read_xyz(data_string=data)''',
+        'setup_code': '''data = xyz_reader.read_xyz(datapath_or_datastring=data, is_datafile=False)''',
         'iframe_info': {
             'location': 'https://dash-gallery.plotly.host/docs-demos-dashbio/speck',
             'height': 500
