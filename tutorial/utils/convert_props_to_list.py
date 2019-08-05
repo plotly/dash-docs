@@ -57,7 +57,11 @@ def generate_prop_info(component_name, lib=dcc):
                 top_level_keys_list = [key.strip().strip('\'')
                                        for key in top_level_keys.split(',')]
                 for key in top_level_keys_list:
-                    key_defs = key_defs.replace(f'- {key}', f'\n- {key}', 1)
+                    key_defs = key_defs.replace(
+                        '- {}'.format(key),
+                        '\n- {}'.format(key),
+                        1
+                    )
 
                 prop_desc = top_level_desc + \
                     top_level_keys + \
@@ -75,14 +79,19 @@ def generate_prop_info(component_name, lib=dcc):
         prop_optional = prop_optional_default
         if defined_default_val is not None:
             default_val = defined_default_val.groups(1)[0]
-            prop_optional = f'default `{default_val}`'
+            prop_optional = 'default `{}`'.format(default_val)
 
         if prop_type:
-            prop_type = f'*{prop_type}*; '
+            prop_type = '*{}*; '.format(prop_type)
             prop_type = prop_type.replace('|', '*|*')
 
         return_div.append(dcc.Markdown(dedent(
-            f'''**`{prop_name}`** ({prop_type}{prop_optional}): {prop_desc}'''
+            '''**`{}`** ({}{}): {}'''.format(
+                prop_name,
+                prop_type,
+                prop_optional,
+                prop_desc
+            )
         )))
 
     return html.Div(return_div)
