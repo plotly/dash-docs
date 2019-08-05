@@ -43,10 +43,22 @@ def generate_prop_info(component_name, lib=dcc):
         (prop_name, prop_type, prop_optional_default, prop_desc) = r.groups()
         prop_desc = prop_desc.replace(
             '[', '\[').replace(
-                ']', '\]').replace(
-                    '_', '\_')
-        if 'dict containing keys' in prop_desc:
-            regex_dict = r'''(.*?\. [\w]* has the following type: (?:[\w\s|]*)dict containing keys )([\w\s',]*)(\. Those keys have the following types: )([\w\s|();:',.-]*)'''
+                ']', '\]')
+
+        verbatim_regex = r'`((\\\[)(.*?)(\\\]))`'
+
+        prop_desc = re.sub(re.compile(verbatim_regex),
+                           r'`[\3]`',
+                           prop_desc)
+
+        link_regex = r'\\\[([\w\.\-:\/]+)\\\]\(([\w\.\-:#\/]+)\)'
+
+        prop_desc = re.sub(re.compile(link_regex),
+                           r'[\1](\2)',
+                           prop_desc)
+
+        if 'dict containing keys' in prop_desc or 'dicts containing keys' in prop_desc:
+            regex_dict = r'''(.*?\. [\w]* has the following type: (?:[\w\s|]*)dict[s]* containing keys )([\w\s',]*)(\. Those keys have the following types: )([\w\s|();:',`"\[\]*\\\/$%=+.-]*)'''
             parsed_dict_desc = re.match(
                 re.compile(regex_dict),
                 prop_desc
