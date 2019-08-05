@@ -78,6 +78,10 @@ def generate_prop_info(component_name, lib=dcc):
                         1
                     )
 
+                top_level_type_preamble = top_level_type_preamble.replace(
+                    'Those keys have the following types: ',
+                    'Those keys have the following types: \n'
+                )
                 prop_desc = top_level_desc + \
                     top_level_keys + \
                     top_level_type_preamble + \
