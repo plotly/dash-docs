@@ -77,8 +77,12 @@ def generate_prop_info(component_name, lib=dcc):
             default_val = defined_default_val.groups(1)[0]
             prop_optional = f'default `{default_val}`'
 
+        if prop_type:
+            prop_type = f'*{prop_type}*; '
+            prop_type = prop_type.replace('|', '*|*')
+
         return_div.append(dcc.Markdown(dedent(
-            f'''**`{prop_name}`** (*{prop_type};* {prop_optional}): {prop_desc}'''
+            f'''**`{prop_name}`** ({prop_type}{prop_optional}): {prop_desc}'''
         )))
 
     return html.Div(return_div)
