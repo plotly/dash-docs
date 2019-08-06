@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 import dash_core_components as dcc
 import dash_html_components as html
-from textwrap import dedent as s
 
 from tutorial import styles
 from tutorial import tools
@@ -16,8 +15,9 @@ examples = {
     'date_picker_range': tools.load_example('tutorial/examples/core_components/date_picker_range.py'),
     'dropdown': tools.load_example('tutorial/examples/core_components/dropdown.py'),
     'graph-config': tools.load_example('tutorial/examples/core_components/export_graph_to_chart_studio.py'),
+    'input-all-types': tools.load_example('tutorial/examples/core_components/input_all_types.py'),
     'input-basic': tools.load_example('tutorial/examples/core_components/input-basic.py'),
-    'input-n_submit': tools.load_example('tutorial/examples/core_components/input-n_submit.py'),
+    'input-number-type': tools.load_example('tutorial/examples/core_components/input_number_type.py'),
     'rangeslider': tools.load_example('tutorial/examples/core_components/rangeslider.py'),
     'rangeslider-nonlinear': tools.load_example('tutorial/examples/core_components/rangeslider_nonlinear.py'),
     'slider': tools.load_example('tutorial/examples/core_components/slider.py'),
@@ -398,15 +398,34 @@ Checklist = html.Div(children=[
 Input = html.Div(children=[
     html.H1('Input Examples and Reference'),
     html.Hr(),
-    html.H3('Update Value on Keypress'),
+    html.H3('Supported Input Types'),
+    Syntax(examples['input-all-types'][0]),
+    Example(examples['input-all-types'][1]),
+    html.Br(),
+    html.H3('Debounce delays the Input processing'),
     Syntax(examples['input-basic'][0]),
     Example(examples['input-basic'][1]),
     html.Br(),
-    html.H3('Update Value on Enter/Blur'),
-    dcc.Markdown("`dcc.Input` has properties `n_submit`, which updates when the enter button is pressed, and `n_blur`"
-                 " , which updates when the component loses focus (e.g tab is pressed or the user clicks away)."),
-    Syntax(examples['input-n_submit'][0]),
-    Example(examples['input-n_submit'][1]),
+    html.H3('Number Input'),
+    dcc.Markdown("""
+
+    *fixed and enhanced in Dash v1.1*
+
+    Number type is now close to native HTML5 `input` behavior across
+    browsers. We also apply a strict number casting in callbacks:
+    valid number converts into corresponding number types, and invalid number
+    converts into None. E.g.
+    `dcc.Input(id='range', type='number', min=2, max=10, step=1)` typing 3 and
+    11 will return respectively integer three and None in Python callbacks.
+
+    ##### Important Notice
+
+    There is a limitation when converting numbers like 1.0 or 0.0, the
+    corresponding number type in callbacks is **Integer** instead of **Float**.
+    Please add extra guard casting like `float()` within callbacks if needed.
+    """),
+    Syntax(examples['input-number-type'][0]),
+    Example(examples['input-number-type'][1]),
     html.Br(),
     html.H3('Input Properties'),
     generate_prop_info('Input')
@@ -1047,7 +1066,7 @@ Textarea = html.Div(children=[
 # Tabs
 Tabs = html.Div(children=[
     html.H1('Tabs Examples and Reference'),
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     The Tabs and Tab components can be used to create tabbed sections in your app.
     The `Tab` component controls the style and value of the individual tab
     and the `Tabs` component hold a collection of `Tab` components.
@@ -1060,47 +1079,47 @@ Tabs = html.Div(children=[
         - with inline styles
         - with props
     ***
-    ''')),
+    '''),
 
     html.H2('Method 1. Content as Callback'),
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     Attach a callback to the Tabs `value` prop and update a container's `children`
     property in your callback.
-    ''')),
+    '''),
     dcc.Markdown(
         examples['tabs_callback'][0],
         style=styles.code_container
     ),
     html.Div(examples['tabs_callback'][1], className='example-container'),
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     In the example above, our callback contains all of the content. In practice,
     we'll keep the tab's content in separate files and import the data.
     For an example, see the [URLs and Multi-Page App Tutorial](/urls).
-    ''')),
+    '''),
 
     html.H2('Method 2. Content as Tab Children'),
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     Instead of displaying the content through a callback, you can embed the content
     directly as the `children` property in the `Tab` component:
-    ''')),
+    '''),
 
     dcc.Markdown(
         examples['tabs_simple'][0],
         style=styles.code_container
     ),
     html.Div(examples['tabs_simple'][1], className='example-container'),
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     Note that this method has a drawback: it requires that you compute the children property for each individual
     tab _upfront_ and send all of the tab's content over the network _at once_.
     The callback method allows you to compute the tab's content _on the fly_
     (that is, when the tab is clicked).
-    ''')),
+    '''),
 
     html.H2('Styling the Tabs component'),
     html.H3('With CSS classes'),
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     Styling the Tabs (and Tab) component can either be done using CSS classes by providing your own to the `className` property:
-    ''')),
+    '''),
 
     dcc.Markdown(
         examples['tabs_styled_with_classes'][0],
@@ -1110,12 +1129,12 @@ Tabs = html.Div(children=[
 
     html.Br(),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     Notice how the container of the Tabs can be styled as well by supplying a class to the `parent_className` prop, which we use here to draw a border below it, positioning the actual Tabs (with padding) more in the center.
     We also added `display: flex` and `justify-content: center` to the regular `Tab` components, so that labels with multiple lines will not break the flow of the text.
 
     The corresponding CSS file (`assets/tabs.css`) looks like this. Save the file in an `assets` folder (it can be named anything you want). Dash will automatically include this CSS when the app is loaded. [Learn more about including CSS in your app here.](/external-resources)
-    ''')),
+    '''),
 
     dcc.Markdown(
         '```css\n' + examples['tabs_styled_with_classes_css'] + '\n```',
@@ -1126,9 +1145,9 @@ Tabs = html.Div(children=[
     html.Br(),
 
     html.H3('With inline styles'),
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     An alternative to providing CSS classes is to provide style dictionaries directly:
-    ''')),
+    '''),
 
     dcc.Markdown(
         examples['tabs_styled_with_inline'][0],
@@ -1138,10 +1157,10 @@ Tabs = html.Div(children=[
 
     html.Br(),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     Lastly, you can set the colors of the Tabs components in the `color` prop, by specifying the "border", "primary", and "background" colors in a dict. Make sure you set them
     all, if you're using them!
-    ''')),
+    '''),
 
     dcc.Markdown(
         examples['tabs_styled_with_props'][0],
@@ -1160,12 +1179,12 @@ Tabs = html.Div(children=[
 # Graphs
 Graphs = html.Div([
     html.H1('Graph Reference'),
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     Custimize the [Plotly.js config options](https://plot.ly/javascript/configuration-options/) of your graph using
     the `config` property. The example below uses the `showSendToCloud` and `plotlyServerURL` options include a
     save button in the modebar of the graph which exports the figure to URL specified by `plotlyServerURL`.
 
-    ''')),
+    '''),
     Syntax(examples['graph-config'][0]),
     Example(examples['graph-config'][1]),
     html.H3('Graph Properties'),
@@ -1175,7 +1194,7 @@ Graphs = html.Div([
 # Upload
 Upload = html.Div([
     html.H1('Upload Component'),
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     The Dash upload component allows your app's viewers to upload files,
     like excel spreadsheets or images, into your application.
     Your Dash app can access the contents of an upload by listening to
@@ -1185,33 +1204,33 @@ Upload = html.Div([
     no matter what type of file: text files, images, zip files,
     excel spreadsheets, etc.
 
-    ''')),
+    '''),
 
-    Syntax(examples['upload-datafile'][0], summary=dcc.Markdown(s('''
+    Syntax(examples['upload-datafile'][0], summary=dcc.Markdown('''
         Here's an example that parses CSV or Excel files and displays
         the results in a table. Note that this example uses the
         `DataTable` from the
         [dash-table](https://github.com/plotly/dash-table)
         project.
-    '''))),
+    ''')),
 
     Example(examples['upload-datafile'][1]),
 
     html.Hr(),
 
-    Syntax(examples['upload-image'][0], summary=dcc.Markdown(s('''
+    Syntax(examples['upload-image'][0], summary=dcc.Markdown('''
         This next example responds to image uploads by displaying them
         in the app with the `html.Img` component.
-    '''))),
+    ''')),
     Example(examples['upload-image'][1]),
 
-    Syntax(examples['upload-gallery'][0], summary=dcc.Markdown(s('''
+    Syntax(examples['upload-gallery'][0], summary=dcc.Markdown('''
         The `children` attribute of the `Upload` component accepts any
         Dash component. Clicking on the children element will trigger the
         upload action, as will dragging and dropping files.
         Here are a few different ways that you could style the upload
         component using standard dash components.
-    '''))),
+    ''')),
     Example(examples['upload-gallery'][1]),
 
     html.Hr(),
@@ -1223,12 +1242,12 @@ Upload = html.Div([
 # ConfirmDialog
 ConfirmDialog = html.Div([
     html.H1('ConfirmDialog component'),
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     ConfirmDialog is used to display the browser's native "confirm" modal,
     with an optional message and two buttons ("OK" and "Cancel").
     This ConfirmDialog can be used in conjunction with buttons when the user
     is performing an action that should require an extra step of verification.
-    ''')),
+    '''),
     Syntax(examples['confirm'][0]),
     Example(examples['confirm'][1]),
     generate_prop_info('ConfirmDialog')
@@ -1237,10 +1256,10 @@ ConfirmDialog = html.Div([
 # ConfirmDialogProvider
 ConfirmDialogProvider = html.Div([
     html.H1('ConfirmDialogProvider component'),
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     Send a [ConfirmDialog](/dash-core-components/confirm) when the user
     clicks the children of this component, usually a button.
-    ''')),
+    '''),
     Syntax(examples['confirm-provider'][0]),
     Example(examples['confirm-provider'][1]),
     generate_prop_info('ConfirmDialogProvider')
@@ -1249,7 +1268,7 @@ ConfirmDialogProvider = html.Div([
 
 Store = html.Div([
     html.H1('Store component'),
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     Store json data in the browser.
 
     ## limitations.
@@ -1278,7 +1297,7 @@ Store = html.Div([
     data callback in the request queue.
 
     See https://github.com/plotly/dash-renderer/pull/81 for further discussion.
-    ''')),
+    '''),
     html.H2('Store clicks example'),
     Syntax(examples['store-clicks'][0]),
     Example(examples['store-clicks'][1]),
@@ -1295,7 +1314,7 @@ Store = html.Div([
 LogoutButton = html.Div([
     html.H1('LogoutButton'),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     Please note that no authentication is performed in Dash by default
     and you have to implement the authentication yourself.
 
@@ -1314,7 +1333,7 @@ LogoutButton = html.Div([
     - [flask-session](https://pythonhosted.org/Flask-Session/)
     - [itsdangerous](https://pythonhosted.org/itsdangerous/)
     - [pyjwt](https://github.com/jpadilla/pyjwt)
-    ''')),
+    '''),
 
     html.H2('Custom authentication example'),
 
@@ -1328,15 +1347,15 @@ LogoutButton = html.Div([
 LoadingComponent = html.Div([
     html.H1('Loading Component'),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     Here’s a simple example that wraps the outputs for a couple of `Input` components in the `Loading` component. As you can see, you can define the type of spinner you would like to show (refer to the reference table below for all possible types of spinners).
     You can modify other attributes as well, such as `fullscreen=True` if you would like the spinner to be displayed fullscreen. Notice that, the Loading component traverses all
     of it's children to find a loading state, as demonstrated in the second callback, so that even nested children will get picked up.
-    ''')),
+    '''),
 
     Syntax(examples['loading_component'][0]),
     Example(examples['loading_component'][1]),
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     Please also check out [this section on loading states](/loading-states) if you want a more customizable experience.
     ''')),
     generate_prop_info('Loading')
@@ -1346,7 +1365,7 @@ LoadingComponent = html.Div([
 Location = html.Div([
     html.H1('Location Component'),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     The location component represents the location bar in your web browser. Through its `href`, `pathname`,
     `search` and `hash` properties you can access different portions of your app's url.
 
@@ -1356,7 +1375,7 @@ Location = html.Div([
     - `pathname` = `"/page-2"`
     - `search` = `"?a=test"`
     - `hash` = `"#quiz"`
-    ''')),
+    '''),
 
     generate_prop_info('Location')
 ])

@@ -4,23 +4,28 @@ import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
 
-external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+external_stylesheets = ["https://codepen.io/chriddyp/pen/bWLwgP.css"]
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
-app.layout = html.Div([
-    dcc.Input(id='input-1-keypress', type='text', value='Montréal'),
-    dcc.Input(id='input-2-keypress', type='text', value='Canada'),
-    html.Div(id='output-keypress')
-])
+app.layout = html.Div(
+    [
+        html.I("Try typing in input 1 & 2, and observe how debounce is impacting the callbacks. Press Enter and/or Tab key in Input 2 to cancel the delay"),
+        html.Br(),
+        dcc.Input(id="input1", type="text", placeholder="蒙特利爾"),
+        dcc.Input(id="input2", type="text", placeholder="加拿大", debounce=True),
+        html.Div(id="output"),
+    ]
+)
 
 
-@app.callback(Output('output-keypress', 'children'),
-              [Input('input-1-keypress', 'value'),
-               Input('input-2-keypress', 'value')])
+@app.callback(
+    Output("output", "children"),
+    [Input("input1", "value"), Input("input2", "value")],
+)
 def update_output(input1, input2):
-    return u'Input 1 is "{}" and Input 2 is "{}"'.format(input1, input2)
+    return u'Input 1 输出 {} and Input 2 输出 {}'.format(input1, input2)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run_server(debug=True)
