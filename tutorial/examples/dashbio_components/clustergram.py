@@ -52,7 +52,7 @@ def update_clustergram(rows):
             'row': 250,
             'col': 700
         },
-        hide_labels='row',
+        hidden_labels='row',
         height=800,
         width=700
     ))
