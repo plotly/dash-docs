@@ -1357,7 +1357,7 @@ LoadingComponent = html.Div([
     Example(examples['loading_component'][1]),
     dcc.Markdown('''
     Please also check out [this section on loading states](/loading-states) if you want a more customizable experience.
-    ''')),
+    '''),
     generate_prop_info('Loading')
 ])
 
