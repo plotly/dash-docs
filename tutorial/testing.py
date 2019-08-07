@@ -8,6 +8,8 @@ layout = html.Div([
 
     *New in Dash v1.0*
 
+    *support Dash for R testing added in v1.1.0*
+
     `dash.testing` \U0001f9ea provides some off-the-rack
     `pytest` [fixtures](https://docs.pytest.org/en/latest/fixture.html)
     and a minimal set of testing **APIs** with our internal crafted
@@ -145,19 +147,19 @@ layout = html.Div([
 
     ## Fixtures
 
-    To avoid accidental name collision with other pytest plugins,
-    all Dash test fixtures start with the prefix `dash_`.
-
-    - dash_duo
-
-    The default fixture for Dash integration tests, it contains a
-    `thread_server` and a WebDriver wrapped with high-level Dash testing APIs.
+    To avoid accidental name collision with other pytest plugins, all Dash test
+    fixtures start with the prefix `dash` or `dashr`.
 
     - dash_br
 
     A standalone WebDriver wrapped with high-level Dash testing APIs. This is
-    suitable for testing a Dash App in a deployed environment, i.e. when
-    your Dash App is accessible from a URL.
+    suitable for testing a Dash App in a deployed environment (Dash for Python
+    or R), i.e. when your Dash App is accessible from a URL.
+
+    - dash_duo
+
+    The default fixture for Dash Python integration tests, it contains a
+    `thread_server` and a WebDriver wrapped with high-level Dash testing APIs.
 
     - dash_thread_server
 
@@ -170,6 +172,20 @@ layout = html.Div([
     close to your production/deployed environment.  **Note:**  *You need to
     configure your `PYTHONPATH` so that the Dash app source file is
     directly importable*.
+
+    And `Dash for R` test fixtures have a prefix `dashr`.
+
+    - dashr
+
+    The default fixture for Dash for R integration tests. As `dash_duo` in Python,
+    it contains a `dashr_server` and a Selenium WebDriver with the same Dash
+    testing APIs.
+
+    - dashr_server
+
+    Start your Dash for R App with `Rscript` in a python `subprocess`. Note that
+    unlike python server fixtures, the start server arguments can only be
+    configured inside the Dash for R App.
 
     ## APIs
 
@@ -260,6 +276,50 @@ layout = html.Div([
     | `session_id` | shortcut to `driver.session_id` |
     | `server_url` | set the server_url as setter so the selenium is aware of the local server port, it also implicitly calls `wait_for_page`. return the server_url as property |
 
+    ## Dash for R testing
+
+    We released [Dash for R](https://medium.com/@plotlygraphs/announcing-dash-for-r-82dce99bae13)
+    in July 2019.  To facilitate testing it, we extended the *Python* package
+    `dash.testing` to support Dash for R apps.
+
+    The new `dashr` fixture gives us a test development experience in
+    Dash for R that's nearly identical to the `dash_duo` fixture in
+    Dash for Python. In this context, a `dashr` fixture is an instance of
+    Python class which provides a reliable baseline to execute the app and test
+    one or more of its features via Selenium WebDriver. For more details,
+    please visit [pytest documentation](https://docs.pytest.org/en/latest/fixture.html).
+
+    Here is a simple example runnable with `pytest`. Your Dash App is written
+    as a string inside the Python test code (the `app` argument can also be a
+    valid path to a `.R` file), the app is then executed by `Rscript` within
+    a Python `subprocess` and we can use the same set of API calls to
+    test it exactly as we do Dash testing in Python Apps.
+
+    ```python
+
+    app = '''
+    library(dash)
+    library(dashHtmlComponents)
+    app <- Dash$new()
+
+    app$layout(htmlDiv(list(htmlDiv(id='container',children='Hello Dash for R testing'))))
+    app$run_server()
+    '''
+
+    # a test case is a simple Python function with the same prefix convention
+    # dashr is the default fixture combines the API for serving the app
+    # and selenium tests.
+    def test_rstr001_r_with_string(dashr):
+        # the app is a raw string variable defining the Dash App in R
+        dashr.start_server(app)
+        assert dashr.find_element("#container").text == "Hello Dash for R Testing"
+
+
+    def test_rstr002_r_with_file_path(dashr):
+        # alternatively, the app can be a filepath defining the Dash for R
+        dashr.start_server(app=".tests/assets/demo_hello.R")
+        assert dashr.find_element("#container").text == "Hello Dash for R Testing"
+    ```
 
     ## Debugging
 
@@ -274,20 +334,18 @@ layout = html.Div([
     ### Run the CI job locally
 
     The [CircleCI Local CLI](https://circleci.com/docs/2.0/local-cli/) is a
-    handy tool to run all the jobs locally. It gives you an earlier warning
-    before even pushing your commits to remote, which leaves no chance of
-    making an embarrassing public mistake. The environment is identical to the
-    remote one, except the Percy snapshot and test reports are not functional
-    locally.
+    handy tool to execute some jobs locally. It gives you an earlier warning
+    before even pushing your commits to remote. For example, it's always
+    recommended to pass lint and unit tests job first on your local machine. So
+    we can make sure there are no simple mistakes in the commit.
 
     ```shell
     # install the cli (first time only)
     $ curl -fLSs https://circle.ci/cli | bash && circleci version
 
-    # trigger a local circleci container session
-    # you should run at least one python version locally
+    # run at least the lint & unit test job on both python 2 and 3
     # note: the current config requires all tests pass on python 2.7, 3.6 and 3.7.
-    $ circleci local execute --job python-3.6
+    $ circleci local execute --job lint-unit-27 && $ circleci local execute --job lint-unit-37
     ```
 
     ### Increase the verbosity of pytest logging level
