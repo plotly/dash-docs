@@ -9,7 +9,7 @@ def generate_prop_info(component_name, lib=dcc):
     component = getattr(lib, component_name)
     component_doc = component.__doc__
 
-    regex = r'''^(.*?)\s*\((.*?);*\s*([\w\s'"().]*)\):\s*(.*?)\s*$'''
+    regex = r'''^(.*?)\s*\(([^;]*);*\s*([\w\s'"().{}:,;\[\]]*)\):\s*(.*?)\s*$'''
 
     return_div = [
         dcc.Markdown(dedent(
@@ -91,7 +91,7 @@ def generate_prop_info(component_name, lib=dcc):
                 pass
 
         defined_default_val = re.search(
-            r'''default (.*)''',
+            r'''default ([\w\s.{}:,;']*)''',
             prop_optional_default
         )
 
