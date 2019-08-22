@@ -9,7 +9,7 @@ def generate_prop_info(component_name, lib=dcc):
     component = getattr(lib, component_name)
     component_doc = component.__doc__
 
-    regex = r'''^(.*?)\s*\(([^;]*);*\s*([\w\s'"().{}:,;#-\[\]]*)\):\s*(.*?)\s*$'''
+    regex = r'''^([^\(]*)\s*\(([^;]*);\s*([\W\w]+?)\):\s*(.*?)\s*$'''
 
     return_div = [
         dcc.Markdown(dedent(
@@ -58,7 +58,7 @@ def generate_prop_info(component_name, lib=dcc):
                            prop_desc)
 
         if 'dict containing keys' in prop_desc or 'dicts containing keys' in prop_desc:
-            regex_dict = r'''(.*?\. [\w]* has the following type: (?:[\w\s|]*)dict[s]* containing keys )([\w\s',]*)(\. Those keys have the following types: )([\w\s|&();:',`"\[\]*\\\/$%=+.-]*)'''
+            regex_dict = r'''([\w\W]*?\. [\w]* has the following type: (?:[\w\s|]*)dict[s]* containing keys )([\w\s',]*)(\. Those keys have the following types: )([\w\W]*)'''
             parsed_dict_desc = re.match(
                 re.compile(regex_dict),
                 prop_desc
@@ -91,7 +91,7 @@ def generate_prop_info(component_name, lib=dcc):
                 pass
 
         defined_default_val = re.search(
-            r'''default ([\w\s.{}:,;'\[\]]*)''',
+            r'''default ([\w\W]*)''',
             prop_optional_default
         )
 
