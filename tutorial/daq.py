@@ -1,4 +1,3 @@
-from textwrap import dedent as s
 import dash_core_components as dcc
 import dash_html_components as html
 from tutorial import styles
@@ -172,10 +171,10 @@ layout_children += [
     html.H3(dcc.Link('DarkThemeProvider',
                      href='/dash-daq/darkthemeprovider')),
 
-    dcc.Markdown(s(
+    dcc.Markdown(
         '''A component placed at the root of the component \
         tree to make all components match the dark theme. '''
-    )),
+    ),
 
 
     dcc.Markdown(dtp[0],

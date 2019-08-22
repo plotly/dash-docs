@@ -115,6 +115,11 @@ reusable_components.Section("User Interface", [
         reusable_components.Chapter('Advanced Git',
                 '/dash-deployment-server/git',
                 'A reference for git commands and how they are used '
-                'with Dash Deployment Server.')
+                'with Dash Deployment Server.'),
+        reusable_components.Chapter('Dash Deployment Server API',
+                'https://github.com/plotly/dds-api-docs',
+                'Reference documentation for DDS\'s GraphQL API. '
+                'Use this to programmatically add collaborators, '
+                'initialize dash apps and more.')
     ])
 ])

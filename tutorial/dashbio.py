@@ -97,7 +97,7 @@ DASHBIO_COMPONENTS = {
             'color_threshold': '{\'row\': 150, \'col\': 700}',
             'column_labels': 'list(df.columns.values)',
             'row_labels': 'list(df.index)',
-            'hide_labels': '[\'row\']',
+            'hidden_labels': '[\'row\']',
             'height': '800',
             'width': '600'
         },

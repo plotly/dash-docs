@@ -102,12 +102,13 @@ chapters = {
     'state': {
         'url': '/state',
         'content': state.layout,
-        'name': 'Part 4. Callbacks With State',
+        'name': 'Part 4. More About Callbacks',
         'description': 'Basic callbacks are fired whenever the values ' \
                        'change. Use Dash `State` with Dash `Inputs` to ' \
                        'pass in extra values whenever the `Inputs` ' \
                        'change. `State` is useful for UIs that contain ' \
-                       'forms or buttons.'
+                       'forms or buttons. Use the `PreventUpdate` exception ' \
+                       'to leave the callback output unchanged' \
     },
 
     'graphing': {

@@ -1,4 +1,3 @@
-from textwrap import dedent as s
 import dash_core_components as dcc
 import dash_html_components as html
 
@@ -21,8 +20,8 @@ layout = html.Div([
     # Interactive Visualizations
 
     > This is the *5th* chapter of the [Dash Tutorial](/).
-    > The [previous chapter](/state) covered callbacks with `State`
-    > and the [next chapter](/sharing-data-between-callbacks) describes how to
+    > The [previous chapter](/state) covered callbacks with `State` and `PreventUpdate`.
+    > The [next chapter](/sharing-data-between-callbacks) describes how to
     > share data between callbacks.
     > Just getting started? Make sure to [install the necessary dependencies](/installation).
 
@@ -71,11 +70,11 @@ layout = html.Div([
     """),
     Example(examples['world-indicators'][1]),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     Try mousing over the points in the scatter plot on the left.
     Notice how the line graphs on the right update based off of the point that
     you are hovering over.
-    ''')),
+    '''),
 
     html.Hr(),
 
@@ -95,7 +94,7 @@ layout = html.Div([
             'border-radius': '4px'
         }),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     Try clicking and dragging in any of the plots to filter different regions.
     On every selection, the three graph callbacks are fired with the latest
     selected regions of each plot. A pandas dataframe is filtered based off
@@ -106,9 +105,9 @@ layout = html.Div([
     highly-dimensional datasets, you should consider checking out the
     [parallel coordinates](https://plot.ly/python/parallel-coordinates-plot/)
     chart type.
-    ''')),
+    '''),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
 
     ### Current Limitations
 
@@ -127,7 +126,7 @@ layout = html.Div([
 
     The next chapter of the Dash User Guide explains how to share data between
     callbacks.
-    ''')),
+    '''),
 
     dcc.Link(
         'Dash Tutorial Part 6. Sharing Data Between Callbacks',

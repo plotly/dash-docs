@@ -2,8 +2,6 @@ import dash_core_components as dcc
 import dash_html_components as html
 
 from tutorial import styles
-from textwrap import dedent as s
-
 from tutorial.utils.component_block import ComponentBlock
 
 
@@ -77,7 +75,7 @@ def generate_code_container(
                              component_name.lower())),
                 id=component_name.replace(' ', '-').lower()),
         
-        dcc.Markdown(s(description)),
+        dcc.Markdown(description),
         
         ComponentBlock(
             example_string

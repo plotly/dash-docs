@@ -2,8 +2,6 @@
 import dash_core_components as dcc
 import dash_html_components as html
 
-from textwrap import dedent as s
-
 from tutorial import styles
 from tutorial.tools import load_example
 
@@ -20,7 +18,7 @@ examples = [
 
 layout = html.Div([
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     # Basic Dash Callbacks
 
     > This is the *3rd* chapter of the [Dash Tutorial](/).
@@ -29,9 +27,9 @@ layout = html.Div([
     > known as `state`. Just getting started? Make sure to
     > [install the necessary dependencies](/installation).
 
-    ''')),
+    '''),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
 
         In the [previous chapter on the `app.layout`](/getting-started) we
         learned that the `app.layout` describes what the app looks like and is
@@ -46,7 +44,7 @@ layout = html.Div([
 
         Let's get started with a simple example.
 
-    ''')),
+    '''),
 
     html.H4('''
     Dash App Layout
@@ -59,7 +57,7 @@ layout = html.Div([
 
     html.Div(examples[0][1], className="example-container"),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     Try typing in the text box. The children of the output component updates
     right away. Let's break down what's happening here:
 
@@ -106,7 +104,7 @@ layout = html.Div([
 
     Let's take a look at another example where a `dcc.Slider` updates a
     `dcc.Graph`.
-    ''')),
+    '''),
 
     dcc.Markdown(
         examples[1][0],
@@ -119,7 +117,7 @@ layout = html.Div([
         'paddingBottom': '30px'
     }),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     In this example, the `"value"` property of the `Slider` is the input of the
     app and the output of the app is the `"figure"` property of the `Graph`.
     Whenever the `value` of the `Slider` changes, Dash calls the callback
@@ -161,7 +159,7 @@ layout = html.Div([
     Notice how the `app.callback` lists all five `dash.dependencies.Input`
     inside a list in the second argument.
 
-    ''')),
+    '''),
 
     dcc.Markdown(
         examples[2][0],
@@ -173,7 +171,7 @@ layout = html.Div([
         'padding-bottom': '30px'
     }),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
 
     In this example, the `update_graph` function gets called whenever the
     `value` property of the `Dropdown`, `Slider`, or `RadioItems` components
@@ -201,7 +199,7 @@ layout = html.Div([
     many items from the callback. This is particularly nice if two outputs
     depend on the same computationally intense intermediate result, such as a
     slow database query.
-    ''')),
+    '''),
 
     dcc.Markdown(
         examples[3][0],
@@ -210,7 +208,7 @@ layout = html.Div([
 
     html.Div(examples[3][1], className="example-container"),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     A word of caution: it's not always a good idea to combine Outputs, even if
     you can:
 
@@ -227,7 +225,7 @@ layout = html.Div([
     This pattern can be used to create dynamic UIs where one input component
     updates the available options of the next input component.
     Here's a simple example.
-    ''')),
+    '''),
 
     dcc.Markdown(
         examples[4][0],
@@ -236,7 +234,7 @@ layout = html.Div([
 
     html.Div(examples[4][1], className="example-container"),
 
-    dcc.Markdown(s(u'''
+    dcc.Markdown(u'''
     The first callback updates the available options in the second `RadioItems`
     component based off of the selected value in the first `RadioItems`
     component.
@@ -250,9 +248,9 @@ layout = html.Div([
     before calling the final callback. This prevents your callbacks from being
     called with inconsistent state like with `"America"` and `"Montréal"`.
 
-    ''')),
+    '''),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
 
     ### Summary
 
@@ -267,16 +265,16 @@ layout = html.Div([
 
     ***
 
-    ''')),
+    '''),
 
 
-    dcc.Markdown(s('''
-        The next part of the Dash tutorial covers an additional concept of
-        Dash callbacks: `State`
-    ''')),
+    dcc.Markdown('''
+        The next part of the Dash tutorial covers additional concepts of
+        Dash callbacks: `State` and `PreventUpdate`
+    '''),
 
     dcc.Link(
-        'Dash Tutorial Part 4: State',
+        'Dash Tutorial Part 4: More about callbacks',
         href="/state"
     )
 

@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 import dash_core_components as dcc
 import dash_html_components as html
-from textwrap import dedent as s
 
 from tutorial import styles
 from tutorial.tools import load_example, read_file
@@ -35,7 +34,7 @@ examples = {
 layout = html.Div([
     html.H1('Adding CSS & JS and Overriding the Page-Load Template'),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     Dash applications are rendered in the web browser with CSS and JavaScript.
     On page load, Dash serves a small HTML template that includes references to
     the CSS and JavaScript that are required to render the application.
@@ -85,7 +84,7 @@ layout = html.Div([
 
     `app.py`
 
-    ''')),
+    '''),
 
     dcc.Markdown(
         examples['local-css'][0],
@@ -100,7 +99,8 @@ layout = html.Div([
     ),
 
     dcc.Markdown(
-        s('''
+        (
+        '''
         ```css
         body {
             font-family: sans-serif;
@@ -121,7 +121,7 @@ layout = html.Div([
     ),
 
     dcc.Markdown(
-        s('''
+        ('''
         ```css
         .app-header {
             height: 60px;
@@ -146,7 +146,7 @@ layout = html.Div([
     ),
 
     dcc.Markdown(
-        s('''
+        ('''
         ```js
         alert('If you see this alert, then your custom JavaScript script has run!')
         ```
@@ -156,12 +156,12 @@ layout = html.Div([
 
     html.Hr(),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
         When you run `app.py`, your app should look something like this:
         (Note that there may be some slight differences in appearance as
         the CSS from this Dash User Guide is applied to all of these embedded
         examples.)
-    ''')),
+    '''),
 
     html.Div(
         examples['local-css'][1],
@@ -173,7 +173,7 @@ layout = html.Div([
         }
     ),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
 
     There are a few things to keep in mind when including assets automatically:
 
@@ -213,9 +213,9 @@ layout = html.Div([
     > Don't like hot-reloading? You can turn this off with `app.run_server(dev_tools_hot_reload=False)`.
     > Learn more in [Dash Dev Tools documentation](/devtools). Questions? See the [community forum hot reloading discussion](https://community.plot.ly/t/announcing-hot-reload/14177).
 
-    ''')),
+    '''),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
 ***
 
 ## Load Assets from a Folder Hosted on a CDN
@@ -232,7 +232,7 @@ was the default, except when dev bundles are served (such as during debugging).
 Starting with Dash 1.0.0, `serve_locally` defaults to `True`.
 
 **Example:**
-''')),
+'''),
 
     dcc.Markdown(
     '''
@@ -251,7 +251,7 @@ Starting with Dash 1.0.0, `serve_locally` defaults to `True`.
     ),
 
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     ***
 
     ## Embedding Images in Your Dash Apps
@@ -268,7 +268,7 @@ Starting with Dash 1.0.0, `serve_locally` defaults to `True`.
     &nbsp;
 
     In your `app.py` file you can use the relative path to that image:
-    ''')),
+    '''),
 
     dcc.Markdown(
     '''
@@ -289,7 +289,7 @@ Starting with Dash 1.0.0, `serve_locally` defaults to `True`.
         style=styles.code_container
     ),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     ***
 
     ## Changing the Favicon
@@ -304,10 +304,10 @@ Starting with Dash 1.0.0, `serve_locally` defaults to `True`.
         |-- favicon.ico
 
     ```
-    ''')),
+    '''),
 
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     ***
 
     ## Adding external CSS/Javascript
@@ -321,14 +321,14 @@ Starting with Dash 1.0.0, `serve_locally` defaults to `True`.
     External css/js files are loaded before the assets.
 
     **Example:**
-    ''')),
+    '''),
 
     dcc.Markdown(
         '```python  \n' + examples['external-resources-init'] + '  \n```',
         style=styles.code_container
     ),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     ***
 
     ## Customizing Dash's HTML Index Template
@@ -360,14 +360,14 @@ Starting with Dash 1.0.0, `serve_locally` defaults to `True`.
 
     Add an `index_string` to modify the default HTML Index Template:
 
-    ''')),
+    '''),
 
     dcc.Markdown(
         '```python  \n' + examples['custom-index-string'] + '  \n```',
         style=styles.code_container
     ),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
 
     The `{%key%}`s are template variables that Dash will fill in automatically
     with default properties. The available keys are:
@@ -415,24 +415,24 @@ Starting with Dash 1.0.0, `serve_locally` defaults to `True`.
     If your HTML content isn't static or if you would like to introspect or modify
     the templated variables, then you can override the `Dash.interpolate_index`
     method.
-    ''')),
+    '''),
 
     dcc.Markdown(
         '```python  \n' + examples['custom-interpolate-string'] + '  \n```',
         style=styles.code_container
     ),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     Unlike the `index_string` method, where we worked with template string
     variables, the keyword variables that are passed into `interpolate_index`
     are already evaluated.
-    ''')),
+    '''),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
 
     In the example above, when we print the input arguments of
     `interpolate_index` we should see an output like this:
-    ''')),
+    '''),
 
     html.Div(dcc.Markdown("""
 ```
@@ -447,7 +447,7 @@ Starting with Dash 1.0.0, `serve_locally` defaults to `True`.
     'css': ''
 }
 ```"""), style={'overflowX': 'scroll'}),
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     The values of the `scripts` and `css` keys may be different depending on
     which component libraries you have included or which files
     might be in your assets folder.
@@ -460,26 +460,26 @@ Starting with Dash 1.0.0, `serve_locally` defaults to `True`.
     somewhere call `var renderer = new DashRenderer();`, which instantiates the `DashRenderer` class. You can add this script to your index HTML when you're setting
     `app.index_string`, or you could simply override `app.renderer` like so:
 
-    ''')),
+    '''),
 
     dcc.Markdown(
         '```python  \n' + examples['custom-dash-renderer'] + '  \n```',
         style=styles.code_container
     ),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
 
     When you provide your own DashRenderer, you can also pass in a `hooks` object that holds `request_pre` and `request_post` functions. These request hooks will be fired
     before and after Dash makes a request to its backend. Here's an example:
 
-    ''')),
+    '''),
 
     dcc.Markdown(
         '```python  \n' + examples['custom-dash-renderer-hooks'] + '  \n```',
         style=styles.code_container
     ),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     Notice the `request_pre` function takes the payload of the request being sent as its argument, and the `request_post` fuction takes both the payload and the response of the server
     as arguments. These can be altered in our function, allowing you to modify the response and request objects that Dash sends to the server. In the example above, the `request_pre`
     function is fired before each server call, and in the case of this example, it will `console.log()` the request parameter. The `request_post` function will fire __after__ each server
@@ -495,14 +495,14 @@ Starting with Dash 1.0.0, `serve_locally` defaults to `True`.
     To add custom meta tags to your application, you can always override Dash's
     HTML Index Template. Alternatively, Dash provides a shortcut:
     you can specify meta tags directly in the Dash constructor:
-    ''')),
+    '''),
 
     dcc.Markdown(
         '```python  \n' + examples['dash-meta-tags'] + '  \n```',
         style=styles.code_container
     ),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
 
     If you inspect the source of your app, you should see the meta tags appear:
     ![Dash App with Custom Meta Tags](https://user-images.githubusercontent.com/1280389/43233036-cd050eae-9028-11e8-910e-f0d140c37e4c.png)
@@ -536,7 +536,7 @@ Starting with Dash 1.0.0, `serve_locally` defaults to `True`.
     Here's how to enable CDN serving. `app.scripts` is the most important one,
     that controls the JavaScript files, but `app.css` can sometimes help too:
 
-    ''')),
+    '''),
 
     dcc.Markdown('''
     ```python
@@ -550,7 +550,7 @@ Starting with Dash 1.0.0, `serve_locally` defaults to `True`.
         style={'borderLeft': 'thin lightgrey solid'}
     ),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
 
     Note that in the future, we will likely make "offline" the default option.
     [Follow dash#284](https://github.com/plotly/dash/issues/284) for more information.
@@ -569,7 +569,7 @@ Starting with Dash 1.0.0, `serve_locally` defaults to `True`.
     [https://codepen.io/chriddyp/pen/bWLwgP.css](https://codepen.io/chriddyp/pen/bWLwgP.css).
 
     Here is an embedded version of this stylesheet.
-    ''')),
+    '''),
 
     html.Iframe(
         src="//codepen.io/chriddyp/embed/bWLwgP/?height=265&"

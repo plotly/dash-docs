@@ -14,7 +14,7 @@ examples = {
 
 
 layout = html.Div([
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     # Sharing State Between Callbacks
 
     > This is the *6th* chapter of the essential [Dash Tutorial](/).  The
@@ -49,9 +49,9 @@ layout = html.Div([
     simple follow-on tasks that modify the results, like unit conversions. We
     shouldn't need to repeat a large database query just to change the results
     from Fahrenheit to Celsius!
-    ''')),
+    '''),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
 
     ## Why `global` variables will break your app
 
@@ -80,7 +80,7 @@ layout = html.Div([
 
     ***
 
-    ''')),
+    '''),
 
     Syntax('''df = pd.DataFrame({
     'a': [1, 2, 3],
@@ -138,7 +138,7 @@ def update_output_1(value):
     variable inside the callback, or follow one of the strategies
     outlined in the next part of this guide.'''),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
         ## Sharing Data Between Callbacks
 
         In order to share data safely across multiple python
@@ -176,7 +176,7 @@ def update_output_1(value):
              upfront and transport those.
              Your app likely won't be displaying 10MB of data,
              it will just be displaying a subset or an aggregation of it.
-    ''')),
+    '''),
 
     Syntax(
         summary=('''
@@ -222,7 +222,7 @@ def update_output_1(value):
             return table
     ''')),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
         ***
 
         ## Example 2 - Computing Aggregations Upfront
@@ -235,7 +235,7 @@ def update_output_1(value):
         of the computed or filtered data. In these cases, you could precompute
         your aggregations in your data processing callback and transport these
         aggregations to the remaining callbacks.
-    ''')),
+    '''),
 
     Syntax(children=s('''
         @app.callback(
@@ -289,7 +289,7 @@ def update_output_1(value):
         filtered or aggregated data to multiple callbacks.
     '''),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
         ***
 
         ## Example 3 - Caching and Signaling
@@ -331,7 +331,7 @@ def update_output_1(value):
         - Similarly, reloading the page or opening the app in a new window
           is also fast because the initial state and the initial expensive
           computation has already been computed.
-    ''')),
+    '''),
 
     html.Div(
         children=html.Img(
@@ -487,7 +487,7 @@ def update_output_1(value):
     )),
 
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
         ***
 
         ## Example 4 - User-Based Session Data on the Server
@@ -525,7 +525,7 @@ def update_output_1(value):
         > [Session Fixation](https://en.wikipedia.org/wiki/Session_fixation)
         > style attacks.
 
-        ''')),
+        '''),
 
     Syntax(
         # with Syntax + load_example we are wrapping twice, hence replace()
@@ -540,7 +540,7 @@ def update_output_1(value):
         )
     ),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
         There are three things to notice in this example:
         - The timestamps of the dataframe don't update when we retrieve
         the data. This data is cached as part of the user's session.
@@ -552,5 +552,5 @@ def update_output_1(value):
 
         Questions? Discuss these examples on the
         [Dash Community Forum](https://community.plot.ly/c/dash).
-    '''))
+    ''')
 ])

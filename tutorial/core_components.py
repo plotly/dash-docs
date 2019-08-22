@@ -327,9 +327,9 @@ dcc.DatePickerRange(
     '''.replace('    ', '')),
 
     html.H3('Tabs'),
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     The Tabs and Tab components can be used to create tabbed sections in your app.
-    ''')),
+    '''),
 
     dcc.Markdown(
         examples['tabs'][0],
@@ -449,7 +449,7 @@ confirm = dcc.ConfirmDialogProvider(
 
     html.H3(dcc.Link('Store', href='/dash-core-components/store')),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     The store component can be used to keep data in the visitor's browser.
     The data is scoped to the user accessing the page.
 
@@ -460,7 +460,7 @@ confirm = dcc.ConfirmDialogProvider(
     - `session`: keep the data until the browser/tab closes.
 
     _For `local`/`session`, the data is serialized as json when stored._
-    ''')),
+    '''),
 
     ComponentBlock(s('''
     import dash_core_components as dcc
@@ -479,7 +479,7 @@ confirm = dcc.ConfirmDialogProvider(
     html.H3(dcc.Link('Logout Button',
                      href='/dash-core-components/logout_button')),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     The logout button can be used to perform logout mechanism.
 
     It's a simple form with a submit button, when the button is clicked,
@@ -487,7 +487,7 @@ confirm = dcc.ConfirmDialogProvider(
 
     Please note that no authentication is performed in Dash by default
     and you have to implement the authentication yourself.
-    ''')),
+    '''),
 
     dcc.Link('More Logout Button Examples and Reference',
              href='/dash-core-components/logout_button'),
@@ -500,11 +500,11 @@ confirm = dcc.ConfirmDialogProvider(
     html.H3(dcc.Link('Loading component',
                      href='/dash-core-components/loading_component')),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     The Loading component can be used to wrap components that you want to display a spinner for, if they take too long to load.
     It does this by checking if any of the Loading components' children have a `loading_state` prop set where `is_loading` is true.
     If true, it will display one of the built-in CSS spinners.
-    ''')),
+    '''),
     ComponentBlock(s('''
     import dash_core_components as dcc
     import dash_html_components as html
@@ -521,7 +521,7 @@ confirm = dcc.ConfirmDialogProvider(
 
     html.H3(dcc.Link('Location', href='/dash-core-components/location')),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     The location component represents the location bar in your web browser. Through its `href`, `pathname`,
     `search` and `hash` properties you can access different portions of your app's url.
 
@@ -531,9 +531,9 @@ confirm = dcc.ConfirmDialogProvider(
     - `pathname` = `"/page-2"`
     - `search` = `"?a=test"`
     - `hash` = `"#quiz"`
-    ''')),
+    '''),
 
-    dcc.Markdown(s('''
+    dcc.Markdown(('''
     ```python
     import dash_core_components as dcc
 

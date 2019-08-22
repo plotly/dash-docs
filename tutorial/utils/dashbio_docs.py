@@ -11,8 +11,6 @@ from tutorial import styles
 from tutorial.utils.component_block import ComponentBlock
 from tutorial.utils.convert_props_to_list import generate_prop_info
 
-from textwrap import dedent as s
-
 import json
 
 
@@ -263,7 +261,7 @@ component = {}
                              component_name.lower())),
                 id=component_name.replace(' ', '-').lower()),
 
-        dcc.Markdown(s(description)),
+        dcc.Markdown(description),
 
         component_demo,
 

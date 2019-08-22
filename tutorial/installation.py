@@ -7,7 +7,6 @@ import dash_table
 import dash_daq
 
 import plotly
-from textwrap import dedent as s
 
 from tutorial import styles
 
@@ -31,11 +30,11 @@ layout = html.Div([
         dash_daq.__version__
     ), style=styles.code_container),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     > **Note**: starting with dash 0.37.0, dash automatically installs dash-renderer, dash-core-components,
     > dash-html-components, and dash-table, using known-compatible versions of each. You need not and
     > should not install these separately any longer, only dash itself.
-    ''')),
+    '''),
 
     html.Div([
         'Ready? Now, let\'s ',
@@ -45,7 +44,7 @@ layout = html.Div([
 
     html.Hr(),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     > A quick note on checking your versions and on upgrading.
     > These docs are run using the versions listed above and these
     > versions should be the latest versions available.
@@ -69,6 +68,6 @@ layout = html.Div([
     > - [plotly changelog](https://github.com/plotly/plotly.py/blob/master/CHANGELOG.md)
     >
     > All of these packages adhere to [semver](https://semver.org/).
-    '''.format(dash_renderer.__version__, plotly.__version__)))
+    '''.format(dash_renderer.__version__, plotly.__version__))
 
 ])

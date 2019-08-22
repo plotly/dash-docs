@@ -39,19 +39,19 @@ In `tutorial/dash_deployment_server_examples.py` create a variable to define the
 ```
 NewChapter = html.Div(children=[
     html.H1('Chapter Heading'),
-    dcc.Markdown(s('''
+    dcc.Markdown('''
 
     ### Title
 
     text
-    '''))
+    ''')
 ])
 ```
 
 ##### Best Practices
 
-When adding **text** use: ```dcc.Markdown(s())```    
-When adding **code** use: ```dcc.Markdown(s())``` with triple backticks.
+When adding **text** use: ```dcc.Markdown()```    
+When adding **code** use: ```dcc.Markdown()``` with triple backticks.
 When adding **images** add the images to `tutorial/assets/images/dds/` and use a relative link in the text.      
 When adding **links** use relative links where possible.
 

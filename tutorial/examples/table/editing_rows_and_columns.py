@@ -23,7 +23,7 @@ app.layout = html.Div([
             'name': 'Column {}'.format(i),
             'id': 'column-{}'.format(i),
             'deletable': True,
-            'editable_name': True
+            'renamable': True
         } for i in range(1, 5)],
         data=[
             {'column-{}'.format(i): (j + (i-1)*5) for i in range(1, 5)}

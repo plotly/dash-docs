@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 import os
-from textwrap import dedent as s
 
 import dash_core_components as dcc
 import dash_html_components as html
@@ -20,7 +19,7 @@ examples = {get_example_name(path): tools.load_example(path) for path in
 
 
 layout = html.Div([
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     # FAQs and Gotchas
 
     > This is the *7th* and final chapter of the essential [Dash Tutorial](/).
@@ -91,10 +90,10 @@ layout = html.Div([
       by id and prop instead of through the function args. These have the form
       of dictionaries `{ 'component_id.prop_name': value }`
 
-    Here's an example of how this can be done:''')),
+    Here's an example of how this can be done:'''),
     Syntax(examples['last_clicked_button'][0]),
     Example(examples['last_clicked_button'][1]),
-    dcc.Markdown(s('''
+    dcc.Markdown('''
 
     Prior to v0.38.0, you needed to compare timestamp properties like
     `n_clicks_timestamp` to find the most recent click. While existing uses of
@@ -246,5 +245,5 @@ layout = html.Div([
     updates the page.
 
     This is a known issue and you can track its status in this [GitHub
-    Issue](https://github.com/plotly/dash-renderer/issues/40). '''))
+    Issue](https://github.com/plotly/dash-renderer/issues/40). ''')
 ])

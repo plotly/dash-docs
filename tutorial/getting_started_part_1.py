@@ -2,8 +2,6 @@
 import dash_core_components as dcc
 import dash_html_components as html
 
-from textwrap import dedent as s
-
 from tutorial import styles
 from tutorial.tools import load_example
 from tutorial.components import Example, Syntax
@@ -23,13 +21,13 @@ examples = [
 layout = html.Div([
 
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     # Dash Layout
 
     > This is the *2nd* chapter of the [Dash Tutorial](/).
     > The [previous chapter](/installation) covered installation
     > and the [next chapter](/getting-started-part-2) covers Dash callbacks.
-    ''')),
+    '''),
 
 
     dcc.Markdown('''
