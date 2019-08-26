@@ -28,8 +28,9 @@ layout = html.Div(
         - Deleting rows (`row_deletable=True`)
         - Deleting columns (`columns[i].deletable=True`)
         - Selecting rows (`row_selectable='single' | 'multi'`)
+        - Selecting columns (`column_selectable='single' | 'multi'` and `columns[i].selectable=True`)
         - Paging front-end (`page_action='native'`)
-        - Hiding columns (`columns[i].hideable=True`)
+        - Hiding columns (`hidden_columns=[]`)
 
         A quick note on filtering. We have defined our own
         syntax for performing filtering operations. Here are some
