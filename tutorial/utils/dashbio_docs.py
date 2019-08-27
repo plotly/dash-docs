@@ -359,7 +359,7 @@ def create_default_example(
             component_name.replace('-', ' ')
         )),
         dcc.Markdown(
-            '```python  \n' + example_code[0] + '  \n```',
+            example_code[0]
         ),
         html.Div(
             example_code[1],
@@ -376,7 +376,7 @@ def create_examples(
     for example in examples_data:
         examples += [
             html.H3(example['param_name'].title()),
-            dcc.Markdown('```python  \n' + example['description'] + '  \n```'),
+            dcc.Markdown(example['description']),
             ComponentBlock(example['code']),
             html.Hr()
         ]

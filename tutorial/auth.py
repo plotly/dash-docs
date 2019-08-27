@@ -32,7 +32,7 @@ layout = html.Div([
     As a Dash developer, this requires a paid Plotly subscription.
     Here's where you can [subscribe to Plotly Cloud](https://plot.ly/products/cloud),
     and here's where you can
-    [contact us about Plotly Enterprise](https://plotly.typeform.com/to/seG7Vb).
+    [contact us about Plotly Enterprise](https://go.plot.ly/chart-studio-demo).
     The viewers of your app will need a Plotly account but they do not need to
     upgrade to a paid subscription.
 
