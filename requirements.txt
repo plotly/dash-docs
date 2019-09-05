@@ -10,6 +10,7 @@ dash-bio-utils==0.0.3rc3
 dash-cytoscape==0.0.5
 dash-daq==0.1.0
 dash-canvas>=0.0.10
+dash_table-4.2.0.tar.gz
 decorator==4.3.0
 enum34==1.1.6
 flake8==3.5.0
