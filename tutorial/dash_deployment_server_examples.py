@@ -215,18 +215,6 @@ def display_instructions2(platform):
                     ''',
                     style=styles.code_container),
 
-                    dcc.Markdown(
-                    '''
-                    ***
-
-                    #### Modify `config.py`
-
-                    Read through `config.py` and modify the values as necessary.
-                    If Dash Deployment Server was set up with "path-based routing"
-                    (the default), then you will just need to change the
-                    `DASH_APP_NAME` to be equal to the name of the Dash App that you
-                    set earlier.
-                    '''),
 
                     dcc.Markdown(
                     '''
