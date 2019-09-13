@@ -221,7 +221,6 @@ layout = html.Div(
             data=df_election.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df_election.columns],
             style_cell={
-                'whiteSpace': 'no-wrap',
                 'overflow': 'hidden',
                 'textOverflow': 'ellipsis',
                 'maxWidth': 0,
@@ -287,7 +286,6 @@ layout = html.Div(
             style_table={'overflowX': 'scroll'},
             style_cell={
                 'minWidth': '0px', 'maxWidth': '180px',
-                'whiteSpace': 'no-wrap',
                 'overflow': 'hidden',
                 'textOverflow': 'ellipsis',
             }
@@ -326,7 +324,6 @@ layout = html.Div(
             style_cell={
                 # all three widths are needed
                 'minWidth': '180px', 'width': '180px', 'maxWidth': '180px',
-                'whiteSpace': 'no-wrap',
                 'overflow': 'hidden',
                 'textOverflow': 'ellipsis',
             }
@@ -365,7 +362,6 @@ layout = html.Div(
             style_cell={
                 # all three widths are needed
                 'minWidth': '180px', 'width': '180px', 'maxWidth': '180px',
-                'whiteSpace': 'no-wrap',
                 'overflow': 'hidden',
                 'textOverflow': 'ellipsis',
             }
