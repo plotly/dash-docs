@@ -38,7 +38,7 @@ jobs:
           name: Run tests
           command: |
               . venv/bin/activate
-              pip install -e git+https://github.com/plotly/dash.git@percy-runner#egg=dash[testing]
+              pip install -e git+https://github.com/plotly/dash.git#egg=dash[testing]
               pytest --junitxml=test-reports/snapshots.xml tests/snapshots
       - store_artifacts:
           path: test-reports

@@ -168,10 +168,14 @@ layout = html.Div([
 
     - dash_process_server
 
-    Start your Dash App with `waitress` in a Python `subprocess`. This is
-    close to your production/deployed environment.  **Note:**  *You need to
-    configure your `PYTHONPATH` so that the Dash app source file is
-    directly importable*.
+    This is close to your production/deployed environment. Start your Dash App
+    with `waitress`(by default if `raw_command` is not provided) in a Python
+    `subprocess`. You can control the process runner with two supplemental
+    arguments. To run the application with alternative deployment options, use
+    the `raw_command` argument; to extend the timeout if your application needs
+    more than the default three seconds to launch, use the `start_timeout`
+    argument. Note: *You need to configure your `PYTHONPATH` so that the Dash
+    app source file is directly importable*.
 
     And `Dash for R` test fixtures have a prefix `dashr`.
 
@@ -260,7 +264,8 @@ layout = html.Div([
     | `find_elements(selector)` | return a list of all elements matching by the `CSS selector`, shortcut to `driver.find_elements_by_css_selector`|
     | `multiple_click(selector, clicks)`| find the element with the `CSS selector` and clicks it with number of `clicks` |
     | `wait_for_element(selector, timeout=None)` | shortcut to `wait_for_element_by_css_selector` the long version is kept for back compatibility. `timeout` if not set, equals to the fixture's `wait_timeout`|
-    | `wait_for_element_by_css_selector(selector, timeout=None)` | explicit wait until the element to present, shortcut to `WebDriverWait` with `EC.presence_of_element_located` |
+    | `wait_for_element_by_css_selector(selector, timeout=None)` | explicit wait until the element is present, shortcut to `WebDriverWait` with `EC.presence_of_element_located` |
+    | `wait_for_element_by_id(element_id, timeout=None)` | explicit wait until the element is present, shortcut to `WebDriverWait` with `EC.presence_of_element_located` |
     | `wait_for_style_to_equal(selector, style, value, timeout=None)` | explicit wait until the element's style has expected `value`. shortcut to `WebDriverWait` with custom wait condition `style_to_equal`. `timeout` if not set, equals to the fixture's `wait_timeout`  |
     | `wait_for_text_to_equal(selector, text, timeout=None)` | explicit wait until the element's text equals the expected `text`. shortcut to `WebDriverWait` with custom wait condition `text_to_equal`. `timeout` if not set, equals to the fixture's `wait_timeout` |
     | `wait_for_contains_text(selector, text, timeout=None)` | explicit wait until the element's text contains the expected `text`. shortcut to `WebDriverWait` with custom wait condition `contains_text` condition. `timeout` if not set, equals to the fixture's `wait_timeout` |
@@ -269,6 +274,7 @@ layout = html.Div([
     | `switch_window(idx)` | switch to window by window index. shortcut to `driver.switch_to.window`. raise `BrowserError` if no second window present in browser |
     | `open_new_tab(url=None)` | open a new tab in browser with window name `new window`. `url` if not set, equals to `server_url` |
     | `percy_snapshot(name)` | visual test API shortcut to `percy_runner.snapshot` it also combines the snapshot `name` with python versions |
+    | `visit_and_snapshot(resource_path, hook_id, assert_check=True)` | common task used in dash-docs testing: it visits a URL path by `resource_path`, makes sure the page is fully loaded by the `hook_id` at the bottom, takes a snapshot and returns to the main page. `assert_check` is a switch to enable/disable an assertion that there is no devtools error alert icon |
     | `take_snapshot(name)` | hook method to take a snapshot while selenium test fails. the snapshot is placed under `/tmp/dash_artifacts` in Linux or `%TEMP` in windows with a filename combining test case `name` and the running selenium session id |
     | `get_logs()` | return a list of `SEVERE` level logs after last reset time stamps (default to 0, resettable by `reset_log_timestamp`. **Chrome only** |
     | `clear_input()` | simulate key press to clear the input |
@@ -386,5 +392,16 @@ layout = html.Div([
     under `Artifacts` Tab*
 
     ![CircleCI](https://user-images.githubusercontent.com/1394467/59371162-3f27a000-8d12-11e9-9060-7d8a8522c2c6.png)
+
+    ### Percy Snapshots
+
+    There are two customized `pytest` arguments to tune Percy runner:
+
+    1. `--nopercyfinalize` disables the Percy finalize in dash fixtures. This
+    is required if you run your tests in parallel, then you add an extra
+    `percy finalize --all` step at the end. For more details, please visit
+    [Percy Documents](https://docs.percy.io/docs/parallel-test-suites).
+    2. `--percy-assets` lets Percy know where to collect additional assets
+    such as CSS files. You can refer to the example we used for [`dash-docs`](https://github.com/plotly/dash-docs/blob/b10701c8514b87d86645f6edeb808ccdcfa4143d/tests/conftest.py#L17-L32).
     """),
 ])
