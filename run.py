@@ -301,4 +301,13 @@ app.index_string = '''<!DOCTYPE html>
 </html>'''
 
 if __name__ == '__main__':
-    app.run_server(debug=True, threaded=True, port=8060)
+    app.run_server(
+        port=8060,
+        processes=4,
+        threaded=False,
+        debug=True,
+        use_reloader=False,
+        use_debugger=True,
+        dev_tools_hot_reload=False,
+        dev_tools_ui=True
+    )

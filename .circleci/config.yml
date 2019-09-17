@@ -1,10 +1,16 @@
 version: 2
-
 jobs:
+  "percy-finalize":
+    docker:
+      - image: percyio/agent
+    steps:
+      - run: percy finalize --all
+
   "python-2.7": &test-template
     docker:
       - image: circleci/python:2.7-stretch-browsers
-
+        environment:
+          PERCY_PARALLEL_TOTAL: '-1'
     steps:
       - checkout
 
@@ -32,8 +38,15 @@ jobs:
           name: Run tests
           command: |
               . venv/bin/activate
-              python --version
-              python -m unittest tests.test_integration.Tests
+              pip install -e git+https://github.com/plotly/dash.git@percy-runner#egg=dash[testing]
+              pytest --junitxml=test-reports/snapshots.xml tests/snapshots
+      - store_artifacts:
+          path: test-reports
+      - store_test_results:
+          path: test-reports
+      - store_artifacts:
+          path: /tmp/dash_artifacts
+
 
   "python-3.6":
     <<: *test-template
@@ -52,8 +65,15 @@ jobs:
 
 workflows:
   version: 2
-  build:
+  python2.7:
     jobs:
-      - "python-2.7"
-      - "python-3.6"
-      - "python-3.7"
+      - python-2.7
+      - percy-finalize:
+          requires:
+            - python-2.7
+  python3.6:
+    jobs:
+      - python-3.6
+  python3.7:
+    jobs:
+      - python-3.7

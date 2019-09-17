@@ -59,7 +59,7 @@ def update_columns(n_clicks, value, existing_columns):
     if n_clicks > 0:
         existing_columns.append({
             'id': value, 'name': value,
-            'editable_name': True, 'deletable': True
+            'renamable': True, 'deletable': True
         })
     return existing_columns
 
