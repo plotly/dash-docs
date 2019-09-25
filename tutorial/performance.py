@@ -109,6 +109,92 @@ considerably by introducing `restyle` calls into this logic. If you or
 your company would like to sponsor this work,
 [get in touch](https://plot.ly/products/consulting-and-oem/).
 
+'''),
+
+    dcc.Markdown('''
+
+***
+
+### Clientside Callbacks
+
+Sometimes callbacks can incur a significant overhead, especially when they :
+- receive and/or return very large quantities of data (transfer time)
+- are called very often (queuing and handshake)
+- are part of a callback chain that requires multiple roundtrips
+between the browser and Dash
+
+
+When the overhead cost of a callback becomes too great and that no other
+optimization is possible, the callback can be modified to be run directly in
+the browser instead of a making a request to Dash.
+
+For example, the following callback:
+
+'''),
+
+    Syntax('''
+@app.callback(
+    Output('out-component', 'value'),
+    [Input('in-component1', 'value'), Input('in-component2', 'value')]
+)
+def large_params_function(largeValue1, largeValue2):
+    largeValueOutput = someTransform(largeValue1, largeValue2)
+
+    return largeValueOutput
+    '''),
+
+    dcc.Markdown('''
+
+***
+
+Can be rewritten in JavaScript and added to a `.js` file in the `/assets`
+folder like so:
+
+'''),
+
+    Syntax('''
+window.dash_clientside = Object.assign({}, window.dash_clientside, {
+    large_params_function: function(largeValue1, largeValue2) {
+        return someTransform(largeValue1, largeValue2);
+    }
+});
+    '''),
+
+    dcc.Markdown('''
+
+***
+
+In Dash, the callback is now written as:
+
+'''),
+
+    Syntax('''
+from dash.dependencies import ClientsideFunction, Input, Output
+
+app.clientside_callback(
+    ClientsideFunction(
+        namespace='clientside',
+        function_name='large_params_function'
+    ),
+    Output('out-component', 'value'),
+    [Input('in-component1', 'value'), Input('in-component2', 'value')]
+)
+    '''),
+
+    dcc.Markdown('''
+
+***
+
+**Note**: It is important to keep in mind that clientside callbacks will
+execute on the browser's main thread and that they will block rendering
+and events processing while the being processed. Dash does not currently
+support asynchronous clientside callbacks and will fail if a `Promise`
+is returned.
+
+'''),
+
+    dcc.Markdown('''
+
 ***
 
 ### Sponsoring Performance Enhancements
