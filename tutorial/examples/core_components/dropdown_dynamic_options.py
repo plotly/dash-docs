@@ -1,4 +1,5 @@
 import dash
+from dash.exceptions import PreventUpdate
 import dash_html_components as html
 import dash_core_components as dcc
 
@@ -19,6 +20,8 @@ app.layout = dcc.Dropdown(id='my-dynamic-dropdown')
     [dash.dependencies.Input('my-dynamic-dropdown', 'search_value')],
 )
 def update_options(search_value):
+    if not search_value:
+        raise PreventUpdate
     return [o for o in options if search_value in o['label']]
 
 
