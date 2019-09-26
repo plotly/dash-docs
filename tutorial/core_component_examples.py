@@ -14,6 +14,7 @@ examples = {
     'date_picker_single': tools.load_example('tutorial/examples/core_components/date_picker_single.py'),
     'date_picker_range': tools.load_example('tutorial/examples/core_components/date_picker_range.py'),
     'dropdown': tools.load_example('tutorial/examples/core_components/dropdown.py'),
+    'dropdown-dynamic-options': tools.load_example('tutorial/examples/core_components/dropdown_dynamic_options.py'),
     'graph-config': tools.load_example('tutorial/examples/core_components/export_graph_to_chart_studio.py'),
     'input-all-types': tools.load_example('tutorial/examples/core_components/input_all_types.py'),
     'input-basic': tools.load_example('tutorial/examples/core_components/input-basic.py'),
@@ -151,6 +152,21 @@ dcc.Dropdown(
         {'label': 'San Francisco', 'value': 'SF', 'disabled': True}
     ],
 )''', style=styles.code_container),
+
+    html.H3('Dynamic Options'),
+    html.P("This is an example on how to update the options on the server \
+           depending on the search terms the user types. For example purpose \
+           the options are empty on first load, as soon as you start typing \
+           they will be loaded with the corresponding values."),
+    dcc.Markdown(
+        examples['dropdown-dynamic-options'][0],
+        style=styles.code_container
+    ),
+    html.Div(
+        examples['dropdown-dynamic-options'][1],
+        className='example-container',
+        style={'overflow-x': 'initial'}
+    ),
 
     html.Hr(),
     html.H3("Dropdown Properties"),
