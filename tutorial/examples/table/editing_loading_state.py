@@ -1,7 +1,6 @@
 from time import sleep
 
-import random
-from random import randint
+from random import randint, seed
 
 import dash
 from dash.exceptions import PreventUpdate
@@ -11,7 +10,7 @@ import dash_core_components as dcc
 import dash_html_components as html
 
 # For the documentation to always render the same values
-random.seed(0)
+seed(0)
 
 app = dash.Dash(__name__)
 

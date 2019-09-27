@@ -115,7 +115,7 @@ your company would like to sponsor this work,
 
 Sometimes callbacks can incur a significant overhead, especially when they :
 - receive and/or return very large quantities of data (transfer time)
-- are called very often (queuing and handshake)
+- are called very often (network latency, queuing, handshake)
 - are part of a callback chain that requires multiple roundtrips
 between the browser and Dash
 
@@ -181,11 +181,14 @@ app.clientside_callback(
 
 ***
 
-**Note**: It is important to keep in mind that clientside callbacks will
-execute on the browser's main thread and that they will block rendering
-and events processing while the being processed. Dash does not currently
-support asynchronous clientside callbacks and will fail if a `Promise`
-is returned.
+**Note**: There are a few limitations to keep in mind:
+
+1. Clientside callbacks execute on the browser's main thread and wil block
+rendering and events processing while being executed.
+2. Dash does not currently support asynchronous clientside callbacks and will
+fail if a `Promise` is returned.
+3. Clientside callbacks are not possible if you need to refer to global
+variables on the server or a DB call is required.
 
 ***
 
