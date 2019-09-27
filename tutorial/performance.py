@@ -109,10 +109,6 @@ considerably by introducing `restyle` calls into this logic. If you or
 your company would like to sponsor this work,
 [get in touch](https://plot.ly/products/consulting-and-oem/).
 
-'''),
-
-    dcc.Markdown('''
-
 ***
 
 ### Clientside Callbacks
@@ -190,10 +186,6 @@ execute on the browser's main thread and that they will block rendering
 and events processing while the being processed. Dash does not currently
 support asynchronous clientside callbacks and will fail if a `Promise`
 is returned.
-
-'''),
-
-    dcc.Markdown('''
 
 ***
 
