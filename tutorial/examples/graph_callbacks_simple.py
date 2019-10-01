@@ -119,7 +119,7 @@ def display_selected_data(selectedData):
 @app.callback(
     Output('relayout-data', 'children'),
     [Input('basic-interactions', 'relayoutData')])
-def display_selected_data(relayoutData):
+def display_relayout_data(relayoutData):
     return json.dumps(relayoutData, indent=2)
 
 
