@@ -18,7 +18,7 @@ layout = html.Div([
     In your terminal, install several dash libraries.
     These libraries are under active development,
     so install and upgrade frequently.
-    Python 2 and 3 are supported.'''.replace('    ', '')),
+    Python 2 and 3 are supported.'''),
 
     dcc.Markdown('''
     ```shell
@@ -54,18 +54,18 @@ layout = html.Div([
     > >>> print(dash_core_components.__version__)
     > ```
     > To see the latest changes of any package, check the GitHub repo's CHANGELOG.md file:
-    > - [dash changelog](https://github.com/plotly/dash/blob/master/dash/CHANGELOG.md)
+    > - [dash & dash-renderer changelog](https://github.com/plotly/dash/blob/master/CHANGELOG.md)
+    >   - `dash-renderer` is a separate package installed automatically with
+    >     dash but its updates are included in the main dash changelog.
+    >     These docs are using dash-renderer=={}.
     > - [dash-core-components changelog](https://github.com/plotly/dash-core-components/blob/master/CHANGELOG.md)
     > - [dash-html-components changelog](https://github.com/plotly/dash-html-components/blob/master/CHANGELOG.md)
     > - [dash-table changelog](https://github.com/plotly/dash-table/blob/master/CHANGELOG.md)
-    >
-    > Finally, note that the plotly package and the dash-renderer package are
-    > important package dependencies that are installed automatically
-    > with dash-core-components and dash respectively.
-    > These docs are using dash-renderer=={} and plotly=={}
-    > and their changelogs are located here:
-    > - [dash-renderer changelog](https://github.com/plotly/dash/blob/master/dash-renderer/CHANGELOG.md)
     > - [plotly changelog](https://github.com/plotly/plotly.py/blob/master/CHANGELOG.md)
+    >   - the `plotly` package is also installed automatically with dash. It is
+    >     the Python interface to the plotly.js graphing library, so is mainly
+    >     used by dash-core-components, but it's also used by dash itself.
+    >     These docs are using plotly=={}.
     >
     > All of these packages adhere to [semver](https://semver.org/).
     '''.format(dash_renderer.__version__, plotly.__version__))

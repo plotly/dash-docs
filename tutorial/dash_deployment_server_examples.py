@@ -4,6 +4,7 @@ import dash_auth
 import dash_renderer
 import dash_core_components as dcc
 import dash_html_components as html
+import dash_table as dt
 from dash.dependencies import Input, Output
 import plotly
 from tutorial import styles
@@ -2218,7 +2219,7 @@ pdfService = html.Div(children=[
 
         dcc.Markdown(
         '''
-        
+
         - `url` - The URL to download
         - `appname` - Your app's name.
         - `secret_key` - Your app's secret key. This is needed for authorizing the pdf generation.
@@ -2250,15 +2251,15 @@ pdfService = html.Div(children=[
             recommend using `1` and controlling the margins yourself through
             your app's CSS.
           - `landscape` (optional): `True` for landscape, `False` for portrait.
-        
+
         ***
-        
+
         #### Basic Example
-        
+
         This example provides a simple UI around the PDF API. You can run this
         example locally or you can deploy this example to Dash
         Deployment Server. A few things to note:
-        
+
          - If you're testing locally, you will have to specify default values for your
         DASH_DOMAIN_BASE, DASH_APP_NAME and DASH_SECRET_KEY. You can find them in the list of your app's
         environment variables. See [our doc on environment variables](/dash-deployment-server/environment-variables)
@@ -2400,11 +2401,13 @@ Troubleshooting = html.Div(children=[
         dash=={}
         dash-html-components=={}
         dash-core-components=={}
+        dash-table=={}
         ```
         '''.replace('    ', '').format(
             dash.__version__,
             html.__version__,
             dcc.__version__,
+            dt.__version__
         ), style=styles.code_container),
 
         dcc.Markdown('''
@@ -2417,17 +2420,18 @@ Troubleshooting = html.Div(children=[
         > >>> print(dash_core_components.__version__)
         > ```
         > To see the latest changes of any package, check the GitHub repo's CHANGELOG.md file:
-        > - [dash changelog](https://github.com/plotly/dash/blob/master/dash/CHANGELOG.md)
+        > - [dash & dash-renderer changelog](https://github.com/plotly/dash/blob/master/CHANGELOG.md)
+        >   - `dash-renderer` is a separate package installed automatically with
+        >     dash but its updates are included in the main dash changelog.
+        >     These docs are using dash-renderer=={}.
         > - [dash-core-components changelog](https://github.com/plotly/dash-core-components/blob/master/CHANGELOG.md)
         > - [dash-html-components changelog](https://github.com/plotly/dash-html-components/blob/master/CHANGELOG.md)
-        >
-        > Finally, note that the plotly package and the dash-renderer package are
-        > important package dependencies that are installed automatically
-        > with dash-core-components and dash respectively.
-        > These docs are using dash-renderer=={} and plotly=={}
-        > and their changelogs are located here:
-        > - [dash-renderer changelog](https://github.com/plotly/dash/blob/master/dash-renderer/CHANGELOG.md)
+        > - [dash-table changelog](https://github.com/plotly/dash-table/blob/master/CHANGELOG.md)
         > - [plotly changelog](https://github.com/plotly/plotly.py/blob/master/CHANGELOG.md)
+        >   - the `plotly` package is also installed automatically with dash. It is
+        >     the Python interface to the plotly.js graphing library, so is mainly
+        >     used by dash-core-components, but it's also used by dash itself.
+        >     These docs are using plotly=={}.
         >
         > All of these packages adhere to [semver](https://semver.org/).
         '''.format(dash_renderer.__version__, plotly.__version__))
@@ -2838,7 +2842,7 @@ AdminPanel = html.Div(children=[
     ),
 
     dcc.Markdown('''
-    
+
     Only Admin users have access to the admin panel and other users will
     not be able to see the above link.
 
