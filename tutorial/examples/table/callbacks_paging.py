@@ -27,7 +27,7 @@ app.layout = dash_table.DataTable(
     Output('datatable-paging', 'data'),
     [Input('datatable-paging', "page_current"),
      Input('datatable-paging', "page_size")])
-def update_table(page_current,page_size):
+def update_table(page_current, page_size):
     return df.iloc[
         page_current*page_size:(page_current+ 1)*page_size
     ].to_dict('records')

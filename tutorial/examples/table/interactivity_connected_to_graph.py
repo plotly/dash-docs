@@ -32,15 +32,17 @@ app.layout = html.Div([
     html.Div(id='datatable-interactivity-container')
 ])
 
+
 @app.callback(
     Output('datatable-interactivity', 'style_data_conditional'),
     [Input('datatable-interactivity', 'selected_columns')]
 )
 def update_styles(selected_columns):
     return [{
-        'if': { 'column_id': i },
+        'if': {'column_id': i},
         'background_color': '#D2F3FF'
     } for i in selected_columns]
+
 
 @app.callback(
     Output('datatable-interactivity-container', "children"),

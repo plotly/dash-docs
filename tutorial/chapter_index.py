@@ -49,7 +49,7 @@ chapters = {
     'introduction': {
         'url': '/introduction',
         'content': introduction.layout,
-        'name':'Introduction',
+        'name': 'Introduction',
         'description': 'Dash is a productive Python framework for ' \
                        'building web applications written on top of ' \
                        'Flask, Plotly.js, and React.js.'

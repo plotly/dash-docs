@@ -28,6 +28,8 @@ app.layout = html.Div([
 
 # Register a callback to update the 'figure' property of the 'my-graph'
 # component when the 'value' property of the 'my-dropdown' component changes
+
+
 @app.callback(Output('my-graph', 'figure'), [Input('my-dropdown', 'value')])
 def update_graph(selected_dropdown_value):
     df = web.DataReader(

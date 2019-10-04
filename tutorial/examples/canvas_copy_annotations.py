@@ -10,7 +10,7 @@ from dash_canvas.utils import array_to_data_url, parse_jsonstring
 app = dash.Dash(__name__)
 
 filename = 'https://upload.wikimedia.org/wikipedia/commons/e/e4/Mitochondria%2C_mammalian_lung_-_TEM_%282%29.jpg'
-canvas_width = 300 
+canvas_width = 300
 shape = io.imread(filename, as_gray=True).shape
 
 app.layout = html.Div([

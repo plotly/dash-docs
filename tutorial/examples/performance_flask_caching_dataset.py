@@ -20,11 +20,12 @@ cache = Cache(app.server, config={
 
 TIMEOUT = 60
 
+
 @cache.memoize(timeout=TIMEOUT)
 def query_data():
     # This could be an expensive data querying step
     df =  pd.DataFrame(
-        np.random.randint(0,100,size=(100, 4)),
+        np.random.randint(0, 100, size=(100, 4)),
         columns=list('ABCD')
     )
     now = dt.datetime.now()

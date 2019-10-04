@@ -305,7 +305,7 @@ layout = html.Div([
 
     > External layouts are now available! Update your `dash-cytoscape` to
     > [version 0.1.1](https://github.com/plotly/dash-cytoscape/pull/50) or later.
-    
+
     The following external layouts are distributed with the official `dash-cytoscape` library:
     * [cose-bilkent](https://github.com/cytoscape/cytoscape.js-cose-bilkent)
     * [cola](https://github.com/cytoscape/cytoscape.js-cola)

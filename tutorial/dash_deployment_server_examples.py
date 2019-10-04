@@ -538,6 +538,7 @@ def display_instructions2(platform):
 
 ]
 
+
 @app.callback(Output('remote-and-deploy-instructions', 'children'),
               [Input('deploy-method', 'value')])
 def display_instructions_deploy(method):
@@ -1313,6 +1314,7 @@ Ssh = html.Div(children=[
     html.Div(id='instructions')
 ])
 
+
 @app.callback(Output('instructions', 'children'),
               [Input('platform', 'value')])
 def display_instructions(platform):
@@ -1548,11 +1550,11 @@ Cli = html.Div(children=[
     dcc.Markdown('''
     After setting up SSH authentication (see our [ssh doc](/dash-deployment-server/ssh)), you will
     be able to use the commands below to help manage your apps from the command line.
-    
+
     All commands are performed using `ssh dokku@your-dash-deployment-server -p PORT command flags appname` where
     `PORT` is the ssh port for DDS (usually 3022). DDS will compare the private key supplied to the ssh command
     and the public key uploaded to DDS in order to authenticate the user initiating the request.
-    
+
     > Note that using the same public key for multiple users on DDS isn't supported and will likely prevent it
     > from authenticating to the correct user.
 
@@ -1566,25 +1568,25 @@ Cli = html.Div(children=[
 
 
     #### App-related Commands:
-    
+
     > These commands can only be run by the app-owner or an admin account.'''),
 
     html.Details([
         html.Summary('Lock app'),
         dcc.Markdown('''
         &nbsp;
-    
+
         If you wish to disable deploying for a period of time, this can be
         done via deploy locks. Normally, deploy locks exist only for the duration
         of a deploy to prevent deploys from colliding, but a deploy lock can
-        be created at any time by running the apps:lock command. 
-    
+        be created at any time by running the apps:lock command.
+
         **Example:**
-    
-        
+
+
         `ssh dokku@your-dash-deployment-server -p PORT apps:lock my-dash-app`
-        
-        
+
+
         &nbsp;
         ''')]),
 
@@ -1592,17 +1594,17 @@ Cli = html.Div(children=[
         html.Summary('Unlock app'),
         dcc.Markdown('''
         &nbsp;
-        
+
         In some cases, it may be necessary to remove an existing deploy lock.
         This can be performed via the apps:unlock command.
-        
+
         > **Warning**: Removing the deploy lock will not stop in-progress deploys.
         At this time, in-progress deploys will need to be manually terminated by
         someone with access to the Dash Enterprise server console.
-    
+
         **Example:**
         `ssh dokku@your-dash-deployment-server -p PORT apps:unlock my-dash-app`
-        
+
         &nbsp;
         # ''')]),
 
@@ -1610,25 +1612,25 @@ Cli = html.Div(children=[
         html.Summary('Get app logs'),
         dcc.Markdown('''
         &nbsp;
-        
+
         You can get logs of an app using the logs command:
-    
+
         **Example:**
         `ssh dokku@your-dash-deployment-server -p PORT logs my-dash-app`
-    
+
         `logs` also support following flags:
-    
+
         ```
         -n, --num NUM          # the number of lines to display
         -p, --ps PS            # only display logs from the given process
         -t, --tail             # continually stream logs
         -q, --quiet            # display raw logs without colors, time and names
         ```
-        
+
         You can use these flags as follows:
-        
+
         `ssh dokku@your-dash-deployment-server -p PORT logs my-dash-app -t -p web`
-        
+
         &nbsp;
         ''')]),
 
@@ -1636,14 +1638,14 @@ Cli = html.Div(children=[
         html.Summary('Get logs from failed deploy'),
         dcc.Markdown('''
         &nbsp;
-        
+
         In some cases, it may be useful to retrieve the logs from a previously failed deploy.
         You can retrieve these logs with the logs:failed command.
-    
+
         **Example:**
 
         `ssh dokku@your-dash-deployment-server -p PORT logs:failed my-dash-app`
-        
+
         &nbsp;
         ''')]),
 
@@ -1651,13 +1653,13 @@ Cli = html.Div(children=[
         html.Summary("Rebuild an app's environment"),
         dcc.Markdown('''
         &nbsp;
-        
+
         You can trigger an application to rebuild its environment using `ps:rebuild`.
-    
+
         **Example:**
 
         `ssh dokku@your-dash-deployment-server -p PORT ps:rebuild my-dash-app`
-        
+
         &nbsp;
         ''')]),
 
@@ -1665,13 +1667,13 @@ Cli = html.Div(children=[
         html.Summary("Get a report of your app's status"),
         dcc.Markdown('''
         &nbsp;
-        
+
         This command displays a process report for one or more apps.
-    
+
         **Example:**
 
         `ssh dokku@your-dash-deployment-server -p PORT ps:report my-dash-app`
-        
+
         You can also retrieve a specific piece of service info via flags:
         ```
         --processes         # Display only the number of running processes
@@ -1680,9 +1682,9 @@ Cli = html.Div(children=[
         --restore           # Display the running status i.e. true or false
         --restart-policy    # Display the restart policy for the app
         ```
-        
+
         `ssh dokku@your-dash-deployment-server -p PORT ps:report my-dash-app --processes`
-        
+
         &nbsp;
         ''')]),
 
@@ -1690,13 +1692,13 @@ Cli = html.Div(children=[
         html.Summary("Restart an app"),
         dcc.Markdown('''
             &nbsp;
-            
+
             Applications can be restarted, which is functionally identical to releasing and deploying an application.
-        
+
             **Example:**
-            
+
             `ssh dokku@your-dash-deployment-server -p PORT ps:restart my-dash-app`
-            
+
             &nbsp;
             ''')
     ]),
@@ -1705,14 +1707,14 @@ Cli = html.Div(children=[
         html.Summary("Stop an app"),
         dcc.Markdown('''
             &nbsp;
-            
+
             Deployed applications can be stopped using the ps:stop command.
             This turns off all running containers for an application, and will result in a 502 Bad Gateway response.
 
             **Example:**
 
             `ssh dokku@your-dash-deployment-server -p PORT ps:stop my-dash-app`
-            
+
             &nbsp;
         ''')
     ]),
@@ -1721,13 +1723,13 @@ Cli = html.Div(children=[
         html.Summary("Start an app"),
         dcc.Markdown('''
             &nbsp;
-            
+
             All stopped containers can be started using the ps:start command.
 
             **Example:**
 
             `ssh dokku@your-dash-deployment-server -p PORT ps:start my-dash-app`
-            
+
             &nbsp;
         ''')
     ]),
@@ -1736,22 +1738,22 @@ Cli = html.Div(children=[
         html.Summary("Scale app processes"),
         dcc.Markdown('''
         &nbsp;
-        
+
         DDS can also manage scaling applications (increase the number of containers for processes defined
         in the Procfile) via the `ps:scale` command. DDS only scales the web process by default so if you
-        define others you will need to scale them. 
+        define others you will need to scale them.
 
         **Example:**
 
         `ssh dokku@your-dash-deployment-server -p PORT ps:scale my-dash-app web=1`
-        
+
         This command can be used to scale multiple process types at the same time.
 
         `ssh dokku@your-dash-deployment-server -p PORT ps:scale my-dash-app web=1 worker=1`
-        
+
         The ps:scale command with no process type argument will output
         the current scaling settings for an application:
-        
+
         ```
         ssh dokku@your-dash-deployment-server -p PORT ps:scale my-dash-app
         -----> Scaling for my-dash-app
@@ -1760,7 +1762,7 @@ Cli = html.Div(children=[
         -----> web                1
         -----> worker             1
         ```
-        
+
         &nbsp;
     ''')
     ]),
@@ -1769,14 +1771,14 @@ Cli = html.Div(children=[
         html.Summary("List persistent storage directories"),
         dcc.Markdown('''
             &nbsp;
-            
+
             List bind mounts for an app's container(s) (host:container).
             See our doc on [mapping local directories](/dash-deployment-server/map-local-directories) for more info on
             how to set these up.
 
             **Example:**
             `ssh dokku@your-dash-deployment-server -p PORT storage:list my-dash-app`
-            
+
             &nbsp;
         ''')
     ]),
@@ -1797,7 +1799,7 @@ Cli = html.Div(children=[
             **Example:**
 
             `ssh dokku@your-dash-deployment-server -p PORT redis:export redis-db`
-            
+
             You can redirect this output to a file:
 
            `ssh dokku@your-dash-deployment-server -p PORT redis:export redis-db > db.dump`
@@ -1815,7 +1817,7 @@ Cli = html.Div(children=[
             **Example:**
 
             `ssh dokku@your-dash-deployment-server -p PORT redis:import redis-db < db.dump`
-            
+
             &nbsp;
         ''')
     ]),
@@ -1830,9 +1832,9 @@ Cli = html.Div(children=[
             **Example:**
 
             `ssh dokku@your-dash-deployment-server -p PORT redis:info redis-db`
-            
+
             You can also retrieve a specific piece of service info via flags:
-            
+
             ```
             ssh dokku@your-dash-deployment-server -p PORT redis:info redis-db --config-dir
             ssh dokku@your-dash-deployment-server -p PORT redis:info redis-db --data-dir
@@ -1845,7 +1847,7 @@ Cli = html.Div(children=[
             ssh dokku@your-dash-deployment-server -p PORT redis:info redis-db --status
             ssh dokku@your-dash-deployment-server -p PORT redis:info redis-db --version
             ```
-            
+
             &nbsp;
         ''')
     ]),
@@ -1860,11 +1862,11 @@ Cli = html.Div(children=[
             **Example:**
 
             `ssh dokku@your-dash-deployment-server -p PORT redis:logs redis-db`
-            
+
             By default, logs will not be tailed, but you can do this with the --tail flag:
 
             `ssh dokku@your-dash-deployment-server -p PORT redis:logs redis-db --tail`
-            
+
             &nbsp;
         ''')
     ]),
@@ -1879,7 +1881,7 @@ Cli = html.Div(children=[
         **Example:**
 
         `ssh dokku@your-dash-deployment-server -p PORT redis:restart redis-db`
-        
+
         &nbsp;
     ''')
     ]),
@@ -1894,7 +1896,7 @@ Cli = html.Div(children=[
         **Example:**
 
         `ssh dokku@your-dash-deployment-server -p PORT redis:stop redis-db`
-        
+
         &nbsp;
     ''')
     ]),
@@ -1909,7 +1911,7 @@ Cli = html.Div(children=[
         **Example:**
 
         `ssh dokku@your-dash-deployment-server -p PORT redis:start redis-db`
-        
+
         &nbsp;
     ''')
     ]),
@@ -1931,7 +1933,7 @@ Cli = html.Div(children=[
         **Example:**
 
         `ssh dokku@your-dash-deployment-server -p PORT redis:link redis-db my-dash-app`
-        
+
         &nbsp;
     ''')
     ]),
@@ -1946,11 +1948,11 @@ Cli = html.Div(children=[
         **Example:**
 
         `ssh dokku@your-dash-deployment-server -p PORT redis:unlink redis-db my-dash-app`
-        
+
         &nbsp;
     ''')
     ])
-    
+
     ])
 
 # # # # # # #
@@ -2087,7 +2089,7 @@ AppPrivacy = html.Div(children=[
     Starting in Version 3.0.0 of Dash Deployment Server, you can restrict who is able to view your app
     from the app's management page. This will also restrict who will be able to see it in the
     [Dash App Portal](/dash-deployment-server/portal).
-    
+
     Find a list of links to these pages for your apps at
     `https://<your-dash-deployment-server>.com/Manager/apps`. Contact support
     if you have any questions about privacy in previous versions of Dash Deployment Server.
@@ -2636,7 +2638,7 @@ pdfService = html.Div(children=[
 
         dcc.Markdown(
         '''
-        
+
         - `url` - The URL to download
         - `appname` - Your app's name.
         - `secret_key` - Your app's secret key. This is needed for authorizing the pdf generation.
@@ -2668,15 +2670,15 @@ pdfService = html.Div(children=[
             recommend using `1` and controlling the margins yourself through
             your app's CSS.
           - `landscape` (optional): `True` for landscape, `False` for portrait.
-        
+
         ***
-        
+
         #### Basic Example
-        
+
         This example provides a simple UI around the PDF API. You can run this
         example locally or you can deploy this example to Dash
         Deployment Server. A few things to note:
-        
+
          - If you're testing locally, you will have to specify default values for your
         DASH_DOMAIN_BASE, DASH_APP_NAME and DASH_SECRET_KEY. You can find them in the list of your app's
         environment variables. See [our doc on environment variables](/dash-deployment-server/environment-variables)
@@ -3174,7 +3176,7 @@ Portal = html.Div(children=[
     enable the *Show in Portal* Toggle in your app's settings from
     within the DDS app manager and then edit your app's metadata to
     make it easier to find/customize its appearance.
-    
+
     > Note that only users with access to your app will be able
     to see it in the portal. For more information about setting app pricacy
     see [Dash App Privacy](/dash-deployment-server/privacy).
@@ -3260,7 +3262,7 @@ AdminPanel = html.Div(children=[
     ),
 
     dcc.Markdown('''
-    
+
     Only Admin users have access to the admin panel and other users will
     not be able to see the above link.
 

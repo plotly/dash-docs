@@ -102,7 +102,7 @@ Here is a simple example. This example requires a Heroku account,
           $ virtualenv venv # creates a virtualenv called "venv"
           $ source venv/bin/activate # uses the virtualenv
           ```
-          ''',style=styles.code_container),
+          ''', style=styles.code_container),
 
           dcc.Markdown('''
 `virtualenv` creates a fresh Python instance. You will need to reinstall your

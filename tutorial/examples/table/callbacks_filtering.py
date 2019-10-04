@@ -44,7 +44,7 @@ def split_filter_part(filter_part):
 
                 value_part = value_part.strip()
                 v0 = value_part[0]
-                if (v0 == value_part[-1] and v0 in ("'", '"', '`')):
+                if v0 == value_part[-1] and v0 in ("'", '"', '`'):
                     value = value_part[1: -1].replace('\\' + v0, v0)
                 else:
                     try:
@@ -64,7 +64,7 @@ def split_filter_part(filter_part):
     [Input('table-filtering', "page_current"),
      Input('table-filtering', "page_size"),
      Input('table-filtering', "filter_query")])
-def update_table(page_current,page_size, filter):
+def update_table(page_current, page_size, filter):
     print(filter)
     filtering_expressions = filter.split(' && ')
     dff = df

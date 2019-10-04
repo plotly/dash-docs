@@ -26,7 +26,7 @@ app.layout = html.Div([
 def update_output(value):
     if value % 2 is 0:
         value = True
-    else: 
+    else:
         value = False
     return value
 

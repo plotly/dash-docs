@@ -47,6 +47,5 @@ def compute_amount(amount):
     return float(amount) * 7
 
 
-
 if __name__ == '__main__':
     app.run_server(debug=True)

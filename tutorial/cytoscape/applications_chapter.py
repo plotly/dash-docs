@@ -17,21 +17,21 @@ layout = html.Div([
 
     dcc.Markdown('''
     # Cytoscape with Biopython
-    
-    In this chapter, we will show an example of automatically generating a 
+
+    In this chapter, we will show an example of automatically generating a
     phylogenetic tree
     from biopython's `Phylo` object, and enable interactive features such
     as highlighting children clades. The source code is available as [`usage-phylogeny.py`](https://github.com/plotly/dash-cytoscape/blob/master/demos/usage-phylogeny.py),
     and you can find an [online demo here](https://dash-gallery.plotly.host/cytoscape-phylogeny).
-    
+
     ## Parsing the Phylo object
-    
-    The first step is to load the phylogeny tree. We will be using the 
+
+    The first step is to load the phylogeny tree. We will be using the
     `apaf.xml` file retrieved from [PhyloXML](http://www.phyloxml.org/examples/apaf.xml).
-    
+
     To load the file, run this (after you made sure that
     biopython was correctly installed):
-    
+
     '''),
 
     dcc.Markdown('''
@@ -42,8 +42,8 @@ layout = html.Div([
     ''', style=styles.code_container),
 
     dcc.Markdown('''
-    
-    Then, we need to use a function to parse the data. We will construct a 
+
+    Then, we need to use a function to parse the data. We will construct a
     function `generate_elements(...)`, which will first generate the column
     position and row position of each element in the tree using helper functions
     `get_col_positions` and `get_row_positions`, and recursively parse the
@@ -57,11 +57,11 @@ layout = html.Div([
         ```py
         def get_col_positions(tree, column_width=80):
             taxa = tree.get_terminals()
-    
+
             # Some constants for the drawing calculations
             max_label_width = max(len(str(taxon)) for taxon in taxa)
             drawing_width = column_width - max_label_width - 1
-    
+
             """Create a mapping of each clade to its column position."""
             depths = tree.depths()
             # If there are no branch lengths, assume unit branch lengths
@@ -84,17 +84,17 @@ layout = html.Div([
         def get_row_positions(tree):
             taxa = tree.get_terminals()
             positions = dict((taxon, 2 * idx) for idx, taxon in enumerate(taxa))
-    
+
             def calc_row(clade):
                 for subclade in clade:
                     if subclade not in positions:
                         calc_row(subclade)
                 positions[clade] = ((positions[clade.clades[0]] +
                                      positions[clade.clades[-1]]) // 2)
-    
+
             calc_row(tree.root)
             return positions
-        ```        
+        ```
         ''', style=styles.code_container),
     ]),
 
@@ -104,10 +104,10 @@ layout = html.Div([
         ```py
         def add_to_elements(clade, clade_id):
             children = clade.clades
-    
+
             pos_x = col_positions[clade] * xlen
             pos_y = row_positions[clade] * ylen
-    
+
             cy_source = {
                 "data": {"id": clade_id},
                 'position': {'x': pos_x, 'y': pos_y},
@@ -115,28 +115,28 @@ layout = html.Div([
                 'grabbable': grabbable
             }
             nodes.append(cy_source)
-    
+
             if clade.is_terminal():
                 cy_source['data']['name'] = clade.name
                 cy_source['classes'] = 'terminal'
-    
+
             for n, child in enumerate(children):
                 # The "support" node is on the same column as the parent clade,
                 # and on the same row as the child clade. It is used to create the
                 # 90 degree angle between the parent and the children.
                 # Edge config: parent -> support -> child
-    
+
                 support_id = clade_id + 's' + str(n)
                 child_id = clade_id + 'c' + str(n)
                 pos_y_child = row_positions[child] * ylen
-    
+
                 cy_support_node = {
                     'data': {'id': support_id},
                     'position': {'x': pos_x, 'y': pos_y_child},
                     'grabbable': grabbable,
                     'classes': 'support'
                 }
-    
+
                 cy_support_edge = {
                     'data': {
                         'source': clade_id,
@@ -144,7 +144,7 @@ layout = html.Div([
                         'sourceCladeId': clade_id
                     },
                 }
-    
+
                 cy_edge = {
                     'data': {
                         'source': support_id,
@@ -153,34 +153,34 @@ layout = html.Div([
                         'sourceCladeId': clade_id
                     },
                 }
-    
+
                 if clade.confidence and clade.confidence.value:
                     cy_source['data']['confidence'] = clade.confidence.value
-    
+
                 nodes.append(cy_support_node)
                 edges.extend([cy_support_edge, cy_edge])
-    
+
                 add_to_elements(child, child_id)
         ```
         ''', style=styles.code_container),
     ]),
 
     dcc.Markdown('''
-    > You might notice that we use something called support clades. Those are 
-    > simply used to modify the shape of the tree so that it resembles 
+    > You might notice that we use something called support clades. Those are
+    > simply used to modify the shape of the tree so that it resembles
     > traditional phylogeny tree layouts.
-     
+
     Finally, we finish building `generate_elements` with the following code:
     '''),
 
     dcc.Markdown('''
     ```py
     import math
-    
+
     def generate_elements(tree, xlen=30, ylen=30, grabbable=False):
         def col_positions(tree, column_width=80):
             ...
-        
+
         def row_positions(tree):
             ...
 
@@ -189,12 +189,12 @@ layout = html.Div([
 
         col_positions = get_col_positions(tree)
         row_positions = get_row_positions(tree)
-    
+
         nodes = []
         edges = []
-    
+
         add_to_elements(tree.clade, 'r')
-        
+
         return nodes, edges
     ```
     ''', style=styles.code_container),
@@ -202,9 +202,9 @@ layout = html.Div([
 
     dcc.Markdown('''
     > Note that `add_to_elements` changes the `nodes` and `edges` lists in place.
-    
+
     ## Defining layout and stylesheet
-    
+
     Since we are assigning a position to the nodes, we have to use the `preset`
     layout. Additionally, we need to add specific styles in order to make the
     phylogeny trees to match aesthetically the traditional methods. We define:
@@ -252,11 +252,11 @@ layout = html.Div([
 
     dcc.Markdown('''
     ## Layout and Callbacks
-    
+
     At this point, we simply need to create the layout of the app, which will
-    be a simple Cytoscape component. We will also add a callback that will 
+    be a simple Cytoscape component. We will also add a callback that will
     color all the children of an edge red whenever we hover on that edge. This
-    is accomplished by filtering the IDs, which are sequences of 
+    is accomplished by filtering the IDs, which are sequences of
     *s*'s and *c*'s, which stand for *support* and *children*, intersected
     by the number 0 or 1, since there are two subclades per clade.
     '''),
@@ -265,7 +265,7 @@ layout = html.Div([
     ```py
     # Start the app
     app = dash.Dash(__name__)
-    
+
     app.layout = html.Div([
         cyto.Cytoscape(
             id='cytoscape-usage-phylogeny',
@@ -278,26 +278,26 @@ layout = html.Div([
             }
         )
     ])
-    
-    
+
+
     @app.callback(Output('cytoscape-usage-phylogeny', 'stylesheet'),
                   [Input('cytoscape-usage-phylogeny', 'mouseoverEdgeData')])
     def color_children(edgeData):
         if not edgeData:
             return stylesheet
-    
+
         if 's' in edgeData['source']:
             val = edgeData['source'].split('s')[0]
         else:
             val = edgeData['source']
-    
+
         children_style = [{
             'selector': 'edge[source *= "{}"]'.format(val),
             'style': {
                 'line-color': 'blue'
             }
         }]
-    
+
         return stylesheet + children_style
     ```
     ''', style=styles.code_container),

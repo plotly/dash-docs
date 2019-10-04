@@ -14,16 +14,14 @@ from tutorial.utils.convert_props_to_list import generate_prop_info
 import json
 
 
-
 # all component names
 
 def get_component_names(library_name):
-    '''Gets the names of all components, Python and React, in a library.
+    """Gets the names of all components, Python and React, in a library.
 
     :param (str) library_name: The name of the library for which to
     obtain component names.
-
-    '''
+    """
 
     exec("import {}".format(library_name))
 
@@ -49,8 +47,8 @@ def IframeComponentBlock(
         height=600,
         width=600
 ):
-    '''Generate a container that is visually similar to the
-    ComponentBlock for components that require an externally hosted app.
+    """Generate a container that is visually similar to the ComponentBlock for
+    components that require an externally hosted app.
 
     :param (str) example_string: String containing the code that is
     used in the application from the iframe.
@@ -60,8 +58,7 @@ def IframeComponentBlock(
 
     :rtype (dict): A dash_html_components div containing the code
     container and the iframe.
-
-    '''
+    """
 
     return html.Div([
         dcc.Markdown(
@@ -93,8 +90,8 @@ def generate_component_example(
         component_wrap=None,
         iframe_info=None
 ):
-    '''Generate an example for a component, with hyperlinks to the
-    appropriate component-specific pages.
+    """Generate an example for a component, with hyperlinks to the appropriate
+    component-specific pages.
 
     :param (str) component_name: The name of the component as it is
     defined within the package.
@@ -129,7 +126,7 @@ def generate_component_example(
     :rtype (list[obj]): A list containing the entire section for the
     component in question, including the code block, component demo,
     description, and hyperlinks to the component-specific page.
-    '''
+    """
 
     # location of all sample data
     DATA_LOCATION_PREFIX = '''https://raw.githubusercontent.com/plotly/\
@@ -193,7 +190,7 @@ dash-bio-docs-files/master/'''
 
     # remove the characters following the final parameter
     # (',\n  '), and add unindented newline at end
-    if(len(paramstring) > 4):
+    if len(paramstring) > 4:
         paramstring = paramstring[:-4] + '\n'
     # if no params were supplied, remove all newlines
     else:
@@ -237,7 +234,6 @@ component = {}
            imports_string,
            setup_code,
            component_string)
-
 
     # load the iframe if that is where the app is
     if iframe_info is not None:
@@ -283,7 +279,7 @@ def generate_docs(
         library_install_instructions,
         library_components
 ):
-    '''Generate full documentation for a library.
+    """Generate full documentation for a library.
 
     :param (str) library_name: The full name of the library (e.g.,
     dash_bio).
@@ -301,8 +297,7 @@ def generate_docs(
 
     :rtype (list[object]): The children of the layout for the
     documentation page.
-
-    '''
+    """
 
     layout_children = library_heading
 
@@ -329,7 +324,7 @@ def create_default_example(
         example_code,
         styles
 ):
-    '''Generate a default example for the component-specific page.
+    """Generate a default example for the component-specific page.
 
     :param (str) component_name: The name of the component as it is
     defined within the package.
@@ -339,7 +334,7 @@ def create_default_example(
 
     :rtype (list[object]): The children of the layout for the default
     example.
-    '''
+    """
 
     return [
         dcc.Markdown('See {} in action [here](http://dash-gallery.plotly.host/dash-{}).'.format(
@@ -386,7 +381,7 @@ def generate_prop_table(
         component_names,
         library_name
 ):
-    '''Generate a prop table for each component (both React and Python).
+    """Generate a prop table for each component (both React and Python).
 
     :param (str) component_name: The name of the component as it is
     defined within the package.
@@ -398,8 +393,7 @@ def generate_prop_table(
     :param (str) library_name: The name of the library.
 
     :rtype (object): An html.Table containing data on the props of the component.
-
-    '''
+    """
 
     regex = {
          'python': r'^\s*([a-zA-Z_]*)\s*\(([a-zA-Z\/]*);\s*([a-z]*)\):\s*(.*?)\s*(\(Default:\s*(.*)\)|)\s*$'
@@ -488,7 +482,7 @@ def generate_prop_table(
 
 
 def create_doc_page(examples, component_names, component_name, component_examples=None):
-    '''Generates a documentation page for a component.
+    """Generates a documentation page for a component.
 
     :param (dict[object]) examples: A dictionary that contains the
     loaded examples for all components.
@@ -502,7 +496,7 @@ def create_doc_page(examples, component_names, component_name, component_example
 
     :rtype (object): A div containing the contents of the component's
     documentation page.
-    '''
+    """
     c_name = component_name.replace('-', ' ').title().replace(' ', '')
 
     if component_examples is None:

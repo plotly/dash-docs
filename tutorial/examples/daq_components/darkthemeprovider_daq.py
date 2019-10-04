@@ -9,16 +9,16 @@ app = dash.Dash(__name__)
 theme = {
     'dark': False,
     'detail': '#007439',
-    'primary': '#00EA64', 
+    'primary': '#00EA64',
     'secondary': '#6E6E6E'
 }
 
 app.layout = html.Div(id='dark-theme-provider-demo', children=[
-    html.Br(), 
+    html.Br(),
     daq.ToggleSwitch(
         id='daq-light-dark-theme',
         label=['Light', 'Dark'],
-        style={'width': '250px', 'margin': 'auto'}, 
+        style={'width': '250px', 'margin': 'auto'},
         value=False
     ),
     html.Div(
@@ -36,8 +36,8 @@ app.layout = html.Div(id='dark-theme-provider-demo', children=[
     Output('dark-theme-component-demo', 'children'),
     [Input('daq-light-dark-theme', 'value')]
 )
-def turn_dark(dark_theme): 
-    if(dark_theme):
+def turn_dark(dark_theme):
+    if dark_theme:
         theme.update(
             dark=True
         )
@@ -54,7 +54,7 @@ def turn_dark(dark_theme):
     [Input('daq-light-dark-theme', 'value')]
 )
 def change_bg(dark_theme):
-    if(dark_theme):
+    if dark_theme:
         return {'background-color': '#303030', 'color': 'white'}
     else:
         return {'background-color': 'white', 'color': 'black'}

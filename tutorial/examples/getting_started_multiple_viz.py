@@ -48,7 +48,7 @@ app.layout = html.Div([
                 value='Linear',
                 labelStyle={'display': 'inline-block'}
             )
-        ],style={'width': '48%', 'float': 'right', 'display': 'inline-block'})
+        ], style={'width': '48%', 'float': 'right', 'display': 'inline-block'})
     ]),
 
     dcc.Graph(id='indicator-graphic'),
@@ -62,6 +62,7 @@ app.layout = html.Div([
         step=None
     )
 ])
+
 
 @app.callback(
     Output('indicator-graphic', 'figure'),

@@ -48,4 +48,3 @@ def ComponentBlock(example_string, **kwargs):
             }) if 'Thermometer' in example_string else {})
         )
     ])
-

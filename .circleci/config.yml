@@ -1,16 +1,16 @@
 version: 2
 jobs:
-  "percy-finalize":
+  percy-finalize:
     docker:
       - image: percyio/agent
     steps:
       - run: percy finalize --all
 
-  "python-2.7": &test-template
+  python-2.7: &test-template
     docker:
       - image: circleci/python:2.7-stretch-browsers
         environment:
-          PERCY_PARALLEL_TOTAL: '-1'
+          PERCY_PARALLEL_TOTAL: -1
     steps:
       - checkout
 
@@ -32,7 +32,15 @@ jobs:
       - save_cache:
           key: deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}-{{ checksum "circlejob.txt" }}
           paths:
-              - "venv"
+              - venv
+
+      - run:
+          name: 🌸 Python Lint
+          command: |
+              . venv/bin/activate
+              set -eo pipefail
+              pip install -r requirements.txt
+              flake8 --select=E101,E111,E201,E202,E203,E211,E231,E271,E272,E273,E274,E275,E301,E302,E303,E741,E742,E743,W291,W292,W293,W393 tutorial
 
       - run:
           name: Run tests
@@ -48,14 +56,14 @@ jobs:
           path: /tmp/dash_artifacts
 
 
-  "python-3.6":
+  python-3.6:
     <<: *test-template
     docker:
       - image: circleci/python:3.6-stretch-browsers
     environment:
       PERCY_ENABLE: 0
 
-  "python-3.7":
+  python-3.7:
     <<: *test-template
     docker:
       - image: circleci/python:3.7-stretch-browsers

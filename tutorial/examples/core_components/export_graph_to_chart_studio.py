@@ -30,7 +30,7 @@ app.layout = html.Div([
     [dash.dependencies.Input('my-dropdown', 'value')])
 def update_output(value):
     y_array_dict = {
-        'NYC': [4,2,3],
+        'NYC': [4, 2, 3],
         'MTL': [1, 2, 4],
         'SF': [5, 3, 6]
     }

@@ -50,7 +50,7 @@ layout = html.Div([
     ```
     app = dash.Dash(serve_locally=False)
     ```
-    
+
     > **Note that using `app.scripts.append_script` to load external js scripts
     > won't work while `serve_locally=True`. Please use the `external_scripts` argument
     > in your call to `dash.Dash` instead, as outlined in [the external resources section](/external-resources).**

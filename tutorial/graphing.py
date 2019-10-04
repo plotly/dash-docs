@@ -40,7 +40,7 @@ layout = html.Div([
 
     Dash components are described declaratively by a set of attributes.
     All of these attributes can be updated by callback functions, but only
-    a subset of these attributes are updated through user interaction, such as  
+    a subset of these attributes are updated through user interaction, such as
     when you click on an option in a `dcc.Dropdown` component and the
     `value` property of that component changes.
 

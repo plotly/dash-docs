@@ -14,6 +14,7 @@ app.layout = html.Div([
     html.P(id='out')
 ])
 
+
 @app.callback(
     [Output('out', 'children'), Output('err', 'children')],
     [Input('num', 'value')]
@@ -30,6 +31,7 @@ def show_factors(num):
         return dash.no_update, '{} is prime!'.format(num)
 
     return '{} is {}'.format(num, ' * '.join(str(n) for n in factors)), ''
+
 
 def prime_factors(num):
     n, i, out = num, 2, []

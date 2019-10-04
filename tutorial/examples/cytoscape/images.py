@@ -1,6 +1,5 @@
-'''
-Phylogeny tree inspired from: http://www.bio.miami.edu/dana/106/106F06_10.html
-'''
+"""Phylogeny tree inspired from:
+http://www.bio.miami.edu/dana/106/106F06_10.html."""
 import dash
 import dash_cytoscape as cyto
 import dash_html_components as html

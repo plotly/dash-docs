@@ -14,6 +14,7 @@ app.layout = html.Div([
     html.Div(id='toggle-switch-output')
 ])
 
+
 @app.callback(
     dash.dependencies.Output('toggle-switch-output', 'children'),
     [dash.dependencies.Input('my-toggle-switch', 'value')])

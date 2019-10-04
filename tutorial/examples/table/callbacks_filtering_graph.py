@@ -60,7 +60,7 @@ def split_filter_part(filter_part):
 
                 value_part = value_part.strip()
                 v0 = value_part[0]
-                if (v0 == value_part[-1] and v0 in ("'", '"', '`')):
+                if v0 == value_part[-1] and v0 in ("'", '"', '`'):
                     value = value_part[1: -1].replace('\\' + v0, v0)
                 else:
                     try:
@@ -107,7 +107,7 @@ def update_table(page_current, page_size, sort_by, filter):
             inplace=False
         )
 
-    return dff.iloc[ 
+    return dff.iloc[
         page_current*page_size: (page_current + 1)*page_size
     ].to_dict('records')
 

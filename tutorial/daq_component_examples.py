@@ -267,7 +267,7 @@ daq.Gauge(
   value=3,
   min=0,
   max=24,
-)''' , style=styles.code_container),
+)''', style=styles.code_container),
     html.Hr(),
     html.H3("Gauge Properties"),
     generate_prop_info('Gauge', lib=daq)
@@ -955,7 +955,7 @@ daq.Tank(
 
     html.Hr(),
 
-    html.H3('Height and width') ,
+    html.H3('Height and width'),
     dcc.Markdown("Control the size of the tank by setting \
     `height` and `width`."),
     ComponentBlock('''import dash_daq as daq

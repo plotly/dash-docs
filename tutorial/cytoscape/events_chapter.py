@@ -468,4 +468,3 @@ layout = html.Div([
     ''')
 
 ])
-

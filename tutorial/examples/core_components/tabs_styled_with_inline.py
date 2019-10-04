@@ -33,6 +33,7 @@ app.layout = html.Div([
     html.Div(id='tabs-content-inline')
 ])
 
+
 @app.callback(Output('tabs-content-inline', 'children'),
               [Input('tabs-styled-with-inline', 'value')])
 def render_content(tab):

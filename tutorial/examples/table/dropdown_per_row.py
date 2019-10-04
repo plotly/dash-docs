@@ -50,7 +50,7 @@ app.layout = html.Div([
                                 'Plateau',
                                 'Hochelaga'
                             ]
-                        ] 
+                        ]
         },
         {
             'if': {
@@ -64,7 +64,7 @@ app.layout = html.Div([
                                 'Hollywood',
                                 'Los Feliz'
                             ]
-                        ] 
+                        ]
         }]
     ),
     html.Div(id='dropdown_per_row_container')
@@ -73,4 +73,3 @@ app.layout = html.Div([
 
 if __name__ == '__main__':
     app.run_server(debug=True)
-

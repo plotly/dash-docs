@@ -13,6 +13,7 @@ app.layout = html.Div([
     html.Div(id='body-div')
 ])
 
+
 @app.callback(
     Output(component_id='body-div', component_property='children'),
     [Input(component_id='button', component_property='n_clicks')]
@@ -20,7 +21,7 @@ app.layout = html.Div([
 def update_output(n_clicks):
     if n_clicks is None:
         raise PreventUpdate
-    else: 
+    else:
         return "Elephants are the only animal that can't jump"
 
 if __name__ == '__main__':

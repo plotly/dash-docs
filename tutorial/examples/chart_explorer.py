@@ -9,20 +9,20 @@ graphs = OrderedDict([
     ['scatter', {
         'figure': py.get_figure(),
         'label': 'Scatter'
-    ],
+    }],
     ['bar', {
         'figure': py.get_figure(),
         'label': 'Bar'
     }],
-    ['surface': {
+    ['surface', {
         'figure': py.get_figure(),
         'label': 'Surface'
     }],
-    ['multiple-axes': {
-        'figure':
-        'label':
+    ['multiple-axes', {
+        'figure': py.get_figure(),
+        'label': 'Multiple Axes'
     }],
-    ['error-bars': {
+    ['error-bars', {
         'figure': py.get_figure('https://plot.ly/~chriddyp/674'),
         'label': 'Error Bars'
     }]

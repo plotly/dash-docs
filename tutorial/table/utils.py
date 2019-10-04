@@ -3,7 +3,6 @@ import dash_html_components as html
 from textwrap import dedent
 
 
-
 def CreateDisplay(scope):
     def Display(example_string):
         return html.Div([

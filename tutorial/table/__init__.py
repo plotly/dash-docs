@@ -9,4 +9,3 @@ from .import sizing_chapter
 from .import table_callbacks_chapter
 from .import table_typing_chapter
 from .import virtualization_chapter
-

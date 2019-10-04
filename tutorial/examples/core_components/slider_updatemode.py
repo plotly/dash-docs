@@ -9,6 +9,8 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 # Use the following function when accessing the value of 'my-slider'
 # in callbacks to transform the output value to logarithmic
+
+
 def transform_value(value):
     return 10 ** value
 

@@ -73,7 +73,7 @@ app.layout = html.Div([
                 Choose the lasso or rectangle tool in the graph's menu
                 bar and then select points in the graph.
 
-                Note that if `layout.clickmode = 'event+select'`, selection data also 
+                Note that if `layout.clickmode = 'event+select'`, selection data also
                 accumulates (or un-accumulates) selected data if you hold down the shift
                 button while clicking.
             """)),

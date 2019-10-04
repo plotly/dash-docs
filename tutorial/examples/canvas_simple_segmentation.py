@@ -12,7 +12,7 @@ import numpy as np
 app = dash.Dash(__name__)
 
 filename = 'https://upload.wikimedia.org/wikipedia/commons/e/e4/Mitochondria%2C_mammalian_lung_-_TEM_%282%29.jpg'
-canvas_width = 300 
+canvas_width = 300
 img = io.imread(filename, as_gray=True)
 
 app.layout = html.Div([

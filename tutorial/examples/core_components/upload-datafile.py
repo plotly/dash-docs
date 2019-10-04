@@ -89,6 +89,5 @@ def update_output(list_of_contents, list_of_names, list_of_dates):
         return children
 
 
-
 if __name__ == '__main__':
     app.run_server(debug=True)

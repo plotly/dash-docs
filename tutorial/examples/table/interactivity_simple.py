@@ -21,7 +21,7 @@ app.layout = dash_table.DataTable(
     row_selectable="multi",
     row_deletable=True,
     selected_rows=[],
-    fixed_rows={ 'headers': True, 'data': 0 },
+    fixed_rows={'headers': True, 'data': 0},
 )
 
 

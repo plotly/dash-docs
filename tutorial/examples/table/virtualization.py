@@ -14,7 +14,7 @@ app.layout = dash_table.DataTable(
         columns=[
             {'name': i, 'id': i} for i in df.columns
         ],
-        fixed_rows={ 'headers': True, 'data': 0 },
+        fixed_rows={'headers': True, 'data': 0},
         style_cell={
             'whiteSpace': 'normal'
         },

@@ -18,6 +18,7 @@ app.layout = html.Div([
     html.Div(id='container-button-timestamp')
 ])
 
+
 @app.callback(Output('container-button-timestamp', 'children'),
               [Input('btn-1', 'n_clicks_timestamp'),
                Input('btn-2', 'n_clicks_timestamp'),

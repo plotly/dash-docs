@@ -46,7 +46,6 @@ def highlight(x, y):
                     selectedpoints = np.intersect1d(
                         selectedpoints, selected_index)
 
-
         # set which points are selected with the `selectedpoints` property
         # and style those points with the `selected` and `unselected`
         # attribute. see
@@ -123,7 +122,6 @@ def highlight(x, y):
         return figure
 
     return callback
-
 
 
 # app.callback is a decorator which means that it takes a function
