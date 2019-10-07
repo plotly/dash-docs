@@ -12,6 +12,7 @@ examples = {
     example: tools.load_example('tutorial/examples/table/{}'.format(example))
     for example in [
         'callbacks_paging.py',
+        'callbacks_paging_page_count.py',
         'callbacks_paging_and_sorting.py',
         'callbacks_paging_multicolumn_sorting.py',
         'callbacks_filtering.py',
@@ -63,6 +64,36 @@ layout = html.Div([
     - Sorted fields are now in `sort_by`, not `sorting_settings`
     - The filter string is now in `filter`, not `filtering_settings`
     ''')),
+
+    dcc.Markdown('### Backend Paging and Page Numbers'),
+
+    dcc.Markdown(dedent('''
+
+    The pagination menu includes the number of the current page and
+    the total page count. With native (i.e., frontend) pagination, the
+    page count is calculated by the table. However, when using backend
+    pagination, the data are served to the table through a callback;
+    this makes it impossible for the table to calculate the total page
+    count. As a consequence, the last-page navigation button is
+    disabled (although all of the other buttons, as well as the direct
+    navigation, are still functional).
+
+    To get around this, supply a value to the `page_count` parameter
+    of the table. This will serve as the "last page", which will
+    re-enable the last-page navigation button and be displayed in the
+    pagination menu. *Please note that you will not be able to use the
+    pagination menu to navigate to a page that comes after the last
+    page specified by `page_count`!*
+    ''')),
+
+    dcc.Markdown(
+        examples['callbacks_paging_page_count.py'][0],
+        style=styles.code_container
+    ),
+    html.Div(
+        examples['callbacks_paging_page_count.py'][1],
+        className='example-container'
+    ),
 
     dcc.Markdown('### Backend Paging with Sorting'),
 
