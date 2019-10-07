@@ -27,6 +27,7 @@ from tutorial import live_updates
 from tutorial import migration
 from tutorial import performance
 from tutorial import plugins
+from tutorial import persistence
 from tutorial import search
 from tutorial import sharing_state
 from tutorial import state
@@ -263,6 +264,18 @@ chapters = {
                        '`dcc.Location`) that allow you to easily make ' \
                        'fast multipage apps using its own "Single Page ' \
                        'App (SPA)" design pattern.'
+    },
+
+    'persistence': {
+        'url': '/persistence',
+        'content': persistence.layout,
+        'name': 'Persisting User Preferences',
+        'description': '''
+            (New! released September 2019 with Dash 1.3) Save user choices
+            across page reloads, or just when removing and re-adding a
+            component. Learn how to use persistence, and how to enable it
+            in components you write yourself.
+        '''
     },
 
     'auth': {
