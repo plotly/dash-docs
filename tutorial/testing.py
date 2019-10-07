@@ -349,17 +349,22 @@ layout = html.Div([
     app$run_server()
     '''
 
-    # a test case is a simple Python function with the same prefix convention
+    # A test case is a simple Python function with the same prefix convention
     # dashr is the default fixture combines the API for serving the app
     # and selenium tests.
     def test_rstr001_r_with_string(dashr):
-        # the app is a raw string variable defining the Dash App in R
+        # The app is a raw string variable defining the Dash App in R
+        # The app will use the directory of this Python file as the working dir.
+        # That determines where it will look for assets.
+        # You can change this with eg: dashr.start_server(app, cwd='/my/path/')
         dashr.start_server(app)
         assert dashr.find_element("#container").text == "Hello Dash for R Testing"
 
 
     def test_rstr002_r_with_file_path(dashr):
-        # alternatively, the app can be a filepath defining the Dash for R
+        # Alternatively, the app can be a filepath defining the Dash for R
+        # This app will use its own directory (.tests/assets/) as the working dir
+        # but again you can override it with `cwd`.
         dashr.start_server(app=".tests/assets/demo_hello.R")
         assert dashr.find_element("#container").text == "Hello Dash for R Testing"
     ```
