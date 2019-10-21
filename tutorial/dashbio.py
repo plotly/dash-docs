@@ -116,6 +116,24 @@ data = df.values
         }
     },
 
+    'FornaContainer': {
+        'description': '''A secondary structure visualization for RNA molecules.''',
+        'setup_code': '''sequences = [{
+        'sequence': 'AUGGGCCCGGGCCCAAUGGGCCCGGGCCCA',
+        'structure': '.((((((())))))).((((((()))))))',
+        'options': {
+            'applyForce': True,
+            'circularizeExternal': True,
+            'avoidOthers': True,
+            'labelInterval': 5,
+            'name': 'PDB_01019'
+        }
+}]''',
+        'params': {
+            'sequences': 'sequences'
+        }
+    },
+
     'Ideogram': {
         'description': '''A visual representation and analysis tool for chromosome bands.''',
         'params': {

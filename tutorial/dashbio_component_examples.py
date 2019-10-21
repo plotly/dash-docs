@@ -15,6 +15,8 @@ examples = {
         'tutorial/examples/dashbio_components/speck.py'),
     'circos': tools.load_example(
         'tutorial/examples/dashbio_components/circos.py'),
+    'forna-container': tools.load_example(
+        'tutorial/examples/dashbio_components/forna_container.py'),
     'ideogram': tools.load_example(
         'tutorial/examples/dashbio_components/ideogram.py'),
     'molecule-2d-viewer': tools.load_example(
@@ -320,6 +322,142 @@ clustergram = dashbio.Clustergram(
 
 dcc.Graph(figure=clustergram)'''
         }
+    ]
+)
+
+# FornaContainer
+FornaContainer = create_doc_page(
+    examples, component_names, 'forna-container', component_examples=[
+        {
+            'param_name': 'Height/width',
+            'description': 'Change the size of the canvas component \
+            that holds the container.',
+            'code': '''import dash_bio as dashbio
+
+sequences = [{
+        'sequence': 'AUGGGCCCGGGCCCAAUGGGCCCGGGCCCA',
+        'structure': '.((((((())))))).((((((()))))))'
+}]
+
+dashbio.FornaContainer(
+        sequences=sequences,
+        height=300,
+        width=500
+)
+'''
+        },
+
+        {
+            'param_name': 'Disable zoom and pan',
+            'description': 'Specify whether zoom and pan interactions should be \
+            disabled.',
+            'code': '''import dash_bio as dashbio
+
+sequences = [{
+        'sequence': 'AUGGGCCCGGGCCCAAUGGGCCCGGGCCCA',
+        'structure': '.((((((())))))).((((((()))))))'
+}]
+
+dashbio.FornaContainer(
+        sequences=sequences,
+        allowPanningAndZooming=False
+)'''
+        },
+
+        {
+            'param_name': 'Label interval',
+            'description': 'Specify the interval at which the sequence \
+            positions should be labelled.',
+            'code': '''import dash_bio as dashbio
+
+sequences = [{
+        'sequence': 'AUGGGCCCGGGCCCAAUGGGCCCGGGCCCA',
+        'structure': '.((((((())))))).((((((()))))))',
+        'options': {
+            'labelInterval': 3
+        }
+}]
+
+dashbio.FornaContainer(
+        sequences=sequences
+)'''
+        },
+
+        {
+            'param_name': 'Fill color for all nodes',
+            'description': 'Change the color of all of the nucleotides \
+            in all sequences shown.',
+            'code': '''import dash_bio as dashbio
+
+sequences = [{
+        'sequence': 'AUGGGCCCGGGCCCAAUGGGCCCGGGCCCA',
+        'structure': '.((((((())))))).((((((()))))))'
+}]
+
+dashbio.FornaContainer(
+        sequences=sequences,
+        nodeFillColor='pink'
+)'''
+        },
+
+        {
+            'param_name': 'Color scheme',
+            'description': 'Change the parameter according to which \
+            the structure is colored.',
+            'code': '''import dash_bio as dashbio
+
+sequences = [{
+        'sequence': 'AUGGGCCCGGGCCCAAUGGGCCCGGGCCCA',
+        'structure': '.((((((())))))).((((((()))))))'
+}]
+
+dashbio.FornaContainer(
+        sequences=sequences,
+        colorScheme='positions'
+)'''
+        },
+
+        {
+            'param_name': 'Custom color schemes for different sequences',
+            'description': 'Specify color schemes to be applied to all \
+            sequences in the container, or sequence-specific color schemes.',
+            'code': '''import dash_bio as dashbio
+
+sequences = [
+    {
+        'sequence': 'AUGGGCCCGGGCCCAAUGGGCCCGGGCCCA',
+        'structure': '.((((((())))))).((((((()))))))',
+        'options': {
+            'name': 'PDB_01019'
+        }
+    },
+    {
+        'sequence': 'GGAGAUGACgucATCTcc',
+        'structure': '((((((((()))))))))',
+        'options': {
+            'name': 'PDB_00598'
+        }
+    }
+]
+
+custom_colors = {
+    'domain': [0, 100],
+    'range': ['rgb(175, 0, 255)', 'orange'],
+    'colorValues': {
+        '': {'1': 10, '5': 40},  # default; can be overridden by sequence-specific colorschemes below
+        'PDB_01019': {'10': 'rgb(120, 50, 200)', '13': 50},
+        'PDB_00598': {str(i): i*5 for i in range(3, len(sequences[1]['sequence']))}
+    }
+}
+
+custom_colors['colorValues']['PDB_00598']['1'] = 'red'
+dashbio.FornaContainer(
+    sequences=sequences,
+    colorScheme='custom',
+    customColors=custom_colors
+)
+'''
+        },
     ]
 )
 

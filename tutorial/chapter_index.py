@@ -604,6 +604,12 @@ chapters = {
         'description': 'Circos examples, properties, and reference.'
     },
 
+    'forna-examples': {
+        'url': '/dash-bio/fornacontainer',
+        'content': dashbio_examples.FornaContainer,
+        'description': 'Forna Container examples, properties, and reference.'
+    },
+
     'ideogram-exmaples': {
         'url': '/dash-bio/ideogram',
         'content': dashbio_examples.Ideogram,
