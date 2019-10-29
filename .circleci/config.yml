@@ -18,9 +18,6 @@ jobs:
           name: Write job name
           command: echo $CIRCLE_JOB > circlejob.txt
 
-      - restore_cache:
-          key: deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}-{{ checksum "circlejob.txt" }}
-
       - run:
           name: Install dependencies
           command: |
@@ -28,11 +25,6 @@ jobs:
               python -m venv venv || virtualenv venv
               . venv/bin/activate
               pip install -r requirements.txt
-
-      - save_cache:
-          key: deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}-{{ checksum "circlejob.txt" }}
-          paths:
-              - "venv"
 
       - run:
           name: Run tests
