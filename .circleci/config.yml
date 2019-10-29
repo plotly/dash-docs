@@ -30,6 +30,8 @@ jobs:
           name: Run tests
           command: |
               . venv/bin/activate
+              pip uninstall dash -y
+              pip install dash-1.5.0.tar.gz
               pytest --junitxml=test-reports/snapshots.xml tests/snapshots
       - store_artifacts:
           path: test-reports
