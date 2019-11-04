@@ -28,6 +28,9 @@ examples = {
     'external-resources-init': read_file(
         'tutorial/examples/external_css_and_js/external-resources-init.py'
     ),
+    'custom-csrf-header-hook': read_file(
+        'tutorial/examples/external_css_and_js/custom-csrf-header-hook.py'
+    ),
 }
 
 
@@ -484,6 +487,30 @@ Starting with Dash 1.0.0, `serve_locally` defaults to `True`.
     as arguments. These can be altered in our function, allowing you to modify the response and request objects that Dash sends to the server. In the example above, the `request_pre`
     function is fired before each server call, and in the case of this example, it will `console.log()` the request parameter. The `request_post` function will fire __after__ each server
     call, and in our example will also print out the response parameter.
+
+    ***
+
+    ## Customizing CSRF Header
+
+    Similar to the request hooks, there is another hook called `csrf_config` which can be used to configure both the csrf header name and the csrf cookie name
+    sent by the dash-renderer for fetching resources (e.g. _dash-layout or _dash-update-component).
+    By default dash-renderer is looking for the cookie ___csrf_token__ and sets the header __X-CSRFToken__, both values can be overwritten by the `csrf_config` hook.
+
+    > Note: if using the `csrf_config` hook, both request hooks (`request_pre` and `request_post`) need to be also set.
+
+    In the following example dash-renderer get configured to use the cookie __XSRF-TOKEN__ and set the header __X-XSRF-TOKEN__:
+
+    '''),
+
+    dcc.Markdown(
+        '```python  \n' + examples['custom-csrf-header-hook'] + '  \n```',
+        style=styles.code_container
+    ),
+
+    dcc.Markdown('''
+
+    Inspecting the headers of the `_dash-update-component` request initiated by the dash-renderer will now contain the configured values:
+    ![Dash App with Custom Meta Tags](https://user-images.githubusercontent.com/1280389/43233036-cd050eae-9028-11e8-910e-f0d140c37e4c.png)
 
     ***
 
