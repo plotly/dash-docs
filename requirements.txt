@@ -13,6 +13,7 @@ dash_canvas-0.1.0.tar.gz
 decorator==4.3.0
 enum34==1.1.6
 flake8==3.5.0
+Flask==1.1.1
 Flask-Caching==1.4.0
 Flask-Compress==1.4.0
 Flask-Cors==3.0.3
