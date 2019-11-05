@@ -4,7 +4,7 @@ chardet==3.0.4
 click==6.7
 configparser==3.5.0
 dash==1.6.0
-dash_bio-0.5.0rc1.tar.gz
+dash_bio-0.5.1rc1.tar.gz
 dash_daq-0.3.1.tar.gz
 dash-auth==1.2.0
 dash-bio-utils==0.0.3rc3
