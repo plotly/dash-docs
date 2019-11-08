@@ -148,6 +148,9 @@ layout = html.Div([
        user's session might affect the next user's session and when the app is
        deployed on multiple processes or threads, those modifications will not
        be shared across sessions.
+    5. We are turning on transitions with `layout.transition` to give an idea
+       of how the dataset evolves with time: transitions allow the chart to
+       update from one state to the next smoothly, as if it were animated.
 
     #### Multiple inputs
 

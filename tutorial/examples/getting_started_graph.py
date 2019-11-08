@@ -50,12 +50,14 @@ def update_figure(selected_year):
 
     return {
         'data': traces,
-        'layout': go.Layout(
-            xaxis={'type': 'log', 'title': 'GDP Per Capita'},
+        'layout': dict(
+            xaxis={'type': 'log', 'title': 'GDP Per Capita',
+                   'range':[2.3, 4.8]},
             yaxis={'title': 'Life Expectancy', 'range': [20, 90]},
             margin={'l': 40, 'b': 40, 't': 10, 'r': 10},
             legend={'x': 0, 'y': 1},
-            hovermode='closest'
+            hovermode='closest',
+            transition = {'duration': 500},
         )
     }
 
