@@ -5,7 +5,7 @@ click==6.7
 configparser==3.5.0
 dash[testing]==1.4.1
 dash-auth==1.2.0
-dash-bio==0.4.0rc3
+dash-bio==0.4.1
 dash-bio-utils==0.0.3rc3
 dash-cytoscape==0.0.5
 dash-daq==0.2.1
