@@ -182,6 +182,66 @@ layout = html.Div([
     variable, so the regression result is only available in Plotly's CircleCI
     setup.
 
+    ## Dash for R testing
+
+    We released [Dash for R](https://medium.com/@plotlygraphs/announcing-dash-for-r-82dce99bae13)
+    in July 2019.  To facilitate testing it, we extended the *Python* package
+    `dash.testing` to support Dash for R apps.
+
+    The new `dashr` fixture gives us a test development experience in
+    Dash for R that's nearly identical to the `dash_duo` fixture in
+    Dash for Python. In this context, a `dashr` fixture is an instance of
+    Python class which provides a reliable framework to execute the app and test
+    one or more of its features via Selenium WebDriver. For more details,
+    please visit [pytest documentation](https://docs.pytest.org/en/latest/fixture.html).
+
+    Here is a simple example runnable with `pytest`. Your Dash App is written
+    as a string inside the Python test code (the `app` argument can also be a
+    valid path to a `.R` file), the app is then executed by `Rscript` within
+    a Python `subprocess` and we can use the same set of API calls to
+    test it exactly as we do Dash testing in Python Apps.
+
+    ```python
+
+    # the app is a raw string variable defining the Dash App in R
+    app = '''
+
+    library(dash)
+    library(dashHtmlComponents)
+    app <- Dash$new()
+    app$layout(htmlDiv(list(htmlDiv(id='container',children='Hello Dash for R testing'))))
+    app$run_server()
+    '''
+
+    # a test case is a simple Python function with the same prefix convention
+    # dashr is the default fixture combines the API for serving the app
+    # and selenium tests.
+    def test_rstr001_r_with_string(dashr):
+
+        # Since the app is the string chunk we defined above, the dashr
+        # fixture creates an unique temporary folder to dump the content into
+        # `app.R` and copies any possible subfolders (usually
+        # assets or clientside source code) to the same temporary folder
+
+        # start_server by default uses the temporary folder as current working
+        # folder You can change this with `start_server(app, cwd='/my/cwd/')`
+        dashr.start_server(app)
+
+        assert dashr.find_element("#container").text == "Hello Dash for R Testing"
+
+
+    def test_rstr002_r_with_file_path(dashr):
+
+        # Alternatively, the app can be a path to a separate file containing your Dash for R app
+        # the `os.path.dirname(__file__)` is an useful Python trick to get the path
+        # of the currently running script, so it will always work no matter where you start the
+        # test runner.
+        dashr.start_server(
+            app=os.path.join(os.path.dirname(__file__), "assets/demo_hello.R))
+
+        assert dashr.find_element("#container").text == "Hello Dash for R Testing"
+    ```
+
     ## Fixtures
 
     To avoid accidental name collision with other pytest plugins, all Dash test
@@ -285,8 +345,8 @@ layout = html.Div([
 
     ### Browser APIs
 
-    This section lists a minimal set of Dash testing helper APIs.
-    They are convenient shortcuts to Selenium APIs and have been approved in
+    This section lists a minimal set of browser testing APIs. They are
+    convenient shortcuts to Selenium APIs and have been approved in
     our daily integration tests.
 
     The following table might grow as we start migrating more legacy tests in
@@ -310,64 +370,38 @@ layout = html.Div([
     | `toggle_window()` | switch between the current working window and the newly opened one. |
     | `switch_window(idx)` | switch to window by window index. shortcut to `driver.switch_to.window`. raise `BrowserError` if no second window present in browser |
     | `open_new_tab(url=None)` | open a new tab in browser with window name `new window`. `url` if not set, equals to `server_url` |
-    | `percy_snapshot(name)` | visual test API shortcut to `percy_runner.snapshot` it also combines the snapshot `name` with python versions |
-    | `visit_and_snapshot(resource_path, hook_id, assert_check=True)` | common task used in dash-docs testing: it visits a URL path by `resource_path`, makes sure the page is fully loaded by the `hook_id` at the bottom, takes a snapshot and returns to the main page. `assert_check` is a switch to enable/disable an assertion that there is no devtools error alert icon |
+    | `percy_snapshot(name, wait_for_callbacks=False)` | visual test API shortcut to `percy_runner.snapshot`. it also combines the snapshot `name` with the actual python versions. The `wait_for_callbacks` parameter controls whether the snapshot is taken only after all callbacks have fired; the default is `False`. |
+    | `visit_and_snapshot(resource_path, hook_id, wait_for_callbacks=True, assert_check=True)` | This method automates a common task during dash-docs testing: the URL described by `resource_path` is visited, and completion of page loading is assured by waiting until the element described by `hook_id` is fetched. Once `hook_id` is available, `visit_and_snapshot` acquires a snapshot of the page and returns to the main page. `wait_for_callbacks` controls if the snapshot is taken until all dash callbacks are fired, default True. `assert_check` is a switch to enable/disable an assertion that there is no devtools error alert icon. |
     | `take_snapshot(name)` | hook method to take a snapshot while selenium test fails. the snapshot is placed under `/tmp/dash_artifacts` in Linux or `%TEMP` in windows with a filename combining test case `name` and the running selenium session id |
+    | `zoom_in_graph_by_ratio(elem_or_selector, start_fraction=0.5, zoom_box_fraction=0.2, compare=True)` | zoom out a graph (provided with either a Selenium WebElement or CSS selector) with a zoom box fraction of component dimension, default start at middle with a rectangle of 1/5 of the dimension use `compare` to control if we check the SVG get changed |
+    | `click_at_coord_fractions(elem_or_selector, fx, fy)` |  Use `ActionChains` to click a Selenium WebElement at a location a given fraction of the way `fx` between its left (0) and right (1) edges, and `fy` between its top (0) and bottom (1) edges. |
     | `get_logs()` | return a list of `SEVERE` level logs after last reset time stamps (default to 0, resettable by `reset_log_timestamp`. **Chrome only** |
     | `clear_input()` | simulate key press to clear the input |
-    | `driver` | expose the Selenium WebDriver as fixture property |
-    | `session_id` | shortcut to `driver.session_id` |
+    | `driver` | property exposes the Selenium WebDriver as fixture property |
+    | `session_id` | property returns the selenium session_id, shortcut to `driver.session_id` |
     | `server_url` | set the server_url as setter so the selenium is aware of the local server port, it also implicitly calls `wait_for_page`. return the server_url as property |
+    | `download_path` | property returns the download_path, note that dash fixtures are initialized with a temporary path from pytest `tmpdir` |
 
-    ## Dash for R testing
+    ### Dash APIs
 
-    We released [Dash for R](https://medium.com/@plotlygraphs/announcing-dash-for-r-82dce99bae13)
-    in July 2019.  To facilitate testing it, we extended the *Python* package
-    `dash.testing` to support Dash for R apps.
+    This section enumerates a full list of Dash App related properties and APIs
+    apart from the previous browser ones.
 
-    The new `dashr` fixture gives us a test development experience in
-    Dash for R that's nearly identical to the `dash_duo` fixture in
-    Dash for Python. In this context, a `dashr` fixture is an instance of
-    Python class which provides a reliable baseline to execute the app and test
-    one or more of its features via Selenium WebDriver. For more details,
-    please visit [pytest documentation](https://docs.pytest.org/en/latest/fixture.html).
+    | API | Description |
+    | --- | ----------- |
+    | `devtools_error_count_locator` | property returns the selector of the error count number in the devtool UI |
+    | `dash_entry_locator` | property returns the selector of react entry point, it can be used to verify if an Dash app is loaded |
+    | `dash_outerhtml_dom` | property returns the BeautifulSoup parsed Dash DOM from outerHTML |
+    | `dash_innerhtml_dom` | property returns the BeautifulSoup parsed Dash DOM from innerHTML |
+    | `redux_state_paths` | property returns the `window.store.getState().paths` |
+    | `redux_state_rqs` | property returns `window.store.getState().requestQueue` |
+    | `window_store` | property returns `window.store` |
+    | `get_local_storage(store_id="local")` | get the value of local storage item by the id, default is `local` |
+    | `get_session_storage(session_id="session") ` | get the value of session storage item by the id, default is `session` |
+    | `clear_local_storage()` | shortcut to `window.localStorage.clear()` |
+    | `clear_session_storage()` | shortcut to `window.sessionStorage.clear()` |
+    | `clear_storage()` | clears both local and session storages |
 
-    Here is a simple example runnable with `pytest`. Your Dash App is written
-    as a string inside the Python test code (the `app` argument can also be a
-    valid path to a `.R` file), the app is then executed by `Rscript` within
-    a Python `subprocess` and we can use the same set of API calls to
-    test it exactly as we do Dash testing in Python Apps.
-
-    ```python
-
-    app = '''
-    library(dash)
-    library(dashHtmlComponents)
-    app <- Dash$new()
-
-    app$layout(htmlDiv(list(htmlDiv(id='container',children='Hello Dash for R testing'))))
-    app$run_server()
-    '''
-
-    # A test case is a simple Python function with the same prefix convention
-    # dashr is the default fixture combines the API for serving the app
-    # and selenium tests.
-    def test_rstr001_r_with_string(dashr):
-        # The app is a raw string variable defining the Dash App in R
-        # The app will use the directory of this Python file as the working dir.
-        # That determines where it will look for assets.
-        # You can change this with eg: dashr.start_server(app, cwd='/my/path/')
-        dashr.start_server(app)
-        assert dashr.find_element("#container").text == "Hello Dash for R Testing"
-
-
-    def test_rstr002_r_with_file_path(dashr):
-        # Alternatively, the app can be a filepath defining the Dash for R
-        # This app will use its own directory (.tests/assets/) as the working dir
-        # but again you can override it with `cwd`.
-        dashr.start_server(app=".tests/assets/demo_hello.R")
-        assert dashr.find_element("#container").text == "Hello Dash for R Testing"
-    ```
 
     ## Debugging
 

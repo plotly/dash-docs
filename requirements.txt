@@ -3,7 +3,7 @@ certifi==2018.4.16
 chardet==3.0.4
 click==6.7
 configparser==3.5.0
-dash[testing]==1.4.1
+dash[testing]==1.6.0
 dash-auth==1.2.0
 dash-bio==0.4.1
 dash-bio-utils==0.0.3rc3
@@ -13,7 +13,7 @@ dash-canvas>=0.0.10
 decorator==4.3.0
 enum34==1.1.6
 flake8==3.5.0
-Flask==1.0
+flask==1.1.1
 Flask-Caching==1.4.0
 Flask-Compress==1.4.0
 Flask-Cors==3.0.3
@@ -50,5 +50,5 @@ selenium==3.11.0
 six==1.11.0
 traitlets==4.3.2
 urllib3==1.22
-Werkzeug==0.14.1
+Werkzeug==0.16.0
 wrapt==1.10.11

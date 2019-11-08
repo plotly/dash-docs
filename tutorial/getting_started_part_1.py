@@ -63,7 +63,7 @@ layout = html.Div([
     ...Running on http://127.0.0.1:8050/ (Press CTRL+C to quit)
     ```
 
-    and visit [http:127.0.0.1:8050/](http:127.0.0.1:8050/)
+    and visit [http://127.0.0.1:8050/](http://127.0.0.1:8050/)
     in your web browser. You should see an app that looks like this.
     '''.replace('    ', '')),
 
