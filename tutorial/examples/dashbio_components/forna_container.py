@@ -21,7 +21,7 @@ sequences = {
 
 app.layout = html.Div([
     dashbio.FornaContainer(
-        id='my-dashbio-fornacontainer'
+        id='forna'
     ),
     html.Hr(),
     html.P('Select the sequences to display below.'),
@@ -37,7 +37,7 @@ app.layout = html.Div([
 
 
 @app.callback(
-    dash.dependencies.Output('my-dashbio-fornacontainer', 'sequences'),
+    dash.dependencies.Output('forna', 'sequences'),
     [dash.dependencies.Input('forna-sequence-display', 'value')]
 )
 def show_selected_sequences(value):
