@@ -5,11 +5,11 @@ click==6.7
 configparser==3.5.0
 dash[testing]==1.6.0
 dash-auth==1.2.0
-dash-bio==0.4.1
+dash_bio-0.4.1.tar.gz
+dash_canvas-0.1.0.tar.gz
+dash_cytoscape-0.2.0.tar.gz
+dash_daq-0.3.1.tar.gz
 dash-bio-utils==0.0.3rc3
-dash-cytoscape==0.0.5
-dash-daq==0.2.1
-dash-canvas>=0.0.10
 decorator==4.3.0
 enum34==1.1.6
 flake8==3.5.0
