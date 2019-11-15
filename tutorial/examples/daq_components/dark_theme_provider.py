@@ -24,10 +24,10 @@ rootLayout = html.Div([
         className='dark-theme-control'
     ), html.Br(),
     daq.ColorPicker(
-        value=17,
+        value=dict(hex='#171717'),
         id='darktheme-daq-colorpicker',
         className='dark-theme-control'
-    ), html.Br(), 
+    ), html.Br(),
     daq.Gauge(
         min=0,
         max=10,
@@ -35,55 +35,55 @@ rootLayout = html.Div([
         color=theme['primary'],
         id='darktheme-daq-gauge',
         className='dark-theme-control'
-    ), html.Br(), 
+    ), html.Br(),
     daq.GraduatedBar(
         value=4,
         color=theme['primary'],
         id='darktheme-daq-graduatedbar',
         className='dark-theme-control'
-    ), html.Br(), 
+    ), html.Br(),
     daq.Indicator(
         value=True,
         color=theme['primary'],
         id='darktheme-daq-indicator',
         className='dark-theme-control'
-    ), html.Br(), 
+    ), html.Br(),
     daq.Knob(
         min=0,
         max=10,
         value=6,
         id='darktheme-daq-knob',
         className='dark-theme-control'
-    ), html.Br(), 
+    ), html.Br(),
     daq.LEDDisplay(
         value="3.14159",
         color=theme['primary'],
         id='darktheme-daq-leddisplay',
         className='dark-theme-control'
-    ), html.Br(), 
+    ), html.Br(),
     daq.NumericInput(
         min=0,
         max=10,
         value=4,
-        id='darktheme-daq-numericinput', 
+        id='darktheme-daq-numericinput',
         className='dark-theme-control'
-    ), html.Br(), 
+    ), html.Br(),
     daq.PowerButton(
         on=True,
         color=theme['primary'],
         id='darktheme-daq-powerbutton',
         className='dark-theme-control'
-    ), html.Br(), 
+    ), html.Br(),
     daq.PrecisionInput(
         precision=4,
         value=299792458,
         id='darktheme-daq-precisioninput',
         className='dark-theme-control'
-    ), html.Br(), 
+    ), html.Br(),
     daq.StopButton(
         id='darktheme-daq-stopbutton',
         className='dark-theme-control'
-    ), html.Br(), 
+    ), html.Br(),
     daq.Slider(
         min=0,
         max=100,
@@ -92,21 +92,21 @@ rootLayout = html.Div([
         color=theme['primary'],
         id='darktheme-daq-slider',
         className='dark-theme-control'
-    ), html.Br(), 
+    ), html.Br(),
     daq.Tank(
         min=0,
         max=10,
         value=5,
         id='darktheme-daq-tank',
         className='dark-theme-control'
-    ), html.Br(), 
+    ), html.Br(),
     daq.Thermometer(
         min=95,
         max=105,
         value=98.6,
         id='darktheme-daq-thermometer',
         className='dark-theme-control'
-    ), html.Br() 
+    ), html.Br()
 
 ])
 
@@ -137,7 +137,7 @@ app.layout = html.Div(id='dark-theme-container', children=[
                 value=dict(hex='#007439')
             )
         ]
-    ), 
+    ),
     html.Div(id='dark-theme-components', children=[
         daq.DarkThemeProvider(theme=theme, children=rootLayout)
     ], style={'border': 'solid 1px #A2B1C6', 'border-radius': '5px', 'padding': '50px', 'margin-top': '20px'})
@@ -152,12 +152,12 @@ app.layout = html.Div(id='dark-theme-container', children=[
      dash.dependencies.Input('detail-color', 'value')]
 )
 def edit_theme(dark, p, s, d):
-    
+
     if(dark):
         theme.update(
             dark=True
         )
-    else: 
+    else:
         theme.update(
             dark=False
         )
@@ -169,7 +169,7 @@ def edit_theme(dark, p, s, d):
         for child in getattr(rootLayout, 'children'):
             if hasattr(child, 'color'):
                 setattr(child, 'color', p['hex'])
-            
+
     if s is not None:
         theme.update(
             secondary=s['hex']
