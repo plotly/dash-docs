@@ -10,7 +10,7 @@ app.layout = html.Div([
     daq.ColorPicker(
         id='my-color-picker',
         label='Color Picker',
-        value='#119DFF'
+        value=dict(hex='#119DFF')
     ),
     html.Div(id='color-picker-output')
 ])

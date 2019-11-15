@@ -34,7 +34,7 @@ app.layout = html.Div([
             daq.ColorPicker(
                 id='color-picker',
                 label='Brush color',
-                value='#119DFF'
+                value=dict(hex='#119DFF')
         ),
         ], className="three columns"),
         ])
