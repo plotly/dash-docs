@@ -98,8 +98,8 @@ DASHBIO_COMPONENTS = {
             'column_labels': 'list(df.columns.values)',
             'row_labels': 'list(df.index)',
             'hidden_labels': '[\'row\']',
-            'height': '800',
-            'width': '600'
+            'height': 800,
+            'width': 600
         },
         'component_wrap': 'dcc.Graph(figure=_[0])',
         'setup_code': '''df = pd.read_csv(
@@ -137,7 +137,7 @@ data = df.values
     'Ideogram': {
         'description': '''A visual representation and analysis tool for chromosome bands.''',
         'params': {
-            'chrHeight': '250'
+            'chrHeight': 250
         },
         'iframe_info': {
             'location': 'https://dash-gallery.plotly.host/docs-demos-dashbio/ideogram'
