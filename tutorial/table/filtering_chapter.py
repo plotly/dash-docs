@@ -61,7 +61,7 @@ layout = html.Div(
             html.Td([
                 html.H4(
                     html.P([html.Code('='), ' ', html.Code('eq')]),
-                    style={'margin': '0'}),
+                    style={'margin': '0px'}),
                 dcc.Markdown('Default operator for `number` columns')]),
             html.Td(dcc.Markdown(dedent("""
             Are the two numbers equal? Regardless of type, will first try to
@@ -70,7 +70,7 @@ layout = html.Div(
             """)))
         ]), html.Tr([
             html.Td([
-                html.H4(html.P(html.Code('contains')), style={'margin': '0'}),
+                html.H4(html.P(html.Code('contains')), style={'margin': '0px'}),
                 dcc.Markdown('Default operator for `text` and `any` columns')
             ]),
             html.Td(dcc.Markdown(dedent("""
@@ -82,7 +82,7 @@ layout = html.Div(
             html.Td([
                 html.H4(
                     html.P(html.Code('datestartswith')),
-                    style={'margin': '0'}),
+                    style={'margin': '0px'}),
                 dcc.Markdown('Default operator for `datetime` columns')]),
             html.Td(dcc.Markdown(dedent("""
             Does the datetime start with the given parts? Enter a partial
@@ -99,7 +99,7 @@ layout = html.Div(
                 html.Code('>='), ' ', html.Code('ge'), u' \u00a0 ',
                 html.Code('<='), ' ', html.Code('le'), html.Br(),
                 html.Code('!='), ' ', html.Code('ne')
-            ]), style={'margin': '0'})),
+            ]), style={'margin': '0px'})),
             html.Td(dcc.Markdown(dedent("""
             Comparison: greater than, less than, greater or equal, less or
             equal, and not equal. Two strings compare by their dictionary
