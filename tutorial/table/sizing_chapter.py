@@ -506,7 +506,7 @@ layout = html.Div(
             data=df_long.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df.columns],
             style_table={
-                'maxHeight': '300',
+                'maxHeight': '300px',
                 'overflowY': 'scroll'
             },
         )
