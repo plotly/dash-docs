@@ -1,5 +1,4 @@
 import dash_html_components as html
-import json
 
 from .Chapter import Chapter
 from .Section import Section
@@ -13,7 +12,7 @@ def TOCChapters(chapters):
                 chapter_content.append(Chapter(
                     chapter['name'],
                     chapter['chapters'][0]['url'].rstrip('/'),
-                    chapter['chapters'][0]['description']
+                    chapter['chapters'][0].get('description', '')
                 ))
 
             else:
@@ -23,7 +22,7 @@ def TOCChapters(chapters):
                     chapter.get('description', '')
                 ))
         except Exception as e:
-            print(e)
+            print('Error generating TOC', e)
 
     return chapter_content
 

@@ -204,6 +204,78 @@
     <loc>https://dash.plot.ly/dash-enterprise</loc>
 </url>
 <url>
+    <loc>https://dash.plot.ly/dash-enterprise/admin-panel</loc>
+</url>
+<url>
+    <loc>https://dash.plot.ly/dash-enterprise/analytics</loc>
+</url>
+<url>
+    <loc>https://dash.plot.ly/dash-enterprise/app-authentication</loc>
+</url>
+<url>
+    <loc>https://dash.plot.ly/dash-enterprise/application-structure</loc>
+</url>
+<url>
+    <loc>https://dash.plot.ly/dash-enterprise/celery-process</loc>
+</url>
+<url>
+    <loc>https://dash.plot.ly/dash-enterprise/checks</loc>
+</url>
+<url>
+    <loc>https://dash.plot.ly/dash-enterprise/cli</loc>
+</url>
+<url>
+    <loc>https://dash.plot.ly/dash-enterprise/configure-system-dependencies</loc>
+</url>
+<url>
+    <loc>https://dash.plot.ly/dash-enterprise/deployment</loc>
+</url>
+<url>
+    <loc>https://dash.plot.ly/dash-enterprise/environment-variables</loc>
+</url>
+<url>
+    <loc>https://dash.plot.ly/dash-enterprise/git</loc>
+</url>
+<url>
+    <loc>https://dash.plot.ly/dash-enterprise/initialize</loc>
+</url>
+<url>
+    <loc>https://dash.plot.ly/dash-enterprise/logs</loc>
+</url>
+<url>
+    <loc>https://dash.plot.ly/dash-enterprise/map-local-directories</loc>
+</url>
+<url>
+    <loc>https://dash.plot.ly/dash-enterprise/pdf-service</loc>
+</url>
+<url>
+    <loc>https://dash.plot.ly/dash-enterprise/portal</loc>
+</url>
+<url>
+    <loc>https://dash.plot.ly/dash-enterprise/privacy</loc>
+</url>
+<url>
+    <loc>https://dash.plot.ly/dash-enterprise/private-packages</loc>
+</url>
+<url>
+    <loc>https://dash.plot.ly/dash-enterprise/redis-database</loc>
+</url>
+<url>
+    <loc>https://dash.plot.ly/dash-enterprise/ssh</loc>
+</url>
+<url>
+    <loc>https://dash.plot.ly/dash-enterprise/staging-app</loc>
+</url>
+<url>
+    <loc>https://dash.plot.ly/dash-enterprise/static-assets</loc>
+</url>
+<url>
+    <loc>https://dash.plot.ly/dash-enterprise/support</loc>
+</url>
+<url>
+    <loc>https://dash.plot.ly/dash-enterprise/troubleshooting</loc>
+</url>
+<url>
     <loc>https://dash.plot.ly/dash-html-components</loc>
 </url>
 <url>
