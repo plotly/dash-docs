@@ -4,7 +4,6 @@ import dash_html_components as html
 from dash.dependencies import Input, Output
 
 import pandas as pd
-import plotly.graph_objs as go
 
 df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv')
 
@@ -33,7 +32,7 @@ def update_figure(selected_year):
     traces = []
     for i in filtered_df.continent.unique():
         df_by_continent = filtered_df[filtered_df['continent'] == i]
-        traces.append(go.Scatter(
+        traces.append(dict(
             x=df_by_continent['gdpPercap'],
             y=df_by_continent['lifeExp'],
             text=df_by_continent['country'],

@@ -5,7 +5,6 @@ import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
 from pandas_datareader import data as web
-from plotly import graph_objs as go
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
@@ -38,7 +37,7 @@ def update_graph(selected_dropdown_value):
         'google',
         dt(2017, 1, 1), dt.now()
     )
-    return go.Figure(
+    return dict(
         data=[{
             'x': df.index,
             'y': df.Close

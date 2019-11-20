@@ -4,7 +4,6 @@ import dash_html_components as html
 from dash.dependencies import Input, Output
 
 import pandas as pd
-import plotly.graph_objs as go
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
@@ -72,7 +71,7 @@ def update_graph(xaxis_column_name, yaxis_column_name,
     dff = df[df['Year'] == year_value]
 
     return {
-        'data': [go.Scatter(
+        'data': [dict(
             x=dff[dff['Indicator Name'] == xaxis_column_name]['Value'],
             y=dff[dff['Indicator Name'] == yaxis_column_name]['Value'],
             text=dff[dff['Indicator Name'] == yaxis_column_name]['Country Name'],
@@ -83,7 +82,7 @@ def update_graph(xaxis_column_name, yaxis_column_name,
                 'line': {'width': 0.5, 'color': 'white'}
             }
         )],
-        'layout': go.Layout(
+        'layout': dict(
             xaxis={
                 'title': xaxis_column_name,
                 'type': 'linear' if xaxis_type == 'Linear' else 'log'
