@@ -1,0 +1,23 @@
+recursive-include dash_docs *.py
+
+recursive-include dash_docs *.csv
+recursive-include dash_docs *.xml
+
+recursive-include dash_docs *.css
+
+recursive-include dash_docs *.js
+recursive-include dash_docs *.json
+recursive-include dash_docs *.map
+
+recursive-include dash_docs *.mp4
+recursive-include dash_docs *.jpg
+recursive-include dash_docs *.png
+recursive-include dash_docs *.svg
+
+recursive-include dash_docs *.tar.gz
+
+global-exclude *.pyc
+global-exclude *.DS_Store
+
+include LICENSE.txt
+include CHANGELOG.md

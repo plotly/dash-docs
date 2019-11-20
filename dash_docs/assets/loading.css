@@ -1,0 +1,4 @@
+#chapter[data-dash-is-loading="true"] {
+    display: none;
+    cursor: progress;
+}
