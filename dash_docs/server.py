@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from dash import Dash
-from flask import Flask, redirect, escape, request
-import os
+from flask import redirect, escape, request
+
 
 class CustomDash(Dash):
     def interpolate_index(self, **kwargs):
@@ -13,7 +13,9 @@ class CustomDash(Dash):
 
         meta_kwargs = dict(
             title=URL_TO_META_MAP.get(request.path, {}).get('name', 'Dash User Guide'),
-            description=URL_TO_META_MAP.get(request.path, {}).get('description', 'Dash User Guide & Documentation'),
+            description=URL_TO_META_MAP.get(request.path, {}).get(
+                'description', 'Dash User Guide & Documentation'
+            ),
             **kwargs
         )
 
@@ -65,24 +67,50 @@ app.config.suppress_callback_exceptions = True
 
 
 @server.route('/deployment/on-premise')
-def redirectDDS():
+def redirect_dds():
     return redirect("/dash-enterprise", code=302)
 
+
 @server.route('/dash-enterprise/enviornment-variables')
-def redirectEnvVar():
+def redirect_env_var():
     return redirect("/dash-enterprise/environment-variables", code=302)
 
 
 @server.route('/dash-1-0-migration.')
-def redirectMigration():
+def redirect_migration():
     return redirect("/dash-1-0-migration", code=302)
 
 
 @server.route('/gallery')
-def redirectGallery():
+def redirect_gallery():
     return redirect("https://dash-gallery.plotly.host/Portal/", code=302)
 
 
+@server.route('/dash-deployment-server')
+def redirect_to_enterprise():
+    return redirect('/dash-enterprise', code=302)
+
+
 @server.route('/dash-deployment-server/<path:subpath>')
-def redirectToEnterprise(subpath):
+def redirect_to_enterprise_part(subpath):
     return redirect('/dash-enterprise/{}'.format(escape(subpath)), code=302)
+
+
+@server.route('/dash-table')
+def redirect_table():
+    return redirect('/datatable', code=302)
+
+
+@server.route('/dash-table/<path:subpath>')
+def redirect_table_part(subpath):
+    return redirect('/datatable/{}'.format(escape(subpath)), code=302)
+
+
+@server.route('/daq')
+def redirect_daq():
+    return redirect('/dash-daq', code=302)
+
+
+@server.route('/daq/<path:subpath>')
+def redirect_daq_part(subpath):
+    return redirect('/dash-daq/{}'.format(escape(subpath)), code=302)

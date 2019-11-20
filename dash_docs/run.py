@@ -179,16 +179,19 @@ def display_content(pathname):
         return home.layout
     pathname = pathname.rstrip('/')
 
-    if pathname in chapter_index.URL_TO_CONTENT_MAP:
-        backlinks = create_backlinks(pathname)
+    def make_page(page_path):
+        backlinks = create_backlinks(page_path)
         return flat_list(
             backlinks,
             html.Br(),
-            chapter_index.URL_TO_CONTENT_MAP[pathname],
+            chapter_index.URL_TO_CONTENT_MAP[page_path],
             html.Hr(),
             backlinks,
-            html.Div(id='wait-for-page-{}'.format(pathname)),
+            html.Div(id='wait-for-page-{}'.format(page_path)),
         )
+
+    if pathname in chapter_index.URL_TO_CONTENT_MAP:
+        return make_page(pathname)
 
     elif pathname == '/search':
         return flat_list(create_backlinks(pathname), html.Br(), search.layout)
@@ -197,10 +200,20 @@ def display_content(pathname):
         return build_all()
 
     else:
-        return flat_list(
-            html.Div('Page {} not found'.format(pathname), className='warning-box'),
-            home.layout
+        warning_box = html.Div(
+            'Page {} not found'.format(pathname),
+            className='warning-box'
         )
+
+        # try to match the head of the path, so we can at least get close
+        # to where the user was trying to go
+        parts = pathname.lstrip('/').split('/')
+        for i in reversed(range(len(parts) - 1)):
+            partial_path = '/' + '/'.join(parts[:i + 1])
+            if partial_path in chapter_index.URL_TO_CONTENT_MAP:
+                return flat_list(warning_box, make_page(partial_path))
+
+        return flat_list(warning_box, home.layout)
 
 
 if __name__ == '__main__':

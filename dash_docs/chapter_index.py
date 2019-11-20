@@ -693,8 +693,168 @@ URLS = [
             },
             {
                 'name': 'Dash Enterprise Documentation',
-                'url': '/dash-enterprise',
-                'content': tutorial.dash_deployment_server.layout,
+                'chapters': [
+                    {
+                        'name': 'Overview',
+                        'url': '/dash-enterprise',
+                        'content': tutorial.dash_deployment_server.layout
+                    },
+                    {
+                        'url': '/dash-enterprise/initialize',
+                        'content': tutorial.dds_examples.Initialize,
+                        'name': 'Part 1. Initialize Dash Apps on Dash Deployment Server',
+                        'description': 'Initialize Dash Apps on Plotly Enterprise'
+                    },
+                    {
+                        'url': '/dash-enterprise/deployment',
+                        'content': tutorial.dds_examples.Deploy,
+                        'name': 'Part 2. Deploy Dash Apps on Dash Deployment Server',
+                        'description': 'Deploy Dash Apps on Dash Deployment Server'
+                    },
+                    {
+                        'url': '/dash-enterprise/application-structure',
+                        'content': tutorial.dds_examples.Requirements,
+                        'name': 'Application Structure',
+                        'description': 'Ensure that your app meets all the requirements for deployment.'
+                    },
+                    {
+                        'url': '/dash-enterprise/static-assets',
+                        'content': tutorial.dds_examples.staticAssets,
+                        'name': 'Adding Static Assets',
+                        'description': 'Learn how to include custom CSS, JS, and images with the `assets` directory.'
+                    },
+                    {
+                        'url': '/dash-enterprise/configure-system-dependencies',
+                        'content': tutorial.dds_examples.ConfigSys,
+                        'name': 'Configuring System Dependencie',
+                        'description': 'Install and configure system dependencies such '
+                        'as database drivers or the Java JRE environment.'
+                    },
+                    {
+                        'url': '/dash-enterprise/portal',
+                        'content': tutorial.dds_examples.Portal,
+                        'name': 'Dash App Portal',
+                        'description': 'Learn about the Dash App Portal '
+                    },
+                    {
+                        'url': '/dash-enterprise/admin-panel',
+                        'content': tutorial.dds_examples.AdminPanel,
+                        'name': 'Admin Panel',
+                        'description': 'Manage users in the Admin Panel '
+                    },
+                    {
+                        'url': '/dash-enterprise/privacy',
+                        'content': tutorial.dds_examples.AppPrivacy,
+                        'name': 'Dash App Privacy',
+                        'description': 'Dash App Privacy and Managing Collaborators'
+                    },
+                    {
+                        'url': '/dash-enterprise/redis-database',
+                        'content': tutorial.dds_examples.Redis,
+                        'name': 'Linking a Redis Database',
+                        'description': 'Create and link an in-memory database to your Dash Apps.'
+                    },
+                    {
+                        'url': '/dash-enterprise/environment-variables',
+                        'content': tutorial.dds_examples.EnvVars,
+                        'name': 'Setting Enviornment Variables',
+                        'description': 'Environment variables are commonly used to store '
+                        'secret variables like database passwords.'
+                    },
+                    {
+                        'url': '/dash-enterprise/map-local-directories',
+                        'content': tutorial.dds_examples.LocalDir,
+                        'name': 'Mapping Local Directories',
+                        'description': 'Directory mappings allow you to make directories '
+                        'on the Dash Deployment Server available to your app.'
+                    },
+                    {
+                        'url': '/dash-enterprise/ssh',
+                        'content': tutorial.dds_examples.Ssh,
+                        'name': 'Authenticating to Dash Deployment Server with SSH',
+                        'description': "There are two methods to deploy Dash Apps: HTTPS and SSH "
+                        "and we recommend getting started with the HTTPS method."
+                    },
+                    {
+                        'url': '/dash-enterprise/cli',
+                        'content': tutorial.dds_examples.Cli,
+                        'name': 'Managing Dash Apps via the Command Line',
+                        'description': "A list of commands to manage Dash apps available  "
+                        "to app owners from the command line via ssh."
+                    },
+                    {
+                        'url': '/dash-enterprise/app-authentication',
+                        'content': tutorial.dds_examples.Authentication,
+                        'name': 'Dash Enterprise Auth Features',
+                        'description': 'Accessing User Authentication Data in your Dash App'
+                    },
+                    {
+                        'url': '/dash-enterprise/checks',
+                        'content': tutorial.dds_examples.Checks,
+                        'name': 'Dash Deployment Health Checks',
+                        'description': 'Create custom checks to ensure that a newly deployed app can serve traffic.'
+                    },
+                    {
+                        'url': '/dash-enterprise/private-packages',
+                        'content': tutorial.dds_examples.PrivatePackages,
+                        'name': 'Adding Private Python Packages',
+                        'description': 'Intsall private python packages in your Dash Apps.'
+                    },
+                    {
+                        'url': '/dash-enterprise/celery-process',
+                        'content': tutorial.dds_examples.Celery,
+                        'name': 'Linking a Celery Process',
+                        'description': 'Add a task queue to your Dash Apps.'
+                    },
+                    {
+                        'url': '/dash-enterprise/staging-app',
+                        'content': tutorial.dds_examples.StagingApp,
+                        'name': 'Create a Staging Dash App ',
+                        'description': 'Use a staged Dash App to test changes before updating '
+                        'your prodcution Dash App.'
+                    },
+                    {
+                        'url': '/dash-enterprise/pdf-service',
+                        'content': tutorial.dds_examples.pdfService,
+                        'name': 'Dash Deployment Server PDF Service',
+                        'description': 'Utilize the Dash Deployment Server API endpoint for '
+                        'creating PDF exports of your Dash applications'
+                    },
+                    {
+                        'url': '/dash-enterprise/analytics',
+                        'content': tutorial.dds_examples.Analytics,
+                        'name': 'App Analytics',
+                        'description': 'View app analytics such as last updated, '
+                        'CPU usage, Memory Usage, and more.'
+                    },
+                    {
+                        'url': '/dash-enterprise/logs',
+                        'content': tutorial.dds_examples.Logs,
+                        'name': 'App Logs',
+                        'description': """Check your Dash App's logs via the Dash
+                        Deployment Server UI or via the command line."""
+                    },
+                    {
+                        'url': '/dash-enterprise/troubleshooting',
+                        'content': tutorial.dds_examples.Troubleshooting,
+                        'name': 'Common Errors',
+                        'description': 'Common errors when deploying Dash Apps.'
+                    },
+                    {
+                        'url': '/dash-enterprise/support',
+                        'content': tutorial.dds_examples.Support,
+                        'name': 'Support',
+                        'description': 'Having trouble deploying your app? Our dedicated '
+                        'support team is available to help you out.'
+                    },
+                    {
+                        'url': '/dash-enterprise/git',
+                        'content': tutorial.dds_examples.Git,
+                        'name': 'Advanced Git',
+                        'description': 'A reference for git commands and how they are used '
+                        'with Dash Deployment Server.'
+                    },
+                ]
             }
         ]
     }
