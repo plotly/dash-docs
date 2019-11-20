@@ -1,0 +1,8 @@
+.dash-table-container > div.previous-next-container input.current-page {
+    padding: 1px;
+}
+
+.dash-table-container > div.previous-next-container button:disabled {
+    color: graytext;
+    cursor: unset;
+}

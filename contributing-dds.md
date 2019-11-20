@@ -1,6 +1,6 @@
-# Dash Deployment Server Documentation
+# Dash Enterprise Documentation
 
-The Dash Deployment Server documentation `/dash-deployment-server/` consists of a series of chapters relevant to Plotly Enterprise + DDS users. If you wish to contribute to these documents, please follow the instruction below.
+The Dash Enterprise documentation `/dash-enterprise/` consists of a series of chapters relevant to Plotly Enterprise + DDS users. If you wish to contribute to these documents, please follow the instruction below.
 
 ## Editing Existing Content
 
@@ -12,13 +12,13 @@ If you would like to edit or add content to an existing chapter (e.g. "Linking t
 
 Files that need edited include:
 - `tutorial/dash_deployment_server_examples.py` Home to chapter content.
-- `tutorial/dash_deployment_server.py` Defines the layout of `dash.plot.ly/dash-deployment-server/`
+- `tutorial/dash_deployment_server.py` Defines the layout of `dash.plot.ly/dash-enterprise/`
 - `tutorial/chapter_index.py` Defines the layout of `dash.plot.ly` and the search index.
 - `tests/test_intergration.py` Links for Percy snapshots.
 
 ### Add New Chapter
 
-In `tutorial/dash_deployment_server.py` add the new chapter to the Dash Deployment Server main page.
+In `tutorial/dash_deployment_server.py` add the new chapter to the Dash Enterprise main page.
 
 ```
 reusable_components.Chapter(title, URL, description)
@@ -28,7 +28,7 @@ For example,
 
 ```
 reusable_components.Chapter('Linking a Redis Database',
-            '/dash-deployment-server/redis-database',
+            '/dash-enterprise/redis-database',
             'Create and link an in-memory database to your Dash Apps.')
 ```
 
@@ -39,7 +39,7 @@ In `tutorial/dash_deployment_server_examples.py` create a variable to define the
 ```
 NewChapter = html.Div(children=[
     html.H1('Chapter Heading'),
-    dcc.Markdown('''
+    reusable_components.Markdown('''
 
     ### Title
 
@@ -50,8 +50,8 @@ NewChapter = html.Div(children=[
 
 ##### Best Practices
 
-When adding **text** use: ```dcc.Markdown()```    
-When adding **code** use: ```dcc.Markdown()``` with triple backticks.
+When adding **text** use: ```reusable_components.Markdown()```    
+When adding **code** use: ```reusable_components.Markdown()``` with triple backticks.
 When adding **images** add the images to `tutorial/assets/images/dds/` and use a relative link in the text.      
 When adding **links** use relative links where possible.
 
@@ -72,7 +72,7 @@ For example,
 
 ```
 'redis-examples': {
-      'url': '/dash-deployment-server/redis-database',
+      'url': '/dash-enterprise/redis-database',
       'content': dds_examples.Redis,
       'name': 'Linking a Redis Database',
       'description': 'Create and link an in-memory database to your Dash Apps.'
