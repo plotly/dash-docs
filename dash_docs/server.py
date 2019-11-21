@@ -68,63 +68,63 @@ app.config.suppress_callback_exceptions = True
 
 @server.route('/deployment/on-premise')
 def redirect_dds():
-    return redirect("/dash-enterprise", code=302)
+    return redirect("/dash-enterprise", code=301)
 
 
 @server.route('/dash-enterprise/enviornment-variables')
 def redirect_env_var():
-    return redirect("/dash-enterprise/environment-variables", code=302)
+    return redirect("/dash-enterprise/environment-variables", code=301)
 
 
 @server.route('/dash-1-0-migration.')
 def redirect_migration():
-    return redirect("/dash-1-0-migration", code=302)
+    return redirect("/dash-1-0-migration", code=301)
 
 
 @server.route('/gallery')
 def redirect_gallery():
-    return redirect("https://dash-gallery.plotly.host/Portal/", code=302)
+    return redirect("https://dash-gallery.plotly.host/Portal/", code=301)
 
 
 @server.route('/dash-deployment-server')
 def redirect_to_enterprise():
-    return redirect('/dash-enterprise', code=302)
+    return redirect('/dash-enterprise', code=301)
 
 
 @server.route('/dash-deployment-server/<path:subpath>')
 def redirect_to_enterprise_part(subpath):
-    return redirect('/dash-enterprise/{}'.format(escape(subpath)), code=302)
+    return redirect('/dash-enterprise/{}'.format(escape(subpath)), code=301)
 
 
 @server.route('/dash-table')
 def redirect_table():
-    return redirect('/datatable', code=302)
+    return redirect('/datatable', code=301)
 
 
 @server.route('/dash-table/<path:subpath>')
 def redirect_table_part(subpath):
-    return redirect('/datatable/{}'.format(escape(subpath)), code=302)
+    return redirect('/datatable/{}'.format(escape(subpath)), code=301)
 
 
 @server.route('/daq')
 def redirect_daq():
-    return redirect('/dash-daq', code=302)
+    return redirect('/dash-daq', code=301)
 
 
 @server.route('/daq/<path:subpath>')
 def redirect_daq_part(subpath):
-    return redirect('/dash-daq/{}'.format(escape(subpath)), code=302)
+    return redirect('/dash-daq/{}'.format(escape(subpath)), code=301)
 
 # normalized components
 @server.route('/dash-core-components/loading_component')
 def redirect_dcc_loading():
-    return redirect('/dash-core-components/loading', code=302)
+    return redirect('/dash-core-components/loading', code=301)
 
 @server.route('/dash-core-components/confirm-provider')
 def redirect_dcc_confirm_provider():
-    return redirect('/dash-core-components/confirmdialogprovider', code=302)
+    return redirect('/dash-core-components/confirmdialogprovider', code=301)
 
 @server.route('/dash-core-components/confirm')
 def redirect_dcc_confirm():
-    return redirect('/dash-core-components/confirmdialog', code=302)
+    return redirect('/dash-core-components/confirmdialog', code=301)
 
