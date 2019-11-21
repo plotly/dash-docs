@@ -128,3 +128,7 @@ def redirect_dcc_confirm_provider():
 def redirect_dcc_confirm():
     return redirect('/dash-core-components/confirmdialog', code=301)
 
+@server.route('/dash-core-components/faq')
+def redirect_faq():
+    return redirect('/faqs', code=301)
+
