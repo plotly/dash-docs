@@ -114,3 +114,17 @@ def redirect_daq():
 @server.route('/daq/<path:subpath>')
 def redirect_daq_part(subpath):
     return redirect('/dash-daq/{}'.format(escape(subpath)), code=302)
+
+# normalized components
+@server.route('/dash-core-components/loading_component')
+def redirect_dcc_loading():
+    return redirect('/dash-core-components/loading', code=302)
+
+@server.route('/dash-core-components/confirm-provider')
+def redirect_dcc_confirm_provider():
+    return redirect('/dash-core-components/confirmdialogprovider', code=302)
+
+@server.route('/dash-core-components/confirm')
+def redirect_dcc_confirm():
+    return redirect('/dash-core-components/confirmdialog', code=302)
+
