@@ -150,6 +150,10 @@ h2, h3, h4, h5, h6 {
   border-radius: 1px;
 }
 
+.js-plotly-plot .plotly a {
+  background-color: inherit;
+}
+
 .content a:hover {
   color: #0D67BF;
   text-decoration: underline;}

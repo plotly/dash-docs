@@ -7,7 +7,7 @@ external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
-df = pd.read_csv('https://gist.githubusercontent.com/chriddyp/cb5392c35661370d95f300086accea51/raw/8e0768211f6b747c0db42a9ce9a0937dafcbd8b2/indicators.csv')
+df = pd.read_csv('https://plotly.github.io/datasets/country_indicators.csv')
 
 available_indicators = df['Indicator Name'].unique()
 
@@ -64,7 +64,8 @@ app.layout = html.Div([
         min=df['Year'].min(),
         max=df['Year'].max(),
         value=df['Year'].max(),
-        marks={str(year): str(year) for year in df['Year'].unique()}
+        marks={str(year): str(year) for year in df['Year'].unique()},
+        step=None
     ), style={'width': '49%', 'padding': '0px 20px 20px 20px'})
 ])
 
