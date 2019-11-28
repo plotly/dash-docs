@@ -64,13 +64,23 @@ def imageComponentBlock(
 
     '''
 
+    try:
+        exec(example_string, {})
+    except Exception as e:
+        print('\nError running\n{}\n{}'.format(
+            example_string,
+            ('======================================' +
+             '======================================')
+        ))
+        raise e
+
     demo_location = re.match('.*pic_(.*)\.png\?raw=true', location)
 
     if demo_location is not None:
         demo_location = demo_location.group(1)
     else:
         demo_location = ''
-        
+
     return html.Div([
         reusable_components.Markdown(
             '```python  \n' + example_string + '  \n```',
