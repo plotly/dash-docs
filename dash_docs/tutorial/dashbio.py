@@ -100,7 +100,7 @@ DASHBIO_COMPONENTS = {
             'hidden_labels': '[\'row\']',
             'width': 600
         },
-        'component_wrap': 'dcc.Graph(figure=_[0])',
+        'component_wrap': 'dcc.Graph(figure=_)',
         'setup_code': '''df = pd.read_csv(
     'https://raw.githubusercontent.com/plotly/dash-bio' +
     '/master/tests/dashbio_demos/sample_data/clustergram_mtcars.tsv',
@@ -155,8 +155,8 @@ data = df.values
             ['dash_core_components', 'dcc']
         ],
         'setup_code': '''df = pd.read_csv(
-    'https://raw.githubusercontent.com/plotly/dash-bio' +
-    '/tests/dashbio_demos/sample_data/manhattan_data.csv'
+    'https://raw.githubusercontent.com/plotly/dash-bio/' +
+    '/master/tests/dashbio_demos/sample_data/manhattan_data.csv'
 )''',
         'image_info': {
             'location': 'https://github.com/plotly/docs-demos-dashbio/blob/master/images/pic_manhattan.png?raw=true',
