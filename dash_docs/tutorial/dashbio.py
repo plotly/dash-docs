@@ -46,9 +46,9 @@ DASHBIO_COMPONENTS = {
             'name': 'alignment_viewer_p53.fasta',
             'parameter': 'data'
         },
-        'iframe_info': {
-            'location': 'https://dash-gallery.plotly.host/docs-demos-dashbio/alignment_chart',
-            'height': 950
+        'image_info': {
+            'location': 'https://github.com/plotly/docs-demos-dashbio/blob/master/images/pic_alignment_chart.png?raw=true',
+            'width': 400
         }
     },
 
@@ -79,9 +79,8 @@ DASHBIO_COMPONENTS = {
 }]'''
         },
         'setup_code': '''circos_graph_data = json.loads(data)''',
-        'iframe_info': {
-            'location': 'https://dash-gallery.plotly.host/docs-demos-dashbio/circos',
-            'height': 700
+        'image_info': {
+            'location': 'https://github.com/plotly/docs-demos-dashbio/blob/master/images/pic_circos.png?raw=true',
         }
     },
 
@@ -99,7 +98,6 @@ DASHBIO_COMPONENTS = {
             'column_labels': 'list(df.columns.values)',
             'row_labels': 'list(df.index)',
             'hidden_labels': '[\'row\']',
-            'height': 800,
             'width': 600
         },
         'component_wrap': 'dcc.Graph(figure=_[0])',
@@ -111,9 +109,8 @@ DASHBIO_COMPONENTS = {
 
 data = df.values
 ''',
-        'iframe_info': {
-            'location': 'https://dash-gallery.plotly.host/docs-demos-dashbio/clustergram',
-            'height': 850
+        'image_info': {
+            'location': 'https://github.com/plotly/docs-demos-dashbio/blob/master/images/pic_clustergram.png?raw=true',
         }
     },
 
@@ -140,8 +137,8 @@ data = df.values
         'params': {
             'chrHeight': 250
         },
-        'iframe_info': {
-            'location': 'https://dash-gallery.plotly.host/docs-demos-dashbio/ideogram'
+        'image_info': {
+            'location': 'https://github.com/plotly/docs-demos-dashbio/blob/master/images/pic_ideogram.png?raw=true'
         }
     },
 
@@ -161,8 +158,8 @@ data = df.values
     'https://raw.githubusercontent.com/plotly/dash-bio' +
     '/tests/dashbio_demos/sample_data/manhattan_data.csv'
 )''',
-        'iframe_info': {
-            'location': 'https://dash-gallery.plotly.host/docs-demos-dashbio/manhattan',
+        'image_info': {
+            'location': 'https://github.com/plotly/docs-demos-dashbio/blob/master/images/pic_manhattan.png?raw=true',
             'width': 800
         }
     },
@@ -205,8 +202,8 @@ styles_data = urlreq.urlopen(
 model_data = json.loads(model_data)
 styles_data = json.loads(styles_data)
 ''',
-        'iframe_info': {
-            'location': 'https://dash-gallery.plotly.host/docs-demos-dashbio/mol3d'
+        'image_info': {
+            'location': 'https://github.com/plotly/docs-demos-dashbio/blob/master/images/pic_mol3d.png?raw=true'
         }
     },
     'NeedlePlot': {
@@ -222,8 +219,8 @@ styles_data = json.loads(styles_data)
             'name': 'needle_PIK3CA.json'
         },
         'setup_code': '''mdata = json.loads(data)''',
-        'iframe_info': {
-            'location': 'https://dash-gallery.plotly.host/docs-demos-dashbio/needle_plot',
+        'image_info': {
+            'location': 'https://github.com/plotly/docs-demos-dashbio/blob/master/images/pic_needle_plot.png?raw=true',
             'width': 850
         }
     },
@@ -240,9 +237,8 @@ styles_data = json.loads(styles_data)
         },
         'setup_code': '''data = json.loads(data)
 ''',
-        'iframe_info': {
-            'location': 'https://dash-gallery.plotly.host/docs-demos-dashbio/oncoprint',
-            'width': 900
+        'image_info': {
+            'location': 'https://github.com/plotly/docs-demos-dashbio/blob/master/images/pic_oncoprint.png?raw=true'
         }
     },
 
@@ -273,9 +269,8 @@ styles_data = json.loads(styles_data)
             ['dash_bio_utils.xyz_reader', 'xyz_reader']
         ],
         'setup_code': '''data = xyz_reader.read_xyz(datapath_or_datastring=data, is_datafile=False)''',
-        'iframe_info': {
-            'location': 'https://dash-gallery.plotly.host/docs-demos-dashbio/speck',
-            'height': 500
+        'image_info': {
+            'location': 'https://raw.githubusercontent.com/plotly/docs-demos-dashbio/master/images/pic_speck.png'
         }
     },
 
@@ -295,9 +290,8 @@ styles_data = json.loads(styles_data)
             'dataframe': 'df'
         },
         'component_wrap': 'dcc.Graph(figure=_)',
-        'iframe_info': {
-            'location': 'https://dash-gallery.plotly.host/docs-demos-dashbio/volcano',
-            'width': 800
+        'image_info': {
+            'location': 'https://raw.githubusercontent.com/plotly/docs-demos-dashbio/master/images/pic_volcano.png?raw=true'
         }
     }
 }

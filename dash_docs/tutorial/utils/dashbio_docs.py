@@ -44,11 +44,11 @@ def get_component_names(library_name):
 
 # code containers
 
-def IframeComponentBlock(
+def imageComponentBlock(
         example_string,
         location,
-        height=600,
-        width=600
+        height=None,
+        width=400
 ):
     '''Generate a container that is visually similar to the
     ComponentBlock for components that require an externally hosted app.
@@ -64,6 +64,13 @@ def IframeComponentBlock(
 
     '''
 
+    demo_location = re.match('.*pic_(.*)\.png\?raw=true', location)
+
+    if demo_location is not None:
+        demo_location = demo_location.group(1)
+    else:
+        demo_location = ''
+        
     return html.Div([
         reusable_components.Markdown(
             '```python  \n' + example_string + '  \n```',
@@ -71,12 +78,10 @@ def IframeComponentBlock(
         ),
         html.Div(
             className='example-container',
-            children=html.Iframe(
-                width='{}px'.format(width),
-                height='{}px'.format(height),
-                style={'border': 'none'},
+            children=html.A(html.Img(
+                style={'border': 'none', 'width': '75%', 'max-width': '500px'},
                 src=location
-            )
+            ), href='http://dash-gallery.plotly.host/docs-demos-dashbio/{}'.format(demo_location))
         )
     ])
 
@@ -92,7 +97,7 @@ def generate_component_example(
         library_imports=None,
         setup_code='',
         component_wrap=None,
-        iframe_info=None
+        image_info=None
 ):
     '''Generate an example for a component, with hyperlinks to the
     appropriate component-specific pages.
@@ -241,10 +246,10 @@ component = {}
 
 
     # load the iframe if that is where the app is
-    if iframe_info is not None:
-        component_demo = IframeComponentBlock(
+    if image_info is not None:
+        component_demo = imageComponentBlock(
             example_string,
-            **iframe_info
+            **image_info
         )
     else:
         component_demo = ComponentBlock(
