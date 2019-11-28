@@ -51,16 +51,16 @@ def imageComponentBlock(
         width=400
 ):
     '''Generate a container that is visually similar to the
-    ComponentBlock for components that require an externally hosted app.
+    ComponentBlock for components that require an externally hosted image.
 
     :param (str) example_string: String containing the code that is
-    used in the application from the iframe.
-    :param (str) location: The URL of the app.
-    :param (int) height: The height of the iframe.
-    :param (int) width: The width of the iframe.
+    used in the application from the image.
+    :param (str) location: The URL of the image.
+    :param (int) height: The height of the image.
+    :param (int) width: The width of the image.
 
     :rtype (dict): A dash_html_components div containing the code
-    container and the iframe.
+    container and the image.
 
     '''
 
