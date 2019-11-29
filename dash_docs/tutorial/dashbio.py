@@ -157,7 +157,7 @@ data = df.values
         ],
         'setup_code': '''df = pd.read_csv(
     'https://raw.githubusercontent.com/plotly/dash-bio/' +
-    '/master/tests/dashbio_demos/sample_data/manhattan_data.csv'
+    'master/tests/dashbio_demos/sample_data/manhattan_data.csv'
 )''',
         'image_info': {
             'location': 'https://github.com/plotly/docs-demos-dashbio/blob/master/images/pic_manhattan.png?raw=true',
