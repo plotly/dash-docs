@@ -88,10 +88,15 @@ def imageComponentBlock(
         ),
         html.Div(
             className='example-container',
-            children=html.A(html.Img(
-                style={'border': 'none', 'width': '75%', 'max-width': '500px'},
-                src=location
-            ), href='http://dash-gallery.plotly.host/docs-demos-dashbio/{}'.format(demo_location))
+            children=[
+                dcc.Markdown(
+                    '> Try a live demo at http://dash-gallery.plotly.host/docs-demos-dashbio/{}'.format(demo_location, demo_location)
+                ),
+                html.Img(
+                    style={'border': 'none', 'width': '75%', 'max-width': '500px'},
+                    src=location
+                )
+            ]
         )
     ])
 

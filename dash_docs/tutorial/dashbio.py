@@ -18,8 +18,7 @@ DASHBIO_LIBRARY_HEADING = [
 
     Dash Bio is a suite of bioinformatics components that make it simpler to
     analyze and visualize bioinformatics data and interact with them in a Dash
-    application. You can interact with the components shown below directly, or
-    by clicking the image of the component.
+    application.
 
     The source can be found on GitHub at [plotly/dash-bio](https://github.com/plotly/dash-bio).
 
