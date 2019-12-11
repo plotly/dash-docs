@@ -1,3 +1,4 @@
+import os
 from .import tutorial
 
 import dash_html_components as html
@@ -372,17 +373,24 @@ URLS = [
             {
                 'name': 'Dash Bio',
                 'chapters': [
-                    {
+                    dict({
                         'url': '/dash-bio',
                         'name': 'Overview',
                         'description': (
                             'Dash Bio is a component library '
                             'dedicated to visualizing bioinformatics data.'
                         ),
-                        'content': tutorial.dashbio.layout
-                    }
+                        'autogenerate_index': (
+                            True if
+                            os.environ.get('IGNORE_DASH_BIO', False)
+                            else False
+                        )
+                    },
+                    **({} if os.environ.get('IGNORE_DASH_BIO', False)
+                    else {'content': tutorial.dashbio.layout}))
                 ] + component_list(
                     dash_bio,
+                    None if os.environ.get('IGNORE_DASH_BIO', False) else
                     tutorial.dashbio_examples,
                     'dash-bio',
                     'dash_bio'

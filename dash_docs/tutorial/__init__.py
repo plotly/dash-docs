@@ -1,3 +1,4 @@
+import os
 from .import auth
 from .import core_component_examples as examples
 from .import core_components
@@ -9,8 +10,9 @@ from .import dash_deployment_server_examples as dds_examples
 from .import dash_table_index
 from .import daq
 from .import daq_component_examples as daq_examples
-from .import dashbio
-from .import dashbio_component_examples as dashbio_examples
+if not os.environ.get('IGNORE_DASH_BIO', False):
+    from .import dashbio
+    from .import dashbio_component_examples as dashbio_examples
 from .import deployment
 from .import external_css_and_js
 from .import gallery
