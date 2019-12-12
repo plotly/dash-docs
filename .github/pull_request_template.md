@@ -14,4 +14,4 @@ If this PR documents a new feature of Dash:
 If this PR includes a new dataset available at a remote URL:
 - [ ] I have added this dataset to the `datasets/` folder
 - [ ] I have added a mapping between the remote URL and the filename in the
-`datasets/` folder
+`datasets/` folder into the `find_and_replace` dict in `dash_docs/tools.py`
