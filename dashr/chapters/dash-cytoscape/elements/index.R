@@ -2,6 +2,8 @@ library(dash)
 library(dashCoreComponents)
 library(dashHtmlComponents)
 library(dashCytoscape)
+library(stringr)
+
 
 utils <- new.env()
 source('dashr/utils.R', local=utils)

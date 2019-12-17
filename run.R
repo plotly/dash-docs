@@ -1,8 +1,13 @@
 source('app.R')
+
+# load required packages
 library(dash)
 library(dashCoreComponents)
 library(dashHtmlComponents)
+library(rjson)
 library(jsonlite)
+library(purrr)
+
 
 components <- new.env()
 source('dashr/components.R', local=components)
@@ -211,8 +216,8 @@ header <- htmlDiv(
           htmlA('plotly', className='link', href = 'https://plot.ly/'),
           htmlA('\U{1F50E}', className='link', href='/search')
         ))
-    ))
-))
+      ))
+  ))
 
 app$layout(
   header,
@@ -348,168 +353,168 @@ app$callback(
               'What\'s Dash?',
               list(
                 components$Chapter(
-                'Introduction',
-                href='/introduction',
-                caption="A quick paragraph about Dash and a link to the talk at Plotcon that started it all."
+                  'Introduction',
+                  href='/introduction',
+                  caption="A quick paragraph about Dash and a link to the talk at Plotcon that started it all."
                 ),
                 components$Chapter(
-                'Announcement Essay',
-                href='https://medium.com/plotly/announcing-dash-for-r-82dce99bae13',
-                caption="Our extended essay on Dash. An extended discussion of Dash's architecture and our motivation behind the project."
+                  'Announcement Essay',
+                  href='https://medium.com/plotly/announcing-dash-for-r-82dce99bae13',
+                  caption="Our extended essay on Dash. An extended discussion of Dash's architecture and our motivation behind the project."
                 ),
                 components$Chapter(
-                'Dash App Gallery',
-                href='https://dash.plot.ly/gallery',
-                caption="A glimpse into what's possible with Dash."
+                  'Dash App Gallery',
+                  href='https://dash.plot.ly/gallery',
+                  caption="A glimpse into what's possible with Dash."
                 ),
                 components$Chapter(
-                'Dash Club',
-                href='https://plot.us12.list-manage.com/subscribe?u=28d7f8f0685d044fb51f0d4ee&id=0c1cb734d7',
-                caption="A fortnightly email newsletter by chriddyp, the creator of Dash."
+                  'Dash Club',
+                  href='https://plot.us12.list-manage.com/subscribe?u=28d7f8f0685d044fb51f0d4ee&id=0c1cb734d7',
+                  caption="A fortnightly email newsletter by chriddyp, the creator of Dash."
                 )
               )
             ),
-
-
+            
+            
             components$Section(
               'Dash Tutorial',
               list(
                 components$Chapter(
-                'Part 1. Installation',
-                href='/installation'
+                  'Part 1. Installation',
+                  href='/installation'
                 ),
                 components$Chapter(
-                'Part 2. The Dash Layout',
-                href='/getting-started',
-                caption="The Dash `layout` describes what your app will look like and is composed of a set of declarative Dash components."
+                  'Part 2. The Dash Layout',
+                  href='/getting-started',
+                  caption="The Dash `layout` describes what your app will look like and is composed of a set of declarative Dash components."
                 ),
                 components$Chapter(
-                'Part 3. Basic Callbacks',
-                href='/getting-started-part-2',
-                caption="Dash apps are made interactive through Dash Callbacks:
+                  'Part 3. Basic Callbacks',
+                  href='/getting-started-part-2',
+                  caption="Dash apps are made interactive through Dash Callbacks:
                 R functions that are automatically called whenever an input component's property changes. Callbacks can be chained,
                 allowing one update in the UI to trigger several updates across the app."
                 ),
                 components$Chapter(
-                'Part 4. More About Callbacks',
-                href='/state',
-                caption="Basic callbacks are fired whenever the values change.
+                  'Part 4. More About Callbacks',
+                  href='/state',
+                  caption="Basic callbacks are fired whenever the values change.
                 Use Dash `state` with Dash `inputs` to pass in extra values whenever the `inputs` change.
                 `state` is useful for UIs that contain forms or buttons."
                 ),
                 components$Chapter(
-                'Part 5. Interactive Graphing and Crossfiltering',
-                href='/interactive-graphing',
-                caption="Bind interactivity to the Dash `Graph` component whenever you hover, click, or
+                  'Part 5. Interactive Graphing and Crossfiltering',
+                  href='/interactive-graphing',
+                  caption="Bind interactivity to the Dash `Graph` component whenever you hover, click, or
                 select points on your chart."
                 ),
                 components$Chapter(
-                'Part 6. Sharing Data Between Callbacks',
-                href='/sharing-data-between-callbacks',
-                caption="`global` variables will break your Dash apps.
+                  'Part 6. Sharing Data Between Callbacks',
+                  href='/sharing-data-between-callbacks',
+                  caption="`global` variables will break your Dash apps.
                 However, there are other ways to share data between callbacks.
                 This chapter is useful for callbacks that run expensive data processing tasks or process large data."
                 ),
                 components$Chapter(
-                'Part 7. FAQs and Gotchas',
-                href='/faqs',
-                caption="If you have read through the rest of the tutorial and still have questions
+                  'Part 7. FAQs and Gotchas',
+                  href='/faqs',
+                  caption="If you have read through the rest of the tutorial and still have questions
                 or are encountering unexpected behaviour, this chapter may be useful."
                 )
               )
             ),
-
-
+            
+            
             components$Section(
               'Component Libraries',
               list(
                 components$Chapter(
-                'Dash Core Components',
-                href='/dash-core-components',
-                caption="The Dash Core Component library contains a set of higher-level components like sliders, graphs, dropdowns, tables, and more."
+                  'Dash Core Components',
+                  href='/dash-core-components',
+                  caption="The Dash Core Component library contains a set of higher-level components like sliders, graphs, dropdowns, tables, and more."
                 ),
                 components$Chapter(
-                'Dash HTML Components',
-                href='/dash-html-components',
-                caption="Dash provides all of the available HTML tags as user-friendly R functions.
+                  'Dash HTML Components',
+                  href='/dash-html-components',
+                  caption="Dash provides all of the available HTML tags as user-friendly R functions.
                 This chapter explains how this works and the few important key differences between Dash HTML components and standard html."
                 ),
                 components$Chapter(
-                'Dash DataTable',
-                href='/datatable',
-                caption="(New! Released Nov 2, 2018) The Dash DataTable is our latest and most advanced component.
+                  'Dash DataTable',
+                  href='/datatable',
+                  caption="(New! Released Nov 2, 2018) The Dash DataTable is our latest and most advanced component.
                 It is an interactive table that supports rich styling, conditional formatting, editing, sorting, filtering, and more."
                 ),
                 components$Chapter(
-                'Dash DAQ Components',
-                href='/dash-daq',
-                caption="Beautifully styled technical components for data acquisition and engineering applications."
+                  'Dash DAQ Components',
+                  href='/dash-daq',
+                  caption="Beautifully styled technical components for data acquisition and engineering applications."
                 ),
                 components$Chapter(
-                'Dash Canvas',
-                href='/dash-canvas',
-                caption="(New! Released March 2019) Drawing and annotations for image processing."
+                  'Dash Canvas',
+                  href='/dash-canvas',
+                  caption="(New! Released March 2019) Drawing and annotations for image processing."
                 ),
                 components$Chapter(
-                'Dash Cytoscape',
-                href='/cytoscape',
-                caption="(New! Released Feb 5, 2019) Dash Cytoscape is our new network visualization component. It offers a declarative and
+                  'Dash Cytoscape',
+                  href='/cytoscape',
+                  caption="(New! Released Feb 5, 2019) Dash Cytoscape is our new network visualization component. It offers a declarative and
                 user-friendly R interface to create beautiful, customizable, interactive and reactive graphs."
                 ),
                 components$Chapter(
-                'Dash Bio Components',
-                href='/dash-bio',
-                caption="(New! Released April 2019) Components dedicated to visualizing bioinformatics data."
+                  'Dash Bio Components',
+                  href='/dash-bio',
+                  caption="(New! Released April 2019) Components dedicated to visualizing bioinformatics data."
                 )             
               )
             ),
-
-
+            
+            
             components$Section(
-            'Creating Your Own Components',
-                list(
+              'Creating Your Own Components',
+              list(
                 components$Chapter(
-                'Build Your Own Components',
-                href='/plugins',
-                caption="Dash components are built with React.js. Dash provides
+                  'Build Your Own Components',
+                  href='/plugins',
+                  caption="Dash components are built with React.js. Dash provides
                 a React → Dash toolchain that generates a Dash-compatible interface to
                 these components in R."
                 ),
                 components$Chapter(
-                'Integrating D3.js into Dash Components',
-                href='/d3-react-components',
-                caption="Tutorials and resources on encapsulating D3.js graphs in Dash-friendly
+                  'Integrating D3.js into Dash Components',
+                  href='/d3-react-components',
+                  caption="Tutorials and resources on encapsulating D3.js graphs in Dash-friendly
                 React components. Includes two sample components: a D3.js network graph and a D3.js
                 sunburst chart."
                 )
               )
             ),
-
-
+            
+            
             components$Section(
               'Beyond the Basics',
               list(
                 components$Chapter(
-                'Adding CSS & JS and Overriding the Page-Load Template',
-                href='/external-resources',
-                caption="Learn how to add custom CSS and JS to your application with the `assets` directory.
+                  'Adding CSS & JS and Overriding the Page-Load Template',
+                  href='/external-resources',
+                  caption="Learn how to add custom CSS and JS to your application with the `assets` directory.
                 Also, learn how to customize the HTML template that Dash serves on page load in order to add custom meta tags, customize the page's title, and more."
                 ),
                 components$Chapter(
-                'URL Routing & Multiple Apps',
-                href='/urls',
-                caption="Dash provides two components (`dccLink` and `dccLocation`) that allow you to easily make fast multipage apps using its own \"Single Page App (SPA)\" design pattern."
+                  'URL Routing & Multiple Apps',
+                  href='/urls',
+                  caption="Dash provides two components (`dccLink` and `dccLocation`) that allow you to easily make fast multipage apps using its own \"Single Page App (SPA)\" design pattern."
                 )
               )
             ),
-
-
+            
+            
             components$Section(
               'Production',
               list(
                 components$Chapter(
-                'See Our Products Page',
-                href='https://plot.ly/products/dash/'
+                  'See Our Products Page',
+                  href='https://plot.ly/products/dash/'
                 ),
                 components$Chapter(
                   'Deployment',
@@ -517,32 +522,32 @@ app$callback(
                 )
               )
             ),
-
-
+            
+            
             components$Section(
-            'Getting Help',
+              'Getting Help',
               list(
                 components$Chapter(
-                'The Dash Community Forum',
-                href='https://community.plot.ly/c/dash?_ga=2.35982368.1800098105.1562085881-85134653.1547603472'
+                  'The Dash Community Forum',
+                  href='https://community.plot.ly/c/dash?_ga=2.35982368.1800098105.1562085881-85134653.1547603472'
                 ),
                 components$Chapter(
-                'Support and Contact',
-                href='/support'
+                  'Support and Contact',
+                  href='/support'
                 )
               )
             ),
-
+            
             components$Section(
-            'Dash Deployment Server',
+              'Dash Deployment Server',
               list(
                 components$Chapter(
-                'About Dash Deployment Server',
-                href='https://plot.ly/dash/pricing/?_ga=2.180458663.1075922756.1562168385-916141078.1562168385'
+                  'About Dash Deployment Server',
+                  href='https://plot.ly/dash/pricing/?_ga=2.180458663.1075922756.1562168385-916141078.1562168385'
                 ),
                 components$Chapter(
-                'Dash Deployment Server Documentation',
-                href='https://dash.plot.ly/dash-deployment-server'
+                  'Dash Deployment Server Documentation',
+                  href='https://dash.plot.ly/dash-deployment-server'
                 )
               ),
               description="Dash Deployment Server is Plotly's commercial offering for hosting and sharing

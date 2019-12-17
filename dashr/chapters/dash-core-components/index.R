@@ -25,11 +25,11 @@ referenceLink <- function(componentName, Title) {
 }
 
 layout <- htmlDiv(list(
-
-htmlH1('Dash Core Components'),
-
-dccMarkdown(
-  " Dash ships with supercharged components for interactive user interfaces.
+  
+  htmlH1('Dash Core Components'),
+  
+  dccMarkdown(
+    " Dash ships with supercharged components for interactive user interfaces.
         A core set of components, written and maintained by the Dash team,
   is available in the `dashCoreComponents` package.
   The source is on GitHub at [plotly/dash-core-components](https://github.com/plotly/dash-core-components).
@@ -37,11 +37,11 @@ dccMarkdown(
 install.packages('dashCoreComponents')
 ```
   "
-),
-
-htmlDiv(titleLink('Dropdown')),
-utils$LoadAndDisplayComponent(
-'library(dashCoreComponents)
+  ),
+  
+  htmlDiv(titleLink('Dropdown')),
+  utils$LoadAndDisplayComponent(
+    'library(dashCoreComponents)
 
 dccDropdown(
   options=list(
@@ -52,11 +52,11 @@ dccDropdown(
   value="MTL"
 )
 '
-),
-
-
-utils$LoadAndDisplayComponent(
-  '
+  ),
+  
+  
+  utils$LoadAndDisplayComponent(
+    '
 library(dashCoreComponents)
 
 dccDropdown(
@@ -69,7 +69,7 @@ dccDropdown(
   multi = TRUE
 )
   '
-),
+  ),
 htmlBr(),
 htmlDiv(referenceLink('Dropdown', 'More Dropdown Examples and Reference')),
 htmlHr(),
@@ -319,7 +319,7 @@ htmlHr(),
 htmlDiv(htmlH3('Interactive Tables')),
 
 
-htmlDiv(list(dccMarkdown("
+dccMarkdown("
 The `dashHtmlComponents` library exposes all of the HTML tags.
 This includes the `Table`, `Tr`, and `Tbody` tags that can be used
 to create an HTML table. See
@@ -330,40 +330,40 @@ project. This table includes built-in filtering, row-selection,
 editing, and sorting.
   "
 ),
+
+
+
 htmlHr(),
 
-htmlA(
+htmlDiv(list(htmlA(
   className="image-link",
   href="https://github.com/plotly/dash-table-experiments",
   children=htmlImg(
     src="assets/images/gallery/DataTable.gif",
     alt="Example of a Dash Interactive Table"
-  ))),
-style = list('overflow' = 'hidden',
-             'align' = 'left')),
+  ))),style = list('overflow' = 'hidden',
+                   'align' = 'left')),
 
-dccMarkdown("
-    [View the docs](/datatable) or [View the source](https://github.com/plotly/dash-table)"),
+
+dccMarkdown("[View the docs](/datatable) or [View the source](https://github.com/plotly/dash-table)"),
 
 
 #--------------------------------
 htmlDiv(titleLink('UploadComponent')),
 
-dccMarkdown("
-The `dccUpload` component allows users to upload files into your app
-through drag-and-drop or the systems native file explorer.
-"),
+dccMarkdown("The `dccUpload` component allows users to upload files into your app through drag-and-drop or the systems native file explorer."),
 htmlBr(),
 
-  htmlDiv(list(htmlA(
-    className="image-link",
-    href="https://github.com/plotly/dash-core-components/pull/73",
-    children=htmlImg(
-      src="https://user-images.githubusercontent.com/1280389/30351245-6b93ee62-97e8-11e7-8e85-0411e9d6c98c.gif",
-      alt="Dash Upload Component"
-    )
-  )), style = list('overflow' = 'hidden',
-                  'align' = 'left')),
+htmlA(
+  className="image-link",
+  href="https://github.com/plotly/dash-core-components/pull/73",
+  children=htmlImg(
+    src="https://user-images.githubusercontent.com/1280389/30351245-6b93ee62-97e8-11e7-8e85-0411e9d6c98c.gif",
+    alt="Dash Upload Component"
+  ),
+  style = list('overflow' = 'hidden',
+               'align' = 'left')
+),
 
 htmlBr(),
 htmlDiv(referenceLink('UploadComponent', 'More Upload Examples and Reference')),
@@ -412,7 +412,7 @@ year = c(1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
 
   )
   '
-  ))),
+))),
 htmlBr(),
 htmlDiv(referenceLink('Graph', 'More Graph Examples and Reference')),
 dccMarkdown('View the [plotly.r docs](https://plot.ly/r).'),
@@ -439,7 +439,7 @@ htmlHr(),
 
 dccMarkdown(
   " There is also a `dccConfirmDialogProvider`,
-     it will automatically wrap a child component
+    it will automatically wrap a child component
     to send a `dccConfirmDialog` when clicked.
   "
 ),
@@ -462,16 +462,13 @@ htmlHr(),
 
 #--------------------------------
 htmlDiv(titleLink('Store')),
-dccMarkdown(
-  " The store component can be used to keep data in the visitor's browser.
-    The data is scoped to the user accessing the page.
-  **Three types of storage (`storage_type` prop):**
+dccMarkdown(" The store component can be used to keep data in the visitor's browser. The data is scoped to the user accessing the page. **Three types of storage (`storage_type` prop):** 
   - `memory`: default, keep the data as long the page is not refreshed.
   - `local`: keep the data until it is manually cleared.
   - `session`: keep the data until the browser/tab closes.
   _For `local`/`session`, the data is serialized as json when stored._
-  "
-),
+  
+  "),
 
 htmlDiv(list(utils$LoadAndDisplayComponent(
   '
@@ -502,21 +499,17 @@ htmlDiv(referenceLink('Store', 'More Store Examples and Reference')),
 #--------------------------------
 htmlDiv(titleLink('LoadingComponent')),
 
-dccMarkdown(
-  " The Loading component can be used to wrap components that you want to display a spinner for, if they take too long to load.
+dccMarkdown(" The Loading component can be used to wrap components that you want to display a spinner for, if they take too long to load.
     It does this by checking if any of the Loading components' children have a `loading_state` prop set where `is_loading` is true.
     If true, it will display one of the built-in CSS spinners.
-  "
-),
-htmlDiv(list(utils$LoadAndDisplayComponent(
-  '
+  "),
+htmlDiv(list(utils$LoadAndDisplayComponent( '
 library(dashCoreComponents)
 loading = dccLoading(list(list(
     # ...
 )))
 
-  '
-  ))),
+  '))),
 
 htmlBr(),
 htmlDiv(referenceLink('LoadingComponent', 'More Loading Component Examples and Reference')),
@@ -525,8 +518,7 @@ htmlHr(),
 #--------------------------------
 
 htmlDiv(titleLink('Location')),
-dccMarkdown(
-  " The location component represents the location bar in your web browser. Through its `href`, `pathname`,
+dccMarkdown(" The location component represents the location bar in your web browser. Through its `href`, `pathname`,
     `search` and `hash` properties you can access different portions of your app's url.
 
   For example, given the url `http://127.0.0.1:8050/page-2?a=test#quiz`:
@@ -536,8 +528,7 @@ dccMarkdown(
   - `search` = `?a=test`
   - `hash` = `#quiz`
 
-  "
-),
+  "),
 # htmlDiv(list(utils$LoadAndDisplayComponent(
 #   '
 # library(dashCoreComponents)
@@ -549,16 +540,13 @@ library(dashCoreComponents)
 location = dccLocation(id = 'url', refresh = FALSE)
 
 ```",
-className = "example-container"),
+            className = "example-container"),
 
 htmlBr(),
 htmlDiv(referenceLink('Location', 'More Location Examples and Reference')),
 htmlHr(),
-dccMarkdown("[Back to the Table of Contents](/)")
+dccMarkdown("[Back to the Table of Contents](/)")))
 
-)
-
-)
 
 route <- function(pathname) {
   componentName = gsub('dropdown', '', pathname)

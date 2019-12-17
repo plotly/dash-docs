@@ -6,9 +6,9 @@ LoadExampleCode <- function(filename, wd = NULL) {
   # Take a self-contained DashR example filename,
   # eval it, and return that example's `layout`
   # and the source code.
-
+  
   example.file.as.string <- readChar(filename, file.info(filename)$size);
-
+  
   # modify the example code so that it can run within
   # the context of an already running app
   example.ready.for.eval <- example.file.as.string
@@ -16,37 +16,39 @@ LoadExampleCode <- function(filename, wd = NULL) {
     # set the layout to a variable so that we can access it
     # and return it
     list('app\\$layout\\(', 'layout <- htmlDiv\\('),
-
+    
     # Since app is in the namespace from the `app.R` import,
     # it will implicity be picked up by the
     # `eval` call below
     list('app <- Dash\\$new\\(\\)', ''),
-    list('app\\$run_server\\(\\)', '')
+    list('app\\$run_server\\(\\)', ''),
+    list('app\\$run_server\\(dev_tools_hot_reload\\=FALSE\\)', '')
   )
   for(replacement in replacements) {
     example.ready.for.eval <- gsub(
       replacement[1],
       replacement[2],
+      replacement[3],
       example.ready.for.eval
     )
   }
-
+  
   example.ready.for.eval <- paste(unlist(strsplit(example.ready.for.eval, "\r")), collapse = " ")
-
+  
   if(!is.null(wd)) {
-
+    
     currentWd <- getwd()
     newWd <- paste(c(currentWd, wd),collapse =  "/")
-
+    
     example.ready.for.eval <- paste(c("setwd(newWd)",
                                       example.ready.for.eval,
                                       "setwd(currentWd)"),
                                     collapse = "\n")
   }
-
+  
   # run the example and implicitly assign the `layout` variable
   eval(parse(text=example.ready.for.eval))
-
+  
   list(
     layout=htmlDiv(
       className='example-container', children=layout,
@@ -101,20 +103,20 @@ LoadAndDisplayComponent2 <- function(example_string) {
 props_to_list <- function(componentName) {
   Rd <- utils:::.getHelpFile(do.call(`?`,
                                      list(componentName)))
-
+  
   containsArgs <- vapply(Rd, function(x) {
     attr(x, "Rd_tag")=="\\arguments"
   },
   logical(1))
-
+  
   # Subset the help data to function arguments only
   args  <- Rd[containsArgs]
-
+  
   # Assemble a list of function arguments, stripping linefeeds
   list_of_args <- lapply(unlist(args,
                                 recursive=FALSE),
                          function(x) x[x != "\n"])
-
+  
   # Extract the prop metadata for tabulation
   props_as_list <- invisible(sapply(list_of_args, function(x) {
     if (any(sapply(x, is.list))) {
@@ -130,11 +132,11 @@ props_to_list <- function(componentName) {
                          "Logical \\| numeric \\| character \\| named list \\| unnamed list",
                          "List",
                          sep="|")
-
+      
       Argument <- x[[1]]
-
+      
       descstring <- paste(gsub("\n", "", x[[2]]), collapse=" ")
-
+      
       Description <- gsub("Logical\\. |Numeric\\. |Named list\\. |Unnamed list\\. | Character\\.",
                           "",
                           descstring)
@@ -146,7 +148,7 @@ props_to_list <- function(componentName) {
                Default=Default))
     }
   }))
-
+  
   # strip NULL values
   props_as_list[lengths(props_as_list) != 0]
 }
@@ -160,6 +162,12 @@ generate_table <- function(df, nrows=10) {
   htmlTable(
     children = c(list(header), rows)
   )
+}
+
+
+filter_null <- function (x) {
+  x[x %>% map_lgl(is.null)] <- NULL
+  x
 }
 
 # Delete below function? Any issues with above function? (None for Aanika!)
