@@ -50,11 +50,23 @@ layout = html.Div([
     The DataTable provides multiple presentation schemes that can vary depending on the column's
     type.
 
-    The following types are supported by all types:
+    The following schemes are supported by all types:
     - `input`: a text input field
     - `dropdown`: see [DataTable Dropdowns](/datatable/dropdowns) for more details
 
-    Additional presentations will be added in the future.
+    #### Markdown
+    The `markdown` presentation scheme allows for the raw value of each cell to be rendered
+    as Markdown. This includes features of Markdown such as links, images, headers, lists,
+    quotes, code blocks, and (yes, even) tables.
+
+    The `markdown` scheme is only supported by `text`-type columns, and sorting and filtering
+    behaviour occurs based on the raw value entered into the dataframe, instead of what gets
+    rendered.
+
+    e.g., if cell `x` has the raw value `dash`, and cell `y` has the raw value
+    `[plotly](http://plot.ly)`, cell `y` will actually come before cell `x` when the table is
+    sorted in ascending order, despite the fact that the *displayed* value of cell `y` is
+    [plotly](http://plot.ly).
 
     By default, the column presentation is `input`.
     ''')),
