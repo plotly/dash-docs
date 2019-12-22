@@ -1,4 +1,4 @@
-library(dashR)
+library(dash)
 library(dashCoreComponents)
 library(dashHtmlComponents)
 
@@ -30,12 +30,12 @@ app$callback(
   output=list(id='cities-dropdown', property='options'),
   params=list(input(id='countries-dropdown', property='value')),
   function(selected_country){
-    
+
     data_selected <- all_options[[selected_country]]
 
-    lapply(data_selected, 
+    lapply(data_selected,
            function(dat) {
-             list('label' = dat, 
+             list('label' = dat,
                   'value' = dat)
            })
 })
@@ -54,4 +54,4 @@ app$callback(
     sprintf("\"%s\ is a city in \"%s\"", selected_city, selected_country)
 })
 
-#app$run_server()
+app$run_server()

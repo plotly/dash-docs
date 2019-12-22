@@ -51,7 +51,7 @@ NewChapter = html.Div(children=[
 ##### Best Practices
 
 When adding **text** use: ```dcc.Markdown(s())```    
-When adding **code** use: ```dcc.SyntaxHighlighter(s())```     
+When adding **code** use: ```dcc.Markdown(s())``` with triple backticks.
 When adding **images** add the images to `tutorial/assets/images/dds/` and use a relative link in the text.      
 When adding **links** use relative links where possible.
 

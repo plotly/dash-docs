@@ -1,6 +1,6 @@
+library(dash)
 library(dashCoreComponents)
 library(dashHtmlComponents)
-library(dashR)
 
 utils <- new.env()
 source('dashr/utils.R', local=utils)
@@ -64,16 +64,14 @@ three files in that folder:
   ),
   
   htmlHr(),
-  dccSyntaxHighlighter(
+  dccMarkdown(
 "body {
     font-family: sans-serif;
 }
 h1, h2, h3, h4, h5, h6 {
     color: hotpink
 }
-",
-    language='css'
-  ),
+"),
 htmlHr(),
 
 htmlDiv(
@@ -81,7 +79,7 @@ htmlDiv(
   style=list('paddingTop' = 20)
 ),
 
-dccSyntaxHighlighter(
+dccMarkdown(
   "app-header {
     height: 60px;
     line-height: 60px;
@@ -92,8 +90,7 @@ dccSyntaxHighlighter(
     font-size: 22px;
     padding-left: 5px;
 }
-",
-language='css'
+"
 ),
 
 htmlHr(),
@@ -101,10 +98,9 @@ htmlDiv(
   dccMarkdown('`custom-script.js`'),
   style=list('paddingTop' = 20)
 ),
-dccSyntaxHighlighter("
+dccMarkdown("
 alert('If you see this alert, then your custom JavaScript script has run!')
-",
-  language='javascript'
+"
 ),
 htmlHr(),
 
@@ -231,7 +227,7 @@ examples$addingExternalCSS$source_code,
 # Add an `index_string` to modify the default HTML Index Template:
 # 
 # ```
-# library(dashR)
+# library(dash)
 # library(dashCoreComponents)
 # library(dashHtmlComponents)
 # 
@@ -309,7 +305,7 @@ examples$addingExternalCSS$source_code,
 # If your HTML content isn't static or if you would like to introspect or modify the templated variables, 
 # then you can override the Dash.interpolate_index method.   
 # ```
-# library(dashR)
+# library(dash)
 # library(dashHtmlComponents)
 # ... # build R6 class
 # ```

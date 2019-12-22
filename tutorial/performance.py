@@ -33,14 +33,15 @@ To better understand how memoization works, let's start with a simple example.
 
 '''),
 
-    Syntax('''import time
+    Syntax('''
+import time
 import functools32
 
 @functools32.lru_cache(maxsize=32)
 def slow_function(input):
     time.sleep(10)
     return 'Input was {}'.format(input)
-'''),
+    '''),
 
     dcc.Markdown('''
 

@@ -8,10 +8,9 @@ from tutorial import styles
 def CreateDisplay(scope):
     def Display(example_string):
         return html.Div([
-            dcc.SyntaxHighlighter(
+            dcc.Markdown(
                 dedent(example_string).strip(),
-                language='python',
-                customStyle={'marginBottom': 10, 'borderLeft': 'thin #C8D4E3 solid'}
+                style={'marginBottom': 10, 'borderLeft': 'thin #C8D4E3 solid'}
             ),
             html.Div(
                 children=eval(dedent(example_string), scope),
@@ -41,8 +40,7 @@ def PythonSnippet(code):
     if code and code[0] == '\n':
         code = code[1:]
 
-    return dcc.SyntaxHighlighter(
+    return dcc.Markdown(
         dedent(code),
-        language='python',
-        customStyle=styles.code_container
+        style=styles.code_container
     )

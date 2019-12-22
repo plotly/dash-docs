@@ -15,6 +15,7 @@ examples = {
     'date_picker_single': tools.load_example('tutorial/examples/core_components/date_picker_single.py'),
     'date_picker_range': tools.load_example('tutorial/examples/core_components/date_picker_range.py'),
     'dropdown': tools.load_example('tutorial/examples/core_components/dropdown.py'),
+    'graph-config': tools.load_example('tutorial/examples/core_components/export_graph_to_chart_studio.py'),
     'input-basic': tools.load_example('tutorial/examples/core_components/input-basic.py'),
     'input-n_submit': tools.load_example('tutorial/examples/core_components/input-n_submit.py'),
     'rangeslider': tools.load_example('tutorial/examples/core_components/rangeslider.py'),
@@ -46,9 +47,9 @@ Dropdown = html.Div(children=[
     html.H3('Default Dropdown'),
     html.P("An example of a default dropdown without \
             any extra properties."),
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['dropdown'][0],
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
     html.Div(
         examples['dropdown'][1],
@@ -71,7 +72,7 @@ dcc.Dropdown(
     ],
     value=['MTL', 'NYC'],
     multi=True
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
     html.Hr(),
 
     html.H3('Disable Search'),
@@ -89,7 +90,7 @@ dcc.Dropdown(
         {'label': 'San Francisco', 'value': 'SF'}
     ],
     searchable=False
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
     html.Hr(),
 
     html.H3('Dropdown Clear'),
@@ -106,7 +107,7 @@ dcc.Dropdown(
     ],
     value='MTL',
     clearable=False
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
 
     html.Hr(),
     html.H3('Placeholder Text'),
@@ -121,7 +122,7 @@ dcc.Dropdown(
         {'label': 'San Francisco', 'value': 'SF'}
     ],
     placeholder="Select a city",
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
 
     html.Hr(),
     html.H3('Disable Dropdown'),
@@ -135,7 +136,7 @@ dcc.Dropdown(
         {'label': 'San Francisco', 'value': 'SF'}
     ],
     disabled=True
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
 
     html.Hr(),
     html.H3('Disable Options'),
@@ -149,7 +150,7 @@ dcc.Dropdown(
         {'label': 'Montreal', 'value': 'MTL'},
         {'label': 'San Francisco', 'value': 'SF', 'disabled': True}
     ],
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
 
     html.Hr(),
     html.H3("Dropdown Properties"),
@@ -162,10 +163,9 @@ Slider = html.Div(children=[
     html.Hr(),
     html.H3('Simple Slider Example'),
     html.P("An example of a basic slider tied to a callback."),
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['slider'][0],
-        customStyle=styles.code_container,
-        language='python'
+        style=styles.code_container,
     ),
 
     html.Div(examples['slider'][1], className='example-container'),
@@ -189,7 +189,7 @@ dcc.Slider(
         10: '10 °F'
     },
     value=5
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
     html.Hr(),
 
     html.H3('Included and Styling Marks'),
@@ -238,10 +238,9 @@ dcc.Slider(
                  which means a callback is triggered everytime the handle \
                  is moved. The default setting is `mouseup` which triggers \
                  the callback when you release your mouse from the slider."),
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['slider-updatemode'][0],
-        customStyle=styles.code_container,
-        language='python'
+        style=styles.code_container,
     ),
     html.Div(
         examples['slider-updatemode'][1],
@@ -259,10 +258,9 @@ RangeSlider = html.Div(children=[
     html.Hr(),
     html.H3('Simple RangeSlider Example'),
     html.P("An example of a basic RangeSlider tied to a callback."),
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['rangeslider'][0],
-        customStyle=styles.code_container,
-        language='python'
+        style=styles.code_container,
     ),
 
     html.Div(
@@ -288,7 +286,7 @@ dcc.RangeSlider(
         10: '10 °F'
     },
     value=[3, 7.65]
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
     html.Hr(),
 
     html.H3('Included and Styling Marks'),
@@ -324,7 +322,7 @@ dcc.RangeSlider(
         100: {'label': '100°C', 'style': {'color': '#f50'}}
     },
     included=False
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
     html.Hr(),
 
     html.H3('Multiple Handles'),
@@ -337,15 +335,7 @@ dcc.RangeSlider(
     max=30,
     value=[1, 3, 4, 5, 12, 17]
 )
-    ''', customStyle=styles.code_container, language='python'),
-    html.Div([
-        dcc.RangeSlider(
-            min=0,
-            max=30,
-            value=[1, 3, 4, 5, 12, 17]
-        ),
-    ], className='example-container',
-       style={'overflow': 'hidden'}),
+    ''', style=styles.code_container),
     html.Hr(),
     html.H3('Pushable Handles'),
     dcc.Markdown("The `pushable` property is either a `boolean` or a numerical value. \
@@ -358,7 +348,7 @@ dcc.RangeSlider(
     value=[8, 10, 15, 17, 20],
     pushable=2
 )
-    ''', customStyle=styles.code_container, language='python'),
+    ''', style=styles.code_container),
     html.Hr(),
 
     html.H3('Crossing Handles'),
@@ -372,7 +362,7 @@ dcc.RangeSlider(
     value=[10, 15],
     allowCross=False
 )
-    ''', customStyle=styles.code_container, language='python'),
+    ''', style=styles.code_container),
     html.Hr(),
 
     html.H3('Non-Linear Slider and Updatemode'),
@@ -385,10 +375,9 @@ dcc.RangeSlider(
                  is moved. \
                  Contrast the callback output with the first example on this \
                  page to see the difference."),
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['rangeslider-nonlinear'][0],
-        customStyle=styles.code_container,
-        language='python'
+        style=styles.code_container,
     ),
     html.Div(examples['rangeslider-nonlinear'][1],
              className='example-container',
@@ -525,23 +514,40 @@ dcc.Markdown('''
     html.Hr(),
     html.H3("Inline Code"),
     html.P("Any block of text surrounded by ` ` will rendered as inline-code. "),
+    # Don't use ComponentBlock for markdown block quotes... too complicated to
+    # get all the nested quotes right!
+    dcc.Markdown("""
+    ````py
+    import dash_core_components as dcc
 
-    ComponentBlock("""import dash_core_components as dcc
+    dcc.Markdown('''
 
-dcc.Markdown('''
+    Inline code snippet: `True`
 
-Inline code snippet: `True`
+    Block code snippet:
+    ```py
+    import dash
 
-Block code snippet:
-```
-import dash
+    external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
-external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+    app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+    ```
+    ''')
+    ````
+    """),
+    html.Div(dcc.Markdown('''
 
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets)```
-''')
+    Inline code snippet: `True`
 
-"""),
+    Block code snippet:
+    ```py
+    import dash
+
+    external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+
+    app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+    ```
+    '''), className='example-container'),
 
     html.Hr(),
     html.H3('Markdown Properties'),
@@ -560,10 +566,9 @@ DatePickerRange = html.Div(children=[
                  dates on the calendar while `initial_visible_month` defines \
                  the calendar month that is first displayed when the \
                  `DatePickerRange` component is opened."),
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['date_picker_range'][0],
-        language='python',
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
     html.Div(
         examples['date_picker_range'][1],
@@ -680,7 +685,7 @@ dcc.DatePickerRange(
     end_date=dt(2017,6,21),
     display_format='X',
     start_date_placeholder_text='X'
-)''', language='python', customStyle=styles.code_container),
+)''', style=styles.code_container),
 
     html.Br(),
 
@@ -782,7 +787,7 @@ dcc.DatePickerRange(
     is_RTL=True,
     first_day_of_week=3,
     start_date=dt(2017,6,21)
-)''', language='python', customStyle=styles.code_container),
+)''', style=styles.code_container),
     html.Hr(),
     html.H3('DatePickerRange Properties'),
     generate_prop_table('DatePickerRange')
@@ -803,10 +808,9 @@ DatePickerSingle = html.Div(children=[
         properties define the minimum and maximum selectable dates on the calendar \
         while `initial_visible_month` defines the calendar month that is \
         first displayed when the `DatePickerSingle` component is opened."),
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['date_picker_single'][0],
-        language='python',
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
     html.Div(
         examples['date_picker_single'][1],
@@ -924,7 +928,7 @@ from datetime import datetime as dt
 dcc.DatePickerSingle(
     date=dt(2017,6,21),
     display_format='X',
-)''', language='python', customStyle=styles.code_container),
+)''', style=styles.code_container),
     html.Br(),
     html.H3("Month Format Examples"),
     dcc.Markdown("Similar to the `display_format`, you can set `month_format` \
@@ -964,7 +968,7 @@ dcc.DatePickerSingle(
     month_format='X',
     placeholder='X',
     date=dt(2017,6,21,0,0,0,0)
-)''', language='python', customStyle=styles.code_container),
+)''', style=styles.code_container),
     html.Hr(),
     html.H3("Vertical Calendar and Placeholder Text"),
     dcc.Markdown("The `DatePickerSingle` component can be rendered in two \
@@ -1063,9 +1067,9 @@ Tabs = html.Div(children=[
     Attach a callback to the Tabs `value` prop and update a container's `children`
     property in your callback.
     ''')),
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['tabs_callback'][0],
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
     html.Div(examples['tabs_callback'][1], className='example-container'),
     dcc.Markdown(s('''
@@ -1080,9 +1084,9 @@ Tabs = html.Div(children=[
     directly as the `children` property in the `Tab` component:
     ''')),
 
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['tabs_simple'][0],
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
     html.Div(examples['tabs_simple'][1], className='example-container'),
     dcc.Markdown(s('''
@@ -1098,9 +1102,9 @@ Tabs = html.Div(children=[
     Styling the Tabs (and Tab) component can either be done using CSS classes by providing your own to the `className` property:
     ''')),
 
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['tabs_styled_with_classes'][0],
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
     html.Div(examples['tabs_styled_with_classes'][1], className='example-container'),
 
@@ -1113,10 +1117,9 @@ Tabs = html.Div(children=[
     The corresponding CSS file (`assets/tabs.css`) looks like this. Save the file in an `assets` folder (it can be named anything you want). Dash will automatically include this CSS when the app is loaded. [Learn more about including CSS in your app here.](/external-resources)
     ''')),
 
-    dcc.SyntaxHighlighter(
-        examples['tabs_styled_with_classes_css'],
-        language='css',
-        customStyle=styles.code_container
+    dcc.Markdown(
+        '```css\n' + examples['tabs_styled_with_classes_css'] + '\n```',
+        style=styles.code_container
     ),
 
 
@@ -1127,9 +1130,9 @@ Tabs = html.Div(children=[
     An alternative to providing CSS classes is to provide style dictionaries directly:
     ''')),
 
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['tabs_styled_with_inline'][0],
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
     html.Div(examples['tabs_styled_with_inline'][1], className='example-container'),
 
@@ -1140,9 +1143,9 @@ Tabs = html.Div(children=[
     all, if you're using them!
     ''')),
 
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['tabs_styled_with_props'][0],
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
     html.Div(examples['tabs_styled_with_props'][1], className='example-container'),
 
@@ -1152,6 +1155,21 @@ Tabs = html.Div(children=[
     generate_prop_table('Tabs'),
     html.H3('Tab properties'),
     generate_prop_table('Tab')
+])
+
+# Graphs
+Graphs = html.Div([
+    html.H1('Graph Reference'),
+    dcc.Markdown(s('''
+    Custimize the [Plotly.js config options](https://plot.ly/javascript/configuration-options/) of your graph using
+    the `config` property. The example below uses the `showSendToCloud` and `plotlyServerURL` options include a
+    save button in the modebar of the graph which exports the figure to URL specified by `plotlyServerURL`.
+
+    ''')),
+    Syntax(examples['graph-config'][0]),
+    Example(examples['graph-config'][1]),
+    html.H3('Graph Properties'),
+    generate_prop_table('Graph')
 ])
 
 # Upload
@@ -1240,8 +1258,15 @@ Store = html.Div([
     - `modified_timestamp` is read only.
 
     ### local/session specifics
+
     - The store will not work properly if it's not included in the initial layout.
-    - The total data of all stores should not exceed 10MB.
+    - The maximum browser [storage space](https://demo.agektmr.com/storage/) is determined by the following factors:
+        - your own hard drive size
+        - mobile or laptop
+        - the browser, under which a sophiticated algorithm is implmented within *Quota Management*
+        - storage encoding where UTF-16 can end up saving only half of the size of UTF-8
+
+      It's generally safe to store up to 2MB in most environments, and 5~10MB in most desktop-only applications.
 
     ### Retrieving the initial store data
 
@@ -1255,186 +1280,12 @@ Store = html.Div([
     See https://github.com/plotly/dash-renderer/pull/81 for further discussion.
     ''')),
     html.H2('Store clicks example'),
-    Syntax(s('''
-    import dash
-
-    import dash_html_components as html
-    import dash_core_components as dcc
-    from dash.dependencies import Output, Input, State
-    from dash.exceptions import PreventUpdate
-
-    # This stylesheet makes the buttons and table pretty.
-    external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
-
-    app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
-
-    app.layout = html.Div([
-        # The memory store will always get the default on page refreshes
-        dcc.Store(id='memory'),
-        # The local store will take the initial data
-        # only the first time the page is loaded
-        # and keep it until it is cleared.
-        dcc.Store(id='local', storage_type='local'),
-        # Same as the local store but will lose the data
-        # when the browser/tab closes.
-        dcc.Store(id='session', storage_type='session'),
-
-        html.Div([
-            html.Button('Click to store in memory', id='memory-button'),
-            html.Button('Click to store in localStorage', id='local-button'),
-            html.Button('Click to store in sessionStorage', id='session-button')
-        ]),
-
-        html.Div([
-            html.Table([
-                html.Thead([
-                    html.Tr([
-                        html.Th('Memory clicks'),
-                        html.Th('Local clicks'),
-                        html.Th('Session clicks')
-                    ])
-                ]),
-                html.Tbody([
-                    html.Tr([
-                        html.Td(0, id='memory-clicks'),
-                        html.Td(0, id='local-clicks'),
-                        html.Td(0, id='session-clicks')
-                    ])
-                ])
-            ])
-        ])
-    ])
-
-    # Create two callback for every store.
-    for store in ('memory', 'local', 'session'):
-
-        # add a click to the appropriate store.
-        @app.callback(Output(store, 'data'),
-                      [Input('{}-button'.format(store), 'n_clicks')],
-                      [State(store, 'data')])
-        def on_click(n_clicks, data):
-            if n_clicks is None:
-                # Preventing the None callbacks is important with the store component,
-                # you don't want to update the store for nothing.
-                raise PreventUpdate
-
-            # Give a default data dict with 0 clicks if there's no data.
-            data = data or {'clicks': 0}
-
-            data['clicks'] = data['clicks'] + 1
-            return data
-
-        # output the stored clicks in the table cell.
-        @app.callback(Output('{}-clicks'.format(store), 'children'),
-                      [Input(store, 'modified_timestamp')],
-                      [State(store, 'data')])
-        def on_data(ts, data):
-            if ts is None:
-                raise PreventUpdate
-
-            data = data or {}
-
-            return data.get('clicks', 0)
-
-
-    if __name__ == '__main__':
-        app.run_server(debug=True, port=8077, threaded=True)
-
-    ''')),
+    Syntax(examples['store-clicks'][0]),
     Example(examples['store-clicks'][1]),
 
     html.H2('Share data between callbacks'),
 
-    Syntax(s('''
-    import collections
-    import dash
-    import pandas as pd
-
-    from dash.dependencies import Output, Input
-    from dash.exceptions import PreventUpdate
-
-    import dash_html_components as html
-    import dash_core_components as dcc
-    import dash_table
-
-    app = dash.Dash(__name__)
-
-    df = pd.read_csv(
-        'https://raw.githubusercontent.com/'
-        'plotly/datasets/master/gapminderDataFiveYear.csv')
-
-    countries = set(df['country'])
-
-
-    app.layout = html.Div([
-        dcc.Store(id='memory-output'),
-        dcc.Dropdown(id='memory-countries', options=[
-            {'value': x, 'label': x} for x in countries
-        ], multi=True, value=['Canada', 'United States']),
-        dcc.Dropdown(id='memory-field', options=[
-            {'value': 'lifeExp', 'label': 'Life expectancy'},
-            {'value': 'gdpPercap', 'label': 'GDP per capita'},
-        ], value='lifeExp'),
-        html.Div([
-            dcc.Graph(id='memory-graph'),
-            dash_table.DataTable(
-                id='memory-table',
-                columns=[{'name': i, 'id': i} for i in df.columns]
-            ),
-        ])
-    ])
-
-
-    @app.callback(Output('memory-output', 'data'),
-                  [Input('memory-countries', 'value')])
-    def filter_countries(countries_selected):
-        if not countries_selected:
-            # Return all the rows on initial load/no country selected.
-            return df.to_dict('rows')
-
-        filtered = df.query('country in @countries_selected')
-
-        return filtered.to_dict('rows')
-
-
-    @app.callback(Output('memory-table', 'data'),
-                  [Input('memory-output', 'data')])
-    def on_data_set_table(data):
-        if data is None:
-            raise PreventUpdate
-
-        return data
-
-
-    @app.callback(Output('memory-graph', 'figure'),
-                  [Input('memory-output', 'data'),
-                   Input('memory-field', 'value')])
-    def on_data_set_graph(data, field):
-        if data is None:
-            raise PreventUpdate
-
-        aggregation = collections.defaultdict(
-            lambda: collections.defaultdict(list)
-        )
-
-        for row in data:
-
-            a = aggregation[row['country']]
-
-            a['name'] = row['country']
-            a['mode'] = 'lines+markers'
-
-            a['x'].append(row[field])
-            a['y'].append(row['year'])
-
-        return {
-            'data': aggregation.values()
-        }
-
-
-    if __name__ == '__main__':
-        app.run_server(debug=True, threaded=True, port=10450)
-    ''')),
+    Syntax(examples['store-share'][0]),
     Example(examples['store-share'][1]),
 
     generate_prop_table('Store'),
@@ -1489,4 +1340,23 @@ LoadingComponent = html.Div([
     Please also check out [this section on loading states](/loading-states) if you want a more customizable experience.
     ''')),
     generate_prop_table('Loading')
+])
+
+# Location
+Location = html.Div([
+    html.H1('Location Component'),
+
+    dcc.Markdown(s('''
+    The location component represents the location bar in your web browser. Through its `href`, `pathname`,
+    `search` and `hash` properties you can access different portions of your app's url.
+
+    For example, given the url `http://127.0.0.1:8050/page-2?a=test#quiz`:
+
+    - `href` = `"http://127.0.0.1:8050/page-2?a=test#quiz"`
+    - `pathname` = `"/page-2"`
+    - `search` = `"?a=test"`
+    - `hash` = `"#quiz"`
+    ''')),
+
+    generate_prop_table('Location')
 ])

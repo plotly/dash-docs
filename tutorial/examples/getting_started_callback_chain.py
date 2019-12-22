@@ -30,23 +30,23 @@ app.layout = html.Div([
 
 
 @app.callback(
-    dash.dependencies.Output('cities-dropdown', 'options'),
-    [dash.dependencies.Input('countries-dropdown', 'value')])
+    Output('cities-dropdown', 'options'),
+    [Input('countries-dropdown', 'value')])
 def set_cities_options(selected_country):
     return [{'label': i, 'value': i} for i in all_options[selected_country]]
 
 
 @app.callback(
-    dash.dependencies.Output('cities-dropdown', 'value'),
-    [dash.dependencies.Input('cities-dropdown', 'options')])
+    Output('cities-dropdown', 'value'),
+    [Input('cities-dropdown', 'options')])
 def set_cities_value(available_options):
     return available_options[0]['value']
 
 
 @app.callback(
-    dash.dependencies.Output('display-selected-values', 'children'),
-    [dash.dependencies.Input('countries-dropdown', 'value'),
-     dash.dependencies.Input('cities-dropdown', 'value')])
+    Output('display-selected-values', 'children'),
+    [Input('countries-dropdown', 'value'),
+     Input('cities-dropdown', 'value')])
 def set_display_children(selected_country, selected_city):
     return u'{} is a city in {}'.format(
         selected_city, selected_country,

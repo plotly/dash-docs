@@ -88,7 +88,7 @@ layout = html.Div([
     """),
 
     html.Img(
-        src='https://github.com/plotly/dash-docs/raw/master/images/select.gif',
+        src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/select.gif',
         alt='Dash Data Selection Example',
         style={
             'width': '100%', 'border': 'thin lightgrey solid',

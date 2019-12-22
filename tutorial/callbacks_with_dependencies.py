@@ -39,10 +39,9 @@ layout = [
     Note how the text component depends on the values of all of the
     dropdowns but doesn't get updated until all three dropdowns have
     finished updating.'''.replace('    ', '')),
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples[0][0],
-        language='python',
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
     html.Div(examples[0][1], className='example-container')
 ]

@@ -4,11 +4,9 @@ import dash_html_components as html
 import dash_core_components as dcc
 import time
 
-from dash.dependencies import Input, Output, State
+from dash.dependencies import Input, Output
 
 app = dash.Dash(__name__)
-
-app.scripts.config.serve_locally = True
 
 app.layout = html.Div(
     children=[
@@ -27,6 +25,7 @@ app.layout = html.Div(
         ),
     ],
 )
+
 
 @app.callback(Output("loading-output-1", "children"), [Input("input-1", "value")])
 def input_triggers_spinner(value):

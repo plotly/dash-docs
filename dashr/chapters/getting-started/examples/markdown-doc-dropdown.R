@@ -1,30 +1,18 @@
-library(dashR)
+library(dash)
 library(dashCoreComponents)
 library(dashHtmlComponents)
 
 app <- Dash$new()
 
 markdown_text <- "
-
-# Calling help
-
-Dash components are declarative: every configurable aspect of these components is set during instantiation as a keyword argument. Call `help` in your R console on any of the components to learn more about a component and its available arguments.
-
-```
 > help('dccDropdown')
-dccDropdown {dashCoreComponents}	R Documentation
-```
+Dropdown is an interactive dropdown element for selecting one or more items. 
+The values and labels of the dropdown items are specified in the 'options' 
+property and the selected item(s) are specified with the 'value' property. 
+Use a dropdown when you have many options (more than 5) or when you are constrained
+for space. Otherwise, you can use RadioItems or a Checklist, which have the benefit 
+of showing the users all of the items at once.
 
-# Dropdown component
-## Description
-```
-| Dash apps can be written in Markdown.
-| Dropdown is an interactive dropdown element for selecting one or more items.
-| The values and labels of the dropdown items are specified in the 'options' property
-| and the selected item(s) are specified with the 'value' property.
-| Use a dropdown when you have many options (more than 5) or when you are constrained for space.
-| Otherwise, you can use RadioItems or a Checklist,
-| which have the benefit of showing the users all of the items at once.
 ```
 
 ## Usage
@@ -60,13 +48,3 @@ dccDropdown(id=NULL,
 | style             |
 ```
 "
-
-app$layout(
-  htmlDiv(
-    list(
-      dccMarkdown(children = markdown_text)
-    )
-  )
-)
-
-#app$run_server()

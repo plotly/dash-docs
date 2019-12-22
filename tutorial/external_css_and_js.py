@@ -46,6 +46,7 @@ layout = html.Div([
     **Table of Contents**
     - Adding Your Own CSS and JavaScript to Dash Apps
     - Embedding Images in Your Dash Apps
+    - Changing the Favicon
     - Adding External CSS and JavaScript
     - Customizing Dash's HTML Index Template
     - Adding Meta Tags
@@ -73,24 +74,22 @@ layout = html.Div([
 
     We'll create several files: `app.py`, a folder named `assets`, and
     three files in that folder:
-    ```
+    ```bash
     - app.py
     - assets/
         |-- typography.css
         |-- header.css
         |-- custom-script.js
-
-
     ```
+    &nbsp;
 
     `app.py`
 
     ''')),
 
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['local-css'][0],
-        language='python',
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
 
     html.Hr(),
@@ -100,16 +99,18 @@ layout = html.Div([
         style={'paddingTop': 20}
     ),
 
-    dcc.SyntaxHighlighter(
-        s('''body {
-    font-family: sans-serif;
-}
-h1, h2, h3, h4, h5, h6 {
-    color: hotpink
-}
+    dcc.Markdown(
+        s('''
+        ```css
+        body {
+            font-family: sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            color: hotpink
+        }
+        ```
         '''),
-        language='css',
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
 
     html.Hr(),
@@ -119,20 +120,22 @@ h1, h2, h3, h4, h5, h6 {
         style={'paddingTop': 20}
     ),
 
-    dcc.SyntaxHighlighter(
-        s('''.app-header {
-    height: 60px;
-    line-height: 60px;
-    border-bottom: thin lightgrey solid;
-}
+    dcc.Markdown(
+        s('''
+        ```css
+        .app-header {
+            height: 60px;
+            line-height: 60px;
+            border-bottom: thin lightgrey solid;
+        }
 
-.app-header .app-header--title {
-    font-size: 22px;
-    padding-left: 5px;
-}
+        .app-header .app-header--title {
+            font-size: 22px;
+            padding-left: 5px;
+        }
+        ```
         '''),
-        language='css',
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
 
     html.Hr(),
@@ -142,12 +145,13 @@ h1, h2, h3, h4, h5, h6 {
         style={'paddingTop': 20}
     ),
 
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         s('''
+        ```js
         alert('If you see this alert, then your custom JavaScript script has run!')
+        ```
         '''),
-        language='javascript',
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
 
     html.Hr(),
@@ -196,8 +200,8 @@ h1, h2, h3, h4, h5, h6 {
     6 - It is recommended to add `__name__` to the dash init to ensure the resources
     in the assets folder are loaded, eg: `app = dash.Dash(__name__, meta_tags=[...])`.
     When you run your application through some other command line (like the
-    flask command or gunicorn/waitress), the `__main__` module wil no
-    longer located where `app.py` is. By explicitly setting `__name__`,
+    flask command or gunicorn/waitress), the `__main__` module will no
+    longer be located where `app.py` is. By explicitly setting `__name__`,
     Dash will be able to locate the relative `assets` folder correctly.
 
     ### Hot Reloading
@@ -223,22 +227,27 @@ assets folder to find all of your assets, map their relative path onto `assets_e
 and then request the resources from there.
 `app.scripts.config.serve_locally = False` must also be set in order for this to work.
 
+**NOTE:** In Dash 0.43.0 and before, `app.scripts.config.serve_locally = False`
+was the default, except when dev bundles are served (such as during debugging).
+Starting with Dash 1.0.0, `serve_locally` defaults to `True`.
+
 **Example:**
 ''')),
 
-    dcc.SyntaxHighlighter(
-        """import dash
-import dash_html_components as html
+    dcc.Markdown(
+    '''
+    ```
+    import dash
+    import dash_html_components as html
 
-app = dash.Dash(
-    __name__,
-    assets_external_path='http://your-external-assets-folder-url/'
-)
-app.scripts.config.serve_locally = False
-
-""",
-        language='python',
-        customStyle=styles.code_container
+    app = dash.Dash(
+        __name__,
+        assets_external_path='http://your-external-assets-folder-url/'
+    )
+    app.scripts.config.serve_locally = False
+    ```
+    ''',
+        style=styles.code_container
     ),
 
 
@@ -256,25 +265,47 @@ app.scripts.config.serve_locally = False
         |-- image.png
 
     ```
+    &nbsp;
 
     In your `app.py` file you can use the relative path to that image:
     ''')),
 
-    dcc.SyntaxHighlighter(
-        """import dash
-import dash_html_components as html
+    dcc.Markdown(
+    '''
+    ```
+    import dash
+    import dash_html_components as html
 
-app = dash.Dash(__name__)
+    app = dash.Dash(__name__)
 
-app.layout = html.Div([
-    html.Img(src='/assets/image.png')
-])
+    app.layout = html.Div([
+        html.Img(src='/assets/image.png')
+    ])
 
-if __name__ == '__main__':
-    app.run_server(debug=True)""",
-        language='python',
-        customStyle=styles.code_container
+    if __name__ == '__main__':
+        app.run_server(debug=True)
+    ```
+    ''',
+        style=styles.code_container
     ),
+
+    dcc.Markdown(s('''
+    ***
+
+    ## Changing the Favicon
+
+    It is possible to override the default favicon by adding
+    a file named `favicon.ico` to your `/assets` folder. Changes to
+    this file will implement cache-busting automatically.
+
+    ```
+    - app.py
+    - assets/
+        |-- favicon.ico
+
+    ```
+    ''')),
+
 
     dcc.Markdown(s('''
     ***
@@ -292,10 +323,9 @@ if __name__ == '__main__':
     **Example:**
     ''')),
 
-    dcc.SyntaxHighlighter(
-        examples['external-resources-init'],
-        language='python',
-        customStyle=styles.code_container
+    dcc.Markdown(
+        '```python  \n' + examples['external-resources-init'] + '  \n```',
+        style=styles.code_container
     ),
 
     dcc.Markdown(s('''
@@ -332,10 +362,9 @@ if __name__ == '__main__':
 
     ''')),
 
-    dcc.SyntaxHighlighter(
-        examples['custom-index-string'],
-        language='python',
-        customStyle=styles.code_container
+    dcc.Markdown(
+        '```python  \n' + examples['custom-index-string'] + '  \n```',
+        style=styles.code_container
     ),
 
     dcc.Markdown(s('''
@@ -388,10 +417,9 @@ if __name__ == '__main__':
     method.
     ''')),
 
-    dcc.SyntaxHighlighter(
-        examples['custom-interpolate-string'],
-        language='python',
-        customStyle=styles.code_container
+    dcc.Markdown(
+        '```python  \n' + examples['custom-interpolate-string'] + '  \n```',
+        style=styles.code_container
     ),
 
     dcc.Markdown(s('''
@@ -434,10 +462,9 @@ if __name__ == '__main__':
 
     ''')),
 
-    dcc.SyntaxHighlighter(
-        examples['custom-dash-renderer'],
-        language='python',
-        customStyle=styles.code_container
+    dcc.Markdown(
+        '```python  \n' + examples['custom-dash-renderer'] + '  \n```',
+        style=styles.code_container
     ),
 
     dcc.Markdown(s('''
@@ -447,10 +474,9 @@ if __name__ == '__main__':
 
     ''')),
 
-    dcc.SyntaxHighlighter(
-        examples['custom-dash-renderer-hooks'],
-        language='python',
-        customStyle=styles.code_container
+    dcc.Markdown(
+        '```python  \n' + examples['custom-dash-renderer-hooks'] + '  \n```',
+        style=styles.code_container
     ),
 
     dcc.Markdown(s('''
@@ -471,10 +497,9 @@ if __name__ == '__main__':
     you can specify meta tags directly in the Dash constructor:
     ''')),
 
-    dcc.SyntaxHighlighter(
-        examples['dash-meta-tags'],
-        language='python',
-        customStyle=styles.code_container
+    dcc.Markdown(
+        '```python  \n' + examples['dash-meta-tags'] + '  \n```',
+        style=styles.code_container
     ),
 
     dcc.Markdown(s('''
@@ -486,32 +511,43 @@ if __name__ == '__main__':
 
     ## Serving Dash's Component Libraries Locally or from a CDN
 
+    **Changed in Dash 1.0.0 - now `serve_locally` defaults to `True`,
+    previously it defaulted to `False`**
+
     Dash's component libraries, like `dash_core_components` and `dash_html_components`,
     are bundled with JavaScript and CSS files. Dash automatically checks with
     component libraries are being used in your application and will automatically
     serve these files in order to render the application.
 
     By default, dash serves the JavaScript and CSS resources from the
-    online CDNs. This is usually much faster than loading the resources
-    from the file system.
+    local files on the server where Dash is running. This is the more flexible
+    and robust option: in some cases, such as firewalled or airgapped
+    environments, it is the only option. It also avoids some hard-to-debug
+    problems like packages that have not been published to NPM or CDN downtime,
+    and the unlikely but possible scenario of the CDN being hacked. And of
+    course, component developers will want the local version while changing the
+    code, so when dev bundles are requested (such as with `debug=True`) we
+    always serve locally.
 
-    However, if you are working in an offline or firewalled environment or
-    if the CDN is unavailable, then your dash app itself can serve these
-    files. These files are stored as part of the component's site-packages
-    folder.
+    However, for performance-critical apps served beyond an intranet, online
+    CDNs can often deliver these files much faster than loading the resources
+    from the file system, and will reduce the load on the Dash server.
 
-    Here's how to enable this option:
+    Here's how to enable CDN serving. `app.scripts` is the most important one,
+    that controls the JavaScript files, but `app.css` can sometimes help too:
 
     ''')),
 
-    dcc.SyntaxHighlighter('''from dash import Dash
+    dcc.Markdown('''
+    ```python
+    from dash import Dash
 
-app = Dash()
+    app = Dash()
 
-app.css.config.serve_locally = True
-app.scripts.config.serve_locally = True''',
-        language='python',
-        customStyle={'borderLeft': 'thin lightgrey solid'}
+    app.css.config.serve_locally = False
+    app.scripts.config.serve_locally = False
+    ''',
+        style={'borderLeft': 'thin lightgrey solid'}
     ),
 
     dcc.Markdown(s('''

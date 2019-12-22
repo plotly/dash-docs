@@ -1,4 +1,4 @@
-library(dashR)
+library(dash)
 library(dashCoreComponents)
 library(dashHtmlComponents)
 
@@ -24,4 +24,4 @@ app$callback(output(id = 'output-state', property = 'children'),
                sprintf("The Button has been pressed \"%s\" times, Input 1 is \"%s\", and Input 2 is \"%s\"", n_clicks, input1, input2)
              })
 
-#app$run_server()
+app$run_server()

@@ -10,9 +10,12 @@ from tutorial import dash_deployment_server_examples as dds_examples
 from tutorial import dash_table_index
 from tutorial import daq
 from tutorial import daq_component_examples as daq_examples
+from tutorial import dashbio
+from tutorial import dashbio_component_examples as dashbio_examples
 from tutorial import deployment
 from tutorial import external_css_and_js
 from tutorial import gallery
+from tutorial import canvas
 from tutorial import getting_started_part_1
 from tutorial import getting_started_part_2
 from tutorial import faqs
@@ -21,6 +24,7 @@ from tutorial import html_components
 from tutorial import installation
 from tutorial import introduction
 from tutorial import live_updates
+from tutorial import migration
 from tutorial import performance
 from tutorial import plugins
 from tutorial import search
@@ -32,6 +36,7 @@ from tutorial import react_for_python_developers
 from tutorial import table
 from tutorial import devtools
 from tutorial import loading_states
+from tutorial import testing
 from tutorial import integrating_dash
 
 
@@ -57,6 +62,13 @@ chapters = {
         'description': 'Examples of Dash apps including ' \
                        'drill down, stock tickers, streaming, ' \
                        'and PDF generation.'
+    },
+
+    'dash-1-0-migration': {
+        'url': '/dash-1-0-migration',
+        'content': migration.layout,
+        'name': 'Dash v1.0 Migration',
+        'description': 'How to upgrade from Dash v0.x to v1.0.'
     },
 
     'installation': {
@@ -179,6 +191,20 @@ chapters = {
         data acquisition and engineering applications.'
     },
 
+    'dashbio': {
+        'url': '/dash-bio',
+        'content': dashbio.layout,
+        'name': 'Dash Bio Components',
+        'description': '(New! Released April 2019) Components dedicated to visualizing \
+        bioinformatics data.'
+    },
+
+  'canvas': {
+        'url': '/canvas',
+        'content': canvas.layout,
+        'name': 'Dash Canvas',
+        'description': '(New! Released March 2019) Drawing and annotations for image processing.'
+    },
 
     'plugins': {
         'url': '/plugins',
@@ -263,14 +289,6 @@ chapters = {
         'description': 'Strategies for integrating Dash apps with existing web ' \
                        'apps.'
     },
-
-    # 'deployment-onpremise': {
-    #     'url': '/deployment/on-premise',
-    #     'content': on_premise_deployment.layout,
-    #     'name': 'Deploying Dash Apps on Plotly Enterprise',
-    #     'description': "Plotly Enterprise is Plotly's commercial " \
-    #                    "offering for hosting and sharing Dash apps."
-    # },
 
     'dash-deployment-server': {
         'url': '/dash-deployment-server',
@@ -388,6 +406,13 @@ chapters = {
         'description': 'Tabs examples, properties, and reference.'
     },
 
+    'graphs-example': {
+        'url': '/dash-core-components/graph',
+        'content': examples.Graphs,
+        'name': 'Graphs',
+        'description': 'Graph examples, properties, and reference.'
+    },
+
     'textarea-examples': {
         'url': '/dash-core-components/textarea',
         'content': examples.Textarea,
@@ -400,6 +425,13 @@ chapters = {
         'content': examples.Upload,
         'name': 'Upload Component',
         'description': 'Upload examples, properties, and reference.'
+    },
+
+    'location-examples': {
+        'url': '/dash-core-components/location',
+        'content': examples.Location,
+        'name': 'Location Component',
+        'description': 'Location examples, properties, and reference.'
     },
 
 ### Dash DAQ Components ###
@@ -436,6 +468,13 @@ chapters = {
         'content': daq_examples.Indicator,
         'name': 'Indicator Component',
         'description': 'Indicator examples, properties, and reference.'
+    },
+
+    'joystick-examples': {
+        'url': '/dash-daq/joystick',
+        'content': daq_examples.Joystick,
+        'name': 'Joystick Component',
+        'description': 'Joystick examples, properties, and reference.'
     },
 
     'knob-examples': {
@@ -515,6 +554,91 @@ chapters = {
         'description': 'Dark theme provider examples, properties, and reference.'
     },
 
+    # Dash Bio examples
+
+    'sequenceviewer-examples': {
+        'url': '/dash-bio/sequenceviewer',
+        'content': dashbio_examples.SequenceViewer,
+        'name': 'Sequence Viewer Component',
+        'description': 'Sequence viewer examples, properties, and reference.'
+    },
+
+    'alignmentchart-examples': {
+        'url': '/dash-bio/alignmentchart',
+        'content': dashbio_examples.AlignmentChart,
+        'name': 'Alignment Chart Component',
+        'description': 'Alignment Chart examples, properties, and reference.'
+    },
+
+    'clustergram-examples': {
+        'url': '/dash-bio/clustergram',
+        'content': dashbio_examples.Clustergram,
+        'name': 'Clustergram Component',
+        'description': 'Clustergram examples, properties, and reference.'
+    },
+
+    'speck-examples': {
+        'url': '/dash-bio/speck',
+        'content': dashbio_examples.Speck,
+        'name': 'Speck Component',
+        'description': 'Speck examples, properties, and reference.'
+    },
+
+    'circos-examples': {
+        'url': '/dash-bio/circos',
+        'content': dashbio_examples.Circos,
+        'name': 'Circos Component',
+        'description': 'Circos examples, properties, and reference.'
+    },
+
+    'ideogram-exmaples': {
+        'url': '/dash-bio/ideogram',
+        'content': dashbio_examples.Ideogram,
+        'name': 'Ideogram Component',
+        'description': 'Ideogram examples, properties, and reference.'
+    },
+
+    'molecule-2d-examples': {
+        'url': '/dash-bio/molecule2dviewer',
+        'content': dashbio_examples.Molecule2dViewer,
+        'name': 'Molecule 2D Component',
+        'description': 'Molecule2D examples, properties, and reference.'
+    },
+
+    'molecule-3d-examples': {
+        'url': '/dash-bio/molecule3dviewer',
+        'content': dashbio_examples.Molecule3dViewer,
+        'name': 'Molecule 3D Component',
+        'description': 'Molecule3D examples, properties, and reference.'
+    },
+
+    'needle-plot-examples': {
+        'url': '/dash-bio/needleplot',
+        'content': dashbio_examples.NeedlePlot,
+        'name': 'Needle Plot Component',
+        'description': 'NeedlePlot examples, properties, and reference.'
+    },
+
+    'manhattan-plot-examples': {
+        'url': '/dash-bio/manhattanplot',
+        'content': dashbio_examples.ManhattanPlot,
+        'name': 'Manhattan Plot Component',
+        'description': 'ManhattanPlot examples, properties, and reference.'
+    },
+
+    'volcano-plot-examples': {
+        'url': '/dash-bio/volcanoplot',
+        'content': dashbio_examples.VolcanoPlot,
+        'name': 'Volcano Plot Component',
+        'description': 'VolcanoPlot examples, properties, and reference.'
+    },
+
+    'onco-print-examples': {
+        'url': '/dash-bio/oncoprint',
+        'content': dashbio_examples.OncoPrint,
+        'name': 'OncoPrint Component',
+        'description': 'Oncoprint examples, properties, and reference.'
+    },
 ### End Components ###
 
 ### Start Dash Deployment Server ###
@@ -566,6 +690,13 @@ chapters = {
         'content': dds_examples.AppPrivacy,
         'name': 'Dash App Privacy',
         'description': 'Dash App Privacy and Managing Collaborators'
+    },
+
+    'deployment-checks': {
+        'url': '/dash-deployment-server/checks',
+        'content': dds_examples.Checks,
+        'name': 'Dash Deployment Health Checks',
+        'description': 'Create custom checks to ensure that a newly deployed app can serve traffic.'
     },
 
     'private-packages-examples': {
@@ -877,6 +1008,13 @@ chapters = {
         'content': devtools.layout,
         'name': 'Dev tools',
         'description': 'Dash dev tools reference'
+    },
+
+    'testing': {
+        'url': '/testing',
+        'content': testing.layout,
+        'name': 'Dash Testing',
+        'description': '(New in Dash 1.0!) An introduction to testing your dash app with selenium'
     },
 
     'logout-button': {

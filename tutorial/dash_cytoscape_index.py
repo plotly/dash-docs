@@ -16,7 +16,7 @@ layout = html.Div([
 
     dcc.Markdown(dedent('''
     # Dash Cytoscape
-    
+
     ''')),
 
     html.Iframe(
@@ -31,25 +31,28 @@ layout = html.Div([
     >
     > Dash Cytoscape is a graph visualization component for creating easily
     > customizable, high-performance, interactive, and web-based networks. It
-    > extends and renders [Cytoscape.js](http://js.cytoscape.org), and 
-    > offers deep integration with Dash layouts and callbacks, enabling the 
-    > creation of powerful networks in conjunction with the rich collection of 
-    > Dash components, as well as established computational biology and network 
+    > extends and renders [Cytoscape.js](http://js.cytoscape.org), and
+    > offers deep integration with Dash layouts and callbacks, enabling the
+    > creation of powerful networks in conjunction with the rich collection of
+    > Dash components, as well as established computational biology and network
     > science libraries such as Biopython and networkX.
     >
     > -- xhlulu
     ''')),
 
     Section('Quickstart', [
-        dcc.SyntaxHighlighter(
-            '''pip install dash-cytoscape=={}'''.format(dash_cytoscape.__version__),
-            customStyle=styles.code_container
+        dcc.Markdown(
+            '''
+            ```
+            pip install dash-cytoscape=={}
+            ```
+            '''.format(dash_cytoscape.__version__),
+            style=styles.code_container
         ),
 
-        dcc.SyntaxHighlighter(
+        dcc.Markdown(
             examples['simple.py'][0],
-            language='python',
-            customStyle=styles.code_container
+            style=styles.code_container
         ),
 
         html.Div(examples['simple.py'][1], className='example-container'),
@@ -58,7 +61,7 @@ layout = html.Div([
 
     Section('Dash Cytoscape User Guide', [
         dcc.Markdown(dedent('''
-        > Dash Cytoscape graphs are interactive! Scroll to zoom and drag on 
+        > Dash Cytoscape graphs are interactive! Scroll to zoom and drag on
         > the canvas to move the entire graph around. You can move nodes by
         > *dragging* it, or by *clicking, holding, and moving your mouse*
         > to the desired location (and click again to release).
@@ -72,10 +75,10 @@ layout = html.Div([
             'Part 1. Elements',
             '/cytoscape/elements',
             '''
-            Elements in Cytoscape are designed to be clear, simple and 
-            declarative. This chapter will get you started with examples 
+            Elements in Cytoscape are designed to be clear, simple and
+            declarative. This chapter will get you started with examples
             for:
-            - Data and position dictionaries 
+            - Data and position dictionaries
             - Mutability properties
             - Defining groups and classes
             - Compound nodes
@@ -86,12 +89,12 @@ layout = html.Div([
             'Part 2. Layout',
             '/cytoscape/layout',
             '''
-            Make your graphs interpretable by using the built-in 
+            Make your graphs interpretable by using the built-in
             collection of easy-to-modify layouts. We show you how to:
             - Display pre-determined and random layouts
             - Represent your graph as a circle, a grid or a tree
             - Finetune your representations by modifying the default options
-            - Use physics-based simulations to generate your layout 
+            - Use physics-based simulations to generate your layout
             '''
         ),
 
@@ -129,7 +132,7 @@ layout = html.Div([
             '''
             Dash Cytoscape fires callbacks whenever the user interact with the
             graph you created, which can be used to update the graph itself,
-            or to interact with other components. This chapter includes 
+            or to interact with other components. This chapter includes
             examples for:
             - Simple integrations with HTML components
             - Different types of data returned
@@ -160,13 +163,13 @@ layout = html.Div([
 
     Section('Roadmap, Sponsorships, and Contact', dcc.Markdown(dedent(
         '''
-        In the near future, we would like to support integration with 
-        biopython and networkX, expand object-oriented declarations, and offer more 
-        support for layout options. Check out our [open issues](https://github.com/plotly/dash-cytoscape/issues) 
+        In the near future, we would like to support integration with
+        biopython and networkX, expand object-oriented declarations, and offer more
+        support for layout options. Check out our [open issues](https://github.com/plotly/dash-cytoscape/issues)
         for more details.
-    
-        The development for this component was sponsored by one of our 
-        commercial partners. Interested in steering the roadmap? 
+
+        The development for this component was sponsored by one of our
+        commercial partners. Interested in steering the roadmap?
         [Get in touch](https://plot.ly/products/consulting-and-oem/).
         '''
     )))

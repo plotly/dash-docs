@@ -1,6 +1,8 @@
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
+from dash.dependencies import Input, Output
+
 import pandas as pd
 import plotly.graph_objs as go
 
@@ -19,14 +21,15 @@ app.layout = html.Div([
         min=df['year'].min(),
         max=df['year'].max(),
         value=df['year'].min(),
-        marks={str(year): str(year) for year in df['year'].unique()}
+        marks={str(year): str(year) for year in df['year'].unique()},
+        step=None
     )
 ])
 
 
 @app.callback(
-    dash.dependencies.Output('graph-with-slider', 'figure'),
-    [dash.dependencies.Input('year-slider', 'value')])
+    Output('graph-with-slider', 'figure'),
+    [Input('year-slider', 'value')])
 def update_figure(selected_year):
     filtered_df = df[df.year == selected_year]
     traces = []

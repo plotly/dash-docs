@@ -1,24 +1,10 @@
 # -*- coding: utf-8 -*-
-import dash_core_components as dcc
-import dash_html_components as html
-import dash
-from dash.dependencies import Input, Output
-
-
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-import base64
-import importlib
-import io
-import multiprocessing
+import time
 import os
-import pandas as pd
-import percy
 import sys
-import unittest
 
 from .IntegrationTests import IntegrationTests
-from .utils import assert_clean_console, invincible, wait_for
+from .utils import invincible, wait_for
 from run import app
 
 # Download geckodriver: https://github.com/mozilla/geckodriver/releases
@@ -54,17 +40,27 @@ class Tests(IntegrationTests):
         )
 
     def snapshot(self, name):
-        if 'PERCY_PROJECT' in os.environ and 'PERCY_TOKEN' in os.environ:
-            python_version = sys.version.split(' ')[0]
-            if '2.7' in python_version:
-                print('>>> Percy Snapshot {} - {}'.format(python_version, name))
-                self.percy_runner.snapshot(name=name)
+        python_version = sys.version.split(' ')[0]
+        if (
+            'PERCY_PROJECT' in os.environ and
+            'PERCY_TOKEN' in os.environ and
+            '2.7' in python_version
+        ):
+            # Maybe at some point each page can describe what element
+            # we should wait for, but in the meantime just give it some
+            # time to settle down
+            time.sleep(1)
+
+            print('>>> Percy Snapshot {} - {}'.format(python_version, name))
+            self.percy_runner.snapshot(name=name)
 
     def test_docs(self):
         self.startServer(app, '/')
 
         try:
             self.wait_for_element_by_id('wait-for-layout')
+            # specific to the landing page - wait for actual content
+            self.wait_for_element_by_css_selector('.toc .toc--chapter-content')
         except Exception as e:
             print(self.wait_for_element_by_id(
                 '_dash-app-content').get_attribute('innerHTML'))
@@ -116,14 +112,20 @@ class Tests(IntegrationTests):
         def visit_and_snapshot(href):
             self.driver.get('http://localhost:8050{}'.format(href))
             # stub elem at the bottom of browser
-            self.wait_for_element_by_id('wait-for-page-{}'.format(href))
-            if href == '/external-resources':
-                self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-            self.snapshot(href)
-            self.driver.back()
+            try:
+                self.wait_for_element_by_id('wait-for-page-{}'.format(href))
+                if href == '/external-resources':
+                    self.driver.execute_script(
+                        "window.scrollTo(0, document.body.scrollHeight);"
+                    )
+                self.snapshot(href)
+                self.driver.back()
+            except Exception as e:
+                print(href)  # determine which page is having issues
+                raise e
 
         for link in links:
-            if link.startswith('/') and link != '/dash-daq':
+            if link.startswith('/') and link not in ['/dash-daq', '/dash-bio']:
                 visit_and_snapshot(link)
 
         # test search page

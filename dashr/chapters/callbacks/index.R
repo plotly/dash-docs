@@ -1,4 +1,4 @@
-library(dashR)
+library(dash)
 library(dashCoreComponents)
 library(dashHtmlComponents)
 
@@ -23,7 +23,7 @@ layout <- htmlDiv(
 > known as `state`.
 > Just getting started? Make sure to [install the necessary dependencies](/installation).
   "),
-    
+
     dccMarkdown("
 In the [previous chapter on the app `layout`](/getting-started) we learned
 that the `app$layout()` describes what the app looks like and is
@@ -38,25 +38,25 @@ Dash apps interactive.
 
 Let's get started with a simple example.
   "),
-    
-    # htmlH4("
-    #   Dash App Layout
-    #   ", id='dash-app-layout'),
-    # 
+
+    htmlH4("
+      Dash App Layout
+      ", id = 'dash-app-layout'),
+    #
     # Example of basic callbacks
     # dccSyntaxHighlighter(
     #   examples$simple.callbacks$source_code,
     #   language='r',
     #   customStyle=styles.code_container
     # ),
-    
+
     # htmlDiv(examples$simple.callbacks$layout,
     #          className="example-container"),
-    # 
-    
+    #
+
     examples$simple.callbacks$source_code,
     examples$simple.callbacks$layout,
-    
+
     dccMarkdown("
 Try typing in the text box. The children property of the output component updates
 right away. Let's break down what's happening here:
@@ -110,12 +110,12 @@ even the available `options` of a `dccDropdown` component!
 Let's take a look at another example where a `dccSlider` updates a
 `dccGraph`.
   "),
-    
-    
+
+
     # Example of slicer
     examples$simple.slider$source_code,
     examples$simple.slider$layout,
-    
+
     dccMarkdown("
 In this example, the `value` property of the `dccSlider` is the input of the app
 and the output of the app is the `figure` property of the `dccGraph`.
@@ -157,11 +157,11 @@ and one `dccSlider` component) to one output component
 Notice how the `app$callback` lists all five `input` inside
 a list in the second argument.
 "),
-    
+
     # Example of mutli-inputs
     examples$multi.inputs$source_code,
     examples$multi.inputs$layout,
-    
+
     dccMarkdown("
 In this example, the `callback` function is activated whenever the
 `value` property of the `dccDropdown`, `dccSlider`, or `dccRadioItems` components
@@ -183,12 +183,14 @@ Let's extend our example to include multiple outputs.
 Each Dash callback function can only update a single output property.
 To update multiple Outputs, just write multiple functions.
   "),
-    
+
     # Example of mutli-output
     examples$multi.output$source_code,
     examples$multi.output$layout,
-    
+
     dccMarkdown("
+#### Chained Callbacks
+
 You can also chain outputs and inputs together: the output of one callback
 function could be the input of another callback function.
 
@@ -196,11 +198,11 @@ This pattern can be used to create dynamic UIs where one input component
 updates the available options of the next input component.
 Here's a simple example.
   "),
-    
+
     # Example of mutli-output
     examples$multi.output2$source_code,
     examples$multi.output2$layout,
-    
+
     dccMarkdown("
 The first callback updates the available options in the second `dccRadioItems`
 component based off of the selected value in the first `dccRadioItems` component.
@@ -214,7 +216,7 @@ will wait until the `value` of the cities component is updated
 before calling the final callback. This prevents your callbacks from being
 called with inconsistent state like with `\"USA\"` and `\"Montr\U{00E9}al\"`.
   "),
-    
+
     dccMarkdown("
 ### Summary
 
@@ -228,17 +230,17 @@ the `dccDropdown`, are editable by the user in the interface.
 
 ***
   "),
-    
+
     dccMarkdown("
 The next part of the Dash tutorial covers an additional concept of
 Dash callbacks: `state`
   "),
-    
+
     dccLink(
-      'Dash Tutorial Part 4: State',
+      'Dash Tutorial Part 4: More about callbacks',
       href="/state"
     ),
-    
+
     htmlHr(),
     dccMarkdown("
 [Back to the Table of Contents](/)

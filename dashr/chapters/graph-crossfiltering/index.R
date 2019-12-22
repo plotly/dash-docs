@@ -1,4 +1,4 @@
-library(dashR)
+library(dash)
 library(dashCoreComponents)
 library(dashHtmlComponents)
 
@@ -9,11 +9,9 @@ source('dashr/components.R')
 
 examples <- list(
   interactive_graph_1 = utils$LoadExampleCode('dashr/chapters/graph-crossfiltering/examples/interactive-graph-1.R'),
-  interactive_graph_2 = utils$LoadExampleCode('dashr/chapters/graph-crossfiltering/examples/interactive-graph-2.R'),
-  crossfilter_recipe = utils$LoadExampleCode('dashr/chapters/graph-crossfiltering/examples/crossfilter_recipe.R')
+  interactive_graph_2 = utils$LoadExampleCode('dashr/chapters/graph-crossfiltering/examples/interactive-graph-2.R')
+  # crossfilter_recipe = utils$LoadExampleCode('dashr/chapters/graph-crossfiltering/examples/crossfilter_recipe.R')
 )
-
-
 
 layout <- htmlDiv(list(
   dccMarkdown("
@@ -57,9 +55,9 @@ select regions of points in a graph.
     summary="Here's an simple example that prints these attributes to the screen."
     ),
 Example(examples$interactive_graph_1$layout),
-
+  htmlHr(),
   dccMarkdown("
-# Update Graphs on Hover
+### Update Graphs on Hover
 "),
   # Example of interactive visualizations 2
   Syntax(examples$interactive_graph_2$source,
@@ -73,7 +71,7 @@ Notice how the line graphs on the right update based off of the point that you a
 "),
   htmlHr(),
   dccMarkdown("
-# Generic Crossfilter Recipe
+### Generic Crossfilter Recipe
 "),
 Syntax(examples$crossfilter_recipe$source,
        summary = "Here's a slightly more generic example for crossfiltering across a six-column data set.
@@ -99,9 +97,9 @@ the graphs are replotted with the selected points highlighted and
 the selected region drawn as a dashed rectangle.
 
 > As an aside, if you find yourself filtering and visualizing highly-dimensional datasets,
-> you should consider checking out the [parallel coordinates](https://plot.ly/python/parallel-coordinates-plot/?_ga=2.140046067.192781799.1553018107-1965683241.1552615001) chart type.
+> you should consider checking out the [parallel coordinates](https://plot.ly/r/parallel-coordinates-plot/) chart type.
 
-# Current Limitations
+### Current Limitations
 There are a few limitations in graph interactions right now.
 - It is not currently possible to customize the style of the hover interactions or the select box.
 This issue is being worked on in
@@ -118,7 +116,7 @@ The next chapter of the Dash User Guide explains how to share data between callb
   "),
   dccLink(
     'Dash Tutorial Part 6. Sharing Data Between Callbacks',
-    href='/data-callbacks'
+    href='/sharing-data-between-callbacks'
   ),
   htmlHr(),
   dccMarkdown("

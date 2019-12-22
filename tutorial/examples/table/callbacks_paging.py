@@ -1,8 +1,6 @@
 import dash
 from dash.dependencies import Input, Output
 import dash_table
-import dash_html_components as html
-import dash_core_components as dcc
 import pandas as pd
 
 
@@ -19,22 +17,20 @@ app.layout = dash_table.DataTable(
     columns=[
         {"name": i, "id": i} for i in sorted(df.columns)
     ],
-    pagination_settings={
-        'current_page': 0,
-        'page_size': PAGE_SIZE
-    },
-    pagination_mode='be'
+    page_current=0,
+    page_size=PAGE_SIZE,
+    page_action='custom'
 )
 
 
 @app.callback(
     Output('datatable-paging', 'data'),
-    [Input('datatable-paging', 'pagination_settings')])
-def update_graph(pagination_settings):
+    [Input('datatable-paging', "page_current"),
+     Input('datatable-paging', "page_size")])
+def update_table(page_current,page_size):
     return df.iloc[
-        pagination_settings['current_page']*pagination_settings['page_size']:
-        (pagination_settings['current_page'] + 1)*pagination_settings['page_size']
-    ].to_dict('rows')
+        page_current*page_size:(page_current+ 1)*page_size
+    ].to_dict('records')
 
 
 if __name__ == '__main__':

@@ -15,7 +15,11 @@ install.packages("remotes")
 install.packages("later")
 
 install.packages("jsonlite")
+install.packages("rjson")
 install.packages("listenv")
+install.packages("anytime")
+install.packages("readr")
+install.packages("heatmaply")
 
 # installs magrittr, promises, R6
 remotes::install_version("httpuv", version = "1.4.5.1", repos = "http://cloud.r-project.org", upgrade="never")
@@ -44,7 +48,11 @@ install.packages("https://cloud.r-project.org/src/contrib/Archive/future/future_
 install.packages("https://cloud.r-project.org/src/contrib/routr_0.3.0.tar.gz", type="source", repos=NULL)
 install.packages("https://cloud.r-project.org/src/contrib/fiery_1.1.1.tar.gz", type="source", repos=NULL)
 
-remotes::install_github("plotly/dashR", dependencies=FALSE)
 remotes::install_github("plotly/dash-html-components")
 remotes::install_github("plotly/dash-core-components")
-
+remotes::install_github("plotly/dash-table")
+remotes::install_github("plotly/dashR", dependencies=FALSE)
+install.packages("manhattanly")
+remotes::install_github("plotly/dash-cytoscape", ref="update-for-dash-0.1.0")
+remotes::install_github("plotly/dash-bio", dependencies=FALSE)
+remotes::install_github("plotly/dash-daq")

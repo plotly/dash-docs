@@ -5,7 +5,7 @@ body {
       rgba(255, 255, 255, 0.6),
       rgba(255, 255, 255, 0.6)
     ),
-    url("https://github.com/plotly/dash-docs/raw/master/images/dash-pattern.png");
+    url("https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-pattern.png");
   margin: 0px;
 }
 
@@ -67,19 +67,13 @@ body {
   height: 95%;
 }
 
-.header .logo-link {
-  background-color: white;
-}
 
 /* Example Container */
 
 .example-container {
-  border: thin #C8D4E3 solid;
+  border: thin lightgrey solid;
   padding: 15px;
   overflow-x: scroll;
-}
-.code-container {
-  border-left: thin #C8D4E3 solid;
 }
 
 /* Fonts */

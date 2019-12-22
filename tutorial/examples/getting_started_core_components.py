@@ -46,7 +46,7 @@ app.layout = html.Div([
             {'label': u'Montréal', 'value': 'MTL'},
             {'label': 'San Francisco', 'value': 'SF'}
         ],
-        values=['MTL', 'SF']
+        value=['MTL', 'SF']
     ),
 
     html.Label('Text Input'),

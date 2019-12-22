@@ -8,10 +8,9 @@ from tutorial import styles
 
 
 def Syntax(content):
-    return dcc.SyntaxHighlighter(
-        content.strip(),
-        language="python",
-        customStyle=styles.code_container
+    return dcc.Markdown(
+        '```python  \n' + content.strip() + '  \n```',
+        style=styles.code_container
     )
 
 
@@ -22,7 +21,7 @@ layout = html.Div([
 
     This section describes three different approaches to embedding a Dash app
     within an existing web application.
-    
+
     ## Using an `<iframe>`
 
     The simplest approach to embedding Dash in an existing web application is to
@@ -30,13 +29,18 @@ layout = html.Div([
     towards the address of a deployed Dash app. This allows you to place your
     Dash app in a specific location within an existing web page with your
     desired dimensions:""")),
-    Syntax('<iframe src="http://localhost:8050" width=700 height=600>'),
+    dcc.Markdown(
+    '''
+    ```html
+    <iframe src="http://localhost:8050" width=700 height=600>
+    ```
+    '''),
     dcc.Markdown(dedent(
     """
-    ## Embedding a Dash app within an Existing Flask App 
-    
+    ## Embedding a Dash app within an Existing Flask App
+
     As discussed in the [Deployment Chapter](/deployment), Dash uses the Flask
-    web framework under the hood. This makes it fairly straightforward to 
+    web framework under the hood. This makes it fairly straightforward to
     embed a Dash app at a specific route of an existing Flask app.
 
     In the following example, a Dash app is mounted at the `/dash` route (eg
@@ -44,11 +48,11 @@ layout = html.Div([
     """
     )),
     Syntax(dedent(
-    """
+    '''
     import flask
     import dash
     import dash_html_components as html
-    
+
     server = flask.Flask(__name__)
 
     @server.route('/')
@@ -65,7 +69,7 @@ layout = html.Div([
 
     if __name__ == '__main__':
         app.run_server(debug=True)
-    """
+    '''
     )),
     dcc.Markdown(dedent(
     """
@@ -107,7 +111,7 @@ layout = html.Div([
     """
     import dash
     import dash_html_components as html
-    
+
     app = dash.Dash(
         __name__,
         requests_pathname_prefix='/app1/'
@@ -122,7 +126,7 @@ layout = html.Div([
     """
     import dash
     import dash_html_components as html
-    
+
     app = dash.Dash(
         __name__,
         requests_pathname_prefix='/app2/'
@@ -142,7 +146,7 @@ layout = html.Div([
 
     application = DispatcherMiddleware(flask_app, {
         '/app1': app1.server,
-        '/app2': app2.server,    
+        '/app2': app2.server,
     })
     """
     )),
@@ -180,7 +184,7 @@ layout = html.Div([
 
     application = DispatcherMiddleware(flask_app, {
         '/app1': app1.server,
-        '/app2': app2.server,    
+        '/app2': app2.server,
     })
 
     if __name__ == '__main__':
@@ -202,7 +206,7 @@ layout = html.Div([
     """
     )),
     dcc.Markdown(dedent(
-    """    
+    """
     > **Note:** debug mode should not be enabled in production. When using debug
         mode with Gunicorn, the `--reload` command line flag is required for hot
         reloading to work.

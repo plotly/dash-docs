@@ -15,30 +15,29 @@ app.layout = dash_table.DataTable(
     columns=[
         {"name": i, "id": i} for i in sorted(df.columns)
     ],
-    pagination_settings={
-        'current_page': 0,
-        'page_size': PAGE_SIZE
-    },
-    pagination_mode='be',
+    page_current=0,
+    page_size=PAGE_SIZE,
+    page_action='custom',
 
-    sorting='be',
-    sorting_type='multi',
-    sorting_settings=[]
+    sort_action='custom',
+    sort_mode='multi',
+    sort_by=[]
 )
 
 
 @app.callback(
     Output('table-multicol-sorting', "data"),
-    [Input('table-multicol-sorting', "pagination_settings"),
-     Input('table-multicol-sorting', "sorting_settings")])
-def update_graph(pagination_settings, sorting_settings):
-    print(sorting_settings)
-    if len(sorting_settings):
+    [Input('table-multicol-sorting', "page_current"),
+     Input('table-multicol-sorting', "page_size"),
+     Input('table-multicol-sorting', "sort_by")])
+def update_table(page_current, page_size, sort_by):
+    print(sort_by)
+    if len(sort_by):
         dff = df.sort_values(
-            [col['column_id'] for col in sorting_settings],
+            [col['column_id'] for col in sort_by],
             ascending=[
                 col['direction'] == 'asc'
-                for col in sorting_settings
+                for col in sort_by
             ],
             inplace=False
         )
@@ -47,9 +46,8 @@ def update_graph(pagination_settings, sorting_settings):
         dff = df
 
     return dff.iloc[
-        pagination_settings['current_page']*pagination_settings['page_size']:
-        (pagination_settings['current_page'] + 1)*pagination_settings['page_size']
-    ].to_dict('rows')
+        page_current*page_size:(page_current+ 1)*page_size
+    ].to_dict('records')
 
 
 if __name__ == '__main__':

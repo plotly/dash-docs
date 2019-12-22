@@ -36,7 +36,7 @@ layout = html.Div([
     The following types are currently supported:
     - `numeric`: includes both integers and floats
     - `text`: string, sequence of characters
-    - `datatime`: string in the form 'YYYY-MM-DD HH:MM:SS.ssssss' or some truncation thereof
+    - `datetime`: string in the form 'YYYY-MM-DD HH:MM:SS.ssssss' or some truncation thereof
     - `any`: any type of data
 
     Additional types and specialized sub-types will be added in the future.
@@ -98,10 +98,9 @@ layout = html.Div([
     configured by changing the sign behavior so that both the "+" and "-" sign are visible. Additional
     configuration changes can be chained after a ```Format(...)``` and a ```FormatTemplate.<template>(...)``` calls.
     ''')),
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['typing_formatting.1.py'][0],
-        language='python',
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
     html.Div(
         examples['typing_formatting.1.py'][1],
@@ -120,10 +119,9 @@ layout = html.Div([
     equivalent manual configuration is shown as comments in the code below. One can always see the resulting
     configuration for a given Format object by using ```Format(...).to_plotly_json()```.
     ''')),
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['typing_formatting.py'][0],
-        language='python',
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
     html.Div(
         examples['typing_formatting.py'][1],

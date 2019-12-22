@@ -1,4 +1,4 @@
-library(dashR)
+library(dash)
 library(dashCoreComponents)
 library(dashHtmlComponents)
 library(dplyr)
@@ -14,10 +14,10 @@ available_indicators <- unique(df$Indicator.Name)
 years <- unique(df$Year)
 len_years <- length(years)
 
-option_indicator <- lapply(available_indicators, 
+option_indicator <- lapply(available_indicators,
                            function(available_indicator) {
-                             
-                             list(label = available_indicator, 
+
+                             list(label = available_indicator,
                                   value = available_indicator)
                            }
 )
@@ -73,19 +73,19 @@ app$callback(
                 input(id='yaxis-type', property='value'),
                 input(id='year--slider', property='value')),
   function(xaxis_column_name, yaxis_column_name, xaxis_type, yaxis_type, year_value) {
-    
-    df %>% 
-      dplyr::filter(Year == years[year_value + 1], 
-                    Indicator.Name %in% c(xaxis_column_name, 
-                                          yaxis_column_name))  %>% 
-      droplevels() %>% 
+
+    df %>%
+      dplyr::filter(Year == years[year_value + 1],
+                    Indicator.Name %in% c(xaxis_column_name,
+                                          yaxis_column_name))  %>%
+      droplevels() %>%
       split(., .$Indicator.Name) -> data_by_indicator
-    
+
     merge(data_by_indicator[[1]], data_by_indicator[[2]], by = "Country.Name") %>%
       dplyr::transmute(x = Value.x, y = Value.y, text = Country.Name) %>%
       na.omit() %>%
       as.list() -> filtered_df
-    
+
     inputData <- list(
       c(
         filtered_df,
@@ -99,7 +99,7 @@ app$callback(
         )
       )
     )
-    
+
     list(
       data = inputData,
       layout = list(
@@ -113,4 +113,5 @@ app$callback(
   }
 )
 
-#app$run_server()
+app$run_server()
+

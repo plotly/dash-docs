@@ -7,10 +7,9 @@ from textwrap import dedent
 def CreateDisplay(scope):
     def Display(example_string):
         return html.Div([
-            dcc.SyntaxHighlighter(
-                dedent(example_string).strip(),
-                language='python',
-                customStyle={'marginBottom': 10, 'borderLeft': 'thin #C8D4E3 solid'}
+            dcc.Markdown(
+                '```python  \n ' + dedent(example_string).strip() + '  \n```',
+                style={'marginBottom': 10, 'borderLeft': 'thin #C8D4E3 solid'}
             ),
             eval(dedent(example_string), scope)
         ])

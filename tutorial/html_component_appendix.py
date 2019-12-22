@@ -8,36 +8,36 @@ layout = html.Div([
 
     html.Hr(),
 
-    dcc.SyntaxHighlighter('html.H1("H1 Element")', language='python', customStyle={'borderLeft': 'thin solid lightgrey'}),
+    dcc.Markdown('html.H1("H1 Element")', style={'borderLeft': 'thin solid lightgrey'}),
     html.H1('H1 Element'),
 
     html.Hr(),
 
-    dcc.SyntaxHighlighter('html.H2("H2 Element")', language='python', customStyle={'borderLeft': 'thin solid lightgrey'}),
+    dcc.Markdown('html.H2("H2 Element")', style={'borderLeft': 'thin solid lightgrey'}),
     html.H2('H2 Element'),
 
     html.Hr(),
 
-    dcc.SyntaxHighlighter('html.H3("H3 Element")', language='python', customStyle={'borderLeft': 'thin solid lightgrey'}),
+    dcc.Markdown('html.H3("H3 Element")', style={'borderLeft': 'thin solid lightgrey'}),
     html.H3('H3 Element'),
 
     html.Hr(),
 
-    dcc.SyntaxHighlighter('html.H4("H4 Element")', language='python', customStyle={'borderLeft': 'thin solid lightgrey'}),
+    dcc.Markdown('html.H4("H4 Element")', style={'borderLeft': 'thin solid lightgrey'}),
     html.H4('H4 Element'),
 
     html.Hr(),
 
-    dcc.SyntaxHighlighter('html.H5("H5 Element")', language='python', customStyle={'borderLeft': 'thin solid lightgrey'}),
+    dcc.Markdown('html.H5("H5 Element")', style={'borderLeft': 'thin solid lightgrey'}),
     html.H5('H5 Element'),
 
     html.Hr(),
 
-    dcc.SyntaxHighlighter('html.H6("H6 Element")', language='python', customStyle={'borderLeft': 'thin solid lightgrey'}),
+    dcc.Markdown('html.H6("H6 Element")', style={'borderLeft': 'thin solid lightgrey'}),
     html.H6('H6 Element'),
 
     html.Hr(),
 
-    dcc.SyntaxHighlighter('html.Div("Generic Div Element")', language='python', customStyle={'borderLeft': 'thin solid lightgrey'}),
+    dcc.Markdown('html.Div("Generic Div Element")', style={'borderLeft': 'thin solid lightgrey'}),
     html.Div('Generic Div Element')
 ])

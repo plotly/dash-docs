@@ -1,12 +1,8 @@
-import dash_html_components as html
-
-from dash.dependencies import Input, Output
-import dash_core_components as dcc
-import dash_html_components as html
-import pandas as pd
 from textwrap import dedent
 
-import dash_table
+import dash_core_components as dcc
+import dash_html_components as html
+
 from .utils import section_title
 from tutorial import tools
 from tutorial import styles
@@ -33,10 +29,9 @@ layout = html.Div([
     ''')),
 
     section_title('DataTable with Per-Column Dropdowns'),
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['dropdown_per_column.py'][0],
-        language='python',
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
     html.Div(
         examples['dropdown_per_column.py'][1],
@@ -44,10 +39,9 @@ layout = html.Div([
     ),
 
     section_title('DataTable with Per-Row Dropdowns'),
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['dropdown_per_row.py'][0],
-        language='python',
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
     html.Div(
         examples['dropdown_per_row.py'][1],

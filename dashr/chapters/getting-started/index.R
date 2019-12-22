@@ -1,8 +1,10 @@
-library(dashR)
+library(dash)
 library(dashCoreComponents)
 library(dashHtmlComponents)
+library(data.table)
 
 utils <- new.env()
+source('dashr/utils.R')
 source('dashr/utils.R', local=utils)
 
 examples <- list(
@@ -15,6 +17,10 @@ examples <- list(
   dropdown.doc=utils$LoadExampleCode('dashr/chapters/getting-started/examples/markdown-doc-dropdown.R')
 )
 
+dccDropdownProps <- props_to_list("dccDropdown")
+dccDropdownPropsDF <- rbindlist(dccDropdownProps, fill = TRUE)
+dccDropdownTable <- generate_table(dccDropdownPropsDF)
+
 layout <- htmlDiv(list(
   dccMarkdown("
 # Dash Layout
@@ -25,35 +31,35 @@ layout <- htmlDiv(list(
 > and the [next chapter](/getting-started-part-2) covers Dash callbacks.
 
 
-This tutorial will walk you through a fundamental aspect of Dash apps, 
+This tutorial will walk you through a fundamental aspect of Dash apps,
 the app `layout`, through 6 self-contained apps.
 "),
-  
+
 htmlBr(),
 
 dccMarkdown("
 Dash apps are composed of two parts.
-The first part is the \"`layout`\" of the app and 
-it describes what the application looks like. 
-The second part describes the interactivity of the application 
+The first part is the \"`layout`\" of the app and
+it describes what the application looks like.
+The second part describes the interactivity of the application
 and will be covered in the [next chapter](/getting-started-part-2).
 
 
-Dash provides R functions for all of the visual components of the application. 
-We maintain a set of components in the `dashCoreComponents` 
-and `dashHtmlComponents` package 
+Dash provides R functions for all of the visual components of the application.
+We maintain a set of components in the `dashCoreComponents`
+and `dashHtmlComponents` package
 but you can also [build your own](https://github.com/plotly/dash-components-archetype) with JavaScript and React.js.
 
 
 To get started, create a file named `app.R` containing the following code:
 "),
 examples$hello.world$source_code,
-  
+
 dccMarkdown("
 Run the app with
 
    ```
-   $ Rscript index.R
+   $ Rscript app.R
    Fire started at 127.0.0.1:8050
    start: 127.0.0.1:8050
    ```
@@ -120,16 +126,15 @@ There are a few important differences between the `dashHtmlComponents`
 and the HTML attributes:
 
 1.The `style` property in HTML is a semicolon-separated string. In Dash,
-you can just supply a dictionary.
+you can just supply a named list.
 
-2.The keys in the `style` dictionary are [camelCased](https://en.wikipedia.org/wiki/Camel_case).
+2.The keys in the `style` named list are [camelCased](https://en.wikipedia.org/wiki/Camel_case).
 So, instead of `text-align`, it's `textAlign`.
 
 3.The HTML `class` attribute is `className` in Dash.
 
-4.The children of the HTML tag is specified through the `children` keyword
-argument. By convention, this is always the _first_ argument and
-so it is often omitted.
+4.The children of the HTML tag is specified through the `children` keyword argument.
+By convention, this is always the _first_ argument and so it is often omitted.
 Besides that, all of the available HTML attributes and tags are available
 to you within your R context.
 
@@ -193,33 +198,54 @@ Here are a few of the available components:
   examples$hello.dcc$layout,
 
   dccMarkdown("
-#### Core Components
-Dash components are declarative: every configurable aspect of these components 
-is set during instantiation as a keyword argument. Call help in your R console 
+#### Calling help
+Dash components are declarative: every configurable aspect of these components
+is set during instantiation as a keyword argument. Call help in your R console
 on any of the components to learn more about a component and its available arguments.
   "),
-  # dropdown help with example
-  examples$dropdown.doc$source_code,
-  examples$dropdown.doc$layout,
 
+dccMarkdown('```r
+help(dccDropdown)
+```'),
+
+dccMarkdown('
+**Description**
+
+Dropdown is an interactive dropdown element for selecting one or more items.
+The values and labels of the dropdown items are specified in the "options"
+property and the selected item(s) are specified with the "value" property.
+Use a dropdown when you have many options (more than 5) or when you are
+constrained for space. Otherwise, you can use RadioItems or a Checklist,
+which have the benefit of showing the users all of the items at once.
+
+**Usage**
+'),
+
+dccMarkdown('```r
+
+dccDropdown(id=NULL, options=NULL, value=NULL, optionHeight=NULL, className=NULL,
+clearable=NULL, disabled=NULL, multi=NULL, placeholder=NULL, searchable=NULL,
+style=NULL, loading_state=NULL)
+```'),
+
+  dccDropdownTable,
   dccMarkdown("
 # Summary
-The layout of a Dash app describes what the app looks like. 
-The layout is a hierarchical tree of components. The `dashHtmlComponents` package provides 
-classes for all of the HTML tags and the keyword arguments describe the HTML 
-attributes like style, className, and id. The `dashCoreComponents` package generates 
+The layout of a Dash app describes what the app looks like.
+The layout is a hierarchical tree of components. The `dashHtmlComponents` package provides
+classes for all of the HTML tags and the keyword arguments describe the HTML
+attributes like style, className, and id. The `dashCoreComponents` package generates
 higher-level components like controls and graphs.
 For reference, see:
-- [dashCoreComponents gallery](https://dash.plot.ly/dash-core-components)
-- [dashHtmlComponents gallery](https://dash.plot.ly/dash-html-components)
+- [dashCoreComponents gallery](https://dashr.plot.ly/dash-core-components)
+- [dashHtmlComponents gallery](https://dashr.plot.ly/dash-html-components)
 
 
 The next part of the Dash tutorial covers how to make these apps interactive.
 
-Dash Tutorial Part 3: Basic Callbacks
 [Dash Tutorial Part 3: Basic Callbacks](/getting-started-part-2)
   "),
-  
+
   htmlHr(),
   dccMarkdown("
 [Back to the Table of Contents](/)

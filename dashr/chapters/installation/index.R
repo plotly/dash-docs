@@ -1,4 +1,4 @@
-library(dashR)
+library(dash)
 library(dashCoreComponents)
 library(dashHtmlComponents)
 
@@ -15,9 +15,9 @@ CRAN is the easiest place to download the latest R version.
 dccMarkdown("
 ```{r}
 library(devtools) # devtools: Tools to Make Developing R Packages Easier
-install_github('plotly/dashR') # The core dash backend
-install_github('plotly/dash-html-components') # HTML components
-install_github('plotly/dash-core-components') # Supercharged components
+# installs dashHtmlComponents, dashCoreComponents, and dashTable
+# and will update the component libraries when a new package is released
+install_github('plotly/dashR', upgrade = TRUE)
 ```
 "),
 htmlBr(),

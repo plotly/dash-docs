@@ -1,7 +1,8 @@
-library(dashR)
+library(dash)
 library(dashCoreComponents)
 library(dashHtmlComponents)
-library(rjson)
+library(jsonlite)
+
 
 app <- Dash$new()
 
@@ -38,7 +39,7 @@ app$layout(
           )
         ),
         layout = list(
-            clickmode = 'event+select'
+          clickmode = 'event+select'
         )
       )
     ),
@@ -51,10 +52,8 @@ app$layout(
           list(
             dccMarkdown(
               "
-**Hover Data**
-
-
-Mouse over values in the graph.
+              **Hover Data**
+              Mouse over values in the graph.
               "
             ), htmlPre(id='hover-data', style=styles$pre)
           ), className='three columns'
@@ -64,9 +63,8 @@ Mouse over values in the graph.
           list(
             dccMarkdown(
               "
- **Click Data**
-
-Click on points in the graph.
+              **Click Data**
+              Click on points in the graph.
               "
             ), htmlPre(id='click-data', style=styles$pre)
           ), className='three columns'
@@ -74,28 +72,24 @@ Click on points in the graph.
         
         htmlDiv(list(
           dccMarkdown("
-**Selection Data**
-
-
-Choose the lasso or rectangle tool in the graph's menu
-bar and then select points in the graph.
-Selection data also accumulates (or un-accumulates) selected
-data if you hold down the shift button while clicking.
-           "), htmlPre(id='selected-data', style=styles$pre)
+                      **Selection Data**
+                      Choose the lasso or rectangle tool in the graph's menu
+                      bar and then select points in the graph.
+                      Selection data also accumulates (or un-accumulates) selected
+                      data if you hold down the shift button while clicking.
+                      "), htmlPre(id='selected-data', style=styles$pre)
         ), className='three columns'
         ),
         
         htmlDiv(list(
           dccMarkdown("
-**Zoom and Relayout Data**
-
-
-Click and drag on the graph to zoom or click on the zoom
-buttons in the graph's menu bar.
-Clicking on legend items will also fire
-this event.
-           "), htmlPre(id='relayout-data', style=styles$pre)
-          ), className='three columns'
+                      **Zoom and Relayout Data**
+                      Click and drag on the graph to zoom or click on the zoom
+                      buttons in the graph's menu bar.
+                      Clicking on legend items will also fire
+                      this event.
+                      "), htmlPre(id='relayout-data', style=styles$pre)
+        ), className='three columns'
         )
       )
     )
@@ -105,26 +99,26 @@ this event.
 app$callback(output = list(id = 'hover-data', property = 'children'),
              params = list(input(id = 'basic-interactions', property = 'hoverData')),
              function(hoverData) {
-               return(toJSON(hoverData, indent = 2))
+               return(prettify(toJSON(hoverData),indent = 2))
              })
 
 
 app$callback(output = list(id = 'click-data', property = 'children'),
              params = list(input(id = 'basic-interactions', property = 'clickData')),
              function(clickData) {
-               return(toJSON(clickData, indent = 2))
+               return(prettify(toJSON(clickData),indent = 2))
              })
 
 app$callback(output = list(id = 'selected-data', property = 'children'),
              params = list(input(id = 'basic-interactions', property = 'selectedData')),
              function(selectedData) {
-               return(toJSON(selectedData, indent = 2))
+               return(prettify(toJSON(selectedData),indent = 2))
              })
 
 app$callback(output = list(id = 'relayout-data', property = 'children'),
              params = list(input(id = 'basic-interactions', property = 'relayoutData')),
              function(relayoutData) {
-               return(toJSON(relayoutData, indent = 2))
+               return(prettify(toJSON(relayoutData),indent = 2))
              })
 
 app$run_server()

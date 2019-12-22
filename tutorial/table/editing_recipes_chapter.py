@@ -57,10 +57,9 @@ layout = html.Div([
     large number of empty rows and columns.
     ''')),
 
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['editing_simple.py'][0],
-        language='python',
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
     html.Div(
         examples['editing_simple.py'][1],
@@ -88,10 +87,9 @@ layout = html.Div([
 
     ''')),
 
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['editing_prune_empty_cells.py'][0],
-        language='python',
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
     html.Div(
         examples['editing_prune_empty_cells.py'][1],
@@ -113,10 +111,9 @@ layout = html.Div([
     '''
     )),
 
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['editing_uploading.py'][0],
-        language='python',
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
     html.Div(
         examples['editing_uploading.py'][1],
@@ -135,10 +132,9 @@ layout = html.Div([
     heatmap. Try adding or removing columns!
     ''')),
 
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['editing_columns.py'][0],
-        language='python',
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
     html.Div(
         examples['editing_columns.py'][1],
@@ -155,10 +151,9 @@ layout = html.Div([
     '''
     )),
 
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['editing_rows_and_columns.py'][0],
-        language='python',
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
     html.Div(
         examples['editing_rows_and_columns.py'][1],
@@ -185,10 +180,9 @@ layout = html.Div([
     '''
     )),
 
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['editing_updating_self.py'][0],
-        language='python',
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
     html.Div(
         examples['editing_updating_self.py'][1],

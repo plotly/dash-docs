@@ -34,7 +34,7 @@ By setting those properties as `Input` properties, you can
 update your Dash application in response to these events.
 
 '''),
-          dcc.SyntaxHighlighter(examples[0][0], customStyle=styles.code_container),
+          dcc.Markdown(examples[0][0], style=styles.code_container),
 
           html.Div(examples[0][1], className="example-container")
 ]
@@ -57,7 +57,7 @@ In this example, we use the `customdata` property to add extra
 metadata for the points that we've hovered over or selected.
 '''),
 
-    dcc.SyntaxHighlighter(examples[1][0], customStyle=styles.code_container),
+    dcc.Markdown(examples[1][0], style=styles.code_container),
     html.Div(
         examples[1][1],
         className="example-container",
@@ -82,10 +82,9 @@ Here's another take on this dataset. Hovering over a value will replot the
 chart with that country's historical trajectory.
 '''),
 
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples[2][0],
-        language='python',
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
 
     html.Div(

@@ -1,46 +1,40 @@
-# Deploying to Heroku
+# Dash Userguide
 
-There are at least two ways to deploy a **dashR** app to [Heroku](https://www.heroku.com/): via a build-pack or a [docker](https://www.docker.com/) container. The docker approach is more flexible in that you can completely control the computing environment of your app, but as a result it's a bit more cumbersome. If you have interest in using docker, you may want to build off our minimal [base images](../docker).
+The [Dash Userguide](https://plot.ly/dash): everything that you need to know to be productive with Dash.
 
-## Deploying via a build-pack
+The Dash Userguide is hosted online at: [https://plot.ly/dash](https://plot.ly/dash). A [PDF version](/pdf-docs/Dash_User_Guide_and_Documentation.pdf) is also available. 
 
-Since **dashR** builds upon a [**fiery** web server](https://cran.r-project.org/package=fiery), in order to deploy **dashR** app(s) to Heroku, we can use an approach similar to the one outlined [here](https://www.data-imaginist.com/2017/setting-fire-to-deployment/). If you are brand new to Heroku, I suggest reading that post first then coming back here for a **dashR** example.
+### Running an app locally
 
-There are three critical files required to run any **dashR** app via the [Heroku buildpack for R](https://github.com/virtualstaticvoid/heroku-buildpack-r/tree/heroku-16): an `Aptfile` for installing system libraries, a `init.R` script for installing R packages, and a `run.R` script for running the **dashR** application. For simple applications, you probably won't have to modify the `Aptfile`, but if you need R packages that require external system libraries (e.g., **sf**, **leaflet**, **rmarkdown**, etc), you have to add relevant apt packages to this file. There is a nice collection of apt requirements for popular R packages [here](https://github.com/rstudio/shinyapps-package-dependencies/tree/master/packages). 
+To run an app locally:
 
-We suggest that you start from our Heroku app template, which you can summon via the `heroku_app_template()` function. This copies the template to your current working directory:
+1. (optional) create and activate new virtualenv or conda env:
 
 ```r
-library(dashR)
+library(dash)
 heroku_app_template()
 ```
 
-After you've modified those files to run your own **dashR** app, login to Heroku via the command-line tool:
-
-```shell
-heroku login
+or, with conda:
+```
+conda create --yes -n dash_docs
+source activate dash_docs
 ```
 
-If you know your way around git, you can follow these instructions for [deploying to Heroku via git](https://devcenter.heroku.com/articles/git), which the `dashR::heroku_app_deploy()` function attempts to automate for you:
+2. `pip install -r requirements.txt`
+3. `gunicorn run:server`
+4. open http://127.0.0.1:8000 in your browser
 
-dashR::heroku_app_deploy("my-test-app")
 
-On Windows systems `waitress` can be a replacement for `gunicorn`
+on Windows systems `waitress` can be a replacement for `gunicorn`
 
-`pip install waitress`
-`waitress-serve --listen=*:8000 run:server`
-open http://127.0.0.1:8000 in your browser
+3. `pip install waitress`
+4. `waitress-serve --listen=*:8000 run:server`
+5. open http://127.0.0.1:8000 in your browser
 
-```r
-dashR::heroku_app_deploy("my-test-app")
-```
 
-### Protocol
-```r
-heroku git:clone -a dashr-docs
-heroku plugins:install heroku-repo
-heroku buildpacks:set https://github.com/virtualstaticvoid/heroku-buildpack-r.git#heroku-16
-heroku stack:set heroku-16
-git push heroku master
-```
+### Contributing
 
+PRs accepted! The Dash user guide is itself a Dash app. Each file in `tutorial` represents a "chapter" of the docs.
+
+Changes to master will get deployed automatically.

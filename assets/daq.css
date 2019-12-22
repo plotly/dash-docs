@@ -34,3 +34,27 @@
 #darktheme-daq-tank {
     margin-left: calc(50% - 56px);
 }
+
+#my-daq-tank {
+	padding: 10px;
+}
+
+#my-daq-thermometer {
+	padding-bottom: 10px;
+}
+
+#my-daq-marks {
+	padding-bottom: 10px;
+}
+
+#my-daq-tsize {
+	padding-bottom: 10px;
+}
+
+#my-daq-tlabel {
+	padding-bottom: 10px;
+}
+
+#my-daq-tscales {
+	padding-bottom: 10px;
+}

@@ -1,4 +1,4 @@
-library(dashR)
+library(dash)
 library(dashCoreComponents)
 library(dashHtmlComponents)
 
@@ -32,20 +32,20 @@ app$layout(
 app$callback(
   output = list(id='graph-with-slider', property='figure'),
   params = list(input(id='year-slider', property='value')),
-  
+
   function(selected_year_index) {
-    
+
     which_year_is_selected <- which(df$year == years[selected_year_index + 1])
-    
+
     traces <- lapply(continents,
                      function(cont) {
-                       
+
                        which_continent_is_selected <- which(df$continent == cont)
-                       
+
                        df_sub <- df[intersect(which_year_is_selected, which_continent_is_selected), ]
-                       
+
                        with(
-                         df_sub, 
+                         df_sub,
                          list(
                            x = gdpPercap,
                            y = lifeExp,
@@ -61,7 +61,7 @@ app$callback(
                        )
                      }
     )
-    
+
     list(
       data = traces,
       layout= list(
@@ -75,4 +75,4 @@ app$callback(
   }
 )
 
-#app$run_server()
+app$run_server()

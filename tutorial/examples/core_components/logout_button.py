@@ -46,7 +46,7 @@ def route_logout():
 # Simple dash component login form.
 login_form = html.Div([
     html.Form([
-        dcc.Input(placeholder='username', name='username'),
+        dcc.Input(placeholder='username', name='username', type='text'),
         dcc.Input(placeholder='password', name='password', type='password'),
         html.Button('Login', type='submit')
     ], action='/custom-auth/login', method='post')

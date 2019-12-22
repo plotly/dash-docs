@@ -25,10 +25,14 @@ daq_library_heading =  dcc.Markdown('''
     '''.replace('    ', '').format(daq.__version__)
 )
 
-daq_install_instructions = dcc.SyntaxHighlighter('''>>> import dash_daq as daq
+daq_install_instructions = dcc.Markdown('''
+    ```
+    >>> import dash_daq as daq
     >>> print(daq.__version__)
-    {}'''.replace('    ', '').format(daq.__version__),
-    customStyle=styles.code_container)
+    {}
+    ```
+    '''.replace('    ', '').format(daq.__version__),
+    style=styles.code_container)
 
 
 dash_daq_components = {
@@ -67,6 +71,10 @@ dash_daq_components = {
             'value': True,
             'color': '\"#00cc96\"'
         }
+    },
+    'Joystick': {
+        'description': '''A joystick that can be used to apply direction and \
+        force.'''
     },
     'Knob': {
         'description': '''A knob component that can be turned to a value \
@@ -170,9 +178,8 @@ layout_children += [
     )),
 
 
-    dcc.SyntaxHighlighter(dtp[0],
-                          language='python',
-                          customStyle=styles.code_container),
+    dcc.Markdown(dtp[0],
+                          style=styles.code_container),
     html.Div(dtp[1]),
 
     dcc.Link('More DarkThemeProvider Examples and Reference',

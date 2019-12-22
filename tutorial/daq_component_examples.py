@@ -25,8 +25,8 @@ examples = {
     'tank': tools.load_example('tutorial/examples/daq_components/tank.py'),
     'thermometer': tools.load_example('tutorial/examples/daq_components/thermometer.py'),
     'toggle-switch': tools.load_example('tutorial/examples/daq_components/toggle_switch.py'),
-    'dark-theme-provider': tools.load_example('tutorial/examples/daq_components/dark_theme_provider.py')
-
+    'dark-theme-provider': tools.load_example('tutorial/examples/daq_components/dark_theme_provider.py'),
+    'joystick': tools.load_example('tutorial/examples/daq_components/joystick.py')
 }
 
 
@@ -37,9 +37,9 @@ BooleanSwitch = html.Div(children=[
     html.H3('Default Boolean Switch'),
     html.P("An example of a default boolean switch without \
             any extra properties."),
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['boolean-switch'][0],
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
     html.Div(
         examples['boolean-switch'][1],
@@ -49,13 +49,14 @@ BooleanSwitch = html.Div(children=[
 
     html.Hr(),
     html.H3('Color'),
-    dcc.Markdown("Set the color of the boolean switch with `color=#<hex_value>`."),
+    dcc.Markdown("Set the color of the boolean switch with \
+    `color=#<hex_value>`."),
     ComponentBlock('''import dash_daq as daq
 
 daq.BooleanSwitch(
   on=True,
   color="#9B51E0",
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
     html.Hr(),
     html.H3('Label'),
     dcc.Markdown("Set the label and label position using the `label` and `labelPosition` \
@@ -66,7 +67,7 @@ daq.BooleanSwitch(
   on=True,
   label="Label",
   labelPosition="top"
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
     html.Hr(),
     html.H3('Vertical Switch'),
     dcc.Markdown("Create a vertical oriented switch by setting `vertical=True`."),
@@ -76,8 +77,8 @@ daq.BooleanSwitch(
   on=True,
   label="Vertical",
   vertical=True
-)''', customStyle=styles.code_container, language='python'),
-html.Hr(),
+)''', style=styles.code_container),
+    html.Hr(),
     html.H3('Disabled Switch'),
     dcc.Markdown("To disable the Boolean Switch set the property `disabled` to `True`."),
     ComponentBlock('''import dash_daq as daq
@@ -86,7 +87,7 @@ daq.BooleanSwitch(
   disabled=True,
   label="Disabled",
   labelPosition="bottom"
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
     html.Hr(),
     html.H3("Boolean Switch Properties"),
     generate_prop_table('BooleanSwitch')
@@ -99,9 +100,9 @@ ColorPicker = html.Div(children=[
     html.H3('Default Color Picker'),
     html.P("An example of a default Color Picker without \
             any extra properties."),
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['color-picker'][0],
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
     html.Div(
         examples['color-picker'][1],
@@ -117,7 +118,7 @@ ColorPicker = html.Div(children=[
 daq.ColorPicker(
   label="Small",
   size=164,
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
     html.Hr(),
     html.H3('Label'),
     dcc.Markdown("Define the label and label position using the `label` and `labelPosition` \
@@ -127,7 +128,7 @@ daq.ColorPicker(
 daq.ColorPicker(
   label="Label",
   labelPosition="bottom"
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
     html.Hr(),
 html.H3('Disabled'),
     dcc.Markdown("To disable the Color Picker set `disabled` to `True`."),
@@ -136,7 +137,7 @@ html.H3('Disabled'),
 daq.ColorPicker(
   label='Color Picker',
   disabled=True,
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
     html.Hr(),
 html.H3('Hex Colors'),
     dcc.Markdown("Use hex values with the Color Picker by setting `value=dict(hex='#<hex_color>')`"),
@@ -145,7 +146,7 @@ html.H3('Hex Colors'),
 daq.ColorPicker(
   label='Color Picker',
   value=dict(hex="#0000FF"),
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
     html.Hr(),
 html.H3('RGB Colors'),
     dcc.Markdown("Use RGB color values with the Color Picker by setting: \
@@ -155,7 +156,7 @@ html.H3('RGB Colors'),
 daq.ColorPicker(
 label='Color Picker',
 value=dict(rgb=dict(r=255, g=0, b=0, a=0))
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
     html.Hr(),
     html.Hr(),
     html.H3("Color Picker Properties"),
@@ -169,9 +170,9 @@ Gauge = html.Div(children=[
     html.H3('Default Gauge'),
     html.P("An example of a default Gauge without \
             any extra properties."),
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['gauge'][0],
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
     html.Div(
         examples['gauge'][1],
@@ -190,7 +191,7 @@ daq.Gauge(
     label='Default',
     max=20,
     min=0,
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
     html.Hr(),
     html.H3('Current Value and Units'),
     dcc.Markdown("Show the current value of the gauge and the units with `showCurrentValue=True` \
@@ -204,7 +205,7 @@ daq.Gauge(
     label='Default',
     max=10,
     min=0,
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
     html.Hr(),
     html.H3('Logarithmic Gauge'),
     dcc.Markdown("To set the scale of the gauge to logarithmic use the property `logarithmic=True`."),
@@ -216,7 +217,7 @@ daq.Gauge(
     label='Default',
     max=10,
     min=0,
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
     html.Hr(),
     html.H3('Color'),
     dcc.Markdown("Set the color of the gauge by using the property `color=<hex_color>`."),
@@ -228,7 +229,7 @@ daq.Gauge(
     label='Default',
     max=5,
     min=0,
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
     html.Hr(),
     html.H3('Color Gradient'),
     dcc.Markdown("Apply a color gradient to the gauge with the property: \
@@ -241,7 +242,7 @@ daq.Gauge(
     label='Default',
     max=10,
     min=0,
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
     html.Hr(),
     html.H3('Size'),
     dcc.Markdown("Adjust the size of the gauge in pixels `size=200`."),
@@ -252,7 +253,7 @@ daq.Gauge(
     value=2,
     label='Default',
 
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
     html.Hr(),
     html.H3('Scale'),
     dcc.Markdown("Modify where the scale starts, the label interval, and actual interval \
@@ -265,7 +266,7 @@ daq.Gauge(
   value=3,
   min=0,
   max=24,
-)''' , customStyle=styles.code_container, language='python'),
+)''' , style=styles.code_container),
     html.Hr(),
     html.H3("Gauge Properties"),
     generate_prop_table('Gauge')
@@ -278,9 +279,9 @@ GraduatedBar = html.Div(children=[
     html.H3('Default Graduated bar'),
     dcc.Markdown("An example of a default Graduated bar without \
             any extra properties."),
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['graduated-bar'][0],
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
     html.Div(
         examples['graduated-bar'][1],
@@ -295,7 +296,7 @@ GraduatedBar = html.Div(children=[
 daq.GraduatedBar(
     vertical=True,
     value=10
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
     html.Hr(),
     html.H3('Size'),
     dcc.Markdown("Manually adjust the size of the bar in pixels with `size`."),
@@ -304,7 +305,7 @@ daq.GraduatedBar(
 daq.GraduatedBar(
     size=200,
     value=10
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
     html.Hr(),
     html.H3('Max'),
     dcc.Markdown("Manually set a maximum value with `max`."),
@@ -313,7 +314,7 @@ daq.GraduatedBar(
 daq.GraduatedBar(
     max=100,
     value=50
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
     html.Hr(),
     html.H3('Step'),
     dcc.Markdown("Manually set the step size of each bar with `step`."),
@@ -323,7 +324,7 @@ daq.GraduatedBar(
     step=2,
     max=100,
     value=50
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
     html.Hr(),
     html.H3('Show Current Value'),
     dcc.Markdown("Display the current value of the graduated bar with `showCurrentValue=True`."),
@@ -333,7 +334,7 @@ daq.GraduatedBar(
     showCurrentValue=True,
     max=100,
     value=38
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
     html.Hr(),
     html.H3('Color Range'),
     dcc.Markdown("Set a color range with:  \
@@ -344,7 +345,7 @@ daq.GraduatedBar(
     color={"ranges":{"green":[0,4],"yellow":[4,7],"red":[7,10]}},
     showCurrentValue=True,
     value=10
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
     html.Hr(),
     html.H3('Color Gradient'),
     dcc.Markdown("Set a color gradient with: \
@@ -355,7 +356,7 @@ daq.GraduatedBar(
     color={"gradient":True,"ranges":{"green":[0,4],"yellow":[4,7],"red":[7,10]}},
     showCurrentValue=True,
     value=10
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
     html.Hr(),
     html.H3("Graduated Bar Properties"),
     generate_prop_table('GraduatedBar')
@@ -368,9 +369,9 @@ Indicator = html.Div(children=[
     html.H3('Default Indicator'),
     dcc.Markdown("An example of a default Indicator without \
         any extra properties."),
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['indicator'][0],
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
     html.Div(
         examples['indicator'][1],
@@ -388,7 +389,7 @@ daq.Indicator(
   label="Label",
   labelPosition="bottom",
   value=True
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
     html.H3('Boolean Indicator Off'),
     dcc.Markdown("A boolean indicator set to off `value=False`."),
     ComponentBlock('''import dash_daq as daq
@@ -396,7 +397,7 @@ daq.Indicator(
 daq.Indicator(
   label="Off",
   value=False
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
     html.Hr(),
     html.H3('Square'),
     dcc.Markdown("Create a square boolean indicator by setting the \
@@ -407,7 +408,7 @@ daq.Indicator(
   label="Square",
   width=16,
   height=16
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
     html.Hr(),
     html.H3('Color'),
     dcc.Markdown(
@@ -418,11 +419,55 @@ daq.Indicator(
   label="Purple",
   color="#551A8B",
   value=True
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
     html.Hr(),
     html.H3("Indicator Properties"),
     generate_prop_table('Indicator')
 ])
+
+# Joystick
+Joystick = html.Div(children=[
+    html.H1('Joystick Examples and Reference'),
+    html.Hr(),
+    html.H3('Default Joystick'),
+    dcc.Markdown("An example of a default Joystick without \
+    any extra properties."),
+    dcc.Markdown(
+        examples['joystick'][0],
+        style=styles.code_container
+    ),
+    html.Div(
+        examples['joystick'][1],
+        style={'overflow=x': 'initial'}
+    ),
+
+    html.Hr(),
+    html.H3('Label'),
+    dcc.Markdown(
+        "Change the label and label orientation with `label` and `labelPosition`."),
+    ComponentBlock('''import dash_daq as daq
+
+daq.Joystick(
+  label="Label",
+  labelPosition="bottom"
+)''', style=styles.code_container),
+
+    html.Hr(),
+    html.H3('Size'),
+    dcc.Markdown(
+        "Change the size of the joystick with `size`."),
+    ComponentBlock('''import dash_daq as daq
+
+daq.Joystick(
+  size=250
+)''', style=styles.code_container),
+
+    html.Hr(),
+
+    html.H3('Joystick Properties'),
+    generate_prop_table('Joystick')
+])
+
 # Knob
 Knob = html.Div(children=[
     html.H1('Knob Examples and Reference'),
@@ -430,9 +475,9 @@ Knob = html.Div(children=[
     html.H3('Default Knob'),
     dcc.Markdown("An example of a default Knob without \
             any extra properties."),
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['knob'][0],
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
     html.Div(
         examples['knob'][1],
@@ -448,7 +493,7 @@ Knob = html.Div(children=[
 daq.Knob(
     size=140,
     value=3
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
     html.Hr(),
     html.H3('Max'),
     dcc.Markdown("Set the maximum value of the knob using `max`."),
@@ -457,7 +502,7 @@ daq.Knob(
 daq.Knob(
     max=100,
     value=3
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
     html.Hr(),
     html.H3('Color Ranges'),
     dcc.Markdown("Control color ranges with: \
@@ -468,7 +513,7 @@ daq.Knob(
   label="Color Ranges",
   value=3,
   color={"ranges":{"green":[0,5],"yellow":[5,9],"red":[9,10]}}
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
     html.Hr(),
     html.H3('Color Gradient'),
     dcc.Markdown("Set up a color gradient with: \
@@ -479,7 +524,7 @@ daq.Knob(
   label="Gradient Ranges",
   value=7,
   color={"gradient":True,"ranges":{"green":[0,5],"yellow":[5,9],"red":[9,10]}}
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
     html.Hr(),
     html.H3('Scale'),
     dcc.Markdown("Adjust the scale interval, label interval, \
@@ -491,7 +536,7 @@ daq.Knob(
   value=7,
   max=18,
   scale={'start':0, 'labelInterval': 3, 'interval': 3}
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
     html.Hr(),
     html.H3("Knob Properties"),
     generate_prop_table('Knob')
@@ -504,9 +549,9 @@ LEDDisplay = html.Div(children=[
     html.H3('Default LED display'),
     dcc.Markdown("An example of a default LED display without \
             any extra properties."),
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['LED-display'][0],
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
     html.Div(
         examples['LED-display'][1],
@@ -524,7 +569,7 @@ daq.LEDDisplay(
     label="Label",
     labelPosition='bottom',
     value='12:34'
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
     html.H3('Size'),
     dcc.Markdown("Adjust the size of the LED display with `size`"),
     ComponentBlock('''import dash_daq as daq
@@ -533,7 +578,7 @@ daq.LEDDisplay(
     label="Large",
     value="9:34",
     size=64,
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
     html.Hr(),
     html.H3('Color'),
     dcc.Markdown("Adjust the color of the LED display with `color=#<hex_color>`"),
@@ -543,7 +588,7 @@ daq.LEDDisplay(
     label="color",
     value='1.001',
     color="#FF5E5E"
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
     html.Hr(),
     html.H3('Background Color'),
     dcc.Markdown("Adjust the background color of the LED display using: \
@@ -554,7 +599,7 @@ daq.LEDDisplay(
     label="color",
     value='1.001',
     backgroundColor="#FF5E5E"
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
     html.Hr(),
     html.H3("LED Display Properties"),
     generate_prop_table('LEDDisplay')
@@ -567,9 +612,9 @@ NumericInput = html.Div(children=[
     html.H3('Default Numeric Input'),
     dcc.Markdown("An example of a default numeric input without \
             any extra properties."),
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['numeric-input'][0],
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
     html.Div(
         examples['numeric-input'][1],
@@ -586,7 +631,7 @@ daq.NumericInput(
     label='Label',
     labelPosition='bottom',
     value=10,
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
     html.Hr(),
     html.H3('Size'),
     dcc.Markdown("Extend the size with `size`."),
@@ -595,7 +640,7 @@ daq.NumericInput(
 daq.NumericInput(
     value=10,
     size=120
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
     html.Hr(),
     html.H3('Max and Min'),
     dcc.Markdown("Set the minimum and maximum bounds with `min` and max`."),
@@ -605,7 +650,7 @@ daq.NumericInput(
     min=0,
     max=100,
     value=20
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
     html.Hr(),
     html.H3('Disable'),
     dcc.Markdown("Disable the numeric input by setting `disabled=True`."),
@@ -616,7 +661,7 @@ daq.NumericInput(
     min=0,
     max=10,
     value=2
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
     html.Hr(),
     html.Hr(),
     html.H3("Numeric Input Properties"),
@@ -630,9 +675,9 @@ PowerButton = html.Div(children=[
     html.H3('Default Power Button'),
     dcc.Markdown("An example of a default power button without \
             any extra properties."),
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['power-button'][0],
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
     html.Div(
         examples['power-button'][1],
@@ -649,7 +694,7 @@ daq.PowerButton(
     on='True',
     label='Label',
     labelPosition='top'
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
     html.Hr(),
     html.H3('Size'),
     dcc.Markdown("Adjust the size (diameter in pixels) of the power button with `size`."),
@@ -658,7 +703,7 @@ daq.PowerButton(
 daq.PowerButton(
     on='True',
     size=100
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
     html.H3('Color'),
     dcc.Markdown("Set the color of the power button with `color`."),
     ComponentBlock('''import dash_daq as daq
@@ -666,7 +711,7 @@ daq.PowerButton(
 daq.PowerButton(
     on='True',
     color='#FF5E5E'
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
     html.Hr(),
     html.H3("Power Button Properties"),
     generate_prop_table('PowerButton')
@@ -679,9 +724,9 @@ PrecisionInput = html.Div(children=[
     html.H3('Default Precision Input'),
     dcc.Markdown("An example of a default precision input without \
             any extra properties."),
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['precision-input'][0],
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
     html.Div(
         examples['precision-input'][1],
@@ -698,7 +743,7 @@ daq.PrecisionInput(
     labelPosition='top',
     precision=2,
     value=12
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
     html.Hr(),
     html.H3('Precision'),
     dcc.Markdown("The `precision` property is mandatory for this component. The `precision` property \
@@ -708,7 +753,7 @@ daq.PrecisionInput(
 daq.PrecisionInput(
     precision=2,
     value=125
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
     html.Hr(),
     html.H3('Max and Min'),
     dcc.Markdown("Set the maximum and minimum value of the numeric input with `max` and `min`."),
@@ -719,7 +764,7 @@ daq.PrecisionInput(
     value=15,
     max=20,
     min=10
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
     html.Hr(),
     html.H3('Size'),
     dcc.Markdown("Set the length (in pixels) of the numeric input `size`."),
@@ -729,7 +774,7 @@ daq.PrecisionInput(
     size=120,
     precision=4,
     value=245
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
     html.Hr(),
     html.H3('Disabled'),
     dcc.Markdown("Disable the precision input by setting `disabled=True`."),
@@ -739,7 +784,7 @@ daq.PrecisionInput(
     disabled=True,
     precision=4,
     value=9999
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
     html.Hr(),
     html.H3("Precision Input Properties"),
     generate_prop_table('PrecisionInput')
@@ -752,9 +797,9 @@ StopButton = html.Div(children=[
     html.H3('Default Stop Button'),
     dcc.Markdown("An example of a default stop button without \
             any extra properties."),
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['stop-button'][0],
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
     html.Div(
         examples['stop-button'][1],
@@ -770,7 +815,7 @@ StopButton = html.Div(children=[
 daq.StopButton(
     label='Label',
     labelPosition='top'
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
     html.Hr(),
     html.H3('Size'),
     dcc.Markdown("Adjust the size (width in pixels) of the stop button with `size`."),
@@ -778,7 +823,7 @@ daq.StopButton(
 
 daq.StopButton(
     size=120,
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
     html.Hr(),
     html.H3('Button Text'),
     dcc.Markdown("Set the text displayed in the button `buttonText`."),
@@ -786,7 +831,7 @@ daq.StopButton(
 
 daq.StopButton(
     buttonText='text',
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
     html.Hr(),
     html.H3('Disabled'),
     dcc.Markdown("Disable the button by setting `disabled=True`."),
@@ -794,7 +839,7 @@ daq.StopButton(
 
 daq.StopButton(
     disabled=True,
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
     html.Hr(),
     html.H3("Stop Button Properties"),
     generate_prop_table('StopButton')
@@ -807,9 +852,9 @@ Slider = html.Div(children=[
     html.H3('Default Slider'),
     dcc.Markdown("An example of a default slider without \
             any extra properties."),
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['slider'][0],
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
     html.Div(
         examples['slider'][1],
@@ -825,7 +870,7 @@ Slider = html.Div(children=[
 daq.Slider(
     min=0, max=100, value=30,
     marks={'25': 'mark', '50': '50'}
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
 
     html.Hr(),
 
@@ -834,7 +879,7 @@ daq.Slider(
     ComponentBlock('''import dash_daq as daq
 daq.Slider(
     size=50
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
 
     html.Hr(),
 
@@ -843,10 +888,10 @@ daq.Slider(
     ComponentBlock('''import dash_daq as daq
 
 daq.Slider(
-    id='my-daq-slider', 
+    id='my-daq-slider',
     value=17,
     handleLabel='Handle'
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
 
     html.Hr(),
 
@@ -859,7 +904,7 @@ daq.Slider(
     value=50,
     handleLabel={"showCurrentValue": True,"label": "VALUE"},
     step=10
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
 
     html.Hr(),
 
@@ -868,7 +913,7 @@ daq.Slider(
     ComponentBlock('''import dash_daq as daq
 daq.Slider(
     vertical=True
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
 
     html.Hr(),
 
@@ -884,9 +929,9 @@ Tank = html.Div(children=[
     html.H3('Default Tank'),
     dcc.Markdown("An example of a default tank without \
             any extra properties."),
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['tank'][0],
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
     html.Div(
         examples['tank'][1],
@@ -905,7 +950,7 @@ daq.Tank(
     showCurrentValue=True,
     units='gallons',
     style={'margin-left': '50px'}
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
 
     html.Hr(),
 
@@ -917,7 +962,7 @@ daq.Tank(
     value=6,
     style={'margin-left': '50px'}
 )
-''', customStyle=styles.code_container, language='python'),
+''', style=styles.code_container),
 
     html.Hr(),
 
@@ -929,7 +974,7 @@ daq.Tank(
     value=3,
     label='Tank label',
     labelPosition='bottom'
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
 
     html.Hr(),
 
@@ -942,7 +987,7 @@ daq.Tank(
     scale={'interval': 2, 'labelInterval': 2,
            'custom': {'5': 'Set point'}},
     style={'margin-left': '50px'}
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
 
     html.Hr(),
 
@@ -957,7 +1002,7 @@ daq.Tank(
     logarithmic=True,
     base=3,
     style={'margin-left': '50px'}
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
 
     html.Hr(),
 
@@ -972,9 +1017,9 @@ Thermometer = html.Div(children=[
     html.H3('Default Thermometer'),
     dcc.Markdown("An example of a default Thermometer without \
             any extra properties."),
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['thermometer'][0],
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
     html.Div(
         examples['thermometer'][1],
@@ -994,7 +1039,7 @@ daq.Thermometer(
     value=100,
     showCurrentValue=True,
     units="C"
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
 
     html.Hr(),
 
@@ -1004,7 +1049,7 @@ daq.Thermometer(
 daq.Thermometer(
     value=5,
     size=100
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
 
     html.Hr(),
 
@@ -1016,7 +1061,7 @@ daq.Thermometer(
     value=5,
     label='Current temperature',
     labelPosition='top'
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
 
     html.Hr(),
 
@@ -1031,7 +1076,7 @@ daq.Thermometer(
         '2': 'ideal temperature',
         '5': 'projected temperature'
     }}
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
 
     html.Hr(),
 
@@ -1047,9 +1092,9 @@ ToggleSwitch = html.Div(children=[
     html.H3('Default Toggle Switch'),
     dcc.Markdown("An example of a default toggle switch without \
             any extra properties."),
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['toggle-switch'][0],
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
     html.Div(
         examples['toggle-switch'][1],
@@ -1064,7 +1109,7 @@ ToggleSwitch = html.Div(children=[
     ComponentBlock('''import dash_daq as daq
 daq.ToggleSwitch(
     vertical=True
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
 
     html.Hr(),
 
@@ -1073,7 +1118,7 @@ daq.ToggleSwitch(
     ComponentBlock('''import dash_daq as daq
 daq.ToggleSwitch(
     size=100
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
 
     html.Hr(),
 
@@ -1084,7 +1129,7 @@ daq.ToggleSwitch(
 daq.ToggleSwitch(
     label='My toggle switch',
     labelPosition='bottom'
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
 
     html.Hr(),
 
@@ -1100,9 +1145,9 @@ DarkThemeProvider = html.Div(children=[
     html.H3('Default Dark Theme Provider'),
     dcc.Markdown("An example of a default dark theme provider without \
             any extra properties."),
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['dark-theme-provider'][0],
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
     html.Div(
         examples['dark-theme-provider'][1],

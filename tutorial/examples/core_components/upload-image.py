@@ -9,8 +9,6 @@ external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
-app.scripts.config.serve_locally = True
-
 app.layout = html.Div([
     dcc.Upload(
         id='upload-image',
@@ -62,7 +60,6 @@ def update_output(list_of_contents, list_of_names, list_of_dates):
             parse_contents(c, n, d) for c, n, d in
             zip(list_of_contents, list_of_names, list_of_dates)]
         return children
-
 
 
 if __name__ == '__main__':

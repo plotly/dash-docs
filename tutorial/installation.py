@@ -21,18 +21,21 @@ layout = html.Div([
     so install and upgrade frequently.
     Python 2 and 3 are supported.'''.replace('    ', '')),
 
-    dcc.SyntaxHighlighter('''pip install dash=={}  # The core dash backend
-        pip install dash-html-components=={}  # HTML components
-        pip install dash-core-components=={}  # Supercharged components
-        pip install dash-table=={}  # Interactive DataTable component (new!)
-        pip install dash-daq=={}  # DAQ components (newly open-sourced!)
-    '''.replace('    ', '').format(
+    dcc.Markdown('''
+    ```shell
+    pip install dash=={}  # The core dash backend
+    pip install dash-daq=={}  # DAQ components (newly open-sourced!)
+    ```
+    '''.format(
         dash.__version__,
-        html.__version__,
-        dcc.__version__,
-        dash_table.__version__,
         dash_daq.__version__
-    ), customStyle=styles.code_container),
+    ), style=styles.code_container),
+
+    dcc.Markdown(s('''
+    > **Note**: starting with dash 0.37.0, dash automatically installs dash-renderer, dash-core-components,
+    > dash-html-components, and dash-table, using known-compatible versions of each. You need not and
+    > should not install these separately any longer, only dash itself.
+    ''')),
 
     html.Div([
         'Ready? Now, let\'s ',
@@ -52,7 +55,7 @@ layout = html.Div([
     > >>> print(dash_core_components.__version__)
     > ```
     > To see the latest changes of any package, check the GitHub repo's CHANGELOG.md file:
-    > - [dash changelog](https://github.com/plotly/dash/blob/master/CHANGELOG.md)
+    > - [dash changelog](https://github.com/plotly/dash/blob/master/dash/CHANGELOG.md)
     > - [dash-core-components changelog](https://github.com/plotly/dash-core-components/blob/master/CHANGELOG.md)
     > - [dash-html-components changelog](https://github.com/plotly/dash-html-components/blob/master/CHANGELOG.md)
     > - [dash-table changelog](https://github.com/plotly/dash-table/blob/master/CHANGELOG.md)
@@ -62,7 +65,7 @@ layout = html.Div([
     > with dash-core-components and dash respectively.
     > These docs are using dash-renderer=={} and plotly=={}
     > and their changelogs are located here:
-    > - [dash-renderer changelog](https://github.com/plotly/dash-renderer/blob/master/CHANGELOG.md)
+    > - [dash-renderer changelog](https://github.com/plotly/dash/blob/master/dash-renderer/CHANGELOG.md)
     > - [plotly changelog](https://github.com/plotly/plotly.py/blob/master/CHANGELOG.md)
     >
     > All of these packages adhere to [semver](https://semver.org/).

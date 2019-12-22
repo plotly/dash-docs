@@ -1,4 +1,4 @@
-library(dashR)
+library(dash)
 library(dashCoreComponents)
 library(dashHtmlComponents)
 
@@ -49,4 +49,4 @@ app$layout(
   )
 )
 
-#app$run_server()
+app$run_server()

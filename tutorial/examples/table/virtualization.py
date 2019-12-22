@@ -1,5 +1,4 @@
 import dash
-from dash.dependencies import Input, Output
 import dash_table
 import pandas as pd
 
@@ -11,11 +10,11 @@ df['Emission'] = df['Emission'].map(lambda x: '{0:.2f}'.format(x))
 
 app.layout = dash_table.DataTable(
         id='table-virtualiztion',
-        data=df.to_dict('rows'),
+        data=df.to_dict('records'),
         columns=[
             {'name': i, 'id': i} for i in df.columns
         ],
-        n_fixed_rows=1,
+        fixed_rows={ 'headers': True, 'data': 0 },
         style_cell={
             'whiteSpace': 'normal'
         },
@@ -32,7 +31,7 @@ app.layout = dash_table.DataTable(
              'width': '75px'},
         ],
         virtualization=True,
-        pagination_mode=False
+        page_action='none'
 )
 
 

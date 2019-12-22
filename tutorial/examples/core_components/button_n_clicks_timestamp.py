@@ -12,9 +12,9 @@ external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 app.layout = html.Div([
-    html.Button('Button 1', id='btn-1', n_clicks_timestamp='0'),
-    html.Button('Button 2', id='btn-2', n_clicks_timestamp='0'),
-    html.Button('Button 3', id='btn-3', n_clicks_timestamp='0'),
+    html.Button('Button 1', id='btn-1', n_clicks_timestamp=0),
+    html.Button('Button 2', id='btn-2', n_clicks_timestamp=0),
+    html.Button('Button 3', id='btn-3', n_clicks_timestamp=0),
     html.Div(id='container-button-timestamp')
 ])
 

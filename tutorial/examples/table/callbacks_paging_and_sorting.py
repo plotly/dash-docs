@@ -1,8 +1,6 @@
 import dash
 from dash.dependencies import Input, Output
 import dash_table
-import dash_html_components as html
-import dash_core_components as dcc
 import pandas as pd
 
 
@@ -19,27 +17,26 @@ app.layout = dash_table.DataTable(
     columns=[
         {'name': i, 'id': i, 'deletable': True} for i in sorted(df.columns)
     ],
-    pagination_settings={
-        'current_page': 0,
-        'page_size': PAGE_SIZE
-    },
-    pagination_mode='be',
+    page_current=0,
+    page_size=PAGE_SIZE,
+    page_action='custom',
 
-    sorting='be',
-    sorting_type='single',
-    sorting_settings=[]
+    sort_action='custom',
+    sort_mode='single',
+    sort_by=[]
 )
 
 
 @app.callback(
     Output('table-paging-and-sorting', 'data'),
-    [Input('table-paging-and-sorting', 'pagination_settings'),
-     Input('table-paging-and-sorting', 'sorting_settings')])
-def update_graph(pagination_settings, sorting_settings):
-    if len(sorting_settings):
+    [Input('table-paging-and-sorting', "page_current"),
+     Input('table-paging-and-sorting', "page_size"),
+     Input('table-paging-and-sorting', 'sort_by')])
+def update_table(page_current, page_size, sort_by):
+    if len(sort_by):
         dff = df.sort_values(
-            sorting_settings[0]['column_id'],
-            ascending=sorting_settings[0]['direction'] == 'asc',
+            sort_by[0]['column_id'],
+            ascending=sort_by[0]['direction'] == 'asc',
             inplace=False
         )
     else:
@@ -47,9 +44,8 @@ def update_graph(pagination_settings, sorting_settings):
         dff = df
 
     return dff.iloc[
-        pagination_settings['current_page']*pagination_settings['page_size']:
-        (pagination_settings['current_page'] + 1)*pagination_settings['page_size']
-    ].to_dict('rows')
+        page_current*page_size:(page_current+ 1)*page_size
+    ].to_dict('records')
 
 
 if __name__ == '__main__':

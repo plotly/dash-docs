@@ -36,10 +36,9 @@ layout = html.Div([
     load your data from any Python data source.
     ''')),
 
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['callbacks_paging.py'][0],
-        language='python',
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
     html.Div(
         examples['callbacks_paging.py'][1],
@@ -59,14 +58,17 @@ layout = html.Div([
 
     Instead, we recommend implmenting sorting and filtering on the
     backend as well. That is, on the entire underlying dataset.
+
+    **Note for returning users - changed property names:**
+    - Sorted fields are now in `sort_by`, not `sorting_settings`
+    - The filter string is now in `filter`, not `filtering_settings`
     ''')),
 
     dcc.Markdown('### Backend Paging with Sorting'),
 
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['callbacks_paging_and_sorting.py'][0],
-        language='python',
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
     html.Div(
         examples['callbacks_paging_and_sorting.py'][1],
@@ -84,10 +86,9 @@ layout = html.Div([
     In this example, try sorting by continent and then any other column.
     ''')),
 
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['callbacks_paging_multicolumn_sorting.py'][0],
-        language='python',
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
     html.Div(
         examples['callbacks_paging_multicolumn_sorting.py'][1],
@@ -123,10 +124,9 @@ layout = html.Div([
 
     ''')),
 
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['callbacks_filtering.py'][0],
-        language='python',
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
     html.Div(
         examples['callbacks_filtering.py'][1],
@@ -134,10 +134,9 @@ layout = html.Div([
     ),
 
     dcc.Markdown('### Backend Paging with Filtering and Multi-Column Sorting'),
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['callbacks_sorting_filtering.py'][0],
-        language='python',
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
     html.Div(
         examples['callbacks_sorting_filtering.py'][1],
@@ -150,10 +149,9 @@ layout = html.Div([
     This final example ties it all together: the graph component
     displays the current page of the `data`.
     ''')),
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['callbacks_filtering_graph.py'][0],
-        language='python',
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
     html.Div(
         examples['callbacks_filtering_graph.py'][1],

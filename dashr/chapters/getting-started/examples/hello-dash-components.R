@@ -1,4 +1,4 @@
-library(dashR)
+library(dash)
 library(dashCoreComponents)
 library(dashHtmlComponents)
 
@@ -18,7 +18,7 @@ pageTitle <- htmlH1(
 )
 
 pageSubTitle <- htmlDiv(
-  'DashR: A web application framework for R.',
+  'Dash for R: A web application framework for R.',
   style = list(
     textAlign = 'center',
     color = colors$text
@@ -61,4 +61,4 @@ app$layout(
   )
 )
 
-#app$run_server()
+app$run_server()

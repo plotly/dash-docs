@@ -1,4 +1,4 @@
-library(dashR)
+library(dash)
 library(dashHtmlComponents)
 
 external_scripts <- list(

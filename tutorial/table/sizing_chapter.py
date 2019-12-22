@@ -1,12 +1,11 @@
 from collections import OrderedDict
-from dash.dependencies import Input, Output
 import dash_core_components as dcc
 import dash_html_components as html
 import pandas as pd
 from textwrap import dedent
 
 import dash_table
-from .utils import html_table, CreateDisplay
+from .utils import CreateDisplay
 
 data = OrderedDict(
     [
@@ -86,7 +85,7 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            data=df.to_dict('rows'),
+            data=df.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df.columns]
         )
         '''
@@ -105,8 +104,9 @@ layout = html.Div(
 
         html.Details(open=False, children=[
             html.Summary('View the Datasets'),
-            dcc.SyntaxHighlighter(dedent(
+            dcc.Markdown(dedent(
             '''
+            ```python
             data = OrderedDict(
                 [
                     ("Date", ["2015-01-01", "2015-10-24", "2016-05-10", "2017-01-10", "2018-05-10", "2018-08-15"]),
@@ -157,6 +157,7 @@ layout = html.Div(
                     for i in range(10)
                 }
             )
+            ```
             '''))
         ]),
 
@@ -195,7 +196,7 @@ layout = html.Div(
                 'selector': '.dash-cell div.dash-cell-value',
                 'rule': 'display: inline; white-space: inherit; overflow: inherit; text-overflow: inherit;'
             }],
-            data=df_election.to_dict('rows'),
+            data=df_election.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df_election.columns]
         )
         '''),
@@ -218,7 +219,7 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            data=df_election.to_dict('rows'),
+            data=df_election.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df_election.columns],
             css=[{
                 'selector': '.dash-cell div.dash-cell-value',
@@ -245,7 +246,7 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            data=df_election.to_dict('rows'),
+            data=df_election.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df_election.columns],
             style_table={'overflowX': 'scroll'},
         )
@@ -272,7 +273,7 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            data=df_election.to_dict('rows'),
+            data=df_election.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df_election.columns],
             style_table={'overflowX': 'scroll'},
             style_cell={
@@ -289,7 +290,7 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            data=df_election.to_dict('rows'),
+            data=df_election.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df_election.columns],
             style_table={'overflowX': 'scroll'},
             style_cell={
@@ -316,7 +317,7 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            data=df_election.to_dict('rows'),
+            data=df_election.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df_election.columns],
             style_table={'overflowX': 'scroll'},
             style_cell={
@@ -334,7 +335,7 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            data=df_election.to_dict('rows'),
+            data=df_election.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df_election.columns],
             style_table={'overflowX': 'scroll'},
             style_cell={
@@ -356,7 +357,7 @@ layout = html.Div(
         ### Horizontal Scrolling via Fixed Columns
 
         You can also add a horizontal scrollbar to your table by fixing
-        the leftmost columns with `n_fixed_columns`.
+        the leftmost columns with `fixed_columns`.
 
         > Note that fixing columns introduces some changes to the underlying
         > markup of the table and may impact the way that your columns
@@ -368,18 +369,18 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            data=df_election.to_dict('rows'),
+            data=df_election.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df_election.columns],
-            n_fixed_columns=1,
+            fixed_columns={ 'headers': True, 'data': 1 },
         )
         '''),
 
         Display(
         '''
         dash_table.DataTable(
-            data=df_election.to_dict('rows'),
+            data=df_election.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df_election.columns],
-            n_fixed_columns=1,
+            fixed_columns={ 'headers': True, 'data': 1 },
             style_cell={
                 # all three widths are needed
                 'minWidth': '180px', 'width': '180px', 'maxWidth': '180px',
@@ -414,7 +415,7 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            data=df.to_dict('rows'),
+            data=df.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df.columns],
             style_cell_conditional=[
                 {'if': {'column_id': 'Date'},
@@ -428,7 +429,7 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            data=df.to_dict('rows'),
+            data=df.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df.columns],
             style_cell_conditional=[
                 {'if': {'column_id': 'Temperature'},
@@ -465,7 +466,7 @@ layout = html.Div(
         # Display(
         # '''
         # dash_table.DataTable(
-        #     data=df_election.to_dict('rows'),
+        #     data=df_election.to_dict('records'),
         #     columns=[{'id': c, 'name': c} for c in df_election.columns],
         #     style_cell_conditional=[
         #         {'if': {'column_id': 'Dem'},
@@ -501,7 +502,7 @@ layout = html.Div(
         # Display(
         # '''
         # dash_table.DataTable(
-        #     data=df_election.to_dict('rows'),
+        #     data=df_election.to_dict('records'),
         #     columns=[{'id': c, 'name': c} for c in df_election.columns],
         #     style_cell_conditional=[
         #         {'if': {'column_id': 'Dem'},
@@ -529,7 +530,7 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            data=df_long.to_dict('rows'),
+            data=df_long.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df.columns],
             style_table={
                 'maxHeight': '300',
@@ -544,8 +545,8 @@ layout = html.Div(
 
         In the example above, the headers become hidden when you scroll down.
 
-        You can keep these headers visible by supplying `n_fixed_rows=1`.
-
+        You can keep these headers visible by supplying `fixed_rows={ 'headers': True, 'data': 0 }`.
+    
         > Note that fixing rows introduces some changes to the underlying
         > markup of the table and may impact the way that your
         > columns are rendered or sized.
@@ -556,9 +557,9 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            data=df_long.to_dict('rows'),
+            data=df_long.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df_long.columns],
-            n_fixed_rows=1,
+            fixed_rows={ 'headers': True, 'data': 0 },
             style_cell={'width': '150px'}
         )
         '''),
@@ -584,7 +585,7 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            data=df.to_dict('rows'),
+            data=df.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df.columns],
             style_table={
                 'maxHeight': '300px',
@@ -606,7 +607,7 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            data=df.to_dict('rows'),
+            data=df.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df.columns],
             style_table={
                 'height': '300px',

@@ -1,4 +1,4 @@
-# library(dashR)
+# library(dash)
 # library(dashCoreComponents)
 # library(dashHtmlComponents)
 
@@ -18,4 +18,4 @@ app$callback(output('output', 'children'),
   sprintf("Input 1 is \"%s\" and Input 2 is \"%s\"", input1, input2)
 })
 
-#app$run_heroku()
+app$run_heroku()

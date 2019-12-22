@@ -26,11 +26,20 @@ layout = html.Div(className='toc', children=[
                 ("Our extended essay on Dash. An extended discussion of Dash's architecture "
                  "and our motivation behind the project.")),
         Chapter(chapters['gallery']['name'],
-                chapters['gallery']['url'],
+                "https://dash-gallery.plotly.host/Portal/",
                 "A glimpse into what's possible with Dash."),
         Chapter('Dash Club',
                 'http://eepurl.com/dE7CHT',
                 'A fortnightly email newsletter by chriddyp, the creator of Dash.'),
+        Chapter(chapters['dash-1-0-migration']['name'],
+                chapters['dash-1-0-migration']['url'],
+                ("Dash v1.0 is out! If you're new to Dash, just head down to "
+                 "the tutorial section below and get started. This section is "
+                 "for users Dash v0.x upgrading to v1.0. We've learned a lot "
+                 "from working with the amazing Dash community, and Dash v1.0 "
+                 "makes a number of changes to make your apps even more "
+                 "intuitive, powerful, and extensible as Dash continues to "
+                 "evolve."))
     ]),
 
     Section('Dash Tutorial', [
@@ -69,9 +78,15 @@ layout = html.Div(className='toc', children=[
         Chapter(chapters['dashdaq']['name'],
                 chapters['dashdaq']['url'],
                 chapters['dashdaq']['description']),
+        Chapter(chapters['canvas']['name'],
+                chapters['canvas']['url'],
+                chapters['canvas']['description']),
         Chapter(chapters['cytoscape']['name'],
                 chapters['cytoscape']['url'],
                 chapters['cytoscape']['description']),
+        Chapter(chapters['dashbio']['name'],
+                chapters['dashbio']['url'],
+                chapters['dashbio']['description'])
     ]),
 
     Section('Creating Your Own Components', [
@@ -105,7 +120,10 @@ layout = html.Div(className='toc', children=[
                 chapters['devtools']['description']),
         Chapter(chapters['loading-states']['name'],
                 chapters['loading-states']['url'],
-                chapters['loading-states']['description'])
+                chapters['loading-states']['description']),
+        Chapter(chapters['testing']['name'],
+                chapters['testing']['url'],
+                chapters['testing']['description']),
     ]),
 
     Section('Production', [
