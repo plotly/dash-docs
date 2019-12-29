@@ -30,7 +30,7 @@ layout = html.Div([
 
     ## Frequently Asked Questions
 
-    **Q:** *How can I customize the appearance of my Dash app?*
+    <html><a id="customize-appearance"><b>Q</b></a> <a href=#customize-appearance><em>How can I customize the appearance of my Dash app?</em></a></html>
 
     **A:** Dash apps are rendered in the browser as modern standards-compliant
       web apps. This means that you can use CSS to style your Dash app as you
@@ -52,7 +52,7 @@ layout = html.Div([
 
     ------------------------
 
-    **Q:** *How can I add JavaScript to my Dash app?*
+    <html><a id="add-javascript"><b>Q</b></a> <a href=#add-javascript><em>How can I add JavaScript to my Dash app?</em></a></html>
 
     **A:** You can add your own scripts to your Dash app, just like you would
       add a JavaScript file to an HTML document. See the [Adding CSS & JS and
@@ -61,21 +61,21 @@ layout = html.Div([
 
     ------------------------
 
-    **Q:** *Can I make a Dash app with multiple pages?*
+    <html><a id="multiple-pages"><b>Q</b></a> <a href=#multiple-pages><em>Can I make a Dash app with multiple pages?</em></a></html>
 
     **A:** Yes! Dash has support for multi-page apps. See the [Multi-Page Apps
       and URL Support](/urls) section in the Dash User Guide.
 
     ------------------------
 
-    **Q:** *How I can I organise my Dash app into multiple files?*
+    <html><a id="multiple-files"><b>Q</b></a> <a href=#multiple-files><em>How can I organise my Dash app into multiple files?</em></a></html>
 
     **A:** A strategy for doing this can be found in the [Multi-Page Apps
       and URL Support](/urls) section in the Dash User Guide.
 
     ------------------------
 
-    **Q:** *How do I determine which `Input` has changed?*
+    <html><a id="input"><b>Q</b></a> <a href=#input><em>How do I determine which Input has changed?</em></a></html>
 
     **A:** *New in v0.38.0!* In addition to event properties like `n_clicks`
     that change whenever an event happens (in this case a click), there is a
@@ -90,7 +90,8 @@ layout = html.Div([
       by id and prop instead of through the function args. These have the form
       of dictionaries `{ 'component_id.prop_name': value }`
 
-    Here's an example of how this can be done:'''),
+    Here's an example of how this can be done:''',
+    dangerously_allow_html=True),
     Syntax(examples['last_clicked_button'][0]),
     Example(examples['last_clicked_button'][1]),
     reusable_components.Markdown('''
@@ -104,7 +105,7 @@ layout = html.Div([
 
     ------------------------
 
-    **Q:** *Can I use Jinja2 templates with Dash?*
+    <html><a id="jinja2"><b>Q</b></a> <a href=#jinja2><em>Can I use Jinja2 templates with Dash?</em></a></html>
 
     **A:** Jinja2 templates are rendered on the server (often in a Flask app)
       before being sent to the client as HTML pages. Dash apps, on the other
@@ -117,7 +118,7 @@ layout = html.Div([
 
     ------------------------
 
-    **Q:** *Can I use jQuery with Dash?*
+    <html><a id="jquery"><b>Q</b></a> <a href=#jquery><em>Can I use jQuery with Dash?</em></a></html>
 
     **A:** For the most part, you can't. Dash uses React to render your app on
       the client browser. React is fundamentally different to jQuery in that it
@@ -134,7 +135,7 @@ layout = html.Div([
 
     ------------------------
 
-    **Q:** *Where did those cool undo and redo buttons go?*
+    <html><a id="undo-redo"><b>Q</b></a> <a href=#undo-redo><em>Where did those cool undo and redo buttons go?</em></a></html>
 
     **A:** OK, mostly we got the opposite question:
     [How do I get rid of the undo/redo buttons](https://community.plot.ly/t/is-it-possible-to-hide-the-floating-toolbar/4911/10).
@@ -147,7 +148,7 @@ layout = html.Div([
 
     ------------------------
 
-    **Q:** *I have more questions! Where can I go to ask them?*
+    <html><a id="more-questions"><b>Q</b></a> <a href=#more-questions><em>I have more questions! Where can I go to ask them?</em></a></html>
 
     **A:** The [Dash Community forums](https://community.plot.ly/c/dash) is full
       of people discussing Dash topics, helping each other with questions, and
@@ -245,5 +246,6 @@ layout = html.Div([
     updates the page.
 
     This is a known issue and you can track its status in this [GitHub
-    Issue](https://github.com/plotly/dash-renderer/issues/40). ''')
+    Issue](https://github.com/plotly/dash-renderer/issues/40). ''',
+    dangerously_allow_html=True),
 ])
