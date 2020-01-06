@@ -9,7 +9,7 @@ from dash_docs import reusable_components
 
 examples = {
     example: tools.load_example('tutorial/examples/table/{}'.format(example))
-    for example in ['filtering_fe.py', 'filtering_be.py']
+    for example in ['filtering_fe.py', 'filtering_be.py', 'filtering_advanced.py']
 }
 
 layout = html.Div(
@@ -138,12 +138,6 @@ layout = html.Div(
         In the future we may accept any filter strings, to allow you to
         write your own expression query language.
 
-        > Note: we're planning on adding a structured query object
-        > to make it easier and more robust to manage back-end filter logic.
-        > Follow
-        > [dash-table#169](https://github.com/plotly/dash-table/issues/169)
-        > for updates.
-
         Example:
         """)),
 
@@ -156,5 +150,93 @@ layout = html.Div(
             examples['filtering_be.py'][1],
             className='example-container'
         ),
+
+        reusable_components.Markdown("---"),
+
+        reusable_components.Markdown(dedent("""
+        # Advanced filter usage
+
+        Filter queries can be as simple or as complicated as you want
+        them to be. When using filters in the column filters, they are
+        automatically converted to a filter query on that column
+        only. For instance, in the example below, typing the query `ge
+        100000000` into the `pop` column's filter converts to a
+        `filter_query` of `{pop} ge 100000000`.
+        """)),
+
+        reusable_components.Markdown(
+            examples['filtering_advanced.py'][0],
+            style=styles.code_container
+        ),
+
+        html.Div(
+            examples['filtering_advanced.py'][1],
+            className='example-container'
+        ),
+
+        reusable_components.Markdown(dedent("""
+        For more complex filtering, you might want to change the
+        `filter_query` property in the table. For instance, say that
+        we want countries with a population greater than 100 million,
+        but less than 500 million. Then our `filter_query` would be as
+        follows:
+
+        ```plaintext
+        {pop} ge 100000000 and {pop} le 500000000
+
+        ```
+
+        Try copying and pasting it into the app above.
+
+        Say that we now want to get a bit more advanced, and
+        cross-filter between columns; for instance, we only want the
+        results that are located in Asia. Now, our filtering query
+        becomes:
+
+        ```plaintext
+        {pop} ge 100000000 and {pop} le 500000000 and {continent} eq "Asia"
+
+        ```
+
+        We can make the expression even more complex. For example,
+        let's say we want all of those countries with the populations
+        that fall within our boundaries and that are in Asia, but for
+        some reason we also want to include Singapore. This results in
+        a filter query that is a little more long-winded:
+
+        ```plaintext
+        (({pop} ge 100000000 and {pop} le 500000000) or {country} eq "Singapore") and {continent} eq "Asia"
+
+        ```
+
+        Note that we've grouped expressions together using
+        parentheses. This is part of the filtering syntax. Just as is
+        true in mathematical expressions, the expressions in the
+        innermost parentheses are evaluated first.
+
+        ## Derived filter query structure
+
+        The `derived_filter_query_structure` prop is a dictionary
+        representation of the query syntax tree. You can use this prop
+        to implement backend filtering.
+
+        For a query that describes a relationship between two values,
+        there are three components: the operation, the left-hand side,
+        and the right-hand side. For instance, take the following
+        query:
+
+        ```plaintext
+        {pop} ge 100000000
+        ```
+
+        The operation here is `ge` (i.e., `>=`), the left-hand side is
+        the field `pop` (corresponding to the column `pop`), and the
+        right-hand side is the value `100000000`. As the queries
+        become increasingly complex, so do the query structures. Try
+        it out by expanding the "Derived filter query structure" in
+        the example app above.
+
+        """))
+
     ]
 )
