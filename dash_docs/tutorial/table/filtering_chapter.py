@@ -157,11 +157,9 @@ layout = html.Div(
         # Advanced filter usage
 
         Filter queries can be as simple or as complicated as you want
-        them to be. When using filters in the column filters, they are
-        automatically converted to a filter query on that column
-        only. For instance, in the example below, typing the query `ge
-        100000000` into the `pop` column's filter converts to a
-        `filter_query` of `{pop} ge 100000000`.
+        them to be. When something is typed into a column filter, it
+        is automatically converted to a filter query on that column
+        only.
         """)),
 
         reusable_components.Markdown(
@@ -175,28 +173,38 @@ layout = html.Div(
         ),
 
         reusable_components.Markdown(dedent("""
-        For more complex filtering, you might want to change the
-        `filter_query` property in the table. For instance, say that
-        we want countries with a population greater than 100 million,
-        but less than 500 million. Then our `filter_query` would be as
-        follows:
 
-        ```plaintext
-        {pop} ge 100000000 and {pop} le 500000000
+        The `filter_query` property is written to when the user
+        filters the data by using the column filters. For example, if
+        a user types `ge 100000000` in the `pop` column filter, and
+        `Asia` in the `continent` column filter, `filter_query` will
+        look like this:
 
-        ```
+        >`{pop} ge 100000000 && {continent} contains "Asia"`
 
-        Try copying and pasting it into the app above.
+        Try typing those values into the column filters in the app
+        above, and ensure that the "Read filter_query" option is
+        selected.
+
+        The `filter_query` property can also be written to. This might
+        be useful when performing more complex filtering,
+        like if you want to filter a column based on two (or more)
+        conditions. For instance, say that we want countries with a
+        population greater than 100 million, but less than 500
+        million. Then our `filter_query` would be as follows:
+
+        >`{pop} ge 100000000 and {pop} le 500000000`
+
+        Select the "Write to filter_query" option in the app above,
+        and try it out by copying and pasting the filter query above
+        into the input box.
 
         Say that we now want to get a bit more advanced, and
         cross-filter between columns; for instance, we only want the
-        results that are located in Asia. Now, our filtering query
+        results that are located in Asia. Now, our filter query
         becomes:
 
-        ```plaintext
-        {pop} ge 100000000 and {pop} le 500000000 and {continent} eq "Asia"
-
-        ```
+        >`{pop} ge 100000000 and {pop} le 500000000 and {continent} eq "Asia"`
 
         We can make the expression even more complex. For example,
         let's say we want all of those countries with the populations
@@ -204,30 +212,42 @@ layout = html.Div(
         some reason we also want to include Singapore. This results in
         a filter query that is a little more long-winded:
 
-        ```plaintext
-        (({pop} ge 100000000 and {pop} le 500000000) or {country} eq "Singapore") and {continent} eq "Asia"
-
-        ```
+        >`(({pop} ge 100000000 and {pop} le 500000000) or {country} eq "Singapore") and {continent} eq "Asia"`
 
         Note that we've grouped expressions together using
         parentheses. This is part of the filtering syntax. Just as is
         true in mathematical expressions, the expressions in the
         innermost parentheses are evaluated first.
 
+        ## Symbol-based versus letter-based operators
+
+        An important thing to notice is that the two types of
+        relational operators that can be used in the column filters
+        (symbol-based, like `>=`, and letter-based, like `ge`) are not
+        converted into one another when `filter_query` is being
+        constructed from the values in the column filters. Therefore,
+        if using `filter_query` to implement backend filtering, it's
+        necessary to take both of these forms of the
+        "greater-than-or-equal-to" operator into account when parsing
+        the query string (or ensure that the user only uses the ones
+        that the backend can parse).
+
+        However, in the case of the logical operator `and/&&`, when
+        the table is constructing the query string, the symbol-based
+        representation will always be used.
+
         ## Derived filter query structure
 
         The `derived_filter_query_structure` prop is a dictionary
-        representation of the query syntax tree. You can use this prop
-        to implement backend filtering.
+        representation of the query syntax tree. You can use the value
+        of this property to implement backend filtering.
 
         For a query that describes a relationship between two values,
         there are three components: the operation, the left-hand side,
         and the right-hand side. For instance, take the following
         query:
 
-        ```plaintext
-        {pop} ge 100000000
-        ```
+        >`{pop} ge 100000000`
 
         The operation here is `ge` (i.e., `>=`), the left-hand side is
         the field `pop` (corresponding to the column `pop`), and the
@@ -235,6 +255,14 @@ layout = html.Div(
         become increasingly complex, so do the query structures. Try
         it out by expanding the "Derived filter query structure" in
         the example app above.
+
+        Note that for all operators, there are two keys `subType` and
+        `value` that correspond to, respectively, the symbol-based
+        representation and the originally inputted representation of
+        the operator. So, in the case of the query above, `subType`
+        will be `>=` and `value` will be `ge `; if our query string
+        were `{pop} >= 100000000` instead, both `subType` and `value`
+        will be `>=`.
 
         """))
 
