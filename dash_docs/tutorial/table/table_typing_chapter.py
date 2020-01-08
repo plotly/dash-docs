@@ -68,6 +68,8 @@ layout = html.Div([
     sorted in ascending order, despite the fact that the *displayed* value of cell `y` is
     [plotly](http://plot.ly).
 
+    Markdown cells also support syntax highlighting. For more details, please see ["Syntax Highlighting With Markdown"](https://dash.plot.ly/external-resources#md-syntax-highlight).
+
     By default, the column presentation is `input`.
     ''')),
 

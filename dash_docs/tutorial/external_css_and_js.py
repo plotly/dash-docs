@@ -575,5 +575,31 @@ Starting with Dash 1.0.0, `serve_locally` defaults to `True`.
         src="//codepen.io/chriddyp/embed/bWLwgP/?height=265&"
             "theme-id=light&default-tab=css,result&embed-version=2",
         style={'height': 400, 'width': '100%', 'border': 'none'}
-    )
+    ),
+
+    reusable_components.Markdown(id='md-syntax-highlight', children='''
+
+    ***
+
+    # Syntax Highlighting With Markdown
+
+    Both [`dash-table`](https://dash.plot.ly/datatable) and
+    [`dash-core-components`](https://dash.plot.ly/dash-core-components)
+    support markdown formatting; this includes syntax highlighting for
+    inline code.
+
+    Highlighting is taken care of by
+    [`highlight.js`](https://highlightjs.org/). By default, only
+    certain languages are recognized, and there is only one color
+    scheme available. However, you can override this by downloading a
+    custom `highlight.js` package. To do this, visit
+    [https://highlightjs.org/download/](https://highlightjs.org/download/),
+    and in the "Custom package" section, check off all of the
+    languages that you require, download your package, and place the
+    resultant `highlight.pack.js` file into the `assets/` folder for
+    your app. The package should also come with a `styles/` directory;
+    to use a different color scheme, simply copy the corresponding
+    stylesheet into your app's `assets/` folder.
+    ''')
+
 ])

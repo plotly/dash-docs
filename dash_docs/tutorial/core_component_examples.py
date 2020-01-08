@@ -590,6 +590,15 @@ dcc.Markdown('''
     ```
     '''), className='example-container'),
 
+    reusable_components.Markdown('''
+
+    Only certain languages are supported by default in
+    `dcc.Markdown`. For more details about how to customize the
+    languages and colour schemes, please see ["Syntax Highlighting
+    With
+    Markdown"](https://dash.plot.ly/external-resources#md-syntax-highlight).
+    '''),
+
     html.Hr(),
     html.H3('Markdown Properties'),
     generate_prop_info('Markdown')
