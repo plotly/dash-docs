@@ -32,6 +32,7 @@ app.layout = DataTable(
     columns=[{ 'id': i, 'name': i, 'type': types.get(i, 'any')} for i in df.columns],
     filter_action='custom',
     page_action='native',
+    page_size=15,
     virtualization=True,
     style_cell={
         'min-width': '100px'
