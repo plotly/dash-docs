@@ -9,7 +9,7 @@ from dash_docs import reusable_components
 
 examples = {
     example: tools.load_example('tutorial/examples/table/{}'.format(example))
-    for example in ['filtering_fe.py', 'filtering_be.py', 'filtering_advanced.py']
+    for example in ['filtering_fe.py', 'filtering_be.py', 'filtering_advanced.py', 'filtering_advanced_derived.py']
 }
 
 layout = html.Div(
@@ -264,7 +264,25 @@ layout = html.Div(
         were `{pop} >= 100000000` instead, both `subType` and `value`
         will be `>=`.
 
-        """))
+        ### Backend filtering with `pandas` and `derived_filter_query_structure`
+
+        It's likely that your data are already in a `pandas`
+        dataframe. Using the `derived_filter_query_structure` in
+        conjunction with `pandas` filters can enable you to do some
+        pretty heavy lifting with the table! You can see an example of
+        this below.
+
+        """)),
+
+        reusable_components.Markdown(
+            examples['filtering_advanced_derived.py'][0],
+            style=styles.code_container
+        ),
+
+        html.Div(
+            examples['filtering_advanced_derived.py'][1],
+            className='example-container'
+        )
 
     ]
 )
