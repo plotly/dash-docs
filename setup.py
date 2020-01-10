@@ -9,5 +9,6 @@ setup(
         'dash_docs.tutorial',
     ],
     include_package_data=True,
-    install_requires=[]
+    install_requires=[],
+    version='0.1.0'
 )
