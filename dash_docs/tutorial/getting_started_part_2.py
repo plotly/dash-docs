@@ -144,7 +144,7 @@ layout = html.Div([
        data) should be done in the global scope of the app instead of within
        the callback functions.
     4. The callback does not modify the original data, it just creates copies
-       of the dataframe by filtered through pandas filters.
+       of the dataframe by filtering through pandas filters.
        This is important: *your callbacks should never mutate variables
        outside of their scope*. If your callbacks modify global state, then one
        user's session might affect the next user's session and when the app is

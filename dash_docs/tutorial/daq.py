@@ -25,7 +25,7 @@ daq_library_heading =  reusable_components.Markdown('''
 )
 
 daq_install_instructions = reusable_components.Markdown('''
-    ```
+    ```py
     >>> import dash_daq as daq
     >>> print(daq.__version__)
     {}

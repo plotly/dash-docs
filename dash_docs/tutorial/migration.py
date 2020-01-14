@@ -48,7 +48,7 @@ layout = html.Div([
     ```
     Now that's the default, and that syntax can still be used to disable it for
     each asset class, but if you want to use CDNs for both you can just do:
-    ```
+    ```py
     app = dash.Dash(serve_locally=False)
     ```
 

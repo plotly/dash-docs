@@ -28,7 +28,7 @@ layout = html.Div(className="gallery", children=[
     '''.replace('    ', '').format(dcc.__version__)),
 
     reusable_components.Markdown('''
-    ```
+    ```py
     >>> import dash_core_components as dcc
     >>> print(dcc.__version__)
     {}

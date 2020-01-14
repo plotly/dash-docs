@@ -61,7 +61,7 @@ layout = html.Div([
         ## Using PreventUpdate in Callback
 
         In certain situations, you don't want to update the callback output. You can
-        achieve this by raising `PreventUpdate` Exception in the callback function.
+        achieve this by raising a `PreventUpdate` exception in the callback function.
     '''),
     Syntax(examples['prevent-update-button'][0]),
     Example(examples['prevent-update-button'][1]),

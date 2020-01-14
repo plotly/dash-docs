@@ -283,7 +283,7 @@ layout = html.Div([
     '''.replace('    ', '')),
 
     reusable_components.Markdown('''
-    ```
+    ```py
     import dash
     import dash_auth
     import dash_core_components as dcc
