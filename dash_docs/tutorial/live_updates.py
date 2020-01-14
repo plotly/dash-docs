@@ -134,7 +134,7 @@ on every page load.
 
 For example, if your `app.layout` looked like this:
 
-```
+```py
 import datetime
 
 import dash
@@ -151,7 +151,7 @@ then your app would display the time when the app was started.
 If you change this to a function, then a new `datetime` will get computed
 everytime you refresh the page. Give it a try:
 
-```
+```py
 import datetime
 
 import dash

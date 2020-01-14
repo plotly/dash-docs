@@ -236,7 +236,7 @@ Starting with Dash 1.0.0, `serve_locally` defaults to `True`.
 
     reusable_components.Markdown(
     '''
-    ```
+    ```py
     import dash
     import dash_html_components as html
 
@@ -272,7 +272,7 @@ Starting with Dash 1.0.0, `serve_locally` defaults to `True`.
 
     reusable_components.Markdown(
     '''
-    ```
+    ```py
     import dash
     import dash_html_components as html
 

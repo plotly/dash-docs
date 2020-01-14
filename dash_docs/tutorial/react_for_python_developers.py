@@ -200,7 +200,7 @@ render() {
 ##### Variable declaration
 
 In JavaScript, we have to declare our variables with `let` or `const`. `const` is used when the variable shouldn't change, `let` is used elsewhere:
-```
+```js
 const color = 'blue';
 let someText = 'Hello World';
 let myText;
@@ -210,7 +210,7 @@ myText = 'Hello Dash';
 ##### Comments
 
 Single line comments are prefixed with `//`. Multi-line comments are wrapped in `/* */`
-```
+```js
 /*
 * This is a multi-line comment
 * By convention, we use a `*` on each line, but it's
@@ -222,13 +222,13 @@ const color = 'blue'; // This is a single line comment
 ##### Strings
 
 Strings are defined the same way in JavaScript: single or double quotes:
-```
+```js
 const someString = 'Hello Dash';
 const anotherString = "Hello Dash";
 ```
 
 Instead of Python's `format`, JavaScript allows you to embed variables directly into strings by wrapping the variable in `${}` and wrapping the string in backticks:
-```
+```js
 const name = 'Dash';
 const someString = `Hello ${name}`;
 ```
@@ -236,19 +236,19 @@ const someString = `Hello ${name}`;
 ##### Dictionaries
 
 In Python, we use dictionaries for key-value pairs. In JavaScript, we use "objects" and they are instantiated and accessed very similarly:
-```
+```js
 const myObject = {"color": "blue", "size": 20};
 myObject['color']; // is blue
 myObject.color;  // another way to access the color variable
 ```
 
 In Python, the keys of a dictionary can be any type. But in JavaScript, the keys can only be strings. JavaScript allows you to omit the quotes around the strings and we frequently do:
-```
+```js
 const myObject = {color: "blue"}; // notice how there are no strings around color
 ```
 
 So if you want to set a dynamic key in an object, you have to wrap it in square brackets:
-```
+```js
 const styleProperty = "color";
 const myObject = {[styleProperty]: "blue"};
 myObject.color;
@@ -257,7 +257,7 @@ myObject.color;
 ##### Lists
 
 In JavaScript, lists are called "arrays" and they're instantiated and accessed the same way:
-```
+```js
 const myList = ["Hello", "Dash", "!"];
 myList[0];  // Hello
 myList[1];  // Dash
@@ -272,7 +272,7 @@ In JavaScript, the convention is to end each line in a semicolon. It's not stric
 
 In JavaScript, we use `console.log` to print statements into the "console":
 
-```
+```js
 console.log("Hello Dash");
 ```
 
@@ -293,7 +293,7 @@ Like Python, error messages and exceptions will also appear inside this console.
 ##### If, For, While
 
 `if`
-```
+```js
 if (color === 'red') {
   console.log("the color is red");
 } else if (color === 'blue') {
@@ -304,14 +304,14 @@ if (color === 'red') {
 ```
 
 `for`
-```
+```js
 for (let i = 0; i < 10; i++) {
   console.log(i);
 }
 ```
 
 `while`
-```
+```js
 let i = 0;
 while (i < 10) {
   i += 1;
@@ -323,7 +323,7 @@ while (i < 10) {
 In JavaScript, you'll see functions defined in two ways:
 
 The new style way:
-```
+```js
 const add = (a, b) => {
   // The inside of the function
   const c = a + b;
@@ -334,7 +334,7 @@ console.log(add(4, 6)); // 10
 ```
 
 The traditional way:
-```
+```js
 function (a, b) {
   // The inside of the function
   const c = a + b;
@@ -379,20 +379,20 @@ In Python, we can import any variable from any file. In JavaScript, we have to e
 If we only want to export a single variable, we'll write `export default`:
 
 `some_file.js`
-```
+```js
 const text = 'hello world';
 export default text;
 ```
 
 `another_file.js`
-```
+```js
 import text from './some_file.js';
 ```
 
 If we want to export multiple variables, we'll just write `export`:
 
 `some_file.js`
-```
+```js
 const text = 'hello world';
 const color = 'blue';
 const size = '12px';
@@ -402,7 +402,7 @@ export color;
 ```
 
 `another_file.js`
-```
+```js
 import {text, color} from './some_file.js';
 /*
 * note that we can't import size

@@ -1043,7 +1043,7 @@ EnvVars = html.Div(children=[
 
     rc.Markdown(
     '''
-    ```
+    ```py
     database_password = os.environ.get('DATABASE_PASSWORD', 'my-default-database-password')
     ```
     ''',
@@ -1062,7 +1062,7 @@ EnvVars = html.Div(children=[
     this is to define the variables on-the-fly when you run `python app.py`.
     That is, instead of running `python app.py`, run:
 
-    ```
+    ```shell
     $ DATABASE_USER=chris DATABASE_PASSWORD=my-password python app.py
     ```
 
@@ -1399,7 +1399,7 @@ def display_instructions(platform):
 
         rc.Markdown(
         '''
-        ```
+        ```shell
         $ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
         ```
         ''',
@@ -1422,7 +1422,7 @@ def display_instructions(platform):
             ```
             ''' if platform == 'Windows' else
             '''
-            ```
+            ```shell
             $ eval "$(ssh-agent -s)"
             ```
             '''),
@@ -1446,7 +1446,7 @@ def display_instructions(platform):
             ```
             ''' if platform == 'Windows' else
             '''
-            ```
+            ```shell
             $ ssh-add -k ~/.ssh/id_rsa
             ```
             '''),
@@ -1865,7 +1865,7 @@ Cli = html.Div(children=[
 
             You can also retrieve a specific piece of service info via flags:
 
-            ```
+            ```shell
             ssh dokku@your-dash-enterprise -p PORT redis:info redis-db --config-dir
             ssh dokku@your-dash-enterprise -p PORT redis:info redis-db --data-dir
             ssh dokku@your-dash-enterprise -p PORT redis:info redis-db --dsn
@@ -3730,7 +3730,7 @@ Git = html.Div(children=[
 
     rc.Markdown(
     '''
-    ```
+    ```shell
     $ git checkout <branchname>
     ```
     ''',

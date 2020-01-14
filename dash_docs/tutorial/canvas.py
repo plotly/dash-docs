@@ -24,7 +24,7 @@ layout = html.Div([
 
     reusable_components.Markdown(
         '''
-        ```
+        ```shell
         pip install dash-canvas=={}
         ```
         '''.format(dash_canvas.__version__),

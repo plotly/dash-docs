@@ -9,7 +9,7 @@ from dash_docs import reusable_components
 
 examples = {
     example: tools.load_example('tutorial/examples/table/{}'.format(example))
-    for example in ['filtering_fe.py', 'filtering_be.py']
+    for example in ['filtering_fe.py', 'filtering_be.py', 'filtering_advanced.py', 'filtering_advanced_derived.py']
 }
 
 layout = html.Div(
@@ -138,12 +138,6 @@ layout = html.Div(
         In the future we may accept any filter strings, to allow you to
         write your own expression query language.
 
-        > Note: we're planning on adding a structured query object
-        > to make it easier and more robust to manage back-end filter logic.
-        > Follow
-        > [dash-table#169](https://github.com/plotly/dash-table/issues/169)
-        > for updates.
-
         Example:
         """)),
 
@@ -156,5 +150,139 @@ layout = html.Div(
             examples['filtering_be.py'][1],
             className='example-container'
         ),
+
+        reusable_components.Markdown("---"),
+
+        reusable_components.Markdown(dedent("""
+        # Advanced filter usage
+
+        Filter queries can be as simple or as complicated as you want
+        them to be. When something is typed into a column filter, it
+        is automatically converted to a filter query on that column
+        only.
+        """)),
+
+        reusable_components.Markdown(
+            examples['filtering_advanced.py'][0],
+            style=styles.code_container
+        ),
+
+        html.Div(
+            examples['filtering_advanced.py'][1],
+            className='example-container'
+        ),
+
+        reusable_components.Markdown(dedent("""
+
+        The `filter_query` property is written to when the user
+        filters the data by using the column filters. For example, if
+        a user types `ge 100000000` in the `pop` column filter, and
+        `Asia` in the `continent` column filter, `filter_query` will
+        look like this:
+
+        >`{pop} ge 100000000 && {continent} contains "Asia"`
+
+        Try typing those values into the column filters in the app
+        above, and ensure that the "Read filter_query" option is
+        selected.
+
+        The `filter_query` property can also be written to. This might
+        be useful when performing more complex filtering,
+        like if you want to filter a column based on two (or more)
+        conditions. For instance, say that we want countries with a
+        population greater than 100 million, but less than 500
+        million. Then our `filter_query` would be as follows:
+
+        >`{pop} ge 100000000 and {pop} le 500000000`
+
+        Select the "Write to filter_query" option in the app above,
+        and try it out by copying and pasting the filter query above
+        into the input box.
+
+        Say that we now want to get a bit more advanced, and
+        cross-filter between columns; for instance, we only want the
+        results that are located in Asia. Now, our filter query
+        becomes:
+
+        >`{pop} ge 100000000 and {pop} le 500000000 and {continent} eq "Asia"`
+
+        We can make the expression even more complex. For example,
+        let's say we want all of those countries with the populations
+        that fall within our boundaries and that are in Asia, but for
+        some reason we also want to include Singapore. This results in
+        a filter query that is a little more long-winded:
+
+        >`(({pop} ge 100000000 and {pop} le 500000000) or {country} eq "Singapore") and {continent} eq "Asia"`
+
+        Note that we've grouped expressions together using
+        parentheses. This is part of the filtering syntax. Just as is
+        true in mathematical expressions, the expressions in the
+        innermost parentheses are evaluated first.
+
+        ## Symbol-based versus letter-based operators
+
+        An important thing to notice is that the two types of
+        relational operators that can be used in the column filters
+        (symbol-based, like `>=`, and letter-based, like `ge`) are not
+        converted into one another when `filter_query` is being
+        constructed from the values in the column filters. Therefore,
+        if using `filter_query` to implement backend filtering, it's
+        necessary to take both of these forms of the
+        "greater-than-or-equal-to" operator into account when parsing
+        the query string (or ensure that the user only uses the ones
+        that the backend can parse).
+
+        However, in the case of the logical operator `and/&&`, when
+        the table is constructing the query string, the symbol-based
+        representation will always be used.
+
+        ## Derived filter query structure
+
+        The `derived_filter_query_structure` prop is a dictionary
+        representation of the query syntax tree. You can use the value
+        of this property to implement backend filtering.
+
+        For a query that describes a relationship between two values,
+        there are three components: the operation, the left-hand side,
+        and the right-hand side. For instance, take the following
+        query:
+
+        >`{pop} ge 100000000`
+
+        The operation here is `ge` (i.e., `>=`), the left-hand side is
+        the field `pop` (corresponding to the column `pop`), and the
+        right-hand side is the value `100000000`. As the queries
+        become increasingly complex, so do the query structures. Try
+        it out by expanding the "Derived filter query structure" in
+        the example app above.
+
+        Note that for all operators, there are two keys `subType` and
+        `value` that correspond to, respectively, the symbol-based
+        representation and the originally inputted representation of
+        the operator. So, in the case of the query above, `subType`
+        will be `>=` and `value` will be `ge `; if our query string
+        were `{pop} >= 100000000` instead, both `subType` and `value`
+        will be `>=`.
+
+        ### Backend filtering with `pandas` and `derived_filter_query_structure`
+
+        It's likely that your data are already in a `pandas`
+        dataframe. Using the `derived_filter_query_structure` in
+        conjunction with `pandas` filters can enable you to do some
+        pretty heavy lifting with the table! You can see an example of
+        this below.
+
+        """)),
+
+        reusable_components.Markdown(
+            examples['filtering_advanced_derived.py'][0],
+            style=styles.code_container
+        ),
+
+        html.Div(
+            examples['filtering_advanced_derived.py'][1],
+            className='example-container'
+        )
+
     ]
 )

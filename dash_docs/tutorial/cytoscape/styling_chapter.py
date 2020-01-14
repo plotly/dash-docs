@@ -219,7 +219,7 @@ layout = html.Div([
     A nice property of the selector is that it can select elements by comparing
     a certain item of the data dictionaries with a given value. Say we have
     some nodes with `id` A to E declared this way:
-    ```
+    ```py
     {'data': {'source': 'A', 'target': 'B', 'weight': 1}}
     ```
     where the `'weight'` key indicates the weight of your edge. You can find
@@ -308,7 +308,7 @@ layout = html.Div([
     reusable_components.Markdown('''
     Comparisons also work for string matching problems. Given the same graph
     as before, but with a data key `'firstname'` for each node:
-    ```
+    ```py
     {'data': {'id': 'A', 'firstname': 'Albert'}}
     ```
     We can select all the elements that match a specific pattern. For instance,
