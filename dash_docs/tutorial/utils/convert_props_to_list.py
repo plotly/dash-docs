@@ -15,7 +15,7 @@ def generate_prop_info(component_name, lib=dcc):
         reusable_components.Markdown(dedent(
             '''
             > Access this documentation in your Python terminal with:
-            > ```
+            > ```shell
             > >>> help({}.{})
             > ```
             '''.format(lib.__name__, component_name)
