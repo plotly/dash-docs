@@ -3,7 +3,7 @@ library(dashCoreComponents)
 library(dashHtmlComponents)
 library(dashTable)
 
-app = Dash$new()
+app <- Dash$new()
 
 #You can download the dataset at 
 #https://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv

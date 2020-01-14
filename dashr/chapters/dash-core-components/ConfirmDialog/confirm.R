@@ -1,4 +1,4 @@
-app = Dash$new()
+app <- Dash$new()
 
 
 app$layout(htmlDiv(list(

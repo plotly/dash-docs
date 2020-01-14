@@ -36,13 +36,6 @@ layout <- htmlDiv(list(
 
                 ```remotes::install_github('plotly/dash-canvas')```
 
-                or on CRAN
-
-                ```install.packages('dashCanvas')```
-
-                The source is on Github at [plotly/dash-canvas](https://github.com/plotly/dash-canvas).
-
-
                 A gallery of examples is hosted [here]( https://dash-canvas.plotly.host/)
 
                 ### DashCanvas: a canvas object for annotations

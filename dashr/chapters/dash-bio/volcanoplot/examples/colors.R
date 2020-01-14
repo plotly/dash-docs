@@ -7,7 +7,7 @@ library(dashCoreComponents)
 app <- Dash$new()
 
 df <- read.csv(
-  file = 'https://raw.githubusercontent.com/plotly/dash-docs/master/assets/sample_data/volcano_data1.csv',
+  file = 'https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/volcano_data1.csv',
   stringsAsFactors = FALSE
 )
 

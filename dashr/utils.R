@@ -6,9 +6,7 @@ LoadExampleCode <- function(filename, wd = NULL) {
   # Take a self-contained DashR example filename,
   # eval it, and return that example's `layout`
   # and the source code.
-
   example.file.as.string <- readChar(filename, file.info(filename)$size);
-
   # modify the example code so that it can run within
   # the context of an already running app
   example.ready.for.eval <- example.file.as.string
@@ -16,7 +14,6 @@ LoadExampleCode <- function(filename, wd = NULL) {
     # set the layout to a variable so that we can access it
     # and return it
     list('app\\$layout\\(', 'layout <- htmlDiv\\('),
-
     # Since app is in the namespace from the `app.R` import,
     # it will implicity be picked up by the
     # `eval` call below
@@ -30,23 +27,17 @@ LoadExampleCode <- function(filename, wd = NULL) {
       example.ready.for.eval
     )
   }
-
   example.ready.for.eval <- paste(unlist(strsplit(example.ready.for.eval, "\r")), collapse = " ")
-
   if(!is.null(wd)) {
-
     currentWd <- getwd()
     newWd <- paste(c(currentWd, wd),collapse =  "/")
-
     example.ready.for.eval <- paste(c("setwd(newWd)",
                                       example.ready.for.eval,
                                       "setwd(currentWd)"),
                                     collapse = "\n")
   }
-
   # run the example and implicitly assign the `layout` variable
   eval(parse(text=example.ready.for.eval))
-
   list(
     layout=htmlDiv(
       className='example-container', children=layout,
@@ -118,6 +109,7 @@ propsToList <- function(componentName) {
                          function(x) x[x != "\n"])
 
   # Extract the prop metadata for tabulation  
+                         
   props_as_list <- invisible(sapply(list_of_args, function(x) {
     if (any(sapply(x, is.list))) {
       all_types <- paste("List of numerics",
@@ -164,26 +156,7 @@ generate_table <- function(df, nrows=10) {
   )
 }
 
-# Delete below function? Any issues with above function? (None for Aanika!)
-
-# generate_props_table <- function(df) {
-#   return(
-#     dashDataTable(
-#       id = 'table',
-#       columns = lapply(colnames(df), function(x) {
-#         list(name = x, id = x)
-#       }),
-#       data = setNames(lapply(split(df, seq(nrow(df))), FUN = function (x) {as.list(x)}), NULL),
-#       style_as_list_view = TRUE,
-#       style_data = list('whiteSpace' = 'normal'),
-#       style_cell = list(
-#         'whiteSpace'= 'no-wrap',
-#         'overflow'='inherit',
-#         'textOverflow'= 'inherit',
-#         'textAlign' = 'left'
-#       ),
-#       style_header = (list("fontWeight"="bold", "text-transform"="capitalize"))
-#
-#     )
-#   )
-# }
+filter_null <- function (x) {
+  x[x %>% map_lgl(is.null)] <- NULL
+  x
+}

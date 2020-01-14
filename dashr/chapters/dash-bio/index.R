@@ -290,7 +290,7 @@ app$callback(
 library(dashBio)
 library(readr)
 
-data = read_file("https://raw.githubusercontent.com/plotly/dash-docs/master/assets/sample_data/alignment_viewer_p53.fasta")
+data = read_file("https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/alignment_viewer_p53.fasta")
 
 dashbioAlignmentChart(
 id = "my-dashbio-alignmentchart",
@@ -306,7 +306,7 @@ data = data
 library(dashBio)
 library(readr)
 
-data = read_file("https://raw.githubusercontent.com/plotly/dash-docs/master/assets/sample_data/alignment_viewer_p53.fasta")
+data = read_file("https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/alignment_viewer_p53.fasta")
 
 dashbioAlignmentChart(
 id = "my-dashbio-alignmentchart",
@@ -339,7 +339,7 @@ library(dashBio)
 library(readr)
 library(jsonlite)
 
-data <- "https://raw.githubusercontent.com/plotly/dash-docs/master/assets/sample_data/circos_graph_data.json"
+data <- "https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/circos_graph_data.json"
 
 circos_graph_data = read_json(data)
 
@@ -378,7 +378,7 @@ library(dashBio)
 library(readr)
 library(jsonlite)
 
-data <- "https://raw.githubusercontent.com/plotly/dash-docs/master/assets/sample_data/circos_graph_data.json"
+data <- "https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/circos_graph_data.json"
 
 circos_graph_data = read_json(data)
 
@@ -428,7 +428,7 @@ app$callback(
 library(dashBio)
 library(dashCoreComponents)
 
-df = read.table("https://raw.githubusercontent.com/plotly/dash-docs/master/assets/sample_data/clustergram_mtcars.tsv",
+df = read.table("https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/clustergram_mtcars.tsv",
                   skip = 4, sep ="\t",  row.names = 1, header = TRUE)
 
 dccGraph(figure = heatmaply(df,
@@ -453,7 +453,7 @@ dccGraph(figure = heatmaply(df,
 library(dashBio)
 library(dashCoreComponents)
 
-df = read.table("https://raw.githubusercontent.com/plotly/dash-docs/master/assets/sample_data/clustergram_mtcars.tsv",
+df = read.table("https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/clustergram_mtcars.tsv",
                   skip = 4, sep ="\t",  row.names = 1, header = TRUE)
 
 dccGraph(figure = heatmaply(df,
@@ -533,7 +533,7 @@ app$callback(
           '
 library(dashBio)
 
-data = read.table("https://raw.githubusercontent.com/plotly/dash-docs/master/assets/sample_data/manhattan_data.csv",
+data = read.table("https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/manhattan_data.csv",
                      header = TRUE, sep = ",")
 
 dccGraph(figure = dashbioManhattan(
@@ -550,7 +550,7 @@ dccGraph(figure = dashbioManhattan(
           dccMarkdown('```r
 library(dashBio)
 
-data = read.table("https://raw.githubusercontent.com/plotly/dash-docs/master/assets/sample_data/manhattan_data.csv",
+data = read.table("https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/manhattan_data.csv",
                      header = TRUE, sep = ",")
 
 dccGraph(figure = dashbioManhattan(
@@ -681,7 +681,7 @@ app$callback(
 library(dashBio)
 library(jsonlite)
 
-mdata = read_json("https://raw.githubusercontent.com/plotly/dash-docs/master/assets/sample_data/needle_PIK3CA.json")
+mdata = read_json("https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/needle_PIK3CA.json")
 
 dashbioNeedlePlot(
 id = "my-dashbio-needleplot",
@@ -699,7 +699,7 @@ mutationData = mdata
 library(dashBio)
 library(jsonlite)
 
-mdata = read_json("https://raw.githubusercontent.com/plotly/dash-docs/master/assets/sample_data/needle_PIK3CA.json")
+mdata = read_json("https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/needle_PIK3CA.json")
 
 dashbioNeedlePlot(
 id = "my-dashbio-needleplot",
@@ -729,7 +729,7 @@ app$callback(
 library(dashBio)
 library(jsonlite)
 
-data = read_json("https://raw.githubusercontent.com/plotly/dash-docs/master/assets/sample_data/oncoprint_dataset3.json")
+data = read_json("https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/oncoprint_dataset3.json")
 
 dashbioOncoPrint(
 id = "my-dashbio-oncoprint",
@@ -747,7 +747,7 @@ data = data
 library(dashBio)
 library(jsonlite)
 
-data = read_json("https://raw.githubusercontent.com/plotly/dash-docs/master/assets/sample_data/oncoprint_dataset3.json")
+data = read_json("https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/oncoprint_dataset3.json")
 
 dashbioOncoPrint(
 id = "my-dashbio-oncoprint",
@@ -854,7 +854,7 @@ importSpeck <- function(filepath,
 }
 
 
-data <- importSpeck("https://raw.githubusercontent.com/plotly/dash-docs/master/assets/sample_data/speck_methane.xyz")
+data <- importSpeck("https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/speck_methane.xyz")
 
 dashbioSpeck(
   id = "my-speck",
@@ -890,7 +890,7 @@ importSpeck <- function(filepath,
 }
 
 
-data <- importSpeck("https://raw.githubusercontent.com/plotly/dash-docs/master/assets/sample_data/speck_methane.xyz")
+data <- importSpeck("https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/speck_methane.xyz")
 
 dashbioSpeck(
   id = "my-speck",
@@ -921,7 +921,7 @@ app$callback(
 library(dashBio)
 library(dashCoreComponents)
 
-data = read.table("https://raw.githubusercontent.com/plotly/dash-docs/master/assets/sample_data/volcano_data1.csv",
+data = read.table("https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/volcano_data1.csv",
                      header = TRUE, sep = ",")
 
 dccGraph(figure = dashbioVolcano(
@@ -941,7 +941,7 @@ dccGraph(figure = dashbioVolcano(
 library(dashBio)
 library(dashCoreComponents)
 
-data = read.table("https://raw.githubusercontent.com/plotly/dash-docs/master/assets/sample_data/volcano_data1.csv",
+data = read.table("https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/volcano_data1.csv",
                      header = TRUE, sep = ",")
 
 dccGraph(figure = dashbioVolcano(

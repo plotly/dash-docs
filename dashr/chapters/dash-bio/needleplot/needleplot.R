@@ -41,7 +41,7 @@ needleStyle <- htmlDiv(list(
     '
 library(dashBio)
 
-data = read_json("https://raw.githubusercontent.com/plotly/dash-docs/master/assets/sample_data/needle_PIK3CA.json")
+data = read_json("https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/needle_PIK3CA.json")
 
 dashbioNeedlePlot(
   mutationData = data,
@@ -64,7 +64,7 @@ domainStyle <- htmlDiv(list(
     '
 library(dashBio)
 
-data = read_json("https://raw.githubusercontent.com/plotly/dash-docs/master/assets/sample_data/needle_PIK3CA.json")
+data = read_json("https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/needle_PIK3CA.json")
 
 dashbioNeedlePlot(
   mutationData = data,

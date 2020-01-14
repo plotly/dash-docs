@@ -2,7 +2,7 @@ library(dashCoreComponents)
 library(dashHtmlComponents)
 library(dash)
 
-app = Dash$new()
+app <- Dash$new()
 
 app$layout(htmlDiv(list(
   # The memory store reverts to the default on every page refresh

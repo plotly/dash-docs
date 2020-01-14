@@ -5,7 +5,7 @@ library(dashCoreComponents)
 library(dashBio)
 library(jsonlite)
 
-model_data <- read_json("https://raw.githubusercontent.com/plotly/dash-docs/master/assets/sample_data/mol2d_buckminsterfullerene.json")
+model_data <- read_json("https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/mol2d_buckminsterfullerene.json")
 
 
 app <- Dash$new()
@@ -39,4 +39,4 @@ app$callback(
   }
 )
 
-app$run_server(showcase = TRUE)
+app$run_server()

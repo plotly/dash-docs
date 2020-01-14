@@ -116,4 +116,4 @@ layout <- htmlDiv(list(
   dccMarkdown("[Back to the Table of Contents](/)")
 ))
 
-#app$run_server(showcase = TRUE)
+#app$run_server()

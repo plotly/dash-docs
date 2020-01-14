@@ -23,7 +23,7 @@ importSpeck <- function(filepath,
 }
 
 
-data <- importSpeck("https://raw.githubusercontent.com/plotly/dash-docs/master/assets/sample_data/speck_methane.xyz")
+data <- importSpeck("https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/speck_methane.xyz")
 
 app$layout(htmlDiv(list(
   dccDropdown(

@@ -5,8 +5,8 @@ library(dashTable)
 
 utils <- new.env()
 source('dashr/utils.R', local=utils)
-components <- new.env()
-source('dashr/components.R', local=components)
+#components <- new.env()
+#source('dashr/components.R', local=components)
 
 examples <- list(
   quickStart = utils$LoadExampleCode('dashr/chapters/dash-datatable/examples/quickStart.R')

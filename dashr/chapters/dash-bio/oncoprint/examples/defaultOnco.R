@@ -8,7 +8,7 @@ library(dashBio)
 app <- Dash$new()
 
 
-data = read_json("https://raw.githubusercontent.com/plotly/dash-docs/master/assets/sample_data/oncoprint_dataset3.json")
+data = read_json("https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/oncoprint_dataset3.json")
 
 
 app$layout(htmlDiv(list(

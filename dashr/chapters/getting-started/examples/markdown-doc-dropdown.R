@@ -48,3 +48,13 @@ dccDropdown(id=NULL,
 | style             |
 ```
 "
+
+app$layout(
+  htmlDiv(
+    list(
+      dccMarkdown(children=markdown_text)
+    )
+  )
+)
+
+app$run_server()

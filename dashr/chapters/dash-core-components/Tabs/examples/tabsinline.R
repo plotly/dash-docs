@@ -2,7 +2,7 @@ library(dashCoreComponents)
 library(dashHtmlComponents)
 library(dash)
 
-app = Dash$new()
+app <- Dash$new()
 
 tabs_styles = list(
   'height'= '44px'

@@ -41,7 +41,7 @@ selectedAtom <- htmlDiv(list(
     '
 library(dashBio)
 
-model_data <- read_json("https://raw.githubusercontent.com/plotly/dash-docs/master/assets/sample_data/mol2d_buckminsterfullerene.json")
+model_data <- read_json("https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/mol2d_buckminsterfullerene.json")
 
 dashbioMolecule2dViewer(
         modelData = model_data,
@@ -58,7 +58,7 @@ modelData <- htmlDiv(list(
     '
 library(dashBio)
 
-model_data <- read_json("https://raw.githubusercontent.com/plotly/dash-docs/master/assets/sample_data/mol2d_buckminsterfullerene.json")
+model_data <- read_json("https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/mol2d_buckminsterfullerene.json")
 
 for (node in model_data$nodes) {
     node$atom <- "N"

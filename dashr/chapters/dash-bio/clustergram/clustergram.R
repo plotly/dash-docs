@@ -47,7 +47,7 @@ library(dashBio)
 library(heatmaply)
 library(data.table)
 
-df = read.table("https://raw.githubusercontent.com/plotly/dash-docs/master/assets/sample_data/clustergram_mtcars.tsv",
+df = read.table("https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/clustergram_mtcars.tsv",
                         skip = 4, sep ="\t",  row.names = 1, header = TRUE)
 
 dccGraph(figure = heatmaply(df,
@@ -80,7 +80,7 @@ library(dashBio)
 library(heatmaply)
 library(data.table)
 
-df = read.table("https://raw.githubusercontent.com/plotly/dash-docs/master/assets/sample_data/clustergram_mtcars.tsv",
+df = read.table("https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/clustergram_mtcars.tsv",
                         skip = 4, sep ="\t",  row.names = 1, header = TRUE)
 
 # The following is a color palette.
@@ -117,7 +117,7 @@ library(dashBio)
 library(heatmaply)
 library(data.table)
 
-df = read.table("https://raw.githubusercontent.com/plotly/dash-docs/master/assets/sample_data/clustergram_mtcars.tsv",
+df = read.table("https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/clustergram_mtcars.tsv",
                         skip = 4, sep ="\t",  row.names = 1, header = TRUE)
 
 dccGraph(figure = heatmaply(df,
@@ -150,7 +150,7 @@ library(dashBio)
 library(heatmaply)
 library(data.table)
 
-df = read.table("https://raw.githubusercontent.com/plotly/dash-docs/master/assets/sample_data/clustergram_mtcars.tsv",
+df = read.table("https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/clustergram_mtcars.tsv",
                         skip = 4, sep ="\t",  row.names = 1, header = TRUE)
 
 dccGraph(figure = heatmaply(df,
@@ -181,7 +181,7 @@ library(dashBio)
 library(heatmaply)
 library(data.table)
 
-df = read.table("https://raw.githubusercontent.com/plotly/dash-docs/master/assets/sample_data/clustergram_mtcars.tsv",
+df = read.table("https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/clustergram_mtcars.tsv",
                         skip = 4, sep ="\t",  row.names = 1, header = TRUE)
 
 

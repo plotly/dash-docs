@@ -13,16 +13,16 @@ own machine. To share a Dash app, you need to 'deploy' your Dash app to a
 server and open up the server's firewall to the public or to a restricted
 set of IP addresses.
 
-## Dash Deployment Server
+## Dash Enterprise 
 
-[Dash Deployment Server](https://plot.ly/dash/pricing/?_ga=2.218363033.1075922756.1562168385-916141078.1562168385) is Plotly's commercial product for deploying Dash
+[Dash Enterprise](https://plot.ly/dash/pricing/?_ga=2.249471751.1080104966.1578062860-1986131108.1567098614) is Plotly's commercial product for deploying Dash
 Apps on your company's servers or on AWS, Google Cloud, or Azure. It
 offers an enterprise-wide Dash App Portal, easy git-based deployment,
 automatic URL namespacing, built-in SSL support, LDAP authentication, and
-more. [Learn more about Dash Deployment Server](https://plot.ly/dash/pricing?_ga=2.218363033.1075922756.1562168385-916141078.1562168385) or [get in touch to start a
-trial](https://plotly.typeform.com/to/rkO85m?_ga=2.17487673.1075922756.1562168385-916141078.1562168385).
+more. [Learn more about Dash Enterprise](https://plot.ly/dash/pricing?_ga=2.249471751.1080104966.1578062860-1986131108.1567098614) or [get in touch to start a
+trial](https://go.plot.ly/dash-doc?_ga=2.48144423.1080104966.1578062860-1986131108.1567098614).
 
-For existing customers, see the [Dash Deployment Server Documentation](https://dash.plot.ly/dash-deployment-server).
+For existing customers, see the [Dash Enterprise Documentation](https://dash.plot.ly/dash-enterprise).
 
 ## Dash and Fiery
 
@@ -39,7 +39,10 @@ The underlying Fiery app is available at `app`, that is:
 
 Heroku is one of the easiest platforms for deploying and managing public web applications.
 
-Here is a simple example. This example requires a Heroku account and `git`.
+Here is a simple example. This example requires a Heroku account and `git`. We currently recommend using a Dockerfile-based
+approach when deploying Dash for R applications to Heroku. You may use our base image (as below), or supply your own.
+
+For more information about this deployment method, [please consult the Heroku documentation](https://devcenter.heroku.com/articles/build-docker-images-heroku-yml).
 
 ---
 
@@ -60,7 +63,7 @@ Step 2. Initialize the folder with `git`
 
 ---
 
-Step 3. Initialize the folder with a sample app (app.R), a .gitignore file, requirements.txt, and a Procfile for deployment
+Step 3. Initialize the folder with a sample app (`app.R`), a `.gitignore` file, `Dockerfile`, `heroku.yml` for deployment
 
 Create the following files in your project folder:
 
@@ -107,73 +110,66 @@ Create the following files in your project folder:
 
 ---
 
-**`Procfile`**
+**`Dockerfile`**
 
 ```
-    web: R -f /app/app.R
+FROM plotly/heroku-docker-r:3.6.2_heroku18
+
+# on build, copy application files
+COPY . /app/
+              
+# for installing additional dependencies etc.
+RUN if [ -f '/app/onbuild' ]; then bash /app/onbuild; fi; 
+              
+# look for /app/apt-packages and if it exists, install the packages contained
+RUN if [ -f '/app/apt-packages' ]; then apt-get update -q && cat apt-packages | xargs apt-get -qy install && rm -rf /var/lib/apt/lists/*; fi;              
+
+# look for /app/init.R and if it exists, execute it
+RUN if [ -f '/app/init.R' ]; then /usr/bin/R --no-init-file --no-save --quiet --slave -f /app/init.R; fi; 
+              
+CMD cd /app && /usr/bin/R --no-save -f /app/run.R
+```
+
+---
+
+**`heroku.yml`**
+```
+build:
+  docker:
+    web: Dockerfile
 ```
 
 ---
 
 **`init.R`**
 
-`init.R` describes your R dependencies. A suggested initial
-configuration is below; this avoids compilation issues with
-`httpuv` on `heroku-16` by pinning package versions.
+`init.R` describes your R dependencies. Here is an example script. It's fairly trivial to
+install packages from both CRAN mirrors and GitHub repositories:
 
 ```r
-    # R script to run author supplied code, typically used to install additional R packages
-    # contains placeholders which are inserted by the compile script
-    # NOTE: this script is executed in the chroot context; check paths!
-    r <- getOption('repos')
-    r['CRAN'] <- 'http://cloud.r-project.org'
-    options(repos=r)
-
-    # packages go here
-    install.packages('remotes')
-
-    # installs Rcpp, rlang, BH
-    install.packages('later')
-
-    install.packages('jsonlite')
-    install.packages('listenv')
-
-    # installs magrittr, promises, R6
-    remotes::install_version('httpuv', version = '1.4.5.1', repos = 'http://cloud.r-project.org', upgrade='never')
-
-    # installs crayon, digest, htmltools, mime, sourcetools, xtable
-    remotes::install_version('shiny', version = '1.2.0', repos = 'http://cloud.r-project.org', upgrade='never')
-
-    # installs askpass, assertthat, base64enc, cli, colorspace, crosstalk, curl, data.table, dplyr, fansi, ggplot2, glue, gtable, hexbin, htmlwidgets, httr, labeling, lattice, lazyeval, mgcv, munsell, nlme, openssl, pillar, pkgconfig, plogr, plyr, purrr, RColorBrewer, reshape2, scales, stringi, stringr, sys, tibble, tidyr, tidyselect, utf8, viridisLite, withr, yaml
-    remotes::install_version('plotly', version = '4.9.0', repos = 'http://cloud.r-project.org', upgrade='never')
-
-    install.packages('https://cloud.r-project.org/src/contrib/assertthat_0.2.1.tar.gz', type='source', repos=NULL)
-    install.packages('https://cloud.r-project.org/src/contrib/xml2_1.2.0.tar.gz', type='source', repos=NULL)
-    install.packages('https://cloud.r-project.org/src/contrib/triebeard_0.3.0.tar.gz', type='source', repos=NULL)
-    install.packages('https://cloud.r-project.org/src/contrib/Archive/urltools/urltools_1.7.2.tar.gz', type='source', repos=NULL)
-    install.packages('https://cloud.r-project.org/src/contrib/jsonlite_1.6.tar.gz', type='source', repos=NULL)
-    install.packages('https://cloud.r-project.org/src/contrib/webutils_0.6.tar.gz', type='source', repos=NULL)
-    install.packages('https://cloud.r-project.org/src/contrib/brotli_1.2.tar.gz', type='source', repos=NULL)
-    install.packages('https://cloud.r-project.org/src/contrib/reqres_0.2.2.tar.gz', type='source', repos=NULL)
-    install.packages('https://cloud.r-project.org/src/contrib/uuid_0.1-2.tar.gz', type='source', repos=NULL)
-    install.packages('https://cloud.r-project.org/src/contrib/base64enc_0.1-3.tar.gz', type='source', repos=NULL)
-    install.packages('https://cloud.r-project.org/src/contrib/codetools_0.2-16.tar.gz', type='source', repos=NULL)
-    install.packages('https://cloud.r-project.org/src/contrib/globals_0.12.4.tar.gz', type='source', repos=NULL)
-    install.packages('https://cloud.r-project.org/src/contrib/Archive/future/future_1.11.1.1.tar.gz', type='source', repos=NULL)
-
-    # fiery and friends
-    install.packages('https://cloud.r-project.org/src/contrib/routr_0.3.0.tar.gz', type='source', repos=NULL)
-    install.packages('https://cloud.r-project.org/src/contrib/fiery_1.1.1.tar.gz', type='source', repos=NULL)
-
-    remotes::install_github('plotly/dashR', dependencies=FALSE)
+# R script to run author supplied code, typically used to install additional R packages
+# contains placeholders which are inserted by the compile script
+              # NOTE: this script is executed in the chroot context; check paths!
+              
+              r <- getOption('repos')
+              r['CRAN'] <- 'http://cloud.r-project.org'
+              options(repos=r)
+              
+              # ======================================================================
+              
+              # packages go here
+              install.packages('remotes')
+              
+              remotes::install_github('plotly/dashR', upgrade=TRUE)
+              install.packages('manhattanly')
 ```
 
 ---
 
-**`Aptfile`**
+**`apt-packages`**
 
-`Aptfile` describes system-level dependencies. A suggested
-initial configuration is below; add Ubuntu package names as
+`apt-packages` describes system-level dependencies. A suggested
+initial configuration is below; add Debian/Ubuntu package names as
 needed for your applications.
 
 ```
@@ -187,6 +183,7 @@ needed for your applications.
 
 ```
     $ heroku create my-dash-app # change my-dash-app to a unique name
+    $ heroku stack:set container # use container as the stack type
     $ git add . # add all files to git
     $ git commit -m 'Initial app boilerplate'
     $ git push heroku master # deploy code to heroku
@@ -208,8 +205,8 @@ When you modify app.R with your own code, you will need to add the changes to gi
     $ git push heroku master
 ```
 
-This workflow for deploying apps on heroku is very similar to how deployment works with the Plotly Enterprise's
-Dash Deployment Server. [Learn more](https://plot.ly/dash/pricing/?_ga=2.176345125.1075922756.1562168385-916141078.1562168385) or [get in touch](https://plotly.typeform.com/to/rkO85m?_ga=2.176345125.1075922756.1562168385-916141078.1562168385).
+This workflow for deploying apps on Heroku is analogous to how deployment works with Plotly's Enterprise offering. 
+[Learn more](https://plot.ly/dash/pricing/?_ga=2.176345125.1075922756.1562168385-916141078.1562168385) or [get in touch](https://plotly.typeform.com/to/rkO85m?_ga=2.176345125.1075922756.1562168385-916141078.1562168385).
 
   "),
 htmlHr(),

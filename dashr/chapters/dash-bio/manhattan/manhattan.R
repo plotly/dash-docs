@@ -41,7 +41,7 @@ lineColors <- htmlDiv(list(
     '
 library(dashBio)
 
-data = read.table("https://raw.githubusercontent.com/plotly/dash-docs/master/assets/sample_data/manhattan_data.csv",
+data = read.table("https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/manhattan_data.csv",
                   header = TRUE, sep = ",")
 
 dccGraph(
@@ -62,7 +62,7 @@ highlightedPoints <- htmlDiv(list(
     '
 library(dashBio)
 
-data = read.table("https://raw.githubusercontent.com/plotly/dash-docs/master/assets/sample_data/manhattan_data.csv",
+data = read.table("https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/manhattan_data.csv",
                   header = TRUE, sep = ",")
 
 dccGraph(

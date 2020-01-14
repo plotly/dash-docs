@@ -10,7 +10,7 @@ examples <- list(
   tabs = utils$LoadExampleCode('dashr/chapters/dash-core-components/Tabs/examples/tabs.R')
 )
 
-app = Dash$new()
+app <- Dash$new()
 
 app$layout(htmlDiv(list(
   htmlH1('Dash Tabs component demo'),

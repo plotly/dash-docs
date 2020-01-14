@@ -54,7 +54,7 @@ speckRender <- htmlDiv(list(
     '
 library(dashBio)
 
-data <- importSpeck("https://raw.githubusercontent.com/plotly/dash-docs/master/assets/sample_data/speck_methane.xyz")
+data <- importSpeck("https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/speck_methane.xyz")
 
 dashbioSpeck(
   data = data,
@@ -78,7 +78,7 @@ scrollZoom <- htmlDiv(list(
     '
 library(dashBio)
 
-data <- importSpeck("https://raw.githubusercontent.com/plotly/dash-docs/master/assets/sample_data/speck_methane.xyz")
+data <- importSpeck("https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/speck_methane.xyz")
 
 dashbioSpeck(
   data = data,

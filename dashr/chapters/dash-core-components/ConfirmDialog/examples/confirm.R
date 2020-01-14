@@ -2,7 +2,7 @@ library(dashCoreComponents)
 library(dashHtmlComponents)
 library(dash)
 
-app = Dash$new()
+app <- Dash$new()
 
 app$layout(
   htmlDiv(

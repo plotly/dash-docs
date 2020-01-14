@@ -2,9 +2,7 @@ library(dash)
 library(dashCoreComponents)
 library(dashHtmlComponents)
 
-app <- Dash$new(
-  external_stylesheets=list('https://codepen.io/chriddyp/pen/bWLwgP.css')
-)
+app <- Dash$new()
 
 app$layout(htmlDiv(list(
   dccDropdown(
@@ -20,4 +18,4 @@ app$layout(htmlDiv(list(
   htmlDiv(id="output-container")
 )))
 
-# app$run_server()
+app$run_server()

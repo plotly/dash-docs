@@ -127,12 +127,8 @@ htmlDiv(list(utils$LoadAndDisplayComponent2(
   '
 library(dashCoreComponents)
 dccRangeSlider(
-  marks = as.list(
-    setNames(
-      lapply(-5:6, function(x) paste("Label", x)),
-      -5:6
-    )
-  ),
+  marks = setNames(lapply(-5:6, function(x) 
+    paste("Label", x)), as.character(-5:6)),
   min = -5,
   max = 6,
   value = list(-3,4)

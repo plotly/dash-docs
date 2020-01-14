@@ -4,9 +4,7 @@ library(dashCoreComponents)
 library(dashTable)
 library(jsonlite)
 
-external_stylesheets <- list('https://codepen.io/chriddyp/pen/bWLwgP.css')
-
-app <- Dash$new(external_stylesheets = external_stylesheets)
+app <- Dash$new()
 
 app$layout(
   htmlDiv(

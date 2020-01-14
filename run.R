@@ -3,6 +3,7 @@ library(dash)
 library(dashCoreComponents)
 library(dashHtmlComponents)
 library(jsonlite)
+library(stringr)
 
 components <- new.env()
 source('dashr/components.R', local=components)
@@ -193,6 +194,8 @@ chapters.deployment <- new.env()
 source('dashr/chapters/deployment/index.R', local=chapters.deployment)
 chapters.urls <- new.env()
 source('dashr/chapters/urls/index.R', local=chapters.urls)
+chapters.devtools <- new.env()
+source('dashr/chapters/devtools/index.R', local=chapters.devtools)
 
 header <- htmlDiv(
   className = 'header',
@@ -336,6 +339,7 @@ app$callback(
       # Beyond the Basics
       '/external-resources' = return(chapters.external_resources$layout),
       '/urls' = return(chapters.urls$layout),
+      '/devtools' = return(chapters.devtools$layout),      
       '/support' = return(chapters.support$layout),
       '/plugins' = return(chapters.plugins$layout),
       '/d3-react-components' = return(chapters.d3$layout),
@@ -453,7 +457,7 @@ app$callback(
                 components$Chapter(
                 'Dash Cytoscape',
                 href='/cytoscape',
-                caption="(New! Released Feb 5, 2019) Dash Cytoscape is our new network visualization component. It offers a declarative and
+                caption="Dash Cytoscape is our new network visualization component. It offers a declarative and
                 user-friendly R interface to create beautiful, customizable, interactive and reactive graphs."
                 ),
                 components$Chapter(
@@ -499,6 +503,11 @@ app$callback(
                 'URL Routing & Multiple Apps',
                 href='/urls',
                 caption="Dash provides two components (`dccLink` and `dccLocation`) that allow you to easily make fast multipage apps using its own \"Single Page App (SPA)\" design pattern."
+                ),
+                components$Chapter(
+                'Dev tools',
+                href='/devtools',
+                caption="Dash dev tools reference"
                 )
               )
             ),
@@ -556,4 +565,4 @@ app$callback(
   }
 )
 
-app$run_server(host = "0.0.0.0", port = Sys.getenv('PORT', 8050))
+app$run_server(host = "0.0.0.0", port = Sys.getenv('PORT'))

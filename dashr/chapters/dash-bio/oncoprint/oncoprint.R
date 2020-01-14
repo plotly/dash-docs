@@ -41,7 +41,7 @@ oncoColors <- htmlDiv(list(
     '
 library(dashBio)
 
-data = read_json("https://raw.githubusercontent.com/plotly/dash-docs/master/assets/sample_data/oncoprint_dataset3.json")
+data = read_json("https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/oncoprint_dataset3.json")
 
 dashbioOncoPrint(
   data = data,
@@ -63,7 +63,7 @@ oncoSize <- htmlDiv(list(
     '
 library(dashBio)
 
-data = read_json("https://raw.githubusercontent.com/plotly/dash-docs/master/assets/sample_data/oncoprint_dataset3.json")
+data = read_json("https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/oncoprint_dataset3.json")
 
 dashbioOncoPrint(
   data = data,
@@ -82,7 +82,7 @@ oncoLegend <- htmlDiv(list(
     '
 library(dashBio)
 
-data = read_json("https://raw.githubusercontent.com/plotly/dash-docs/master/assets/sample_data/oncoprint_dataset3.json")
+data = read_json("https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/oncoprint_dataset3.json")
 
 dashbioOncoPrint(
   data=data,

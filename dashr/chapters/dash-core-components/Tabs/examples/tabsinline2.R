@@ -2,7 +2,7 @@ library(dashCoreComponents)
 library(dashHtmlComponents)
 library(dash)
 
-app = Dash$new()
+app <- Dash$new()
 
 app$layout(htmlDiv(list(
   dccTabs(id="tabs-styled-with-props", value='tab-1', children=list(

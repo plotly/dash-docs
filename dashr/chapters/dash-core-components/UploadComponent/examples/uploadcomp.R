@@ -3,7 +3,7 @@ library(dashHtmlComponents)
 library(dash)
 library(anytime)
 
-app = Dash$new()
+app <- Dash$new()
 
 app$layout(htmlDiv(list(
   dccUpload(

@@ -44,7 +44,7 @@ library(dashBio)
 library(readr)
 library(jsonlite)
 
-data <- "https://raw.githubusercontent.com/plotly/dash-docs/master/assets/sample_data/circos_graph_data.json"
+data <- "https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/circos_graph_data.json"
 
 circos_graph_data = read_json(data)
 

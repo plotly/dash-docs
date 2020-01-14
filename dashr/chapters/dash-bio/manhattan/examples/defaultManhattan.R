@@ -1,34 +1,22 @@
-
 library(dashBio)
 library(data.table)
 
 app <- Dash$new()
 
-data = read.table("https://raw.githubusercontent.com/plotly/dash-docs/master/assets/sample_data/manhattan_data.csv",
+data = read.table("https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/manhattan_data.csv",
                   header = TRUE, sep = ",")
 
-
-
 genMark <- function(n){
-
   l <- list(sprintf('%s', n))
-
   names(l) <- 'label'
-
   return(l)
-
 }
 
 genMarks <- function(min, max, by){
-
   s <- seq(from=min, to=max, by)
-
   l <- lapply(s, genMark)
-
   names(l) <- s
-
   return(l)
-
 }
 
 app$layout(htmlDiv(list(
@@ -70,4 +58,4 @@ app$callback(
     }
   )
 
-app$run_server(showcase = TRUE)
+app$run_server()
