@@ -252,7 +252,7 @@ dcc.Graph(
 
     - How to preserve the UI state (zoom level etc.) of a Graph when updating the Graph in a callback
     https://community.plot.ly/t/preserving-ui-state-like-zoom-in-dcc-graph-with-uirevision/15793
-    - Graph transitions for smooth transitions on Graph updates
+    - Graph transitions for smooth transitions or animations on Graph updates
     https://community.plot.ly/t/exploring-a-transitions-api-for-dcc-graph/15468
     """),
     html.H3('Graph Properties'),
