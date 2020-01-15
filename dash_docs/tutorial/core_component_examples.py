@@ -192,7 +192,8 @@ Graph = html.Div(children=[
             1. Learn the architecture of the `figure`: https://plot.ly/python/creating-and-updating-figures/
             2. Every chart type has a set of examples at a unique URL.
             Familarize yourself with the structure of these pages. Google is your friend.
-            "Plotly Python Histogram Charts" at https://plot.ly/python/histogram
+            For example "Plotly Python Histogram Charts" is documented at
+            https://plot.ly/python/histogram
             3. Plotly Express is the recommended high-level interface.
             Understand where it fits in by reading 1.
             Once you understand its structure, you can see all of the arguments in the
@@ -214,35 +215,6 @@ Graph = html.Div(children=[
         or inline directly in your environment). To see all of these rendering
         environments, see https://plot.ly/python/renderers/.
     """),
-    html.H2('Examples'),
-    html.P("An example of a basic slider tied to a callback."),
-    ComponentBlock('''import dash_core_components as dcc
-
-dcc.Graph(
-        id='example-graph',
-        figure={
-            'data': [
-                {'x': [1, 2, 3], 'y': [4, 1, 2], 'type': 'bar', 'name': 'SF'},
-                {'x': [1, 2, 3], 'y': [2, 4, 5], 'type': 'bar', 'name': u'Montréal'},
-            ],
-            'layout': {
-                'title': 'Dash Data Visualization'
-            }
-        }
-    )
-''', style=styles.code_container),
-    html.P("An example of a basic slider tied to a callback."),
-    ComponentBlock('''import dash_core_components as dcc
-
-import plotly.express as px
-fig = px.bar(x=[1, 2, 3], y=[4, 1, 2], title='Simple graph with plotly express')
-dcc.Graph(
-        id='example-graph',
-        figure=fig
-    )
-''', style=styles.code_container),
-
-
 
     html.H2('Interactive Graphing'),
     reusable_components.Markdown("""
