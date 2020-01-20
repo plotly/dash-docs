@@ -174,6 +174,91 @@ dcc.Dropdown(
     generate_prop_info('Dropdown')
 ])
 
+# Graph
+Graph = html.Div(children=[
+    html.H1('Graph Examples and Reference'),
+    html.Hr(),
+    reusable_components.Markdown("""
+    A Graph component. Graph can be used to render any plotly-powered data visualization,
+    passed as the `figure` argument.
+    """),
+    html.H2('Primer on Plotly Graphing Library'),
+    reusable_components.Markdown("""
+        - The [**Plotly Graphing Library**](https://plot.ly/python),
+        known as the package package `plotly`, generates "figures".
+        These are used in `dcc.Graph` with e.g. `dcc.Graph(figure=fig)`
+        with `fig` a plotly figure.
+        - **To get started with plotly**, learn how its documentation is organized:
+            1. Learn the architecture of the `figure`: https://plot.ly/python/creating-and-updating-figures/
+            2. Every chart type has a set of examples at a unique URL.
+            Familarize yourself with the structure of these pages. Google is your friend.
+            For example "Plotly Python Histogram Charts" is documented at
+            https://plot.ly/python/histogram
+            3. Plotly Express is the recommended high-level interface.
+            Understand where it fits in by reading 1.
+            Once you understand its structure, you can see all of the arguments in the
+            "API Reference" page documented here: https://plot.ly/python-api-reference/plotly.express.html
+            3. Every aspect of a chart is configurable.
+            Read through 1 to understand the low-level `figure` interface and how to
+            modify the properties of a generated figure.
+            Once you understand it, view _all_ of the
+            properties by visiting the "Figure Reference" page at https://plot.ly/python/reference.
+            4. If you can't generate the graph easily with `px`, then learn the
+            `graph_objects` structure by reading 1 and understanding
+            the structure of the figure via https://plot.ly/python/reference.
+        - Plotly supports 40-50 different chart types. Learn more by navigating
+        https://plot.ly/python/
+        - In development, you can create figures by running Dash apps or
+        in other environments like Jupyter, your console, and more.
+        If you are using the interface outside of Dash, then calling
+        `fig.show()` will always display the graph (either in your browser
+        or inline directly in your environment). To see all of these rendering
+        environments, see https://plot.ly/python/renderers/.
+    """),
+    html.H2('Examples'),
+    html.P("Simple graph defined from a dictionary with the same structure as a plotly figure"),
+    ComponentBlock('''import dash_core_components as dcc
+dcc.Graph(
+        id='example-graph',
+        figure={
+            'data': [
+                {'x': [1, 2, 3], 'y': [4, 1, 2], 'type': 'bar', 'name': 'SF'},
+                {'x': [1, 2, 3], 'y': [2, 4, 5], 'type': 'bar', 'name': u'Montréal'},
+            ],
+            'layout': {
+                'title': 'Dash Data Visualization'
+            }
+        }
+    )
+''', style=styles.code_container),
+    html.P("Graph defined directly from a plotly figure object"),
+    ComponentBlock('''import dash_core_components as dcc
+import plotly.graph_objs as go
+fig = go.Figure(data=[go.Scatter(x=[1, 2, 3], y=[4, 1, 2])])
+dcc.Graph(
+        id='example-graph-2',
+        figure=fig
+    )
+''', style=styles.code_container),
+
+
+    html.H2('Interactive Graphing'),
+    reusable_components.Markdown("""
+    The [Interactive Visualizations](/interactive-graphing) tutorial explains how
+    to capture user interaction events with a `dcc.Graph`, and how to update the
+    `figure` property in callbacks.
+
+    Some advanced features are documented in [community forum](https://community.plot.ly/) posts:
+
+    - How to preserve the UI state (zoom level etc.) of a Graph when updating the Graph in a callback
+    https://community.plot.ly/t/preserving-ui-state-like-zoom-in-dcc-graph-with-uirevision/15793
+    - Graph transitions for smooth transitions or animations on Graph updates
+    https://community.plot.ly/t/exploring-a-transitions-api-for-dcc-graph/15468
+    """),
+    html.H3('Graph Properties'),
+    generate_prop_info('Graph')
+])
+
 # Slider
 Slider = html.Div(children=[
     html.H1('Slider Examples and Reference'),
