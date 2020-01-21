@@ -705,6 +705,7 @@ Requirements = html.Div(children=[
         html.Div([
           rc.Markdown(
     '''
+
     ## Folder Reference
 
     ```
@@ -730,6 +731,7 @@ Requirements = html.Div(children=[
     ```server = app.server```
 
     ***
+
     `CHECKS`
 
     This optional file allows you to define custom checks to be performed on your app upon deployment.
@@ -786,7 +788,6 @@ Requirements = html.Div(children=[
     gunicorn
     ```
 
-
     ***
 
     `runtime.txt`
@@ -807,7 +808,8 @@ Requirements = html.Div(children=[
         html.Div([
           rc.Markdown(
           '''
-          ## Folder Reference
+
+    ## Folder Reference
 
     ```
     Dash_App/
@@ -816,6 +818,7 @@ Requirements = html.Div(children=[
     |-- app.R
     |-- .gitignore
     |-- CHECKS
+    |-- Procfile
     |-- .buildpacks
     |-- apt-packages
     ```
@@ -827,10 +830,11 @@ Requirements = html.Div(children=[
     `app.R`
 
     This is the entry point to your application, it contains your Dash app code.
-    This file must contain a line that defines the `server` variable:
-    ```app$run_server()```
+    This file must contain a line that includes ```app$run_server()```, or which 
+    loads an R script that does.
 
     ***
+
     `CHECKS`
 
     This optional file allows you to define custom checks to be performed on your app upon deployment.
@@ -871,6 +875,7 @@ Requirements = html.Div(children=[
     
     remotes::install_github('plotly/dashR', upgrade=TRUE)
     ```
+
     ***
 
     `.buildpacks`
@@ -887,6 +892,14 @@ Requirements = html.Div(children=[
 
     ***
 
+    `Procfile`
+
+    Declares what commands are run by app's containers. This is commonly,
+    ```web: R -f /app/app.R```, which launches the Dash app from the `/app`
+    subdirectory, where it will be copied during deployment.
+
+    ***
+
     `apt-packages`
 
     Describes the app's system-level dependencies. For example, one might include
@@ -895,18 +908,6 @@ Requirements = html.Div(children=[
     libcurl4-openssl-dev
     libxml2-dev
     libv8-3.14-dev
-    ```
-
-    If you are using one of the Dash Enterprise packages, like
-    `dash-design-kit` or `dash-snapshots`, then you'll also
-    need to prefix this file with a "`--extra-index-url`" flag.
-    `--extra-index-url` will specify the download location
-    of these packages. For example, this file might look like:
-    ```
-    --extra-index-url=https://your-dash-server.com/Docs/packages
-    dash-design-kit
-    dash
-    gunicorn
     ```
 
     ***
