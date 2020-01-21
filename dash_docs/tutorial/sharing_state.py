@@ -368,7 +368,7 @@ def update_output_1(value):
         CACHE_CONFIG = {
             # try 'filesystem' if you don't want to setup redis
             'CACHE_TYPE': 'redis',
-            'CACHE_REDIS_URL': os.environ.get('REDIS_URL', 'localhost:6379')
+            'CACHE_REDIS_URL': os.environ.get('REDIS_URL', 'redis://localhost:6379')
         }
         cache = Cache()
         cache.init_app(app.server, config=CACHE_CONFIG)
