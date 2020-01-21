@@ -695,9 +695,17 @@ Requirements = html.Div(children=[
     are a few files required for successful deployment. Below is a common
     Dash App folder structure and a brief description of each file's function.
 
+    The information below is presented by language; please choose either
+    Python or R depending on the implementation of Dash you are using.
     ***
-
-    ## Folder Reference
+    '''
+    ),
+    dcc.Tabs([
+      dcc.Tab(label='Python', children=[
+        html.Div([
+          rc.Markdown(
+          '''
+          ## Folder Reference
 
     ```
     Dash_App/
@@ -792,15 +800,126 @@ Requirements = html.Div(children=[
 
     An optional folder that contains CSS stylesheets, images, or
     custom JavaScript files. [Learn more about assets](/external-resources).
+    '''),
+    ])
+      ]),
+      dcc.Tab(label='R', children=[
+        html.Div([
+          rc.Markdown(
+          '''
+          ## Folder Reference
 
-    '''.format(
-        dash.__version__,
-        dash_auth.__version__,
-        dash_renderer.__version__,
-        dcc.__version__,
-        html.__version__,
-    ))
-])
+    ```
+    Dash_App/
+    |-- assets/
+       |-- app.css
+    |-- app.R
+    |-- .gitignore
+    |-- CHECKS
+    |-- .buildpacks
+    |-- apt-packages
+    ```
+
+    ***
+
+    ## Files Reference
+
+    `app.R`
+
+    This is the entry point to your application, it contains your Dash app code.
+    This file must contain a line that defines the `server` variable:
+    ```app$run_server()```
+
+    ***
+    `CHECKS`
+
+    This optional file allows you to define custom checks to be performed on your app upon deployment.
+     [Learn more about the CHECKS file](/dash-enterprise/checks).
+
+    ***
+
+    `.gitignore`
+
+    Determines which files and folders are ignored in git, and therefore
+    ignored (i.e. not copied to the server) when you deploy your application.
+    An example of its contents would be:
+
+    ```
+    venv
+    *.pyc
+    .DS_Store
+    .env
+    ```
+
+    ***
+
+    `init.R`
+
+    ```
+    # R script to run author supplied code, typically used to install additional R packages
+    # contains placeholders which are inserted by the compile script
+              # NOTE: this script is executed in the chroot context; check paths!
+
+              r <- getOption('repos')
+              r['CRAN'] <- 'http://cloud.r-project.org'
+              options(repos=r)
+
+              # ======================================================================
+
+              # packages go here
+              install.packages('remotes')
+
+              remotes::install_github('plotly/dashR', upgrade=TRUE)
+    ```
+    ***
+
+    `.buildpacks`
+
+    Specifies the buildpack used by the R application to provide a base environment
+    for deployment. This file should contain a URL to the buildpack and the relevant
+    branch, unless the buildpack is stored within `master`.
+    
+    We recommend using Plotly's customized buildpack for R deployments:
+    
+    ```
+    https://github.com/plotly/heroku-buildpack-r#heroku-18
+    ```
+
+    ***
+
+    `apt-packages`
+
+    Describes the app's system-level dependencies. For example, one might include
+
+    ```
+    libcurl4-openssl-dev
+    libxml2-dev
+    libv8-3.14-dev
+    ```
+
+    If you are using one of the Dash Enterprise packages, like
+    `dash-design-kit` or `dash-snapshots`, then you'll also
+    need to prefix this file with a "`--extra-index-url`" flag.
+    `--extra-index-url` will specify the download location
+    of these packages. For example, this file might look like:
+    ```
+    --extra-index-url=https://your-dash-server.com/Docs/packages
+    dash-design-kit
+    dash
+    gunicorn
+    ```
+
+    ***
+
+    `assets`
+
+    An optional folder that contains CSS stylesheets, images, or
+    custom JavaScript files. [Learn more about assets](/external-resources).
+    '''),
+    ])
+    ])
+    ])
+    ])
 
 # # # # # # #
 # Adding Static Assets
