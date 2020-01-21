@@ -704,8 +704,8 @@ Requirements = html.Div(children=[
       dcc.Tab(label='Python', children=[
         html.Div([
           rc.Markdown(
-          '''
-          ## Folder Reference
+    '''
+    ## Folder Reference
 
     ```
     Dash_App/
