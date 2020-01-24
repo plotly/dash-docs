@@ -12,7 +12,7 @@ def Markdown(children='', **kwargs):
     )
     # escape the HTML tags presented in the html component docstrings
     children = re.sub(
-        '\<(\w+)\> ',
+        '\<(\w+)\>',
         # for some reason, if we do `\<{}\>`, the first slash is shown in the
         # rendered text.
         lambda match: '<{}\> '.format(match.groups()[0]),
