@@ -10,4 +10,8 @@ def Markdown(children='', **kwargs):
         lambda match: ']({})'.format(tools.relpath(match.groups()[0])),
         children
     )
-    return dcc.Markdown(children=children, **kwargs)
+    return dcc.Markdown(
+        children=children,
+        dangerously_allow_html=True,
+        **kwargs
+    )
