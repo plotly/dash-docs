@@ -16,7 +16,7 @@ from .reusable_components import TOC, TOCChapters
 ## in the root of this repo.
 
 
-def component_list(package, content_module, base_url, import_alias):
+def component_list(package, content_module, base_url, import_alias, escape_tags=False):
     return [
         {
             'url': tools.relpath('/{}/{}'.format(base_url, component.lower())),
@@ -31,7 +31,10 @@ def component_list(package, content_module, base_url, import_alias):
                         component
                     ))),
                     html.H2('Reference & Documentation'),
-                    reusable_components.Markdown(getattr(package, component).__doc__),
+                    reusable_components.Markdown(
+                        getattr(package, component).__doc__,
+                        escape_tags=escape_tags
+                    ),
                 ])
             )
         } for component in sorted(dir(package))
@@ -206,7 +209,8 @@ URLS = [
                     html,
                     None,
                     'dash-html-components',
-                    'html'
+                    'html',
+                    escape_tags=True
                 )
             },
 
