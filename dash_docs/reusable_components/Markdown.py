@@ -12,10 +12,10 @@ def Markdown(children='', **kwargs):
     )
     # escape the HTML tags presented in the html component docstrings
     children = re.sub(
-        'is a wrapper for the \<(\w+)\> ',
+        '\<(\w+)\> ',
         # for some reason, if we do `\<{}\>`, the first slash is shown in the
         # rendered text.
-        lambda match: 'is a wrapper for the <{}\> '.format(match.groups()[0]),
+        lambda match: '<{}\> '.format(match.groups()[0]),
         children
     )
     return dcc.Markdown(
