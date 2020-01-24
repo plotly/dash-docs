@@ -18,6 +18,12 @@ def Markdown(children='', **kwargs):
         lambda match: '<{}\> '.format(match.groups()[0]),
         children
     )
+    # except when we talk about <template> in the context of dash-table
+    # (and likely other workarounds in the future, too!)
+    children = children.replace(
+        'FormatTemplate.<template\>',
+        'FormatTemplate.<template>'
+    )
     return dcc.Markdown(
         children=children,
         dangerously_allow_html=True,
