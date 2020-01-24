@@ -39,7 +39,7 @@ layout = html.Div([
     """
     ## Embedding a Dash app within an Existing Flask App
 
-    As discussed in the [Deployment Chapter](/deployment), Dash uses the Flask
+    As discussed in the <dccLink href="/deployment" children="Deployment Chapter"/>, Dash uses the Flask
     web framework under the hood. This makes it fairly straightforward to
     embed a Dash app at a specific route of an existing Flask app.
 

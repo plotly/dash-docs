@@ -24,10 +24,10 @@ layout = html.Div([
     # Basic Dash Callbacks
 
     > This is the *3rd* chapter of the [Dash Tutorial](/).
-    > The [previous chapter](/getting-started) covered the Dash app `layout`
-    > and the [next chapter](/state) covers an additional concept of callbacks
+    > The <dccLink href="/getting-started" children="previous chapter"/> covered the Dash app `layout`
+    > and the <dccLink href="/state" children="next chapter"/> covers an additional concept of callbacks
     > known as `state`. Just getting started? Make sure to
-    > [install the necessary dependencies](/installation).
+    > <dccLink href="/installation" children="install the necessary dependencies"/>.
 
     '''),
 

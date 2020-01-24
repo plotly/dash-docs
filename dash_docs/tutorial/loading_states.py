@@ -64,7 +64,7 @@ layout = html.Div([
     ''', style=styles.code_container),
     html.Br(),
     reusable_components.Markdown('''
-    Please also check out the docs for the [Loading component](/dash-core-components/loading) for more information on how to use the Loading component.
+    Please also check out the docs for the <dccLink href="/dash-core-components/loading" children="Loading component"/> for more information on how to use the Loading component.
 
     Aside from using the [`Loading`](/dash-core-components/loading) component, you can check if a certain component
     (either from `dash_core_components` or `dash_html_components`) is loading by checking the

@@ -18,16 +18,16 @@ layout = html.Div([
     reusable_components.Markdown('''
         ## Dash State
         > This is the *4th* chapter of the [Dash Tutorial](/).
-        > The [previous chapter](/getting-started-part-2) covered Dash Callbacks
-        > and the [next chapter](/interactive-graphing) covers interactive
+        > The <dccLink href="/getting-started-part-2" children="previous chapter"/> covered Dash Callbacks
+        > and the <dccLink href="/interactive-graphing" children="next chapter"/> covers interactive
         > graphing and crossfiltering.
         > Just getting started? Make sure to
-        > [install the necessary dependencies](/installation).
+        > <dccLink href="/installation" children="install the necessary dependencies"/>.
     '''),
 
     reusable_components.Markdown('''
         In the previous chapter on
-        [basic Dash callbacks](/getting-started-part-2),
+        <dccLink href="/getting-started-part-2" children="basic Dash callbacks"/>,
         our callbacks looked something like:
     '''),
     Syntax(examples['basic-input'][0]),

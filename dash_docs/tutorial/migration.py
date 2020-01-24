@@ -54,7 +54,7 @@ layout = html.Div([
 
     > **Note that using `app.scripts.append_script` to load external js scripts
     > won't work while `serve_locally=True`. Please use the `external_scripts` argument
-    > in your call to `dash.Dash` instead, as outlined in [the external resources section](/external-resources).**
+    > in your call to `dash.Dash` instead, as outlined in <dccLink href="/external-resources" children="the external resources section"/>.**
 
     ### Removed undo/redo buttons
     The undo & redo buttons in the corner of every app are removed by default,
