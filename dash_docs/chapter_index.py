@@ -710,14 +710,14 @@ URLS = [
                     {
                         'url': '/dash-enterprise/initialize',
                         'content': tutorial.dds_examples.Initialize,
-                        'name': 'Part 1. Initialize Dash Apps on Dash Deployment Server',
+                        'name': 'Part 1. Initialize Dash Apps on Dash Enterprise',
                         'description': 'Initialize Dash Apps on Plotly Enterprise'
                     },
                     {
                         'url': '/dash-enterprise/deployment',
                         'content': tutorial.dds_examples.Deploy,
-                        'name': 'Part 2. Deploy Dash Apps on Dash Deployment Server',
-                        'description': 'Deploy Dash Apps on Dash Deployment Server'
+                        'name': 'Part 2. Deploy Dash Apps on Dash Enterprise',
+                        'description': 'Deploy Dash Apps on Dash Enterprise'
                     },
                     {
                         'url': '/dash-enterprise/application-structure',
@@ -774,12 +774,12 @@ URLS = [
                         'content': tutorial.dds_examples.LocalDir,
                         'name': 'Mapping Local Directories',
                         'description': 'Directory mappings allow you to make directories '
-                        'on the Dash Deployment Server available to your app.'
+                        'on the Dash Enterprise available to your app.'
                     },
                     {
                         'url': '/dash-enterprise/ssh',
                         'content': tutorial.dds_examples.Ssh,
-                        'name': 'Authenticating to Dash Deployment Server with SSH',
+                        'name': 'Authenticating to Dash Enterprise with SSH',
                         'description': "There are two methods to deploy Dash Apps: HTTPS and SSH "
                         "and we recommend getting started with the HTTPS method."
                     },
@@ -799,7 +799,7 @@ URLS = [
                     {
                         'url': '/dash-enterprise/checks',
                         'content': tutorial.dds_examples.Checks,
-                        'name': 'Dash Deployment Health Checks',
+                        'name': 'Dash Enterprise App Health Checks',
                         'description': 'Create custom checks to ensure that a newly deployed app can serve traffic.'
                     },
                     {
@@ -824,8 +824,8 @@ URLS = [
                     {
                         'url': '/dash-enterprise/pdf-service',
                         'content': tutorial.dds_examples.pdfService,
-                        'name': 'Dash Deployment Server PDF Service',
-                        'description': 'Utilize the Dash Deployment Server API endpoint for '
+                        'name': 'Dash Enterprise PDF Service',
+                        'description': 'Utilize the Dash Enterprise API endpoint for '
                         'creating PDF exports of your Dash applications'
                     },
                     {
@@ -840,7 +840,7 @@ URLS = [
                         'content': tutorial.dds_examples.Logs,
                         'name': 'App Logs',
                         'description': """Check your Dash App's logs via the Dash
-                        Deployment Server UI or via the command line."""
+                        Enterprise UI or via the command line."""
                     },
                     {
                         'url': '/dash-enterprise/troubleshooting',
@@ -860,7 +860,7 @@ URLS = [
                         'content': tutorial.dds_examples.Git,
                         'name': 'Advanced Git',
                         'description': 'A reference for git commands and how they are used '
-                        'with Dash Deployment Server.'
+                        'with Dash Enterprise.'
                     },
                 ]
             }
