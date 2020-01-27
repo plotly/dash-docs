@@ -17,12 +17,14 @@ layout = html.Div([
 
     reusable_components.Markdown('''
         ## Dash State
-        > This is the *4th* chapter of the [Dash Tutorial](/).
-        > The <dccLink href="/getting-started-part-2" children="previous chapter"/> covered Dash Callbacks
-        > and the <dccLink href="/interactive-graphing" children="next chapter"/> covers interactive
-        > graphing and crossfiltering.
-        > Just getting started? Make sure to
-        > <dccLink href="/installation" children="install the necessary dependencies"/>.
+        <blockquote>
+        This is the *4th* chapter of the <dccLink children="Dash Tutorial" href="/"/>.
+        The <dccLink href="/getting-started-part-2" children="previous chapter"/> covered Dash Callbacks
+        and the <dccLink href="/interactive-graphing" children="next chapter"/> covers interactive
+        graphing and crossfiltering.
+        Just getting started? Make sure to
+        <dccLink href="/installation" children="install the necessary dependencies"/>.
+        </blockquote>
     '''),
 
     reusable_components.Markdown('''

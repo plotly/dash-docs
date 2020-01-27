@@ -18,13 +18,15 @@ layout = html.Div([
     reusable_components.Markdown('''
     # Sharing State Between Callbacks
 
-    > This is the *6th* chapter of the essential [Dash Tutorial](/).  The
-    > <dccLink href="/interactive-graphing" children="previous chapter"/> covered how to use callbacks
-    > with the `dash_core_components.Graph` component.  The [rest of the Dash
-    > documentation](/) covers other topics like multi-page apps and component
-    > libraries.  Just getting started? Make sure to [install the necessary
-    > dependencies](/installation). The <dccLink href="/faqs" children="next and final chapter"/> covers
-    > frequently asked questions and gotchas.
+    <blockquote>
+    This is the <b>6th</b> chapter of the essential <dccLink children="Dash Tutorial" href="/"/>.  The
+    <dccLink href="/interactive-graphing" children="previous chapter"/> covered how to use callbacks
+    with the `dash_core_components.Graph` component.  The <dccLink href="/" children="rest of the Dash
+    documentation" covers other topics like multi-page apps and component
+    libraries.  Just getting started? Make sure to <dccLink children="install the necessary
+    dependencies" href="/installation"/>. The <dccLink href="/faqs" children="next and final chapter"/> covers
+    frequently asked questions and gotchas.
+    </blockquote>
 
     One of the core Dash principles explained in the
     <dccLink href="/getting-started-part-2" children="Getting Started Guide on Callbacks"/>

@@ -116,8 +116,16 @@ Initialize = html.Div(children=[
         &nbsp;
 
         If you have successfully initialized an app, advance to
-        [**Part 2. Deploy Dash Apps on Dash Enterprise**](/dash-enterprise/deployment).
-        If you have encountered any issues, see [**Troubleshooting**](/dash-enterprise)
+        <b><dccLink
+            children="Part 2. Deploy Dash Apps on Dash Enterprise"
+            href="/dash-enterprise/deployment"/>
+        </b>.
+        If you have encountered any issues, see
+        <b><dccLink
+            children="Troubleshooting"
+            href="/dash-enterprise"
+            />
+        </b>
         for help.
 
     '''),
@@ -830,7 +838,7 @@ Requirements = html.Div(children=[
     `app.R`
 
     This is the entry point to your application, it contains your Dash app code.
-    This file must contain a line that includes ```app$run_server()```, or which 
+    This file must contain a line that includes ```app$run_server()```, or which
     loads an R script that does.
 
     ***
@@ -867,12 +875,12 @@ Requirements = html.Div(children=[
     r <- getOption('repos')
     r['CRAN'] <- 'http://cloud.r-project.org'
     options(repos=r)
-    
+
     # ======================================================================
 
     # packages go here
     install.packages('remotes')
-    
+
     remotes::install_github('plotly/dashR', upgrade=TRUE)
     ```
 
@@ -883,9 +891,9 @@ Requirements = html.Div(children=[
     Specifies the buildpack used by the R application to provide a base environment
     for deployment. This file should contain a URL to the buildpack and the relevant
     branch, unless the buildpack is stored within `master`.
-    
+
     We recommend using Plotly's customized buildpack for R deployments:
-    
+
     ```
     https://github.com/plotly/heroku-buildpack-r#heroku-18
     ```
@@ -1685,7 +1693,12 @@ def display_instructions(platform):
         ***
 
         If you have successfully added your SSH Key, advance to
-        [**Part 1. Initialize Dash Apps on Dash Enterprise**](/dash-enterprise/initialize).
+        <b>
+            <dccLink
+                children="Part 1. Initialize Dash Apps on Dash Enterprise"
+                href="/dash-enterprise/initialize"
+            />
+        </b>.
         ''')
     ]
 
@@ -2115,7 +2128,8 @@ Authentication = html.Div(children=[
 
     rc.Markdown('''
     DDS will automatically implement user authentication if your
-    [Dash app's privacy](/dash-enterprise/privacy) is set to *Restricted* (the default setting)
+    <dccLink children="Dash app's privacy" href="/dash-enterprise/privacy"/>
+    is set to *Restricted* (the default setting)
     or *Authorized* but not if is set to *Unauthorized*. You can access the authentication data within your app
     using the [`dash-enterprise-auth`](https://github.com/plotly/dash-enterprise-auth/) package.
 
@@ -2524,7 +2538,10 @@ Redis = html.Div(children=[
     &nbsp;
 
     Next, navigate to **Apps** and create a new app (for more info see
-    ['Part 1. Initialize Dash Apps on Dash Enterprise'](/dash-enterprise/initialize)),
+    <dccLink
+        children="Part 1. Initialize Dash Apps on Dash Enterprise"
+        href="/dash-enterprise/initialize"
+    />,
     in the 'Create App' modal you have the option of linking a database.
     Here, use the dropdown to select the database that you created previously
     (see image below).
@@ -2757,7 +2774,10 @@ pdfService = html.Div(children=[
         of your Dash applications. The API is simple: pass in the URL of your
         Dash app and the sizing parameters and get back a PDF print out. You can
         automate PDF generation with
-        [Dash Enterprise's Celery task queues](/dash-enterprise/celery-process)
+        <dccLink
+            children="Dash Enterprise's Celery task queues"
+            href="/dash-enterprise/celery-process"
+        />
         or you can generate these PDFs on-the-fly.
 
         This API endpoint is used by the Dash Enterprise Snapshot Engine library.

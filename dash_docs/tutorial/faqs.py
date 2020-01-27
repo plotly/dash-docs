@@ -22,11 +22,14 @@ layout = html.Div([
     reusable_components.Markdown('''
     # FAQs and Gotchas
 
-    > This is the *7th* and final chapter of the essential [Dash Tutorial](/).
-    > The [previous chapter](/sharing-data-between-callbacks) described how to
-    > share data between callbacks. The [rest of the Dash documentation](/)
-    > covers other topics like multi-page apps and component libraries.
-
+    <blockquote>
+    This is the <b>7th</b> and final chapter of the essential
+    <dccLink children="Dash Tutorial" href="/"/>.
+    The <dccLink children="previous chapter" href="/sharing-data-between-callbacks"/>
+    described how to share data between callbacks.
+    The <dccLink children="rest of the Dash documentation" href="/"/>
+    covers other topics like multi-page apps and component libraries.
+    </blockquote>
 
     ## Frequently Asked Questions
 
@@ -43,11 +46,12 @@ layout = html.Div([
       `dash-core-components` accept the attribute `className`, which corresponds
       to the HTML element attribute `class`.
 
-      The [Dash HTML Components](/dash-html-components) section in the Dash User
+      The <dccLink children="Dash HTML Components" href="/dash-html-components"/>
+      section in the Dash User
       Guide explains how to supply `dash-html-components` with both inline
       styles and CSS class names that you can target with CSS style sheets. The
-      [Adding CSS & JS and Overriding the Page-Load
-      Template](/external-resources) section in the Dash Guide explains how you
+      <dccLink children="Adding CSS & JS and Overriding the Page-Load
+      Template" href="/external-resources"/> section in the Dash Guide explains how you
       can link your own style sheets to Dash apps.
 
     ------------------------
@@ -55,23 +59,23 @@ layout = html.Div([
     **Q:** *How can I add JavaScript to my Dash app?*
 
     **A:** You can add your own scripts to your Dash app, just like you would
-      add a JavaScript file to an HTML document. See the [Adding CSS & JS and
-      Overriding the Page-Load Template](/external-resources) section in the
+      add a JavaScript file to an HTML document. See the <dccLink children="Adding CSS & JS and
+      Overriding the Page-Load Template" href="/external-resources"/> section in the
       Dash Guide.
 
     ------------------------
 
     **Q:** *Can I make a Dash app with multiple pages?*
 
-    **A:** Yes! Dash has support for multi-page apps. See the [Multi-Page Apps
-      and URL Support](/urls) section in the Dash User Guide.
+    **A:** Yes! Dash has support for multi-page apps. See the <dccLink children="Multi-Page Apps
+      and URL Support" href="/urls"/> section in the Dash User Guide.
 
     ------------------------
 
     **Q:** *How I can I organise my Dash app into multiple files?*
 
-    **A:** A strategy for doing this can be found in the [Multi-Page Apps
-      and URL Support](/urls) section in the Dash User Guide.
+    **A:** A strategy for doing this can be found in the <dccLink children="Multi-Page Apps
+      and URL Support" href="/urls"/> section in the Dash User Guide.
 
     ------------------------
 
@@ -130,7 +134,7 @@ layout = html.Div([
 
     In general, if you are looking to add custom clientside behavior in your
     application, we recommend encapsulating that behavior in a
-    [custom Dash component](/plugins).
+    <dccLink children="custom Dash component" href="/plugins"/>.
 
     ------------------------
 
@@ -160,7 +164,7 @@ layout = html.Div([
     can be especially true of how the callback system works. This section
     outlines some common Dash gotchas that you might encounter as you start
     building out more complex Dash apps. If you have read through the rest of
-    the [Dash Tutorial](/) and are encountering unexpected behaviour, this is a
+    the <dccLink children="Dash Tutorial" href="/"/> and are encountering unexpected behaviour, this is a
     good section to read through. If you still have residual questions, the
     [Dash Community forums](https://community.plot.ly/c/dash) is a great place
     to ask them.

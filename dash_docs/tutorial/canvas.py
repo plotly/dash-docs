@@ -88,7 +88,7 @@ layout = html.Div([
 
     Like any Dash component, the properties of a ``DashCanvas`` can be
     modified by other components, via callbacks. Please be sure to have
-    read first through the [Dash tutorial](/) to
+    read first through the <dccLink children="Dash tutorial" href="/"/> to
     know how to write callbacks.
 
     ''')),
@@ -101,8 +101,9 @@ layout = html.Div([
     In the example above, a slider ``dcc.Slider`` and a color picker
     ``daq.ColorPicker`` are used to adjust the width and color of the drawing
     brush. We just created an image coloring tool in a few lines of code! You
-    can learn more about available components in the [component
-    libraries](/) section of the Dash documentation. Also
+    can learn more about available components in the
+    <dccLink children="component libraries" href="/"/> section of the
+    Dash documentation. Also
     note that the set of available buttons has been restricted through the
     ``hide_buttons`` properties, in order to keep the app design simple.
 

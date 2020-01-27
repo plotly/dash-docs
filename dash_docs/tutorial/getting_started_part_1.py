@@ -25,9 +25,11 @@ layout = html.Div([
     reusable_components.Markdown('''
     # Dash Layout
 
-    > This is the *2nd* chapter of the [Dash Tutorial](/).
-    > The <dccLink href="/installation" children="previous chapter"/> covered installation
-    > and the <dccLink href="/getting-started-part-2" children="next chapter"/> covers Dash callbacks.
+    <blockquote>
+    This is the *2nd* chapter of the <dccLink children="Dash Tutorial" href="/"/>.
+    The <dccLink href="/installation" children="previous chapter"/> covered installation
+    and the <dccLink href="/getting-started-part-2" children="next chapter"/> covers Dash callbacks.
+    </blockquote>
     '''),
 
 

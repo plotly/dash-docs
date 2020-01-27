@@ -1210,7 +1210,7 @@ Tabs = html.Div(children=[
     reusable_components.Markdown('''
     In the example above, our callback contains all of the content. In practice,
     we'll keep the tab's content in separate files and import the data.
-    For an example, see the [URLs and Multi-Page App Tutorial](/urls).
+    For an example, see the <dccLink children="URLs and Multi-Page App Tutorial" href="/urls"/>.
     '''),
 
     html.H2('Method 2. Content as Tab Children'),
@@ -1249,7 +1249,13 @@ Tabs = html.Div(children=[
     Notice how the container of the Tabs can be styled as well by supplying a class to the `parent_className` prop, which we use here to draw a border below it, positioning the actual Tabs (with padding) more in the center.
     We also added `display: flex` and `justify-content: center` to the regular `Tab` components, so that labels with multiple lines will not break the flow of the text.
 
-    The corresponding CSS file (`assets/tabs.css`) looks like this. Save the file in an `assets` folder (it can be named anything you want). Dash will automatically include this CSS when the app is loaded. [Learn more about including CSS in your app here.](/external-resources)
+    The corresponding CSS file (`assets/tabs.css`) looks like this.
+    Save the file in an `assets` folder (it can be named anything you want).
+    Dash will automatically include this CSS when the app is loaded.
+    <dccLink
+        children="Learn more about including CSS in your app"
+        href="/external-resources"
+    />.
     '''),
 
     reusable_components.Markdown(
