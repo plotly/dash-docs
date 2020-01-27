@@ -192,7 +192,8 @@ layout = html.Div([
     reusable_components.Markdown(dedent('''
     ## Uploading Data
 
-    A nice recipe is to tie the <dccLink href="/dash-core-components/upload"><code>dcc.Upload</code></dccLink>
+    A nice recipe is to tie the
+    <code><dccLink href="/dash-core-components/upload">dcc.Upload</dccLink></code>
     with the Table component. After the user has uploaded the data, they
     could edit the contents or rename the rows.
 

@@ -23,7 +23,7 @@ layout = html.Div([
     # FAQs and Gotchas
 
     <blockquote>
-    This is the <b>7th</b> and final chapter of the essential
+    This is the 7th and final chapter of the essential
     <dccLink children="Dash Tutorial" href="/"/>.
     The <dccLink children="previous chapter" href="/sharing-data-between-callbacks"/>
     described how to share data between callbacks.

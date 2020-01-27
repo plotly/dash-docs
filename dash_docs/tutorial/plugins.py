@@ -22,7 +22,7 @@ follow the instructions in the README.md:
 [https://github.com/plotly/dash-component-boilerplate](https://github.com/plotly/dash-component-boilerplate)
 
 If you are just getting started with React.js as a Python programmer, please check out our essay
-<dccLink href="/react-for-python-developers">"React for Python Devs"]</dccLink>.
+<dccLink href="/react-for-python-developers">React for Python Devs</dccLink>.
 
 
 ### How Are Components Converted From React.js to Python?

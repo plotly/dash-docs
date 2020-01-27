@@ -22,7 +22,7 @@ layout = html.Div([
     # Interactive Visualizations
 
     <blockquote>
-    This is the <b>5th</b> chapter of the <dccLink children="Dash Tutorial" href="/"/>.
+    This is the 5th chapter of the <dccLink children="Dash Tutorial" href="/"/>.
     The <dccLink href="/state" children="previous chapter"/> covered callbacks with `State` and `PreventUpdate`.
     The <dccLink href="/sharing-data-between-callbacks" children="next chapter"/> describes how to
     share data between callbacks.

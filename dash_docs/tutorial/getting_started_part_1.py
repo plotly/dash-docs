@@ -26,7 +26,7 @@ layout = html.Div([
     # Dash Layout
 
     <blockquote>
-    This is the *2nd* chapter of the <dccLink children="Dash Tutorial" href="/"/>.
+    This is the 2nd chapter of the <dccLink children="Dash Tutorial" href="/"/>.
     The <dccLink href="/installation" children="previous chapter"/> covered installation
     and the <dccLink href="/getting-started-part-2" children="next chapter"/> covers Dash callbacks.
     </blockquote>

@@ -255,8 +255,7 @@ layout = html.Div([
     or, if you are using
     <dccLink
         children="Dash Enterprise, you can keep your environment variables secret (view the docs)"
-        href="/dash-enterprise/environment-variables"
-    </dccLink>.
+        href="/dash-enterprise/environment-variables"/>.
 
     '''.replace('   ', '')),
 
