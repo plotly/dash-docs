@@ -24,6 +24,6 @@ def Markdown(children='', **kwargs):
         )
     return dcc.Markdown(
         children=children,
-        dangerously_allow_html=True,
+        dangerously_allow_html=('dccLink' in children),
         **kwargs
     )
