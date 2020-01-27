@@ -10,7 +10,7 @@ def Markdown(children='', **kwargs):
         lambda match: ']({})'.format(tools.relpath(match.groups()[0])),
         children
     )
-    if kwargs.pop('escape_tags', False):
+    if 'dccLink' in children and kwargs.pop('escape_tags', False):
         # escape the HTML tags presented in the html component docstrings
         # note that if these tags are within `backticks`, then we don't need
         # to escape. so, let the caller determine whether or not to escape a
