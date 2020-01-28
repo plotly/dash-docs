@@ -25,17 +25,18 @@ layout = html.Div([
 
     <blockquote>
     This is the 3rd chapter of the <dccLink children="Dash Tutorial" href="/"/>.
-    The <dccLink href="/getting-started" children="previous chapter"/> covered the Dash app `layout`
+    The <dccLink href="/getting-started" children="previous chapter"/> covered the Dash app <code>layout</code>
     and the <dccLink href="/state" children="next chapter"/> covers an additional concept of callbacks
-    known as `state`. Just getting started? Make sure to
+    known as <code>state</code>. Just getting started? Make sure to
     <dccLink href="/installation" children="install the necessary dependencies"/>.
     </blockquote>
     '''),
 
     reusable_components.Markdown('''
 
-        In the <dccLink href="/getting-started"> previous chapter on the <code>app.layout</code>
-        </dccLink> we learned that the `app.layout` describes what the app looks like and is
+        In the <dccLink
+            href="/getting-started"
+            children="previous chapter on `app.layout`"
         a hierarchical tree of components.
         The `dash_html_components` library provides classes for all of the HTML
         tags, and the keyword arguments describe the HTML attributes like

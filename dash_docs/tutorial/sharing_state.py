@@ -21,7 +21,7 @@ layout = html.Div([
     <blockquote>
     This is the 6th chapter of the essential <dccLink children="Dash Tutorial" href="/"/>.  The
     <dccLink href="/interactive-graphing" children="previous chapter"/> covered how to use callbacks
-    with the `dash_core_components.Graph` component.  The <dccLink href="/" children="rest of the Dash
+    with the <code>dash_core_components.Graph</code> component.  The <dccLink href="/" children="rest of the Dash
     documentation"/> covers other topics like multi-page apps and component
     libraries.  Just getting started? Make sure to <dccLink children="install the necessary
     dependencies" href="/installation"/>. The <dccLink href="/faqs" children="next and final chapter"/> covers
