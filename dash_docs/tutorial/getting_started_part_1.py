@@ -25,9 +25,11 @@ layout = html.Div([
     reusable_components.Markdown('''
     # Dash Layout
 
-    > This is the *2nd* chapter of the [Dash Tutorial](/).
-    > The [previous chapter](/installation) covered installation
-    > and the [next chapter](/getting-started-part-2) covers Dash callbacks.
+    <blockquote>
+    This is the 2nd chapter of the <dccLink children="Dash Tutorial" href="/"/>.
+    The <dccLink href="/installation" children="previous chapter"/> covered installation
+    and the <dccLink href="/getting-started-part-2" children="next chapter"/> covers Dash callbacks.
+    </blockquote>
     '''),
 
 
@@ -43,7 +45,7 @@ layout = html.Div([
     Dash apps are composed of two parts. The first part is the "`layout`" of
     the app and it describes what the application looks like.
     The second part describes the interactivity of the application and will be
-    covered in the [next chapter](/getting-started-part-2).
+    covered in the <dccLink href="/getting-started-part-2" children="next chapter"/>.
 
     Dash provides Python classes for all of the visual components of
     the application. We maintain a set of components in the
@@ -92,7 +94,7 @@ layout = html.Div([
     6. The fonts in your application will look a little bit different than
         what is displayed here. This application is using a
         custom CSS stylesheet to modify the default styles of the elements.
-        You can learn more in the [css tutorial](/external-resources),
+        You can learn more in the <dccLink href="/external-resources" children="css tutorial"/>,
         but for now you can initialize your app with
     ```
     external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
@@ -112,7 +114,7 @@ will automatically refresh your browser when you make a change in your code.
 Give it a try: change the title "Hello Dash" in your application or change the `x` or the `y` data. Your app should auto-refresh with your change.
 
 > Don't like hot-reloading? You can turn this off with `app.run_server(dev_tools_hot_reload=False)`.
-> Learn more in [Dash Dev Tools documentation](/devtools) Questions? See the [community forum hot reloading discussion](https://community.plot.ly/t/announcing-hot-reload/14177).
+> Learn more in <dccLink href="/devtools" children="Dash Dev Tools documentation"/> Questions? See the [community forum hot reloading discussion](https://community.plot.ly/t/announcing-hot-reload/14177).
 
 #### More about HTML
 

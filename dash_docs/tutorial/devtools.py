@@ -22,7 +22,7 @@ layout = html.Div([
     Hot reloading works by running a "file watcher" that examines your working directory to check for changes. When a change is detected, Dash reloads your application in an efficient way automatically. A few notes:
     - Hot reloading is triggered when you _save_ a file.
     - Dash examines the files in your working directory.
-    - CSS files are automatically "watched" by examining the `assets/` folder. [Learn more about css](/external-resources)
+    - CSS files are automatically "watched" by examining the `assets/` folder. <dccLink href="/external-resources" children="Learn more about css"/>
     - If only CSS changed, then Dash will only refresh that CSS file.
     - When your Python code has changed, Dash will re-run the entire file and then refresh the application in the browser.
     - If your application initialization is slow, then you might want to consider how to save certain initialization steps to file. For example, if your app initialization downloads a static file from a remote service, perhaps you could include it locally.

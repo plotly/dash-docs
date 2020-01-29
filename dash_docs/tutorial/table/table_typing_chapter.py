@@ -52,7 +52,7 @@ layout = html.Div([
 
     The following schemes are supported by all types:
     - `input`: a text input field
-    - `dropdown`: see [DataTable Dropdowns](/datatable/dropdowns) for more details
+    - `dropdown`: see <dccLink href="/datatable/dropdowns" children="DataTable Dropdowns"/> for more details
 
     #### Markdown
     The `markdown` presentation scheme allows for the raw value of each cell to be rendered
@@ -81,7 +81,7 @@ layout = html.Div([
     the input to make it fit with the expected data type. Specific validation cases can be
     configured on a per-column basis.
 
-    See the table's [reference](/datatable/reference) `on_change.action`, `on_change.failure`
+    See the table's <dccLink href="/datatable/reference" children="reference"/> `on_change.action`, `on_change.failure`
     and `validation` column nested properties for details.
     ''')),
 

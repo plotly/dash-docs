@@ -95,7 +95,7 @@ layout = html.Div(
         number of decimals throughout the column.
 
         > To learn about formatting numbers and dates, see the
-        > [data types section](/datatable/typing)
+        > <dccLink href="/datatable/typing" children="data types section"/>
 
         For textual data, left-aligning the text is usually easier to read.
 
@@ -334,7 +334,7 @@ layout = html.Div(
 
         The `filter` keyword in `style_data_conditional` uses the same
         filtering expression language as the table's interactive filter UI.
-        See the [DataTable filtering chapter](/datatable/filtering) for more
+        See the <dccLink href="/datatable/filtering" children="DataTable filtering chapter"/> for more
         info.
         """),
         Display("""

@@ -82,7 +82,7 @@ layout = html.Div([
     reusable_components.Markdown('''
     # Dash Callbacks for Cytoscape
 
-    [Dash callbacks](/getting-started-part-2) allow you to update your
+    <dccLink href="/getting-started-part-2" children="Dash callbacks"/> allow you to update your
     Cytoscape graph via other components like dropdowns, buttons, and sliders.
     If you have used Cytoscape.js before, you have probably used event handlers
     to interactively update your graph; with Dash Cytoscape, we will instead
