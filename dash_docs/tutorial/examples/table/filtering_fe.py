@@ -11,29 +11,13 @@ df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/gapmi
 
 app = dash.Dash(__name__)
 
-app.layout = html.Div([
-    dash_table.DataTable(
-        id='datatable-filtering-fe',
-        columns=[
-            {"name": i, "id": i, "deletable": True} for i in df.columns
-        ],
-        data=df.to_dict('records'),
-        filter_action="native",
-    ),
-    html.Div(id='datatable-filter-container')
-])
-
-
-@app.callback(
-    Output('datatable-filter-container', "children"),
-    [Input('datatable-filtering-fe', "data")])
-def update_graph(rows):
-    if rows is None:
-        dff = df
-    else:
-        dff = pd.DataFrame(rows)
-
-    return html.Div()
+app.layout = dash_table.DataTable(
+    columns=[
+        {"name": i, "id": i, "deletable": True} for i in df.columns
+    ],
+    data=df.to_dict('records'),
+    filter_action="native",
+)
 
 
 if __name__ == '__main__':
