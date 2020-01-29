@@ -130,7 +130,7 @@ layout = html.Div(
         For large dataframes, you can perform the filtering in Python instead
         of the default clientside filtering. You can find more information on
         performing operations in python in the
-        [Python Callbacks chapter](/datatable/callbacks).
+        <dccLink href="/datatable/callbacks" children="Python Callbacks chapter"/>.
 
         The syntax is (now) the same as front-end filtering, but it's up to the
         developer to implement the logic to apply these filters on the Python

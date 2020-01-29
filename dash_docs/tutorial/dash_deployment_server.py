@@ -120,7 +120,7 @@ reusable_components.Section("User Interface", [
                 'with Dash Enterprise.'),
         reusable_components.Chapter('Dash Enterprise API',
                 'https://github.com/plotly/dds-api-docs',
-                'Reference documentation for DDS\'s GraphQL API. '
+                'Reference documentation for Dash Enterprise\'s GraphQL API. '
                 'Use this to programmatically add collaborators, '
                 'initialize dash apps and more.')
     ])

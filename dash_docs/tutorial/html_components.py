@@ -53,7 +53,7 @@ layout = html.Div(children=[
     If you're not comfortable with HTML, don't worry!
     You can get 95% of the way there with just a few elements
     and attributes.
-    Dash's [core component library](/dash-core-components) also supports
+    Dash's <dccLink href="/dash-core-components" children="core component library"/> also supports
     [Markdown](http://commonmark.org/help).
     '''),
 

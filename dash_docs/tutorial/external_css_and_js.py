@@ -211,7 +211,7 @@ layout = html.Div([
     Give it a try: Change the color in `typography.css` from `hotpink` to `orange` and see your application update.
 
     > Don't like hot-reloading? You can turn this off with `app.run_server(dev_tools_hot_reload=False)`.
-    > Learn more in [Dash Dev Tools documentation](/devtools). Questions? See the [community forum hot reloading discussion](https://community.plot.ly/t/announcing-hot-reload/14177).
+    > Learn more in <dccLink href="/devtools" children="Dash Dev Tools documentation"/>. Questions? See the [community forum hot reloading discussion](https://community.plot.ly/t/announcing-hot-reload/14177).
 
     '''),
 
