@@ -12,11 +12,8 @@ layout = [reusable_components.Markdown('''
     application, making browsing very fast.
 
     There are two new components that aid page navigation:
-    <dccLink href="/dash-core-components/location">
-        dash_core_components.Location
-    </dccLink> and <dccLink href="/dash-core-components/link">
-            dash_core_components.Link
-    </dccLink>.
+    <dccLink href="/dash-core-components/location" children="`dash_core_components.Location`"/>
+    and <dccLink href="/dash-core-components/link" children="`dash_core_components.Link`"/>.
 
     `dash_core_components.Location` represents the location bar in your web browser
     through the `pathname` property. Here's a simple example:
