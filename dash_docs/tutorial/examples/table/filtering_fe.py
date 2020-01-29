@@ -13,7 +13,7 @@ app = dash.Dash(__name__)
 
 app.layout = dash_table.DataTable(
     columns=[
-        {"name": i, "id": i, "deletable": True} for i in df.columns
+        {"name": i, "id": i} for i in df.columns
     ],
     data=df.to_dict('records'),
     filter_action="native",
