@@ -2,22 +2,6 @@ if (window.location.pathname.indexOf('search') > 0){
 	var interval = setInterval(searchInterval, 500)
 	function searchInterval(){
 
-		var search = instantsearch({
-			// Replace with your own values
-			appId: '',
-			apiKey: '',
-			indexName: 'dash_docs',
-			urlSync: false,
-			searchFunction: function (helper) {
-				if (helper.state.query === '') {
-					document.querySelector('#hits').innerHTML = '';
-					return;
-				}
-
-				helper.search();
-			}
-		});
-
 		var searchr = instantsearch({
 			// Replace with your own values
 			appId: '7EK9KHJW8M',
@@ -60,6 +44,6 @@ if (window.location.pathname.indexOf('search') > 0){
 		);
 		clearInterval(interval);
 
-		search.start();
+		searchr.start();
 	};
 };
