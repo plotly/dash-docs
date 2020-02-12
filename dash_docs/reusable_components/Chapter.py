@@ -1,5 +1,6 @@
 import dash_html_components as html
 import dash_core_components as dcc
+from dash_docs.tools import relpath
 from .Markdown import Markdown
 
 def s(string_block):
@@ -11,7 +12,7 @@ def Chapter(name, href=None, caption=None):
         html.Li(
             linkComponent(
                 name,
-                href=href,
+                href=relpath(href),
                 id=href,
                 className='toc--chapter-link'
             ),
