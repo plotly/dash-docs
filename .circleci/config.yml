@@ -64,7 +64,6 @@ jobs:
     environment:
       PERCY_ENABLE: 0
 
-
 workflows:
   version: 2
   python3.7:
