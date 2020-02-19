@@ -20,11 +20,11 @@ else:
 
 def Blockquote():
     return rc.Markdown('''
-        > This documentation is for [Dash Enterprise](https://plot.ly/dash),
+        > This documentation is for [Dash Enterprise](https://plotly.com/dash),
         Plotly's commercial platform for managing and improving
         Dash applications in your organization.
         <dccLink href="/dash-enterprise" children="View the docs"/> or
-        [request a trial](https://go.plot.ly/dash-doc).
+        [request a trial](https://go.plotly.com/dash-doc).
     ''')
 
 
@@ -442,7 +442,7 @@ def display_instructions2(platform):
                     '''
                     For some applications, you may require using the `worker`
                     process. For example, the
-                    [Snapshot Engine](https://plot.ly/dash/snapshot-engine/) examples
+                    [Snapshot Engine](https://plotly.com/dash/snapshot-engine/) examples
                     use Celery - an asynchronous task/job queue & scheduler.
 
                     In this case, your `Procfile` might look something like this:
@@ -1265,7 +1265,7 @@ LocalDir = html.Div(children=[
     Since this feature has security implications, only directories specified
     in the Plotly-On-Premise Server Manager can be mapped to Dash Apps.
     > Note that in Plotly Enterprise versions before 3.1.0 only users with admin privileges
-    > could map local directories into their apps. Please contact `onpremise.support@plot.ly` if
+    > could map local directories into their apps. Please contact `onpremise.support@plotly.com` if
     > you have any questions.
 
     ***
@@ -2152,7 +2152,7 @@ Authentication = html.Div(children=[
 
     The example below demonstrates how to use these callbacks. Note that in order to use
     `create_logout_button` locally you will have to set an environment variable called
-    `DASH_LOGOUT_URL`. You can do this by running your code with `DASH_LOGOUT_URL=plot.ly python app.py`.
+    `DASH_LOGOUT_URL`. You can do this by running your code with `DASH_LOGOUT_URL=plotly.com python app.py`.
 
     '''),
 
@@ -2782,7 +2782,7 @@ pdfService = html.Div(children=[
 
         This API endpoint is used by the Dash Enterprise Snapshot Engine library.
         Refer to the
-        [Snapshot Engine documentation](https://plot.ly/dash/snapshot-engine/)
+        [Snapshot Engine documentation](https://plotly.com/dash/snapshot-engine/)
         for more examples.
 
         ***
@@ -2884,7 +2884,7 @@ pdfService = html.Div(children=[
             html.Label('Website URL'),
             dcc.Input(
                 id='website',
-                value='https://dash.plot.ly'
+                value='https://dash.plotly.com'
             ),
 
             html.Div(html.B('CSS Selector')),
@@ -2962,7 +2962,7 @@ pdfService = html.Div(children=[
         - Creating high-quality, branded PDF templates
 
         Get in touch with your sales rep or
-        [reach out to us directly](https://go.plot.ly/dash-doc)
+        [reach out to us directly](https://go.plotly.com/dash-doc)
         to learn more.
 
         '''),
@@ -3472,7 +3472,7 @@ AdminPanel = html.Div(children=[
     rc.Markdown('''
     &nbsp;
 
-    For more information contact `onpremise.support@plot.ly`.
+    For more information contact `onpremise.support@plotly.com`.
 
     &nbsp;
     ''')
@@ -3599,7 +3599,7 @@ Support = html.Div(children=[
     #### Need to Contact Support?
 
     If you encounter any issues deploying your app, you can email
-    `onpremise.support@plot.ly`. It is helpful to include any error
+    `onpremise.support@plotly.com`. It is helpful to include any error
     messages you encounter, as well as available logs. See <dccLink href="/dash-enterprise/logs" children="App Logs"/> on how
     to obtain Dash App logs. Additionally, see below for the Plotly Enterprise support
     bundle.

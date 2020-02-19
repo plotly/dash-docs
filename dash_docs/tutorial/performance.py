@@ -99,16 +99,16 @@ To overcome this limitation, plotly.js has WebGL alternatives to
 some chart types. WebGL uses the GPU to render graphics.
 
 The high performance, WebGL alternatives include:
-- `scattergl`: A webgl implementation of the `scatter` chart type. [Examples](https://plot.ly/python/webgl-vs-svg/), [reference](https://plot.ly/python/reference/#scattergl)
-- `pointcloud`: A lightweight version of `scattergl` with limited customizability but even faster rendering. [Reference](https://plot.ly/python/reference/#pointcloud)
-- `heatmapgl`: A webgl implementation of the `heatmap` chart type. [Reference](https://plot.ly/python/reference/#heatmapgl)
+- `scattergl`: A webgl implementation of the `scatter` chart type. [Examples](https://plotly.com/python/webgl-vs-svg/), [reference](https://plotly.com/python/reference/#scattergl)
+- `pointcloud`: A lightweight version of `scattergl` with limited customizability but even faster rendering. [Reference](https://plotly.com/python/reference/#pointcloud)
+- `heatmapgl`: A webgl implementation of the `heatmap` chart type. [Reference](https://plotly.com/python/reference/#heatmapgl)
 
 
 Currently, dash redraws the entire graph on update using the `plotly.js`
 `newPlot` call. The performance of updating a chart could be improved
 considerably by introducing `restyle` calls into this logic. If you or
 your company would like to sponsor this work,
-[get in touch](https://plot.ly/products/consulting-and-oem/).
+[get in touch](https://plotly.com/products/consulting-and-oem/).
 
 ***
 
@@ -201,7 +201,7 @@ webgl capabilities, reducing JavaScript bundle sizes, and more.
 
 Historically, many of these performance related features have been funded
 through company sponsorship. If you or your company would like to sponsor
-these types of enhancements, [please get in touch](https://plot.ly/products/consulting-and-oem/),
+these types of enhancements, [please get in touch](https://plotly.com/products/consulting-and-oem/),
 we'd love to help.
 
 ''')

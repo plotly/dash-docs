@@ -238,7 +238,7 @@ layout = html.Div([
     `Cytoscape` component along with a few dropdowns, and outputs to the
     `stylesheet` prop. You can try out this
     [interactive stylesheet demo](https://dash-gallery.plotly.host/cytoscape-stylesheet)
-    hosted on [Dash Enterprise](https://plot.ly/products/dash/).
+    hosted on [Dash Enterprise](https://plotly.com/products/dash/).
     '''),
 
     html.Details(open=False, children=[

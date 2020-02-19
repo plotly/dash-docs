@@ -12,8 +12,8 @@ If you would like to edit or add content to an existing chapter (e.g. "Linking t
 
 Files that need edited include:
 - `tutorial/dash_deployment_server_examples.py` Home to chapter content.
-- `tutorial/dash_deployment_server.py` Defines the layout of `dash.plot.ly/dash-enterprise/`
-- `tutorial/chapter_index.py` Defines the layout of `dash.plot.ly` and the search index.
+- `tutorial/dash_deployment_server.py` Defines the layout of `dash.plotly.com/dash-enterprise/`
+- `tutorial/chapter_index.py` Defines the layout of `dash.plotly.com` and the search index.
 - `tests/test_intergration.py` Links for Percy snapshots.
 
 ### Add New Chapter

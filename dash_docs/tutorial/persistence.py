@@ -113,7 +113,7 @@ layout = html.Div([
     In principle, one prop could have several nested pieces; that's allowed,
     though it hasn't been used (yet?) in any official Plotly components.
     If you make use of this feature, let us know in the
-    [community forum](https://community.plot.ly/c/dash)!
+    [community forum](https://community.plotly.com/c/dash)!
 
     Partially-persisted props also need to define a *class property*
     (not a React prop) `persistenceTransforms`, as an object:

@@ -351,7 +351,7 @@ dcc.DatePickerRange(
     html.H3(dcc.Link('Graphs', href=tools.relpath('/dash-core-components/graph'))),
     reusable_components.Markdown('''
     The `Graph` component shares the same syntax as the open-source
-    `plotly.py` library. View the [plotly.py docs](https://plot.ly/python)
+    `plotly.py` library. View the [plotly.py docs](https://plotly.com/python)
     to learn more.
     '''.replace('    ', '')),
     ComponentBlock('''import dash_core_components as dcc
@@ -398,7 +398,7 @@ dcc.Graph(
     dcc.Link('More Graphs Examples and Reference',
              href=tools.relpath("/dash-core-components/graph")),
     html.Br(),
-    reusable_components.Markdown('View the [plotly.py docs](https://plot.ly/python).'),
+    reusable_components.Markdown('View the [plotly.py docs](https://plotly.com/python).'),
 
     reusable_components.Markdown('***'),
 

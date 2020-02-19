@@ -6,7 +6,7 @@ def generate_sitemap():
     for o in chapters.values():
         sitemap += (
             '<url>\n' +
-            '    <loc>https://plot.ly{}</loc>\n'.format(o['url']) +
+            '    <loc>https://plotly.com{}</loc>\n'.format(o['url']) +
             '</url>\n'
         )
     with open('sitemap.xml', 'w') as f:

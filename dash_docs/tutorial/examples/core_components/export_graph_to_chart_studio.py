@@ -19,7 +19,7 @@ app.layout = html.Div([
         id='graph',
         config={
             'showSendToCloud': True,
-            'plotlyServerURL': 'https://plot.ly'
+            'plotlyServerURL': 'https://plotly.com'
         }
     )
 ])

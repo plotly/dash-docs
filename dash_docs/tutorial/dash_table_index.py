@@ -48,7 +48,7 @@ preamble = html.Div([
     > featureset that allows that Dash users to create complex,
     > spreadsheet driven applications with no compromises.
     > We're excited to continue to work with users and companies
-    > that [invest in DataTable's future](https://plot.ly/products/consulting-and-oem/).
+    > that [invest in DataTable's future](https://plotly.com/products/consulting-and-oem/).
     >
     > With `dash-table v4.0.0` - included in `dash v1.0.0` and released on
     > June 20, 2019 - we consider the API stable. We don't expect any
@@ -60,7 +60,7 @@ preamble = html.Div([
     >
     > Otherwise, check out DataTable in the docs below.
     > If you make something cool with it, we'd love to see it! Share it
-    > on the [community forum](https://community.plot.ly/t/show-and-tell-community-thread/7554)!
+    > on the [community forum](https://community.plotly.com/t/show-and-tell-community-thread/7554)!
     >
     > -- chriddyp
     ''')),

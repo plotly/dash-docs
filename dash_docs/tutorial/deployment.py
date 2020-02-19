@@ -18,14 +18,14 @@ or view the tutorial on deploying to Heroku below.
 
 ### Dash Enterprise
 
-[Dash Enterprise](https://plot.ly/dash/pricing/)
+[Dash Enterprise](https://plotly.com/dash/pricing/)
 is Plotly's commercial product for deploying
 Dash Apps on your company's servers or on AWS, Google Cloud, or Azure.
 It offers an enterprise-wide Dash App Portal,
 easy git-based deployment, automatic URL namespacing,
 built-in SSL support, LDAP authentication, and more.
-[Learn more about Dash Enterprise](https://plot.ly/dash/pricing) or
-[get in touch to start a trial](https://go.plot.ly/dash-doc).
+[Learn more about Dash Enterprise](https://plotly.com/dash/pricing) or
+[get in touch to start a trial](https://go.plotly.com/dash-doc).
 
 For existing customers, see the <dccLink href="/dash-enterprise" children="Dash Enterprise Documentation"/>.
 
@@ -256,6 +256,6 @@ to git and push those changes to heroku.
 
 This workflow for deploying apps on heroku is very similar to how deployment
 works with the Plotly Enterprise's Dash Enterprise.
-[Learn more](https://plot.ly/dash/pricing/) or [get in touch](https://go.plot.ly/dash-doc).
+[Learn more](https://plotly.com/dash/pricing/) or [get in touch](https://go.plotly.com/dash-doc).
 ''')
 ]

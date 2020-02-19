@@ -13,11 +13,11 @@ layout = html.Div(className='toc', children=[
 
     reusable_components.Section("What's Dash Enterprise?", [
         reusable_components.Chapter('Learn More About Dash Enterprise',
-                'https://plot.ly/dash/pricing/',
+                'https://plotly.com/dash/pricing/',
                 """Dash Enterprise is Plotly's commercial offering
                    for managing and improving your Dash apps in your
-                   organization. [Learn more](https://plot.ly/dash) or
-                   [request a trial](https://go.plot.ly/dash-doc).""")
+                   organization. [Learn more](https://plotly.com/dash) or
+                   [request a trial](https://go.plotly.com/dash-doc).""")
     ]) if 'DASH_DOCS_URL_PREFIX' not in os.environ else '',
 
     reusable_components.Section("Deployment", [

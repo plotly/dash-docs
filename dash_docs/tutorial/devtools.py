@@ -9,7 +9,7 @@ layout = html.Div([
     reusable_components.Markdown(d('''
     # Dash Dev Tools
 
-    Dash Dev Tools is an initiative to make debugging and developing Dash apps more pleasant. This initiative was [sponsored by an organization](http://plot.ly/products/consulting-and-oem/) and you can see our work in our [GitHub project](https://github.com/orgs/plotly/projects/3).
+    Dash Dev Tools is an initiative to make debugging and developing Dash apps more pleasant. This initiative was [sponsored by an organization](http://plotly.com/products/consulting-and-oem/) and you can see our work in our [GitHub project](https://github.com/orgs/plotly/projects/3).
 
     *dev_tools features are activated by default when you run the app with `app.run_server(debug=True)`*
 

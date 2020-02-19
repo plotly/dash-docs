@@ -184,36 +184,36 @@ Graph = html.Div(children=[
     """),
     html.H2('Primer on Plotly Graphing Library'),
     reusable_components.Markdown("""
-        - The [**Plotly Graphing Library**](https://plot.ly/python),
+        - The [**Plotly Graphing Library**](https://plotly.com/python),
         known as the package package `plotly`, generates "figures".
         These are used in `dcc.Graph` with e.g. `dcc.Graph(figure=fig)`
         with `fig` a plotly figure.
         - **To get started with plotly**, learn how its documentation is organized:
-            1. Learn the architecture of the `figure`: https://plot.ly/python/creating-and-updating-figures/
+            1. Learn the architecture of the `figure`: https://plotly.com/python/creating-and-updating-figures/
             2. Every chart type has a set of examples at a unique URL.
             Familarize yourself with the structure of these pages. Google is your friend.
             For example "Plotly Python Histogram Charts" is documented at
-            https://plot.ly/python/histogram
+            https://plotly.com/python/histogram
             3. Plotly Express is the recommended high-level interface.
             Understand where it fits in by reading 1.
             Once you understand its structure, you can see all of the arguments in the
-            "API Reference" page documented here: https://plot.ly/python-api-reference/plotly.express.html
+            "API Reference" page documented here: https://plotly.com/python-api-reference/plotly.express.html
             3. Every aspect of a chart is configurable.
             Read through 1 to understand the low-level `figure` interface and how to
             modify the properties of a generated figure.
             Once you understand it, view _all_ of the
-            properties by visiting the "Figure Reference" page at https://plot.ly/python/reference.
+            properties by visiting the "Figure Reference" page at https://plotly.com/python/reference.
             4. If you can't generate the graph easily with `px`, then learn the
             `graph_objects` structure by reading 1 and understanding
-            the structure of the figure via https://plot.ly/python/reference.
+            the structure of the figure via https://plotly.com/python/reference.
         - Plotly supports 40-50 different chart types. Learn more by navigating
-        https://plot.ly/python/
+        https://plotly.com/python/
         - In development, you can create figures by running Dash apps or
         in other environments like Jupyter, your console, and more.
         If you are using the interface outside of Dash, then calling
         `fig.show()` will always display the graph (either in your browser
         or inline directly in your environment). To see all of these rendering
-        environments, see https://plot.ly/python/renderers/.
+        environments, see https://plotly.com/python/renderers/.
     """),
     html.H2('Examples'),
     html.P("Simple graph defined from a dictionary with the same structure as a plotly figure"),
@@ -248,12 +248,12 @@ dcc.Graph(
     to capture user interaction events with a `dcc.Graph`, and how to update the
     `figure` property in callbacks.
 
-    Some advanced features are documented in [community forum](https://community.plot.ly/) posts:
+    Some advanced features are documented in [community forum](https://community.plotly.com/) posts:
 
     - How to preserve the UI state (zoom level etc.) of a Graph when updating the Graph in a callback
-    https://community.plot.ly/t/preserving-ui-state-like-zoom-in-dcc-graph-with-uirevision/15793
+    https://community.plotly.com/t/preserving-ui-state-like-zoom-in-dcc-graph-with-uirevision/15793
     - Graph transitions for smooth transitions or animations on Graph updates
-    https://community.plot.ly/t/exploring-a-transitions-api-for-dcc-graph/15468
+    https://community.plotly.com/t/exploring-a-transitions-api-for-dcc-graph/15468
     """),
     html.H3('Graph Properties'),
     generate_prop_info('Graph')
@@ -681,7 +681,7 @@ dcc.Markdown('''
     `dcc.Markdown`. For more details about how to customize the
     languages and colour schemes, please see ["Syntax Highlighting
     With
-    Markdown"](https://dash.plot.ly/external-resources#md-syntax-highlight).
+    Markdown"](https://dash.plotly.com/external-resources#md-syntax-highlight).
     '''),
 
     html.Hr(),
@@ -1302,7 +1302,7 @@ Tabs = html.Div(children=[
 Graphs = html.Div([
     html.H1('Graph Reference'),
     reusable_components.Markdown('''
-    Custimize the [Plotly.js config options](https://plot.ly/javascript/configuration-options/) of your graph using
+    Custimize the [Plotly.js config options](https://plotly.com/javascript/configuration-options/) of your graph using
     the `config` property. The example below uses the `showSendToCloud` and `plotlyServerURL` options include a
     save button in the modebar of the graph which exports the figure to URL specified by `plotlyServerURL`.
 

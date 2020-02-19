@@ -114,7 +114,7 @@ will automatically refresh your browser when you make a change in your code.
 Give it a try: change the title "Hello Dash" in your application or change the `x` or the `y` data. Your app should auto-refresh with your change.
 
 > Don't like hot-reloading? You can turn this off with `app.run_server(dev_tools_hot_reload=False)`.
-> Learn more in <dccLink href="/devtools" children="Dash Dev Tools documentation"/> Questions? See the [community forum hot reloading discussion](https://community.plot.ly/t/announcing-hot-reload/14177).
+> Learn more in <dccLink href="/devtools" children="Dash Dev Tools documentation"/> Questions? See the [community forum hot reloading discussion](https://community.plotly.com/t/announcing-hot-reload/14177).
 
 #### More about HTML
 
@@ -189,7 +189,7 @@ HTML tag as well as keyword arguments for all of the HTML arguments.
         The `figure` argument in the `dash_core_components.Graph` component is
         the same `figure` argument that is used by `plotly.py`, Plotly's
         open source Python graphing library.
-        Check out the [plotly.py documentation and gallery](https://plot.ly/python)
+        Check out the [plotly.py documentation and gallery](https://plotly.com/python)
         to learn more.
 
     '''.replace('    ', '')),

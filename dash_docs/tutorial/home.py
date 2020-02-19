@@ -20,7 +20,7 @@ layout = html.Div([
         '''
         *This user guide is for the Python implementation of Dash.
         Dash is also available in R.
-        View the [Dash for R User Guide & Documentation](https://dashr.plot.ly)*
+        View the [Dash for R User Guide & Documentation](https://dashr.plotly.com)*
         ''', style={'fontSize': 14}
     ),
 

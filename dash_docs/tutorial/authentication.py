@@ -5,7 +5,7 @@ layout = reusable_components.Markdown('''
 # Authentication
 
 Dash provides authentication and user-based logins through the Plotly platform.
-Dash Authentication works in both [Plotly Cloud](https://plot.ly/products/cloud)
-and in [Plotly Enterprise](https://plot.ly/products/on-premise).
+Dash Authentication works in both [Plotly Cloud](https://plotly.com/products/cloud)
+and in [Plotly Enterprise](https://plotly.com/products/on-premise).
 
 ''')

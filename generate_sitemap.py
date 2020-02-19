@@ -7,7 +7,7 @@ def create_sitemap():
         if url.startswith('/'):
             sitemap += (
                 '<url>\n' +
-                '    <loc>https://dash.plot.ly{}</loc>\n'.format(url) +
+                '    <loc>https://dash.plotly.com{}</loc>\n'.format(url) +
                 '</url>\n'
             )
     return (

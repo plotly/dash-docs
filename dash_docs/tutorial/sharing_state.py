@@ -163,7 +163,7 @@ def update_output_1(value):
         To save data in user's browser's session:
         - Implemented by saving the data as part of Dash's front-end store
           through methods explained in
-          [https://community.plot.ly/t/sharing-a-dataframe-between-plots/6173](https://community.plot.ly/t/sharing-a-dataframe-between-plots/6173)
+          [https://community.plotly.com/t/sharing-a-dataframe-between-plots/6173](https://community.plotly.com/t/sharing-a-dataframe-between-plots/6173)
         - Data has to be converted to a string like JSON for storage and transport
         - Data that is cached in this way will _only be available in the
           user's current session_.
@@ -510,13 +510,13 @@ def update_output_1(value):
         "hidden div" method.
 
         This example was originally discussed in a
-        [Dash Community Forum thread](https://community.plot.ly/t/capture-window-tab-closing-event/7375/2?u=chriddyp).
+        [Dash Community Forum thread](https://community.plotly.com/t/capture-window-tab-closing-event/7375/2?u=chriddyp).
 
         This example:
         - Caches data using the `flask_caching` filesystem cache. You can also save to an in-memory database like Redis.
         - Serializes the data as JSON.
             - If you are using Pandas, consider serializing
-            with Apache Arrow. [Community thread](https://community.plot.ly/t/fast-way-to-share-data-between-callbacks/8024/2)
+            with Apache Arrow. [Community thread](https://community.plotly.com/t/fast-way-to-share-data-between-callbacks/8024/2)
         - Saves session data up to the number of expected concurrent users.
         This prevents the cache from being overfilled with data.
         - Creates unique session IDs by embedding a hidden random string into
@@ -554,7 +554,7 @@ def update_output_1(value):
         user sessions.
 
         Questions? Discuss these examples on the
-        [Dash Community Forum](https://community.plot.ly/c/dash).
+        [Dash Community Forum](https://community.plotly.com/c/dash).
     '''),
     dcc.Link(
         'Dash Tutorial Part 7. FAQs and Gotchas',

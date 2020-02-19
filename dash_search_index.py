@@ -15,7 +15,7 @@ dash_index = []
 for chapter in chapters:
     chap = {}
     chap['name'] = chapters[chapter]['name']
-    chap['permalink'] = 'https://dash.plot.ly'+chapters[chapter]['url']
+    chap['permalink'] = 'https://dash.plotly.com'+chapters[chapter]['url']
     chap['description'] = chapters[chapter]['description']
     chap_content = str(chapters[chapter]['content'])
     chap_content = chap_content.replace("'", '')

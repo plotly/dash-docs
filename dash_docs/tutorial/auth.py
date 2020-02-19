@@ -29,18 +29,18 @@ layout = html.Div([
       your code.
 
     Plotly OAuth provides authentication through your online Plotly account
-    or through your company's [Plotly Enterprise server](https://plot.ly/products/on-premise).
+    or through your company's [Plotly Enterprise server](https://plotly.com/products/on-premise).
     As a Dash developer, this requires a paid Plotly subscription.
-    Here's where you can [subscribe to Plotly Cloud](https://plot.ly/products/cloud),
+    Here's where you can [subscribe to Plotly Cloud](https://plotly.com/products/cloud),
     and here's where you can
-    [contact us about Plotly Enterprise](https://go.plot.ly/chart-studio-demo).
+    [contact us about Plotly Enterprise](https://go.plotly.com/chart-studio-demo).
     The viewers of your app will need a Plotly account but they do not need to
     upgrade to a paid subscription.
 
     Plotly OAuth allows you to share your apps with other users who have Plotly
     accounts. With Plotly Enterprise, this includes sharing apps through
     the integrated LDAP system. Apps that you have saved will appear in your
-    list of files at [https://plot.ly/organize](https://plot.ly/organize)
+    list of files at [https://plotly.com/organize](https://plotly.com/organize)
     and you can manage the permissions of the apps there. Viewers create and
     manage their own accounts.
 
@@ -234,7 +234,7 @@ layout = html.Div([
     logout button and insert it in the layout or use `auth.logout()` in a callback.
 
     Plotly Auth uses the environment variables `PLOTLY_USERNAME` and `PLOTLY_API_KEY`.
-    You can find your username and API key at [https://plot.ly/settings/api](https://plot.ly/settings/api) or,
+    You can find your username and API key at [https://plotly.com/settings/api](https://plotly.com/settings/api) or,
     if you are using [Dash Enterprise](https://plotly/dash/pricing), at https://your-plotly-server.com/settings/api.
 
     You can set these variables directly in your code with:
@@ -327,7 +327,7 @@ layout = html.Div([
         }, style={'display': 'none'}),
         auth.create_logout_button(
             label='Sign out',
-            redirect_to='https://plot.ly')],
+            redirect_to='https://plotly.com')],
          className='container')
 
 

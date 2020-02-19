@@ -67,7 +67,7 @@ layout = html.Div([
 
     **Important: For these examples, you need to include `__name__` in your Dash constructor.**
 
-    That is, `app = dash.Dash(__name__)` instead of `app = dash.Dash()`. [Here's why](https://community.plot.ly/t/dash-app-does-not-load-assets-and-app-index-string/12178/10?u=chriddyp).
+    That is, `app = dash.Dash(__name__)` instead of `app = dash.Dash()`. [Here's why](https://community.plotly.com/t/dash-app-does-not-load-assets-and-app-index-string/12178/10?u=chriddyp).
 
     ### Example: Including Local CSS and JavaScript
 
@@ -211,7 +211,7 @@ layout = html.Div([
     Give it a try: Change the color in `typography.css` from `hotpink` to `orange` and see your application update.
 
     > Don't like hot-reloading? You can turn this off with `app.run_server(dev_tools_hot_reload=False)`.
-    > Learn more in <dccLink href="/devtools" children="Dash Dev Tools documentation"/>. Questions? See the [community forum hot reloading discussion](https://community.plot.ly/t/announcing-hot-reload/14177).
+    > Learn more in <dccLink href="/devtools" children="Dash Dev Tools documentation"/>. Questions? See the [community forum hot reloading discussion](https://community.plotly.com/t/announcing-hot-reload/14177).
 
     '''),
 
@@ -591,8 +591,8 @@ Starting with Dash 1.0.0, `serve_locally` defaults to `True`.
 
     # Syntax Highlighting With Markdown
 
-    Both [`dash-table`](https://dash.plot.ly/datatable) and
-    [`dash-core-components`](https://dash.plot.ly/dash-core-components)
+    Both [`dash-table`](https://dash.plotly.com/datatable) and
+    [`dash-core-components`](https://dash.plotly.com/dash-core-components)
     support markdown formatting; this includes syntax highlighting for
     inline code.
 

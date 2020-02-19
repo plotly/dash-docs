@@ -64,11 +64,11 @@ layout = html.Div([
     rendered.
 
     e.g., if cell `x` has the raw value `dash`, and cell `y` has the raw value
-    `[plotly](http://plot.ly)`, cell `y` will actually come before cell `x` when the table is
+    `[plotly](http://plotly.com)`, cell `y` will actually come before cell `x` when the table is
     sorted in ascending order, despite the fact that the *displayed* value of cell `y` is
-    [plotly](http://plot.ly).
+    [plotly](http://plotly.com).
 
-    Markdown cells also support syntax highlighting. For more details, please see ["Syntax Highlighting With Markdown"](https://dash.plot.ly/external-resources#md-syntax-highlight).
+    Markdown cells also support syntax highlighting. For more details, please see ["Syntax Highlighting With Markdown"](https://dash.plotly.com/external-resources#md-syntax-highlight).
 
     By default, the column presentation is `input`.
     ''')),
