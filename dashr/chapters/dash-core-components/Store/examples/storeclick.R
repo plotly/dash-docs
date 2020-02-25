@@ -16,7 +16,7 @@ app$layout(htmlDiv(list(
   dccStore(id='session', storage_type='session'),
   htmlTable(list(
     htmlThead(list(
-      htmlTr(htmlTh('Click to store in:', colSpan="3")),
+      htmlTr(htmlTh('Click to store in:', colSpan='3')),
       htmlTr(list(
         htmlTh(htmlButton('memory', id='memory-button')),
         htmlTh(htmlButton('localStorage', id='local-button')),
@@ -38,11 +38,13 @@ app$layout(htmlDiv(list(
   ))
 )))
 
-  
+for (i in c('memory', 'local', 'session')) {
   app$callback(
-    output = list(id=store, property = 'data'),
-    params = list(input(id = sprintf('%s-button', store), property = 'n_clicks'),
-                  state(store, 'data')),
+    output(id = i, property = 'data'),
+    params = list(
+      input(id = sprintf('%s-button', i), property = 'n_clicks'),
+      state(id = i, property = 'data')
+    ),
     function(n_clicks, data){
       if(is.null(n_clicks)){
         return()
@@ -57,11 +59,15 @@ app$layout(htmlDiv(list(
       return(data)
     }
   )
-  
+}
+
+for (i in c('memory', 'local', 'session')) {
   app$callback(
-    output = list(id=sprintf('%s-clicks', store), property = 'children'),
-    params = list(input(id = store, property = 'modified_timestamp'),
-                  state(store, 'data')),
+    output(id = sprintf('%s-clicks', i), property = 'children'),
+    params = list(
+      input(id = i, property = 'modified_timestamp'),
+      state(id = i, property = 'data')
+    ),
     function(ts, data){
       if(is.null(ts)){
         return()
@@ -72,9 +78,8 @@ app$layout(htmlDiv(list(
         data = data
       }  
       return(data$clicks[[1]])
-    })
-
+    }
+  )
+}
 
 app$run_server()
-
-
