@@ -574,8 +574,9 @@ URLS = [
                 'url': '/performance',
                 'content': tutorial.performance.layout,
                 'name': 'Performance',
-                'description': 'There are two main ways to speed up dash apps: '\
-                               'caching and using WebGL chart types.'
+                'description': 'There are three main ways to speed up Dash apps: '\
+                               'caching, using WebGL chart types, and implementing '\
+                               'clientside callbacks.'
             },
 
             {

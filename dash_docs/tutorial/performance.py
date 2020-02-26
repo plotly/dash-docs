@@ -179,6 +179,28 @@ app.clientside_callback(
     '''),
 
     reusable_components.Markdown('''
+#### Inline Clientside Callbacks
+
+You can also write the JavaScript code directly in your Dash app by
+supplying a value to the "source" argument. Here's an example using
+the same function as above:
+    '''),
+
+    Syntax('''
+from dash.dependencies import Input, Output
+
+app.clientside_callback(
+    Output('out-component', 'value'),
+    [Input('in-component1', 'value'), Input('in-component2', 'value')],
+    source="""
+    function(largeValue1, largeValue2) {
+        return someTransform(largeValue1, largeValue2);
+    }
+    """
+)
+    '''),
+
+    reusable_components.Markdown('''
 
 ***
 
