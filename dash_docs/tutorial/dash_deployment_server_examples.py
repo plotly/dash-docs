@@ -24,7 +24,7 @@ def Blockquote():
         Plotly's commercial platform for managing and improving
         Dash applications in your organization.
         <dccLink href="/dash-enterprise" children="View the docs"/> or
-        [request a trial](https://go.plot.ly/dash-doc).
+        [request a trial](https://plot.ly/get-demo).
     ''')
 
 
@@ -2962,7 +2962,7 @@ pdfService = html.Div(children=[
         - Creating high-quality, branded PDF templates
 
         Get in touch with your sales rep or
-        [reach out to us directly](https://go.plot.ly/dash-doc)
+        [reach out to us directly](https://plot.ly/get-demo)
         to learn more.
 
         '''),
