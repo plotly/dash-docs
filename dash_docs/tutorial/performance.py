@@ -190,13 +190,13 @@ the same function as above:
 from dash.dependencies import Input, Output
 
 app.clientside_callback(
-    Output('out-component', 'value'),
-    [Input('in-component1', 'value'), Input('in-component2', 'value')],
-    source="""
+    """
     function(largeValue1, largeValue2) {
         return someTransform(largeValue1, largeValue2);
     }
-    """
+    """,
+    Output('out-component', 'value'),
+    [Input('in-component1', 'value'), Input('in-component2', 'value')]
 )
     '''),
 
