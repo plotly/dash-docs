@@ -5,7 +5,7 @@ import numpy as np
 
 app = dash.Dash(__name__)
 
-filename = 'https://upload.wikimedia.org/wikipedia/commons/e/e4/Mitochondria%2C_mammalian_lung_-_TEM_%282%29.jpg'
+filename = 'https://raw.githubusercontent.com/plotly/datasets/master/mitochondria.jpg'
 canvas_width = 500
 
 
