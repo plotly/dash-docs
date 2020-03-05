@@ -145,8 +145,8 @@ def generate_component_example(
     (e.g., if the component needs to be an argument for a dcc.Graph).
     The location of the component code is represented by an
     underscore (_).
-    :param (dict) iframe_info: The URL and, if applicable, the height
-    and width of the iframe containing the example.
+    :param (dict) image_info: The URL and, if applicable, the height
+    and width of the image of the component.
     :rtype (list[obj]): A list containing the entire section for the
     component in question, including the code block, component demo,
     description, and hyperlinks to the component-specific page.
@@ -343,7 +343,7 @@ def generate_docs(
     return layout_children
 
 
-# individual componaent pages
+# individual component pages
 
 def create_default_example(
         component_name,
