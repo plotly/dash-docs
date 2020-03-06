@@ -255,6 +255,61 @@ dcc.Graph(
     - Graph transitions for smooth transitions or animations on Graph updates
     https://community.plot.ly/t/exploring-a-transitions-api-for-dcc-graph/15468
     """),
+
+    html.H2('Graph Resizing and Responsiveness'),
+    reusable_components.Markdown("""
+
+    There are quite a few options that you can take advantage of if
+    you want the size of your graph to be reactive.
+
+    The default `plotly.js` behavior dictates that the graph should
+    resize upon window resize. However, in some cases, you might want
+    to resize the graph based on the size of its parent container
+    instead. (You can set the size of the parent container with the
+    `style.height` and `style.width` properties.)
+
+    The `responsive` property of the `dcc.Graph` component allows you
+    to define your desired behavior. In short, it accepts as a value
+    `True`, `False`, or `'auto'`:
+
+    * `True` forces the graph to be responsive to window and parent
+      resize, regardless of any other specifications in
+      `figure.layout` or `config`
+    * `False` forces the graph to be non-responsive to window and
+      parent resize, regardless of any other specifications in
+      `figure.layout` or `config`
+    * `'auto'` preserves the legacy behavior (size and resizability
+      are determined by values specified in `figure.layout` and
+      `config.responsive`)
+
+    """),
+
+    html.H3('How Resizing Works - Advanced'),
+    reusable_components.Markdown("""
+
+    The properties of `dcc.Graph` that can control the size of the
+    graph (other than `responsive`) are:
+
+    * `figure.layout.height` - explicitly sets the height
+    * `figure.layout.width` - explicitly sets the width
+    * `figure.layout.autosize` - if `True`, sets the height and width
+      of the graph to that of its parent container
+    * `config.responsive` - if `True`, changes the height and width of
+      the graph upon window resize
+
+    The `responsive` property works in conjunction with the above
+    properties in the following way:
+
+    * `True`: `config.responsive` and `figure.layout.autosize` are
+    overriden with `True` values, and `figure.layout.height` and
+    `figure.layout.width` are unset
+    * `False`: `config.responsive` and `figure.layout.autosize` are
+      both overriden with `False` values
+    * `'auto'`: the resizability of the plot is determined the
+      same way as it used to be (i.e., with the four properties above)
+
+  """),
+
     html.H3('Graph Properties'),
     generate_prop_info('Graph')
 ])
