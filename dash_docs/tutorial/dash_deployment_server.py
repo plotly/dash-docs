@@ -13,7 +13,7 @@ layout = html.Div(className='toc', children=[
 
     reusable_components.Section("What's Dash Enterprise?", [
         reusable_components.Chapter('Learn More About Dash Enterprise',
-                'https://plot.ly/dash/pricing/',
+                'https://plot.ly/get-pricing/',
                 """Dash Enterprise is Plotly's commercial offering
                    for managing and improving your Dash apps in your
                    organization. [Learn more](https://plot.ly/dash) or

@@ -27,7 +27,7 @@ These workshops are lead by the authors of Dash and are tailored towards both be
 
 If you or your company would like to sponsor a specific feature or enterprise
 customization, get in touch with our
-[advanced development team](https://plot.ly/dash/pricing/).
+[advanced development team](https://plot.ly/get-pricing/).
 
 ### Community Support
 
