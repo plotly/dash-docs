@@ -1,6 +1,7 @@
 import os
 from .import advanced_callbacks
 from .import auth
+from .import callback_gotchas
 from .import core_component_examples as examples
 from .import core_components
 from .import cytoscape

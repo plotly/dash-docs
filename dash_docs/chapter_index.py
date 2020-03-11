@@ -148,7 +148,7 @@ URLS = [
             },
             {
                 'url': '/faqs',
-                'name': 'Part 6. FAQs & Gotchas',
+                'name': 'Part 6. FAQs',
                 'description': 'If you have read through the rest of the ' \
                 'tutorial and still have questions or are encountering ' \
                 'unexpected behaviour, this chapter may be useful.',
@@ -167,6 +167,16 @@ URLS = [
                 'take a look at other things you can do with callbacks - '
                 'from performance improvements to callback contexts.',
                 'content': tutorial.advanced_callbacks.layout
+            },
+            {
+                'url': '/callback-gotchas',
+                'name': 'Callback Gotchas',
+                'description': 'Dash callbacks have some idiosyncracies that '
+                'should be taken into consideration when building a Dash app. '
+                'If you\'re running into unexpected callback behavior, '
+                'and the rest of the documentation hasn\'t shed any light on '
+                'the situation, try taking a look in this section.',
+                'content': tutorial.callback_gotchas.layout
             }
         ]
     },
