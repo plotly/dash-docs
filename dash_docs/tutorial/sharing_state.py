@@ -19,7 +19,7 @@ layout = html.Div([
     # Sharing State Between Callbacks
 
     <blockquote>
-    This is the 6th chapter of the essential <dccLink children="Dash Tutorial" href="/"/>.  The
+    This is the 5th chapter of the essential <dccLink children="Dash Tutorial" href="/"/>.  The
     <dccLink href="/interactive-graphing" children="previous chapter"/> covered how to use callbacks
     with the <code>dash_core_components.Graph</code> component.  The <dccLink href="/" children="rest of the Dash
     documentation"/> covers other topics like multi-page apps and component

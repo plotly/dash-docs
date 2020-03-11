@@ -325,17 +325,13 @@ layout = html.Div([
 
     '''),
 
-
     reusable_components.Markdown('''
-
-        The next part of the Dash tutorial covers some more advanced
-        features of Dash callbacks.
-
+        The next part of the Dash tutorial covers interactive graphing.
     '''),
 
     dcc.Link(
-        'Dash Tutorial Part 4: Advanced Callbacks',
-        href=tools.relpath("/state")
+        'Dash Tutorial Part 4: Interactive Graphing',
+        href=tools.relpath("/interactive-graphing")
     )
 
 

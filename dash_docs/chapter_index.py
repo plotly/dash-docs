@@ -129,21 +129,8 @@ URLS = [
                 'content': tutorial.getting_started_part_2.layout
             },
             {
-                'url': '/state',
-                'name': 'Part 4. More About Callbacks',
-                'description': (
-                    "Basic callbacks are fired whenever the values "
-                    "change. Use Dash `State` with Dash `Inputs` to "
-                    "pass in extra values whenever the `Inputs` "
-                    "change. `State` is useful for UIs that contain "
-                    "forms or buttons. Use the `PreventUpdate` exception "
-                    "to leave the callback output unchanged"
-                ),
-                'content': tutorial.state.layout
-            },
-            {
                 'url': '/interactive-graphing',
-                'name': 'Part 5. Interactive Graphing and Crossfiltering',
+                'name': 'Part 4. Interactive Graphing and Crossfiltering',
                 'description': 'Bind interactivity to the Dash `Graph` ' \
                                'component whenever you hover, click, or ' \
                                'select points on your chart.',
@@ -151,7 +138,7 @@ URLS = [
             },
             {
                 'url': '/sharing-data-between-callbacks',
-                'name': 'Part 6. Sharing Data Between Callbacks',
+                'name': 'Part 5. Sharing Data Between Callbacks',
                 'description': '`global` variables will break your Dash apps. ' \
                                'However, there are other ways to share data ' \
                                'between callbacks. This chapter is useful for ' \
@@ -161,7 +148,7 @@ URLS = [
             },
             {
                 'url': '/faqs',
-                'name': 'Part 7. FAQs & Gotchas',
+                'name': 'Part 6. FAQs & Gotchas',
                 'description': 'If you have read through the rest of the ' \
                 'tutorial and still have questions or are encountering ' \
                 'unexpected behaviour, this chapter may be useful.',
@@ -170,6 +157,19 @@ URLS = [
         ]
     },
 
+    {
+        'name': 'Dash Callbacks',
+        'chapters': [
+            {
+                'url': '/advanced-callbacks',
+                'name': 'Advanced Callbacks',
+                'description': 'Now that you\'ve gotten through the basics, '
+                'take a look at other things you can do with callbacks - '
+                'from performance improvements to callback contexts.',
+                'content': tutorial.advanced_callbacks.layout
+            }
+        ]
+    },
     {
         'name': 'Open Source Component Libraries',
         'chapters': [
