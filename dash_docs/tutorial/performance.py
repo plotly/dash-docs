@@ -23,6 +23,8 @@ The main performance limitation of dash apps is likely the callbacks in
 the application code itself. If you can speed up your callbacks, your app
 will feel snappier.
 
+***
+
 ### Memoization
 
 Since Dash's callbacks are functional in nature (they don't contain any state),
@@ -30,27 +32,10 @@ it's easy to add memoization caching. Memoization stores the results of a
 function after it is called and re-uses the result if the function is called
 with the same arguments.
 
-To better understand how memoization works, let's start with a simple example.
+>For a simple example of using memoization in a Dash app to improve
+>performance, see the "Improving performance with memoization" section
+>[here](/advanced-callbacks).
 
-'''),
-
-    Syntax('''
-import time
-import functools32
-
-@functools32.lru_cache(maxsize=32)
-def slow_function(input):
-    time.sleep(10)
-    return 'Input was {}'.format(input)
-    '''),
-
-    reusable_components.Markdown('''
-
-Calling `slow_function('test')` the first time will take 10 seconds.
-Calling it a second time with the same argument will take almost no time
-since the previously computed result was saved in memory and reused.
-
-***
 
 Dash apps are frequently deployed across multiple processes or threads.
 In these cases, each process or thread contains its own memory, it doesn't

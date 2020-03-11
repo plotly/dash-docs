@@ -61,6 +61,35 @@ layout = html.Div([
     deprecated.
 
     ------------------------
-    ''')
+    '''),
 
+    reusable_components.Markdown('''
+    ## Improving performance with memoization
+
+    Memoization allows you to bypass long computations by storing the
+    results of function calls.
+
+    To better understand how memoization works, let's start with a simple example.
+
+'''),
+
+    Syntax('''
+import time
+import functools32
+
+@functools32.lru_cache(maxsize=32)
+def slow_function(input):
+    time.sleep(10)
+    return 'Input was {}'.format(input)
+    '''),
+
+    reusable_components.Markdown('''
+    Calling `slow_function('test')` the first time will take 10 seconds.
+    Calling it a second time with the same argument will take almost no time
+    since the previously computed result was saved in memory and reused.
+
+    The [Performance](/performance) section of the Dash docs delves a
+    little deeper into leveraging multiple processes and threads in
+    conjunction with memoization to further improve performance.
+    ''')
 ])
