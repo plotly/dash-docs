@@ -221,7 +221,7 @@ dcc.RadioItems(
         'For more on ',
         html.Code('dash.dependencies.State'),
         ', see the tutorial on ',
-        dcc.Link('Dash State', href=tools.relpath('/state')),
+        dcc.Link('basic callbacks', href=tools.relpath('/getting-started-part-2')),
         '.'
     ]),
 

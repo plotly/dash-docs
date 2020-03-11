@@ -28,7 +28,7 @@ layout = html.Div([
     <blockquote>
     This is the 3rd chapter of the <dccLink children="Dash Tutorial" href="/"/>.
     The <dccLink href="/getting-started" children="previous chapter"/> covered the Dash app <code>layout</code>
-    and the <dccLink href="/state" children="next chapter"/> covers more advanced features of Dash callbacks.
+    and the <dccLink href="/interactive-graphing" children="next chapter"/> covers interactive graphing.
     Just getting started? Make sure to <dccLink href="/installation" children="install the necessary dependencies"/>.
     </blockquote>
     '''),
