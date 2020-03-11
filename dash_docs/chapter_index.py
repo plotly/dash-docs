@@ -169,6 +169,16 @@ URLS = [
                 'content': tutorial.advanced_callbacks.layout
             },
             {
+                'url': '/clientside-callbacks',
+                'name': 'Clientside Callbacks',
+                'description': 'You might want to execute a callback in '
+                'the frontend as opposed to the backend if you want to '
+                'avoid the extra time that it takes to make a roundtrip '
+                'to the server. Clientside callbacks allow you to write '
+                'your callbacks in JavaScript that runs in the browser.',
+                'content': tutorial.clientside_callbacks.layout
+            },
+            {
                 'url': '/callback-gotchas',
                 'name': 'Callback Gotchas',
                 'description': 'Dash callbacks have some idiosyncracies that '
