@@ -6,14 +6,12 @@ from dash_docs import tools
 from dash_docs import reusable_components
 
 examples = {
-    'basic-input': tools.load_example('tutorial/examples/basic-input.py'),
-    'basic-state': tools.load_example('tutorial/examples/basic-state.py'),
     'prevent-update': tools.load_example('tutorial/examples/prevent_update.py'),
     'prevent-update-button': tools.load_example('tutorial/examples/prevent_update_button.py'),
 }
 
 layout = html.Div([
-    html.H1('Dash State and PreventUpdate'),
+    html.H1('Dash PreventUpdate'),
 
     reusable_components.Markdown('''
         ## Dash State
@@ -27,41 +25,9 @@ layout = html.Div([
         </blockquote>
     '''),
 
-    reusable_components.Markdown('''
-        In the previous chapter on
-        <dccLink href="/getting-started-part-2" children="basic Dash callbacks"/>,
-        our callbacks looked something like:
-    '''),
-    Syntax(examples['basic-input'][0]),
-    Example(examples['basic-input'][1]),
-
-    reusable_components.Markdown('''
-        In this example, the callback function is fired whenever any of the
-        attributes described by the `dash.dependencies.Input` change.
-        Try it for yourself by entering data in the inputs above.
-
-        `dash.dependencies.State` allows you to pass along extra values without
-        firing the callbacks. Here's the same example as above but with the
-        `dcc.Input` as `dash.dependencies.State` and a button as
-        `dash.dependencies.Input`.
-    '''),
-    Syntax(examples['basic-state'][0]),
-    Example(examples['basic-state'][1]),
-
-    reusable_components.Markdown('''
-        In this example, changing text in the `dcc.Input` boxes won't fire
-        the callback but clicking on the button will. The current values of
-        the `dcc.Input` values are still passed into the callback even though
-        they don't trigger the callback function itself.
-
-        Note that we're triggering the callback by listening to the
-        `n_clicks` property of the `html.Button` component. `n_clicks` is a
-        property that gets incremented every time the component has been
-        clicked on. It is available in every component in the
-        `dash_html_components` library.
 
         ## Using PreventUpdate in Callback
-
+    reusable_components.Markdown('''
         In certain situations, you don't want to update the callback output. You can
         achieve this by raising a `PreventUpdate` exception in the callback function.
     '''),
