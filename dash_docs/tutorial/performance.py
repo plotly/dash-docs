@@ -179,8 +179,10 @@ the contents of the `.js` file would look like this:
 
     Syntax('''
 window.dash_clientside = Object.assign({}, window.dash_clientside, {
-    large_params_function: function(largeValue1, largeValue2) {
-        return someTransform(largeValue1, largeValue2);
+    clientside: {
+        large_params_function: function(largeValue1, largeValue2) {
+            return someTransform(largeValue1, largeValue2);
+        }
     }
 });
     '''),
