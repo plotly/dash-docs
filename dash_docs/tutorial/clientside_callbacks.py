@@ -2,8 +2,13 @@ import dash_core_components as dcc
 import dash_html_components as html
 
 from dash_docs.tutorial.components import Example, Syntax
-from dash_docs import tools
+from dash_docs import tools, styles
 from dash_docs import reusable_components
+
+examples = {
+    'graph-update-fe-be': tools.load_example('tutorial/examples/clientside/graph_update_fe_be.py'),
+    'graph-update-fe-be-px': tools.load_example('tutorial/examples/clientside/graph_update_fe_be_px.py')
+}
 
 layout = html.Div([
     html.H1('Clientside Callbacks'),
@@ -70,7 +75,7 @@ app.clientside_callback(
         your `assets/` folder. To achieve the same result as the code above,
         the contents of the `.js` file would look like this:
 
-'''),
+    '''),
 
     Syntax('''
     window.dash_clientside = Object.assign({}, window.dash_clientside, {
@@ -88,22 +93,73 @@ app.clientside_callback(
 
     In Dash, the callback would now be written as:
 
-'''),
+    '''),
 
     Syntax('''
     from dash.dependencies import ClientsideFunction, Input, Output
 
-app.clientside_callback(
-    ClientsideFunction(
-        namespace='clientside',
-        function_name='large_params_function'
-    ),
-    Output('out-component', 'value'),
-    [Input('in-component1', 'value'), Input('in-component2', 'value')]
-)
+    app.clientside_callback(
+        ClientsideFunction(
+            namespace='clientside',
+            function_name='large_params_function'
+        ),
+        Output('out-component', 'value'),
+        [Input('in-component1', 'value'), Input('in-component2', 'value')]
+    )
     '''),
 
     reusable_components.Markdown('''
+
+    ***
+
+    ## A simple example
+
+    Below are two examples of using clientside callbacks to update a
+    graph in conjunction with a `dcc.Store` component. In these
+    examples, we update a `dcc.Store` element on the backend; to
+    create and display the graph, we have a clientside callback in the
+    frontend that adds some extra information about the layout that we
+    specify using the radio buttons under "Graph scale".
+
+    '''),
+
+    Syntax(examples['graph-update-fe-be'][0]),
+    Example(examples['graph-update-fe-be'][1]),
+
+    reusable_components.Markdown('''
+
+    Note that, in this example, we are manually creating the `figure`
+    dictionary by extracting the relevant data from the
+    dataframe. This is what gets stored in our `dcc.Store` component;
+    expand the "Contents of figure storage" above to see exactly what
+    is used to construct the graph.
+
+    ### Using Plotly Express to generate a figure
+
+    Plotly Express enables you to create one-line declarations of
+    figures. When you create a graph with, for example,
+    `plotly_express.Scatter`, you get a dictionary as a return
+    value. This dictionary is in the same shape as the `figure`
+    argument to a `dcc.Graph` component. (See
+    [here](https://plot.ly/python/creating-and-updating-figures/) for
+    more information about the shape of `figure`s.)
+
+    We can rework the example above to use Plotly Express.
+
+    '''),
+
+    Syntax(examples['graph-update-fe-be-px'][0]),
+    Example(examples['graph-update-fe-be-px'][1]),
+
+    reusable_components.Markdown('''
+
+    Again, you can expland the "Contents of figure storage" section
+    above to see what gets generated. You may notice that this is
+    quite a bit more extensive than the previous example; in
+    particular, a `layout` is already defined. So, instead of creating
+    a `layout` as we did previously, we have to mutate the existing
+    layout in our JavaScript code.
+
     ***
 
     **Note**: There are a few limitations to keep in mind:
