@@ -38,10 +38,10 @@ layout = html.Div([
         Output('out-component', 'value'),
         [Input('in-component1', 'value'), Input('in-component2', 'value')]
     )
-def large_params_function(largeValue1, largeValue2):
-    largeValueOutput = someTransform(largeValue1, largeValue2)
+    def large_params_function(largeValue1, largeValue2):
+        largeValueOutput = someTransform(largeValue1, largeValue2)
 
-    return largeValueOutput
+        return largeValueOutput
     '''),
 
     reusable_components.Markdown('''
@@ -55,15 +55,15 @@ def large_params_function(largeValue1, largeValue2):
     Syntax('''
     from dash.dependencies import Input, Output
 
-app.clientside_callback(
-    """
-    function(largeValue1, largeValue2) {
-        return someTransform(largeValue1, largeValue2);
-    }
-    """,
-    Output('out-component', 'value'),
-    [Input('in-component1', 'value'), Input('in-component2', 'value')]
-)
+    app.clientside_callback(
+        """
+        function(largeValue1, largeValue2) {
+            return someTransform(largeValue1, largeValue2);
+        }
+        """,
+        Output('out-component', 'value'),
+        [Input('in-component1', 'value'), Input('in-component2', 'value')]
+    )
     '''),
 
     reusable_components.Markdown('''
@@ -71,8 +71,8 @@ app.clientside_callback(
     ***
 
     You also have the option of defining the function in a `.js` file in
-        your `assets/` folder. To achieve the same result as the code above,
-        the contents of the `.js` file would look like this:
+    your `assets/` folder. To achieve the same result as the code above,
+    the contents of the `.js` file would look like this:
 
     '''),
 
