@@ -33,8 +33,7 @@ layout = html.Div([
     Example(examples['prevent-update'][1]),
 
     reusable_components.Markdown('''
-    ## Determining which `Input` has fired with callback context
-    *New in v0.38.0!*
+    ## Determining which `Input` has fired with `dash.callback_context`
 
     In addition to event properties like `n_clicks`
     that change whenever an event happens (in this case a click), there is a
@@ -54,6 +53,7 @@ layout = html.Div([
     Syntax(examples['last-clicked-button'][0]),
     Example(examples['last-clicked-button'][1]),
     reusable_components.Markdown('''
+    ### Legacy behaviour: using timestamps
 
     Prior to v0.38.0, you needed to compare timestamp properties like
     `n_clicks_timestamp` to find the most recent click. While existing uses of
