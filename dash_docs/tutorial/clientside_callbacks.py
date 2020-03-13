@@ -115,7 +115,7 @@ layout = html.Div([
 
     Below are two examples of using clientside callbacks to update a
     graph in conjunction with a `dcc.Store` component. In these
-    examples, we update a `dcc.Store` element on the backend; to
+    examples, we update a `dcc.Store` component on the backend; to
     create and display the graph, we have a clientside callback in the
     frontend that adds some extra information about the layout that we
     specify using the radio buttons under "Graph scale".
