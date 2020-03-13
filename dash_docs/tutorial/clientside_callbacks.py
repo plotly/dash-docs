@@ -14,7 +14,7 @@ layout = html.Div([
     html.H1('Clientside Callbacks'),
 
     reusable_components.Markdown('''
-    Sometimes callbacks can incur a significant overhead, especially when they :
+    Sometimes callbacks can incur a significant overhead, especially when they:
     - receive and/or return very large quantities of data (transfer time)
     - are called very often (network latency, queuing, handshake)
     - are part of a callback chain that requires multiple roundtrips
