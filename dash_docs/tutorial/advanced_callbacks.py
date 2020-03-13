@@ -15,7 +15,7 @@ layout = html.Div([
     html.H1('Advanced Callbacks'),
 
     reusable_components.Markdown('''
-    ## Catching errors with `PreventUpdate` and `dash.no_update`
+    ## Catching errors with `PreventUpdate`
 
     In certain situations, you don't want to update the callback output. You can
     achieve this by raising a `PreventUpdate` exception in the callback function.
@@ -24,8 +24,10 @@ layout = html.Div([
     Example(examples['prevent-update-button'][1]),
 
     reusable_components.Markdown('''
-        This example illustrates how you can show an error while keeping the previous
-        input, using `dash.no_update` to update the output partially.
+    ## Displaying errors with `dash.no_update`
+
+    This example illustrates how you can show an error while keeping the previous
+    input, using `dash.no_update` to update the output partially.
     '''),
     Syntax(examples['prevent-update'][0]),
     Example(examples['prevent-update'][1]),
