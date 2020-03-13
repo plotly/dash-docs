@@ -153,7 +153,7 @@ app.clientside_callback(
 
     reusable_components.Markdown('''
 
-    Again, you can expland the "Contents of figure storage" section
+    Again, you can expand the "Contents of figure storage" section
     above to see what gets generated. You may notice that this is
     quite a bit more extensive than the previous example; in
     particular, a `layout` is already defined. So, instead of creating
