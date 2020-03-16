@@ -72,7 +72,7 @@ Note that
 Heroku is one of the easiest platforms for deploying and managing public Flask
 applications.
 
-[View the official Heroku guide to Python](https://devcenter.heroku.com/articles/getting-started-with-python#introduction).
+[View the official Heroku guide to Python](https://devcenter.heroku.com/articles/layout-with-python#introduction).
 
 Here is a simple example. This example requires a Heroku account,
 `git`, and `virtualenv`.

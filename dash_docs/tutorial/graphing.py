@@ -23,7 +23,7 @@ layout = html.Div([
 
     <blockquote>
     This is the 4th chapter of the <dccLink children="Dash Tutorial" href="/"/>.
-    The <dccLink href="/getting-started-part-2" children="previous chapter"/> covered basic callback usage.
+    The <dccLink href="/basic-callbacks" children="previous chapter"/> covered basic callback usage.
     The <dccLink href="/sharing-data-between-callbacks" children="next chapter"/> describes how to
     share data between callbacks.
     Just getting started? Make sure to <dccLink href="/installation" children="install the necessary dependencies"/>.

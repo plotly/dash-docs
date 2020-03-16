@@ -38,7 +38,7 @@ layout = html.Div([
 
     html.Div([
         'Ready? Now, let\'s ',
-        dcc.Link('make your first Dash app', href=tools.relpath('/getting-started')),
+        dcc.Link('make your first Dash app', href=tools.relpath('/layout')),
         '.'
     ]),
 

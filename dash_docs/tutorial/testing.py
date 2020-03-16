@@ -39,7 +39,7 @@ layout = html.Div([
     just need to install the WebDrivers or use a remote Selenium-Grid and you
     are ready to test.
 
-    - [Chrome Driver](http://chromedriver.chromium.org/getting-started)
+    - [Chrome Driver](http://chromedriver.chromium.org/layout)
     - [Firefox Gecko Driver](https://github.com/mozilla/geckodriver/releases)
 
     FYI, We run Dash integration tests with Chrome WebDriver.

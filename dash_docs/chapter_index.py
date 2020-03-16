@@ -106,7 +106,7 @@ URLS = [
                 'content': tutorial.installation.layout
             },
             {
-                'url': '/getting-started',
+                'url': '/layout',
                 'name': 'Part 2. Layout',
                 'description': (
                     'The Dash `layout` describes what your app will '
@@ -116,7 +116,7 @@ URLS = [
                 'content': tutorial.getting_started_part_1.layout
             },
             {
-                'url': '/getting-started-part-2',
+                'url': '/basic-callbacks',
                 'name': 'Part 3. Basic Callbacks',
                 'description': (
                     "Dash apps are made interactive through Dash "

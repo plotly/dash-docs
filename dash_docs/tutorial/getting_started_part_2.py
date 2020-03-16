@@ -27,7 +27,7 @@ layout = html.Div([
 
     <blockquote>
     This is the 3rd chapter of the <dccLink children="Dash Tutorial" href="/"/>.
-    The <dccLink href="/getting-started" children="previous chapter"/> covered the Dash app <code>layout</code>
+    The <dccLink href="/layout" children="previous chapter"/> covered the Dash app <code>layout</code>
     and the <dccLink href="/interactive-graphing" children="next chapter"/> covers interactive graphing.
     Just getting started? Make sure to <dccLink href="/installation" children="install the necessary dependencies"/>.
     </blockquote>
@@ -36,7 +36,7 @@ layout = html.Div([
     reusable_components.Markdown('''
 
         In the <dccLink
-            href="/getting-started"
+            href="/layout"
             children="previous chapter on `app.layout`"
         /> we learned that the `app.layout` describes what the app looks like and is
         a hierarchical tree of components.
