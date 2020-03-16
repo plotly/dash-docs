@@ -161,6 +161,13 @@ URLS = [
         'name': 'Dash Callbacks',
         'chapters': [
             {
+                'url': '/basic-callbacks',
+                'name': 'Basic Callbacks',
+                'description': 'Go through this introductory chapter to '
+                'learn the foundations of the Dash callback.',
+                'content': tutorial.getting_started_part_2.layout
+            },
+            {
                 'url': '/advanced-callbacks',
                 'name': 'Advanced Callbacks',
                 'description': 'Now that you\'ve gotten through the basics, '
