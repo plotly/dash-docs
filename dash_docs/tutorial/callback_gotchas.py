@@ -36,7 +36,7 @@ layout = html.Div([
         app.config.suppress_callback_exceptions = True
 
 
-    ### Callbacks require *all* `Inputs`, `States`, and `Output` to be rendered on the page
+    ### Callbacks require *all* `Inputs` and `States` to be rendered on the page
 
     If you have disabled callback validation in order to support dynamic
     layouts, then you won't be automatically alerted to the situation where a
