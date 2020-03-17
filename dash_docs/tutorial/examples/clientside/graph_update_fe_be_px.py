@@ -72,6 +72,9 @@ def update_store_data(indicator, country):
 app.clientside_callback(
     """
     function(figure, scale) {
+        if(figure === undefined) {
+            return {'data': [], 'layout': {}};
+        }
         const fig = Object.assign({}, figure, {
             'layout': {
                 ...figure.layout,
