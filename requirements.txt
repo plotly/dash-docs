@@ -70,7 +70,7 @@ ParmEd==3.2.0
 pathlib2==2.3.4
 percy==2.0.2
 periodictable==1.5.0
-Pillow==6.0.0
+Pillow==6.2.0
 pip==20.0.2
 plotly==4.5.4
 pluggy==0.12.0
