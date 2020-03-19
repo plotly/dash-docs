@@ -7,14 +7,17 @@ class CustomDash(Dash):
     def interpolate_index(self, **kwargs):
         # import later to prevent circular imports - yikes
         from .chapter_index import URL_TO_META_MAP
-        # Inspect the arguments by printing them
-
         kwargs.pop('title')
 
+        if request.path in URL_TO_META_MAP:
+            name = URL_TO_META_MAP[request.path].get('breadcrumb', URL_TO_META_MAP[request.path]['name'])
+            name += ' | Dash for Python Documentation | Plotly'
+        else:
+            name = 'Dash Documentation & User Guide | Plotly'
         meta_kwargs = dict(
-            title=URL_TO_META_MAP.get(request.path, {}).get('name', 'Dash User Guide'),
+            title=name,
             description=URL_TO_META_MAP.get(request.path, {}).get(
-                'description', 'Dash User Guide & Documentation'
+                'description', 'Plotly Dash User Guide & Documentation'
             ),
             **kwargs
         )
@@ -133,3 +136,9 @@ def redirect_dcc_confirm():
 def redirect_faq():
     return redirect('/faqs', code=301)
 
+
+@server.before_request
+def clear_trailing():
+    rp = request.path
+    if rp != '/' and rp.endswith('/'):
+        return redirect(rp[:-1])

@@ -70,7 +70,6 @@ Display = CreateDisplay({
 
 
 layout = html.Div(
-    style={"marginLeft": "auto", "marginRight": "auto", "width": "80%"},
     children=[
 
         html.H1('DataTable Sizing'),

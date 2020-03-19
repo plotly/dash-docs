@@ -2991,7 +2991,7 @@ Troubleshooting = html.Div(children=[
     '''),
 
     html.Details([
-        html.Summary("Are using the latest versions?"),
+        html.Summary("Are you using the latest versions?"),
 
         rc.Markdown('''
         ```shell

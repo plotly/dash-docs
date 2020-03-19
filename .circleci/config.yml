@@ -66,6 +66,9 @@ jobs:
 
 workflows:
   version: 2
+  python2.7:
+    jobs:
+      - python-2.7
   python3.7:
     jobs:
       - python-3.7
@@ -75,6 +78,3 @@ workflows:
   python3.6:
     jobs:
       - python-3.6
-  python2.7:
-    jobs:
-      - python-2.7

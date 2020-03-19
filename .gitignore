@@ -1,7 +1,6 @@
 build/
 cache-directory/
 dist/
-lib/
 lib/bundle.js*
 coverage/
 dash_core_components/metadata.json

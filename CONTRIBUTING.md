@@ -8,3 +8,12 @@ Here is an incomplete set of patterns that we use:
 2. All paths (`href` & `src`) need to use `tools.relpath`
 
 3. The markdown content needs to use `reusable_components.Markdown` instead of `dcc.Markdown`. `reusable_components.Markdown` will replace relative links with `tools.relpath`
+
+4. Two custom components are used. The source is in `dash-user-guide-components`. They are built into a tarball with a command like:
+```
+cd dash-user-guide-components
+npm run build
+python setup.py sdist
+cp dist/dash_user_guide_components-0.0.1.tar.gz ..
+```
+If you make changes here, you will need to bump the version number so that the product server installs the new version when deployed.

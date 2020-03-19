@@ -74,7 +74,7 @@ def generate_prop_info(component_name, lib=dcc):
                 for key in top_level_keys_list:
                     key_defs = key_defs.replace(
                         '- {}'.format(key),
-                        '\n- {}'.format(key),
+                        '\n- `{}`'.format(key),
                         1
                     )
 
@@ -113,4 +113,4 @@ def generate_prop_info(component_name, lib=dcc):
             )
         )))
 
-    return html.Div(return_div)
+    return html.Div(return_div, className='reference')

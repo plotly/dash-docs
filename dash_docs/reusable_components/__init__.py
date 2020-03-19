@@ -6,3 +6,4 @@ from .Chapter import Chapter  # noqa: F401
 from .Notebox import Notebox  # noqa: F401
 from .TOC import TOC, TOCChapters  # noqa: F401
 from .Markdown import Markdown  # noqa: F401
+from .Sidebar import Sidebar

@@ -1,5 +1,7 @@
+import dash
 import dash_html_components as html
 import dash_core_components as dcc
+import json
 
 from dash.dependencies import Input, Output
 
@@ -10,6 +12,7 @@ from dash_docs import tools
 from dash_docs.tutorial import home
 
 from dash_docs.tutorial import search
+import dash_user_guide_components as dugc
 
 def create_contents(contents):
     h = []
@@ -20,6 +23,9 @@ def create_contents(contents):
             h.append(html.Li(i))
     return html.Ul(h)
 
+with open('SIDEBAR-INDEX.json', 'r') as f:
+    SIDEBAR_INDEX = json.loads(f.read())
+
 
 header = html.Div(
     className='header',
@@ -27,16 +33,37 @@ header = html.Div(
         className='container-width',
         style={'height': '100%'},
         children=[
-            html.A(html.Img(
-                src='/assets/images/logo.png',
-                className='logo'
-            ), href='/'),
 
+            html.Span([
+                html.A(html.Img(
+                    src='/assets/images/logo-plotly.png',
+                ), href='https://plot.ly'),
+                html.Img(
+                    src='/assets/images/logo-seperator.png',
+                ),
+                dcc.Link(html.Img(
+                    src='/assets/images/logo-dash.png',
+                ), href='/'),
+            ], className='logo'),
+
+            # HEADS UP!
+            # If you are modifying these header links,
+            # make sure to check that the responsive design still works
+            # The breakpoints are set in override.css
             html.Div(className='links', children=[
-                html.A('dash enterprise', className='link', href='https://plot.ly/dash/'),
-                html.A('user guide', className='link active', href=tools.relpath('/')),
-                html.A('plotly', className='link', href='https://plot.ly/'),
-                html.A(children=[html.I(className="fa fa-search")], className='link', href=tools.relpath('/search'))
+                html.A('Announcements', href='https://community.plot.ly/tag/announcements'),
+                html.A('Show & Tell', href='https://community.plot.ly/tag/show-and-tell'),
+                html.A('Community Forum', href='https://community.plot.ly/c/dash'),
+                html.Iframe(
+                    src="https://ghbtns.com/github-btn.html?user=plotly&repo=dash&type=star&count=true&size=small",
+                    style={
+                        'border': 'none',
+                        'height': '30px',
+                        'verticalAlign': 'middle',
+                        'marginTop': '9px',
+                        'width': '105px'
+                    }
+                ),
             ])
         ]
     )
@@ -51,17 +78,30 @@ app.layout = html.Div(
         dcc.Store(id='memory-output'),
         dcc.Store(id='local', storage_type='local'),
         dcc.Store(id='session', storage_type='session'),
+
+        # div used in tests
+        html.Div(id='wait-for-layout'),
+
+        dcc.Location(id='location', refresh=False),
+
         header,
-        html.Div([
-            html.Div(id='wait-for-layout'),
+
+        html.Div(className='content-wrapper', children=[
+            dugc.Sidebar(urls=SIDEBAR_INDEX),
+
             html.Div([
+                html.Div(id='backlinks-top', className='backlinks'),
                 html.Div(
                     html.Div(id='chapter', className='content'),
                     className='content-container'
                 ),
-            ], className='container-width')
-        ], className='background'),
-        dcc.Location(id='location', refresh=False),
+                html.Div(id='backlinks-bottom', className='backlinks'),
+            ], className='rhs-content container-width'),
+
+            dugc.PageMenu(id='pagemenu')
+
+        ]),
+
     ]
 )
 
@@ -150,17 +190,19 @@ def build_all():
 def create_backlinks(pathname):
     parts = pathname.strip('/').split('/')
     links = [
-        dcc.Link('Table of Contents', href='/')
+        dcc.Link('Home', href='/')
     ]
     for i, part in enumerate(parts[:-1]):
+        href='/' + '/'.join(parts[:i + 1])
+        name = chapter_index.URL_TO_BREADCRUMB_MAP.get(href, '? {} ?'.format(href))
         links += [
             html.Span(' > '),
-            dcc.Link(
-                part.replace('-', ' ').title(),
-                href='/' + '/'.join(parts[:i + 1])
-            )
+            dcc.Link(name, href=href)
         ]
-    links += [html.Span(' > ' + parts[-1].replace('-', ' ').title())]
+    current_chapter_name = chapter_index.URL_TO_BREADCRUMB_MAP.get(
+        pathname.rstrip('/'), '? {} ?'.format(pathname)
+    )
+    links += [html.Span(' > ' + current_chapter_name)]
     return links
 
 
@@ -171,33 +213,33 @@ def flat_list(*args):
 
     return out
 
-
-@app.callback(Output('chapter', 'children'),
+@app.callback([Output('chapter', 'children'),
+               Output('backlinks-top', 'children'),
+               Output('backlinks-top', 'style'),
+               Output('backlinks-bottom', 'children'),
+               # dummy variable so that a loading state is triggered
+               Output('pagemenu', 'dummy2')],
               [Input('location', 'pathname')])
 def display_content(pathname):
     if pathname is None or pathname == '/':
-        return home.layout
+        return [home.layout, '', {'borderBottom': 'none'}, '', '']
     pathname = pathname.rstrip('/')
 
+    backlinks = create_backlinks(pathname)
     def make_page(page_path):
-        backlinks = create_backlinks(page_path)
         return flat_list(
-            backlinks,
-            html.Br(),
             chapter_index.URL_TO_CONTENT_MAP[page_path],
-            html.Hr(),
-            backlinks,
             html.Div(id='wait-for-page-{}'.format(page_path)),
         )
 
     if pathname in chapter_index.URL_TO_CONTENT_MAP:
-        return make_page(pathname)
+        children = make_page(pathname)
 
     elif pathname == '/search':
-        return flat_list(create_backlinks(pathname), html.Br(), search.layout)
+        children = flat_list(create_backlinks(pathname), html.Br(), search.layout)
 
     elif pathname == '/all':
-        return build_all()
+        children = build_all()
 
     else:
         warning_box = html.Div(
@@ -213,7 +255,21 @@ def display_content(pathname):
             if partial_path in chapter_index.URL_TO_CONTENT_MAP:
                 return flat_list(warning_box, make_page(partial_path))
 
-        return flat_list(warning_box, home.layout)
+        children = flat_list(warning_box, home.layout)
+    return [children, backlinks, {'borderBottom': 'thin lightgrey solid'}, backlinks, '']
+
+
+# dummy callback to trigger a pagemenu rerender
+app.clientside_callback(
+    '''
+    function(children) {
+        console.warn('updating pagemenu');
+        return '';
+    }
+    ''',
+    Output('pagemenu', 'dummy'),
+    [Input('chapter', 'children')],
+)
 
 
 if __name__ == '__main__':
