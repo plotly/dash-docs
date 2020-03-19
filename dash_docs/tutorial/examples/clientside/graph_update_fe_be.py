@@ -19,7 +19,11 @@ app.layout = html.Div([
         id='clientside-graph'
     ),
     dcc.Store(
-        id='clientside-figure-store'
+        id='clientside-figure-store',
+        data=[{
+            'x': df[df['country'] == 'Canada']['year'],
+            'y': df[df['country'] == 'Canada']['pop']
+        }]
     ),
     'Indicator',
     dcc.Dropdown(

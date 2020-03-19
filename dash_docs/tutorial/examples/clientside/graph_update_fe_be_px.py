@@ -20,7 +20,12 @@ app.layout = html.Div([
         id='clientside-graph-px'
     ),
     dcc.Store(
-        id='clientside-figure-store-px'
+        id='clientside-figure-store-px',
+        data=px.scatter(
+            df[df['country'] == 'Canada'],
+            x='year',
+            y='pop'
+        )
     ),
     'Indicator',
     dcc.Dropdown(
