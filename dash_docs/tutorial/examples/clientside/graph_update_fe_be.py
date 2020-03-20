@@ -71,7 +71,8 @@ def update_store_data(indicator, country):
     dff = df[df['country'] == country]
     return [{
         'x': dff['year'],
-        'y': dff[indicator]
+        'y': dff[indicator],
+        'mode': 'markers'
     }]
 
 
