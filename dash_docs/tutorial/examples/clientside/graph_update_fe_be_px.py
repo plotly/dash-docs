@@ -15,19 +15,12 @@ df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/gapmi
 
 available_countries = df['country'].unique()
 
-initial_data = px.scatter(
-    df[df['country'] == 'Canada'],
-    x='year',
-    y='pop'
-)
-
 app.layout = html.Div([
     dcc.Graph(
         id='clientside-graph-px'
     ),
     dcc.Store(
-        id='clientside-figure-store-px',
-        data=initial_data
+        id='clientside-figure-store-px'
     ),
     'Indicator',
     dcc.Dropdown(
