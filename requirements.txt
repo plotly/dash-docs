@@ -60,6 +60,6 @@ scikit-image==0.14.2
 selenium==3.141.0
 six==1.11.0
 traitlets==4.3.2
-urllib3==1.22
+urllib3==1.24.2
 Werkzeug==0.16.0
 wrapt==1.10.11

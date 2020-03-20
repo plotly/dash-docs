@@ -1525,7 +1525,7 @@
             "url": "/dash-enterprise/application-structure",
             "name": "Application Structure",
             "description": "Ensure that your app meets all the requirements for deployment.",
-            "meta_keywords": "children, download, href, rel, dir, lang, style, form, name, open, content, low, min, required, placeholder, options, contents, css, on, base, stylesheet, container, styles"
+            "meta_keywords": "children, download, href, rel, dir, lang, style, form, name, open, content, low, min, required, contents, css, on, base, stylesheet, container, styles"
           },
           {
             "url": "/dash-enterprise/static-assets",

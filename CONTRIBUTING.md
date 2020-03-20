@@ -1,6 +1,6 @@
 # Contributing
 
-This documentation is a Python and R Dash app.
+This documentation is a Dash app written in both Python and R.
 
 Here is an incomplete set of patterns that we use:
 1. Remote URL examples need to be on a single line, a copy of their data needs to provided in `datasets/`, and the lookup between remote URL and local URL needs to be updated in `tools.load_example`. These remote URLs are replaced on-the-fly when running the docs so that this project can run in airgapped environments.

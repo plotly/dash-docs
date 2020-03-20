@@ -537,8 +537,16 @@ import dash_bio as dashbio
 
 df = pd.read_csv("https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/manhattan_data.csv")
 
+n_chr = 23  # number of chromosome pairs in humans
+assert 'CHR' in df.columns
+assert df['CHR'].max() == n_chr
+
+# Trim down the data
+DATASET = df.groupby('CHR').apply(lambda u: u.head(50))
+DATASET = DATASET.droplevel('CHR').reset_index(drop=True)
+
 manhattanplot = dashbio.ManhattanPlot(
-    dataframe=df,
+    dataframe=DATASET,
     suggestiveline_color='#AA00AA',
     genomewideline_color='#AA5500'
 )
@@ -555,8 +563,16 @@ import dash_bio as dashbio
 
 df = pd.read_csv("https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/manhattan_data.csv")
 
+n_chr = 23  # number of chromosome pairs in humans
+assert 'CHR' in df.columns
+assert df['CHR'].max() == n_chr
+
+# Trim down the data
+DATASET = df.groupby('CHR').apply(lambda u: u.head(50))
+DATASET = DATASET.droplevel('CHR').reset_index(drop=True)
+
 manhattanplot = dashbio.ManhattanPlot(
-    dataframe=df,
+    dataframe=DATASET,
     highlight_color='#00FFAA'
 )
 
