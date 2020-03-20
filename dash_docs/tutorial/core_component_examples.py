@@ -233,7 +233,7 @@ dcc.Graph(
 ''', style=styles.code_container),
     html.P("Graph defined directly from a plotly figure object"),
     ComponentBlock('''import dash_core_components as dcc
-import plotly.graph_objs as go
+import plotly.graph_objects as go
 fig = go.Figure(data=[go.Scatter(x=[1, 2, 3], y=[4, 1, 2])])
 dcc.Graph(
         id='example-graph-2',
