@@ -8,7 +8,7 @@ source('dashr/utils.R', local=utils)
 layout = htmlDiv(list(dccMarkdown("
 # Dash Support and Contact
 Dash is an open-source product that is
-developed and maintained by [Plotly](https://plot.ly).
+developed and maintained by [Plotly](https://plotly.com).
 ### Dash Demos and Enterprise Trials
 If you would like to trial or purchase Dash Enterprise,
 [get in touch with us directly](https://plotly.typeform.com/to/rkO85m).
@@ -17,18 +17,18 @@ a demo of Dash and Dash Enterprise too.
 
 ### Dash Workshops
 
-We lead [two day Dash workshops](https://plotcon.plot.ly) every few months.
-These frequently sell out, so [please register early](https://plotcon.plot.ly)
+We lead [two day Dash workshops](https://plotcon.plotly.com) every few months.
+These frequently sell out, so [please register early](https://plotcon.plotly.com)
 These workshops are lead by the authors of Dash and are tailored towards both beginners and experts.
 
 ### Sponsored Feature Requests and Customizations
 
 If you or your company would like to sponsor a specific feature or enterprise
 customization, get in touch with our
-[advanced development team](https://plot.ly/dash/pricing/).
+[advanced development team](https://plotly.com/dash/pricing/).
 ### Community Support
-Our community forum at [community.plot.ly](https://community.plot.ly) has
-a topic dedicated on [Dash](https://community.plot.ly/c/dash).
+Our community forum at [community.plotly.com](https://community.plotly.com) has
+a topic dedicated on [Dash](https://community.plotly.com/c/dash).
 This forum is great for showing off projects, feature requests,
 and general questions.
 If you have found a bug, you can open an issue on GitHub at
@@ -36,7 +36,7 @@ If you have found a bug, you can open an issue on GitHub at
 
 ### Direct Contact
 If you would like to reach out to me directly,
-you can email me at <chris@plot.ly> or on
+you can email me at <chris@plotly.com> or on
 Twitter at [@chriddyp](https://twitter.com/chriddyp).
 Plotly is also on Twitter at [@plotlygraphs](https://twitter.com/plotlygraphs).
 We are based in Montréal, Canada and our headquarters are in the Mile End.
