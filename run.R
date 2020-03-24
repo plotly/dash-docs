@@ -240,27 +240,63 @@ header <- htmlDiv(
     ))
 ))
 
+# app$layout(
+#   header,
+#   htmlDiv(
+#     list(
+#       dccLocation(id='url'),
+#       htmlDiv(
+#         className='background',
+#         children=list(
+#           htmlDiv(id='wait-for-layout'),
+#           htmlDiv(
+#             className='container-width',
+#             children=htmlDiv(
+#               htmlDiv(id='chapter', className='content'),
+#               className='content-container'
+#             )
+#           ),
+#           pageMenu(id='pagemenu')
+#         )
+#       )
+#     )
+#   )
+# )
+
 app$layout(
-  header,
   htmlDiv(
-    list(
-      dccLocation(id='url'),
-      htmlDiv(
-        className='background',
-        children=list(
-          htmlDiv(id='wait-for-layout'),
-          htmlDiv(
-            className='container-width',
-            children=htmlDiv(
-              htmlDiv(id='chapter', className='content'),
-              className='content-container'
-            )
-          ),
-          pageMenu(id='pagemenu')
-        )
-      )
-    )
+  list(
+    # Stores used by examples.
+    dccStore(id='memory'),
+    dccStore(id='memory-output'),
+    dccStore(id='local', storage_type='local'),
+    dccStore(id='session', storage_type='session'),
+    
+    # div used in tests
+    htmlDiv(id='wait-for-layout'),
+    
+    dccLocation(id='url', refresh=FALSE),
+    
+    header,
+    
+    htmlDiv(className='content-wrapper', children=list(
+      #Sidebar(urls=SIDEBAR_INDEX),
+      
+      htmlDiv(list(
+        htmlDiv(id='backlinks-top', className='backlinks'),
+        htmlDiv(
+          htmlDiv(id='chapter', className='content'),
+          className='content-container'
+        ),
+        htmlDiv(id='backlinks-bottom', className='backlinks')
+        ),
+        className='rhs-content container-width'),
+            
+      pageMenu(id='pagemenu')
+      
+      ))
   )
+)
 )
 
 app$callback(
