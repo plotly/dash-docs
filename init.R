@@ -33,3 +33,5 @@ remotes::install_github("plotly/dash-cytoscape", ref="25b0301")
 remotes::install_github("plotly/dash-bio", ref="44f8f3a")
 remotes::install_github("plotly/dash-daq", ref="7ad539")
 remotes::install_github("plotly/reqres", ref="verbose-debugging", upgrade=FALSE)
+
+install.packages("dash-user-guide-components", repos=NULL, type="source")
