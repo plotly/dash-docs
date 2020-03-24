@@ -66,7 +66,7 @@ app.layout = html.Div([
 )
 def update_store_data(indicator, country):
     dff = df[df['country'] == country]
-    return px.scatter(dff, x='year', y=indicator)
+    return px.scatter(dff, x='year', y=str(indicator))
 
 
 app.clientside_callback(
