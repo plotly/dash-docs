@@ -3,6 +3,7 @@ source('app.R')
 library(dash)
 library(dashCoreComponents)
 library(dashHtmlComponents)
+library(dashUserGuideComponents)
 library(jsonlite)
 library(stringr)
 
@@ -228,7 +229,7 @@ header <- htmlDiv(
       children = list(
         htmlA(htmlImg(
           style = list(height = '100%'),
-          src = 'https://dash.plot.ly/assets/images/logo-plotly.png'
+          src = 'https://dash.plotly.com/assets/images/logo-plotly.png'
         ), href = 'https://plot.ly/products/dash', className='logo-link'),
         htmlDiv(className='links', children = list(
           htmlA('pricing', className='link', href = 'https://plot.ly/dash/pricing'),
@@ -254,7 +255,8 @@ app$layout(
               htmlDiv(id='chapter', className='content'),
               className='content-container'
             )
-          )
+          ),
+          pageMenu(id='pagemenu')
         )
       )
     )
@@ -585,6 +587,75 @@ app$callback(
       }
     )
   }
+)
+
+app$callback(
+  output=list(output('chapter', 'children'),
+              # output('backlinks-top', 'children'),
+              # output('backlinks-top', 'style'),
+              # output('backlinks-bottom', 'children'),
+              output('pagemenu', 'dummy2')
+              ),
+  params=list(input('url', 'pathname')),
+  function(pathname) {
+    # if (is.null(pathname) || pathname == '/') {
+    #   return(list(home.layout,
+    #               '',
+    #               list('borderBottom' = 'none'),
+    #               '',
+    #               '')
+    #          )
+    # }
+    # pathname <- sub("/$", "", pathname)
+    # 
+    # backlinks <- create_backlinks(pathname)
+    # 
+    # make_page <- function(page_path) {
+    #   return(flat_list(
+    #     chapter_index$URL_TO_CONTENT_MAP[page_path],
+    #     htmlDiv(id=sprintf('wait-for-page-%s', page_path)
+    #     ))
+    #   )
+    # }
+    # 
+    # if ((pathname) %in% chapter_index$URL_TO_CONTENT_MAP) {
+    #   children <- make_page(pathname)
+    # } else if (pathname == '/search') {
+    #   children <- flat_list(create_backlinks(pathmame),
+    #                         htmlBr(),
+    #                         search$layout)
+    # } else if (pathname == "/all") {
+    #   children <- build_all()
+    # } else {
+    #   warning_box <- htmlDiv(
+    #     sprintf('Page %s not found', pathname),
+    #     className = 'warning-box'
+    #     )
+    #   
+    #   parts <- strsplit(sub("^/", "", pathname), "/")
+    #   
+    #   for (i in seq(length(unlist(parts)))) {
+    #     partial_path <- paste0('/', unlist(parts)[1:i], collapse='')
+    #     if (partial_path %in% chapter_index$URL_TO_CONTENT_MAP) {
+    #       return(flat_list(warning_box, make_page(partial_path)))
+    #     }
+    #   }
+    #   
+    #   children <- flat_list(warning_box, home.layout)
+    # }
+    # return(list(children, backlinks, list('borderBottom' = 'thin lightgrey solid'),
+    #             backlinks, ''))
+    return(list(''))
+  }
+)
+
+app$callback(
+  output('pagemenu', 'dummy'),
+  params=list(input('chapter', 'children')),
+  clientsideFunction(
+    namespace = 'clientside',
+    function_name = 'pagemenu'
+  )
 )
 
 app$run_server(host = "0.0.0.0")
