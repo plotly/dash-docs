@@ -17,7 +17,7 @@ def test_snap001_index_page_links(dash_doc, index_pages):
         if resource.startswith('/'):
             hook_id = "wait-for-page-{}".format(resource)
             res = resource.lstrip("/")
-            if res in ['getting-started-part-2', 'datatable/callbacks']:
+            if res in ['basic-callbacks', 'datatable/callbacks']:
                 # these two pages have an intermittent problem with their
                 # resource queues not clearing properly. While we sort this out,
                 # just wait a reasonably long time on these pages.
