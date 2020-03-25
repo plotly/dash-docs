@@ -20,7 +20,7 @@ layout = html.Div([
     - are part of a callback chain that requires multiple roundtrips
     between the browser and Dash
 
-    When the overhead cost of a callback becomes too great and that no
+    When the overhead cost of a callback becomes too great and no
     other optimization is possible, the callback can be modified to be run
     directly in the browser instead of a making a request to Dash.
 
