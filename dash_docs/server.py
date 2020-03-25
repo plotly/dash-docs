@@ -145,7 +145,7 @@ def redirect_getting_started_2():
     return redirect('/basic-callbacks', code=301)
 
 @server.route('/state')
-def redirect_getting_started_2():
+def redirect_state():
     return redirect('/basic-callbacks', code=301)
 
 @server.before_request
