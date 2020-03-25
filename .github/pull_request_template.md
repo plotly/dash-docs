@@ -21,3 +21,6 @@ If this PR adds an image or animated GIF:
 
 If I introduced a new relative link inside `dcc.Markdown`:
 - [ ] I considered whether I could replace the `dcc.Markdown` call with `reusable_components.Markdown`, which will replace relative links with `tools.relpath` internally. Otherwise, I used e.g. `<dccLink href=tools.relpath('/layout') children="the first chapter"/>` instead of `[the first chapter](/layout)` (importing `tools` from `dash_docs`), and set `dangerously_allow_html=true` in the `dcc.Markdown` call.
+
+If I changed the `chapter_index` by removing or relocating a page:
+- [ ] I added a redirect in `dash_docs/server.py` from the old URL to the new URL
