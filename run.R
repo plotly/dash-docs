@@ -240,64 +240,38 @@ header <- htmlDiv(
     ))
 ))
 
-# app$layout(
-#   header,
-#   htmlDiv(
-#     list(
-#       dccLocation(id='url'),
-#       htmlDiv(
-#         className='background',
-#         children=list(
-#           htmlDiv(id='wait-for-layout'),
-#           htmlDiv(
-#             className='container-width',
-#             children=htmlDiv(
-#               htmlDiv(id='chapter', className='content'),
-#               className='content-container'
-#             )
-#           ),
-#           pageMenu(id='pagemenu')
-#         )
-#       )
-#     )
-#   )
-# )
-
-app$layout(
-  htmlDiv(
+app$layout(htmlDiv(
   list(
     # Stores used by examples.
-    dccStore(id='memory'),
-    dccStore(id='memory-output'),
-    dccStore(id='local', storage_type='local'),
-    dccStore(id='session', storage_type='session'),
+    dccStore(id = 'memory'),
+    dccStore(id = 'memory-output'),
+    dccStore(id = 'local', storage_type = 'local'),
+    dccStore(id = 'session', storage_type = 'session'),
     
     # div used in tests
-    htmlDiv(id='wait-for-layout'),
+    htmlDiv(id = 'wait-for-layout'),
     
-    dccLocation(id='url', refresh=FALSE),
+    dccLocation(id = 'url', refresh = FALSE),
     
     header,
     
-    htmlDiv(className='content-wrapper', children=list(
-      #Sidebar(urls=SIDEBAR_INDEX),
-      
-      htmlDiv(list(
-        htmlDiv(id='backlinks-top', className='backlinks'),
-        htmlDiv(
-          htmlDiv(id='chapter', className='content'),
-          className='content-container'
+    htmlDiv(
+      className = 'content-wrapper',
+      children = list(
+        htmlDiv(list(
+          htmlDiv(id = 'backlinks-top', className = 'backlinks'),
+          htmlDiv(htmlDiv(id = 'chapter', className = 'content'),
+                  className = 'content-container'),
+          htmlDiv(id = 'backlinks-bottom', className = 'backlinks')
         ),
-        htmlDiv(id='backlinks-bottom', className='backlinks')
-        ),
-        className='rhs-content container-width'),
-            
-      pageMenu(id='pagemenu')
-      
-      ))
+        className = 'rhs-content container-width'),
+        
+        pageMenu(id = 'pagemenu')
+        
+      )
+    )
   )
-)
-)
+))
 
 app$callback(
   output=list(id='chapter', property='children'),
@@ -627,60 +601,10 @@ app$callback(
 
 app$callback(
   output=list(output('chapter', 'children'),
-              # output('backlinks-top', 'children'),
-              # output('backlinks-top', 'style'),
-              # output('backlinks-bottom', 'children'),
               output('pagemenu', 'dummy2')
               ),
   params=list(input('url', 'pathname')),
   function(pathname) {
-    # if (is.null(pathname) || pathname == '/') {
-    #   return(list(home.layout,
-    #               '',
-    #               list('borderBottom' = 'none'),
-    #               '',
-    #               '')
-    #          )
-    # }
-    # pathname <- sub("/$", "", pathname)
-    # 
-    # backlinks <- create_backlinks(pathname)
-    # 
-    # make_page <- function(page_path) {
-    #   return(flat_list(
-    #     chapter_index$URL_TO_CONTENT_MAP[page_path],
-    #     htmlDiv(id=sprintf('wait-for-page-%s', page_path)
-    #     ))
-    #   )
-    # }
-    # 
-    # if ((pathname) %in% chapter_index$URL_TO_CONTENT_MAP) {
-    #   children <- make_page(pathname)
-    # } else if (pathname == '/search') {
-    #   children <- flat_list(create_backlinks(pathmame),
-    #                         htmlBr(),
-    #                         search$layout)
-    # } else if (pathname == "/all") {
-    #   children <- build_all()
-    # } else {
-    #   warning_box <- htmlDiv(
-    #     sprintf('Page %s not found', pathname),
-    #     className = 'warning-box'
-    #     )
-    #   
-    #   parts <- strsplit(sub("^/", "", pathname), "/")
-    #   
-    #   for (i in seq(length(unlist(parts)))) {
-    #     partial_path <- paste0('/', unlist(parts)[1:i], collapse='')
-    #     if (partial_path %in% chapter_index$URL_TO_CONTENT_MAP) {
-    #       return(flat_list(warning_box, make_page(partial_path)))
-    #     }
-    #   }
-    #   
-    #   children <- flat_list(warning_box, home.layout)
-    # }
-    # return(list(children, backlinks, list('borderBottom' = 'thin lightgrey solid'),
-    #             backlinks, ''))
     return(list(''))
   }
 )
