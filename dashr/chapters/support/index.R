@@ -15,12 +15,6 @@ If you would like to trial or purchase Dash Enterprise,
 Our sales engineering team is happy to give you or your team
 a demo of Dash and Dash Enterprise too.
 
-### Dash Workshops
-
-We lead [two day Dash workshops](https://plotcon.plotly.com) every few months.
-These frequently sell out, so [please register early](https://plotcon.plotly.com)
-These workshops are lead by the authors of Dash and are tailored towards both beginners and experts.
-
 ### Sponsored Feature Requests and Customizations
 
 If you or your company would like to sponsor a specific feature or enterprise

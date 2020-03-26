@@ -3,6 +3,7 @@ source('app.R')
 library(dash)
 library(dashCoreComponents)
 library(dashHtmlComponents)
+library(dashUserGuideComponents)
 library(jsonlite)
 library(stringr)
 
@@ -239,27 +240,38 @@ header <- htmlDiv(
     ))
 ))
 
-app$layout(
-  header,
-  htmlDiv(
-    list(
-      dccLocation(id='url'),
-      htmlDiv(
-        className='background',
-        children=list(
-          htmlDiv(id='wait-for-layout'),
-          htmlDiv(
-            className='container-width',
-            children=htmlDiv(
-              htmlDiv(id='chapter', className='content'),
-              className='content-container'
-            )
-          )
-        )
+app$layout(htmlDiv(
+  list(
+    # Stores used by examples.
+    dccStore(id = 'memory'),
+    dccStore(id = 'memory-output'),
+    dccStore(id = 'local', storage_type = 'local'),
+    dccStore(id = 'session', storage_type = 'session'),
+    
+    # div used in tests
+    htmlDiv(id = 'wait-for-layout'),
+    
+    dccLocation(id = 'url', refresh = FALSE),
+    
+    header,
+    
+    htmlDiv(
+      className = 'content-wrapper',
+      children = list(
+        htmlDiv(list(
+          htmlDiv(id = 'backlinks-top', className = 'backlinks'),
+          htmlDiv(htmlDiv(id = 'chapter', className = 'content'),
+                  className = 'content-container'),
+          htmlDiv(id = 'backlinks-bottom', className = 'backlinks')
+        ),
+        className = 'rhs-content container-width'),
+        
+        pageMenu(id = 'pagemenu')
+        
       )
     )
   )
-)
+))
 
 app$callback(
   output=list(id='chapter', property='children'),
@@ -585,6 +597,25 @@ app$callback(
       }
     )
   }
+)
+
+app$callback(
+  output=list(output('chapter', 'children'),
+              output('pagemenu', 'dummy2')
+              ),
+  params=list(input('url', 'pathname')),
+  function(pathname) {
+    return(list(''))
+  }
+)
+
+app$callback(
+  output('pagemenu', 'dummy'),
+  params=list(input('chapter', 'children')),
+  clientsideFunction(
+    namespace = 'clientside',
+    function_name = 'pagemenu'
+  )
 )
 
 app$run_server(host = "0.0.0.0")
