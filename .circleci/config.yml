@@ -7,6 +7,7 @@ jobs:
       - run: percy finalize --all
 
   "python-3.7": &test-template
+    resource_class: medium+
     docker:
       - image: circleci/python:3.7.5-stretch-browsers
         environment:

@@ -23,6 +23,8 @@ The main performance limitation of dash apps is likely the callbacks in
 the application code itself. If you can speed up your callbacks, your app
 will feel snappier.
 
+***
+
 ### Memoization
 
 Since Dash's callbacks are functional in nature (they don't contain any state),
@@ -30,27 +32,10 @@ it's easy to add memoization caching. Memoization stores the results of a
 function after it is called and re-uses the result if the function is called
 with the same arguments.
 
-To better understand how memoization works, let's start with a simple example.
+>For a simple example of using memoization in a Dash app to improve
+>performance, see the "Improving performance with memoization" section
+>[here](/advanced-callbacks).
 
-'''),
-
-    Syntax('''
-import time
-import functools32
-
-@functools32.lru_cache(maxsize=32)
-def slow_function(input):
-    time.sleep(10)
-    return 'Input was {}'.format(input)
-    '''),
-
-    reusable_components.Markdown('''
-
-Calling `slow_function('test')` the first time will take 10 seconds.
-Calling it a second time with the same argument will take almost no time
-since the previously computed result was saved in memory and reused.
-
-***
 
 Dash apps are frequently deployed across multiple processes or threads.
 In these cases, each process or thread contains its own memory, it doesn't
@@ -113,115 +98,8 @@ your company would like to sponsor this work,
 ***
 
 ### Clientside Callbacks
-
-Sometimes callbacks can incur a significant overhead, especially when they :
-- receive and/or return very large quantities of data (transfer time)
-- are called very often (network latency, queuing, handshake)
-- are part of a callback chain that requires multiple roundtrips
-between the browser and Dash
-
-
-When the overhead cost of a callback becomes too great and that no
-other optimization is possible, the callback can be modified to be run
-directly in the browser instead of a making a request to Dash.
-
-The syntax for the callback is almost exactly the same; you use
-`Input` and `Output` as you normally would when declaring a callback,
-but you also define a JavaScript function as the first argument to the
-`@app.callback` decorator.
-
-For example, the following callback:
-
-'''),
-
-    Syntax('''
-@app.callback(
-    Output('out-component', 'value'),
-    [Input('in-component1', 'value'), Input('in-component2', 'value')]
-)
-def large_params_function(largeValue1, largeValue2):
-    largeValueOutput = someTransform(largeValue1, largeValue2)
-
-    return largeValueOutput
-    '''),
-
-    reusable_components.Markdown('''
-
-***
-
-Can be rewritten to use JavaScript like so:
-
-'''),
-
-    Syntax('''
-from dash.dependencies import Input, Output
-
-app.clientside_callback(
-    """
-    function(largeValue1, largeValue2) {
-        return someTransform(largeValue1, largeValue2);
-    }
-    """,
-    Output('out-component', 'value'),
-    [Input('in-component1', 'value'), Input('in-component2', 'value')]
-)
-    '''),
-
-    reusable_components.Markdown('''
-
-***
-
-You also have the option of defining the function in a `.js` file in
-your `assets/` folder. To achieve the same result as the code above,
-the contents of the `.js` file would look like this:
-
-'''),
-
-    Syntax('''
-window.dash_clientside = Object.assign({}, window.dash_clientside, {
-    large_params_function: function(largeValue1, largeValue2) {
-        return someTransform(largeValue1, largeValue2);
-    }
-});
-    '''),
-
-    reusable_components.Markdown('''
-
-***
-
-In Dash, the callback would now be written as:
-
-'''),
-
-    Syntax('''
-from dash.dependencies import ClientsideFunction, Input, Output
-
-app.clientside_callback(
-    ClientsideFunction(
-        namespace='clientside',
-        function_name='large_params_function'
-    ),
-    Output('out-component', 'value'),
-    [Input('in-component1', 'value'), Input('in-component2', 'value')]
-)
-    '''),
-
-
-
-    reusable_components.Markdown('''
-
-***
-
-**Note**: There are a few limitations to keep in mind:
-
-1. Clientside callbacks execute on the browser's main thread and wil block
-rendering and events processing while being executed.
-2. Dash does not currently support asynchronous clientside callbacks and will
-fail if a `Promise` is returned.
-3. Clientside callbacks are not possible if you need to refer to global
-variables on the server or a DB call is required.
-
-***
+You can improve the performance of your apps by using clientside callbacks;
+read more about them [here](/clientside-callbacks).
 
 ### Sponsoring Performance Enhancements
 
