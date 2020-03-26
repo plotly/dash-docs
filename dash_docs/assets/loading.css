@@ -2,3 +2,15 @@
     display: none;
     cursor: progress;
 }
+
+#chapter[data-dash-is-loading="true"]:after {
+    content: "Loading...";
+}
+#pagemenu[data-dash-is-loading="true"] {
+    display: none;
+    cursor: progress;
+}
+.backlinks[data-dash-is-loading="true"] {
+    display: none;
+    cursor: progress;
+}

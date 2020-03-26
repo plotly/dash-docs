@@ -14,6 +14,8 @@ examples = [
         'tutorial/examples/getting_started_multiple_viz.py',
         'tutorial/examples/getting_started_multiple_outputs_1.py',
         'tutorial/examples/getting_started_callback_chain.py',
+        'tutorial/examples/basic-input.py',
+        'tutorial/examples/basic-state.py'
     ]
 ]
 
@@ -25,17 +27,16 @@ layout = html.Div([
 
     <blockquote>
     This is the 3rd chapter of the <dccLink children="Dash Tutorial" href="/"/>.
-    The <dccLink href="/getting-started" children="previous chapter"/> covered the Dash app <code>layout</code>
-    and the <dccLink href="/state" children="next chapter"/> covers an additional concept of callbacks
-    known as <code>state</code>. Just getting started? Make sure to
-    <dccLink href="/installation" children="install the necessary dependencies"/>.
+    The <dccLink href="/layout" children="previous chapter"/> covered the Dash app <code>layout</code>
+    and the <dccLink href="/interactive-graphing" children="next chapter"/> covers interactive graphing.
+    Just getting started? Make sure to <dccLink href="/installation" children="install the necessary dependencies"/>.
     </blockquote>
     '''),
 
     reusable_components.Markdown('''
 
         In the <dccLink
-            href="/getting-started"
+            href="/layout"
             children="previous chapter on `app.layout`"
         /> we learned that the `app.layout` describes what the app looks like and is
         a hierarchical tree of components.
@@ -256,6 +257,55 @@ layout = html.Div([
     before calling the final callback. This prevents your callbacks from being
     called with inconsistent state like with `"America"` and `"Montréal"`.
 
+    ### State
+
+    In some cases, you might have a "form"-type pattern in your
+    application. In such a situation, you might want to read the value
+    of the input component, but only when the user is finished
+    entering all of his or her information in the form.
+
+    Attaching a callback to the input values directly can look like
+    this:
+
+    '''),
+
+    reusable_components.Markdown(
+        examples[5][0],
+        style=styles.code_container
+    ),
+
+    html.Div(examples[5][1], className="example-container"),
+
+    reusable_components.Markdown('''
+        In this example, the callback function is fired whenever any of the
+        attributes described by the `dash.dependencies.Input` change.
+        Try it for yourself by entering data in the inputs above.
+
+        `dash.dependencies.State` allows you to pass along extra values without
+        firing the callbacks. Here's the same example as above but with the
+        `dcc.Input` as `dash.dependencies.State` and a button as
+        `dash.dependencies.Input`.
+    '''),
+
+    reusable_components.Markdown(
+        examples[6][0],
+        style=styles.code_container
+    ),
+
+    html.Div(examples[6][1], className="example-container"),
+
+    reusable_components.Markdown('''
+        In this example, changing text in the `dcc.Input` boxes won't fire
+        the callback but clicking on the button will. The current values of
+        the `dcc.Input` values are still passed into the callback even though
+        they don't trigger the callback function itself.
+
+        Note that we're triggering the callback by listening to the
+        `n_clicks` property of the `html.Button` component. `n_clicks` is a
+        property that gets incremented every time the component has been
+        clicked on. It is available in every component in the
+        `dash_html_components` library.
+
     '''),
 
     reusable_components.Markdown('''
@@ -275,15 +325,13 @@ layout = html.Div([
 
     '''),
 
-
     reusable_components.Markdown('''
-        The next part of the Dash tutorial covers additional concepts of
-        Dash callbacks: `State` and `PreventUpdate`
+        The next part of the Dash tutorial covers interactive graphing.
     '''),
 
     dcc.Link(
-        'Dash Tutorial Part 4: More about callbacks',
-        href=tools.relpath("/state")
+        'Dash Tutorial Part 4: Interactive Graphing',
+        href=tools.relpath("/interactive-graphing")
     )
 
 

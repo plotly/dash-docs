@@ -221,7 +221,7 @@ dcc.RadioItems(
         'For more on ',
         html.Code('dash.dependencies.State'),
         ', see the tutorial on ',
-        dcc.Link('Dash State', href=tools.relpath('/state')),
+        dcc.Link('basic callbacks', href=tools.relpath('/basic-callbacks')),
         '.'
     ]),
 
@@ -278,36 +278,7 @@ dcc.DatePickerRange(
              href=tools.relpath("/dash-core-components/markdown")),
 
     html.Hr(),
-
-    html.H3('Interactive Tables'),
-    reusable_components.Markdown('''
-    The `dash_html_components` library exposes all of the HTML tags.
-    This includes the `Table`, `Tr`, and `Tbody` tags that can be used
-    to create an HTML table. See <dccLink href="/getting-started" children="Dash Layout"/>
-    for an example.
-
-    Dash provides an interactive `DataTable` as part of the `data-table`
-    project. This table includes built-in filtering, row-selection,
-    editing, and sorting.
-
-    '''.replace('    ', '')),
-
-    html.A(
-        className="image-link",
-        href="https://github.com/plotly/dash-table-experiments",
-        children=html.Img(
-            src=tools.relpath("assets/images/gallery/DataTable.gif"),
-            alt="Example of a Dash Interactive Table"
-        )
-    ),
-
-
-    reusable_components.Markdown('''
-    <dccLink href="/datatable" children="View the docs"/> or [View the source](https://github.com/plotly/dash-table)
-
-    ***
-    '''.replace('    ', '')),
-
+  
     html.H3(dcc.Link('Upload Component', href=tools.relpath('/dash-core-components/upload'))),
     reusable_components.Markdown('''
 
@@ -315,11 +286,11 @@ dcc.DatePickerRange(
     through drag-and-drop or the system's native file explorer.
     '''.replace('    ', '')),
 
-    html.A(
+    dcc.Link(
         className="image-link",
-        href="https://github.com/plotly/dash-core-components/pull/73",
+        href="/dash-core-components/upload",
         children=html.Img(
-            src=tools.relpath('assets/images/gallery/dash-upload.gif'),
+            src=tools.relpath('/assets/images/gallery/dash-upload.gif'),
             alt="Dash Upload Component"
         )
     ),
@@ -331,7 +302,7 @@ dcc.DatePickerRange(
     ***
     '''.replace('    ', '')),
 
-    html.H3('Tabs'),
+    html.H3(dcc.Link('Tabs', href='/dash-core-components/tabs')),
     reusable_components.Markdown('''
     The Tabs and Tab components can be used to create tabbed sections in your app.
     '''),

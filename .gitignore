@@ -1,7 +1,6 @@
 build/
 cache-directory/
 dist/
-lib/
 lib/bundle.js*
 coverage/
 dash_core_components/metadata.json
@@ -19,5 +18,8 @@ bundle.js
 .idea
 .env
 .mypy_cache/
-
+.Rhistory
+.RData
 ignore/indicators.csv
+.Rproj.user
+dash-docs.Rproj

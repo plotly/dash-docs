@@ -19,7 +19,7 @@ layout = html.Div([
     # Sharing State Between Callbacks
 
     <blockquote>
-    This is the 6th chapter of the essential <dccLink children="Dash Tutorial" href="/"/>.  The
+    This is the 5th chapter of the essential <dccLink children="Dash Tutorial" href="/"/>.  The
     <dccLink href="/interactive-graphing" children="previous chapter"/> covered how to use callbacks
     with the <code>dash_core_components.Graph</code> component.  The <dccLink href="/" children="rest of the Dash
     documentation"/> covers other topics like multi-page apps and component
@@ -29,7 +29,7 @@ layout = html.Div([
     </blockquote>
 
     One of the core Dash principles explained in the
-    <dccLink href="/getting-started-part-2" children="Getting Started Guide on Callbacks"/>
+    <dccLink href="/basic-callbacks" children="Getting Started Guide on Callbacks"/>
     is that **Dash Callbacks must never modify variables outside of their
     scope**. It is not safe to modify any `global` variables.
     This chapter explains why and provides some alternative patterns for
@@ -46,7 +46,7 @@ layout = html.Div([
     results to the rest of the callbacks.
 
     This need has been somewhat ameliorated now that you can have
-    <dccLink href="/getting-started-part-2" children="multiple outputs"/> for one callback. This way,
+    <dccLink href="/basic-callbacks" children="multiple outputs"/> for one callback. This way,
     that expensive task can be done once and immediately used in all the
     outputs. But in some cases this still isn't ideal, for example if there are
     simple follow-on tasks that modify the results, like unit conversions. We

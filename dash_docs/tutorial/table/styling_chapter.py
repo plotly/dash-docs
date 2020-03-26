@@ -69,7 +69,6 @@ Display = CreateDisplay({
 
 
 layout = html.Div(
-    style={"marginLeft": "auto", "marginRight": "auto", "width": "80%"},
     children=[
         reusable_components.Markdown("""
         # Styling the DataTable

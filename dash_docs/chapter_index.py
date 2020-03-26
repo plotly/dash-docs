@@ -1,6 +1,11 @@
 import os
 from .import tutorial
+import json
+import plotly
+import six
+import textwrap
 
+import dash
 import dash_html_components as html
 import dash_core_components as dcc
 import dash_table
@@ -16,11 +21,24 @@ from .reusable_components import TOC, TOCChapters
 ## in the root of this repo.
 
 
-def component_list(package, content_module, base_url, import_alias, escape_tags=False):
+def component_list(package, content_module, base_url, import_alias, component_library, escape_tags=False):
     return [
         {
             'url': tools.relpath('/{}/{}'.format(base_url, component.lower())),
             'name': '{}.{}'.format(import_alias, component),
+            'description': ' '.join([
+                'Official examples and reference documentation for {name}.',
+                '{which_library}'
+            ]).format(
+                name='{}.{}'.format(import_alias, component),
+                component_library=component_library,
+                which_library=(
+                    '{name} is a {component_library} component.'.format(
+                        name='{}.{}'.format(import_alias, component),
+                        component_library=component_library,
+                    ) if component_library != import_alias else ''
+                )
+            ).strip(),
             'content': (
                 getattr(content_module, component)
                 if (content_module is not None and
@@ -106,7 +124,7 @@ URLS = [
                 'content': tutorial.installation.layout
             },
             {
-                'url': '/getting-started',
+                'url': '/layout',
                 'name': 'Part 2. Layout',
                 'description': (
                     'The Dash `layout` describes what your app will '
@@ -116,7 +134,7 @@ URLS = [
                 'content': tutorial.getting_started_part_1.layout
             },
             {
-                'url': '/getting-started-part-2',
+                'url': '/basic-callbacks',
                 'name': 'Part 3. Basic Callbacks',
                 'description': (
                     "Dash apps are made interactive through Dash "
@@ -129,21 +147,8 @@ URLS = [
                 'content': tutorial.getting_started_part_2.layout
             },
             {
-                'url': '/state',
-                'name': 'Part 4. More About Callbacks',
-                'description': (
-                    "Basic callbacks are fired whenever the values "
-                    "change. Use Dash `State` with Dash `Inputs` to "
-                    "pass in extra values whenever the `Inputs` "
-                    "change. `State` is useful for UIs that contain "
-                    "forms or buttons. Use the `PreventUpdate` exception "
-                    "to leave the callback output unchanged"
-                ),
-                'content': tutorial.state.layout
-            },
-            {
                 'url': '/interactive-graphing',
-                'name': 'Part 5. Interactive Graphing and Crossfiltering',
+                'name': 'Part 4. Interactive Graphing and Crossfiltering',
                 'description': 'Bind interactivity to the Dash `Graph` ' \
                                'component whenever you hover, click, or ' \
                                'select points on your chart.',
@@ -151,7 +156,7 @@ URLS = [
             },
             {
                 'url': '/sharing-data-between-callbacks',
-                'name': 'Part 6. Sharing Data Between Callbacks',
+                'name': 'Part 5. Sharing Data Between Callbacks',
                 'description': '`global` variables will break your Dash apps. ' \
                                'However, there are other ways to share data ' \
                                'between callbacks. This chapter is useful for ' \
@@ -161,7 +166,7 @@ URLS = [
             },
             {
                 'url': '/faqs',
-                'name': 'Part 7. FAQs & Gotchas',
+                'name': 'Part 6. FAQs',
                 'description': 'If you have read through the rest of the ' \
                 'tutorial and still have questions or are encountering ' \
                 'unexpected behaviour, this chapter may be useful.',
@@ -171,13 +176,63 @@ URLS = [
     },
 
     {
+        'name': 'Dash Callbacks',
+        'chapters': [
+            {
+                'url': '/basic-callbacks',
+                'name': 'Basic Callbacks',
+                'description': 'Go through this introductory chapter to '
+                'learn the foundations of the Dash callback.',
+                'content': tutorial.getting_started_part_2.layout
+            },
+            {
+                'url': '/advanced-callbacks',
+                'name': 'Advanced Callbacks',
+                'description': 'Now that you\'ve gotten through the basics, '
+                'take a look at other things you can do with callbacks - '
+                'from performance improvements to callback contexts.',
+                'content': tutorial.advanced_callbacks.layout
+            },
+            {
+                'url': '/clientside-callbacks',
+                'name': 'Clientside Callbacks',
+                'description': 'You might want to execute a callback in '
+                'the frontend as opposed to the backend if you want to '
+                'avoid the extra time that it takes to make a roundtrip '
+                'to the server. Clientside callbacks allow you to write '
+                'your callbacks in JavaScript that runs in the browser.',
+                'content': tutorial.clientside_callbacks.layout
+            },
+            {
+                'url': '/callback-gotchas',
+                'name': 'Callback Gotchas',
+                'description': 'Dash callbacks have some idiosyncracies that '
+                'should be taken into consideration when building a Dash app. '
+                'If you\'re running into unexpected callback behavior, '
+                'and the rest of the documentation hasn\'t shed any light on '
+                'the situation, try taking a look in this section.',
+                'content': tutorial.callback_gotchas.layout
+            }
+        ]
+    },
+    {
         'name': 'Open Source Component Libraries',
+        'urls': [
+            '/dash-core-components/',
+            '/dash-html-components/',
+            '/datatable/',
+            '/dash-bio/'
+            '/dash-daq/',
+            '/canvas/',
+            '/cytoscape/'
+        ],
         'chapters': [
             {
                 'name': 'Dash Core Components',
                 'chapters': [{
-                    'url': '/dash-core-components/',
+                    'url': '/dash-core-components',
                     'name': 'Overview',
+                    'breadcrumb': 'Dash Core Components',
                     'description': (
                         'The Dash Core Component library contains a set '
                         'of higher-level components like sliders, graphs, '
@@ -188,7 +243,8 @@ URLS = [
                     dcc,
                     tutorial.examples,
                     'dash-core-components',
-                    'dcc'
+                    'dcc',
+                    'dash_core_components'
                 )
             },
 
@@ -196,8 +252,9 @@ URLS = [
                 'name': 'Dash HTML Components',
                 'chapters': [
                     {
-                        'url': '/dash-html-components/',
+                        'url': '/dash-html-components',
                         'name': 'Overview',
+                        'breadcrumb': 'Dash HTML Components',
                         'description': 'Dash provides all of the available HTML tags ' \
                                        'as user-friendly Python classes. This chapter ' \
                                        'explains how this works and the few important ' \
@@ -210,6 +267,7 @@ URLS = [
                     None,
                     'dash-html-components',
                     'html',
+                    'dash_html_components',
                     escape_tags=True
                 )
             },
@@ -221,6 +279,7 @@ URLS = [
                     {
                         'url': '/datatable',
                         'name': 'Overview',
+                        'breadcrumb': 'Dash DataTable',
                         'description': (
                             '`dash_table.DataTable` is an interactive table that ' \
                             'supports rich styling, ' \
@@ -245,21 +304,21 @@ URLS = [
                         'url': '/datatable/sizing',
                         'content': tutorial.table.sizing_chapter.layout,
                         'name': 'Sizing',
-                        'description': """
+                        'description': '''
                             All about sizing the DataTable. Examples include:
                             - Setting the width and the height of the table
                             - Responsive table design
                             - Setting the widths of individual columns
                             - Handling long text
                             - Fixing rows and columns
-                        """
+                        '''
                     },
 
                     {
                         'url': '/datatable/style',
                         'content': tutorial.table.styling_chapter.layout,
                         'name': 'Styling',
-                        'description': """
+                        'description': '''
                             The style of the DataTable is highly customizable. This chapter
                             includes examples for:
                             - Conditional formatting
@@ -271,7 +330,7 @@ URLS = [
                             The sizing API for the table has been particularly tricky for
                             us to nail down, so be sure to read this chapter to understand the nuances,
                             limitations, and the APIs that we're exploring.
-                        """
+                        '''
                     },
 
                     {
@@ -380,6 +439,7 @@ URLS = [
                     dict({
                         'url': '/dash-bio',
                         'name': 'Overview',
+                        'breadcrumb': 'Dash Bio',
                         'description': (
                             'Dash Bio is a component library '
                             'dedicated to visualizing bioinformatics data.'
@@ -397,6 +457,7 @@ URLS = [
                     None if os.environ.get('IGNORE_DASH_BIO', False) else
                     tutorial.dashbio_examples,
                     'dash-bio',
+                    'dash_bio',
                     'dash_bio'
                 )
             },
@@ -407,6 +468,7 @@ URLS = [
                     {
                         'url': '/dash-daq',
                         'name': 'Overview',
+                        'breadcrumb': 'Dash DAQ',
                         'content': tutorial.daq.layout,
                         'description': (
                             '''
@@ -420,6 +482,7 @@ URLS = [
                     dash_daq,
                     tutorial.daq_examples,
                     'dash-daq',
+                    'dash_daq',
                     'dash_daq'
                 )
             },
@@ -445,6 +508,7 @@ URLS = [
                     {
                         'url': '/cytoscape',
                         'name': 'Overview',
+                        'breadcrumb': 'Dash Cytoscape',
                         'description': (
                             '''
                             Dash Cytoscape is our new network visualization
@@ -574,8 +638,9 @@ URLS = [
                 'url': '/performance',
                 'content': tutorial.performance.layout,
                 'name': 'Performance',
-                'description': 'There are two main ways to speed up dash apps: '\
-                               'caching and using WebGL chart types.'
+                'description': 'There are three main ways to speed up Dash apps: '\
+                               'caching, using WebGL chart types, and implementing '\
+                               'clientside callbacks.'
             },
 
             {
@@ -693,10 +758,10 @@ URLS = [
     {
         'name': 'Dash Enterprise',
         'description': (
-            """
+            '''
             Dash Enterprise is Plotly's commercial offering for managing
             and improving your Dash apps in your organization.
-            """
+            '''
         ),
         'chapters': [
             {
@@ -708,6 +773,7 @@ URLS = [
                 'chapters': [
                     {
                         'name': 'Overview',
+                        'breadcrumb': 'Dash Enterprise',
                         'url': '/dash-enterprise',
                         'content': tutorial.dash_deployment_server.layout
                     },
@@ -843,8 +909,8 @@ URLS = [
                         'url': '/dash-enterprise/logs',
                         'content': tutorial.dds_examples.Logs,
                         'name': 'App Logs',
-                        'description': """Check your Dash App's logs via the Dash
-                        Enterprise UI or via the command line."""
+                        'description': '''Check your Dash App's logs via the Dash
+                        Enterprise UI or via the command line.'''
                     },
                     {
                         'url': '/dash-enterprise/troubleshooting',
@@ -892,13 +958,28 @@ def create_index_pages(url_set):
 create_index_pages(URLS)
 
 
+def normalize_description_and_urls(url_set):
+    for section in url_set:
+        if 'description' in url_set:
+            url_set['description'] = textwrap.dedent(url_set['description']).strip()
+        if 'url' in url_set:
+            url_set['url'] = url_set['url'].rstrip('/')
+normalize_description_and_urls(URLS)
+
+
 URL_TO_CONTENT_MAP = {}
+URL_TO_BREADCRUMB_MAP = {}
 def create_url_mapping(url_set):
     for section in url_set:
         if 'url' in section:
-            URL_TO_CONTENT_MAP[section['url'].rstrip('/')] = section.get(
+            stripped_url = section['url'].rstrip('/')
+            URL_TO_CONTENT_MAP[stripped_url] = section.get(
                 'content',
                 'Content for {} not defined'.format(section['url'])
+            )
+            URL_TO_BREADCRUMB_MAP[stripped_url] = section.get(
+                'breadcrumb',
+                section['name']
             )
         if 'chapters' in section:
             create_url_mapping(section['chapters'])
@@ -919,3 +1000,89 @@ def find_section(url_set, name):
             return section
         elif 'chapters' in section:
             return find_section(section['chapters'], name)
+
+def _search_keywords(children):
+    # Check if any of the component's proptypes are in the chapter so that
+    # users can search for particular proptypes like selected_rows
+
+    def _concat(unicode_or_str1, unicode_or_str2):
+        try:
+            unicode_or_str1 += unicode_or_str2.decode('utf8')
+        except Exception as e1:
+            try:
+                unicode_or_str1 += unicode(unicode_or_str2)
+            except Exception as e2:
+                print(unicode_or_str2)
+                import pdb; pdb.set_trace()
+                raise e2
+
+        return unicode_or_str2
+
+    stringified_children = u''
+    if not hasattr(children, '_traverse'):
+        children = html.Div(children)
+    for item in children._traverse():
+        if isinstance(item, six.string_types):
+            # I don't really get this, but there seems to be a mix
+            # of unicode and strings here
+            stringified_children += item
+        elif (hasattr(item, 'children') and
+              isinstance(item.children, six.string_types)):
+            stringified_children += item.children
+
+    keywords = []
+    common_keywords_to_ignore = [
+        'id', 'className', 'loading_state', 'value'
+    ]
+    component_libraries = [
+        html, dcc, dash_table, dash_daq, dash_cytoscape, dash_bio
+    ]
+    for component_library in component_libraries:
+        component_names = [
+            i for i in dir(component_library)
+            if (
+                not i.startswith('_') and
+                i[0].upper() == i[0] and
+                type(getattr(component_library, i)) == dash.development.base_component.ComponentMeta
+            )
+        ]
+        for component_name in component_names:
+            if component_name in ['DarkThemeProvider']:
+                component = getattr(component_library, component_name)()
+            elif component_name == 'Circos':
+                component = getattr(component_library, component_name)(layout=None)
+            else:
+                try:
+                    component = getattr(component_library, component_name)(id='_')
+                except Exception as e:
+                    print(
+                        ">> This doesn't look like a component!\n" +
+                        'Add to the ignore list in _search_keywords:'
+                    )
+                    print([component_library, component_name])
+                    raise e
+            component_prop_types = component._prop_names
+            for prop in component_prop_types:
+                if (prop not in common_keywords_to_ignore and
+                        prop not in keywords and
+                        prop in stringified_children):
+                    keywords.append(prop)
+
+    return keywords
+
+
+def index_pages(url_set):
+    for section in url_set:
+        if 'content' in section:
+            section['meta_keywords'] = ', '.join(_search_keywords(section.get('content')))
+        if 'chapters' in section:
+            index_pages(section['chapters'])
+
+def create_urls_without_content(url_set):
+    for section in url_set:
+        if 'content' in section:
+            section.pop('content')
+        if 'preamble' in section:
+            section.pop('preamble')
+        if 'chapters' in section:
+            create_urls_without_content(section['chapters'])

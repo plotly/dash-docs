@@ -869,13 +869,6 @@ Requirements = html.Div(children=[
 
     ```
     # R script to run author supplied code, typically used to install additional R packages
-    # contains placeholders which are inserted by the compile script
-    # NOTE: this script is executed in the chroot context; check paths!
-
-    r <- getOption('repos')
-    r['CRAN'] <- 'http://cloud.r-project.org'
-    options(repos=r)
-
     # ======================================================================
 
     # packages go here
@@ -2991,7 +2984,7 @@ Troubleshooting = html.Div(children=[
     '''),
 
     html.Details([
-        html.Summary("Are using the latest versions?"),
+        html.Summary("Are you using the latest versions?"),
 
         rc.Markdown('''
         ```shell

@@ -17,7 +17,7 @@ def test_snap001_index_page_links(dash_doc, index_pages):
         if resource.startswith('/'):
             hook_id = "wait-for-page-{}".format(resource)
             res = resource.lstrip("/")
-            if res in ['getting-started-part-2', 'datatable/callbacks']:
+            if res in ['basic-callbacks', 'datatable/callbacks']:
                 # these two pages have an intermittent problem with their
                 # resource queues not clearing properly. While we sort this out,
                 # just wait a reasonably long time on these pages.
@@ -41,12 +41,18 @@ def test_snap001_index_page_links(dash_doc, index_pages):
                 '.map(a=>a.attributes.href.value)'
             )
             for link in linked_paths:
-                if link not in URL_TO_CONTENT_MAP and link not in good_links:
+                if link.rstrip('/') not in URL_TO_CONTENT_MAP and link not in good_links:
                     msg = '{} --- on page {}'.format(link, resource)
                     logger.info(msg)
                     bad_links.append(msg)
 
-            dash_doc.driver.back()
+            try:
+                dash_doc.driver.execute_script("window.history.go(-1)")
+            except Exception as e:
+                raise Exception([
+                    Exception(['Error going back while on page ', resource]),
+                    e
+                ])
 
     assert bad_links == []
 
@@ -61,11 +67,11 @@ def test_snap002_external_resources(dash_doc):
 
 
 def test_snap003_search(dash_doc):
-    dash_doc.driver.get(dash_doc.server_url + "/search")
-    dash_doc.wait_for_element_by_id("search-input")
+    dash_doc.driver.get(dash_doc.server_url)
+    dash_doc.wait_for_element_by_id("sidebar-search-input")
     dash_doc.percy_snapshot("search-blank")
-    search = dash_doc.find_element("#search-input")
+    search = dash_doc.find_element("#sidebar-search-input")
     dash_doc.clear_input(search)
-    search.send_keys("dropdown")
-    dash_doc.wait_for_element("#hits .ais-hits--item")
+    search.send_keys("dcc.Dropdown")
+    dash_doc.wait_for_element(".search-results")
     dash_doc.percy_snapshot("search-dropdown")
