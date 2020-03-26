@@ -17,7 +17,7 @@ def test_snap001_index_page_links(dash_doc, index_pages):
         if resource.startswith('/'):
             hook_id = "wait-for-page-{}".format(resource)
             res = resource.lstrip("/")
-            if res in ['getting-started-part-2', 'datatable/callbacks']:
+            if res in ['basic-callbacks', 'datatable/callbacks']:
                 # these two pages have an intermittent problem with their
                 # resource queues not clearing properly. While we sort this out,
                 # just wait a reasonably long time on these pages.
@@ -46,7 +46,13 @@ def test_snap001_index_page_links(dash_doc, index_pages):
                     logger.info(msg)
                     bad_links.append(msg)
 
-            dash_doc.driver.back()
+            try:
+                dash_doc.driver.execute_script("window.history.go(-1)")
+            except Exception as e:
+                raise Exception([
+                    Exception(['Error going back while on page ', resource]),
+                    e
+                ])
 
     assert bad_links == []
 

@@ -41,40 +41,63 @@
         "meta_keywords": "min, start, date, list, included, on"
       },
       {
-        "url": "/getting-started",
+        "url": "/layout",
         "name": "Part 2. Layout",
         "description": "The Dash `layout` describes what your app will look like and is composed of a set of declarative Dash components.",
         "meta_keywords": "children, key, href, rel, lang, style, title, controls, disabled, form, name, type, width, open, content, high, low, max, min, start, label, selected, multiple, size, placeholder, rows, default, options, displayed, multi, responsive, figure, config, list, refresh, debug, color, marks, count, data, colors, columns, css, dropdown, on, base, backgroundColor, elements, stylesheet, layout, pan, zoom, opacity, styles, labels, range, legend, view"
       },
       {
-        "url": "/getting-started-part-2",
+        "url": "/basic-callbacks",
         "name": "Part 3. Basic Callbacks",
         "description": "Dash apps are made interactive through Dash Callbacks: Python functions that are automatically called whenever an input component's property changes. Callbacks can be chained, allowing one update in the UI to trigger several updates across the app.",
-        "meta_keywords": "children, key, download, href, media, rel, style, title, controls, form, name, type, width, content, high, low, max, min, start, label, selected, multiple, size, wrap, scope, options, labelStyle, date, multi, figure, animate, list, pattern, step, debug, color, marks, count, included, data, css, editable, on, base, stylesheet, layout, pan, opacity, styles, range, legend"
-      },
-      {
-        "url": "/state",
-        "name": "Part 4. More About Callbacks",
-        "description": "Basic callbacks are fired whenever the values change. Use Dash `State` with Dash `Inputs` to pass in extra values whenever the `Inputs` change. `State` is useful for UIs that contain forms or buttons. Use the `PreventUpdate` exception to leave the callback output unchanged",
-        "meta_keywords": "children, n_clicks, href, style, form, name, type, content, low, min, start, date, debounce, list, step, debug, color, data, css, on, stylesheet, layout, styles"
+        "meta_keywords": "children, n_clicks, key, download, href, media, rel, dir, style, title, controls, form, name, type, width, content, high, low, max, min, start, label, selected, multiple, size, wrap, scope, options, labelStyle, date, multi, figure, animate, list, pattern, step, debug, color, marks, count, included, data, css, editable, on, base, stylesheet, layout, pan, opacity, styles, range, legend"
       },
       {
         "url": "/interactive-graphing",
-        "name": "Part 5. Interactive Graphing and Crossfiltering",
+        "name": "Part 4. Interactive Graphing and Crossfiltering",
         "description": "Bind interactivity to the Dash `Graph` component whenever you hover, click, or select points on your chart.",
         "meta_keywords": "children, href, rel, shape, style, title, form, name, type, height, width, open, action, high, low, max, min, start, label, selected, size, wrap, options, labelStyle, date, clickData, hoverData, selectedData, relayoutData, figure, config, step, debug, color, dedent, marks, count, data, columns, css, on, base, angle, backgroundColor, stylesheet, layout, pan, zoom, opacity, annotations, styles, padding, range, selection, legend"
       },
       {
         "url": "/sharing-data-between-callbacks",
-        "name": "Part 6. Sharing Data Between Callbacks",
+        "name": "Part 5. Sharing Data Between Callbacks",
         "description": "`global` variables will break your Dash apps. However, there are other ways to share data between callbacks. This chapter is useful for callbacks that run expensive data processing tasks or process large data.",
         "meta_keywords": "children, n_clicks, key, download, href, media, rel, shape, dir, hidden, style, alt, form, name, type, width, open, method, high, low, max, start, label, selected, multiple, size, rows, scope, options, date, multi, figure, config, pattern, step, debug, data, columns, css, dropdown, on, base, stylesheet, layout, pan, opacity, styles, range, view"
       },
       {
         "url": "/faqs",
-        "name": "Part 7. FAQs & Gotchas",
+        "name": "Part 6. FAQs",
         "description": "If you have read through the rest of the tutorial and still have questions or are encountering unexpected behaviour, this chapter may be useful.",
-        "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, href, rel, target, dir, style, controls, src, disabled, form, name, type, accept, action, low, min, start, multiple, required, rows, default, date, multi, figure, config, list, debug, count, included, data, modified_timestamp, on, elements, stylesheet, layout, container, styles, toolbar"
+        "meta_keywords": "children, key, href, target, dir, style, name, accept, multiple, rows, default, multi, list, data, on, stylesheet, layout, styles, toolbar"
+      }
+    ]
+  },
+  {
+    "name": "Dash Callbacks",
+    "chapters": [
+      {
+        "url": "/basic-callbacks",
+        "name": "Basic Callbacks",
+        "description": "Go through this introductory chapter to learn the foundations of the Dash callback.",
+        "meta_keywords": "children, n_clicks, key, download, href, media, rel, dir, style, title, controls, form, name, type, width, content, high, low, max, min, start, label, selected, multiple, size, wrap, scope, options, labelStyle, date, multi, figure, animate, list, pattern, step, debug, color, marks, count, included, data, css, editable, on, base, stylesheet, layout, pan, opacity, styles, range, legend"
+      },
+      {
+        "url": "/advanced-callbacks",
+        "name": "Advanced Callbacks",
+        "description": "Now that you've gotten through the basics, take a look at other things you can do with callbacks - from performance improvements to callback contexts.",
+        "meta_keywords": "children, n_clicks, n_clicks_timestamp, style, form, name, type, action, content, low, max, min, start, multiple, size, date, multi, debounce, list, step, debug, color, count, modified_timestamp, css, on, stylesheet, layout, container, styles"
+      },
+      {
+        "url": "/clientside-callbacks",
+        "name": "Clientside Callbacks",
+        "description": "You might want to execute a callback in the frontend as opposed to the backend if you want to avoid the extra time that it takes to make a roundtrip to the server. Clientside callbacks allow you to write your callbacks in JavaScript that runs in the browser.",
+        "meta_keywords": "children, rel, shape, dir, style, form, name, type, content, low, min, label, async, multiple, required, rows, options, date, multi, figure, debug, count, data, contents, css, on, scale, stylesheet, layout, pan, styles"
+      },
+      {
+        "url": "/callback-gotchas",
+        "name": "Callback Gotchas",
+        "description": "Dash callbacks have some idiosyncracies that should be taken into consideration when building a Dash app. If you're running into unexpected callback behavior, and the rest of the documentation hasn't shed any light on the situation, try taking a look in this section.",
+        "meta_keywords": "children, n_clicks, n_clicks_timestamp, href, rel, controls, src, disabled, form, type, min, start, required, default, date, multi, figure, config, debug, count, included, data, on, elements, layout"
       }
     ]
   },
@@ -1353,7 +1376,7 @@
             "url": "/cytoscape/callbacks",
             "name": "Callbacks",
             "description": "\n                        Methods to combine Dash callbacks to update your Cytoscape object.\n                        ",
-            "meta_keywords": "children, n_clicks, n_clicks_timestamp, href, target, dir, style, alt, name, type, height, width, accept, low, max, start, label, multiple, default, options, clearable, date, multi, animate, debug, color, data, dropdown, on, force, elements, stylesheet, layout, overview, styles, view"
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, href, target, dir, style, alt, name, type, height, width, accept, low, max, label, multiple, default, options, clearable, date, multi, animate, debug, color, data, dropdown, on, force, elements, stylesheet, layout, overview, styles, view"
           },
           {
             "url": "/cytoscape/events",
@@ -1407,7 +1430,7 @@
         "url": "/performance",
         "name": "Performance",
         "description": "There are three main ways to speed up Dash apps: caching, using WebGL chart types, and implementing clientside callbacks.",
-        "meta_keywords": "children, rel, shape, dir, style, alt, form, name, type, width, sizes, content, high, low, max, min, start, label, async, multiple, required, size, rows, options, date, multi, figure, config, list, step, debug, color, data, contents, columns, css, dropdown, on, base, stylesheet, layout, pan, annotations, styles, range"
+        "meta_keywords": "children, rel, shape, dir, style, alt, form, name, type, width, sizes, high, low, min, label, multiple, size, rows, options, date, multi, figure, config, list, step, debug, color, data, columns, css, dropdown, on, base, stylesheet, layout, pan, annotations, styles, range"
       },
       {
         "url": "/live-updates",

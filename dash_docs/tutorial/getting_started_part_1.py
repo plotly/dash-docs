@@ -28,7 +28,7 @@ layout = html.Div([
     <blockquote>
     This is the 2nd chapter of the <dccLink children="Dash Tutorial" href="/"/>.
     The <dccLink href="/installation" children="previous chapter"/> covered installation
-    and the <dccLink href="/getting-started-part-2" children="next chapter"/> covers Dash callbacks.
+    and the <dccLink href="/basic-callbacks" children="next chapter"/> covers Dash callbacks.
     </blockquote>
     '''),
 
@@ -45,7 +45,7 @@ layout = html.Div([
     Dash apps are composed of two parts. The first part is the "`layout`" of
     the app and it describes what the application looks like.
     The second part describes the interactivity of the application and will be
-    covered in the <dccLink href="/getting-started-part-2" children="next chapter"/>.
+    covered in the <dccLink href="/basic-callbacks" children="next chapter"/>.
 
     Dash provides Python classes for all of the visual components of
     the application. We maintain a set of components in the
@@ -319,7 +319,7 @@ class Dropdown(dash.development.base_component.Component)
 
     dcc.Link(
         'Dash Tutorial Part 3: Basic Callbacks',
-        href=tools.relpath("/getting-started-part-2")
+        href=tools.relpath("/basic-callbacks")
     )
 
 ])

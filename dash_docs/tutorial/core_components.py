@@ -221,7 +221,7 @@ dcc.RadioItems(
         'For more on ',
         html.Code('dash.dependencies.State'),
         ', see the tutorial on ',
-        dcc.Link('Dash State', href=tools.relpath('/state')),
+        dcc.Link('basic callbacks', href=tools.relpath('/basic-callbacks')),
         '.'
     ]),
 
@@ -278,7 +278,7 @@ dcc.DatePickerRange(
              href=tools.relpath("/dash-core-components/markdown")),
 
     html.Hr(),
-
+  
     html.H3(dcc.Link('Upload Component', href=tools.relpath('/dash-core-components/upload'))),
     reusable_components.Markdown('''
 
