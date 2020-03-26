@@ -1,6 +1,6 @@
 {
   "name": "dash_user_guide_components",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Custom components for Dash's user guide",
   "repository": {
     "type": "git",
@@ -21,7 +21,7 @@
     "build": "npm run build:js && npm run build:py_and_r",
     "build:activated": "npm run build:js && npm run build:py_and_r-activated"
   },
-  "author": "Chris P <chris@plot.ly>",
+  "author": "Chris P <chris@plotly.com>",
   "license": "MIT",
   "dependencies": {
     "@plotly/dash-component-plugins": "^1.2.0",

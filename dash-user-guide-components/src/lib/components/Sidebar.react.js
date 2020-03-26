@@ -184,15 +184,15 @@ class SearchResults extends Component {
             return (
                 <div className='no-results'>
                     <span>{'No results found. Try the same search on '}</span>
-                    <a href={`https://google.com/search?q=site%3Adash.plot.ly+${search}`}>
+                    <a href={`https://google.com/search?q=site%3Adash.plotly.com+${search}`}>
                         Google
                     </a>
                     <span>{', '}</span>
-                    <a href={`https://duckduckgo.com?q=site%3Adash.plot.ly+${search}`}>
+                    <a href={`https://duckduckgo.com?q=site%3Adash.plotly.com+${search}`}>
                         Duck Duck Go
                     </a>
                     <span>{', or the '}</span>
-                    <a href={`https://community.plot.ly/search?q=${search}%20category%3A16`}>
+                    <a href={`https://community.plotly.com/search?q=${search}%20category%3A16`}>
                         Dash Community Forum
                     </a>
                     <span>{'. '}</span>
@@ -202,15 +202,15 @@ class SearchResults extends Component {
                     <small>
                         {`No luck? Here is a more specific search by wrapping your
                         query in "quotes" on `}
-                        <a href={`https://google.com/search?q=site%3Adash.plot.ly+"${search}"`}>
+                        <a href={`https://google.com/search?q=site%3Adash.plotly.com+"${search}"`}>
                             Google
                         </a>
                         <span>{', '}</span>
-                        <a href={`https://duckduckgo.com?q=site%3Adash.plot.ly+"${search}"`}>
+                        <a href={`https://duckduckgo.com?q=site%3Adash.plotly.com+"${search}"`}>
                             Duck Duck Go
                         </a>
                         <span>{', or the '}</span>
-                        <a href={`https://community.plot.ly/search?q="${search}"%20category%3A16`}>
+                        <a href={`https://community.plotly.com/search?q="${search}"%20category%3A16`}>
                             Dash Community Forum
                         </a>
                         <span>{'. '}</span>
@@ -222,7 +222,7 @@ class SearchResults extends Component {
                         <i>
                             {`Still no luck? Get help for what you are
                               looking for by opening a topic on the `}
-                            <a href="https://community.plot.ly/c/dash">Dash Community Forum</a>
+                            <a href="https://community.plotly.com/c/dash">Dash Community Forum</a>
                             {'.'}
                         </i>
                     </small>
