@@ -20,7 +20,7 @@ To create a Dash component, fork our sample component repository and
 follow the instructions in the README.md:
 [https://github.com/plotly/dash-component-boilerplate](https://github.com/plotly/dash-component-boilerplate)
 If you are just getting started with React.js as a R programmer, please check out our essay
-['React for R Devs'](https://dash.plot.ly/react-for-R-developers).
+['React for R Devs'](https://dash.plotly.com/react-for-R-developers).
 
 ### How Are Components Converted From React.js to R?
 

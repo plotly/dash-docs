@@ -70,7 +70,7 @@ layout <- htmlDiv(list(
 
                 Like any Dash component, the properties of a ``DashCanvas`` can be
                 modified by other components, via callbacks. Please be sure to have
-                read first through the [Dash tutorial](https://dashr.plot.ly/) to
+                read first through the [Dash tutorial](https://dashr.plotly.com/) to
                 know how to write callbacks.
 
                 "),
@@ -84,7 +84,7 @@ layout <- htmlDiv(list(
     ``daqColorPicker()`` are used to adjust the width and color of the drawing
     brush. We just created an image coloring tool in a few lines of code! You
     can learn more about available components in the [component
-    libraries](https://dashr.plot.ly/) section of the Dash documentation. Also
+    libraries](https://dashr.plotly.com/) section of the Dash documentation. Also
     note that the set of available buttons has been restricted through the
     ``hide_buttons`` properties, in order to keep the app design simple.
 

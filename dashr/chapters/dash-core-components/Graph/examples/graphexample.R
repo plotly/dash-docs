@@ -15,7 +15,7 @@ app$layout(htmlDiv(list(
     id='graph1',
     config=list(
       'showSendToCloud'= TRUE,
-      'plotlyServerURL'= 'https=//plot.ly'
+      'plotlyServerURL'= 'https=//plotly.com'
     )
   )
 )))

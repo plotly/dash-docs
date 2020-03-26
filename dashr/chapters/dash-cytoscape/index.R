@@ -141,7 +141,7 @@ layout <- htmlDiv(list(
 
   The development for this component was sponsored by one of our commercial partners.
   Interested in steering the roadmap?
-  [Get in touch](https://plot.ly/products/consulting-and-oem/?_ga=2.67745489.1119063560.1560730925-1013488808.1557293663).
+  [Get in touch](https://plotly.com/products/consulting-and-oem/?_ga=2.67745489.1119063560.1560730925-1013488808.1557293663).
   "),
 
   htmlHr(),

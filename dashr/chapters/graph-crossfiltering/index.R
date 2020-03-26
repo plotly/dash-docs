@@ -33,7 +33,7 @@ both vector-quality SVG and high-performance WebGL.
 The `figure` argument in the `dccGraph` component is
 the same `figure` argument that is used by `plotly.R`, Plotly's
 open source R graphing library.
-Check out the [plotly.R documentation and gallery](https://plot.ly/r/)
+Check out the [plotly.R documentation and gallery](https://plotly.com/r/)
 to learn more.
 
 Dash components are described declaratively by a set of attributes.
@@ -97,7 +97,7 @@ the graphs are replotted with the selected points highlighted and
 the selected region drawn as a dashed rectangle.
 
 > As an aside, if you find yourself filtering and visualizing highly-dimensional datasets,
-> you should consider checking out the [parallel coordinates](https://plot.ly/r/parallel-coordinates-plot/) chart type.
+> you should consider checking out the [parallel coordinates](https://plotly.com/r/parallel-coordinates-plot/) chart type.
 
 ### Current Limitations
 There are a few limitations in graph interactions right now.
@@ -108,7 +108,7 @@ This issue is being worked on in
   htmlHr(),
   dccMarkdown("
 There's a lot that you can do with these interactive plotting features.
-If you need help exploring your use case, open up a thread in the [Dash Community Forum](https://community.plot.ly/c/dash?_ga=2.198896623.192781799.1553018107-1965683241.1552615001).
+If you need help exploring your use case, open up a thread in the [Dash Community Forum](https://community.plotly.com/c/dash?_ga=2.198896623.192781799.1553018107-1965683241.1552615001).
   "),
   htmlHr(),
   dccMarkdown("

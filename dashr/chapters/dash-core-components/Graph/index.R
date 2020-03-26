@@ -12,7 +12,7 @@ examples <- list(
 layout <- htmlDiv(list(
 htmlH1('Graph Reference'),
 dccMarkdown("
-Custimize the [Plotly.js config options](https://plot.ly/javascript/configuration-options/) of your graph using
+Custimize the [Plotly.js config options](https://plotly.com/javascript/configuration-options/) of your graph using
 the `config` property. The example below uses the `showSendToCloud` and `plotlyServerURL` options include a
 save button in the modebar of the graph which exports the figure to URL specified by `plotlyServerURL`.
 "),

@@ -111,13 +111,13 @@ registering event listeners to cause a page redirect on a keystroke.
 
 In general, if you are looking to add custom clientside behavior in your
 application, we recommend encapsulating that behavior in a [custom Dash
-component](https://dash.plot.ly/plugins).
+component](https://dash.plotly.com/plugins).
 
 ------------------------
 
 **Q:** *I have more questions! Where can I go to ask them?*
 
-**A:** The [Dash Community forums](https://community.plot.ly/c/dash) is full
+**A:** The [Dash Community forums](https://community.plotly.com/c/dash) is full
 of people discussing Dash topics, helping each other with questions, and
 sharing Dash creations. Jump on over and join the discussion.
 
@@ -130,7 +130,7 @@ outlines some common Dash gotchas that you might encounter as you start
 building out more complex Dash apps. If you have read through the rest of
 the [Dash Tutorial](/) and are encountering unexpected behaviour, this is a
 good section to read through. If you still have residual questions, the
-[Dash Community forums](https://community.plot.ly/c/dash) is a great place
+[Dash Community forums](https://community.plotly.com/c/dash) is a great place
 to ask them.
 
 ### Callbacks require their `inputs`, `states`, and `output` to be present in the layout
@@ -211,7 +211,7 @@ Generally speaking, if a feature of your Dash app is that the number of
 pre-define up front every permutation of callback that a user can
 potentially trigger. For an example of how this can be done programmatically
 using the `callback` handler, see this [Dash Community forum
-post](https://community.plot.ly/t/callback-for-dynamically-created-graph/5511).
+post](https://community.plotly.com/t/callback-for-dynamically-created-graph/5511).
 
   "),
   htmlHr(),

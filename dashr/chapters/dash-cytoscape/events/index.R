@@ -139,7 +139,7 @@ multiple elements while holding Shift:
 # `Cytoscape` component along with a few dropdowns, and outputs to the
 # `stylesheet` prop. You can try out this
 # [interactive stylesheet demo](https://dash-gallery.plotly.host/cytoscape-stylesheet)
-# hosted on the [Dash Deployment Servers](https://plot.ly/products/dash/).
+# hosted on the [Dash Deployment Servers](https://plotly.com/products/dash/).
 #   "),
 #   # BLOCK (arrow down snippet)
 #   htmlDetails(

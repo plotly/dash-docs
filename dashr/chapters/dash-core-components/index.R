@@ -411,7 +411,7 @@ year = c(1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
   ))),
 htmlBr(),
 htmlDiv(referenceLink('Graph', 'More Graph Examples and Reference')),
-dccMarkdown('View the [plotly.r docs](https://plot.ly/r).'),
+dccMarkdown('View the [plotly.r docs](https://plotly.com/r).'),
 htmlHr(),
 
 #--------------------------------

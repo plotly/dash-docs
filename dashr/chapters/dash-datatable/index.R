@@ -34,7 +34,7 @@ layout <- htmlDiv(
     > DataTable was designed with a featureset that allows
     > that Dash users to create complex, spreadsheet driven applications with no compromises.
     > We're excited to continue to work with users and companies that
-    > [invest in DataTable's future](https://plot.ly/products/consulting-and-oem/?_ga=2.1935537.1022559183.1559571095-1541667138.1549398001).*
+    > [invest in DataTable's future](https://plotly.com/products/consulting-and-oem/?_ga=2.1935537.1022559183.1559571095-1541667138.1549398001).*
     >
     > *DataTable is in* `Alpha`.* This is more of a statement on the DataTable API rather than on its features.
     > The table currently works beautifully and is already used in production at F500 companies.
@@ -47,7 +47,7 @@ layout <- htmlDiv(
     >
     > *So, check out DataTable and let us know what you think. Or even better,
     > share your DataTable Dash apps on the
-    > [community forum](https://community.plot.ly/t/show-and-tell-community-thread/7554?_ga=2.70598800.1022559183.1559571095-1541667138.1549398001)!*
+    > [community forum](https://community.plotly.com/t/show-and-tell-community-thread/7554?_ga=2.70598800.1022559183.1559571095-1541667138.1549398001)!*
     >
     > -- chriddyp
     "),
@@ -168,7 +168,7 @@ layout <- htmlDiv(
     "datatable/reference",
     "
     The full list of Table properties and their settings can be achieved by
-    `help('dashDataTable')` or https://dash.plot.ly/datatable/reference
+    `help('dashDataTable')` or https://dash.plotly.com/datatable/reference
     "
     ),
 
@@ -182,7 +182,7 @@ layout <- htmlDiv(
     Many thanks to all of our customers
     who have sponsored the development of this table.
     Interested in steering the roadmap?
-    [Get in touch](https://plot.ly/products/consulting-and-oem/?_ga=2.243244741.679498514.1560782796-1541667138.1549398001)
+    [Get in touch](https://plotly.com/products/consulting-and-oem/?_ga=2.243244741.679498514.1560782796-1541667138.1549398001)
     "),
 
     htmlHr(),

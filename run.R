@@ -228,12 +228,12 @@ header <- htmlDiv(
       children = list(
         htmlA(htmlImg(
           style = list(height = '100%'),
-          src = 'https://dash.plot.ly/assets/images/logo-plotly.png'
-        ), href = 'https://plot.ly/products/dash', className='logo-link'),
+          src = 'https://dash.plotly.com/assets/images/logo-plotly.png'
+        ), href = 'https://plotly.com/products/dash', className='logo-link'),
         htmlDiv(className='links', children = list(
-          htmlA('pricing', className='link', href = 'https://plot.ly/dash/pricing'),
+          htmlA('pricing', className='link', href = 'https://plotly.com/dash/pricing'),
           htmlA('user guide', className='link', href = '/'),
-          htmlA('plotly', className='link', href = 'https://plot.ly/'),
+          htmlA('plotly', className='link', href = 'https://plotly.com/'),
           htmlA('\U{1F50E}', className='link', href='/search')
         ))
     ))
@@ -385,7 +385,7 @@ app$callback(
                 ),
                 components$Chapter(
                 'Dash App Gallery',
-                href='https://dash.plot.ly/gallery',
+                href='https://dash.plotly.com/gallery',
                 caption="A glimpse into what's possible with Dash."
                 ),
                 components$Chapter(
@@ -540,7 +540,7 @@ app$callback(
               list(
                 components$Chapter(
                 'See Our Products Page',
-                href='https://plot.ly/products/dash/'
+                href='https://plotly.com/products/dash/'
                 ),
                 components$Chapter(
                   'Deployment',
@@ -555,7 +555,7 @@ app$callback(
               list(
                 components$Chapter(
                 'The Dash Community Forum',
-                href='https://community.plot.ly/c/dash?_ga=2.35982368.1800098105.1562085881-85134653.1547603472'
+                href='https://community.plotly.com/c/dash?_ga=2.35982368.1800098105.1562085881-85134653.1547603472'
                 ),
                 components$Chapter(
                 'Support and Contact',
@@ -569,11 +569,11 @@ app$callback(
               list(
                 components$Chapter(
                 'About Dash Deployment Server',
-                href='https://plot.ly/dash/pricing/?_ga=2.180458663.1075922756.1562168385-916141078.1562168385'
+                href='https://plotly.com/dash/pricing/?_ga=2.180458663.1075922756.1562168385-916141078.1562168385'
                 ),
                 components$Chapter(
                 'Dash Deployment Server Documentation',
-                href='https://dash.plot.ly/dash-deployment-server'
+                href='https://dash.plotly.com/dash-deployment-server'
                 )
               ),
               description="Dash Deployment Server is Plotly's commercial offering for hosting and sharing

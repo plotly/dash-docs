@@ -140,7 +140,7 @@ layout = html.Div([
     `plotly_express.Scatter`, you get a dictionary as a return
     value. This dictionary is in the same shape as the `figure`
     argument to a `dcc.Graph` component. (See
-    [here](https://plot.ly/python/creating-and-updating-figures/) for
+    [here](https://plotly.com/python/creating-and-updating-figures/) for
     more information about the shape of `figure`s.)
 
     We can rework the example above to use Plotly Express.

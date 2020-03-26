@@ -157,7 +157,7 @@ both vector-quality SVG and high-performance WebGL.
 The `figure` argument in the `dccGraph` component is
 the same `figure` argument that is used by `plotly.R`, Plotly's
 open source R graphing package.
-Check out the [plotly.r documentation and gallery](https://plot.ly/r)
+Check out the [plotly.r documentation and gallery](https://plotly.com/r)
 to learn more.
   "),
   # hello scatter example
@@ -237,8 +237,8 @@ classes for all of the HTML tags and the keyword arguments describe the HTML
 attributes like style, className, and id. The `dashCoreComponents` package generates
 higher-level components like controls and graphs.
 For reference, see:
-- [dashCoreComponents gallery](https://dashr.plot.ly/dash-core-components)
-- [dashHtmlComponents gallery](https://dashr.plot.ly/dash-html-components)
+- [dashCoreComponents gallery](https://dashr.plotly.com/dash-core-components)
+- [dashHtmlComponents gallery](https://dashr.plotly.com/dash-html-components)
 
 
 The next part of the Dash tutorial covers how to make these apps interactive.

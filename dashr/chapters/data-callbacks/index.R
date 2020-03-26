@@ -105,7 +105,7 @@ The following examples illustrate these approaches.
 To save data in user's browser's session:
 
 - Implemented by saving the data as part of Dash's front-end store through methods explained in 
-https://community.plot.ly/t/sharing-a-dataframe-between-plots/6173
+https://community.plotly.com/t/sharing-a-dataframe-between-plots/6173
 - Data has to be converted to a string like JSON for storage and transport
 - Data that is cached in this way will *only be available in the user's current session*.
    - If you open up a new browser, the app's callbacks will always compute the data. 
@@ -321,14 +321,14 @@ dccMarkdown("
 #             then reference the data using that session ID. Because data is saved on the server instead of 
 #             transported over the network, this method is generally faster than the 'hidden div' method.
 #             
-#             This example was originally discussed in a [Dash Community Forum thread](https://community.plot.ly/t/capture-window-tab-closing-event/7375/2?u=chriddyp&_ga=2.196163180.1151030971.1558964279-1541667138.1549398001).
+#             This example was originally discussed in a [Dash Community Forum thread](https://community.plotly.com/t/capture-window-tab-closing-event/7375/2?u=chriddyp&_ga=2.196163180.1151030971.1558964279-1541667138.1549398001).
 #             
 #             This example:
 #             
 #             - Caches data using the flask_caching filesystem cache. 
 #             You can also save to an in-memory database like Redis.
 #             
-#             - Serializes the data as JSON. If you are using Pandas, consider serializing with Apache Arrow. [Community thread](https://community.plot.ly/t/fast-way-to-share-data-between-callbacks/8024/2?_ga=2.196163180.1151030971.1558964279-1541667138.1549398001)
+#             - Serializes the data as JSON. If you are using Pandas, consider serializing with Apache Arrow. [Community thread](https://community.plotly.com/t/fast-way-to-share-data-between-callbacks/8024/2?_ga=2.196163180.1151030971.1558964279-1541667138.1549398001)
 #             
 #             - Saves session data up to the number of expected concurrent users. This prevents the cache from being overfilled with data.
 #             
@@ -351,5 +351,5 @@ dccMarkdown("
 #             
 #             - The second session displays different data than the first session: the data that is shared between callbacks is isolated to individual user sessions.
 #             
-#             Questions? Discuss these examples on the [Dash Community Forum](https://community.plot.ly/c/dash?_ga=2.220271960.1151030971.1558964279-1541667138.1549398001).
+#             Questions? Discuss these examples on the [Dash Community Forum](https://community.plotly.com/c/dash?_ga=2.220271960.1151030971.1558964279-1541667138.1549398001).
 #             ")

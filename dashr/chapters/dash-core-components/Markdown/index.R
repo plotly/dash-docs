@@ -94,7 +94,7 @@ utils$LoadAndDisplayComponent("
 library(dashCoreComponents)
 dccMarkdown(
   '
-[Dash User Guide](https://dashr.plot.ly/)
+[Dash User Guide](https://dashr.plotly.com/)
   '
 )
 "

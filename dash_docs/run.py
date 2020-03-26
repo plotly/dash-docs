@@ -51,7 +51,7 @@ header = html.Div(
             html.Span([
                 html.A(html.Img(
                     src='/assets/images/logo-plotly.png',
-                ), href='https://plot.ly'),
+                ), href='https://plotly.com'),
                 html.Img(
                     src='/assets/images/logo-seperator.png',
                 ),

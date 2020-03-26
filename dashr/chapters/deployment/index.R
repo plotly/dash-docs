@@ -15,14 +15,14 @@ set of IP addresses.
 
 ## Dash Enterprise 
 
-[Dash Enterprise](https://plot.ly/dash/pricing/?_ga=2.249471751.1080104966.1578062860-1986131108.1567098614) is Plotly's commercial product for deploying Dash
+[Dash Enterprise](https://plotly.com/dash/pricing/?_ga=2.249471751.1080104966.1578062860-1986131108.1567098614) is Plotly's commercial product for deploying Dash
 Apps on your company's servers or on AWS, Google Cloud, or Azure. It
 offers an enterprise-wide Dash App Portal, easy git-based deployment,
 automatic URL namespacing, built-in SSL support, LDAP authentication, and
-more. [Learn more about Dash Enterprise](https://plot.ly/dash/pricing?_ga=2.249471751.1080104966.1578062860-1986131108.1567098614) or [get in touch to start a
-trial](https://go.plot.ly/dash-doc?_ga=2.48144423.1080104966.1578062860-1986131108.1567098614).
+more. [Learn more about Dash Enterprise](https://plotly.com/dash/pricing?_ga=2.249471751.1080104966.1578062860-1986131108.1567098614) or [get in touch to start a
+trial](https://go.plotly.com/dash-doc?_ga=2.48144423.1080104966.1578062860-1986131108.1567098614).
 
-For existing customers, see the [Dash Enterprise Documentation](https://dash.plot.ly/dash-enterprise).
+For existing customers, see the [Dash Enterprise Documentation](https://dash.plotly.com/dash-enterprise).
 
 ## Dash and Fiery
 
@@ -197,7 +197,7 @@ When you modify app.R with your own code, you will need to add the changes to gi
 ```
 
 If you're ready to take your apps to the next level, and deliver interactive analytics at scale, we invite you to learn more about Dash Enterprise. 
-[Click here for more information](https://plot.ly/dash/pricing/?_ga=2.176345125.1075922756.1562168385-916141078.1562168385) or [get in touch](https://plotly.typeform.com/to/rkO85m?_ga=2.176345125.1075922756.1562168385-916141078.1562168385).
+[Click here for more information](https://plotly.com/dash/pricing/?_ga=2.176345125.1075922756.1562168385-916141078.1562168385) or [get in touch](https://plotly.typeform.com/to/rkO85m?_ga=2.176345125.1075922756.1562168385-916141078.1562168385).
 
   "),
 htmlHr(),

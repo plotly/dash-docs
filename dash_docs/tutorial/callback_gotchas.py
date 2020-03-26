@@ -16,7 +16,7 @@ layout = html.Div([
     building out more complex Dash apps. If you have read through the rest of
     the <dccLink children="Dash Tutorial" href="/"/> and are encountering unexpected behaviour, this is a
     good section to read through. If you still have residual questions, the
-    [Dash Community forums](https://community.plot.ly/c/dash) is a great place
+    [Dash Community forums](https://community.plotly.com/c/dash) is a great place
     to ask them.
 
     ### Callbacks require their `Inputs`, `States`, and `Output` to be present in the layout
@@ -84,14 +84,14 @@ layout = html.Div([
     pre-define up front every permutation of callback that a user can
     potentially trigger. For an example of how this can be done programmatically
   using the `callback` decorator, see this [Dash Community forum
-    post](https://community.plot.ly/t/callback-for-dynamically-created-graph/5511).
+    post](https://community.plotly.com/t/callback-for-dynamically-created-graph/5511).
 
     ### All Dash Core Components in a layout should be registered with a callback.
 
     Note: This section is present for legacy purposes. Prior to v0.40.0, setProps was only defined if the component was connected to a
     callback. This required complex state management within the component like [this](https://github.com/plotly/dash-core-components/blob/63be1c258c15b419a82fb66366e1a31e66fbfaef/src/components/Input.react.js#L51-L59).
     Now, setProps is always defined which should simplify your component's state
-    management. Learn more in this [community forum topic](https://community.plot.ly/t/callbacks-clearing-all-unconnected-core-components-values/7631).
+    management. Learn more in this [community forum topic](https://community.plotly.com/t/callbacks-clearing-all-unconnected-core-components-values/7631).
 
     If a Dash Core Component is present in the layout but not registered with a
     callback (either as an `Input`, `State`, or `Output`) then any changes to its

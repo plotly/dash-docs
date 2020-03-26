@@ -17,7 +17,7 @@ layout <- htmlDiv(list(
   htmlH1('Dash Dev Tools'),
   dccMarkdown("
 Dash Dev Tools is an initiative to make debugging and developing Dash apps
-more pleasant. This initiative was sponsored by an [organization](https://plot.ly/products/consulting-and-oem/?_ga=2.46960551.1080104966.1578062860-1986131108.1567098614) and you can
+more pleasant. This initiative was sponsored by an [organization](https://plotly.com/products/consulting-and-oem/?_ga=2.46960551.1080104966.1578062860-1986131108.1567098614) and you can
 see our work in [our GitHub project](https://github.com/orgs/plotly/projects/3).
 _dev_tools features are activated by default when you run the app with `app$run_server(debug=TRUE)`_
 
