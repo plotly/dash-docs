@@ -1,4 +1,4 @@
-dash_user_guide_components-0.0.2.tar.gz
+dash_user_guide_components-0.0.3.tar.gz
 algoliasearch==1.15.3
 certifi==2018.4.16
 chardet==3.0.4
