@@ -39,7 +39,7 @@ layout = [
 
     Note how the text component depends on the values of all of the
     dropdowns but doesn't get updated until all three dropdowns have
-    finished updating.'''.replace('    ', '')),
+    finished updating.'''),
     reusable_components.Markdown(
         examples[0][0],
         style=styles.code_container

@@ -1,4 +1,3 @@
-from textwrap import dedent
 
 import dash_html_components as html
 import dash_core_components as dcc
@@ -14,7 +13,7 @@ examples = {
 
 layout = html.Div(
     [
-        reusable_components.Markdown(dedent("""
+        reusable_components.Markdown("""
         # DataTable Filtering
 
         As discussed in the [interactivity chapter](), `DataTable` includes
@@ -56,42 +55,42 @@ layout = html.Div(
         Many operators have two forms: a symbol (`=`) and a word (`eq`) that
         can be used interchangeably.
 
-        """)),
+        """),
         html.Table([html.Tr([
             html.Td([
                 html.H4(
                     html.P([html.Code('='), ' ', html.Code('eq')]),
                     style={'margin': '0px'}),
                 reusable_components.Markdown('Default operator for `number` columns')]),
-            html.Td(reusable_components.Markdown(dedent("""
+            html.Td(reusable_components.Markdown("""
             Are the two numbers equal? Regardless of type, will first try to
             convert both sides to numbers and compare the numbers. If either
             cannot be converted to a number, looks for an exact match.
-            """)))
+            """))
         ]), html.Tr([
             html.Td([
                 html.H4(html.P(html.Code('contains')), style={'margin': '0px'}),
                 reusable_components.Markdown('Default operator for `text` and `any` columns')
             ]),
-            html.Td(reusable_components.Markdown(dedent("""
+            html.Td(reusable_components.Markdown("""
             Does the text value contain the requested substring?
             May match the beginning, end, or anywhere in the middle. The match
             is case-sensitive and exact.
-            """)))
+            """))
         ]), html.Tr([
             html.Td([
                 html.H4(
                     html.P(html.Code('datestartswith')),
                     style={'margin': '0px'}),
                 reusable_components.Markdown('Default operator for `datetime` columns')]),
-            html.Td(reusable_components.Markdown(dedent("""
+            html.Td(reusable_components.Markdown("""
             Does the datetime start with the given parts? Enter a partial
             datetime, this will match any date that has at least as much
             precision and starts with the same pieces. For example,
             `datestartswith '2018-03-01'` will match `'2018-03-01 12:59'` but
             not `'2018-03'` even though we interpret `'2018-03-01'` and
             `'2018-03'` both to mean the first instant of March, 2018.
-            """)))
+            """))
         ]), html.Tr([
             html.Td(html.H4(html.P([
                 html.Code('>'), ' ', html.Code('gt'), u' \u00a0 ',
@@ -100,20 +99,20 @@ layout = html.Div(
                 html.Code('<='), ' ', html.Code('le'), html.Br(),
                 html.Code('!='), ' ', html.Code('ne')
             ]), style={'margin': '0px'})),
-            html.Td(reusable_components.Markdown(dedent("""
+            html.Td(reusable_components.Markdown("""
             Comparison: greater than, less than, greater or equal, less or
             equal, and not equal. Two strings compare by their dictionary
             order, with numbers and most symbols coming before letters, and
             uppercase coming before lowercase.
-            """)))
+            """))
         ])]),
         html.Br(),
 
-        reusable_components.Markdown(dedent("""
+        reusable_components.Markdown("""
 
         ## Frontend Filtering Example:
 
-        """)),
+        """),
         reusable_components.Markdown(
             examples['filtering_fe.py'][0],
             style=styles.code_container
@@ -124,7 +123,7 @@ layout = html.Div(
             className='example-container'
         ),
 
-        reusable_components.Markdown(dedent("""
+        reusable_components.Markdown("""
         ## Back-end Filtering
 
         For large dataframes, you can perform the filtering in Python instead
@@ -139,7 +138,7 @@ layout = html.Div(
         write your own expression query language.
 
         Example:
-        """)),
+        """),
 
         reusable_components.Markdown(
             examples['filtering_be.py'][0],
@@ -153,14 +152,14 @@ layout = html.Div(
 
         reusable_components.Markdown("---"),
 
-        reusable_components.Markdown(dedent("""
+        reusable_components.Markdown("""
         # Advanced filter usage
 
         Filter queries can be as simple or as complicated as you want
         them to be. When something is typed into a column filter, it
         is automatically converted to a filter query on that column
         only.
-        """)),
+        """),
 
         reusable_components.Markdown(
             examples['filtering_advanced.py'][0],
@@ -172,7 +171,7 @@ layout = html.Div(
             className='example-container'
         ),
 
-        reusable_components.Markdown(dedent("""
+        reusable_components.Markdown("""
 
         The `filter_query` property is written to when the user
         filters the data by using the column filters. For example, if
@@ -272,7 +271,7 @@ layout = html.Div(
         pretty heavy lifting with the table! You can see an example of
         this below.
 
-        """)),
+        """),
 
         reusable_components.Markdown(
             examples['filtering_advanced_derived.py'][0],

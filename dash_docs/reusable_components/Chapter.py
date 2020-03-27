@@ -3,9 +3,6 @@ import dash_core_components as dcc
 from dash_docs.tools import relpath
 from .Markdown import Markdown
 
-def s(string_block):
-    return string_block.replace('    ', '')
-
 def Chapter(name, href=None, caption=None):
     linkComponent = html.A if href.startswith('http') else dcc.Link
     return html.Div(className='toc--chapter', children=[
@@ -19,7 +16,7 @@ def Chapter(name, href=None, caption=None):
         ),
         html.Small(
             className='toc--chapter-content',
-            children=Markdown(s(caption or '')),
+            children=Markdown(caption or ''),
             style={
                 'display': 'block',
                 'marginTop': '-10px' if caption else ''

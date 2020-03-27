@@ -3,11 +3,6 @@ import os
 
 from dash_docs import reusable_components
 
-
-def s(string_block):
-    return string_block.replace('    ', '')
-
-
 layout = html.Div(className='toc', children=[
     html.H1('Dash Enterprise Documentation'),
 

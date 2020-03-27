@@ -56,7 +56,7 @@
         "url": "/interactive-graphing",
         "name": "Part 4. Interactive Graphing and Crossfiltering",
         "description": "Bind interactivity to the Dash `Graph` component whenever you hover, click, or select points on your chart.",
-        "meta_keywords": "children, href, rel, shape, style, title, form, name, type, height, width, open, action, high, low, max, min, start, label, selected, size, wrap, options, labelStyle, date, clickData, hoverData, selectedData, relayoutData, figure, config, step, debug, color, dedent, marks, count, data, columns, css, on, base, angle, backgroundColor, stylesheet, layout, pan, zoom, opacity, annotations, styles, padding, range, selection, legend"
+        "meta_keywords": "children, href, rel, shape, style, title, form, name, type, height, width, open, action, high, low, max, min, start, label, selected, size, options, labelStyle, date, clickData, hoverData, selectedData, relayoutData, figure, config, step, debug, color, marks, count, data, columns, css, on, base, angle, backgroundColor, stylesheet, layout, pan, zoom, opacity, annotations, styles, padding, range, selection, legend"
       },
       {
         "url": "/sharing-data-between-callbacks",

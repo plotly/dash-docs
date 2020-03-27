@@ -21,7 +21,7 @@ daq_library_heading =  reusable_components.Markdown('''
     The source is on GitHub at [plotly/dash-daq](https://github.com/plotly/dash-daq).
 
     These docs are using version {}.
-    '''.replace('    ', '').format(daq.__version__)
+    '''.format(daq.__version__)
 )
 
 daq_install_instructions = reusable_components.Markdown('''
@@ -30,7 +30,7 @@ daq_install_instructions = reusable_components.Markdown('''
     >>> print(daq.__version__)
     {}
     ```
-    '''.replace('    ', '').format(daq.__version__),
+    '''.format(daq.__version__),
     style=styles.code_container)
 
 

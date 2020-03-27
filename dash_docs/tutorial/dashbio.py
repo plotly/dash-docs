@@ -23,7 +23,7 @@ DASHBIO_LIBRARY_HEADING = [
     The source can be found on GitHub at [plotly/dash-bio](https://github.com/plotly/dash-bio).
 
     These docs are using Dash Bio version {}.
-    '''.replace('    ', '').format(dash_bio.__version__, dash_bio.__version__))
+    '''.format(dash_bio.__version__, dash_bio.__version__))
 ]
 
 DASHBIO_INSTALL_INSTRUCTIONS = reusable_components.Markdown(
@@ -33,7 +33,7 @@ DASHBIO_INSTALL_INSTRUCTIONS = reusable_components.Markdown(
     >>> print(dash_bio.__version__)
     {}
     ```
-    '''.replace('    ', '').format(dash_bio.__version__),
+    '''.format(dash_bio.__version__),
     style=styles.code_container
 )
 

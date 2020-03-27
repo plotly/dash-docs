@@ -1,10 +1,15 @@
 import os
 import re
 import logging
+import pytest
+import sys
 
 logger = logging.getLogger(__name__)
 
-
+@pytest.mark.skipif(
+    sys.version_info < (3, 7),
+    reason="skip non-essential, potentially flaky tests"
+)
 def test_no_duplicate_ids():
     found_ids = {}
     root_dir = os.path.abspath(

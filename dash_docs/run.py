@@ -57,7 +57,7 @@ header = html.Div(
                 ),
                 dcc.Link(html.Img(
                     src='/assets/images/logo-dash.png',
-                ), href='/'),
+                ), href='/', id='logo-home'),
             ], className='logo'),
 
             # HEADS UP!

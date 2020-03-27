@@ -2,13 +2,12 @@
 import dash_core_components as dcc
 import dash_html_components as html
 import dash_daq as daq
-from textwrap import dedent as s
 
 from dash_docs import styles
 from dash_docs import tools
 from dash_docs.tutorial.utils.convert_props_to_list import generate_prop_info
 from dash_docs.tutorial.utils.component_block import ComponentBlock
-from dash_docs.tutorial.components import Syntax, Example
+from dash_docs.reusable_components import Syntax, Example
 from dash_docs import reusable_components
 
 examples = {

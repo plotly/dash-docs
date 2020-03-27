@@ -2,7 +2,6 @@ import dash
 import dash_core_components as dcc
 import dash_html_components as html
 import pandas as pd
-from textwrap import dedent
 
 from dash_docs.reusable_components import Section, Chapter
 from dash_docs import styles
@@ -17,10 +16,10 @@ examples = {
 
 preamble = html.Div([
 
-    reusable_components.Markdown(dedent('''
+    reusable_components.Markdown('''
     # Dash DataTable
 
-    ''')),
+    '''),
 
     html.Iframe(
         src="https://ghbtns.com/github-btn.html?user=plotly&repo=dash-table&type=star&count=true&size=large",
@@ -29,7 +28,7 @@ preamble = html.Div([
         style={'border': 'none'}
     ),
 
-    reusable_components.Markdown(dedent('''
+    reusable_components.Markdown('''
     > Dash DataTable is an interactive table component designed for
     > viewing, editing, and exploring large datasets.
     >
@@ -61,7 +60,7 @@ preamble = html.Div([
     > on the [community forum](https://community.plotly.com/t/show-and-tell-community-thread/7554)!
     >
     > -- chriddyp
-    ''')),
+    '''),
 
     Section('Quickstart', [
         reusable_components.Markdown(

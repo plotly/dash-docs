@@ -2,7 +2,7 @@ import dash_core_components as dcc
 import dash_html_components as html
 
 from dash_docs.tools import load_example
-from dash_docs.tutorial.components import Syntax, Example
+from dash_docs.reusable_components import Syntax, Example
 from dash_docs import reusable_components
 
 examples = {

@@ -1,8 +1,8 @@
 import dash_core_components as dcc
 import dash_html_components as html
-from textwrap import dedent
 from dash_docs import reusable_components
 
+from textwrap import dedent
 
 def CreateDisplay(scope):
     def Display(example_string):

@@ -2993,7 +2993,7 @@ Troubleshooting = html.Div(children=[
         dash-core-components=={}
         dash-table=={}
         ```
-        '''.replace('    ', '').format(
+        '''.format(
             dash.__version__,
             html.__version__,
             dcc.__version__,

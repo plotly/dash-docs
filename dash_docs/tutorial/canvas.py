@@ -2,7 +2,6 @@ import dash_html_components as html
 import dash_core_components as dcc
 from dash_docs import styles
 from dash_docs import tools
-from textwrap import dedent
 import dash_canvas
 from dash_docs import reusable_components
 
@@ -17,10 +16,10 @@ examples = [
     ]]
 
 layout = html.Div([
-    reusable_components.Markdown(dedent('''\
+    reusable_components.Markdown('''\
     ## Introduction to dash-canvas
 
-    ''')),
+    '''),
 
     reusable_components.Markdown(
         '''
@@ -31,7 +30,7 @@ layout = html.Div([
         style=styles.code_container
     ),
 
-    reusable_components.Markdown(dedent('''
+    reusable_components.Markdown('''
     ``dash-canvas`` is a module for image annotation and image processing
     using Dash. It provides both the ``DashCanvas`` object for drawing
     and annotations on images, and a set of utility functions to process
@@ -54,7 +53,7 @@ layout = html.Div([
     ### DashCanvas: a canvas object for annotations
 
     Let's get started with a simple canvas object.
-    ''')),
+    '''),
 
     reusable_components.Markdown(
           examples[0][0],
@@ -62,7 +61,7 @@ layout = html.Div([
     ),
     html.Div(examples[0][1], className='example-container'),
 
-    reusable_components.Markdown(dedent('''
+    reusable_components.Markdown('''
     You can draw inside the object with the freehand tool, and use the tool
     buttons to draw lines, zoom in and out, pan, select objects and move them
     inside the canvas.
@@ -72,7 +71,7 @@ layout = html.Div([
     You can pass a background image either as a filename (``filename``
     property) or as a data string (``image_content`` property); more examples
     below).
-    ''')),
+    '''),
 
     reusable_components.Markdown(
           examples[1][0],
@@ -80,7 +79,7 @@ layout = html.Div([
     ),
     html.Div(examples[1][1], className='example-container'),
 
-    reusable_components.Markdown(dedent('''
+    reusable_components.Markdown('''
     The height of the canvas is adjusted automatically by keeping the aspect
     ratio of the background image.
 
@@ -91,13 +90,13 @@ layout = html.Div([
     read first through the <dccLink children="Dash tutorial" href="/"/> to
     know how to write callbacks.
 
-    ''')),
+    '''),
     reusable_components.Markdown(
           examples[2][0],
           style=styles.code_container
     ),
     html.Div(examples[2][1], className='example-container'),
-    reusable_components.Markdown(dedent('''
+    reusable_components.Markdown('''
     In the example above, a slider ``dcc.Slider`` and a color picker
     ``daq.ColorPicker`` are used to adjust the width and color of the drawing
     brush. We just created an image coloring tool in a few lines of code! You
@@ -115,7 +114,7 @@ layout = html.Div([
     This button updates the ``json_data`` property of ``DashCanvas``, which
     is a JSON string with information about the background image and the
     geometry of annotations.
-    ''')),
+    '''),
 
     reusable_components.Markdown(
           examples[3][0],
@@ -123,12 +122,12 @@ layout = html.Div([
     ),
     html.Div(examples[3][1], className='example-container'),
 
-    reusable_components.Markdown(dedent('''
+    reusable_components.Markdown('''
     You can either write custom functions to parse the JSON string, or
     use the utility functions included in the `dash_canvas` package. In
     particular, ``dash_canvas.utils.parse_json_string`` returns a binary
     mask with non-zero pixels displaying the annotations:
-    ''')),
+    '''),
 
     reusable_components.Markdown(
           examples[4][0],
@@ -136,13 +135,13 @@ layout = html.Div([
     ),
     html.Div(examples[4][1], className='example-container'),
 
-    reusable_components.Markdown(dedent('''
+    reusable_components.Markdown('''
     The above example uses the ``array_to_data_url`` utility function to
     transform a ``NumPy`` array into an image data string.
 
     Finally, ``dash-canvas`` provides utility functions to process images
     given the binary mask derived from annotations:
-    ''')),
+    '''),
 
     reusable_components.Markdown(
           examples[5][0],
@@ -150,7 +149,7 @@ layout = html.Div([
     ),
     html.Div(examples[5][1], className='example-container'),
 
-    reusable_components.Markdown(dedent('''
+    reusable_components.Markdown('''
     These functions rely on [scikit-image](http://scikit-image.org) to
     process arrays as images. Here we used the [watershed algorithm](http://scikit-image.org/docs/stable/auto_examples/segmentation/plot_watershed.html)
     from scikit-image.
@@ -168,6 +167,6 @@ layout = html.Div([
     A gallery of examples using ``DashCanvas`` is deployed on
     https://dash-canvas.plotly.host/, its source code is
     [plotly/canvas-portal](https://github.com/plotly/canvas-portal).
-    ''')),
+    '''),
 
 ])

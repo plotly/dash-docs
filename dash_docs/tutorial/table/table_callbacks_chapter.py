@@ -2,7 +2,6 @@ from dash.dependencies import Input, Output
 import dash_core_components as dcc
 import dash_html_components as html
 import pandas as pd
-from textwrap import dedent
 
 import dash_table
 from dash_docs import styles, tools
@@ -24,7 +23,7 @@ examples = {
 layout = html.Div([
     reusable_components.Markdown('# DataTable - Python Callbacks'),
 
-    reusable_components.Markdown(dedent(
+    reusable_components.Markdown(
     '''
     ### Backend Paging
 
@@ -35,7 +34,7 @@ layout = html.Div([
 
     Since backend paging integrates directly with your Dash callbacks, you can
     load your data from any Python data source.
-    ''')),
+    '''),
 
     reusable_components.Markdown(
         examples['callbacks_paging.py'][0],
@@ -48,7 +47,7 @@ layout = html.Div([
 
     html.Hr(),
 
-    reusable_components.Markdown(dedent('''
+    reusable_components.Markdown('''
     With backend paging, we can have front-end sorting and filtering
     but it will only filter and sort the data that exists on the page.
 
@@ -63,11 +62,11 @@ layout = html.Div([
     **Note for returning users - changed property names:**
     - Sorted fields are now in `sort_by`, not `sorting_settings`
     - The filter string is now in `filter`, not `filtering_settings`
-    ''')),
+    '''),
 
     reusable_components.Markdown('### Backend Paging and Page Numbers'),
 
-    reusable_components.Markdown(dedent('''
+    reusable_components.Markdown('''
 
     The pagination menu includes the number of the current page and
     the total page count. With native (i.e., frontend) pagination, the
@@ -84,7 +83,7 @@ layout = html.Div([
     pagination menu. *Please note that you will not be able to use the
     pagination menu to navigate to a page that comes after the last
     page specified by `page_count`!*
-    ''')),
+    '''),
 
     reusable_components.Markdown(
         examples['callbacks_paging_page_count.py'][0],
@@ -108,14 +107,14 @@ layout = html.Div([
 
     reusable_components.Markdown('### Backend Paging with Multi Column Sorting'),
 
-    reusable_components.Markdown(dedent('''
+    reusable_components.Markdown('''
     Multi-column sort allows you to sort by multiple columns.
     This is useful when you have categorical columns with repeated
     values and you're interested in seeing the sorted values for
     each category.
 
     In this example, try sorting by continent and then any other column.
-    ''')),
+    '''),
 
     reusable_components.Markdown(
         examples['callbacks_paging_multicolumn_sorting.py'][0],
@@ -128,7 +127,7 @@ layout = html.Div([
 
     reusable_components.Markdown('### Backend Paging with Filtering'),
 
-    reusable_components.Markdown(dedent('''
+    reusable_components.Markdown('''
     DataTable's front-end filtering has its own filtering expression
     language.
 
@@ -153,7 +152,7 @@ layout = html.Div([
     > follow [dash-table#169](https://github.com/plotly/dash-table/issues/169)
     > for more.
 
-    ''')),
+    '''),
 
     reusable_components.Markdown(
         examples['callbacks_filtering.py'][0],
@@ -176,10 +175,10 @@ layout = html.Div([
 
     reusable_components.Markdown('### Connecting Backend Paging with a Graph'),
 
-    reusable_components.Markdown(dedent('''
+    reusable_components.Markdown('''
     This final example ties it all together: the graph component
     displays the current page of the `data`.
-    ''')),
+    '''),
     reusable_components.Markdown(
         examples['callbacks_filtering_graph.py'][0],
         style=styles.code_container

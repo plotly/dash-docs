@@ -1,4 +1,6 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
-export(pageMenu)
+export(PageMenu)
+export(Sidebar)
 export(sidebar)
+export(pageMenu)

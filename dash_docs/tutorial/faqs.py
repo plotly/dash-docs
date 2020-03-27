@@ -4,7 +4,7 @@ import os
 import dash_core_components as dcc
 import dash_html_components as html
 
-from dash_docs.tutorial.components import Example, Syntax
+from dash_docs.reusable_components import Example, Syntax
 from dash_docs import tools
 from dash_docs import reusable_components
 
@@ -12,7 +12,6 @@ def get_example_name(path):
     """Returns the name of an example given its path."""
     # name is the filename without the suffix
     return os.path.splitext(os.path.basename(path))[0]
-
 
 
 

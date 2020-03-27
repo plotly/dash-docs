@@ -2,7 +2,6 @@ from dash.dependencies import Input, Output
 import dash_core_components as dcc
 import dash_html_components as html
 import pandas as pd
-from textwrap import dedent
 
 import dash_table
 from .utils import section_title
@@ -20,13 +19,13 @@ examples = {
 layout = html.Div([
     reusable_components.Markdown('# DataTable - Typing'),
 
-    reusable_components.Markdown(dedent(
+    reusable_components.Markdown(
     '''
     This section will provide an overview of the DataTable's capabilities for typing, formatting,
     presentation and user input processing.
-    ''')),
+    '''),
 
-    reusable_components.Markdown(dedent(
+    reusable_components.Markdown(
     '''
     ### Typing
     The DataTable provides support for per-column typing and allows for data validation and
@@ -42,9 +41,9 @@ layout = html.Div([
     Additional types and specialized sub-types will be added in the future.
 
     By default, the column type is `any`.
-    ''')),
+    '''),
 
-    reusable_components.Markdown(dedent(
+    reusable_components.Markdown(
     '''
     ### Presentation
     The DataTable provides multiple presentation schemes that can vary depending on the column's
@@ -71,9 +70,9 @@ layout = html.Div([
     Markdown cells also support syntax highlighting. For more details, please see ["Syntax Highlighting With Markdown"](https://dash.plotly.com/external-resources#md-syntax-highlight).
 
     By default, the column presentation is `input`.
-    ''')),
+    '''),
 
-    reusable_components.Markdown(dedent(
+    reusable_components.Markdown(
     '''
     ### User Input Processing
     The DataTable provides a configurable input processing system that can accept, reject or
@@ -83,9 +82,9 @@ layout = html.Div([
 
     See the table's <dccLink href="/datatable/reference" children="reference"/> `on_change.action`, `on_change.failure`
     and `validation` column nested properties for details.
-    ''')),
+    '''),
 
-    reusable_components.Markdown(dedent(
+    reusable_components.Markdown(
     '''
     ### Formatting
     The DataTable provides a configurable data formatting system that modifies how the data
@@ -97,21 +96,21 @@ layout = html.Div([
     - using the general purpose Format object
 
     At the moment, only `type='numeric'` formatting can be configured.
-    ''')),
+    '''),
 
-    reusable_components.Markdown(dedent(
+    reusable_components.Markdown(
     '''
     ### Examples
-    ''')),
+    '''),
 
 
     section_title('DataTable with template formatting'),
-    reusable_components.Markdown(dedent(
+    reusable_components.Markdown(
     '''
     This table contains two columns formatted by templates. The `Variation (%)` column is further
     configured by changing the sign behavior so that both the "+" and "-" sign are visible. Additional
     configuration changes can be chained after a ```Format(...)``` and a ```FormatTemplate.<template>(...)``` calls.
-    ''')),
+    '''),
     reusable_components.Markdown(
         examples['typing_formatting.1.py'][0],
         style=styles.code_container
@@ -122,7 +121,7 @@ layout = html.Div([
     ),
 
     section_title('DataTable with formatting'),
-    reusable_components.Markdown(dedent(
+    reusable_components.Markdown(
     '''
     This table contains columns with type `numeric` and `datetime`. The "max" columns have the default
     behavior and will not allow for invalid data to be passed in. The "min" columns are more permissive.
@@ -132,7 +131,7 @@ layout = html.Div([
     Both temperature columns are using the Format helper object to create the desired formatting. The
     equivalent manual configuration is shown as comments in the code below. One can always see the resulting
     configuration for a given Format object by using ```Format(...).to_plotly_json()```.
-    ''')),
+    '''),
     reusable_components.Markdown(
         examples['typing_formatting.py'][0],
         style=styles.code_container

@@ -2,7 +2,6 @@
 import dash_html_components as html
 import dash_core_components as dcc
 import re
-from textwrap import dedent
 from dash_docs import reusable_components
 
 def generate_prop_info(component_name, lib=dcc):
@@ -12,14 +11,14 @@ def generate_prop_info(component_name, lib=dcc):
     regex = r'''^([^\(]*)\s*\(([^;]*);\s*(.+?)\):\s*(.*?)\s*$'''
 
     return_div = [
-        reusable_components.Markdown(dedent(
+        reusable_components.Markdown(
             '''
             > Access this documentation in your Python terminal with:
             > ```shell
             > >>> help({}.{})
             > ```
             '''.format(lib.__name__, component_name)
-        ))
+        )
     ]
 
     props = component_doc.split('\n-')[1:]
@@ -37,7 +36,7 @@ def generate_prop_info(component_name, lib=dcc):
         )
 
         if r is None:
-            return_div.append(reusable_components.Markdown(dedent(prop.replace('\n', ' '))))
+            return_div.append(reusable_components.Markdown(prop.replace('\n', ' ')))
             continue
 
         (prop_name, prop_type, prop_optional_default, prop_desc) = r.groups()
@@ -104,13 +103,13 @@ def generate_prop_info(component_name, lib=dcc):
             prop_type = '*{}*; '.format(prop_type)
             prop_type = prop_type.replace('|', '*|*')
 
-        return_div.append(reusable_components.Markdown(dedent(
+        return_div.append(reusable_components.Markdown(
             '''**`{}`** ({}{}): {}'''.format(
                 prop_name,
                 prop_type,
                 prop_optional,
                 prop_desc
             )
-        )))
+        ))
 
     return html.Div(return_div, className='reference')

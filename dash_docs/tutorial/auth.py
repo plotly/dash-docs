@@ -50,7 +50,7 @@ layout = html.Div([
     ## Basic Auth Example
 
     Logging in through Basic Auth looks like this:
-    '''.replace('    ', '')),
+    '''),
 
     html.Img(
         src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/basic-auth.gif',
@@ -62,21 +62,21 @@ layout = html.Div([
 
     reusable_components.Markdown('''
     Installation:
-    '''.replace('    ', '')),
+    '''),
 
     reusable_components.Markdown('''
     ```shell
     pip install dash=={}
     pip install dash-auth=={}
     ```
-    '''.replace('    ', '').format(
+    '''.format(
         dash.__version__,
         dash_auth.__version__
     ), style=styles.code_container),
 
     reusable_components.Markdown('''
     Example Code:
-    '''.replace('    ', '')),
+    '''),
 
     reusable_components.Markdown('''
     ```python
@@ -136,7 +136,7 @@ layout = html.Div([
     ## Plotly OAuth Example
 
     Logging in through Plotly OAuth looks like this:
-    '''.replace('   ', '')),
+    '''),
 
     html.Img(
         src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/plotly-auth.gif',
@@ -147,22 +147,22 @@ layout = html.Div([
         }),
 
     reusable_components.Markdown('''
-    Installation:
-    '''.replace('    ', '')),
+        Installation:
+    '''),
 
     reusable_components.Markdown('''
     ```shell
-        pip install dash=={}
-        pip install dash-auth=={}
+    pip install dash=={}
+    pip install dash-auth=={}
     ```
-    '''.replace('    ', '').format(
+    '''.format(
         dash.__version__,
         dash_auth.__version__
     ), style=styles.code_container),
 
     reusable_components.Markdown('''
     Example Code:
-    '''.replace('    ', '')),
+    '''),
 
     reusable_components.Markdown('''
     ```python
@@ -268,22 +268,22 @@ layout = html.Div([
         }),
 
     reusable_components.Markdown('''
-    Installation:
-    '''.replace('    ', '')),
+        Installation:
+    '''),
 
     reusable_components.Markdown('''
     ```shell
-        pip install dash=={}  # The core dash backend
-        pip install dash-auth=={}  # Dash Auth components
+    pip install dash=={}  # The core dash backend
+    pip install dash-auth=={}  # Dash Auth components
     ```
-    '''.replace('    ', '').format(
+    '''.format(
         dash.__version__,
         dash_auth.__version__,
     ), style=styles.code_container),
 
     reusable_components.Markdown('''
     Example Code:
-    '''.replace('    ', '')),
+    '''),
 
     reusable_components.Markdown('''
     ```py

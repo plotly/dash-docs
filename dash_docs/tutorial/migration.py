@@ -1,11 +1,10 @@
-from textwrap import dedent
 
 import dash_core_components as dcc
 import dash_html_components as html
 from dash_docs import reusable_components
 
 layout = html.Div([
-    reusable_components.Markdown(dedent('''
+    reusable_components.Markdown('''
     # Dash 1.0
 
     Dash has been in active development for more than two years. In that time
@@ -179,5 +178,5 @@ layout = html.Div([
 
     `style_cell_conditional`: In prior versions `if.row_index` was evaluated for this prop but should not have been.
     Use `style_data_conditional` and `style_header_conditional` instead for `if.row_index` based styling.
-    '''))
+    ''')
 ])

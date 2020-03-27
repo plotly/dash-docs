@@ -1,4 +1,3 @@
-from textwrap import dedent as d
 
 import dash_html_components as html
 import dash_core_components as dcc
@@ -6,7 +5,7 @@ import dash_core_components as dcc
 from dash_docs import reusable_components
 
 layout = html.Div([
-    reusable_components.Markdown(d('''
+    reusable_components.Markdown('''
     # Dash Dev Tools
 
     Dash Dev Tools is an initiative to make debugging and developing Dash apps more pleasant. This initiative was [sponsored by an organization](http://plotly.com/products/consulting-and-oem/) and you can see our work in our [GitHub project](https://github.com/orgs/plotly/projects/3).
@@ -81,5 +80,5 @@ layout = html.Div([
     Windows:
 
     `set DASH_DEBUG=true`
-    '''))
+    ''')
 ])

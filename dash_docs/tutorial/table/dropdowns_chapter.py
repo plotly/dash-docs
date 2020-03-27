@@ -1,4 +1,3 @@
-from textwrap import dedent
 
 import dash_core_components as dcc
 import dash_html_components as html
@@ -16,7 +15,7 @@ examples = {
 
 layout = html.Div([
 
-    reusable_components.Markdown(dedent('''
+    reusable_components.Markdown('''
     # DataTable Dropdowns
 
     The DataTable includes support for per-column and
@@ -26,7 +25,7 @@ layout = html.Div([
     For now, use the dropdown renderer as a way to limit the
     options available when editing the values with an editable table.
 
-    ''')),
+    '''),
 
     section_title('DataTable with Per-Column Dropdowns'),
     reusable_components.Markdown(
