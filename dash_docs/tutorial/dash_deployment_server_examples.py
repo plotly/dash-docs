@@ -997,7 +997,7 @@ ConfigSys = html.Div(children=[
     dependencies. These applications are _ready to deploy_:
 
     - [Oracle cx_Oracle Database](https://github.com/plotly/dash-on-premise-sample-app/pull/2)
-    - [Pyodbc Database Driver](https://github.com/plotly/dash-on-premise-sample-app/pull/3/files)
+    - [Pyodbc Database Driver](https://github.com/plotly/dash-on-premise-sample-app/pull/3/)
 
     &nbsp;
 
