@@ -17,8 +17,8 @@ layout <- htmlDiv(list(
   dccMarkdown("
 # Interactive Visualizations
 
-> This is the *5th* chapter of the [Dash Tutorial](/).
-> The [previous chapter](/state) covered callbacks with `state`
+> This is the *4th* chapter of the [Dash Tutorial](/).
+> The [previous chapter](/basic-callbacks) covered callbacks with `state`
 > and the [next chapter](/sharing-data-between-callbacks) describes how to
 > share data between callbacks.
 > Just getting started? Make sure to [install the necessary dependencies](/installation).
