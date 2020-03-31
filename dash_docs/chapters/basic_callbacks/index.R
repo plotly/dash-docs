@@ -10,7 +10,9 @@ examples <- list(
   simple.slider=utils$LoadExampleCode('dash_docs/chapters/basic_callbacks/examples/hello-slider.R'),
   multi.inputs=utils$LoadExampleCode('dash_docs/chapters/basic_callbacks/examples/multi-inputs.R'),
   multi.output=utils$LoadExampleCode('dash_docs/chapters/basic_callbacks/examples/multi-output.R'),
-  multi.output2=utils$LoadExampleCode('dash_docs/chapters/basic_callbacks/examples/multi-output-v2.R')
+  multi.output2=utils$LoadExampleCode('dash_docs/chapters/basic_callbacks/examples/multi-output-v2.R'),
+  basic.input=utils$LoadExampleCode('dash_docs/chapters/basic_callbacks/examples/basic-input.R'),
+  basic.state=utils$LoadExampleCode('dash_docs/chapters/basic_callbacks/examples/basic-state.R')
 )
 
 layout <- htmlDiv(
@@ -216,6 +218,51 @@ will wait until the `value` of the cities component is updated
 before calling the final callback. This prevents your callbacks from being
 called with inconsistent state like with `\"USA\"` and `\"Montr\U{00E9}al\"`.
   "),
+    
+dccMarkdown("
+#### State
+
+In some cases, you might have a 'form'-type pattern in your
+application. In such a situation, you might want to read the value
+of the input component, but only when the user is finished
+entering all of his or her information in the form.
+
+Attaching a callback to the input values directly can look like
+this:
+
+  "),
+
+#example of callback tied to input value
+examples$basic.input$source,
+examples$basic.input$layout,
+
+dccMarkdown("
+In this example, the callback function is fired whenever any of the
+attributes described by the `input` change.
+Try it for yourself by entering data in the inputs above.
+
+`state` allows you to pass along extra values without
+firing the callbacks. Here's the same example as above but with the
+`dccInput` as `state` and a button as
+`input`.
+  "),
+
+#example of one input and two states
+examples$basic.state$source,
+examples$basic.state$layout,
+
+dccMarkdown("
+In this example, changing text in the `dccInput` boxes won't fire
+the callback but clicking on the button will. The current values of
+the `dccInput` values are still passed into the callback even though
+they don't trigger the callback function itself.
+
+Note that we're triggering the callback by listening to the
+`n_clicks` property of the `htmlButton` component. `n_clicks` is a
+property that gets incremented every time the component has been
+clicked on. It is available in every component in the
+`dashHtmlComponents` package.
+  "),
 
     dccMarkdown("
 ### Summary
@@ -237,8 +284,8 @@ Dash callbacks: `state`
   "),
 
     dccLink(
-      'Dash Tutorial Part 4: More about callbacks',
-      href="/state"
+      'Dash Tutorial Part 4: Interactive Graphing',
+      href="/interactive-graphing"
     ),
 
     htmlHr(),
