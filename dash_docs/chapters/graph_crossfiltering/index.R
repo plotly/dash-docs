@@ -115,7 +115,7 @@ If you need help exploring your use case, open up a thread in the [Dash Communit
 The next chapter of the Dash User Guide explains how to share data between callbacks.
   "),
   dccLink(
-    'Dash Tutorial Part 6. Sharing Data Between Callbacks',
+    'Dash Tutorial Part 5. Sharing Data Between Callbacks',
     href='/sharing-data-between-callbacks'
   ),
   htmlHr(),

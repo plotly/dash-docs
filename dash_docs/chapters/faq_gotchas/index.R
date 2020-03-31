@@ -14,7 +14,7 @@ layout <- htmlDiv(list(
   dccMarkdown("
 # FAQs and Gotchas
 
-> This is the *7th* and final chapter of the essential [Dash Tutorial](/).
+> This is the *6th* and final chapter of the essential [Dash Tutorial](/).
 > The [previous chapter](/sharing-data-between-callbacks) described how to
 > share data between callbacks. The [rest of the Dash documentation](/)
 > covers other topics like multi-page apps and component libraries.
