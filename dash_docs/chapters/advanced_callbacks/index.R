@@ -6,8 +6,8 @@ utils <- new.env()
 source('dash_docs/utils.R', local=utils)
 
 examples <- list(
-  prevent.update.button=utils$LoadExampleCode('dash_docs/chapters/advanced_callbacks/examples/prevent_update_button.R'),
-  prevent.update=utils$LoadExampleCode('dash_docs/chapters/advanced_callbacks/examples/prevent_update.R'),
+  prevent_update_button=utils$LoadExampleCode('dash_docs/chapters/advanced_callbacks/examples/prevent_update_button.R'),
+  prevent_update=utils$LoadExampleCode('dash_docs/chapters/advanced_callbacks/examples/prevent_update.R'),
   last_clicked_button=utils$LoadExampleCode('dash_docs/chapters/advanced_callbacks/examples/last_clicked_button.R')
 )
 
@@ -20,8 +20,8 @@ In certain situations, you don't want to update the callback output. You can
 achieve this by returning a `dashNoUpdate()` in the callback function.
   "),
     
-    examples$prevent.update.button$source_code,
-    examples$prevent.update.button$layout,
+    examples$prevent_update_button$source_code,
+    examples$prevent_update_button$layout,
     
     dccMarkdown("
 ## Displaying errors with `dashNoUpdate()`
@@ -29,8 +29,8 @@ This example illustrates how you can show an error while keeping the previous
 input, using `dashNoUpdate()` to update the output partially.
   "),
     
-    examples$prevent.update$source_code,
-    examples$prevent.update$layout,
+    examples$prevent_update$source_code,
+    examples$prevent_update$layout,
     
     dccMarkdown("
 ## Determining which `Input` has fired with `callback_context()`

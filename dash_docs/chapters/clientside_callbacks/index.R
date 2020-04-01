@@ -6,7 +6,7 @@ utils <- new.env()
 source('dash_docs/utils.R', local=utils)
 
 examples <- list(
-  graph.update=utils$LoadExampleCode('dash_docs/chapters/clientside_callbacks/examples/graph_update_fe_be.R')
+  graph_update=utils$LoadExampleCode('dash_docs/chapters/clientside_callbacks/examples/graph_update_fe_be.R')
 )
 
 layout <- htmlDiv(
@@ -111,7 +111,7 @@ specify using the radio buttons under 'Graph scale'.
 
       "),
 
-    examples$graph.update$layout,
+    examples$graph_update$layout,
 
     dccMarkdown("
 **Note**: There are a few limitations to keep in mind:
