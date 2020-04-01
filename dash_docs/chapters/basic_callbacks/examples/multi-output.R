@@ -7,38 +7,37 @@ app <- Dash$new()
 app$layout(
   htmlDiv(
     list(
-      dccRadioItems(
-        id = 'dropdown-a',
-        options = list(list(label = 'Canada', value = 'Canada'),
-                       list(label = 'USA', value = 'USA'),
-                       list(label = 'Mexico', value = 'Mexico')),
-        value = 'Canada'
+      dccInput(
+        id='num-multi',
+        type='number',
+        value=1
       ),
-      htmlDiv(id='output-a'),
-      dccRadioItems(
-        id = 'dropdown-b',
-        options = list(list(label = 'MTL', value = 'MTL'),
-                       list(label = 'NYC', value = 'NYC'),
-                       list(label = 'SF', value = 'SF')),
-        value = 'MTL'
-      ),
-      htmlDiv(id='output-b')
+      htmlTable(list(
+        htmlTr(list(htmlTd(list('x', htmlSup(2))), htmlTd(id='square'))),
+        htmlTr(list(htmlTd(list('x', htmlSup(3))), htmlTd(id='cube'))),
+        htmlTr(list(htmlTd(list('2', htmlSup('x'))), htmlTd(id='twos'))),
+        htmlTr(list(htmlTd(list('3', htmlSup('x'))), htmlTd(id='threes'))),
+        htmlTr(list(htmlTd(list('x', htmlSup('x'))), htmlTd(id='xx')))
+      ))
     )
   )
 )
 
 app$callback(
-  output=list(id='output-a', property='children'),
-  params=list(input(id='dropdown-a', property='value')),
-  function(dropdown_value) {
-    sprintf("You've entered \"%s\"", dropdown_value)
-})
+  output = list(
+    output('square', 'children'),
+    output('cube', 'children'),
+    output('twos', 'children'),
+    output('threes', 'children'),
+    output('xx', 'children')
+  ),
+  params = list(
+    input('num-multi', 'value')
+  ),
+  callback_multi <- function(x) {
+    return(list(x**2, x**3, 2**x, 3**x, x**x))
+  }
+)
 
-app$callback(
-  output=list(id='output-b', property='children'),
-  params=list(input(id='dropdown-b', property='value')),
-  function(dropdown_value) {
-    sprintf("You've entered \"%s\"", dropdown_value)
-})
 
 app$run_server()

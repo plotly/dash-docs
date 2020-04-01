@@ -182,13 +182,28 @@ Let's extend our example to include multiple outputs.
 
 #### Multiple Outputs
 
-Each Dash callback function can only update a single output property.
-To update multiple Outputs, just write multiple functions.
+So far all the callbacks we've written only update a single Output property. We
+can also update several at once: put all the properties you want to update as a 
+list in the decorator, and return that many items from the callback. This is
+particularly nice if two outputs depend on the same computationally intense intermediate 
+result, such as a slow database query. The only change we have to make is setting the `Output`
+as a list of `outputs`, and returning a list of each of the consecutive results.
   "),
 
     # Example of mutli-output
     examples$multi.output$source_code,
     examples$multi.output$layout,
+    
+    dccMarkdown("
+A word of caution: it's not always a good idea to combine Outputs, even if
+you can:
+
+- If the Outputs depend on some but not all of the same Inputs, keeping
+  them separate can avoid unnecessary updates.
+- If they have the same Inputs but do independent computations with these
+  inputs, keeping the callbacks separate can allow them to run in parallel.
+  
+  "),
 
     dccMarkdown("
 #### Chained Callbacks
