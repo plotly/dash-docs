@@ -50,6 +50,10 @@ source('dash_docs/chapters/faq_gotchas/index.R', local=chapters.faq_gotchas)
 # Dash Callbacks
 chapters.advanced_callbacks <- new.env()
 source('dash_docs/chapters/advanced_callbacks/index.R', local=chapters.advanced_callbacks)
+chapters.clientside_callbacks <- new.env()
+source('dash_docs/chapters/clientside_callbacks/index.R', local=chapters.clientside_callbacks)
+chapters.callback_gotchas <- new.env()
+source('dash_docs/chapters/callback_gotchas/index.R', local=chapters.callback_gotchas)
 # Component Libraries (Dash Core Components)
 chapters.dashCoreComponents <- new.env()
 source('dash_docs/chapters/dash_core_components/index.R', local=chapters.dashCoreComponents)
@@ -287,6 +291,8 @@ app$callback(
       '/faqs' = return(chapters.faq_gotchas$layout),
       # Dash Callbacks
       '/advanced-callbacks' = return(chapters.advanced_callbacks$layout),
+      '/clientside-callbacks' = return(chapters.clientside_callbacks$layout),
+      '/callback-gotchas' = return(chapters.callback_gotchas$layout),
       # Component Libraries (Dash Core Components)
       '/dash-core-components' = return(chapters.dashCoreComponents$layout),
       '/dash-core-components/dropdown' = return(chapters.dccDropdown$layout),
