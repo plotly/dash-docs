@@ -41,14 +41,15 @@ chapters.getting_started <- new.env()
 source('dash_docs/chapters/getting_started/index.R', local=chapters.getting_started)
 chapters.callbacks <- new.env()
 source('dash_docs/chapters/basic_callbacks/index.R', local=chapters.callbacks)
-chapters.state <- new.env()
-source('dash_docs/chapters/state/index.R', local=chapters.state)
 chapters.graph_crossfiltering <- new.env()
 source('dash_docs/chapters/graph_crossfiltering/index.R', local=chapters.graph_crossfiltering)
 chapters.sharing_data <- new.env()
 source('dash_docs/chapters/sharing_data/index.R', local=chapters.sharing_data)
 chapters.faq_gotchas <- new.env()
 source('dash_docs/chapters/faq_gotchas/index.R', local=chapters.faq_gotchas)
+# Dash Callbacks
+chapters.advanced_callbacks <- new.env()
+source('dash_docs/chapters/advanced_callbacks/index.R', local=chapters.advanced_callbacks)
 # Component Libraries (Dash Core Components)
 chapters.dashCoreComponents <- new.env()
 source('dash_docs/chapters/dash_core_components/index.R', local=chapters.dashCoreComponents)
@@ -281,10 +282,11 @@ app$callback(
       '/installation' = return(chapters.installation$layout),
       '/getting-started' = return(chapters.getting_started$layout),
       '/basic-callbacks' = return(chapters.callbacks$layout),
-      '/state' = return(chapters.state$layout),
       '/interactive-graphing' = return(chapters.graph_crossfiltering$layout),
       '/sharing-data-between-callbacks' = return(chapters.sharing_data$layout),
       '/faqs' = return(chapters.faq_gotchas$layout),
+      # Dash Callbacks
+      '/advanced-callbacks' = return(chapters.advanced_callbacks$layout),
       # Component Libraries (Dash Core Components)
       '/dash-core-components' = return(chapters.dashCoreComponents$layout),
       '/dash-core-components/dropdown' = return(chapters.dccDropdown$layout),

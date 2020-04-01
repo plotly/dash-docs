@@ -69,8 +69,7 @@ and URL Support](/urls) section in the Dash User Guide.
 
 **Q:** *How do I determine which `input` has changed?*
 
-**A:** New in [0.0.7-debug](https://github.com/plotly/dashR/tree/0.0.7-debug). 
-In addition to event properties like `n_clicks` that change whenever 
+**A:** In addition to event properties like `n_clicks` that change whenever 
 an event happens (in this case a click), there is a global variable 
 `app$callback_context()`, available only inside a callback. It has properties:
 
@@ -90,7 +89,7 @@ Here's an example of how this can be done:
   examples$last_clicked_button$layout,
  
   dccMarkdown("
-you needed to compare timestamp properties 
+**Note:** Prior to the addition of `callback_context`, you needed to compare timestamp properties 
 like `n_clicks_timestamp` to find the most recent click. 
 While existing uses of `*_timestamp` continue to work for now, this approach is deprecated, 
 and may be removed in a future update. The one exception is `modified_timestamp` from `dccStore`, 
