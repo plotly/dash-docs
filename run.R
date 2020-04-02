@@ -181,8 +181,8 @@ source('dash_docs/chapters/dash_cytoscape/phylogeny/index.R', local=chapters.das
 chapters.dashCytoscape7 <- new.env()
 source('dash_docs/chapters/dash_cytoscape/reference/index.R', local=chapters.dashCytoscape7)
 # Component Libraries (Dash Bio)
-# chapters.dashBio <- new.env()
-# source('dash_docs/chapters/dash_bio/index.R', local=chapters.dashBio)
+chapters.dashBio <- new.env()
+source('dash_docs/chapters/dash_bio/index.R', local=chapters.dashBio)
 chapters.alignment <- new.env()
 source('dash_docs/chapters/dash_bio/alignment-chart/alignment-chart.R', local=chapters.alignment)
 chapters.circos <- new.env()
@@ -268,7 +268,7 @@ app$layout(htmlDiv(
         ),
         className = 'rhs-content container-width'),
 
-        pageMenu(id = 'pagemenu')
+        PageMenu(id = 'pagemenu')
 
       )
     )

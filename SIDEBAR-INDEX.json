@@ -180,7 +180,7 @@
             "url": "/dash-core-components/link",
             "name": "dcc.Link",
             "description": "Official examples and reference documentation for dcc.Link. dcc.Link is a dash_core_components component.",
-            "meta_keywords": "children, key, href, style, name, type, low, min, default, list, refresh, on, elements, styles"
+            "meta_keywords": "children, key, href, target, style, title, form, name, type, open, low, min, required, default, list, refresh, on, elements, styles"
           },
           {
             "url": "/dash-core-components/loading",

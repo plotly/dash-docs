@@ -5,7 +5,7 @@ source('dash_docs/utils.R', local=utils)
 
 layout = htmlDiv(list(
   htmlH2("Introduction to Dash"),
-  
+
   dccMarkdown("
 Dash is a productive framework for building web applications in both R and Python.
 
@@ -27,13 +27,13 @@ cross-platform and mobile ready.
 
 There is a lot behind the framework. To learn more about how the original Dash was built
 and what motivated Dash, watch our talk from
-[Plotcon](https://plotcon.plotly.com) below
+Plotcon below
 or read our [announcement letter](https://medium.com/@plotlygraphs/introducing-dash-5ecf7191b503).
 
 Dash is an open source library, released under the permissive MIT license.
-[Plotly](https://plotly.com) develops Dash for R and offers a [platform for easily deploying DashR 
-apps in an enterprise environment](https://plotly.com/dash/pricing).
-If you're interested, [please get in touch](https://plotly.typeform.com/to/rkO85m).
+[Plotly](https://plotly.com) develops Dash for R and offers a
+[platform for managing Dash for R & Python apps in an enterprise environment](https://plotly.com/dash).
+If you're interested, [please get in touch](https://plot.ly/get-demo).
 
 ***
 

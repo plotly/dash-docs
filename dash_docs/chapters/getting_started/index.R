@@ -48,7 +48,7 @@ and will be covered in the [next chapter](/getting-started-part-2).
 Dash provides R functions for all of the visual components of the application.
 We maintain a set of components in the `dashCoreComponents`
 and `dashHtmlComponents` package
-but you can also [build your own](https://github.com/plotly/dash-components-archetype) with JavaScript and React.js.
+but you can also [build your own](https://github.com/plotly/dash-component-boilerplate) with JavaScript and React.js.
 
 
 To get started, create a file named `app.R` containing the following code:

@@ -27,12 +27,12 @@ layout = html.Div([
 
         There is a lot behind the framework. To learn more about how it is built
         and what motivated Dash, watch our talk from
-        [Plotcon](https://plotcon.plot.ly) below
+        Plotcon below
         or read our [announcement letter](https://medium.com/@plotlygraphs/introducing-dash-5ecf7191b503).
 
         Dash is an open source library, released under the permissive MIT license.
-        [Plotly](https://plot.ly) develops Dash and offers a [platform for easily deploying Dash
-        apps in an enterprise environment](https://plot.ly/get-pricing).
+        [Plotly](https://plot.ly) develops Dash and offers a [platform for managing Dash
+        apps in an enterprise environment](https://plot.ly/dash).
         If you're interested, [please get in touch](https://plot.ly/get-demo).
 
         ***

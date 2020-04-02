@@ -11,7 +11,7 @@ dash-canvas==0.1.0
 dash-cytoscape==0.0.5
 dash-dangerously-set-inner-html==0.0.2
 dash-daq==0.4.0
-dash[testing]==1.9.1
+dash[testing]==1.10.0
 dask==1.2.0
 decorator==4.3.0
 enum34==1.1.6

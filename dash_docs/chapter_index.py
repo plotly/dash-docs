@@ -1016,7 +1016,6 @@ def _search_keywords(children):
                 unicode_or_str1 += unicode(unicode_or_str2)
             except Exception as e2:
                 print(unicode_or_str2)
-                import pdb; pdb.set_trace()
                 raise e2
 
         return unicode_or_str2
@@ -1054,6 +1053,8 @@ def _search_keywords(children):
                 component = getattr(component_library, component_name)()
             elif component_name == 'Circos':
                 component = getattr(component_library, component_name)(layout=None)
+            elif component_name == 'Link':
+                component = getattr(component_library, component_name)(href='')
             else:
                 try:
                     component = getattr(component_library, component_name)(id='_')

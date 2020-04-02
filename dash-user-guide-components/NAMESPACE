@@ -2,5 +2,3 @@
 
 export(PageMenu)
 export(Sidebar)
-export(sidebar)
-export(pageMenu)

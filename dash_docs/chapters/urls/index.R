@@ -67,7 +67,7 @@ it updates the URL!
 "),
   htmlImg(
            style = list(height = '100%'),
-           src = '/assets/images/url-support.gif'
+           src = '/assets/images/gallery/url-support.gif'
   ),
 dccMarkdown("
 
@@ -173,7 +173,7 @@ depending on the URL:
 "),
   htmlImg(
            style = list(height = '100%'),
-           src = '/assets/images/url-support-pages.gif'
+           src = '/assets/images/gallery/url-support-pages.gif'
   ),
 dccMarkdown("
 - In this example, we're displaying different layouts through

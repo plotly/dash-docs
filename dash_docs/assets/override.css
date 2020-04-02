@@ -129,18 +129,6 @@ h6 { font-size: 20px; line-height: 1.6;  letter-spacing: 0; margin-bottom: 0.75r
     opacity: 1.0;
 }
 
-#banner {
-    width: 100%;
-    min-height: 30px;
-    line-height: 30px;
-    background-color: #e4f5f2;
-    text-align: center;
-}
-
-#banner a {
-    color: #f4564e;
-}
-
 /* Sidebar */
 .sidebar {
     background-color: #e4f5f2;
