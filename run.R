@@ -647,4 +647,34 @@ app$callback(
   )
 )
 
+plugin <- list(
+  on_attach = function(server) {
+    router <- server$plugins$request_routr
+    route <- routr::Route$new()
+    redirect_getting_started <- function(request, response, keys, ...) {
+      response$status <- 301L
+      response$set_header('Location', '/layout')
+      TRUE
+    }
+    redirect_getting_started_2 <- function(request, response, keys, ...) {
+      response$status <- 301L
+      response$set_header('Location', '/basic-callbacks')
+      TRUE
+    }
+    redirect_state <- function(request, response, keys, ...) {
+      response$status <- 301L
+      response$set_header('Location', '/basic-callbacks')
+      TRUE
+    }
+    route$add_handler('get', '/getting-started', redirect_getting_started)
+    route$add_handler('get', '/getting-started-part-2', redirect_getting_started_2)
+    route$add_handler('get', '/state', redirect_state)
+    router$add_route(route, "redirects")
+  },
+  name = 'redirect_urls',
+  require = 'request_routr'
+)
+
+app$server$attach(plugin)
+
 app$run_server(host = "0.0.0.0")
