@@ -85,7 +85,7 @@ app$callback(
     input('clientside-graph-scale', 'value')
   ),
   clientsideFunction(
-    namespace = 'clientside',
+    namespace = 'clientside_examples',
     function_name = 'update_graph'
   )
 )
