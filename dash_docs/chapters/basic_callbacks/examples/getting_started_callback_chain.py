@@ -31,14 +31,14 @@ app.layout = html.Div([
 
 @app.callback(
     Output('cities-radio', 'options'),
-    [Input('countries-radio', 'value')])
+    Input('countries-radio', 'value'))
 def set_cities_options(selected_country):
     return [{'label': i, 'value': i} for i in all_options[selected_country]]
 
 
 @app.callback(
     Output('cities-radio', 'value'),
-    [Input('cities-radio', 'options')])
+    Input('cities-radio', 'options'))
 def set_cities_value(available_options):
     return available_options[0]['value']
 
