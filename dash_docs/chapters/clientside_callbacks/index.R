@@ -86,7 +86,7 @@ app$callback(
 
     dccMarkdown("
 ```js
-window.my_clientside_library = {
+window.my_clientside_example = {
 my_function: function(input_value_1, input_value_2) {
    return (
      parseFloat(input_value_1, 10) +
