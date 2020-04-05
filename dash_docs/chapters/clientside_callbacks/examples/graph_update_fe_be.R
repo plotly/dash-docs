@@ -19,7 +19,7 @@ app$layout(htmlDiv(list(
     data = list(
       list(
         'x' = df[df$country == 'Canada', "year"],
-        'y' = df[df$country == 'Canada', "year"]
+        'y' = df[df$country == 'Canada', "pop"]
       )
     )
   ),
@@ -52,9 +52,11 @@ app$layout(htmlDiv(list(
   ),
   htmlHr(),
   htmlDetails(
-    htmlSummary('Contents of figure storage'),
-    dccMarkdown(
-      id='clientside-figure-json'
+    list(
+      htmlSummary('Contents of figure storage'),
+      dccMarkdown(
+        id='clientside-figure-json'
+        )
     )
   )
 )))
@@ -65,11 +67,11 @@ app$callback(
     input('clientside-graph-indicator', 'value'),
     input('clientside-graph-country', 'value')
   ),
-  update_store_data <- function(indicator, selected_country) {
+  function(indicator, selected_country) {
     dff = df[df$country == selected_country,]
     return(list(list(
-      'x' = dff$year,
-      'y' = dff$indicator,
+      'x' = dff[, "year"],
+      'y' = dff[, indicator],
       'mode' = 'markers'
     )))
   }
@@ -89,12 +91,12 @@ app$callback(
 )
 
 app$callback(
-  output('clientside-figure-json', 'figure'),
+  output('clientside-figure-json', 'children'),
   params = list(
     input('clientside-figure-store', 'data')
   ),
-  generated_figure_json <- function(data) {
-    return(jsonlite::prettify(data))
+  function(input_data) {
+    return(jsonlite::prettify(dash:::to_JSON(input_data)))
   }
 )
 
