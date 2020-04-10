@@ -34,7 +34,7 @@ def test_snap001_index_page_links(dash_doc, index_pages):
                 #     "div.dash-debug-alert"
                 # ), "devtools should not raise an error alert"
             else:
-                dash_doc.visit_and_snapshot(res, hook_id=hook_id, stay_on_page=True)
+                dash_doc.visit_and_snapshot(res, hook_id=hook_id, stay_on_page=True, assert_check=False)
 
             linked_paths = dash_doc.driver.execute_script(
                 'return Array.from(document.querySelectorAll(\'a[href^="/"]\'))'
