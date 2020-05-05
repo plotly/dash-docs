@@ -155,16 +155,6 @@ layout = html.Div(
         del df['id']  # no-display
         """),
 
-        # TODO - Add this block in when 1.13 is out.
-        # {
-        #     'if': {
-        #         'state': 'active'  # 'active' | 'selected'
-        #     },
-        #     'backgroundColor': 'DodgerBlue',
-        #     'opacity': 0.5,
-        #     'border': '2px solid DodgerBlue'
-        # }
-
         rc.Markdown(
         '''
         Notes:
