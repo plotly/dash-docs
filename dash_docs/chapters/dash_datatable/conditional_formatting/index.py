@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*- 
+# -*- coding: utf-8 -*-
 from collections import OrderedDict
 import dash_core_components as dcc
 import dash_html_components as html
@@ -140,6 +140,15 @@ layout = html.Div(
                     },
                     'textAlign': 'left'
                 },
+
+                {
+                    'if': {
+                        'state': 'active'  # 'active' | 'selected'
+                    },
+                    'backgroundColor': 'DodgerBlue',
+                    'opacity': 0.5,
+                    'border': '2px solid DodgerBlue'
+                }
 
             ]
         )
