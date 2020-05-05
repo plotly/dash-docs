@@ -162,7 +162,7 @@
             "url": "/dash-core-components/dropdown",
             "name": "dcc.Dropdown",
             "description": "Official examples and reference documentation for dcc.Dropdown. dcc.Dropdown is a dash_core_components component.",
-            "meta_keywords": "children, key, style, disabled, form, name, type, height, action, low, min, start, label, selected, multiple, required, placeholder, rows, wrap, default, options, persistence, persisted_props, persistence_type, clearable, date, optionHeight, multi, searchable, search_value, list, refresh, debug, search, data, css, dropdown, on, stylesheet, layout, container, styles, selection"
+            "meta_keywords": "children, key, style, title, disabled, form, name, type, height, action, low, min, start, label, selected, multiple, required, placeholder, rows, wrap, default, options, persistence, persisted_props, persistence_type, clearable, date, optionHeight, multi, searchable, search_value, list, refresh, debug, search, data, css, dropdown, on, stylesheet, layout, container, styles, selection"
           },
           {
             "url": "/dash-core-components/graph",
@@ -1250,13 +1250,13 @@
             "url": "/dash-daq/booleanswitch",
             "name": "dash_daq.BooleanSwitch",
             "description": "Official examples and reference documentation for dash_daq.BooleanSwitch.",
-            "meta_keywords": "children, key, style, disabled, form, name, type, high, low, min, label, default, displayed, date, config, debug, color, vertical, css, on, theme, labelPosition, stylesheet, layout, styles"
+            "meta_keywords": "children, key, style, disabled, form, name, type, action, high, low, min, label, rows, default, persistence, persisted_props, persistence_type, displayed, date, config, list, refresh, debug, color, vertical, data, css, on, theme, labelPosition, stylesheet, layout, styles"
           },
           {
             "url": "/dash-daq/colorpicker",
             "name": "dash_daq.ColorPicker",
             "description": "Official examples and reference documentation for dash_daq.ColorPicker.",
-            "meta_keywords": "children, key, style, disabled, form, name, type, width, low, min, label, selected, size, default, displayed, date, config, debug, color, css, on, theme, labelPosition, stylesheet, layout, styles"
+            "meta_keywords": "children, key, style, disabled, form, name, type, width, action, low, min, label, selected, size, rows, default, persistence, persisted_props, persistence_type, displayed, date, config, list, refresh, debug, color, data, css, on, theme, labelPosition, stylesheet, layout, styles"
           },
           {
             "url": "/dash-daq/darkthemeprovider",
@@ -1292,7 +1292,7 @@
             "url": "/dash-daq/knob",
             "name": "dash_daq.Knob",
             "description": "Official examples and reference documentation for dash_daq.Knob.",
-            "meta_keywords": "children, key, style, disabled, form, name, type, low, max, min, start, label, multiple, size, default, displayed, date, multi, config, list, interval, debug, color, marks, colors, css, on, theme, labelPosition, scale, stylesheet, layout, styles, labels, range"
+            "meta_keywords": "children, key, style, disabled, form, name, type, action, low, max, min, start, label, multiple, size, rows, default, persistence, persisted_props, persistence_type, displayed, date, multi, config, list, interval, refresh, debug, color, marks, data, colors, css, on, theme, labelPosition, scale, stylesheet, layout, styles, labels, range"
           },
           {
             "url": "/dash-daq/leddisplay",
@@ -1304,25 +1304,25 @@
             "url": "/dash-daq/numericinput",
             "name": "dash_daq.NumericInput",
             "description": "Official examples and reference documentation for dash_daq.NumericInput.",
-            "meta_keywords": "children, key, style, disabled, form, name, type, low, max, min, label, size, default, displayed, date, config, debug, css, on, theme, labelPosition, stylesheet, layout, styles"
+            "meta_keywords": "children, key, style, disabled, form, name, type, action, low, max, min, label, size, rows, default, persistence, persisted_props, persistence_type, displayed, date, config, list, refresh, debug, data, css, on, theme, labelPosition, stylesheet, layout, styles"
           },
           {
             "url": "/dash-daq/powerbutton",
             "name": "dash_daq.PowerButton",
             "description": "Official examples and reference documentation for dash_daq.PowerButton.",
-            "meta_keywords": "children, key, style, disabled, form, name, type, low, min, label, size, default, displayed, date, config, debug, color, css, on, theme, labelPosition, stylesheet, layout, styles"
+            "meta_keywords": "children, key, style, disabled, form, name, type, action, low, min, label, size, rows, default, persistence, persisted_props, persistence_type, displayed, date, config, list, refresh, debug, color, data, css, on, theme, labelPosition, stylesheet, layout, styles"
           },
           {
             "url": "/dash-daq/precisioninput",
             "name": "dash_daq.PrecisionInput",
             "description": "Official examples and reference documentation for dash_daq.PrecisionInput.",
-            "meta_keywords": "children, key, style, disabled, form, name, type, low, max, min, label, size, default, displayed, date, figure, config, debug, css, on, theme, labelPosition, precision, stylesheet, layout, styles"
+            "meta_keywords": "children, key, style, disabled, form, name, type, action, low, max, min, label, size, rows, default, persistence, persisted_props, persistence_type, displayed, date, figure, config, list, refresh, debug, data, css, on, theme, labelPosition, precision, stylesheet, layout, styles"
           },
           {
             "url": "/dash-daq/slider",
             "name": "dash_daq.Slider",
             "description": "Official examples and reference documentation for dash_daq.Slider.",
-            "meta_keywords": "children, key, target, style, disabled, form, name, type, low, max, min, start, label, multiple, size, default, updatemode, date, multi, config, list, step, debug, color, marks, dots, included, vertical, colors, css, on, theme, labelPosition, showCurrentValue, targets, handleLabel, stylesheet, layout, orientation, styles, labels, range"
+            "meta_keywords": "children, key, target, style, disabled, form, name, type, action, low, max, min, start, label, multiple, size, rows, default, persistence, persisted_props, persistence_type, updatemode, date, multi, config, list, step, refresh, debug, color, marks, dots, included, vertical, data, colors, css, on, theme, labelPosition, showCurrentValue, targets, handleLabel, stylesheet, layout, orientation, styles, labels, range"
           },
           {
             "url": "/dash-daq/stopbutton",
@@ -1346,7 +1346,7 @@
             "url": "/dash-daq/toggleswitch",
             "name": "dash_daq.ToggleSwitch",
             "description": "Official examples and reference documentation for dash_daq.ToggleSwitch.",
-            "meta_keywords": "children, key, style, disabled, form, name, type, high, low, min, label, size, default, displayed, date, config, list, debug, color, vertical, css, on, theme, labelPosition, stylesheet, layout, orientation, styles"
+            "meta_keywords": "children, key, style, disabled, form, name, type, action, high, low, min, label, size, rows, default, persistence, persisted_props, persistence_type, displayed, date, config, list, refresh, debug, color, vertical, data, css, on, theme, labelPosition, stylesheet, layout, orientation, styles"
           }
         ]
       },
