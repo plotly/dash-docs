@@ -145,7 +145,7 @@ layout = html.Div(
                     'if': {
                         'state': 'active'  # 'active' | 'selected'
                     },
-                  'backgroundColor': 'rgba(0, 116, 217, 0.3)'
+                   'backgroundColor': 'rgba(0, 116, 217, 0.3)'
                 }
 
             ]
