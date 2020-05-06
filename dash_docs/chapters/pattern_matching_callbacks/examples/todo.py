@@ -3,25 +3,16 @@ import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output, State, MATCH, ALL
 
-app = dash.Dash(__name__, suppress_callback_exceptions=True)
+app = dash.Dash(__name__)
 
 app.layout = html.Div([
-    html.Div(id='content'),
-    dcc.Location(id='url')
+    html.Div('Dash To-Do list'),
+    dcc.Input(id="new-item"),
+    html.Button("Add", id="add"),
+    html.Button("Clear Done", id="clear-done"),
+    html.Div(id="list-container"),
+    html.Div(id="totals")
 ])
-
-@app.callback(Output('content', 'children'), [Input('url', 'pathname')])
-def display_content(_):
-    return html.Div([
-        html.Div('Dash To-Do list'),
-        dcc.Input(id="new-item"),
-        html.Button("Add", id="add"),
-        html.Button("Clear Done", id="clear-done"),
-        html.Div(id="list-container"),
-        html.Hr(),
-        html.Div(id="totals")
-    ])
-
 
 style_todo = {"display": "inline", "margin": "10px"}
 style_done = {"textDecoration": "line-through", "color": "#888"}

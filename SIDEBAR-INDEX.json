@@ -97,7 +97,7 @@
         "url": "/pattern-matching-callbacks",
         "name": "Pattern-Matching Callbacks",
         "description": "The pattern-matching callback selectors `MATCH`, `ALL`, & `ALLSMALLER` allow you to write callbacks that respond to or update an arbitrary or dynamic number of components. New in Dash 1.11.0!",
-        "meta_keywords": "children, n_clicks, key, style, form, name, type, content, low, min, reversed, label, multiple, options, labelStyle, displayed, date, multi, list, pattern, n_submit, debug, color, pathname, count, included, data, dropdown, on, elements, layout, pan, container"
+        "meta_keywords": "children, n_clicks, key, style, form, name, type, content, low, min, reversed, label, multiple, options, labelStyle, displayed, date, multi, list, pattern, n_submit, debug, color, count, included, data, dropdown, on, elements, layout, pan, container"
       },
       {
         "url": "/callback-gotchas",
