@@ -1099,7 +1099,7 @@
             "url": "/datatable/conditional-formatting",
             "name": "Conditional Formatting",
             "description": "\n                            Several examples of how to highlight certain cells,\n                            rows, or columns based on their value or state.\n                        ",
-            "meta_keywords": "children, key, rel, dir, hidden, style, alt, form, name, type, height, width, icon, action, method, content, high, low, max, min, start, selected, size, headers, rows, default, displayed, date, list, color, marks, data, colors, contents, columns, css, editable, page_size, filter_query, sort_action, style_table, style_cell, style_data, style_filter, style_header, style_cell_conditional, style_data_conditional, style_filter_conditional, style_header_conditional, derived_virtual_data, on, scale, backgroundColor, layout, colorscale, opacity, styles, padding, range, legend"
+            "meta_keywords": "children, key, rel, dir, hidden, style, alt, form, name, type, height, width, icon, action, method, content, high, low, max, min, start, selected, size, headers, rows, default, displayed, date, list, color, marks, data, colors, contents, columns, css, editable, page_size, filter_query, sort_action, style_table, style_cell, style_data, style_filter, style_header, style_cell_conditional, style_data_conditional, style_filter_conditional, style_header_conditional, derived_virtual_data, on, scale, backgroundColor, layout, colorscale, styles, padding, range, legend"
           },
           {
             "url": "/datatable/interactivity",
