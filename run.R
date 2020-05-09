@@ -104,7 +104,7 @@ source('dash_docs/chapters/dash_html_components/index.R', local=chapters.dashHtm
 chapters.dashDataTable <- new.env()
 source('dash_docs/chapters/dash_datatable/index.R', local=chapters.dashDataTable)
 chapters.dashDataTableSizing <- new.env()
-source('dash_docs/chapters/dash_datatable/sizing/index.R', local=chapters.dashDataTableSizing)
+source('dash_docs/chapters/dash_datatable/width/index.R', local=chapters.dashDataTableSizing)
 chapters.dashDataTable2 <- new.env()
 source('dash_docs/chapters/dash_datatable/part2/index.R', local=chapters.dashDataTable2)
 chapters.dashDataTable3 <- new.env()
@@ -321,7 +321,7 @@ app$callback(
       '/dash-html-components' = chapters.dashHtmlComponents$layout,
       # Component Libraries (Dash DataTable)
       '/datatable' = chapters.dashDataTable$layout,
-      '/datatable/sizing' = chapters.dashDataTableSizing$layout,
+      '/datatable/width' = chapters.dashDataTableSizing$layout,
       '/datatable/style' = chapters.dashDataTable2$layout,
       '/datatable/interactivity' = chapters.dashDataTable3$layout,
       '/datatable/callbacks' = chapters.dashDataTable4$layout,
@@ -660,9 +660,15 @@ plugin <- list(
       response$set_header('Location', '/basic-callbacks')
       TRUE
     }
+    redirect_sizing <- function(request, response, keys, ...) {
+      response$status <- 301L
+      response$set_header('Location', '/datatable/width')
+      TRUE
+    }
     route$add_handler('get', '/getting-started', redirect_getting_started)
     route$add_handler('get', '/getting-started-part-2', redirect_getting_started_2)
     route$add_handler('get', '/state', redirect_state)
+    route$add_handler('get', '/datatable/sizing', redirect_sizing)
     router$add_route(route, "redirects")
   },
   name = 'redirect_urls',
