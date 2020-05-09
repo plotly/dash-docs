@@ -9,7 +9,7 @@ examples <- list(
   storeclick = utils$LoadExampleCode('dash_docs/chapters/dash_core_components/Store/examples/storeclick.R'),
   sharecallback = utils$LoadExampleCode('dash_docs/chapters/dash_core_components/Store/examples/sharecallbacks.R'),
   storeproptable = utils$LoadExampleCode('dash_docs/chapters/dash_core_components/Store/examples/storeproptable.R')
-  
+
 )
 
 layout <- htmlDiv(list(
@@ -17,11 +17,13 @@ htmlH1('Store component'),
 dccMarkdown("
 Store json data in the browser.
 ## limitations.
-- The store will not work properly if there is no callback associated.
 - `modified_timestamp` is read only.
 ### local/session specifics
-- The store will not work properly if it's not included in the initial layout.
-- The total data of all stores should not exceed 10MB.
+- The maximum browser [storage space](https://demo.agektmr.com/storage/) is determined by the following factors:
+    - Mobile or laptop
+    - The browser, under which a sophiticated algorithm is implmented within *Quota Management*
+    - Storage encoding where UTF-16 can end up saving only half of the size of UTF-8
+    - It's generally safe to store up to 2MB in most environments, and 5~10MB in most desktop-only applications.
 ### Retrieving the initial store data
 If you use the `data` prop as an output, you cannot get the
 initial data on load with the `data` prop. To counter this,
@@ -42,6 +44,6 @@ examples$sharecallback$source,
 examples$sharecallback$layout,
 
 examples$storeproptable$layout
-  
-  
+
+
 ))

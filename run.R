@@ -244,12 +244,6 @@ header <- htmlDiv(
 
 app$layout(htmlDiv(
   list(
-    # Stores used by examples.
-    dccStore(id = 'memory'),
-    dccStore(id = 'memory-output'),
-    dccStore(id = 'local', storage_type = 'local'),
-    dccStore(id = 'session', storage_type = 'session'),
-
     # div used in tests
     htmlDiv(id = 'wait-for-layout'),
 

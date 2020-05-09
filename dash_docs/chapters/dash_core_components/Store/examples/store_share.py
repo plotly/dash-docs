@@ -17,7 +17,7 @@ countries = set(df['country'])
 
 
 app.layout = html.Div([
-    dcc.Store(id='memory-output'),  # no-exec
+    dcc.Store(id='memory-output'),
     dcc.Dropdown(id='memory-countries', options=[
         {'value': x, 'label': x} for x in countries
     ], multi=True, value=['Canada', 'United States']),
