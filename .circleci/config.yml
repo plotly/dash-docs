@@ -41,7 +41,6 @@ jobs:
               . venv/bin/activate
               set -eo pipefail
               pip install --progress-bar off -e git+https://github.com/plotly/dash.git@state-machine#egg=dash[testing]
-              pip uninstall dash-table -y
               git clone -b state-machine --depth 1 git@github.com:plotly/dash-table.git
               cd dash-table && npm ci && npm run build && pip install -e . && cd ..
               python -m pytest tests/unit
