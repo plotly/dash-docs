@@ -9,7 +9,7 @@ jobs:
   "python-3.7": &test-template
     resource_class: medium+
     docker:
-      - image: circleci/python:3.7.5-stretch-node-browsers
+      - image: circleci/python:3.7.5-stretch-browsers
         environment:
           PERCY_PARALLEL_TOTAL: '-1'
     steps:
@@ -41,8 +41,7 @@ jobs:
               . venv/bin/activate
               set -eo pipefail
               pip install --progress-bar off -e git+https://github.com/plotly/dash.git@state-machine#egg=dash[dev,testing]
-              git clone -b state-machine --depth 1 git@github.com:plotly/dash-table.git
-              cd dash-table && npm ci && npm run build && pip install -e . && cd ..
+              pip install dash_table-4.7.0.tar.gz --force-reinstall
               python -m pytest tests/unit
               pytest --log-cli-level INFO --nopercyfinalize --junitxml=test-reports/snapshots.xml tests/integration
       - store_artifacts:
