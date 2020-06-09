@@ -13,10 +13,9 @@ You can see what version of R you have by entering version in the R CLI.
 
 dccMarkdown("
 ```{r}
-library(devtools) # devtools: Tools to Make Developing R Packages Easier
 # installs dashHtmlComponents, dashCoreComponents, and dashTable
 # and will update the component libraries when a new package is released
-install_github('plotly/dashR', upgrade = TRUE)
+install.packages('dash')
 ```
 "),
 htmlBr(),
@@ -38,7 +37,7 @@ dccMarkdown("
 >
 >
 > To see the latest changes of any package, check the GitHub repo's CHANGELOG.md file:
-> - [dash changelog](https://github.com/plotly/dash/blob/master/CHANGELOG.md)
+> - [dash changelog](https://github.com/plotly/dashR/blob/master/CHANGELOG.md)
 > - [dash-core-components changelog](https://github.com/plotly/dash-core-components/blob/master/CHANGELOG.md)
 > - [dash-html-components changelog](https://github.com/plotly/dash-html-components/blob/master/CHANGELOG.md)
 > - [dash-table changelog](https://github.com/plotly/dash-table/blob/master/CHANGELOG.md)
@@ -46,11 +45,7 @@ dccMarkdown("
 > Finally, note that the plotly package and the dash-renderer package are
 > important package dependencies that are installed automatically
 > with dash-core-components and dash respectively.
-> These docs are using dash-renderer==0.20.0 and plotly==3.3.0 and
-> their changelogs are located here:
->
-> - [dash-renderer changelog](https://github.com/plotly/dash-renderer/blob/master/CHANGELOG.md)
-> - [plotly changelog](https://github.com/plotly/plotly.py/blob/master/CHANGELOG.md)
+> These docs are using dash-renderer==1.4.1 and plotly==4.9.2.
 >
 > All of these packages adhere to [semver](https://semver.org/).
 "),

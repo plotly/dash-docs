@@ -1,5 +1,4 @@
 library(dash)
-library(dashCoreComponents)
 library(dashHtmlComponents)
 
 app <- Dash$new()
@@ -20,7 +19,13 @@ app$callback(
   params=list(input(id = "button", property = "n_clicks"),
               input(id = "input-box", property = "value")),
   function(n_clicks, value) {
-    sprintf("The input value was \'%s\' and the button has been clicked \'%s\' times", value, n_clicks)
-  })
+    object_as_string <- capture.output(dput(n_clicks))
+    if (is.list(n_clicks)) {
+      sprintf("'n_clicks' is of length %d, with the value '%s'", length(n_clicks), object_as_string)
+    } else {
+      sprintf("'n_clicks' is of length %d, you have clicked the button %d time(s), and the value is '%s'", length(n_clicks), n_clicks, value)
+    }
+  }
+)
 
 app$run_server()
