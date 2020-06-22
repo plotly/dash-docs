@@ -5,7 +5,7 @@ chardet==3.0.4
 click==6.7
 colorlover==0.3.0
 configparser==3.5.0
-dash[testing]==1.12.0
+dash[testing]==1.13.3
 dash-auth==1.3.2
 dash-bio-utils==0.0.5
 dash-bio==0.4.8
