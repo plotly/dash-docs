@@ -19,6 +19,8 @@ else:
 
 
 def Blockquote():
+    if 'DASH_DOCS_URL_PREFIX' in os.environ:
+        return None
     return rc.Markdown('''
         > This documentation is for [Dash Enterprise](https://plotly.com/dash),
         Plotly's commercial platform for managing and improving
@@ -2624,6 +2626,44 @@ Redis = html.Div(children=[
     rc.Markdown('''
     ***
 
+    #### Using Redis inside Workspaces
+
+    Dash Enterprise Workspaces share the same Redis instance as the deployed
+    application.
+    This enables you to inspect data of your Redis instances from within
+    workspaces. However, it is important that you structure your code to
+    not override Redis data.
+
+    Each Redis instance has 16 available databases.
+
+    `dash-snapshots` implicitly uses an alternative Redis database on the
+    same instance.
+
+    The Sample Applications & Templates demonstrate how to use an alternative
+    Redis database if within the Workspace environment:
+
+    ```
+    if os.environ.get("DASH_ENTERPRISE_ENV") == "WORKSPACE":
+        next_database_number = str((int(os.environ.get("REDIS_URL")[-1]) + 1) % 16)
+        REDIS_URL = os.environ["REDIS_URL"][:-1] + next_database_number
+        parsed_url = urlparse(os.environ.get("REDIS_URL"))
+        if parsed_url.path == "" or parsed_url.path == "/":
+            i = 0
+        else:
+            try:
+                i = int(parsed_url.path[1:])
+            except:
+                raise Exception("Redis database should be a number")
+        parsed_url = parsed_url._replace(path="/{}".format((i + 1) % 16))
+
+        updated_url = parsed_url.geturl()
+        REDIS_URL = "redis://%s" % (updated_url.split("://")[1])
+    else:
+        REDIS_URL = os.environ.get("REDIS_URL", "redis://127.0.0.1:6379")
+    ```
+
+    ***
+
     #### Running Redis on Your Local Machine
 
     To get started, see the [Redis documentation](https://redis.io/documentation)
@@ -2671,18 +2711,14 @@ Celery = html.Div(children=[
     '''
     Celery is a reliable asynchronous task queue/job queue that supports both
     real-time processing and task scheduling in production systems. This makes
-    Celery well suited for Dash Applications. For example:
+    Celery well suited for Dash Applications.
 
-    - Enable queued and background processes with Celery.
-    [Redis and Celery Demo App](https://github.com/plotly/dash-redis-demo)
-    - Periodically update an App's data.
-    [Redis and Celery Periodic Updates Demo App](https://github.com/plotly/dash-redis-celery-periodic-updates)
-
-    &nbsp;
+    For more detail on how to use Celery within Dash Enterprise, see the
+    chapters in Dash Enterprise on the Dash Snapshot Engine or the
+    Sample Applications and Templates.
 
     For more information about Celery, visit
     [Celery's documentation](http://docs.celeryproject.org/en/latest/).
-
     '''),
 
 ])

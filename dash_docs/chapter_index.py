@@ -28,7 +28,7 @@ def component_list(
         package, content_module, base_url, import_alias,
         component_library, escape_tags=False,
         ad='dash-enterprise-kubernetes.jpg',
-        adhref='https://plotly.com/get-demo/?utm_source=docs&utm_medium=ad&utm_campaign=april&utm_content=kubernetes'):
+        adhref='https://plotly.com/dash/kubernetes/?utm_source=docs&utm_medium=sidebar&utm_campaign=june&utm_content=kubernetes'):
     return [
         {
             'url': tools.relpath('/{}/{}'.format(base_url, component.lower())),
@@ -262,7 +262,7 @@ URLS = [
                     ),
                     'content': chapters.dash_core_components.index.layout,
                     'ad': 'dash-enterprise-design-kit.jpg',
-                    'adhref': 'https://plotly.com/get-demo/?utm_source=docs&utm_medium=ad&utm_campaign=april&utm_content=htmlcore'
+                    'adhref': 'https://plotly.com/dash/design-kit/?utm_source=docs&utm_medium=sidebar&utm_campaign=june&utm_content=htmlcore'
                 }] + component_list(
                     dcc,
                     chapters.dash_core_components.content_module,
@@ -270,7 +270,7 @@ URLS = [
                     'dcc',
                     'dash_core_components',
                     ad='dash-enterprise-design-kit.jpg',
-                    adhref='https://plotly.com/get-demo/?utm_source=docs&utm_medium=ad&utm_campaign=april&utm_content=htmlcore'
+                    adhref='https://plotly.com/dash/design-kit/?utm_source=docs&utm_medium=sidebar&utm_campaign=june&utm_content=htmlcore'
                 )
             },
 
@@ -288,7 +288,7 @@ URLS = [
                                        'and standard html.',
                         'content': chapters.dash_html_components.index.layout,
                         'ad': 'dash-enterprise-design-kit.jpg',
-                        'adhref': 'https://plotly.com/get-demo/?utm_source=docs&utm_medium=ad&utm_campaign=april&utm_content=htmlcore'
+                        'adhref': 'https://plotly.com/dash/design-kit/?utm_source=docs&utm_medium=sidebar&utm_campaign=june&utm_content=htmlcore'
                     }
                 ] + component_list(
                     html,
@@ -298,7 +298,7 @@ URLS = [
                     'dash_html_components',
                     escape_tags=True,
                     ad='dash-enterprise-design-kit.jpg',
-                    adhref='https://plotly.com/get-demo/?utm_source=docs&utm_medium=ad&utm_campaign=april&utm_content=htmlcore'
+                    adhref='https://plotly.com/dash/design-kit/?utm_source=docs&utm_medium=sidebar&utm_campaign=june&utm_content=htmlcore'
                 )
             },
 
@@ -803,7 +803,7 @@ URLS = [
                 'description': 'Strategies for integrating Dash apps with existing web ' \
                                'apps.',
                 'ad': 'dash-enterprise-embedded.jpg',
-                'adhref': 'https://plotly.com/get-demo/?utm_source=docs&utm_medium=ad&utm_campaign=april&utm_content=embedded'
+                'adhref': 'https://plotly.com/dash/embedding/?utm_source=docs&utm_medium=sidebar&utm_campaign=june&utm_content=embedded'
             }
         ]
     },
@@ -1153,5 +1153,9 @@ def create_urls_without_content(url_set):
             section.pop('ad')
         if 'adhref' in section:
             section.pop('adhref')
+        if ('description' in section and
+                isinstance(section['description'],
+                dash.development.base_component.Component)):
+            section.pop('description')
         if 'chapters' in section:
             create_urls_without_content(section['chapters'])

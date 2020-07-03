@@ -150,7 +150,13 @@ def load_example(path, relative_path=False):
             'datasets/country_indicators.csv',
 
             'https://github.com/plotly/datasets/raw/master/26k-consumer-complaints.csv':
-            'datasets/26k-consumer-complaints.csv'
+            'datasets/26k-consumer-complaints.csv',
+
+            'https://www.publicdomainpictures.net/pictures/60000/nahled/flower-outline-coloring-page.jpg':
+            relpath('/assets/images/gallery/flower-outline-coloring-page.jpg'),
+
+            'https://raw.githubusercontent.com/plotly/datasets/master/mitochondria.jpg':
+            relpath('/assets/images/gallery/mitochondria.jpg'),
 
         }
         for key in find_and_replace:

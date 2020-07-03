@@ -7,6 +7,7 @@ import dash_daq as daq
 
 from dash_docs.simple_doc_generator import generate_docs
 from dash_docs import reusable_components as rc, tools
+import os
 
 daq_library_heading =  rc.Markdown('''
     # Dash DAQ
@@ -161,7 +162,11 @@ layout_children = generate_docs(
 layout_children.insert(1, daq_install_instructions)
 
 dtp = load_example(
-    'dash_docs/chapters/dash_daq/examples/darkthemeprovider_daq.py'
+    os.path.join(
+        os.path.dirname(os.path.relpath(__file__)),
+        'examples',
+        'darkthemeprovider_daq.py'
+    )
 )
 
 layout_children += [

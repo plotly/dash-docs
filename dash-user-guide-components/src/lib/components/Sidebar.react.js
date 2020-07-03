@@ -52,6 +52,9 @@ function traverse(obj, pathArray, func) {
 
 function searchChapter(chapter, searchWord) {
     return (searchWord) => {
+        if(chapter.hide_in_sidebar) {
+            return false;
+        }
         const terms = [
             'name', 'description', 'description_short',
             'url', 'meta_keywords'
@@ -125,7 +128,7 @@ export default class Sidebar extends Component {
 
 
     render() {
-        const {depth, urls} = this.props;
+        const {children, depth, urls} = this.props;
         let searchResults = [];
         if(this.state.search.length > 2) {
             searchResults = filterUrls(
@@ -161,13 +164,16 @@ export default class Sidebar extends Component {
                     <SearchResults
                         search={this.state.search}
                         searchResults={searchResults}
+                        children={children}
                     />
                     :
                     <TreeSidebar
                         urls={urls}
                         depth={depth}
                         force_closed={
-                            window.location.pathname === '/' &&
+                            (window.location.pathname === '/' ||
+                             window.location.pathname === '/Docs' ||
+                             window.location.pathname === '/Docs/') &&
                             this.state.search === ''
                         }
                     />
@@ -179,11 +185,15 @@ export default class Sidebar extends Component {
 
 class SearchResults extends Component {
     render() {
-        const {searchResults, search} = this.props;
+        const {children, searchResults, search} = this.props;
         if (!searchResults || searchResults.length == 0) {
             return (
                 <div className='no-results'>
-                    <span>{'No results found. Try the same search on '}</span>
+                    <span>{'No results found.'}</span>
+
+                    {children}
+
+                    <span>{'Try the same search on '}</span>
                     <a href={`https://google.com/search?q=site%3Adash.plotly.com+${search}`}>
                         Google
                     </a>
@@ -218,14 +228,19 @@ class SearchResults extends Component {
 
                     <hr/>
 
-                    <small>
-                        <i>
-                            {`Still no luck? Get help for what you are
-                              looking for by opening a topic on the `}
-                            <a href="https://community.plotly.com/c/dash">Dash Community Forum</a>
-                            {'.'}
-                        </i>
-                    </small>
+                    {
+                        children ? (
+                            <small>
+                                <i>
+                                    {`Still no luck? Get help for what you are
+                                      looking for by opening a topic on the `}
+                                    <a href="https://community.plotly.com/c/dash">Dash Community Forum</a>
+                                    {'.'}
+                                </i>
+                            </small>
+                        ) : null
+                    }
+
                 </div>
             )
         }
@@ -282,6 +297,8 @@ class TreeSidebar extends Component {
             const chapter = urls[i];
             if(!chapter) {
                 continue;
+            } else if (chapter.chapters && chapter.hide_chapters_in_sidebar) {
+                chapter_elements.push(link(chapter));
             } else if (chapter.chapters) {
 
                 const open = (
@@ -343,6 +360,11 @@ Sidebar.propTypes = {
      * The ID used to identify this component in Dash callbacks.
      */
     id: PropTypes.string,
+
+    /**
+     * Custom content in the "no results found" panel
+     */
+    children: PropTypes.node,
 
     /**
      * URLs

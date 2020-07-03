@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from collections import OrderedDict
+import os
 
 data = OrderedDict(
     [
@@ -72,7 +73,7 @@ data_with_none = [
     {'Firm': 'Henrietta', '2017': 14, '2018': 1, '2019': 13, '2020': 1},
 ]
 df_with_none = pd.DataFrame(data_with_none)
-df_gapminder = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv')
+df_gapminder = pd.read_csv('datasets/gapminderDataFiveYear.csv' if 'DASH_DOCS_URL_PREFIX' in os.environ else 'https://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv')
 
 many_columns = OrderedDict(
     [

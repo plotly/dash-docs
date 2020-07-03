@@ -2,6 +2,7 @@ import dash
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
+import plotly.express as px
 
 import pandas as pd
 
@@ -29,34 +30,14 @@ app.layout = html.Div([
     [Input('year-slider', 'value')])
 def update_figure(selected_year):
     filtered_df = df[df.year == selected_year]
-    traces = []
-    for i in filtered_df.continent.unique():
-        df_by_continent = filtered_df[filtered_df['continent'] == i]
-        traces.append(dict(
-            x=df_by_continent['gdpPercap'],
-            y=df_by_continent['lifeExp'],
-            text=df_by_continent['country'],
-            mode='markers',
-            opacity=0.7,
-            marker={
-                'size': 15,
-                'line': {'width': 0.5, 'color': 'white'}
-            },
-            name=i
-        ))
+    
+    fig = px.scatter(filtered_df, x="gdpPercap", y="lifeExp", 
+                     size="pop", color="continent", hover_name="country", 
+                     log_x=True, size_max=55)
+    
+    fig.update_layout(transition_duration=500)
 
-    return {
-        'data': traces,
-        'layout': dict(
-            xaxis={'type': 'log', 'title': 'GDP Per Capita',
-                   'range':[2.3, 4.8]},
-            yaxis={'title': 'Life Expectancy', 'range': [20, 90]},
-            margin={'l': 40, 'b': 40, 't': 10, 'r': 10},
-            legend={'x': 0, 'y': 1},
-            hovermode='closest',
-            transition = {'duration': 500},
-        )
-    }
+    return fig
 
 
 if __name__ == '__main__':

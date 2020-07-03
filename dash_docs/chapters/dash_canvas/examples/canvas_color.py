@@ -5,10 +5,8 @@ from dash.dependencies import Input, Output, State
 import dash_html_components as html
 import dash_core_components as dcc
 import dash_daq as daq
-from dash_docs import tools
 
-
-filename = tools.relpath('assets/images/gallery/flower-outline-coloring-page.jpg')
+filename = 'https://www.publicdomainpictures.net/pictures/60000/nahled/flower-outline-coloring-page.jpg'
 canvas_width = 300
 
 app = dash.Dash(__name__)

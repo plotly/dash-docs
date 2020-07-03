@@ -110,7 +110,7 @@ layout = html.Div(children=[
     ```
     ''', style=styles.code_container),
 
-    html.Div('That dash code will render this HTML markup:'),
+    html.Div('That Dash code will render this HTML markup:'),
 
     rc.Markdown('''
     ```html
@@ -127,6 +127,10 @@ layout = html.Div(children=[
     </div>
     ```
     ''', style=styles.code_container),
+
+    rc.Markdown('''
+    Note: If you need to directly render a string of raw, unescaped HTML, you can use the `DangerouslySetInnerHTML` component which is provided by the [dash-dangerously-set-inner-html](https://github.com/plotly/dash-dangerously-set-inner-html) library.`
+    '''),
 
     rc.Markdown('''
     ## Full elements reference:

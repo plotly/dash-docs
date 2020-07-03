@@ -1,6 +1,6 @@
 {
   "name": "dash_user_guide_components",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Custom components for Dash's user guide",
   "repository": {
     "type": "git",

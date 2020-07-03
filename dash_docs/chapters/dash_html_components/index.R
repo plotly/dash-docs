@@ -13,7 +13,7 @@ Instead of writing HTML or using an HTML templating engine, you compose your lay
 The source for this library is on GitHub: [plotly/dash-html-components](https://github.com/plotly/dash-html-components).
 Here is an example of a simple HTML structure:
   "),
-  
+
   utils$LoadAndDisplayComponent(
 "
 library(dashHtmlComponents)
@@ -80,7 +80,7 @@ dccMarkdown("
     ```
     "),
 
-htmlDiv('That dash code will render this HTML markup:'),
+htmlDiv('That Dash code will render this HTML markup:'),
 
 dccMarkdown('
              ```html
