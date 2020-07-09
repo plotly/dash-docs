@@ -622,6 +622,24 @@ URLS = [
                     },
 
                     {
+                        'url': '/cytoscape/images',
+                        'content': chapters.dash_cytoscape.image_export.index.layout,
+                        'name': 'Exporting Images',
+                        'description': '''
+                        This example shows how to export your Cytoscape graphs as images (jpg, png, svg).
+                        '''
+                    },
+
+                    {
+                        'url': '/cytoscape/responsive',
+                        'content': chapters.dash_cytoscape.responsive.index.layout,
+                        'name': 'Making responsive graphs',
+                        'description': '''
+                        This example shows how to build a responsive Cytoscape graph.
+                        '''
+                    },
+
+                    {
                         'url': '/cytoscape/reference',
                         'content': chapters.dash_cytoscape.reference.index.layout,
                         'name': 'Reference',
