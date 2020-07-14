@@ -117,7 +117,7 @@ styles = {
 app.layout = html.Div([
     html.Div(className='eight columns', children=[
         cyto.Cytoscape(
-            id='cytoscape',
+            id='cytoscape-image-export',
             elements=basic_elements,
             layout={
                 'name': 'preset'
