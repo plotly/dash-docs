@@ -152,6 +152,12 @@ def load_example(path, relative_path=False):
             'https://github.com/plotly/datasets/raw/master/26k-consumer-complaints.csv':
             'datasets/26k-consumer-complaints.csv',
 
+            'https://js.cytoscape.org/demos/colajs-graph/data.json':
+            'datasets/colajs-graph-data.json',
+
+            'https://js.cytoscape.org/demos/colajs-graph/cy-style.json':
+            'datasets/colajs-graph-cy-style.json',
+
             'https://www.publicdomainpictures.net/pictures/60000/nahled/flower-outline-coloring-page.jpg':
             relpath('/assets/images/gallery/flower-outline-coloring-page.jpg'),
 
