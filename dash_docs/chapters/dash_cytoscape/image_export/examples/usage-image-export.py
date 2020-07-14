@@ -131,7 +131,7 @@ app.layout = html.Div([
     ]),
 
     html.Div(className='four columns', children=[
-        dcc.Tabs(id='tabs', children=[
+        dcc.Tabs(id='tabs-image-export', children=[
             dcc.Tab(label='generate jpg', value='jpg'),
             dcc.Tab(label='generate png', value='png')
         ]),
@@ -152,16 +152,16 @@ app.layout = html.Div([
 
 @app.callback(
     Output('image-text', 'children'),
-    [Input('cytoscape', 'imageData')],
+    [Input('cytoscape-image-export', 'imageData')],
     )
 def put_image_string(data):
     return data
 
 
 @app.callback(
-    Output("cytoscape", "generateImage"),
+    Output("cytoscape-image-export", "generateImage"),
     [
-        Input('tabs', 'value'),
+        Input('tabs-image-export', 'value'),
         Input("btn-get-jpg", "n_clicks"),
         Input("btn-get-png", "n_clicks"),
         Input("btn-get-svg", "n_clicks"),
