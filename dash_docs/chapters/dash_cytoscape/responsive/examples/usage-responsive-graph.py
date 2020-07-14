@@ -27,8 +27,6 @@ def load_json(st):
 app = dash.Dash(__name__)
 server = app.server
 
-app.scripts.config.serve_locally = True
-app.css.config.serve_locally = True
 
 # Load Data
 elements = load_json('https://js.cytoscape.org/demos/colajs-graph/data.json')
