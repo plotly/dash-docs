@@ -48,6 +48,7 @@ layout = html.Div([
     - Embedding Images in Your Dash Apps
     - Changing the Favicon
     - Adding External CSS and JavaScript
+    - Customizing the page title and the "Updating..." title
     - Customizing Dash's HTML Index Template
     - Adding Meta Tags
     - Serving Dash's Component Libraries Locally or from a CDN
@@ -290,6 +291,29 @@ Starting with Dash 1.0.0, `serve_locally` defaults to `True`.
         style=styles.code_container
     ),
 
+    rc.Markdown(
+    '''
+    > If placing images inside the `assets` folder isn't an option, then you can
+    > also embed images "inline" with base64 encoding:
+    ```py
+    import base64
+    import dash
+    import dash_html_components as html
+
+    app = dash.Dash(__name__)
+
+    image_filename = 'my-image.png'
+
+    def b64_image(image_filename):
+        with open(image_filename, 'rb') as f:
+            image = f.read()
+        return 'data:image/png;base64,' + base64.b64encode(image).decode('utf-8')
+
+    app.layout = html.Img(src=b64_image(image_filename))
+    ```
+    '''
+    ),
+
     rc.Markdown('''
     ***
 
@@ -314,7 +338,7 @@ Starting with Dash 1.0.0, `serve_locally` defaults to `True`.
     ## Adding external CSS/Javascript
 
     You can add resources hosted externally to your Dash app with the
-    `external_stylesheets/stylesheets` init keywords.
+    `external_stylesheets` & `external_scripts` init keywords.
 
     The resources can be either a string or a dict containing the tag attributes
     (`src`, `integrity`, `crossorigin`, etc). You can mix both.
@@ -330,11 +354,88 @@ Starting with Dash 1.0.0, `serve_locally` defaults to `True`.
     ),
 
     rc.Markdown('''
+    ## Customizing Dash's Document or Browser Tab Title
+    The Document Title is the name of the web page that appears in your
+    web browser's tab.
+
+    By default, it is Dash.
+
+    As of Dash 1.14.0, you can customize this title with the `title=` keyword:
+    ```py
+    app = dash.Dash(__name__, title='Weekly Analytics')
+    ```
+
+    > Note - Prior to 1.14.0, setting `app.title` was an unnofficial way to
+    > set this title. This is still possible but may be removed in the future.
+    > We recommend using `title=` instead.
+
+    ## Update the Document Title Dynamically based off of the URL or Tab
+
+    To set the document title dynamically, you can use a clientside callback
+    that updates the `document.title` as a side effect. The example below
+    sets the `document.title` based off of the currently selected tab.
+
+    ```python
+    import dash
+    from dash.dependencies import Input, Output
+    import dash_html_components as html
+    import dash_core_components as dcc
+
+    app = dash.Dash(__name__)
+
+    app.layout = html.Div([
+        html.Div(id='blank-output'),
+        dcc.Tabs(id='tabs-example', value='tab-1', children=[
+            dcc.Tab(label='Tab one', value='tab-1'),
+            dcc.Tab(label='Tab two', value='tab-2'),
+        ]),
+    ])
+
+
+    app.clientside_callback(
+        """
+        function(tab_value) {
+            if (tab_value === 'tab-1') {
+                document.title = 'Tab 1'
+            } else if (tab_value === 'tab-2') {
+                document.title = 'Tab 2'
+            }
+        }
+        """,
+        Output('blank-output', 'children'),
+        [Input('tabs-example', 'value')]
+    )
+
+    if __name__ == '__main__':
+        app.run_server(debug=True)
+    ```
+
+    Updating the page based off of the URL would be similiar: the input of the
+    callback would be the `pathname` property of `dcc.Location`. See the
+    <dccLink href="/urls" children="URLs and Multi Page Apps"/> chapter for
+    a `dcc.Location` example.
+
+    ## Customizing or Removing Dash's "Updating..." Message
+
+    When a callback is running, Dash updates the document title
+    (the title that appears in your browser tab) with the "Updating..."
+    message.
+
+    Customize this message with the `update_title=` property:
+
+    ```python
+    app = dash.Dash(__name__, update_title='Loading...')
+    ```
+
+    Or, prevent this message from appearing at all by setting `update_title=None`:
+    ```python
+    app = dash.Dash(__name__, update_title=None)
+    ```
+
+
     ***
 
     ## Customizing Dash's HTML Index Template
-
-    **New in dash 0.22.0**
 
     Dash's UI is generated dynamically with Dash's React.js front-end. So,
     on page load, Dash serves a very small HTML template string that includes
@@ -343,8 +444,6 @@ Starting with Dash 1.0.0, `serve_locally` defaults to `True`.
 
     This simple HTML string is customizable. You might want to customize this
     string if you wanted to:
-    - Include a different `<title>` for your app (the `<title>` tag is the name
-    that appears in your brower's tab. By default, it is "Dash")
     - Customize the way that your CSS or JavaScript is included in the page.
     For example, if you wanted to include remote scripts or if you wanted to
     include the CSS _before_ the Dash component CSS
@@ -557,7 +656,7 @@ Starting with Dash 1.0.0, `serve_locally` defaults to `True`.
     rc.Markdown('''
 
     This will load the bundles from the https://unpkg.com/ cdn which is a community-maintained project that serves JavaScript bundles from NPM. We don't maintain it, so we cannot attest or guarantee to its uptime, performance, security, or long term availability.
-    
+
     Also note that we don't publish the dev bundles to `unpkg`, so when running the app locally with `python app.py`, the local JS files will be served. When the app is deployed with `gunicorn`, it'll switch to the CDN.
 
     ***
