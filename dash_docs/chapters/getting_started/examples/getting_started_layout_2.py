@@ -18,13 +18,21 @@ colors = {
     'text': '#7FDBFF'
 }
 
-# assumes you have a "wide-form" data frame with no index
-# see https://plotly.com/python/wide-form/ for more options
-df = pd.DataFrame({"x": [1, 2, 3], "SF": [4, 1, 2], "Montreal": [2, 4, 5]})
+# assume you have a "long-form" data frame
+# see https://plotly.com/python/px-arguments/ for more options
+df = pd.DataFrame({
+    "Fruit": ["Apples", "Oranges", "Bananas", "Apples", "Oranges", "Bananas"],
+    "Amount": [4, 1, 2, 2, 4, 5],
+    "City": ["SF", "SF", "SF", "Montreal", "Montreal", "Montreal"]
+})
 
-fig = px.bar(df, x="x", y=["SF", "Montreal"], barmode="group")
+fig = px.bar(df, x="Fruit", y="Amount", color="City", barmode="group")
 
-fig.update_layout(plot_bgcolor=colors['background'], paper_bgcolor=colors['background'], font_color=colors['text'])
+fig.update_layout(
+    plot_bgcolor=colors['background'],
+    paper_bgcolor=colors['background'],
+    font_color=colors['text']
+)
 
 app.layout = html.Div(style={'backgroundColor': colors['background']}, children=[
     html.H1(
