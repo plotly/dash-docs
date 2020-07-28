@@ -45,6 +45,8 @@ layout = html.Div([
     but you can also [build your own](https://github.com/plotly/dash-component-boilerplate)
     with JavaScript and React.js.
 
+    Note: Throughout this documentation, Python code examples are meant to be saved as files and executed using `python app.py`. These examples are not intented to run in Jupyter notebooks as-is, although most can be modified slightly to function in that environment.
+
     '''),
 
     rc.Syntax(examples['getting_started_layout_1.py'][0], summary='''
@@ -119,13 +121,15 @@ layout = html.Div([
 
     rc.Syntax(examples['getting_started_layout_2.py'][0], summary='''
         Let's customize the text in our app by modifying the inline styles of the
-        components:
-    '''),
+        components. Create a file named `app.py` with the following code:
+        '''),
 
     html.Div(examples['getting_started_layout_2.py'][1], className="example-container", style={
         'padding-right': '35px',
         'padding-bottom': '30px'
     }),
+
+
 
     rc.Markdown('''
         In this example, we modified the inline styles of the `html.Div`
@@ -164,7 +168,7 @@ layout = html.Div([
         examples['getting_started_table.py'][0],
         summary="""
             Here's a quick example that
-            generates a `Table` from a Pandas dataframe.
+            generates a `Table` from a Pandas dataframe. Create a file named `app.py` with the following code:
         """
     ),
 
@@ -189,7 +193,7 @@ layout = html.Div([
     '''),
 
     rc.Syntax(examples['getting_started_viz.py'][0], summary='''
-    Here's an example that creates a scatter plot from a Pandas dataframe.
+    Here's an example that creates a scatter plot from a Pandas dataframe. Create a file named `app.py` with the following code:
     '''),
 
     rc.Example(examples['getting_started_viz.py'][1]),
@@ -206,7 +210,7 @@ layout = html.Div([
         While Dash exposes HTML through the `dash_html_components` library,
         it can be tedious to write your copy in HTML.
         For writing blocks of text, you can use the `Markdown` component in the
-        `dash_core_components` library.
+        `dash_core_components` library. Create a file named `app.py` with the following code:
     '''),
 
     rc.Syntax(examples['getting_started_markdown.py'][0]),
@@ -234,7 +238,7 @@ layout = html.Div([
 
     rc.Syntax(
         examples['getting_started_core_components.py'][0],
-        summary="Here are a few of the available components:"),
+        summary="Here are a few of the available components. Create a file named `app.py` with the following code:"),
 
     html.Div(examples['getting_started_core_components.py'][1], className="example-container"),
 

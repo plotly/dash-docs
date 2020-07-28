@@ -13,7 +13,6 @@ app = dash.Dash(__name__)
 filename = 'https://raw.githubusercontent.com/plotly/datasets/master/mitochondria.jpg'
 
 canvas_width = 300
-img = io.imread(filename, as_gray=True)
 
 app.layout = html.Div([
     html.H6('Annotate the two objects and the background'),
@@ -34,9 +33,9 @@ app.layout = html.Div([
               [Input('segmentation-canvas', 'json_data')])
 def segmentation(string):
     if string:
-        mask = parse_jsonstring(string, img.shape)
-        seg = watershed_segmentation(img, mask)
-        src = color.label2rgb(seg, image=img)
+        mask = parse_jsonstring(string, io.imread(filename, as_gray=True).shape)
+        seg = watershed_segmentation(io.imread(filename, as_gray=True), mask)
+        src = color.label2rgb(seg, image=io.imread(filename, as_gray=True))
     else:
         raise PreventUpdate
     return array_to_data_url(img_as_ubyte(src))

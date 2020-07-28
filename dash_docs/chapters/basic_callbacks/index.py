@@ -24,8 +24,7 @@ layout = html.Div([
 
     rc.Markdown('''
 
-        In the <dccLink href="/layout" children="previous chapter on
-        `app.layout`"/> we learned that the `app.layout` describes what the app
+        In the <dccLink href="/layout" children="previous chapter"/> we learned that the `app.layout` describes what the app
         looks like and is a hierarchical tree of components.
         The `dash_html_components` library provides classes for all of the HTML
         tags, and the keyword arguments describe the HTML attributes like
@@ -33,15 +32,15 @@ layout = html.Div([
         generates higher-level components like controls and graphs.
 
         This chapter describes how to make your
-        Dash apps interactive.
+        Dash apps using callback functions: Python functions that are automatically called by Dash whenever an input component's property changes.
 
-        Let's get started with a simple example.
+        Let's get started with a simple example of an interactive Dash app.
 
     '''),
 
     html.H4('''
-    Dash App Layout
-    ''', id='dash-app-layout'),
+    Simple Interactive Dash App
+    ''', id='simple-dash-app'),
 
     rc.Markdown(
         examples['getting_started_interactive_simple.py'][0],
@@ -51,16 +50,36 @@ layout = html.Div([
     html.Div(examples['getting_started_interactive_simple.py'][1], className="example-container"),
 
     rc.Markdown('''
-    Try typing in the text box. The children of the output component updates
-    right away. Let's break down what's happening here:
+    Let's break down this example:
 
-    1. The "inputs" and "outputs" of our application interface are described
-       declaratively through the `app.callback` decorator.
+    1. The "inputs" and "outputs" of our application's interface are described
+       declaratively as the arguments of the `@app.callback` decorator.
+    '''),
+
+    html.Details(open=False, children=[
+        html.Summary('Learn more about using the `@app.callback` decorator.'),
+        rc.Markdown('''
+        a. By writing this decorator, we're telling Dash to call this function for us whenever the value of the "input" component (the text box) changes in order to update the children of the "output" component on the page (the HTML div).
+
+        b. You can use any name for the function that is wrapped by the `@app.callback` decorator. The convention is that the name describes the callback output(s).
+
+        c. You can use any name for the function arguments, but you must use the same names inside the callback function as you do in its definition, just like in a regular Python function. The arguments are positional: first the `Input` items and then any `State` items are given in the same order as in the decorator.
+
+        d. You must use the same `id` you gave a Dash component in the `app.layout` when referring to it as either an input or output of the `@app.callback` decorator.
+
+        e. The `@app.callback` decorator needs to be directly above the callback function declaration. If there is a blank line between the decorator and the function definition, the callback registration will not be successful.
+
+        f. If you're curious about what the decorator syntax means under the hood, you can read [this StackOverflow answer](https://stackoverflow.com/questions/739654/how-to-make-a-chain-of-function-decorators/1594484#1594484) and learn more about decorators by reading [PEP 318 -- Decorators for Functions and Methods](https://www.python.org/dev/peps/pep-0318/#current-syntax).
+        ''', style={'marginTop': 10}),
+    ], style={'marginBottom': 25}),
+
+
+    rc.Markdown('''
     2. In Dash, the inputs and outputs of our application are simply the
        properties of a particular component. In this example,
        our input is the "`value`" property of the component that has the ID
-       "`my-id`". Our output is the "`children`" property of the
-       component with the ID "`my-div`".
+       "`my-input`". Our output is the "`children`" property of the
+       component with the ID "`my-output`".
     3. Whenever an input property changes, the function that the
        callback decorator wraps will get called automatically.
        Dash provides the function with the new value of the input property as
@@ -68,17 +87,16 @@ layout = html.Div([
        with whatever was returned by the function.
     4. The `component_id` and `component_property` keywords are optional
        (there are only two arguments for each of those objects).
-       I have included them here for clarity but I will omit them from here on
-       out for brevity and readability.
+       They are included in this example for clarity but will be omitted in the rest of the documentation for the sake of brevity and readability.
     5. Don't confuse the `dash.dependencies.Input` object and the
        `dash_core_components.Input` object. The former is just used in these
        callbacks and the latter is an actual component.
     6. Notice how we don't set a value for the `children` property of the
-       `my-div` component in the `layout`. When the Dash app starts, it
+       `my-output` component in the `layout`. When the Dash app starts, it
        automatically calls all of the callbacks with the initial values of the
        input components in order to populate the initial state of the output
        components. In this example, if you specified something like
-       `html.Div(id='my-div', children='Hello world')`, it would get
+       `html.Div(id='my-output', children='Hello world')`, it would get
        overwritten when the app starts.
 
     It's sort of like programming with Microsoft Excel:
@@ -98,6 +116,10 @@ layout = html.Div([
     Let's take a look at another example where a `dcc.Slider` updates a
     `dcc.Graph`.
     '''),
+
+    html.H4('''
+    Dash App Layout With Figure and Slider
+    ''', id='dash-app-with-slider'),
 
     rc.Markdown(
         examples['getting_started_graph.py'][0],
@@ -145,7 +167,13 @@ layout = html.Div([
        of how the dataset evolves with time: transitions allow the chart to
        update from one state to the next smoothly, as if it were animated.
 
-    ## Multiple inputs
+    '''),
+
+    html.H4('''
+    Dash App With Multiple Inputs
+    ''', id='dash-app-multiple-inputs'),
+
+    rc.Markdown('''
 
     In Dash, any "`Output`" can have multiple "`Input`" components.
     Here's a simple example that binds five Inputs
@@ -185,7 +213,13 @@ layout = html.Div([
 
     Let's extend our example to include multiple outputs.
 
-    ## Multiple Outputs
+    '''),
+
+    html.H4('''
+    Dash App With Multiple Outputs
+    ''', id='dash-app-multiple-outputs'),
+
+    rc.Markdown('''
 
     *New in dash 0.39.0*
 
@@ -213,7 +247,13 @@ layout = html.Div([
     - If they have the same Inputs but do independent computations with these
       inputs, keeping the callbacks separate can allow them to run in parallel.
 
-    ## Chained Callbacks
+    '''),
+
+    html.H4('''
+    Dash App With Chained Callbacks
+    ''', id='dash-app-chained-callbacks'),
+
+    rc.Markdown('''
 
     You can also chain outputs and inputs together: the output of one callback
     function could be the input of another callback function.
@@ -244,7 +284,13 @@ layout = html.Div([
     before calling the final callback. This prevents your callbacks from being
     called with inconsistent state like with `"America"` and `"Montréal"`.
 
-    ## State
+    '''),
+
+    html.H4('''
+    Dash App With State
+    ''', id='dash-app-state'),
+
+    rc.Markdown('''
 
     In some cases, you might have a "form"-type pattern in your
     application. In such a situation, you might want to read the value
@@ -295,9 +341,11 @@ layout = html.Div([
 
     '''),
 
-    rc.Markdown('''
+    html.H4('''
+    Summary
+    ''', id='basic-callbacks-summary'),
 
-    ### Summary
+    rc.Markdown('''
 
     We've covered the fundamentals of callbacks in Dash.
     Dash apps are built off of a set

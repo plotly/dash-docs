@@ -86,6 +86,13 @@
         "required": false,
         "description": "The ID used to identify this component in Dash callbacks."
       },
+      "children": {
+        "type": {
+          "name": "node"
+        },
+        "required": false,
+        "description": "Custom content in the \"no results found\" panel"
+      },
       "urls": {
         "type": {
           "name": "array"

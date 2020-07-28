@@ -38,8 +38,8 @@ layout = html.Div([
     - Notice how the `id` in `dcc.Dropdown` is a _dictionary_ rather than a _string_.
     This is a new feature that we enabled for pattern-matching callbacks
     (previously, IDs had to be strings).
-    - In our second callback, we have `Input({'type': 'dropdown', 'index': ALL}, 'value')`.
-    This means "match any input that has an ID dictionary where `'type'` is `'dropdown'`
+    - In our second callback, we have `Input({'type': 'filter-dropdown', 'index': ALL}, 'value')`.
+    This means "match any input that has an ID dictionary where `'type'` is `'filter-dropdown'`
     and `'index'` is _anything_. Whenever the `value` property of any of the
     dropdowns change, send _all_ of their values to the callback."
     - The keys & values of the ID dictionary (`type`, `index`, `filter-dropdown`)

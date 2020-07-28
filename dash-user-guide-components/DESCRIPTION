@@ -1,6 +1,6 @@
 Package: dashUserGuideComponents
 Title: Custom components for Dash's user guide
-Version: 0.0.3
+Version: 0.0.4
 Description: Custom components for Dash's user guide
 Depends: R (>= 3.0.2)
 Imports: 

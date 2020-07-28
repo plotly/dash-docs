@@ -1,7 +1,7 @@
 % Auto-generated: do not edit by hand
-\name{PageMenu}
+\name{pageMenu}
 
-\alias{PageMenu}
+\alias{pageMenu}
 
 \title{PageMenu component}
 
@@ -10,7 +10,7 @@
 }
 
 \usage{
-PageMenu(id=NULL, dummy=NULL, dummy2=NULL, loading_state=NULL)
+pageMenu(id=NULL, dummy=NULL, dummy2=NULL, loading_state=NULL)
 }
 
 \arguments{

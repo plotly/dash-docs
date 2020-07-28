@@ -542,27 +542,23 @@ Starting with Dash 1.0.0, `serve_locally` defaults to `True`.
     CDNs can often deliver these files much faster than loading the resources
     from the file system, and will reduce the load on the Dash server.
 
-    Here's how to enable CDN serving. `app.scripts` is the most important one,
-    that controls the JavaScript files, but `app.css` can sometimes help too:
-
     '''),
 
     rc.Markdown('''
     ```python
     from dash import Dash
 
-    app = Dash()
+    app = dash.Dash(__name__, serve_locally=False)
 
-    app.css.config.serve_locally = False
-    app.scripts.config.serve_locally = False
     ''',
         style={'borderLeft': 'thin lightgrey solid'}
     ),
 
     rc.Markdown('''
 
-    Note that in the future, we will likely make "offline" the default option.
-    [Follow dash#284](https://github.com/plotly/dash/issues/284) for more information.
+    This will load the bundles from the https://unpkg.com/ cdn which is a community-maintained project that serves JavaScript bundles from NPM. We don't maintain it, so we cannot attest or guarantee to its uptime, performance, security, or long term availability.
+    
+    Also note that we don't publish the dev bundles to `unpkg`, so when running the app locally with `python app.py`, the local JS files will be served. When the app is deployed with `gunicorn`, it'll switch to the CDN.
 
     ***
 

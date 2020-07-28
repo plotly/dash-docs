@@ -33,10 +33,16 @@
     <loc>https://dash.plotly.com/cytoscape/events</loc>
 </url>
 <url>
+    <loc>https://dash.plotly.com/cytoscape/images</loc>
+</url>
+<url>
     <loc>https://dash.plotly.com/cytoscape/layout</loc>
 </url>
 <url>
     <loc>https://dash.plotly.com/cytoscape/reference</loc>
+</url>
+<url>
+    <loc>https://dash.plotly.com/cytoscape/responsive</loc>
 </url>
 <url>
     <loc>https://dash.plotly.com/cytoscape/styling</loc>
