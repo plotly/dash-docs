@@ -63,7 +63,7 @@ header = html.Div(
                         'height': '30px',
                         'verticalAlign': 'middle',
                         'marginTop': '9px',
-                        'width': '105px'
+                        'width': '120px'
                     }
                 ),
             ])

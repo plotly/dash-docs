@@ -36,8 +36,6 @@ layout <- htmlDiv(list(
 
                 ```remotes::install_github('plotly/dash-canvas')```
 
-                A gallery of examples is hosted [here]( https://dash-canvas.plotly.host/)
-
                 ### DashCanvas: a canvas object for annotations
 
                 Let's get started with a simple canvas object
@@ -141,8 +139,7 @@ layout <- htmlDiv(list(
 
                 ### More examples
 
-                A gallery of examples using ``DashCanvas`` is deployed on
-                https://dash-canvas.plotly.host/, its source code is
+                A gallery of examples using ``DashCanvas`` is available at
                 [plotly/canvas-portal](https://github.com/plotly/canvas-portal).
                 ')
     #Might also need to make a reference for EBImage and/or imager
