@@ -500,18 +500,22 @@ app$callback(
                 components$Chapter(
                 'Dash DataTable',
                 href='/datatable',
-                caption="(New! Released Nov 2, 2018) The Dash DataTable is our latest and most advanced component.
-                It is an interactive table that supports rich styling, conditional formatting, editing, sorting, filtering, and more."
+                caption="`dash_table.DataTable`` is an interactive table that supports rich styling, conditional formatting, editing, sorting, filtering, and more."
+                ),
+                components$Chapter(
+                  'Dash Bio Components',
+                  href='/dash-bio',
+                  caption="Dash Bio is a component library dedicated to visualizing bioinformatics data."
                 ),
                 components$Chapter(
                 'Dash DAQ Components',
                 href='/dash-daq',
-                caption="Beautifully styled technical components for data acquisition and engineering applications."
+                caption="Beautifully styled technical components for data acquisition, monitoring, and engineering applications."
                 ),
                 components$Chapter(
                 'Dash Canvas',
                 href='/dash-canvas',
-                caption="(New! Released March 2019) Drawing and annotations for image processing."
+                caption="Image rendering, drawing, annotations for image processing applications."
                 ),
                 components$Chapter(
                 'Dash Cytoscape',
@@ -520,9 +524,10 @@ app$callback(
                 user-friendly R interface to create beautiful, customizable, interactive and reactive graphs."
                 ),
                 components$Chapter(
-                'Dash Bio Components',
-                href='/dash-bio',
-                caption="(New! Released April 2019) Components dedicated to visualizing bioinformatics data."
+                  'Dash Booststrap Components',
+                  href='https://dash-bootstrap-components.opensource.faculty.ai/',
+                  caption="A library of Bootstrap components created by [faculty.ai](https://faculty.ai/). Dash Boostrap Components makes it easier
+                  to build consistently styled apps with complex, responsive layouts."
                 )
               )
             ),
