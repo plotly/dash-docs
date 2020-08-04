@@ -656,7 +656,7 @@ URLS = [
                 'chapters': [
                     {
                         'url': 'https://dash-bootstrap-components.opensource.faculty.ai/',
-                        'name': 'External Link',
+                        'name': 'faculty.ai',
                         'description': (
                             'A library of Bootstrap components '
                             'created by [faculty.ai](https://faculty.ai/). '
