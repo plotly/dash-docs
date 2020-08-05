@@ -500,7 +500,7 @@ app$callback(
                 components$Chapter(
                 'Dash DataTable',
                 href='/datatable',
-                caption="`dash_table.DataTable`` is an interactive table that supports rich styling, conditional formatting, editing, sorting, filtering, and more."
+                caption="`dash_table.DataTable` is an interactive table that supports rich styling, conditional formatting, editing, sorting, filtering, and more."
                 ),
                 components$Chapter(
                   'Dash Bio Components',
