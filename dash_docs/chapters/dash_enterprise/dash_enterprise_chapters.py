@@ -65,7 +65,7 @@ Initialize = html.Div(children=[
         (app names must start with a lowercase letter and may
         contain only lowercase letters, numbers, and -) and then
         hit **Create**. It is important to keep in mind that this name is going
-        to be part of the URL for your application.
+        to be part of the URL for your application...
 
     '''),
 
