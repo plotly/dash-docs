@@ -20,7 +20,7 @@ In addition to pagination, `DataTable` also has virtualization capabilities for 
 Virtualization saves browser resources while still permitting the user to scroll through
 the entire dataset. It achieves this by only a rendering a subset of the data at any instant.
 
-The virtualiztion backend makes a few assumptions about the style of your `DataTable`
+The virtualization backend makes a few assumptions about the style of your `DataTable`
 which must be adhered to in order to ensure that the table scrolls smoothly.
 
 - the width of the columns is fixed

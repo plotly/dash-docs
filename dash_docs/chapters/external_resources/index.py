@@ -410,7 +410,7 @@ Starting with Dash 1.0.0, `serve_locally` defaults to `True`.
         app.run_server(debug=True)
     ```
 
-    Updating the page based off of the URL would be similiar: the input of the
+    Updating the page based off of the URL would be similar: the input of the
     callback would be the `pathname` property of `dcc.Location`. See the
     <dccLink href="/urls" children="URLs and Multi Page Apps"/> chapter for
     a `dcc.Location` example.
@@ -580,7 +580,7 @@ Starting with Dash 1.0.0, `serve_locally` defaults to `True`.
     ),
 
     rc.Markdown('''
-    Notice the `request_pre` function takes the payload of the request being sent as its argument, and the `request_post` fuction takes both the payload and the response of the server
+    Notice the `request_pre` function takes the payload of the request being sent as its argument, and the `request_post` function takes both the payload and the response of the server
     as arguments. These can be altered in our function, allowing you to modify the response and request objects that Dash sends to the server. In the example above, the `request_pre`
     function is fired before each server call, and in the case of this example, it will `console.log()` the request parameter. The `request_post` function will fire __after__ each server
     call, and in our example will also print out the response parameter.

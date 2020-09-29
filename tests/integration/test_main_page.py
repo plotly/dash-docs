@@ -54,7 +54,9 @@ def test_snap001_index_page_links(dash_doc, index_pages):
                 '.map(a=>a.attributes.href.value)'
             )
             for link in linked_paths:
-                if link.rstrip('/') not in URL_TO_CONTENT_MAP and link not in good_links:
+                if (link.rstrip('/') not in URL_TO_CONTENT_MAP and
+                        link not in good_links and
+                        '.mp4' not in link):  # we link to a video on the devtools page
                     msg = '{} --- on page {}'.format(link, resource)
                     logger.info(msg)
                     bad_links.append(msg)

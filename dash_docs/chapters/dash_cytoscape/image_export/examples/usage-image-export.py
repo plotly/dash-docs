@@ -138,7 +138,7 @@ app.layout = html.Div([
         html.Div(style=styles['tab'], children=[
             html.Div(
                 id='image-text',
-                children='image data will apear hear',
+                children='image data will appear here',
                 style=styles['output']
             )
         ]),
@@ -168,7 +168,7 @@ def put_image_string(data):
     ])
 def get_image(tab, get_jpg_clicks, get_png_clicks, get_svg_clicks):
 
-    # File type to ouput of 'svg, 'png', 'jpg', or 'jpeg' (alias of 'jpg')
+    # File type to output of 'svg, 'png', 'jpg', or 'jpeg' (alias of 'jpg')
     ftype = tab
 
     # 'store': Stores the image data in 'imageData' !only jpg/png are supported

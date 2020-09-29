@@ -191,7 +191,7 @@ Graph = html.Div(children=[
         - **To get started with plotly**, learn how its documentation is organized:
             1. Learn the architecture of the `figure`: https://plotly.com/python/creating-and-updating-figures/
             2. Every chart type has a set of examples at a unique URL.
-            Familarize yourself with the structure of these pages. Google is your friend.
+            Familiarize yourself with the structure of these pages. Google is your friend.
             For example "Plotly Python Histogram Charts" is documented at
             https://plotly.com/python/histogram
             3. Plotly Express is the recommended high-level interface.
@@ -1357,7 +1357,7 @@ Tabs = html.Div(children=[
 Graphs = html.Div([
     html.H1('Graph Reference'),
     reusable_components.Markdown('''
-    Custimize the [Plotly.js config options](https://plotly.com/javascript/configuration-options/) of your graph using
+    Customize the [Plotly.js config options](https://plotly.com/javascript/configuration-options/) of your graph using
     the `config` property. The example below uses the `showSendToCloud` and `plotlyServerURL` options include a
     save button in the modebar of the graph which exports the figure to URL specified by `plotlyServerURL`.
 
@@ -1459,7 +1459,7 @@ Store = html.Div([
     - The maximum browser [storage space](https://demo.agektmr.com/storage/) is determined by the following factors:
         - your own hard drive size
         - mobile or laptop
-        - the browser, under which a sophiticated algorithm is implmented within *Quota Management*
+        - the browser, under which a sophisticated algorithm is implemented within *Quota Management*
         - storage encoding where UTF-16 can end up saving only half of the size of UTF-8
 
       It's generally safe to store up to 2MB in most environments, and 5~10MB in most desktop-only applications.

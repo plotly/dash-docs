@@ -27,7 +27,8 @@ This forum is great for showing off projects, feature requests,
 and general questions.
 
 If you have found a bug, you can open an issue on GitHub at
-[plotly/dash](https://github.com/plotly/dash).
+[plotly/dash](https://github.com/plotly/dash) or 
+[plotly/dash-docs](https://github.com/plotly/dash-docs/).
 
 ### Direct Contact
 

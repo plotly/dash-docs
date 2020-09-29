@@ -17,7 +17,7 @@ layout = html.Div([
     is performing an action that should require an extra step of verification.
 
     See <dccLink href="/dash-core-components/confirmdialogprovider" children="dcc.ConfirmDialogProvider"/>
-    for an easier way to dispay an alert when clicking on an item.
+    for an easier way to display an alert when clicking on an item.
     '''),
     rc.Syntax(examples['confirm.py'][0]),
     rc.Example(examples['confirm.py'][1]),

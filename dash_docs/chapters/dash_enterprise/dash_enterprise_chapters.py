@@ -200,7 +200,7 @@ def display_instructions2(platform):
         **Downloading a Sample App**, which is already setup
         for deployment. Alternatively, you can select **Create New App** to
         run through creating and deploying an app from the beginning.
-        Otherwise, if you already have an exisiting app locally that you would
+        Otherwise, if you already have an existing app locally that you would
         like to deploy, then select **Deploy Existing App**.
 
         &nbsp;
@@ -682,7 +682,7 @@ def display_instructions_deploy(method):
 
         #### Deploy Failed?
 
-        If your depoly has been unsuccesful, you can check that you have the
+        If your deploy has been unsuccessful, you can check that you have the
         <dccLink href="/dash-enterprise/application-structure" children="necessary files required for deployment"/>,
         or if you have a specific error, take a look at
         <dccLink href="/dash-enterprise/troubleshooting" children="Common Errors"/>.
@@ -945,7 +945,7 @@ staticAssets = html.Div(children=[
     serve all of the files that are included in this folder.
 
     For more information about custom CSS, JavaScripts, HTML index template,
-    meta tags, or serving Dash's component libaries locally, see
+    meta tags, or serving Dash's component libraries locally, see
     <dccLink href="/external-resources" children="Dash Docs"/>.
 
     ***
@@ -2377,7 +2377,7 @@ PrivatePackages = html.Div(children=[
     rc.Markdown('''
 
     When a Dash App is deployed on the Dash Enterprise, the
-    `requirements.txt` will install the relevant python dependecies. If you
+    `requirements.txt` will install the relevant python dependencies. If you
     want to add private python packages you will need amend the
     `requirements.txt` file. This can be done via two methods: (1) using
     tarballs or (2) using environment variables.
@@ -2393,7 +2393,7 @@ PrivatePackages = html.Div(children=[
     -- .gitignore
     -- app.py
     -- Procfile
-    -- requiremnents.txt
+    -- requirements.txt
     -- myPackage.tar.gz
     ```
 
@@ -3376,7 +3376,7 @@ Portal = html.Div(children=[
     make it easier to find/customize its appearance.
 
     > Note that only users with access to your app will be able
-    to see it in the portal. For more information about setting app pricacy
+    to see it in the portal. For more information about setting app privacy
     see <dccLink href="/dash-enterprise/privacy" children="Dash App Privacy"/>.
 
     &nbsp;
@@ -3715,7 +3715,7 @@ Git = html.Div(children=[
     rc.Markdown(
     '''
     ```shell
-    $ git clone <respository-name>
+    $ git clone <repository-name>
     ```
     ''',
     style=styles.code_container),
@@ -3726,7 +3726,7 @@ Git = html.Div(children=[
 
     **Note:** the above command will generate a local Git repository on your
     machine, which by default will include the remote Github repository
-    `origin`. If you're concerned that you may accidently push to this
+    `origin`. If you're concerned that you may accidentally push to this
     repository, you can remove it. See the next section **Remote Repositories**
     for how to view and remove remote repositories.
 
@@ -3845,7 +3845,7 @@ Git = html.Div(children=[
     ```shell
     $ git add .
     $ git commit -m "a description of the changes"
-    $ git push <respository-name> master
+    $ git push <repository-name> master
     ```
     ''',
     style=styles.code_container),

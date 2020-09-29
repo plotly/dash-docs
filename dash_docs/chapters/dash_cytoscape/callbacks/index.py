@@ -245,7 +245,7 @@ layout = html.Div([
     rc.Markdown('''
 
     This is generally declared at the beginning of your script, before layout
-    declaration (therefore it is shared accross sessions). The city graph will
+    declaration (therefore it is shared across sessions). The city graph will
     look something like this:
     '''),
 

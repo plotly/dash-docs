@@ -40,8 +40,6 @@ layout = html.Div([
 
     The source is on GitHub at [plotly/dash-canvas](https://github.com/plotly/dash-canvas).
 
-    A gallery of examples is hosted at https://dash-canvas.plotly.host/.
-
     ### DashCanvas: a canvas object for annotations
 
     Let's get started with a simple canvas object.
@@ -160,8 +158,7 @@ layout = html.Div([
 
     ### More examples
 
-    A gallery of examples using ``DashCanvas`` is deployed on
-    https://dash-canvas.plotly.host/, its source code is
+    A gallery of examples using ``DashCanvas`` is available at
     [plotly/canvas-portal](https://github.com/plotly/canvas-portal).
     '''),
 

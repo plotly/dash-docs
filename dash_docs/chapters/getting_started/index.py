@@ -45,7 +45,7 @@ layout = html.Div([
     but you can also [build your own](https://github.com/plotly/dash-component-boilerplate)
     with JavaScript and React.js.
 
-    Note: Throughout this documentation, Python code examples are meant to be saved as files and executed using `python app.py`. These examples are not intented to run in Jupyter notebooks as-is, although most can be modified slightly to function in that environment.
+    Note: Throughout this documentation, Python code examples are meant to be saved as files and executed using `python app.py`. These examples are not intended to run in Jupyter notebooks as-is, although most can be modified slightly to function in that environment.
 
     '''),
 

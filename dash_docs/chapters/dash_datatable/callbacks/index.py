@@ -42,10 +42,10 @@ layout = html.Div([
 
     This should be avoided. Your users will expect
     that sorting and filtering is happening on the entire dataset and,
-    with large pages, might not be aware that this is only occuring
+    with large pages, might not be aware that this is only occurring
     on the current page.
 
-    Instead, we recommend implmenting sorting and filtering on the
+    Instead, we recommend implementing sorting and filtering on the
     backend as well. That is, on the entire underlying dataset.
 
     **Note for returning users - changed property names:**

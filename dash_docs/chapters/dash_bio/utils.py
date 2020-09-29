@@ -311,7 +311,7 @@ def generate_docs(
     :param (obj) library_heading: A rc.Markdown object that will be
     at the top of the documentation page; it should provide a brief
     description of the library.
-    :param (obj) library_install_instructions: A dcc.SyntaxHighligher
+    :param (obj) library_install_instructions: A dcc.SyntaxHighlighter
     object that contains the code needed to install the library.
     :param (dict[dict]) library_components: A dictionary for which the
     keys are the names of the components that are to be displayed, and

@@ -227,7 +227,7 @@ URLS = [
             {
                 'url': '/callback-gotchas',
                 'name': 'Callback Gotchas',
-                'description': 'Dash callbacks have some idiosyncracies that '
+                'description': 'Dash callbacks have some idiosyncrasies that '
                 'should be taken into consideration when building a Dash app. '
                 'If you\'re running into unexpected callback behavior, '
                 'and the rest of the documentation hasn\'t shed any light on '
@@ -651,6 +651,23 @@ URLS = [
                 ]
             },
 
+            {
+                'name': 'Dash Bootstrap Components',
+                'chapters': [
+                    {
+                        'url': 'https://dash-bootstrap-components.opensource.faculty.ai/',
+                        'name': 'faculty.ai',
+                        'description': (
+                            'A library of Bootstrap components '
+                            'created by [faculty.ai](https://faculty.ai/). '
+                            'Dash Bootstrap Components makes it easier to '
+                            'build consistently styled '
+                            'apps with complex, responsive layouts.'
+                        ),
+                    },
+                ]
+            }
+
         ]
     },
 
@@ -772,6 +789,13 @@ URLS = [
                 'content': chapters.testing.index.layout,
                 'name': 'Dash Testing',
                 'description': 'An introduction to testing your dash app with selenium'
+            },
+
+            {
+                'url': '/app-lifecycle',
+                'content': chapters.app_lifecycle.index.layout,
+                'name': 'Dash App Lifecylce',
+                'description': 'An overview of the lifecyle of a Dash app'
             }
 
         ],
@@ -875,7 +899,7 @@ URLS = [
                     {
                         'url': '/dash-enterprise/configure-system-dependencies',
                         'content': chapters.dash_enterprise.dash_enterprise_chapters.ConfigSys,
-                        'name': 'Configuring System Dependencie',
+                        'name': 'Configuring System Dependencies',
                         'description': 'Install and configure system dependencies such '
                         'as database drivers or the Java JRE environment.'
                     },
@@ -906,7 +930,7 @@ URLS = [
                     {
                         'url': '/dash-enterprise/environment-variables',
                         'content': chapters.dash_enterprise.dash_enterprise_chapters.EnvVars,
-                        'name': 'Setting Enviornment Variables',
+                        'name': 'Setting Environment Variables',
                         'description': 'Environment variables are commonly used to store '
                         'secret variables like database passwords.'
                     },
@@ -947,7 +971,7 @@ URLS = [
                         'url': '/dash-enterprise/private-packages',
                         'content': chapters.dash_enterprise.dash_enterprise_chapters.PrivatePackages,
                         'name': 'Adding Private Python Packages',
-                        'description': 'Intsall private python packages in your Dash Apps.'
+                        'description': 'Install private python packages in your Dash Apps.'
                     },
                     {
                         'url': '/dash-enterprise/celery-process',
@@ -960,7 +984,7 @@ URLS = [
                         'content': chapters.dash_enterprise.dash_enterprise_chapters.StagingApp,
                         'name': 'Create a Staging Dash App ',
                         'description': 'Use a staged Dash App to test changes before updating '
-                        'your prodcution Dash App.'
+                        'your production Dash App.'
                     },
                     {
                         'url': '/dash-enterprise/pdf-service',

@@ -13,7 +13,7 @@ df <- cbind(index = 1:dim(df)[1], df)
 
 app$layout(
   dashDataTable(
-    id = 'table-virtualiztion',
+    id = 'table-virtualization',
     data = df_to_list(df),
     columns = lapply(colnames(df),
                      function(column) {

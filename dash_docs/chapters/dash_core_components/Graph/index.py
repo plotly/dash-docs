@@ -23,7 +23,7 @@ layout =  html.Div(children=[
         - **To get started with plotly**, learn how its documentation is organized:
             1. Learn the architecture of the `figure`: https://plot.ly/python/creating-and-updating-figures/
             2. Every chart type has a set of examples at a unique URL.
-            Familarize yourself with the structure of these pages. Google is your friend.
+            Familiarize yourself with the structure of these pages. Google is your friend.
             For example "Plotly Python Histogram Charts" is documented at
             https://plot.ly/python/histogram
             3. Plotly Express is the recommended high-level interface.

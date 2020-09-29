@@ -2,7 +2,7 @@
 Original Demo: http://js.cytoscape.org/demos/cose-layout/
 
 Note: This implementation looks different from the original implementation,
-although the input paramters are exactly the same.
+although the input parameters are exactly the same.
 """
 import requests
 import json

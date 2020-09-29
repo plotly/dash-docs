@@ -785,7 +785,7 @@ and they don't need to be bundled with your components.
 
 Now that you have your React component, you can build it and import it into your Dash program. View instructions on how to build the component in [the boilerplate repo](https://github.com/plotly/dash-component-boilerplate).
 
-In this tutorial, we rebuilt the `ExampleComponent` that was provided in [the boilerplate](https://github.com/plotly/dash-component-boilerplate/). So, the Python component code in `usage.py` should look familar - the properties and behaviour of `ExampleComponent` are exactly the same as our `TextInput`.
+In this tutorial, we rebuilt the `ExampleComponent` that was provided in [the boilerplate](https://github.com/plotly/dash-component-boilerplate/). So, the Python component code in `usage.py` should look familiar - the properties and behaviour of `ExampleComponent` are exactly the same as our `TextInput`.
 
 ***
 
