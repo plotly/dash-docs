@@ -1457,7 +1457,7 @@ Ssh = html.Div(children=[
     In these cases, it will be easier to set up deploying with SSH.
     - If your Dash Enterprise is configured with **SAML**, then the
     HTTPS method will not work.
-    - If you are facing timeout issues, deploying with SSH can be more reliable than
+    - If you are experiencing connectivity issues due to network latency, consider deploying with SSH instead; this method is often less susceptible to timeouts than HTTP, and so may provide a more reliable means of deploying your app. 
     deploying with HTTP
 
     ***
