@@ -26,6 +26,7 @@ from .import sharing_data
 from .import clientside_callbacks
 from .import advanced_callbacks
 from .import callback_gotchas
+from .import app_lifecycle
 from .import support
 from .import urls
 from .import react_for_python_developers
