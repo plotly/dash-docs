@@ -4,12 +4,14 @@ using PlotlyJS
 
 url = "https://plotly.github.io/datasets/country_indicators.csv"
 download(url, "country-indicators.csv")
-df = DataFrame(CSV.File("country-indicators.csv"))
+df6 = DataFrame(CSV.File("country-indicators.csv"))
 
-dropmissing!(df)
+rename!(df6, Dict(:"Year" => "year"))
 
-available_indicators = unique(df[:, "Indicator Name"])
-years = unique(df[:, "Year"])
+dropmissing!(df6)
+
+available_indicators = unique(df6[:, "Indicator Name"])
+years = unique(df6[:, "year"])
 
 app = dash()
 
@@ -103,11 +105,11 @@ callback!(
     Input("crossfilter-year-slider", "value"),
 ) do xaxis_column_name, yaxis_column_name, xaxis_type, yaxis_type, year_slider_value
 
-    dff = df[df.Year.==year_slider_value, :]
+    df6f = df6[df6.year .== year_slider_value, :]
 
     return Plot(
-        dff[dff[Symbol("Indicator Name")] .== xaxis_column_name, :Value],
-        dff[dff[Symbol("Indicator Name")] .== yaxis_column_name, :Value],
+        df6f[df6f[Symbol("Indicator Name")] .== xaxis_column_name, :Value],
+        df6f[df6f[Symbol("Indicator Name")] .== yaxis_column_name, :Value],
         Layout(
             xaxis_type = xaxis_type == "Linear" ? "linear" : "log",
             xaxis_title = xaxis_column_name,
@@ -117,12 +119,12 @@ callback!(
             height = 450,
         ),
         kind = "scatter",
-        text = dff[
-            dff[Symbol("Indicator Name")] .== yaxis_column_name,
+        text = df6f[
+            df6f[Symbol("Indicator Name")] .== yaxis_column_name,
             Symbol("Country Name"),
         ],
-        customdata = dff[
-            dff[Symbol("Indicator Name")] .== yaxis_column_name,
+        customdata = df6f[
+            df6f[Symbol("Indicator Name")] .== yaxis_column_name,
             Symbol("Country Name"),
         ],
         mode = "markers",
@@ -133,10 +135,10 @@ callback!(
     )
 end
 
-function create_time_series(dff, axis_type, title)
+function create_time_series(df6f, axis_type, title)
     Plot(
-        dff[:, :Year],
-        dff[:, :Value],
+        df6f[:, :year],
+        df6f[:, :Value],
         Layout(
             yaxis_type = axis_type == "Linear" ? "linear" : "log",
             xaxis_showgrid = false,
@@ -166,10 +168,10 @@ callback!(
     Input("crossfilter-xaxis-type", "value"),
 ) do hover_data, xaxis_column_name, axis_type
     country_name = isnothing(hover_data) ? "" : hover_data.points[1].customdata
-    dff = df[df[:, Symbol("Country Name")].==country_name, :]
-    dff = dff[dff[:, Symbol("Indicator Name")].==xaxis_column_name, :]
+    df6f = df6[df6[:, Symbol("Country Name")].==country_name, :]
+    df6f = df6f[df6f[:, Symbol("Indicator Name")].==xaxis_column_name, :]
     title = "<b>$(country_name)</b><br>$(xaxis_column_name)"
-    return create_time_series(dff, axis_type, title)
+    return create_time_series(df6f, axis_type, title)
 
 end
 
@@ -181,9 +183,9 @@ callback!(
     Input("crossfilter-yaxis-type", "value"),
 ) do hover_data, yaxis_column_name, axis_type
     country_name = isnothing(hover_data) ? "" : hover_data.points[1].customdata
-    dff = df[df[:, Symbol("Country Name")].==country_name, :]
-    dff = dff[dff[:, Symbol("Indicator Name")].==yaxis_column_name, :]
-    return create_time_series(dff, axis_type, yaxis_column_name)
+    df6f = df6[df6[:, Symbol("Country Name")].==country_name, :]
+    df6f = df6f[df6f[:, Symbol("Indicator Name")].==yaxis_column_name, :]
+    return create_time_series(df6f, axis_type, yaxis_column_name)
 end
 
 run_server(app, "0.0.0.0", 8000, debug = true)

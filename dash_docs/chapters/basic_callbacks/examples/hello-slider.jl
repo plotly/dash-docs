@@ -3,9 +3,9 @@ using CSV, DataFrames, Dash, DashHtmlComponents, DashCoreComponents, PlotlyJS
 
 url = "https://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv"
 download(url, "gapminder-data.csv")
-df = DataFrame(CSV.File("gapminder-data.csv"))
+df1 = DataFrame(CSV.File("gapminder-data.csv"))
 
-years = unique(df[!, :year])
+years = unique(df1[!, :year])
 
 app = dash()
 
@@ -27,7 +27,7 @@ callback!(
     Input("year-slider-1", "value"),
 ) do selected_year
     return Plot(
-        df[df.year.== selected_year, :],
+        df1[df1.year .== selected_year, :],
         Layout(
             xaxis_type = "log",
             xaxis_title = "GDP Per Capita",
@@ -40,8 +40,8 @@ callback!(
         x = :gdpPercap,
         y = :lifeExp,
         text = :country,
-        mode = "markers",
         group = :continent,
+        mode = "markers",
         marker_size = 15,
         marker_line_color = "white",
     )

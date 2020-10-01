@@ -1,16 +1,6 @@
-using Dash
-using DashHtmlComponents
-using DashCoreComponents
+using Dash, DashHtmlComponents, DashCoreComponents
 
-include("/Users/josephdamiba/Downloads/code/work/plotly/dash-docs/dash_docs/utils.jl")
-
-app =  dash()
-
-basic_input = LoadExampleCode("./dash_docs/chapters/basic_callbacks/examples/basic-input.jl")
-
-basic_state = LoadExampleCode("./dash_docs/chapters/basic_callbacks/examples/basic-state.jl")
-
-callback_chain = LoadExampleCode("./dash_docs/chapters/basic_callbacks/examples/getting-started-callback-chain.jl")
+include("../../utils.jl")
 
 hello_slider = LoadExampleCode("./dash_docs/chapters/basic_callbacks/examples/hello-slider.jl")
 
@@ -19,6 +9,22 @@ multi_inputs = LoadExampleCode("./dash_docs/chapters/basic_callbacks/examples/mu
 multi_outputs = LoadExampleCode("./dash_docs/chapters/basic_callbacks/examples/multi-outputs.jl")
 
 simple_callback = LoadExampleCode("./dash_docs/chapters/basic_callbacks/examples/simple-callback.jl")
+
+basic_input = LoadExampleCode("./dash_docs/chapters/basic_callbacks/examples/basic-input.jl")
+
+basic_state = LoadExampleCode("./dash_docs/chapters/basic_callbacks/examples/basic-state.jl")
+
+callback_chain = LoadExampleCode("./dash_docs/chapters/basic_callbacks/examples/getting-started-callback-chain.jl")
+
+app =  dash()
+basic_input.callback!(app)
+basic_state.callback!(app)
+callback_chain.callback!(app)
+hello_slider.callback!(app)
+multi_inputs.callback!(app)
+multi_outputs.callback!(app)
+simple_callback.callback!(app)
+
 
 app.layout = html_div() do
     html_h1("Basic Dash Callbacks"),
@@ -115,7 +121,7 @@ app.layout = html_div() do
     In this example, the callback function gets called whenever the `value`
     property of the `Dropdown`, `Slider`, or `RadioItems` components change.
 
-    THe input arguments of the callback function are the new or current value of
+    The input arguments of the callback function are the new or current value of
     each of the `Input` properties, in the order that they were specified.
 
     Even though only a single `Input` changes at a time (a user can only

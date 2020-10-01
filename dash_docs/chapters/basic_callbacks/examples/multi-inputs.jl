@@ -4,12 +4,14 @@ using CSV, DataFrames, Dash, DashHtmlComponents, DashCoreComponents, PlotlyJS
 url = "https://plotly.github.io/datasets/country_indicators.csv"
 download(url, "country-indicators.csv")
 
-df = DataFrame(CSV.File("country-indicators.csv"))
+df2 = DataFrame(CSV.File("country-indicators.csv"))
 
-dropmissing!(df)
+dropmissing!(df2)
 
-available_indicators = unique(df[!, "Indicator Name"])
-years = unique(df[!, "Year"])
+rename!(df2, Dict(:"Year" => "year"))
+
+available_indicators = unique(df2[!, "Indicator Name"])
+years = unique(df2[!, "year"])
 
 app = dash()
 
@@ -68,10 +70,10 @@ callback!(
     Input("yaxis-type", "value"),
     Input("year-slider-2", "value"),
 ) do xaxis_column_name, yaxis_column_name, xaxis_type, yaxis_type, year_value
-    dff = df[df.Year.== year_value, :]
+    df2f = df2[df2.year .== year_value, :]
     return Plot(
-        dff[dff[!, Symbol("Indicator Name")] .== xaxis_column_name, :Value],
-        dff[dff[!, Symbol("Indicator Name")] .== yaxis_column_name, :Value],
+        df2f[df2f[!, Symbol("Indicator Name")] .== xaxis_column_name, :Value],
+        df2f[df2f[!, Symbol("Indicator Name")] .== yaxis_column_name, :Value],
         Layout(
             xaxis_type = xaxis_type == "Linear" ? "linear" : "log",
             xaxis_title = xaxis_column_name,
@@ -80,8 +82,8 @@ callback!(
             hovermode = "closest",
         ),
         kind = "scatter",
-        text = dff[
-            dff[Symbol("Indicator Name")] .== yaxis_column_name,
+        text = df2f[
+            df2f[Symbol("Indicator Name")] .== yaxis_column_name,
             Symbol("Country Name"),
         ],
         mode = "markers",
