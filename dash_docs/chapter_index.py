@@ -800,7 +800,17 @@ URLS = [
 
         ],
     },
-
+    {
+        'name': 'Ecosystem Integration',
+        'chapters': [
+            {
+                'url': '/holoviews',
+                'content': chapters.holoviews.index.layout,
+                'name': 'HoloViews',
+                'description': 'HoloViews integration'
+            },
+        ]
+    },
     {
         'name': 'Production',
         'chapters': [
