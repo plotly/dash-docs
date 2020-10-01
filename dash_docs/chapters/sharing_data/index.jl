@@ -1,6 +1,11 @@
 using Dash, DashHtmlComponents, DashCoreComponents
 
 include("../../utils.jl")
+include("../../styles.jl")
+
+include("../../reusable_components/Header.jl")
+include("../../reusable_components/Example.jl")
+include("../../reusable_components/Syntax.jl")
 
 scoping_wrong = LoadExampleCode("./dash_docs/chapters/sharing_data/examples/scoping_wrong.jl")
 scoping = LoadExampleCode("./dash_docs/chapters/sharing_data/examples/scoping.jl")
@@ -11,7 +16,7 @@ scoping.callback!(app)
 
 
 app.layout = html_div() do
-    html_h1("Sharing Data Between Callbacks"),
+    Header("Sharing Data Between Callbacks"),
     html_blockquote(dcc_markdown("This is the 5th chapter of the [Dash Tutorial](/).
     The [previous chapter](/interactive-visualization) covered how to use callbacks with
     the `dcc_graph` component. The [next and final chapter](/faqs) covers
@@ -52,8 +57,8 @@ app.layout = html_div() do
     work reliably* for the reasons outlined above.
 
     "),
-    scoping_wrong.source_code,
-    scoping_wrong.layout,
+    Syntax(scoping_wrong.source_code),
+    Example(scoping_wrong.layout),
 
 
     dcc_markdown("""
@@ -63,8 +68,8 @@ app.layout = html_div() do
 
     """),
 
-    scoping.source_code,
-    scoping.layout,
+    Syntax(scoping.source_code),
+    Example(scoping.layout),
 
 
     dcc_markdown("""
@@ -226,6 +231,9 @@ app.layout = html_div() do
     ```
     """),
     dcc_markdown("
+    The next chapter of the tutorial covers frequently asked questions about Dash and
+    some common gotchas.
+
     [Dash Tutorial Part 6: FAQs and Gotchas](/faqs)
     ")
 end

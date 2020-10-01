@@ -1,6 +1,12 @@
 using Dash, DashHtmlComponents, DashCoreComponents
 
 include("../../utils.jl")
+include("../../styles.jl")
+
+include("../../reusable_components/Header.jl")
+include("../../reusable_components/Example.jl")
+include("../../reusable_components/Syntax.jl")
+
 
 getting_started_layout_1 = LoadExampleCode("./dash_docs/chapters/getting_started/examples/getting_started_layout_1.jl")
 
@@ -17,7 +23,7 @@ getting_started_layout_6 = LoadExampleCode("./dash_docs/chapters/getting_started
 app = dash()
 
 app.layout = html_div() do
-    html_h1("Dash Layout"),
+    Header("Dash Layout"),
     html_blockquote(dcc_markdown("This is the 2nd chapter of the [Dash Tutorial](/).
     The previous chapter covered [installation](/installation) and the next chapter covers [Dash callbacks](/basic-callbacks).")),
     dcc_markdown("""
@@ -38,8 +44,8 @@ app.layout = html_div() do
 
     To get started, create a file called `app.jl` with the following code:
     """),
-    getting_started_layout_1.source_code,
-    getting_started_layout_1.layout,
+    Syntax(getting_started_layout_1.source_code),
+    Example(getting_started_layout_1.layout),
 
     dcc_markdown("""
 
@@ -73,7 +79,7 @@ app.layout = html_div() do
 
     `app = dash(external_stylesheets = ["https://codepen.io/chriddyp/pen/bWLwgP.css"])`
     """),
-    html_h1("More About HTML"),
+    Header("More About HTML"),
     dcc_markdown("""
     The `DashHtmlComponents` package contains a component class for every HTML tag as well as keyword arguments for all of the
     HTML arguments.
@@ -81,8 +87,8 @@ app.layout = html_div() do
     Let's customize the text in our app by modifying the inline styles of the components:
     """),
 
-    getting_started_layout_2.source_code,
-    getting_started_layout_2.layout,
+    Syntax(getting_started_layout_2.source_code),
+    Example(getting_started_layout_2.layout),
 
     dcc_markdown("""
 
@@ -100,7 +106,7 @@ app.layout = html_div() do
     always the first argument and so it is often omitted. Besides that, all of the available HTML attributes and
     tags are available to you within your Julia context.
     """),
-    html_h1("Reusable Components"),
+    Header("Reusable Components"),
     dcc_markdown("""
     By writing our markup in Julia, we can create
     complex reusable components like tables without switching contexts or
@@ -109,9 +115,9 @@ app.layout = html_div() do
     Here's a quick example that generates a `Table` from a `DataFrame`.
     Create a file named `app.jl` with the following code:
     """),
-    getting_started_layout_3.source_code,
-    getting_started_layout_3.layout,
-    html_h1("More About Visualization"),
+    Syntax(getting_started_layout_3.source_code),
+    Example(getting_started_layout_3.layout),
+    Header("More About Visualization"),
     dcc_markdown("""
     The `DashCoreComponents` package includes a component called `graph`.
 
@@ -126,30 +132,35 @@ app.layout = html_div() do
     Here's an example that creates a scatter plot from a `DataFrame`. Create a file named `app.jl`
     with the following code:
     """),
-    getting_started_layout_4.source_code,
-    getting_started_layout_4.layout,
+    Syntax(getting_started_layout_4.source_code),
+    Example(getting_started_layout_4.layout),
     dcc_markdown("""
 
     These graphs are interactive and responsive. *Hover* over points to see their values, *click* on legend items to
     toggle traces, *click and drag* to zoom, *hold down shift and click and drag* to pan.
 
     """),
-    html_h1("Markdown"),
+    Header("Markdown"),
     dcc_markdown("""
     While Dash exposes HTML through the `DashHtmlComponents` package, it can be tedious to write your
     copy in HTML. For writing blocks of text, you can use the `dcc_markdown` component in the `DashCoreComponents` package.
     """),
-    getting_started_layout_5.source_code,
-    getting_started_layout_5.layout,
-    html_h1("Core Components"),
+    Syntax(getting_started_layout_5.source_code),
+    Example(getting_started_layout_5.layout),
+    Header("Core Components"),
     dcc_markdown("""
     The `DashCoreComponents` package includes a set of higher level components like
     dropdowns, graphs, markdown blocks, and more. Like all Dash components, they are described
     entirely declaratively. Every option that is configurable is available as a keyword
     argument to the component.
     """),
-    getting_started_layout_6.source_code,
-    getting_started_layout_6.layout
+    Syntax(getting_started_layout_6.source_code),
+    Example(getting_started_layout_6.layout),
+    dcc_markdown("""
+    The next part of the Dash tutorial covers how to make these apps interactive.
+
+    [Dash Tutorial Part 3: Basic Callbacks](/basic-callbacks)
+    """)
 end
 
 run_server(app, "0.0.0.0", debug=true)

@@ -1,11 +1,12 @@
 using Dash, DashHtmlComponents, DashCoreComponents
 
+include("../../reusable_components/Header.jl")
 
 app = dash()
 
 app.layout = html_div() do
+    Header("Dash Installation"),
     dcc_markdown("""
-    ## Dash Installation
 
     In order to use Dash, please ensure that you are using a version of Julia >= 1.2.
 
