@@ -11,10 +11,10 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 app.layout = html.Div([
     dcc.DatePickerSingle(
         id='my-date-picker-single',
-        min_date_allowed=dt(1995, 8, 5),
-        max_date_allowed=dt(2017, 9, 19),
-        initial_visible_month=dt(2017, 8, 5),
-        date=str(dt(2017, 8, 25, 23, 59, 59))
+        min_date_allowed=dt(1995, 8, 5).date(),
+        max_date_allowed=dt(2017, 9, 19).date(),
+        initial_visible_month=dt(2017, 8, 5).date(),
+        date=dt(2017, 8, 25, 23, 59, 59).date()
     ),
     html.Div(id='output-container-date-picker-single')
 ])
@@ -26,8 +26,8 @@ app.layout = html.Div([
 def update_output(date):
     string_prefix = 'You have selected: '
     if date is not None:
-        date = dt.strptime(re.split('T| ', date)[0], '%Y-%m-%d')
-        date_string = date.strftime('%B %d, %Y')
+        date_object = dt.strptime(date, '%Y-%m-%d')
+        date_string = date_object.strftime('%B %d, %Y')
         return string_prefix + date_string
 
 
