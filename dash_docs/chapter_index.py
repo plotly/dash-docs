@@ -666,8 +666,24 @@ URLS = [
                         ),
                     },
                 ]
-            }
+            },
 
+            {
+                'name': 'Dash Community Components',
+                'chapters': [
+                    {
+                        'url': 'https://plotly.com/dash-community-components/',
+                        'name': 'Components List',
+                        'description': (
+                            'A listicle of selected components from the Dash Community'
+                            'created by [The Dash Community](https://community.plotly.com/). '
+                            'Dash Components created by the '
+                            'world\'s largest open-source community '
+                            'for ML & data science web apps.'
+                        ),
+                    },
+                ]
+            }
         ]
     },
 
