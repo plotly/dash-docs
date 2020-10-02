@@ -225,7 +225,7 @@ dcc.RadioItems(
 
     html.H2(dcc.Link('DatePickerSingle', href=tools.relpath('/dash-core-components/datepickersingle'))),
     rc.ComponentBlock('''import dash_core_components as dcc
-from datetime import datetime as dt
+from datetime import date as dt
 
 dcc.DatePickerSingle(
     id='date-picker-single',
@@ -238,7 +238,7 @@ dcc.DatePickerSingle(
 
     html.H2(dcc.Link('DatePickerRange', href=tools.relpath('/dash-core-components/datepickerrange'))),
     rc.ComponentBlock('''import dash_core_components as dcc
-from datetime import datetime as dt
+from datetime import date as dt
 
 dcc.DatePickerRange(
     id='date-picker-range',

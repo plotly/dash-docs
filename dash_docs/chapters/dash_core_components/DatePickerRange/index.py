@@ -106,16 +106,16 @@ layout = html.Div(children=[
                  shown in the table above to change how selected dates are \
                  displayed in the `DatePickerRange` component."),
     rc.ComponentBlock('''import dash_core_components as dcc
-from datetime import datetime as dt
+from datetime import date as dt
 
 dcc.DatePickerRange(
-    end_date=dt(2017,6,21,23,59,59,999999),
+    end_date=dt(2017,6,21),
     display_format='MMM Do, YY',
     start_date_placeholder_text='MMM Do, YY'
 )'''),
 
     rc.ComponentBlock('''import dash_core_components as dcc
-from datetime import datetime as dt
+from datetime import date as dt
 dcc.DatePickerRange(
     end_date=dt(2017,6,21),
     display_format='M-D-Y-Q',
@@ -123,7 +123,7 @@ dcc.DatePickerRange(
 )'''),
 
     rc.ComponentBlock('''import dash_core_components as dcc
-from datetime import datetime as dt
+from datetime import date as dt
 
 dcc.DatePickerRange(
     end_date=dt(2017,6,21),
@@ -132,7 +132,7 @@ dcc.DatePickerRange(
 )'''),
 
     rc.ComponentBlock('''import dash_core_components as dcc
-from datetime import datetime as dt
+from datetime import date as dt
 
 dcc.DatePickerRange(
     end_date=dt(2017,6,21),
@@ -148,7 +148,7 @@ dcc.DatePickerRange(
                  shown in the table above to change how calendar titles \
                  are displayed in the `DatePickerRange` component."),
     rc.ComponentBlock('''import dash_core_components as dcc
-from datetime import datetime as dt
+from datetime import date as dt
 
 dcc.DatePickerRange(
     month_format='MMM Do, YY',
@@ -156,7 +156,7 @@ dcc.DatePickerRange(
     start_date=dt(2017,6,21)
 )'''),
     rc.ComponentBlock('''import dash_core_components as dcc
-from datetime import datetime as dt
+from datetime import date as dt
 
 dcc.DatePickerRange(
     month_format='M-D-Y-Q',
@@ -164,7 +164,7 @@ dcc.DatePickerRange(
     start_date=dt(2017,6,21)
 )'''),
     rc.ComponentBlock('''import dash_core_components as dcc
-from datetime import datetime as dt
+from datetime import date as dt
 
 dcc.DatePickerRange(
     month_format='MMMM Y',
@@ -172,7 +172,7 @@ dcc.DatePickerRange(
     start_date=dt(2017,6,21)
 )'''),
     rc.ComponentBlock('''import dash_core_components as dcc
-from datetime import datetime as dt
+from datetime import date as dt
 
 dcc.DatePickerRange(
     month_format='X',
@@ -193,7 +193,7 @@ dcc.DatePickerRange(
                   defined in the calendar input boxes when no date is \
                   selected."),
     rc.ComponentBlock('''import dash_core_components as dcc
-from datetime import datetime as dt
+from datetime import date as dt
 
 dcc.DatePickerRange(
     start_date_placeholder_text="Start Period",
@@ -215,7 +215,7 @@ dcc.DatePickerRange(
                   (`with_full_screen_portal`) and another being a simple \
                   screen overlay, like the one shown below (`with_portal`)."),
     rc.ComponentBlock('''import dash_core_components as dcc
-from datetime import datetime as dt
+from datetime import date as dt
 
 dcc.DatePickerRange(
     minimum_nights=5,
@@ -234,7 +234,7 @@ dcc.DatePickerRange(
                   day of the week. In the example below, Tuesday is \
                   the first day of the week."),
     rc.ComponentBlock('''import dash_core_components as dcc
-from datetime import datetime as dt
+from datetime import date as dt
 
 dcc.DatePickerRange(
     is_RTL=True,
