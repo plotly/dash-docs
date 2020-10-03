@@ -12,7 +12,7 @@ points = hv.Points(
     np.random.multivariate_normal((0, 0), [[1, 0.1], [0.1, 1]], (1000,))
 )
 
-# Declare points selection selection
+# Declare points selection
 sel = streams.Selection1D(source=points)
 
 # Declare DynamicMap computing mean y-value of selection
