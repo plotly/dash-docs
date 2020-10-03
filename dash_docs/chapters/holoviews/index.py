@@ -239,7 +239,7 @@ layout = html.Div([
     
     Try using the box-selection tool to select regions of space in each figure and
     notice how the selection of the corresponding data is displayed in both figures.
-    Note that only box selections is supported right now. Lasso selection support
+    Note that only box selection is supported right now. Lasso selection support
     is not yet implemented.    
     '''),
     rc.Markdown(
