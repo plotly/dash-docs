@@ -252,7 +252,7 @@ layout = html.Div([
     Another HoloViews feature that is particularly convenient for Dash users is the
     integration with [Datashader](https://datashader.org/).
     
-    Datashader is a Python library for quickly creating a variety principled
+    Datashader is a Python library for quickly creating a variety of principled
     visualizations of large datasets.
      
     While the Plotly `scattergl` trace can handle hundreds of thousands of points, 
