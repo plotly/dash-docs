@@ -119,8 +119,8 @@ layout = html.Div([
         Dash components.  
     - `kdims`: For Dimensioned HoloViews containers, the `kdims`
         property holds a dictionary from key-dimension names to Dash components
-        that represent sliders for each key-dimension. Dimensioned Containers are
-        not discussed further here, see the
+        that represent sliders for each key dimension. Dimensioned Containers are
+        not discussed further here; see the
         [Dimensioned Containers](http://holoviews.org/user_guide/Dimensioned_Containers.html)
         section in the HoloViews documentation for more information.
 
