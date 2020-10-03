@@ -196,7 +196,7 @@ layout = html.Div([
     ### Plot Hooks
     HoloViews aims to expose the most common plot options through the `opts` syntax
     above, but the coverage of possible plotly configuration options is not exhaustive.
-    HoloViews provides a system call plot hooks to make it possible to apply arbitrary 
+    HoloViews provides a system called "plot hooks" to make it possible to apply arbitrary 
     figure customizations.  Every element has a special option named `hooks` that may
     be set to a list of functions that should be applied to the figure that HoloViews
     generates before it is displayed.
