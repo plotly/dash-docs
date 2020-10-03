@@ -26,10 +26,11 @@ app.layout = html_div() do
     One of the core Dash principles explained in the [Getting Started Guide on Callbacks] is that
     **Dash callbacks must never modify variables outside of their scope**. It is not safe to
     modify any `global` variables. This chapter explains why and provides some alternative
-    patterns for sharing state between callbacks.
+    patterns for sharing state between callbacks."),
 
-    ### Why Share State?
+    Header("Why Share State?"),
 
+    dcc_markdown("
     In some apps, you may have multiple callbacks that depend on expensive data processing tasks like
     making SQL queries, running simulations, or downloading data.
 
@@ -39,9 +40,11 @@ app.layout = html_div() do
     This need has been somewhat ameliorated now that you can have [multiple outputs](/basic-callbacks) for one callback.
     This way, that expensive task can be done once and immediately used in all the outputs. But in some cases this
     still isn't ideal, for example if there are simple follow-on tasks that modify the results, like unit conversions.
-    We shouldn't need to repeat a large database query just to change the results from Fahrenheit to Celsius!
+    We shouldn't need to repeat a large database query just to change the results from Fahrenheit to Celsius!"),
 
-    ### Why Global Variables Will Break Your app
+    Header("Why Global Variables Will Break Your App"),
+
+    dcc_markdown("
     Dash is designed to work in multi-user environments where multiple people may view the application at the
     same time and will have **independent sessions**.
 
@@ -57,7 +60,7 @@ app.layout = html_div() do
     work reliably* for the reasons outlined above.
 
     "),
-    Syntax(scoping_wrong.source_code),
+    scoping_wrong.source_code,
     Example(scoping_wrong.layout),
 
 
@@ -68,13 +71,13 @@ app.layout = html_div() do
 
     """),
 
-    Syntax(scoping.source_code),
+    scoping.source_code,
     Example(scoping.layout),
+
+    Header("Sharing Data Between Callbacks"),
 
 
     dcc_markdown("""
-    ### Sharing Data Between Callbacks
-
     In order to share data safely across multiple Julia processes, we need to store the data
     somewhere that is accessible to each of the processes.
 
@@ -86,10 +89,8 @@ app.layout = html_div() do
     The following examples illustrate these approaches.
 
     """),
+    Header("Example 1 - Storing Data in the Browser With A Hidden Div")
     dcc_markdown("""
-
-    ### Example 1 - Storing Data in the Browser With A Hidden div
-
     To save data a user's browser session:
     * Implemented by saving the data as part of Dash's front-end store through
     the methonds explained in https://community.plotly.com/t/sharing-a-dataframe-between-plots/6173.
@@ -160,10 +161,8 @@ app.layout = html_div() do
     ```
 
     """),
+    Header("Example 2 - Computing Aggregations Upfront"),
     dcc_markdown("""
-
-    ### Example 2 - Computing Aggregations Upfront
-
     Sending the computed data over the network can be expensive if the data is large. In some cases, serializing
     this data and JSON can also be expensive.
 

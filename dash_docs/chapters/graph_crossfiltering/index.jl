@@ -2,6 +2,10 @@ using Dash, DashHtmlComponents, DashCoreComponents
 
 include("../../utils.jl")
 
+include("../../reusable_components/Header.jl")
+include("../../reusable_components/Example.jl")
+include("../../reusable_components/Syntax.jl")
+
 crossfilter_recipe = LoadExampleCode("./dash_docs/chapters/graph_crossfiltering/examples/crossfilter-recipe.jl")
 
 interactive_graph_1 = LoadExampleCode("./dash_docs/chapters/graph_crossfiltering/examples/interactive-graph-1.jl")
@@ -15,7 +19,7 @@ interactive_graph_1.callback!(app)
 interactive_graph_2.callback!(app)
 
 app.layout = html_div() do
-    html_h1("Interactive Visualizations"),
+    Header("Interactive Visualizations"),
     html_blockquote(dcc_markdown("This is the 4th chapter of the [Dash Tutorial](/).
     The [previous chapter](/basic-callbacks) covered basic callback usage and the [next chapter](/state)
     describes how to share data between callbacks. Just getting started? Make sure to [install the necessary
@@ -41,30 +45,29 @@ app.layout = html_div() do
     Here's a simple example that prints these attributes to the screen.
     "),
     interactive_graph_1.source_code,
-    interactive_graph_1.layout,
+    Example(interactive_graph_1.layout),
+    Header("Update Graphs on Hover"),
     dcc_markdown("""
-    ### Update Graphs on Hover
-
     Let's update our world indicators example from the previous chapter by updating time series
     when we hover over points in our scatter plot.
-
     """),
 
     interactive_graph_2.source_code,
-    interactive_graph_2.layout,
+    Example(interactive_graph_2.layout),
     dcc_markdown("""
 
     Try mousing over the points in the scatter plot on the left.
-    Notice how the line graphs on the right update based off of the point that you are hovering over.
+    Notice how the line graphs on the right update based off of the point that you are hovering over."""),
 
-    ### Generic Crossfilter Recipe
+    Header("Generic Crossfilter Recipe"),
 
+    dcc_markdown("""
     Here's a slightly more generic example for crossfiltering across a six-column dataset.
     Each scatter plot's selection filters the underlying dataset.
 
     """),
     crossfilter_recipe.source_code,
-    crossfilter_recipe.layout,
+    Example(crossfilter_recipe.layout),
     dcc_markdown("""
 
     Try clicking and dragging in any of the plots to filter different regions.
@@ -74,8 +77,9 @@ app.layout = html_div() do
 
     """),
 
+    Header("Current Limitations"),
+
     dcc_markdown("""
-    ### Current Limitations
 
     There are a few limitations in graph interactions right now.
 

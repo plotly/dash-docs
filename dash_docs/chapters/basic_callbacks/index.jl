@@ -2,6 +2,10 @@ using Dash, DashHtmlComponents, DashCoreComponents
 
 include("../../utils.jl")
 
+include("../../reusable_components/Header.jl")
+include("../../reusable_components/Example.jl")
+include("../../reusable_components/Syntax.jl")
+
 hello_slider = LoadExampleCode("./dash_docs/chapters/basic_callbacks/examples/hello-slider.jl")
 
 multi_inputs = LoadExampleCode("./dash_docs/chapters/basic_callbacks/examples/multi-inputs.jl")
@@ -27,7 +31,7 @@ simple_callback.callback!(app)
 
 
 app.layout = html_div() do
-    html_h1("Basic Dash Callbacks"),
+    Header("Basic Dash Callbacks"),
     html_blockquote(dcc_markdown("This is the 3rd chapter of the [Dash Tutorial](/).
     The previous chapter covered the Dash app [layout](/getting-started) and the [next chapter](/state) covers an additional concept of callbacks
     known as `state`.")),
@@ -44,7 +48,7 @@ app.layout = html_div() do
     "),
 
     simple_callback.source_code,
-    simple_callback.layout,
+    Example(simple_callback.layout),
 
     dcc_markdown("""
     Try typing in the text box. The `children` property of the output
@@ -89,7 +93,7 @@ app.layout = html_div() do
     """),
     hello_slider.source_code,
 
-    hello_slider.layout,
+    Example(hello_slider.layout),
 
     dcc_markdown("""
     In this example, the `value` property of the `Slider` component is the input of the app and the output of the app is the `figure` property of the `Graph` component. When the `value` of the `Slider` changes, Dash calls the callback function with new value. The function filters the dataframe with this new value, constructs a `figure` object, and returns it to the Dash app.
@@ -106,7 +110,7 @@ app.layout = html_div() do
 
     5. We are turning on transitions with `layout.transition` to give an idea of how the dataset evolves with time: transitions allow the chart to update from one state to the next smoothly, as if it were animated.
     """),
-    html_h1("Dash App With Multiple Inputs"),
+    Header("Dash App With Multiple Inputs"),
     dcc_markdown("""
     In Dash, any `Output` can have multiple `Input` components.
     Here's a simple example that binds five Inputs (the `value` property of
@@ -115,7 +119,7 @@ app.layout = html_div() do
     """),
     multi_inputs.source_code,
 
-    multi_inputs.layout,
+    Example(multi_inputs.layout),
     dcc_markdown("""
 
     In this example, the callback function gets called whenever the `value`
@@ -132,7 +136,7 @@ app.layout = html_div() do
 
     Let's extend our example to include multiple outputs.
     """),
-    html_h1("Dash App With Multiple Outputs"),
+    Header("Dash App With Multiple Outputs"),
     dcc_markdown("""
     So far all the callbacks we've written only update a single Output property. We can also
     update several at once: put all the properties you want to update as inputs to the callback,
@@ -141,7 +145,7 @@ app.layout = html_div() do
     """),
     multi_outputs.source_code,
 
-    multi_outputs.layout,
+    Example(multi_outputs.layout),
     dcc_markdown("""
 
     A word of caution: it's not always a good idea to combine Outputs, even if you can:
@@ -150,7 +154,7 @@ app.layout = html_div() do
     - If they have the same inputs but do independent computations with these same inputs,
     keeping the callbacks separate can allow them to run in parallel.
     """),
-    html_h1("Dash App With Chained Callbacks"),
+    Header("Dash App With Chained Callbacks"),
     dcc_markdown("""
     You can also chain outputs and inputs together: the output of one callback function could
     be the input of another callback function.
@@ -160,7 +164,7 @@ app.layout = html_div() do
     """),
     callback_chain.source_code,
 
-    callback_chain.layout,
+    Example(callback_chain.layout),
 
     dcc_markdown("""
 
@@ -176,7 +180,7 @@ app.layout = html_div() do
     This prevents your callbacks from being called with inconsistent state like with
     "America" and "Montreal".
     """),
-    html_h1("Dash Apps With State"),
+    Header("Dash Apps With State"),
     dcc_markdown("""
     In some cases, you might have a "form"-type pattern in your appliication.
     In such a situation, you might want to read the value of the input component,
@@ -187,7 +191,7 @@ app.layout = html_div() do
     """),
     basic_input.source_code,
 
-    basic_input.layout,
+    Example(basic_input.layout),
     dcc_markdown("""
 
     In this example, the callback function is fired whenever any of the attributes
@@ -199,7 +203,7 @@ app.layout = html_div() do
     """),
     basic_state.source_code,
 
-    basic_state.layout,
+    Example(basic_state.layout),
     dcc_markdown("""
 
     In this example, changing text in the `Input` boxes won't fire the callback but clicking on the button will.
@@ -210,7 +214,7 @@ app.layout = html_div() do
     is a property that gets incremented every time the component has been clicked on. It is available in
     every component in the `DashHtmlComponents` components library.
     """),
-    html_h1("Summary"),
+    Header("Summary"),
     dcc_markdown("""
     We've covered the fundamentals of callback functions in Dash. Dash apps are built on a set of
     simple but powerful principles: declarative UIs that are customizable through
