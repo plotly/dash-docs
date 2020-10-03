@@ -264,8 +264,8 @@ layout = html.Div([
     To effectively use Datashader in an interactive context, it's necessary to rerender
     the dataset each time the figure viewport changes. This can be accomplished in 
     Dash by installing a callback function that listens for changes to the
-    `relayoutData` prop.  With HoloViews, this can be accomplished without manually
-    defining any callbacks.
+    `relayoutData` prop.  Because of how HoloViews packages data lazily (without rendering it immediately), replaying this pipeline of transformations can be accomplished without manually
+    defining any callbacks, making Datashader much easier to use than if invoked without HoloViews.
 
     This example loads the iris dataset included in plotly.py and then duplicates
     it many times with added noise to generate a DataFrame with 1.5 million rows.
