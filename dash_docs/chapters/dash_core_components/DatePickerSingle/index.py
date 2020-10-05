@@ -14,12 +14,13 @@ layout = html.Div(children=[
     html.Hr(),
     html.H3("Simple DatePickerSingle Example"),
     rc.Markdown("This is a simple example of a `DatePickerSingle` \
-        component tied to a callback. You can use either date objects \
-        (`datetime.date` or `datetime.datetime`) or strings in the form \
-        `YYYY-MM-DD` to provide dates to Dash components. Strings are \
-        preferred because that's the form dates take as callback arguments. \
-        Be aware that any time information included in a datetime object \
-        or string will be ignored. The `min_date_allowed` and `max_date_allowed` \
+        component tied to a callback. You can use either strings in the form \
+        `YYYY-MM-DD` or date objects from the `datetime` module to provide \
+        dates to Dash components. Strings are preferred because that's the form \
+        dates take as callback arguments. If you are using date objects, we \
+        recommend using `datetime.date` so there is no time part. If you already \
+        have a `datetime.datetime` object, you can  easily convert it with \
+        `.date()`.  The `min_date_allowed` and `max_date_allowed` \
         properties define the minimum and maximum selectable dates on the calendar \
         while `initial_visible_month` defines the calendar month that is \
         first displayed when the `DatePickerSingle` component is opened."),
