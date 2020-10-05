@@ -17,7 +17,11 @@ layout = html.Div(children=[
                 `YYYY-MM-DD` or date objects from the `datetime` module to provide \
                 dates to Dash components. Strings are preferred because that's the form \
                 dates take as callback arguments. If you are using date objects, we \
-                recommend using `datetime.date` so there is no time part. If you already \
+                recommend using `datetime.date` so there is no time part. \
+                DatePickerSingle will accept dates with a time part, but this can \
+                be confusing, particularly for the initial call of a callback. After \
+                the user chooses a new date there will be no time part, only the date. \
+                If you already \
                 have a `datetime.datetime` object, you can  easily convert it with \
                 `.date()`.  The `min_date_allowed` and `max_date_allowed` \
                 properties define the minimum and maximum selectable dates on the calendar \
