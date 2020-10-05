@@ -12,22 +12,22 @@ layout = html.Div(children=[
     html.H1("DatePickerRange Examples and Reference"),
     html.Hr(),
     html.H3("Simple DatePickerRange Example"),
-    rc.Markdown("This is a simple example of a `DatePickerRange` \
-                 component tied to a callback. You can use either strings in the form \
-                `YYYY-MM-DD` or date objects from the `datetime` module to provide \
-                dates to Dash components. Strings are preferred because that's the form \
-                dates take as callback arguments. If you are using date objects, we \
-                recommend using `datetime.date` so there is no time part. \
-                DatePickerSingle will accept dates with a time part, but this can \
-                be confusing, particularly for the initial call of a callback. After \
-                the user chooses a new date there will be no time part, only the date. \
-                If you already \
-                have a `datetime.datetime` object, you can  easily convert it with \
-                `.date()`.  The `min_date_allowed` and `max_date_allowed` \
-                properties define the minimum and maximum selectable dates on the calendar \
-                while `initial_visible_month` defines the calendar month that is \
-                first displayed when the `DatePickerRange` component is opened."),
-                 
+    rc.Markdown("""
+        This is a simple example of a `DatePickerRange`
+        component tied to a callback. You can use either strings in the form
+        `YYYY-MM-DD` or date objects from the `datetime` module to provide
+        dates to Dash components. Strings are preferred because that's the form
+        dates take as callback arguments. If you are using date objects, we
+        recommend using `datetime.date` so there is no time part.
+        DatePickerSingle will accept dates with a time part, but this can
+        be confusing, particularly for the initial call of a callback. After
+        the user chooses a new date there will be no time part, only the date.
+        If you already have a `datetime.datetime` object, you can  easily convert
+        it with `.date()`.  The `min_date_allowed` and `max_date_allowed`
+        properties define the minimum and maximum selectable dates on the calendar
+        while `initial_visible_month` defines the calendar month that is
+        first displayed when the `DatePickerRange` component is opened.
+    """),           
     rc.Markdown(
         examples['date_picker_range.py'][0],
         style=styles.code_container
@@ -39,14 +39,18 @@ layout = html.Div(children=[
     ),
     html.Hr(),
     html.H3('Month and Display Format'),
-    rc.Markdown("The `display_format` property \
-                 determines how selected dates are displayed \
-                 in the `DatePickerRange` component. The `month_format` \
-                 property determines how calendar headers are displayed when \
-                 the calendar is opened."),
-    html.P("Both of these properties are configured through \
-            strings that utilize a combination of any \
-            of the following tokens."),
+    rc.Markdown("""
+        The `display_format` property
+        determines how selected dates are displayed
+        in the `DatePickerRange` component. The `month_format`
+        property determines how calendar headers are displayed when
+        the calendar is opened.
+    """),
+    html.P("""
+        Both of these properties are configured through
+        strings that utilize a combination of any
+        of the following tokens.
+    """),
     html.Table([
         html.Tr([
             html.Th('String Token', style={'text-align': 'left', 'width': '20%'}),
@@ -111,9 +115,11 @@ layout = html.Div(children=[
     ]),
     html.Br(),
     html.H3("Display Format Examples"),
-    rc.Markdown("You can utilize any permutation of the string tokens \
-                 shown in the table above to change how selected dates are \
-                 displayed in the `DatePickerRange` component."),
+    rc.Markdown("""
+        You can utilize any permutation of the string tokens
+        shown in the table above to change how selected dates are
+        displayed in the `DatePickerRange` component.
+    """),
     rc.ComponentBlock('''import dash_core_components as dcc
 from datetime import date
 
@@ -152,10 +158,12 @@ dcc.DatePickerRange(
     html.Br(),
 
     html.H3("Month Format Examples"),
-    rc.Markdown("Similar to the `display_format`, you can set `month_format` \
-                 to any permutation of the string tokens \
-                 shown in the table above to change how calendar titles \
-                 are displayed in the `DatePickerRange` component."),
+    rc.Markdown("""
+        Similar to the `display_format`, you can set `month_format`
+        to any permutation of the string tokens
+        shown in the table above to change how calendar titles
+        are displayed in the `DatePickerRange` component.
+    """),
     rc.ComponentBlock('''import dash_core_components as dcc
 from datetime import date
 
@@ -192,15 +200,19 @@ dcc.DatePickerRange(
     html.Hr(),
 
     html.H3("Vertical Calendar and Placeholder Text"),
-    rc.Markdown("The `DatePickerRange` component can be rendered in two \
-                  orientations, either horizontally or vertically. \
-                  If `calendar_orientation` is set to `'vertical'`, it will \
-                  be rendered vertically and will default to `'horizontal'` \
-                  if not defined."),
-    rc.Markdown("The `start_date_placeholder_text` and \
-                  `end_date_placeholder_text` define the grey default text \
-                  defined in the calendar input boxes when no date is \
-                  selected."),
+    rc.Markdown("""
+        The `DatePickerRange` component can be rendered in two
+        orientations, either horizontally or vertically.
+        If `calendar_orientation` is set to `'vertical'`, it will
+        be rendered vertically and will default to `'horizontal'`
+        if not defined.
+    """),
+    rc.Markdown("""
+        The `start_date_placeholder_text` and
+        `end_date_placeholder_text` define the grey default text
+        defined in the calendar input boxes when no date is
+        selected.
+    """),
     rc.ComponentBlock('''import dash_core_components as dcc
 
 dcc.DatePickerRange(
@@ -212,16 +224,22 @@ dcc.DatePickerRange(
     html.Hr(),
 
     html.H3("Minimum Nights, Calendar Clear, and Portals"),
-    rc.Markdown("The `minimum_nights` property defines the number of \
-                  nights that must be in between the range of two \
-                  selected dates."),
-    rc.Markdown("When the `clearable` property is set to `True` \
-                  the component will be rendered with a small 'x' \
-                  that will remove all selected dates when selected."),
-    rc.Markdown("The `DatePickerRange` component supports two different \
-                  portal types, one being a full screen portal \
-                  (`with_full_screen_portal`) and another being a simple \
-                  screen overlay, like the one shown below (`with_portal`)."),
+    rc.Markdown("""
+        The `minimum_nights` property defines the number of
+        nights that must be in between the range of two
+        selected dates.
+    """),
+    rc.Markdown("""
+        When the `clearable` property is set to `True`
+        the component will be rendered with a small 'x'
+        that will remove all selected dates when selected.
+    """),
+    rc.Markdown("""
+        The `DatePickerRange` component supports two different
+        portal types, one being a full screen portal
+        (`with_full_screen_portal`) and another being a simple
+        screen overlay, like the one shown below (`with_portal`).
+    """),
     rc.ComponentBlock('''import dash_core_components as dcc
 from datetime import date
 
@@ -235,12 +253,16 @@ dcc.DatePickerRange(
     html.Hr(),
 
     html.H3("Right to Left Calendars and First Day of Week"),
-    rc.Markdown("When the `is_RTL` property is set to `True` \
-                  the calendar will be rendered from right to left."),
-    rc.Markdown("The `first_day_of_week` property allows you to \
-                  define which day of the week will be set as the first \
-                  day of the week. In the example below, Tuesday is \
-                  the first day of the week."),
+    rc.Markdown("""
+        When the `is_RTL` property is set to `True`
+        the calendar will be rendered from right to left.
+    """),
+    rc.Markdown("""
+        The `first_day_of_week` property allows you to
+        define which day of the week will be set as the first
+        day of the week. In the example below, Tuesday is
+        the first day of the week.
+    """),
     rc.ComponentBlock('''import dash_core_components as dcc
 from datetime import date
 
