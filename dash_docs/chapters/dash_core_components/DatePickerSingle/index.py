@@ -115,7 +115,6 @@ layout = html.Div(children=[
                  shown in the table above to change how selected dates are \
                  displayed in the `DatePickerSingle` component."),
     rc.ComponentBlock('''import dash_core_components as dcc
-from datetime import date
 
 dcc.DatePickerSingle(
     date='2017-06-21',

@@ -198,7 +198,6 @@ dcc.DatePickerRange(
                   defined in the calendar input boxes when no date is \
                   selected."),
     rc.ComponentBlock('''import dash_core_components as dcc
-from datetime import date
 
 dcc.DatePickerRange(
     start_date_placeholder_text="Start Period",
