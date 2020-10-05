@@ -789,6 +789,13 @@ URLS = [
                 'content': chapters.testing.index.layout,
                 'name': 'Dash Testing',
                 'description': 'An introduction to testing your dash app with selenium'
+            },
+
+            {
+                'url': '/app-lifecycle',
+                'content': chapters.app_lifecycle.index.layout,
+                'name': 'Dash App Lifecylce',
+                'description': 'An overview of the lifecyle of a Dash app'
             }
 
         ],
