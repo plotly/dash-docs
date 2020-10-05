@@ -115,7 +115,7 @@ layout = html.Div(children=[
                  shown in the table above to change how selected dates are \
                  displayed in the `DatePickerSingle` component."),
     rc.ComponentBlock('''import dash_core_components as dcc
-from datetime import date as dt
+from datetime import date
 
 dcc.DatePickerSingle(
     date='2017-06-21',
@@ -123,26 +123,26 @@ dcc.DatePickerSingle(
 )'''),
 
     rc.ComponentBlock('''import dash_core_components as dcc
-from datetime import date as dt
+from datetime import date
 
 dcc.DatePickerSingle(
-    date=dt(2017,6,21),
+    date=date(2017,6,21),
     display_format='M-D-Y-Q',
 )'''),
 
     rc.ComponentBlock('''import dash_core_components as dcc
-from datetime import date as dt
+from datetime import date
 
 dcc.DatePickerSingle(
-    date=dt(2017,6,21),
+    date=date(2017,6,21),
     display_format='MMMM Y, DD'
 )'''),
 
     rc.ComponentBlock('''import dash_core_components as dcc
-from datetime import date as dt
+from datetime import date
 
 dcc.DatePickerSingle(
-    date=dt(2017,6,21),
+    date=date(2017,6,21),
     display_format='X',
 )''', style=styles.code_container),
     html.Br(),
@@ -152,20 +152,20 @@ dcc.DatePickerSingle(
                  shown in the table above to change how calendar titles \
                  are displayed in the `DatePickerSingle` component."),
     rc.ComponentBlock('''import dash_core_components as dcc
-from datetime import date as dt
+from datetime import date
 
 dcc.DatePickerSingle(
     month_format='MMM Do, YY',
     placeholder='MMM Do, YY',
-    date=dt(2017,6,21)
+    date=date(2017,6,21)
 )'''),
     rc.ComponentBlock('''import dash_core_components as dcc
-from datetime import date as dt
+from datetime import date
 
 dcc.DatePickerSingle(
     month_format='M-D-Y-Q',
     placeholder='M-D-Y-Q',
-    date=dt(2017,6,21)
+    date=date(2017,6,21)
 )'''),
 
     rc.ComponentBlock('''import dash_core_components as dcc
@@ -178,12 +178,12 @@ dcc.DatePickerSingle(
 )'''),
 
     rc.ComponentBlock('''import dash_core_components as dcc
-from datetime import date as dt
+from datetime import date
 
 dcc.DatePickerSingle(
     month_format='X',
     placeholder='X',
-    date=dt(2017,6,21)
+    date=date(2017,6,21)
 )''', style=styles.code_container),
     html.Hr(),
     html.H3("Vertical Calendar and Placeholder Text"),
@@ -196,12 +196,12 @@ dcc.DatePickerSingle(
                   text defined in the calendar input boxes when no date is \
                   selected."),
     rc.ComponentBlock('''import dash_core_components as dcc
-from datetime import date as dt
+from datetime import date
 
 dcc.DatePickerSingle(
     calendar_orientation='vertical',
     placeholder='Select a date',
-    date=dt(2017,6,21)
+    date=date(2017,6,21)
 )'''),
 
     html.Hr(),
@@ -215,12 +215,12 @@ dcc.DatePickerSingle(
                   (`with_full_screen_portal`) and another being a simple \
                   screen overlay, like the one shown below (`with_portal`)."),
     rc.ComponentBlock('''import dash_core_components as dcc
-from datetime import date as dt
+from datetime import date
 
 dcc.DatePickerSingle(
     clearable=True,
     with_portal=True,
-    date=dt(2017,6,21)
+    date=date(2017,6,21)
 )'''),
 
     html.Hr(),
@@ -233,12 +233,12 @@ dcc.DatePickerSingle(
                   day of the week. In the example below, Tuesday is \
                   the first day of the week."),
     rc.ComponentBlock('''import dash_core_components as dcc
-from datetime import date as dt
+from datetime import date
 
 dcc.DatePickerSingle(
     is_RTL=True,
     first_day_of_week=3,
-    date=dt(2017,6,21)
+    date=date(2017,6,21)
 )'''),
 
     html.Hr(),
