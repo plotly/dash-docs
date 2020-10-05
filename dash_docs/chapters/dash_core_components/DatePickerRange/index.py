@@ -19,7 +19,7 @@ layout = html.Div(children=[
         dates to Dash components. Strings are preferred because that's the form
         dates take as callback arguments. If you are using date objects, we
         recommend using `datetime.date` so there is no time part.
-        DatePickerSingle will accept dates with a time part, but this can
+        DatePickerRangewill accept dates with a time part, but this can
         be confusing, particularly for the initial call of a callback. After
         the user chooses a new date there will be no time part, only the date.
         If you already have a `datetime.datetime` object, you can  easily convert
