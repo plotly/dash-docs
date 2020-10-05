@@ -13,12 +13,17 @@ layout = html.Div(children=[
     html.Hr(),
     html.H3("Simple DatePickerRange Example"),
     rc.Markdown("This is a simple example of a `DatePickerRange` \
-                 component tied to a callback. The `min_date_allowed` and \
-                 `max_date_allowed` properties define the minimum and \
-                 maximum selectable \
-                 dates on the calendar while `initial_visible_month` defines \
-                 the calendar month that is first displayed when the \
-                 `DatePickerRange` component is opened."),
+                 component tied to a callback. You can use either strings in the form \
+                `YYYY-MM-DD` or date objects from the `datetime` module to provide \
+                dates to Dash components. Strings are preferred because that's the form \
+                dates take as callback arguments. If you are using date objects, we \
+                recommend using `datetime.date` so there is no time part. If you already \
+                have a `datetime.datetime` object, you can  easily convert it with \
+                `.date()`.  The `min_date_allowed` and `max_date_allowed` \
+                properties define the minimum and maximum selectable dates on the calendar \
+                while `initial_visible_month` defines the calendar month that is \
+                first displayed when the `DatePickerRange` component is opened."),
+                 
     rc.Markdown(
         examples['date_picker_range.py'][0],
         style=styles.code_container
