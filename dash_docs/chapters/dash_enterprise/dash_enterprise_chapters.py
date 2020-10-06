@@ -2147,8 +2147,8 @@ Authentication = html.Div(children=[
     certain server configurations), which provide information about the app's viewer and so
     must be called from within callbacks.
 
-    The example below demonstrates how to use these callbacks. Note that in order to use
-    `create_logout_button` locally you will have to set an environment variable called
+    The `dash-enterprise-auth` [template]( https://dash-demo.plotly.host/Docs/templates/dash-enterprise-auth) and example below demonstrate how to use these callbacks. Note that in order to use
+    `create_logout_button` locally in the example below, you will have to set an environment variable called
     `DASH_LOGOUT_URL`. You can do this by running your code with `DASH_LOGOUT_URL=plotly.com python app.py`.
 
     '''),
