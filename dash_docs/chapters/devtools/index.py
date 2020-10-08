@@ -278,6 +278,33 @@ app.run_server(debug=True, use_reloader=False)
 
 dcc.Markdown(
 '''
+#### Configuring with `enable_dev_tools`
+
+''' +
+'app.enable_dev_tools' + str(inspect.signature(dummy_app.enable_dev_tools))
+if sys.version_info >= (3, 0) else '' +
+),
+
+dcc.Markdown(
+'''
+Use `enable_dev_tools` when you want to turn on certain features when deploying your application with `gunicorn`.
+
+A common use case is to enable the Callback Graph to diagnose performance or network issues in your deployed application:
+```python
+app.enable_dev_tools(
+    dev_tools_ui=True,
+    dev_tools_serve_dev_bundles=True,
+)
+```
+
+We do not recommend using these settings in your deployed applications in general usage because:
+- Displaying serverside tracebacks is a security vulnerability
+- Dev Tools features incur a performance penalty: component validation and loading source maps has a cost.
+'''
+),
+
+dcc.Markdown(
+'''
 #### Configuring with Environment Variables
 
 All the `dev_tools` variables can be set with environment variables, just replace the `dev_tools_` with `dash_` and convert to uppercase.
