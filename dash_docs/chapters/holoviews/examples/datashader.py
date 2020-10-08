@@ -27,13 +27,7 @@ components = to_dash(
     app, [scatter], reset_button=True
 )
 
-app.layout = html.Div(
-    [
-        components.graphs[0],
-        components.resets[0],
-        components.store
-    ]
-)
+app.layout = html.Div(components.children)
 
 if __name__ == "__main__":
     app.run_server(debug=True)

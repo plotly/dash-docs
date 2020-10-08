@@ -22,12 +22,7 @@ app = dash.Dash(__name__)
 # Dash display
 components = to_dash(app, [dmap])
 
-app.layout = html.Div(
-    [components.graphs[0],
-     components.kdims["phase"],  # Phase slider
-     components.kdims["frequency"],  # Frequency Slider
-     components.store]
-)
+app.layout = html.Div(components.children)
 
 if __name__ == '__main__':
     app.run_server(debug=True)

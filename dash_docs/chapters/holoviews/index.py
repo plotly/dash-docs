@@ -123,9 +123,16 @@ layout = html.Div([
         not discussed further here; see the
         [Dimensioned Containers](http://holoviews.org/user_guide/Dimensioned_Containers.html)
         section in the HoloViews documentation for more information.
+    - `children`: This is a list that contains all of the components above. This can
+        be assigned directly to the `children` property of an `html.Div` component if
+        no additional layout structure is needed.
 
     After calling `to_dash`, each of the resulting components must be 
-    included somewhere in the app's layout. 
+    included somewhere in the app's layout. This can be done by *either*:
+      - including the `children` list as the `children` property of an `html.Div` 
+      component.
+      - including all of the components stored in `graphs`, `resets`, `kdims`, and
+      `store` somewhere in the app's layout.
     
     ## Display Simple HoloViews Elements with Dash
     
