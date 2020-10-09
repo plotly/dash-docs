@@ -666,8 +666,24 @@ URLS = [
                         ),
                     },
                 ]
-            }
+            },
 
+            {
+                'name': 'Dash Community Components',
+                'chapters': [
+                    {
+                        'url': 'https://plotly.com/dash-community-components/',
+                        'name': 'Components List',
+                        'description': (
+                            'A listicle of selected Dash components created by users '
+                            'in [our community forum](https://community.plotly.com/). '
+                            'These are Dash Components created by the '
+                            'world\'s largest open-source community '
+                            'for ML & data science web apps.'
+                        ),
+                    },
+                ]
+            }
         ]
     },
 
@@ -789,6 +805,13 @@ URLS = [
                 'content': chapters.testing.index.layout,
                 'name': 'Dash Testing',
                 'description': 'An introduction to testing your dash app with selenium'
+            },
+
+            {
+                'url': '/app-lifecycle',
+                'content': chapters.app_lifecycle.index.layout,
+                'name': 'Dash App Lifecylce',
+                'description': 'An overview of the lifecyle of a Dash app'
             }
 
         ],

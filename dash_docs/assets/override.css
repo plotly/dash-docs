@@ -101,6 +101,7 @@ h6 { font-size: 20px; line-height: 1.6;  margin-bottom: 0.75rem; margin-top: 0.7
     border-bottom-width: 1px;
     cursor: pointer;
     opacity: 0.5;
+    word-wrap: break-word;
 }
 .page-menu--link:hover {
     border-bottom-style: solid;
@@ -443,14 +444,11 @@ a {
   }
 }
 
-@media (max-width: 1150px) {
-    .page-menu {
+@media (max-width: 1000px) {
+    .sidebar-container {
         display: none;
     }
-}
-
-@media (max-width: 950px) {
-    .sidebar-container {
+    .page-menu {
         display: none;
     }
     .content {
@@ -479,14 +477,23 @@ a {
     }
 }
 
-@media (max-width: 705px) {
-    .header .links iframe {
+@media (max-width: 1000px) {
+    .header .links a.links--announcements {
+        display: none;
+    }
+    .header .links a.links--gallery {
+        display: none;
+    }
+    .header .links a.links--show-and-tell {
+        display: none;
+    }
+    .header .links a.links--community-forum {
         display: none;
     }
 }
 
-@media (max-width: 600px) {
-    .header .links {
+@media (max-width: 550px) {
+    .header .links Iframe {
         display: none;
     }
 }

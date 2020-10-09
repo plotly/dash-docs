@@ -135,5 +135,12 @@ layout = html.Div([
     prop, because persistence is only maintained if the extracted value of the
     prop before applying persistence is the same as it was before the user's
     changes.
-    ''')
+
+    It is also possible to define and use `persistenceTransforms` on non-nested
+    props, i.e. `propName`, in order to apply some transformation to your
+    persisted prop. An example of this is used in DatePickerSingle and
+    DatePickerRange to strip the time portion of persisted `date`, `start_date`,
+    and `end_date` props. You can check out the [PR in
+    dash-core-components](https://github.com/plotly/dash-core-components/pull/854).
+  ''')
 ])

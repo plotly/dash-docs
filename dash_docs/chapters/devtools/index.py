@@ -20,7 +20,8 @@ when deploying your application to production.
 
 Dash Dev Tools includes:
 - **Callback Graph** - Dash displays a visual representation of your callbacks:
-which order they are fired in, how long they take, and what data is passed back and forth.
+which order they are fired in, how long they take, and what data is passed back and forth between
+the Dash app in the web browser and your Python code.
 
 - **Code Reloading** - Dash restarts your app when you change code in your project.
 
