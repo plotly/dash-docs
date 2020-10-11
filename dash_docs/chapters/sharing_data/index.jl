@@ -1,3 +1,4 @@
+module chapters_sharing_data
 using Dash, DashHtmlComponents, DashCoreComponents
 
 include("../../utils.jl")
@@ -238,4 +239,4 @@ app.layout = html_div() do
     ")
 end
 
-run_server(app, "0.0.0.0", debug=true)
+end

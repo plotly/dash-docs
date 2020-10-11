@@ -1,9 +1,8 @@
-using Dash
-using DashHtmlComponents
-using DashCoreComponents
+module chapters_faq_gotchas
+
+using Dash, DashHtmlComponents, DashCoreComponents
 
 app =  dash()
-
 
 app.layout = html_div() do
     html_h1("Interactive Visualizations"),
@@ -100,4 +99,4 @@ app.layout = html_div() do
     dcc_markdown("[Back to the table of contents](/)")
 end
 
-run_server(app, "0.0.0.0", debug=true)
+end

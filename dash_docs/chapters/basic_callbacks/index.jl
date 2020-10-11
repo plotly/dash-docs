@@ -1,20 +1,24 @@
+module chapters_callbacks
+
 using Dash, DashHtmlComponents, DashCoreComponents
 
 include("../../utils.jl")
 
-hello_slider = LoadExampleCode("./dash_docs/chapters/basic_callbacks/examples/hello-slider.jl")
+examples_path = joinpath(@__DIR__, "examples")
 
-multi_inputs = LoadExampleCode("./dash_docs/chapters/basic_callbacks/examples/multi-inputs.jl")
+hello_slider = LoadExampleCode(string(examples_path, "/hello-slider.jl"))
 
-multi_outputs = LoadExampleCode("./dash_docs/chapters/basic_callbacks/examples/multi-outputs.jl")
+multi_inputs = LoadExampleCode(string(examples_path, "/multi-inputs.jl"))
 
-simple_callback = LoadExampleCode("./dash_docs/chapters/basic_callbacks/examples/simple-callback.jl")
+multi_outputs = LoadExampleCode(string(examples_path, "/multi-outputs.jl"))
 
-basic_input = LoadExampleCode("./dash_docs/chapters/basic_callbacks/examples/basic-input.jl")
+simple_callback = LoadExampleCode(string(examples_path, "/simple-callback.jl"))
 
-basic_state = LoadExampleCode("./dash_docs/chapters/basic_callbacks/examples/basic-state.jl")
+basic_input = LoadExampleCode(string(examples_path, "/basic-input.jl"))
 
-callback_chain = LoadExampleCode("./dash_docs/chapters/basic_callbacks/examples/getting-started-callback-chain.jl")
+basic_state = LoadExampleCode(string(examples_path, "/basic-state.jl"))
+
+callback_chain = LoadExampleCode(string(examples_path, "/getting-started-callback-chain.jl"))
 
 app =  dash()
 basic_input.callback!(app)
@@ -226,4 +230,4 @@ app.layout = html_div() do
     """)
 end
 
-run_server(app, "0.0.0.0", debug=true)
+end
