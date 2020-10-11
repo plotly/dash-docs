@@ -1,5 +1,6 @@
-using Dash, DashHtmlComponents, DashCoreComponents
+module chapters_getting_started
 
+using Dash, DashHtmlComponents, DashCoreComponents
 include("../../utils.jl")
 include("../../styles.jl")
 
@@ -163,4 +164,4 @@ app.layout = html_div() do
     """)
 end
 
-run_server(app, "0.0.0.0", debug=true)
+end

@@ -1,5 +1,6 @@
-using Dash, DashHtmlComponents, DashCoreComponents
+module chapters_installation
 
+using Dash, DashHtmlComponents, DashCoreComponents
 include("../../reusable_components/Header.jl")
 
 app = dash()
@@ -51,4 +52,4 @@ app.layout = html_div() do
 
 end
 
-run_server(app, "0.0.0.0", debug=true)
+end
