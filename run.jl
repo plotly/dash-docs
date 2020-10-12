@@ -1,3 +1,4 @@
+# initialize outermost container Dash app
 include("app.jl");
 
 using Dash, DashCoreComponents, DashHtmlComponents, Match
@@ -5,6 +6,7 @@ using Dash, DashCoreComponents, DashHtmlComponents, Match
 # Load Chapter, Example, Header, Section, Syntax components
 map(include, filter(x->occursin(r".jl$", x), readdir("dash_docs/reusable_components/", join=true)));
 
+# Load chapter container Dash apps
 include("dash_docs/chapters/whats_dash/introduction.jl");
 include("dash_docs/chapters/installation/index.jl");
 include("dash_docs/chapters/getting_started/index.jl");
@@ -12,6 +14,18 @@ include("dash_docs/chapters/basic_callbacks/index.jl");
 include("dash_docs/chapters/graph_crossfiltering/index.jl");
 include("dash_docs/chapters/sharing_data/index.jl");
 include("dash_docs/chapters/faq_gotchas/index.jl");
+
+for example in chapters_callbacks.examples
+    example.callback!(app)
+end
+
+for example in chapters_interactive_graphing.examples
+    example.callback!(app)
+end
+
+for example in chapters_sharing_data.examples
+    example.callback!(app)
+end
 
 header = html_div(
     children = (
@@ -52,7 +66,7 @@ app.layout = html_div() do
                 (
                     html_div(id = "backlinks-top", className = "backlinks"),
                     html_div(
-                        html_div(id = "chapter", className = "content"),
+                        html_div(id = "chapter", className = "content"), # the children of this component is the layout of a dash app, based on URL
                         className = "content-container"
                     ),
                     html_div(id = "backlinks-bottom", className = "backlinks")
@@ -130,7 +144,7 @@ callback!(app,
                         select points on your chart."
                     ),
                     Chapter(
-                        "Part 5. Interactive Graphing and Crossfiltering",
+                        "Part 5. Sharing Data Between Callbacks",
                         "/sharing-data-between-callbacks",
                         "`global` variables will break your Dash apps. However, there are other ways
                         to share data between callbacks. This chapter is useful for callbacks that
