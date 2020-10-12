@@ -1,46 +1,50 @@
-include("app.jl")
+include("app.jl");
 
 using Dash, DashCoreComponents, DashHtmlComponents, Match
 
 # Load Chapter, Example, Header, Section, Syntax components
-map(include, filter(x->occursin(r".jl$", x), readdir("dash_docs/reusable_components/", join=true)))
+map(include, filter(x->occursin(r".jl$", x), readdir("dash_docs/reusable_components/", join=true)));
 
-include("dash_docs/chapters/whats_dash/introduction.jl")
-include("dash_docs/chapters/installation/index.jl")
-include("dash_docs/chapters/getting_started/index.jl")
-include("dash_docs/chapters/basic_callbacks/index.jl")
-include("dash_docs/chapters/graph_crossfiltering/index.jl")
+include("dash_docs/chapters/whats_dash/introduction.jl");
+include("dash_docs/chapters/installation/index.jl");
+include("dash_docs/chapters/getting_started/index.jl");
+include("dash_docs/chapters/basic_callbacks/index.jl");
+include("dash_docs/chapters/graph_crossfiltering/index.jl");
+include("dash_docs/chapters/sharing_data/index.jl");
+include("dash_docs/chapters/faq_gotchas/index.jl");
 
-header = html_div() do 
-    className = "header",
-    html_div(
-        style = Dict("height" => "95%"),
-        className = "container-width",
-        children = (
-            html_a(
-                html_img(
-                    style = Dict("height" => "100%"),
-                    src = "https://plotly.com/products/dash"
-                ),
-                href = "https://plotly.com/products/dash",
-                className = "logo-link"
-            ),
-            html_div(
-                className = "links",
-                children = (
-                    html_a("pricing", className = "link", href = "https://plotly.com/dash"),
-                    html_a("user guide", className = "link", href = "/"),
-                    html_a("plotly", className = "link", href = "https://plotly.com")
-                )
-            )
+header = html_div(
+    children = (
+        html_div(
+            style = Dict("height" => "95%"),
+            className = "container-width",
+            children = (
+                html_a(
+                    html_img(
+                        style = Dict("height" => "100%"),
+                        src = "https://dash.plotly.com/assets/images/logo-plotly.png"
+                        ),
+                        href = "https://plotly.com/products/dash",
+                        className = "logo-link"
+                        ),
+                        html_div(
+                            children = (
+                                html_a("pricing", className = "link", href = "https://plotly.com/dash"),
+                                html_a("user guide", className = "link", href = "/"),
+                                html_a("plotly", className = "link", href = "https://plotly.com")
+                                ),
+                            className = "links"
+                        )
+                    )
         )
-    )
-end;
+    ),
+    className = "header"
+);
 
-app.layout = html_div() do 
-    html_div(id = "wait-for-layout")
-    dcc_location(id = "url", refresh=false)
-    header
+app.layout = html_div() do
+    html_div(id = "wait-for-layout"),
+    dcc_location(id = "url", refresh=false),
+    header,
     html_div(
         className = "content-wrapper",
         children = (
@@ -55,24 +59,25 @@ app.layout = html_div() do
                 ),
                 className = "rhs-content container-width"
             )
-        # dugcPageMenu will go here
+            #dugc_pagemenu(id = "pagemenu")
         )
     )
-end
+end;
 
 callback!(app,
     Output("chapter", "children"),
-    #Output("pagemenu", "dummy2")
+    #Output("pagemenu", "dummy2"),
     Input("url", "pathname")) do pathname
         return @match pathname begin
             "/introduction" => chapters_whats_dash.app.layout
             "/installation" => chapters_installation.app.layout
-            "/layout" => chapters_getting_started.app.layout
+            "/getting-started" => chapters_getting_started.app.layout
             "/basic-callbacks" => chapters_callbacks.app.layout
             "/interactive-graphing" => chapters_interactive_graphing.app.layout
             "/sharing-data-between-callbacks" => chapters_sharing_data.app.layout
-            _ => html_div() do 
-                html_h1("Dash for Julia User Guide")
+            "/faqs" => chapters_faq_gotchas.app.layout
+            _ => html_div() do
+                html_h1("Dash for Julia User Guide"),
                 Section(
                     "What's Dash?",
                     (
@@ -97,7 +102,7 @@ callback!(app,
                             "A fortnightly email newsletter by chriddyp, the creator of Dash."
                         )
                     )
-                )
+                ),
                 Section(
                 "Dash Tutorial",
                 (
@@ -125,6 +130,13 @@ callback!(app,
                         select points on your chart."
                     ),
                     Chapter(
+                        "Part 5. Interactive Graphing and Crossfiltering",
+                        "/sharing-data-between-callbacks",
+                        "`global` variables will break your Dash apps. However, there are other ways
+                        to share data between callbacks. This chapter is useful for callbacks that
+                        run expensive data processing tasks or process large data."
+                    ),
+                    Chapter(
                         "Part 6. FAQs and Gotchas",
                         "/faqs",
                         "If you have read through the rest of the tutorial and still have questions
@@ -134,6 +146,13 @@ callback!(app,
                 )
             end
         end
-end
+end;
+
+#callback!(
+#    ClientsideFunction("clientside", "pagemenu"),
+#    app,
+#    Output("pagemenu", "dummy"),
+#    Input("chapter", "children")
+#)
 
 run_server(app)
