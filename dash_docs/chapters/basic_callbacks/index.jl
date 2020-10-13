@@ -22,7 +22,7 @@ basic_state = LoadExampleCode(string(examples_path, "/basic-state.jl"))
 
 callback_chain = LoadExampleCode(string(examples_path, "/getting-started-callback-chain.jl"))
 
-examples = [hello_slider, multi_inputs, multi_outputs, simple_callback, basic_input, callback_chain]
+examples = [hello_slider, multi_inputs, multi_outputs, simple_callback, basic_input, basic_state, callback_chain]
 
 app =  dash()
 basic_input.callback!(app)
