@@ -37,9 +37,17 @@ header = html_div(
             style = Dict("height" => "95%"),
             className = "container-width",
             children = (
+                html_div("Welcome! The Dash.jl documentation is a work-in-progress; we accept and encourage community pull requests to improve this content.", style = Dict("background-color" => "#406ed8", "text-align" => "center", "color" => "#ffffff")),
+                html_div(
+                    children = (
+                        html_span("🙌 If you're interested, please visit the "),
+                        html_a("Dash Docs", className = "link", href="https://github.com/plotly/dash-docs"),
+                        html_span(" to learn more! 🙌")
+                    ),
+                    style = Dict("background-color" => "#80CFBE", "text-align" => "center", "color" => "#000000")),
                 html_a(
                     html_img(
-                        style = Dict("height" => "100%"),
+                        style = Dict("height" => "100%", "padding-left" => "80px"),
                         src = "https://dash.plotly.com/assets/images/logo-plotly.png"
                         ),
                         href = "https://plotly.com/products/dash",
@@ -71,7 +79,8 @@ app.layout = html_div() do
                     html_div(id = "backlinks-top", className = "backlinks"),
                     html_div(
                         html_div(id = "chapter", className = "content"), # the children of this component is the layout of a dash app, based on URL
-                        className = "content-container"
+                        className = "content-container",
+                        style = Dict("margin" => "70px")
                     ),
                     html_div(id = "backlinks-bottom", className = "backlinks")
                 ),
@@ -96,6 +105,7 @@ callback!(app,
             "/deployment" => chapters_deployment.app.layout
             "/faqs" => chapters_faq_gotchas.app.layout
             _ => html_div() do
+                html_br(),
                 html_h1("Dash for Julia User Guide"),
                 Section(
                     "What's Dash?",
