@@ -52,6 +52,9 @@ chapters.advanced_callbacks <- new.env()
 source('dash_docs/chapters/advanced_callbacks/index.R', local=chapters.advanced_callbacks)
 chapters.clientside_callbacks <- new.env()
 source('dash_docs/chapters/clientside_callbacks/index.R', local=chapters.clientside_callbacks)
+# TODO
+# chapters.pattern_matching_callbacks <- new.env()
+# source('dash_docs/chapters/pattern-matching-callbacks/index.R', local=chapters.pattern_matching_callbacks)
 chapters.callback_gotchas <- new.env()
 source('dash_docs/chapters/callback_gotchas/index.R', local=chapters.callback_gotchas)
 # Component Libraries (Dash Core Components)
@@ -264,7 +267,7 @@ app$layout(htmlDiv(
         ),
         className = 'rhs-content container-width'),
 
-        dugcPageMenu(id = 'pagemenu')
+        pageMenu(id = 'pagemenu')
 
       )
     )
