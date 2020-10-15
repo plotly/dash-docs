@@ -299,7 +299,7 @@ app.enable_dev_tools(
 
 We do not recommend using these settings in your deployed applications in general usage because:
 - Displaying serverside tracebacks is a security vulnerability
-- Dev Tools features incur a performance penalty: component validation and loading source maps has a cost.
+- Dev Tools features incur a performance penalty: There is a cost to running component validation and loading the dev bundles.
 '''
 ),
 
@@ -324,8 +324,7 @@ Windows:
 > be run with `gunicorn` on the `server = app.server` instance.
 > We don't run use dev tools in production because:
 > - Displaying serverside tracebacks is a security vulnerability
-> - Dev Tools features incur a performance penalty: component validation and loading source maps
-> has a cost.
+> - Dev Tools features incur a performance penalty: there is a cost to component validation and loading the larger dev bundles.
 
 
 ''')
