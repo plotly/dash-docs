@@ -293,6 +293,7 @@ app$callback(
       # Dash Callbacks
       '/advanced-callbacks' = chapters.advanced_callbacks$layout,
       '/clientside-callbacks' = chapters.clientside_callbacks$layout,
+      '/pattern-matching-callbacks' = chapters.pattern_matching_callbacks.layout,
       '/callback-gotchas' = chapters.callback_gotchas$layout,
       # Component Libraries (Dash Core Components)
       '/dash-core-components' = chapters.dashCoreComponents$layout,
@@ -477,6 +478,12 @@ app$callback(
                   caption="You might want to execute a callback in the frontend as opposed to the backend if you
                   want to avoid the extra time that it takes to make a roundtrip to the server. Clientside
                   callbacks allow you to write your callbacks in JavaScript that runs in the browser."
+                ),
+                components$Chapter(
+                  'Pattern-Matching Callbacks',
+                  href='/pattern-matching-callbacks',
+                  caption="The pattern-matching callback selectors `Match`, `ALL`, & `ALLSMALLER` allow you to
+                  write callbacks that respond to or update an arbitrary or dynamic number of components."
                 ),
                 components$Chapter(
                   'Callback Gotchas',
