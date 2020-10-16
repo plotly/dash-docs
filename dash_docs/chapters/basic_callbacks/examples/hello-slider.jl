@@ -1,9 +1,7 @@
-using CSV, DataFrames, Dash, DashHtmlComponents, DashCoreComponents, PlotlyJS
+using DataFrames, Dash, DashHtmlComponents, DashCoreComponents, PlotlyJS, UrlDownload
 
 
-url = "https://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv"
-download(url, "gapminder-data.csv")
-df1 = DataFrame(CSV.File("gapminder-data.csv"))
+df1 = DataFrame(urldownload("https://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv"))
 
 years = unique(df1[!, :year])
 

@@ -48,7 +48,11 @@ app.layout = html_div() do
     * [DashCoreComponents changelog](https://github.com/plotly/dash-core-components/blob/master/CHANGELOG.md)
     * [DashHTMLComponents changelog](https://github.com/plotly/dash-html-components/blob/master/CHANGELOG.md)
     * [DashTable changelog](https://github.com/plotly/dash-table/blob/master/CHANGELOG.md)
-    """)
+    """),
+
+    html_hr(),
+    dcc_markdown("Ready? Now, [let's make your first Dash app.](/getting-started)"),
+    dcc_markdown("[Back to the table of contents](/)")
 
 end
 

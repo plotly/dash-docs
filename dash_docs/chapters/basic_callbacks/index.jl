@@ -4,6 +4,8 @@ using Dash, DashHtmlComponents, DashCoreComponents
 
 include("../../utils.jl")
 
+export examples
+
 examples_path = joinpath(@__DIR__, "examples")
 
 hello_slider = LoadExampleCode(string(examples_path, "/hello-slider.jl"))
@@ -19,6 +21,8 @@ basic_input = LoadExampleCode(string(examples_path, "/basic-input.jl"))
 basic_state = LoadExampleCode(string(examples_path, "/basic-state.jl"))
 
 callback_chain = LoadExampleCode(string(examples_path, "/getting-started-callback-chain.jl"))
+
+examples = [hello_slider, multi_inputs, multi_outputs, simple_callback, basic_input, basic_state, callback_chain]
 
 app =  dash()
 basic_input.callback!(app)
@@ -67,7 +71,7 @@ app.layout = html_div() do
     and Dash updates the property of the output component with whatever was returned by the callback
     function.
 
-    4. Don't confuse the `Dash::Input` object with the `DashCoreComponents::Input` object. The former is just used to declare
+    4. Don't confuse the `Dash.Input` object with the `DashCoreComponents.Input` object. The former is just used to declare
     inputs of callback functions while the latter is an UI component which is used to render HTML input elements.
 
     5. Notice how we don't set a value for the `children` property of the `input` component in the `layout`. When
@@ -227,7 +231,10 @@ app.layout = html_div() do
     The next part of the Dash  tutorial covers interactive graphing.
 
     [Dash Tutorial Part 4: Interactive Graphing](/interactive-graphing)
-    """)
+    """),
+    html_hr(),
+    dcc_markdown("[Back to the table of contents](/)")
+
 end
 
 end
