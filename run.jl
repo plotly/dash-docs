@@ -37,12 +37,11 @@ header = html_div(
             style = Dict("height" => "95%"),
             className = "container-width",
             children = (
-                html_div("Welcome! The Dash.jl documentation is a work-in-progress; we accept and encourage community pull requests to improve this content.", style = Dict("background-color" => "#406ed8", "text-align" => "center", "color" => "#ffffff")),
                 html_div(
                     children = (
-                        html_span("🙌 If you're interested, please visit the "),
-                        html_a("Dash Docs", className = "link", href="https://github.com/plotly/dash-docs"),
-                        html_span(" to learn more! 🙌")
+                        html_span("📣 Welcome! Dash for Julia is New! Read "),
+                        html_a("the community announcement", className = "link", href="https://community.plotly.com/t/welcome-to-dash-julia/46056"),
+                        html_span(" regarding the current status of the project.")
                     ),
                     style = Dict("background-color" => "#80CFBE", "text-align" => "center", "color" => "#000000")),
                 html_a(
@@ -149,7 +148,7 @@ callback!(app,
                         "Part 3. Basic Callbacks",
                         "/basic-callbacks",
                         "Dash apps are made interactive through Dash Callbacks:
-                        R functions that are automatically called whenever an input component's property changes. Callbacks can be chained,
+                        Julia functions that are automatically called whenever an input component's property changes. Callbacks can be chained,
                         allowing one update in the UI to trigger several updates across the app."
                     ),
                     Chapter(
@@ -196,5 +195,7 @@ callback!(
 )
 
 port = parse(Int64, ENV["PORT"])
+
+print("Binding to PORT $(port)...")
 
 run_server(app, "0.0.0.0", port)
