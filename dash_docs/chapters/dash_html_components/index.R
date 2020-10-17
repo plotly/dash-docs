@@ -96,6 +96,9 @@ dccMarkdown('
              </div>
              ```
              '),
+dccMarkdown('Note: If you need to directly render a string of raw, unescaped HTML,
+            you can use the `DangerouslySetInnerHTML` component which is provided by
+            the [dash-dangerously-set-inner-html](https://github.com/plotly/dash-dangerously-set-inner-html) library.`'),
 htmlHr(),
 dccMarkdown("
 [Back to the Table of Contents](/)")
