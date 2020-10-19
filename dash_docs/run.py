@@ -47,7 +47,7 @@ header = html.Div(
                 ), href='/', id='logo-home'),
             ], className='logo'),
 
-            # HEADS UP! 
+            # HEADS UP!
             # If you are modifying these header links,
             # make sure to check that the responsive design still works
             # The breakpoints are set in override.css
@@ -64,11 +64,11 @@ header = html.Div(
                         'verticalAlign': 'middle',
                         'marginTop': '9px',
                         'width': '120px',
-                    } 
+                    }
                 ),
-                html.A('dash enterprise demo', className='links--demo-button', href='https://plotly.com/get-demo/?utm_source=docs&utm_medium=banner&utm_campaign=sept&utm_content=demo', 
+                html.A('dash enterprise demo', className='links--demo-button', href='https://plotly.com/get-demo/?utm_source=docs&utm_medium=banner&utm_campaign=sept&utm_content=demo',
                     style={
-                        'background-color': '#f4564e', 
+                        'background-color': '#f4564e',
                         'border-radius': '1.22rem',
                         'color': 'white',
                         'cursor': 'pointer',
@@ -87,7 +87,7 @@ header = html.Div(
                         'transition': 'background-color .2s ease-in-out'
                     }
                 ),
-            ]),           
+            ]),
         ]
     )
 )
@@ -112,15 +112,17 @@ app.layout = html.Div(
         html.Div(className='content-wrapper', children=[
             html.Div([
                 dugc.Sidebar(urls=SIDEBAR_INDEX),
-                html.A([
+                html.A(
                     html.Img(
                         id='sidebar-image-img',
                         className='sidebar-image',
                         src=DEFAULT_AD['src'],
                         alt=DEFAULT_AD['alt']
                     ),
-                    html.Div(id='fade-out')
-                ], id='sidebar-image-link', href=DEFAULT_AD['href']),
+                    id='sidebar-image-link',
+                    className='sidebar-image-link',
+                    href=DEFAULT_AD['href']
+                ),
             ], className='sidebar-container'),
 
             html.Div([

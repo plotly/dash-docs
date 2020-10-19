@@ -138,7 +138,6 @@ h6 { font-size: 20px; line-height: 1.6;  margin-bottom: 0.75rem; margin-top: 0.7
     max-width: 250px;
     display: flex;
     flex-direction: column;
-    height: calc(100vh - 60px);
     justify-content: space-between;
 }
 
@@ -225,18 +224,17 @@ summary:hover {
     margin-bottom: 10px;
 }
 
-.sidebar {
-    overflow-y: auto;
+.sidebar-image-link {
+    position: -webkit-sticky;
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    background-color: #e4f5f2;
 }
 
 .sidebar-image {
-   width: calc(100% - 4px);
-}
-
-#fade-out {
-    height: 30px;
-    margin-right: -2px;
-    background-image: linear-gradient(to bottom, rgb(224, 242, 246), white);
+   width: calc(100% - 7px);
+   margin: 2px 5px 2px 0;
 }
 
 
