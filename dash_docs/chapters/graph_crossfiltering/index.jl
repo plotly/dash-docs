@@ -1,4 +1,8 @@
+module chapters_interactive_graphing
+
 using Dash, DashHtmlComponents, DashCoreComponents
+
+export examples
 
 include("../../utils.jl")
 
@@ -11,6 +15,8 @@ crossfilter_recipe = LoadExampleCode("./dash_docs/chapters/graph_crossfiltering/
 interactive_graph_1 = LoadExampleCode("./dash_docs/chapters/graph_crossfiltering/examples/interactive-graph-1.jl")
 
 interactive_graph_2 = LoadExampleCode("./dash_docs/chapters/graph_crossfiltering/examples/interactive-graph-2.jl")
+
+examples = [crossfilter_recipe, interactive_graph_1, interactive_graph_2]
 
 app =  dash()
 
@@ -93,7 +99,11 @@ app.layout = html_div() do
     callbacks.
 
     [Dash Tutorial Part 5: Sharing Data Between Callbacks](/sharing-data-between-callbacks)
-    """)
+    """),
+
+    html_hr(),
+    dcc_markdown("[Back to the table of contents](/)")
+
 end
 
-run_server(app, "0.0.0.0", debug=true)
+end

@@ -1,6 +1,6 @@
 using DashHtmlComponents
 
-function Example(example::Component)
+function Example(example)
     return html_div(
         example,
         className = "example-container"

@@ -1,10 +1,7 @@
-using CSV, DataFrames, Dash, DashHtmlComponents, DashCoreComponents
-using PlotlyJS
+using DataFrames, Dash, DashHtmlComponents, DashCoreComponents, UrlDownload, PlotlyJS
 
 
-url = "https://plotly.github.io/datasets/country_indicators.csv"
-download(url, "country-indicators.csv")
-df6 = DataFrame(CSV.File("country-indicators.csv"))
+df6 = DataFrame(urldownload("https://raw.githubusercontent.com/plotly/datasets/master/country_indicators.csv"))
 
 rename!(df6, Dict(:"Year" => "year"))
 
@@ -188,4 +185,4 @@ callback!(
     return create_time_series(df6f, axis_type, yaxis_column_name)
 end
 
-run_server(app, "0.0.0.0", 8000, debug = true)
+run_server(app, "0.0.0.0", debug = true)

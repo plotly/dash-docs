@@ -1,4 +1,7 @@
+module chapters_sharing_data
 using Dash, DashHtmlComponents, DashCoreComponents
+
+export examples
 
 include("../../utils.jl")
 include("../../styles.jl")
@@ -9,6 +12,8 @@ include("../../reusable_components/Syntax.jl")
 
 scoping_wrong = LoadExampleCode("./dash_docs/chapters/sharing_data/examples/scoping_wrong.jl")
 scoping = LoadExampleCode("./dash_docs/chapters/sharing_data/examples/scoping.jl")
+
+examples = [scoping_wrong, scoping]
 
 app =  dash()
 scoping_wrong.callback!(app)
@@ -234,7 +239,10 @@ app.layout = html_div() do
     some common gotchas.
 
     [Dash Tutorial Part 6: FAQs and Gotchas](/faqs)
-    ")
+    "),
+    html_hr(),
+    dcc_markdown("[Back to the table of contents](/)")
+
 end
 
-run_server(app, "0.0.0.0", debug=true)
+end

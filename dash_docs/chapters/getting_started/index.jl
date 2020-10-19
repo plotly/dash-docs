@@ -1,11 +1,11 @@
-using Dash, DashHtmlComponents, DashCoreComponents
+module chapters_getting_started
 
+using Dash, DashHtmlComponents, DashCoreComponents
 include("../../utils.jl")
 include("../../styles.jl")
 
 include("../../reusable_components/Header.jl")
 include("../../reusable_components/Example.jl")
-include("../../reusable_components/Syntax.jl")
 
 
 getting_started_layout_1 = LoadExampleCode("./dash_docs/chapters/getting_started/examples/getting_started_layout_1.jl")
@@ -160,7 +160,11 @@ app.layout = html_div() do
     The next part of the Dash tutorial covers how to make these apps interactive.
 
     [Dash Tutorial Part 3: Basic Callbacks](/basic-callbacks)
-    """)
+    """),
+
+    html_hr(),
+    dcc_markdown("[Back to the table of contents](/)")
+
 end
 
-run_server(app, "0.0.0.0", debug=true)
+end

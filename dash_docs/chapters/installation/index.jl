@@ -1,5 +1,6 @@
-using Dash, DashHtmlComponents, DashCoreComponents
+module chapters_installation
 
+using Dash, DashHtmlComponents, DashCoreComponents
 include("../../reusable_components/Header.jl")
 
 app = dash()
@@ -47,8 +48,12 @@ app.layout = html_div() do
     * [DashCoreComponents changelog](https://github.com/plotly/dash-core-components/blob/master/CHANGELOG.md)
     * [DashHTMLComponents changelog](https://github.com/plotly/dash-html-components/blob/master/CHANGELOG.md)
     * [DashTable changelog](https://github.com/plotly/dash-table/blob/master/CHANGELOG.md)
-    """)
+    """),
+
+    html_hr(),
+    dcc_markdown("Ready? Now, [let's make your first Dash app.](/getting-started)"),
+    dcc_markdown("[Back to the table of contents](/)")
 
 end
 
-run_server(app, "0.0.0.0", debug=true)
+end

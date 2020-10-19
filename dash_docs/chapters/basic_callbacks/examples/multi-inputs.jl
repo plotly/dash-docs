@@ -1,10 +1,7 @@
-using CSV, DataFrames, Dash, DashHtmlComponents, DashCoreComponents, PlotlyJS
+using DataFrames, Dash, DashHtmlComponents, DashCoreComponents, PlotlyJS, UrlDownload
 
 
-url = "https://plotly.github.io/datasets/country_indicators.csv"
-download(url, "country-indicators.csv")
-
-df2 = DataFrame(CSV.File("country-indicators.csv"))
+df2 = DataFrame(urldownload("https://raw.githubusercontent.com/plotly/datasets/master/country_indicators.csv"))
 
 dropmissing!(df2)
 
