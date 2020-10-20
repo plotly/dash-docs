@@ -38,13 +38,14 @@ header = html.Div(
             html.Span([
                 html.A(html.Img(
                     src='/assets/images/logo-plotly.png',
-                ), href='https://plotly.com'),
+                ), href='https://plotly.com', className='logo-link'),
                 html.Img(
                     src='/assets/images/logo-seperator.png',
+                    className='logo-divider'
                 ),
                 dcc.Link(html.Img(
                     src='/assets/images/logo-dash.png',
-                ), href='/', id='logo-home'),
+                ), href='/', id='logo-home', className='logo-home'),
             ], className='logo'),
 
             # HEADS UP!

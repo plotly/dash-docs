@@ -291,6 +291,8 @@ summary:hover {
     border-bottom: 2px rgb(61, 76, 120) solid;
 }
 
+img.logo-divider,
+a.logo-home img,
 a.logo-link img {
   height: 60px !important;
 }
