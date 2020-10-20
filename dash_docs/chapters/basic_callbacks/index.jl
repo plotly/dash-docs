@@ -4,6 +4,9 @@ using Dash, DashHtmlComponents, DashCoreComponents
 
 include("../../utils.jl")
 
+include("../../reusable_components/Header.jl")
+include("../../reusable_components/Example.jl")
+
 export examples
 
 examples_path = joinpath(@__DIR__, "examples")
