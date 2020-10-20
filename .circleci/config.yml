@@ -9,7 +9,7 @@ jobs:
   "python-3.7": &test-template
     resource_class: medium+
     docker:
-      - image: circleci/python:3.7-stretch-browsers
+      - image: circleci/python:3.7.6-stretch-browsers
         environment:
           PERCY_PARALLEL_TOTAL: '-1'
     steps:
@@ -46,14 +46,14 @@ jobs:
   "python-3.6":
     <<: *test-template
     docker:
-      - image: circleci/python:3.6-stretch-browsers
+      - image: circleci/python:3.6.9-stretch-browsers
     environment:
       PERCY_ENABLE: 0
 
   "python-2.7":
     <<: *test-template
     docker:
-      - image: circleci/python:2.7-stretch-browsers
+      - image: circleci/python:2.7.18-stretch-browsers
     environment:
       PERCY_ENABLE: 0
 
