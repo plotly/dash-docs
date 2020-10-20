@@ -46,7 +46,7 @@ layout = html.Div([
     > If you're using Dash Enterprise's [Data Science Workspaces](https://plotly.com/dash/workspaces),
     > copy & paste the below code into your Workspace ([see video](https://plotly.com/dash/workspaces/#screencast)).
     > _[Find out if your company is using Dash Enterprise](https://go.plotly.com/company-lookup)_
-    ''') if not is_in_dash_enterprise() else '',
+    ''') if not tools.is_in_dash_enterprise() else '',
 
     rc.Markdown(
         examples['getting_started_interactive_simple.py'][0],
