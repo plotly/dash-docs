@@ -1,4 +1,42 @@
-## Performance
+# Performance
+
+## Performance Strategies
+1. Speed up your callbacks
+
+    The faster your callbacks execute, the more requests
+    your backend will be able to process and the faster
+    your users will see updates.
+
+    See [/callback-speed] for more.
+
+2. Prepare data in advance with a periodic background jobs
+
+    If you need to display recent data and fetching the data
+    from the underlying source (e.g. a database, an API or S3)
+    is slow, expensive, or unable to handle the load, then
+    consider fetching your data in a background
+    queue with Celery and storing the results in Redis or Postgres.
+    Your callbacks or `layout` function will load the data from
+    Redis or Postgres instead of fetching it on-the-fly.
+
+    See [Sample X], [Sample Y] for details.
+
+3. Scale up your backend
+
+    
+
+4. Write clientside callbacks
+5. Reduce volume & frequency of data on wire
+6. Use high performance rendering methods
+7. Loading states
+8. `plotly.js` bundle
+
+## Measuring Performance
+1. Callback graph
+2.
+
+## Deep Dive
+
 
 ## You Click on a Button - What Happens?
 
