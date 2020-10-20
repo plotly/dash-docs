@@ -50,7 +50,7 @@ layout = html.Div([
     You can also use Jupyter with the [JupyterDash](https://github.com/plotly/jupyter-dash) library.
 
     > If you're using Dash Enterprise's [Data Science Workspaces](https://plotly.com/dash/workspaces),
-    > copy & paste the below code into your Workspace.
+    > copy & paste the below code into your Workspace ([see video](https://plotly.com/dash/workspaces/#screencast)).
     > _[Find out if your company is using Dash Enterprise](https://go.plotly.com/company-lookup)_
 
     '''),
