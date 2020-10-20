@@ -33,7 +33,7 @@ layout = html.Div([
 
     html.Hr(),
 
-    rc.WorkspaceBlurb,
+    rc.WorkspaceBlurb if not is_in_dash_enterprise() else '',
 
     html.Div([
         'Ready? Now, let\'s ',

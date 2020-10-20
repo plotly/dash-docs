@@ -48,12 +48,15 @@ layout = html.Div([
     Note: Throughout this documentation, Python code examples are meant to
     be saved as files and executed using `python app.py`.
     You can also use Jupyter with the [JupyterDash](https://github.com/plotly/jupyter-dash) library.
+    '''),
+
+    rc.Markdown('''
 
     > If you're using Dash Enterprise's [Data Science Workspaces](https://plotly.com/dash/workspaces),
     > copy & paste the below code into your Workspace ([see video](https://plotly.com/dash/workspaces/#screencast)).
     > _[Find out if your company is using Dash Enterprise](https://go.plotly.com/company-lookup)_
 
-    '''),
+    ''') if not is_in_dash_enterprise() else '',
 
     rc.Syntax(examples['getting_started_layout_1.py'][0], summary='''
         To get started, create a file named `app.py` with the following code.

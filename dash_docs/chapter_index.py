@@ -6,6 +6,7 @@ import plotly
 import six
 import textwrap
 import traceback
+import os
 
 import dash
 import dash_html_components as html
@@ -81,7 +82,9 @@ URLS = [
                     Plotcon that started it all.
                 ''',
                 'content': chapters.introduction.index.layout
-            },
+            }
+        ] +
+        ([
             {
                 'url': 'https://dash.plotly.com/dash',
                 'name': 'Dash Enterprise',
@@ -90,7 +93,8 @@ URLS = [
                     developing, deploying, and managing better Dash Applications
                     at scale.
                 '''
-            },
+            }
+        ] if not tools.is_in_dash_enterprise() else []) + [
             {
                 'url': 'https://medium.com/@plotlygraphs/introducing-dash-5ecf7191b503',
                 'name': 'Announcement Essay (2017)',
