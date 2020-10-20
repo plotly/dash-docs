@@ -11,4 +11,5 @@ from .Example import Example  # noqa: F401
 from .Syntax import Syntax  # noqa: F401
 from .ComponentBlock import ComponentBlock  # noqa: F401
 from .ComponentReference import ComponentReference  # noqa: F401
-from .CreateDisplay import CreateDisplay
+from .CreateDisplay import CreateDisplay  # noqa: F401
+from .WorkspaceBlurb import WorkspaceBlurb  # noqa: F401

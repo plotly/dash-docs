@@ -6,6 +6,9 @@ if os.environ.get('DASH_APP_LOCATION', '') != 'ABSOLUTE':
 else:
     from server import app
 
+def is_in_dash_enterprise():
+    return os.environ.get('DASH_DOCS_URL_PREFIX', '') == '/Docs'
+
 
 def relpath(path):
     if path.startswith('/') and 'DASH_DOCS_URL_PREFIX' in os.environ and not path.startswith('/{}'.format(os.environ['DASH_DOCS_URL_PREFIX'].strip('/'))):

@@ -4,7 +4,7 @@ import dash_core_components as dcc
 import re
 from textwrap import dedent
 from .Markdown import Markdown
-
+from dash_docs import tools
 
 def ComponentReference(component_name, lib=dcc):
     component = getattr(lib, component_name)
@@ -19,7 +19,15 @@ def ComponentReference(component_name, lib=dcc):
             > ```python
             > >>> help({}.{})
             > ```
-            '''.format(lib.__name__, component_name)
+            '''.format(lib.__name__, component_name) +
+
+            '''
+            > Our recommended IDE for writing Dash apps is Dash Enterprise's
+            > [Data Science Workspaces](https://plotly.com/dash/workspaces),
+            > which has typeahead support for Dash Component Properties.
+            > [Find out if your company is using
+            > Dash Enterprise](https://go.plotly.com/company-lookup).
+            ''' if not tools.is_in_dash_enterprise() else ''
         )
     ]
 
