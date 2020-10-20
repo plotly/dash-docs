@@ -45,12 +45,18 @@ layout = html.Div([
     but you can also [build your own](https://github.com/plotly/dash-component-boilerplate)
     with JavaScript and React.js.
 
-    Note: Throughout this documentation, Python code examples are meant to be saved as files and executed using `python app.py`. These examples are not intended to run in Jupyter notebooks as-is, although most can be modified slightly to function in that environment.
+    Note: Throughout this documentation, Python code examples are meant to
+    be saved as files and executed using `python app.py`.
+    You can also use Jupyter with the [JupyterDash](https://github.com/plotly/jupyter-dash) library.
+
+    > If you're using Dash Enterprise's [Data Science Workspaces](https://plotly.com/dash/workspaces),
+    > copy & paste the below code into your Workspace.
+    > _[Find out if your company is using Dash Enterprise](https://go.plotly.com/company-lookup)_
 
     '''),
 
     rc.Syntax(examples['getting_started_layout_1.py'][0], summary='''
-        To get started, create a file named `app.py` with the following code:
+        To get started, create a file named `app.py` with the following code.
     '''),
     rc.Markdown('''
     Run the app with

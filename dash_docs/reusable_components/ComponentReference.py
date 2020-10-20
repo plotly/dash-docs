@@ -19,6 +19,11 @@ def ComponentReference(component_name, lib=dcc):
             > ```python
             > >>> help({}.{})
             > ```
+            > Our recommended IDE for writing Dash apps is Dash Enterprise's
+            > [Data Science Workspaces](https://plotly.com/dash/workspaces),
+            > which has typeahead support for Dash Component Properties.
+            > [Find out if your company is using
+            > Dash Enterprise](https://go.plotly.com/company-lookup).
             '''.format(lib.__name__, component_name)
         )
     ]
