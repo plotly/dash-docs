@@ -1,6 +1,6 @@
 using DashHtmlComponents
 
-function Section(title::String, links::String, description::Union{Nothing, String}, headerStyle = ())
+function Section(title::String, links, description="", headerStyle = ())
     return(
         html_div(
             className = "toc--section",
