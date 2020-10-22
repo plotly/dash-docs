@@ -292,7 +292,7 @@ app$callback(
       # Dash Callbacks
       '/advanced-callbacks' = chapters.advanced_callbacks$layout,
       '/clientside-callbacks' = chapters.clientside_callbacks$layout,
-      '/pattern-matching-callbacks' = chapters.pattern_matching_callbacks.layout,
+      '/pattern-matching-callbacks' = chapters.pattern_matching_callbacks$layout,
       '/callback-gotchas' = chapters.callback_gotchas$layout,
       # Component Libraries (Dash Core Components)
       '/dash-core-components' = chapters.dashCoreComponents$layout,
