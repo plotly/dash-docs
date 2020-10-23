@@ -9,7 +9,6 @@ app = dash.Dash(__name__)
 df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/gapminder2007.csv')
 
 app.layout = dash_table.DataTable(
-    id='tooltip',
     columns=[dict(name=i, id=i) for i in sorted(df.columns)],
     data=df.to_dict('records'),
     fixed_columns=dict(headers=True),
