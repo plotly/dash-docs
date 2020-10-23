@@ -393,6 +393,16 @@ URLS = [
                     },
 
                     {
+                        'url': '/datatable/tooltips',
+                        'content': chapters.dash_datatable.tooltips.index.layout,
+                        'name': 'DataTable Tooltips',
+                        'description': '''
+                            Display tooltips on data and header rows, conditional tooltips,
+                            define tooltips for each cell, customize behavior.
+                        '''
+                    },
+
+                    {
                         'url': '/datatable/callbacks',
                         'content': chapters.dash_datatable.callbacks.index.layout,
                         'name': 'Python-Driven Filtering, Paging, Sorting',
