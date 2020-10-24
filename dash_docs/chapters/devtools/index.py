@@ -282,7 +282,7 @@ dcc.Markdown(
 
 ''' +
 'app.enable_dev_tools' + str(inspect.signature(dummy_app.enable_dev_tools))
-if sys.version_info >= (3, 0) else '' +
+if sys.version_info >= (3, 0) else ''
 ),
 
 dcc.Markdown(
