@@ -82,16 +82,16 @@ workflows:
   python2.7:
     jobs:
       - python-2.7:
-        context: dash-docker-hub
+          context: dash-docker-hub
   python3.7:
     jobs:
       - python-3.7:
-        context: dash-docker-hub
+          context: dash-docker-hub
       - percy-finalize:
-        context: dash-docker-hub
+          context: dash-docker-hub
           requires:
             - python-3.7
   python3.6:
     jobs:
       - python-3.6:
-        context: dash-docker-hub
+          context: dash-docker-hub
