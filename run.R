@@ -481,7 +481,7 @@ app$callback(
                 components$Chapter(
                   'Pattern-Matching Callbacks',
                   href='/pattern-matching-callbacks',
-                  caption="The pattern-matching callback selectors `Match`, `ALL`, & `ALLSMALLER` allow you to
+                  caption="The pattern-matching callback selectors `MATCH`, `ALL`, & `ALLSMALLER` allow you to
                   write callbacks that respond to or update an arbitrary or dynamic number of components."
                 ),
                 components$Chapter(
