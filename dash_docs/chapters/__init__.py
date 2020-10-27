@@ -1,6 +1,7 @@
 import os
 from .import basic_callbacks
 from .import auth
+from .import dash_annotations
 from .import dash_core_components
 from .import dash_cytoscape
 from .import d3_react_components
