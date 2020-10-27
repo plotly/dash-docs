@@ -3,6 +3,9 @@ jobs:
   "percy-finalize":
     docker:
       - image: percyio/agent
+        auth:
+          username: dashautomation
+          password: $DASH_PAT_DOCKERHUB
     steps:
       - run: percy finalize --all
 
@@ -10,6 +13,9 @@ jobs:
     resource_class: medium+
     docker:
       - image: circleci/python:3.7.5-stretch-browsers
+        auth:
+          username: dashautomation
+          password: $DASH_PAT_DOCKERHUB
         environment:
           PERCY_PARALLEL_TOTAL: '-1'
     steps:
@@ -55,6 +61,9 @@ jobs:
     <<: *test-template
     docker:
       - image: circleci/python:3.6.9-stretch-browsers
+        auth:
+          username: dashautomation
+          password: $DASH_PAT_DOCKERHUB
     environment:
       PERCY_ENABLE: 0
 
@@ -62,6 +71,9 @@ jobs:
     <<: *test-template
     docker:
       - image: circleci/python:2.7.16-stretch-browsers
+        auth:
+          username: dashautomation
+          password: $DASH_PAT_DOCKERHUB
     environment:
       PERCY_ENABLE: 0
 
@@ -69,13 +81,17 @@ workflows:
   version: 2
   python2.7:
     jobs:
-      - python-2.7
+      - python-2.7:
+          context: dash-docker-hub
   python3.7:
     jobs:
-      - python-3.7
+      - python-3.7:
+          context: dash-docker-hub
       - percy-finalize:
+          context: dash-docker-hub
           requires:
             - python-3.7
   python3.6:
     jobs:
-      - python-3.6
+      - python-3.6:
+          context: dash-docker-hub
