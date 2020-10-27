@@ -23,20 +23,49 @@ jupyter:
     version: 3.7.3
 ---
 
-<!-- #region -->
 # Image annotations with Dash
 
-
-This tutorial shows how to annotate images with different drawing tools with plotly and Dash, and how to use such annotations in Dash apps.
+This tutorial shows how to annotate images with different drawing tools in plotly figures, and how to use such annotations in Dash apps.
 
 ## Annotation tools in plotly figures
 
-With the plotly graphing library, it is possible to draw annotations on Cartesian axes, which are recorded as shape elements of the figure layout. The example below shows how to configure a plotly figure in order to
-- set its dragmode to rectangle annotation 
-- modify the `config` parameter of the figure renderer so that drawing buttons are added to the modebar (so that it is possible to switch between several drawing dragmodes, or between drawing and panning/zooming).
+With the plotly graphing library, [it is possible to draw annotations on Cartesian axes](https://plotly.com/python/shapes/#drawing-shapes-on-cartesian-plots), which are recorded as shape elements of the figure layout. 
 
-In the figure below, you can try to draw a rectangle by left-clicking and dragging, then you can try the other drawing buttons of the modebar. Also note that we have added a shape programmatically when defining the figure.
-<!-- #endregion -->
+In order to use the drawing tools of a plotly figure, one must set its dragmode to one of the available drawing tools. This can be done programmatically, by setting the `dragmode` attribute of the figure `layout`, or by selecting a drawing tool in the modebar of the figure. Since buttons corresponding to drawing tools are not included in the default modebar, one must specify the buttons to add in the `config` prop of the `dcc.Graph` containing the plotly figure.
+
+In the figure below, you can try to draw a rectangle by left-clicking and dragging, then you can try the other drawing buttons of the modebar.
+
+```python
+import plotly.express as px
+import plotly.graph_objects as go
+from jupyter_dash import JupyterDash
+import dash
+import dash_core_components as dcc
+import dash_html_components as html
+from dash.dependencies import Input, Output
+from skimage import data
+import json
+
+img = data.chelsea()
+fig = px.imshow(img)
+fig.update_layout(
+    dragmode='drawrect')
+config={'modeBarButtonsToAdd':
+        ['drawline',
+         'drawopenpath',
+         'drawclosedpath',
+         'drawcircle',
+         'drawrect',
+          'eraseshape']}
+
+app = JupyterDash(__name__)
+app.layout = html.Div([
+    html.H3("Drag and draw annotations"),
+    dcc.Graph(figure=fig, config=config),
+])
+
+app.run_server(mode='inline', port=8050)
+```
 
 ## Dash callback triggered when drawing annotations
 
@@ -79,14 +108,14 @@ def on_new_annotation(relayout_data):
     else:
         return dash.no_update
 
-app.run_server(mode='inline', port=8050)
+app.run_server(mode='inline', port=8051)
 ```
 
 In the example below, we add all the available drawing tools to the modebar, so that you can inspect the characteristics of drawn shapes for the different types of shapes: rectangles, circles, lines, closed and open paths. 
 
 Rectangles, circles or ellipses and lines are all defined by their bounding-box rectangle, that is by the coordinates of the start and end corners of the rectangle, `x0`, `y0`, `x1` and `y1`. 
 
-As for paths, open and closed, their geometry is defined as an SVG path. 
+As for paths, open and closed, their geometry is defined as an [SVG path](https://en.wikipedia.org/wiki/Scalable_Vector_Graphics). 
 
 ```python
 import plotly.express as px
@@ -131,7 +160,64 @@ def on_new_annotation(relayout_data):
     else:
         return dash.no_update
 
-app.run_server(mode='inline', port=8050)
+app.run_server(mode='inline', port=8052)
+```
+
+## Changing the style of annotations
+
+The style of annotations can be changed thanks to interactive components such as sliders, dropdowns, or color pickers. Their values can be used in a callback to define the `newshape` attribute of the figure layout, as in the following example.
+
+```python
+import plotly.express as px
+import plotly.graph_objects as go
+from jupyter_dash import JupyterDash
+import dash
+import dash_core_components as dcc
+import dash_html_components as html
+from dash.dependencies import Input, Output
+import dash_daq as daq
+from skimage import data
+import json
+
+img = data.chelsea()
+fig = px.imshow(img)
+fig.update_layout(
+    dragmode='drawrect',
+    newshape=dict(
+        fillcolor='cyan', 
+        opacity=0.3,
+        line=dict(color='darkblue', width=8))
+)
+
+app = JupyterDash(__name__)
+app.layout = html.Div([
+    html.H3("Drag and draw annotations"),
+    dcc.Graph(id='graph-styled-annotations', figure=fig),
+    dcc.Slider(id='opacity-slider', min=0, max=1, value=0.5, step=0.1),
+    daq.ColorPicker(
+        id='my-color-picker',
+        label='Color Picker',
+        value=dict(hex='#119DFF')
+    ),
+])
+
+@app.callback(
+    Output('graph-styled-annotations', 'figure'),
+    [Input("opacity-slider", "value"),
+     Input("my-color-picker", "value")],
+    prevent_initial_call=True
+)
+def on_style_change(slider_value, color_value):
+    fig = px.imshow(img)
+    fig.update_layout(
+        dragmode='drawrect',
+        newshape=dict(
+            opacity=slider_value,
+            fillcolor=color_value['hex'])
+    )
+    return fig
+
+app.run_server(mode='inline', port=8053)
 ```
 
 ### Extracting an image subregion defined by an annotation
@@ -186,7 +272,7 @@ def on_new_annotation(relayout_data):
     else:
         return dash.no_update
 
-app.run_server(mode='inline', port=8051)
+app.run_server(mode='inline', port=8054)
 ```
 
 For a path, we need the following steps
@@ -259,7 +345,7 @@ def on_new_annotation(relayout_data):
     else:
         return dash.no_update
 
-app.run_server(mode='inline', port=8052)
+app.run_server(mode='inline', port=8055)
 ```
 
 ## Modifying shapes and parsing `relayoutData`
@@ -317,7 +403,7 @@ def on_new_annotation(relayout_data):
     return dash.no_update
    
 
-app.run_server(mode='inline', port=8053)
+app.run_server(mode='inline', port=8056)
 ```
 
 The example below extends on the previous one where the histogram of a ROI is displayed. Here, we tackle both the case where a new shape is drawn, and where an existing shape is modified.
@@ -384,5 +470,72 @@ def on_relayout(relayout_data):
     else:
         return (dash.no_update,) * 2
 
-app.run_server(mode='inline', port=8055)
+app.run_server(mode='inline', port=8057)
+```
+
+## Storing annotations in a dcc.Store component
+
+When building a training set for deep learning, or in other applications, one needs to store and save image annotations for future use. This can be done using a`dcc.Store` component.
+
+The example implements an image carousel where annotations are stored for each image. When the sequence comes back to a previously annotated image, annotations are read from the store and displayed as layout shapes on the image.
+
+```python
+import plotly.express as px
+import plotly.graph_objects as go
+from jupyter_dash import JupyterDash
+import dash
+import dash_core_components as dcc
+import dash_html_components as html
+from dash.dependencies import Input, Output, State
+from skimage import data
+import json
+
+images = [data.chelsea(), data.astronaut()]
+fig = px.imshow(images[0])
+fig.update_layout(
+    dragmode='drawrect',
+    newshape_line_color='yellow'
+)
+
+app = JupyterDash(__name__)
+app.layout = html.Div([
+    dcc.Graph(id='image-carousel', figure=fig),
+    html.Button('Next', id='next-btn', style={'width':'40%'}),
+    dcc.Store(id='store', data={})
+])
+
+
+
+@app.callback(
+    Output("store", "data"),
+    [Input("image-carousel", "relayoutData")],
+    [State("next-btn", "n_clicks"),
+     State("store", "data")],
+    prevent_initial_call=True
+)
+def on_new_shape(relayoutData, n_clicks, store_data):
+    image_nb = n_clicks % len(images) if n_clicks is not None else 0
+    store_data[image_nb] = relayoutData
+    return store_data
+    
+    
+@app.callback(
+    Output('image-carousel', 'figure'),
+    [Input("next-btn", "n_clicks")],
+    [State("store", "data")],
+    prevent_initial_call=True
+)
+def on_next(n_clicks, store_data):
+    image_nb = n_clicks % len(images)
+    print(store_data)
+    fig = px.imshow(images[image_nb])
+    fig.update_layout(
+        dragmode='drawrect',
+        newshape_line_color='yellow'
+    )
+    if str(image_nb) in store_data:
+        fig.update_layout(shapes=store_data[str(image_nb)]['shapes'])
+    return fig   
+
+app.run_server(mode='inline', port=8058)
 ```
