@@ -9,7 +9,7 @@ layout = html.Div(children=[rc.Markdown('''
 By default, Dash apps run on `localhost` - you can only access them on your
 own machine. To share a Dash app, you need to "deploy" it to a server.
 
-Our recommend method ffor securely deploying Dash applications is
+Our recommend method for securely deploying Dash applications is
 [Dash Enterprise](https://plotly.com/dash). Dash Enterprise can be
 installed on a Linux server at your company or the Kubernetes service
 of every major cloud:
@@ -22,7 +22,7 @@ of every major cloud:
 ## Dash Enterprise
 
 > If your company has licensed Dash Enterprise, then view the deployment
-> documentation by visiting https://<your-dash-enterprise-platform>/Docs/dash-enterprise
+> documentation by visiting `https://<your-dash-enterprise-platform>/Docs/dash-enterprise`
 > replacing `<your-dash-enterprise-platform>` with the host name of your
 > licensed Dash Enterprise in your VPC. [Look up the hostname for your company's license](https://go.plotly.com/company-lookup)
 
@@ -31,10 +31,20 @@ is Plotly's commercial product for developing & deploying
 Dash Apps on your company's on-premises Linux servers or VPC
 (AWS, Google Cloud, or Azure).
 
-The Dash Enterprise platform provides the complete Analytical App Stack.
-This includes a browser-based IDE, enterprise-wide Dash App Portal, easy git-based deployment,
-automatic URL namespacing, built-in SSL support, LDAP authentication, job queues,
-enhancements to the Dash library itself, and much more.
+In addition to [easy, git-based deployment](https://plotly.com/app-manager), the Dash Enterprise platform provides a complete Analytical App Stack.
+This includes
+[LDAP & SAML Authentication Middleware](https://plotly.com/dash/authentication),
+[Data Science Workspaces](https://plotly.com/dash/workspaces),
+[High Availability & Horizontal Scaling](https://plotly.com/dash/kubernetes),
+[Job Queue Support](https://plotly.com/dash/job-queue),
+[an Enterprise-Wide Dash App Portal](https://plotly.com/dash/app-manager),
+a [webapp design framework](https://plotly.com/dash/design-kit),
+[reporting, alerting, saved views, and PDF reports](https://plotly.com/dash/snapshot-engine),
+[Dashboard Toolkit](https://plotly.com/dash/toolkit),
+support for [embedding Dash apps in existing websites or Salesforce](https://plotly.com/dash/embedding),
+a [catalog of AI apps](https://plotly.com/dash/ai-and-ml-templates),
+[big data best practices](https://plotly.com/dash/big-data-for-python),
+[GPU support](https://plotly.com/dash/gpu-dask-acceleration), and more.
 
 ![The Analytical App Stack](/assets/images/dds/stack.png)
 
