@@ -245,6 +245,7 @@ URLS = [
             '/dash-bio/'
             '/dash-daq/',
             '/canvas/',
+            '/annotations/',
             '/cytoscape/'
         ],
         'chapters': [
@@ -545,6 +546,21 @@ URLS = [
                     }
                 ]
             },
+            {
+                'name': 'Dash Image annotations',
+                'chapters': [
+                    {
+                        'url': '/annotations',
+                        'name': 'Overview & Reference',
+                        'content': chapters.dash_annotations.index.layout,
+                        'description': (
+                            'Image rendering, drawing, annotations '
+                            'for image processing applications.'
+                        )
+                    }
+                ]
+            },
+
 
             {
                 'name': 'Dash Cytoscape',
