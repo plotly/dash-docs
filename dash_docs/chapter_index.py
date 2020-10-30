@@ -28,8 +28,8 @@ from .convert_to_html import convert_to_html
 def component_list(
         package, content_module, base_url, import_alias,
         component_library, escape_tags=False,
-        ad='dash-enterprise-kubernetes.jpg',
-        adhref='https://plotly.com/dash/kubernetes/?utm_source=docs&utm_medium=sidebar&utm_campaign=june&utm_content=kubernetes'):
+        ad='dash-club.png',
+        adhref='https://go.plotly.com/dash-club/?utm_source=docs&utm_medium=sidebar&utm_campaign=nov&utm_content=dash-club'):
     return [
         {
             'url': tools.relpath('/{}/{}'.format(base_url, component.lower())),
@@ -849,7 +849,7 @@ URLS = [
                 'content': chapters.auth.index.layout,
                 'name': 'Authentication',
                 'description': '',
-                'ad': 'dash-enterprise-authentication.jpg',
+                'ad': 'dash-enterprise-app-manager.jpg',
                 'adhref': 'https://plotly.com/get-demo/?utm_source=docs&utm_medium=ad&utm_campaign=april&utm_content=authentication'
             },
 
@@ -867,8 +867,6 @@ URLS = [
                 'name': 'Integrating Dash with Existing Web Apps',
                 'description': 'Strategies for integrating Dash apps with existing web ' \
                                'apps.',
-                'ad': 'dash-enterprise-embedded.jpg',
-                'adhref': 'https://plotly.com/dash/embedding/?utm_source=docs&utm_medium=sidebar&utm_campaign=june&utm_content=embedded'
             }
         ]
     },
@@ -894,8 +892,8 @@ URLS = [
         'name': 'Dash Enterprise',
         'description': (
             '''
-            Dash Enterprise is Plotly's commercial offering for managing
-            and improving your Dash apps in your organization.
+            Dash Enterprise is Plotly's commercial platform for building &
+            delivering Python analytics & Dash apps in mid to large-sized companies.
             '''
         ),
         'chapters': [
