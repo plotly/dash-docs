@@ -38,13 +38,14 @@ header = html.Div(
             html.Span([
                 html.A(html.Img(
                     src='/assets/images/logo-plotly.png',
-                ), href='https://plotly.com'),
+                ), href='https://plotly.com', className='logo-link'),
                 html.Img(
                     src='/assets/images/logo-seperator.png',
+                    className='logo-divider'
                 ),
                 dcc.Link(html.Img(
                     src='/assets/images/logo-dash.png',
-                ), href='/', id='logo-home'),
+                ), href='/', id='logo-home', className='logo-home'),
             ], className='logo'),
 
             # HEADS UP!
@@ -52,10 +53,11 @@ header = html.Div(
             # make sure to check that the responsive design still works
             # The breakpoints are set in override.css
             html.Div(className='links', children=[
-                html.A('Announcements', href='https://community.plotly.com/tag/announcements'),
-                html.A('Gallery', href='https://dash-gallery.plotly.host'),
-                html.A('Show & Tell', href='https://community.plotly.com/tag/show-and-tell'),
-                html.A('Community Forum', href='https://community.plotly.com/c/dash'),
+                html.A('📓 Workspaces', className='links--announcements', href='https://plotly.com/dash/workspaces'),
+                html.A('Announcements', className='links--announcements', href='https://community.plotly.com/tag/announcements'),
+                html.A('Gallery', className='links--gallery', href='https://dash-gallery.plotly.host'),
+                html.A('Show & Tell', className='links--show-and-tell', href='https://community.plotly.com/tag/show-and-tell'),
+                html.A('Community', className='links--community-forum', href='https://community.plotly.com/c/dash'),
                 html.Iframe(
                     src="https://ghbtns.com/github-btn.html?user=plotly&repo=dash&type=star&count=true&size=small",
                     style={
@@ -63,10 +65,31 @@ header = html.Div(
                         'height': '30px',
                         'verticalAlign': 'middle',
                         'marginTop': '9px',
-                        'width': '120px'
+                        'width': '120px',
                     }
                 ),
-            ])
+                html.A('dash enterprise demo', className='links--demo-button', href='https://plotly.com/get-demo/?utm_source=docs&utm_medium=banner&utm_campaign=sept&utm_content=demo',
+                    style={
+                        'background-color': '#f4564e',
+                        'border-radius': '1.22rem',
+                        'color': 'white',
+                        'cursor': 'pointer',
+                        'display': 'inline-block',
+                        'font-style': 'italic',
+                        'font-weight': '700',
+                        'line-height': '1.2',
+                        'letter-spacing': '1.33px',
+                        'outline': 'none',
+                        'padding': '.55rem 1.22rem',
+                        'margin-right': '5px',
+                        'text-align': 'center',
+                        'verticalAlign': 'middle',
+                        'text-decoration': 'none',
+                        'text-transform': 'uppercase',
+                        'transition': 'background-color .2s ease-in-out'
+                    }
+                ),
+            ]),
         ]
     )
 )
@@ -91,15 +114,17 @@ app.layout = html.Div(
         html.Div(className='content-wrapper', children=[
             html.Div([
                 dugc.Sidebar(urls=SIDEBAR_INDEX),
-                html.A([
+                html.A(
                     html.Img(
                         id='sidebar-image-img',
                         className='sidebar-image',
                         src=DEFAULT_AD['src'],
                         alt=DEFAULT_AD['alt']
                     ),
-                    html.Div(id='fade-out')
-                ], id='sidebar-image-link', href=DEFAULT_AD['href']),
+                    id='sidebar-image-link',
+                    className='sidebar-image-link',
+                    href=DEFAULT_AD['href']
+                ),
             ], className='sidebar-container'),
 
             html.Div([

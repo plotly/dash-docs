@@ -222,6 +222,8 @@ chapters.urls <- new.env()
 source('dash_docs/chapters/urls/index.R', local=chapters.urls)
 chapters.devtools <- new.env()
 source('dash_docs/chapters/devtools/index.R', local=chapters.devtools)
+chapters.app_lifecycle <- new.env()
+source('dash_docs/chapters/app_lifecycle/index.R', local=chapters.app_lifecycle)
 
 header <- htmlDiv(
   className = 'header',
@@ -261,9 +263,7 @@ app$layout(htmlDiv(
           htmlDiv(id = 'backlinks-bottom', className = 'backlinks')
         ),
         className = 'rhs-content container-width'),
-
         pageMenu(id = 'pagemenu')
-
       )
     )
   )
@@ -378,6 +378,7 @@ app$callback(
       '/support' = chapters.support$layout,
       '/plugins' = chapters.plugins$layout,
       '/d3-react-components' = chapters.d3$layout,
+      '/app_lifecycle' = chapters.app_lifecycle$layout,
       {
         htmlDiv(
           list(
@@ -572,6 +573,11 @@ app$callback(
                 'Dev tools',
                 href='/devtools',
                 caption="Dash dev tools reference"
+                ),
+                components$Chapter(
+                'App Lifecycle',
+                href='/app_lifecycle',
+                caption="Learn more about the lifecycle of a Dash app."
                 )
               )
             ),

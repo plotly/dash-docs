@@ -6,6 +6,7 @@ import plotly
 import six
 import textwrap
 import traceback
+import os
 
 import dash
 import dash_html_components as html
@@ -81,7 +82,19 @@ URLS = [
                     Plotcon that started it all.
                 ''',
                 'content': chapters.introduction.index.layout
-            },
+            }
+        ] +
+        ([
+            {
+                'url': 'https://dash.plotly.com/dash',
+                'name': 'Dash Enterprise',
+                'description': '''
+                    The commercial platform behind Dash Open Source for
+                    developing, deploying, and managing better Dash Applications
+                    at scale.
+                '''
+            }
+        ] if not tools.is_in_dash_enterprise() else []) + [
             {
                 'url': 'https://medium.com/@plotlygraphs/introducing-dash-5ecf7191b503',
                 'name': 'Announcement Essay (2017)',
@@ -100,26 +113,12 @@ URLS = [
                 '''
             },
             {
-                'url': '/dash-1-0-migration',
-                'name': 'Dash 1.0.0 Migration',
-                'description': (
-                    "Dash v1.0 is out! If you're new to Dash, just head down to "
-                    "the tutorial section below and get started. This section is "
-                    "for users Dash v0.x upgrading to v1.0. We've learned a lot "
-                    "from working with the amazing Dash community, and Dash v1.0 "
-                    "makes a number of changes to make your apps even more "
-                    "intuitive, powerful, and extensible as Dash continues to "
-                    "evolve."
-                ),
-                'content': chapters.migration.index.layout
-            },
-            {
                 'url': 'https://go.plotly.com/dash-club',
                 'name': 'Dash Club',
                 'description': '''
                     An email newsletter by chriddyp, the creator of Dash.
                 '''
-            }
+            },
         ]
     },
 
@@ -666,8 +665,24 @@ URLS = [
                         ),
                     },
                 ]
-            }
+            },
 
+            {
+                'name': 'Dash Community Components',
+                'chapters': [
+                    {
+                        'url': 'https://plotly.com/dash-community-components/',
+                        'name': 'Components List',
+                        'description': (
+                            'A listicle of selected Dash components created by users '
+                            'in [our community forum](https://community.plotly.com/). '
+                            'These are Dash Components created by the '
+                            'world\'s largest open-source community '
+                            'for ML & data science web apps.'
+                        ),
+                    },
+                ]
+            }
         ]
     },
 
@@ -789,7 +804,29 @@ URLS = [
                 'content': chapters.testing.index.layout,
                 'name': 'Dash Testing',
                 'description': 'An introduction to testing your dash app with selenium'
-            }
+            },
+
+            {
+                'url': '/app-lifecycle',
+                'content': chapters.app_lifecycle.index.layout,
+                'name': 'Dash App Lifecylce',
+                'description': 'An overview of the lifecyle of a Dash app'
+            },
+
+            {
+                'url': '/dash-1-0-migration',
+                'name': 'Dash 1.0.0 Migration',
+                'description': (
+                    "Dash v1.0 is out! If you're new to Dash, just head down to "
+                    "the tutorial section below and get started. This section is "
+                    "for users Dash v0.x upgrading to v1.0. We've learned a lot "
+                    "from working with the amazing Dash community, and Dash v1.0 "
+                    "makes a number of changes to make your apps even more "
+                    "intuitive, powerful, and extensible as Dash continues to "
+                    "evolve."
+                ),
+                'content': chapters.migration.index.layout
+            },
 
         ],
     },
