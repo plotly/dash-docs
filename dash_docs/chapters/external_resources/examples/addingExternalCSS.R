@@ -2,15 +2,15 @@ library(dash)
 library(dashHtmlComponents)
 
 external_scripts <- list(
-  list(src = 'https://www.google-analytics.com/analytics.js'),
-  list(src = 'https://cdn.polyfill.io/v2/polyfill.min.js'),
-  list(src = 'https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.10/lodash.core.js')
+  'https://www.google-analytics.com/analytics.js',
+  'https://cdn.polyfill.io/v2/polyfill.min.js',
+  'https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.10/lodash.core.js'
 )
 
 # external CSS stylesheets
 external_stylesheets <- list(
-  list(href = 'https://codepen.io/chriddyp/pen/bWLwgP.css'),
-  list(href = 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css')
+  'https://codepen.io/chriddyp/pen/bWLwgP.css',
+  'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css'
 )
 
 app <- Dash$new(
