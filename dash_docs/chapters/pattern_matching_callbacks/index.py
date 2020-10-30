@@ -14,6 +14,7 @@ layout = html.Div([
     rc.Markdown(
     '''
     New in Dash 1.11.0!
+    (requires dash-renderer 1.4.0 or greater)
 
     The pattern-matching callback selectors `MATCH`, `ALL`, & `ALLSMALLER`
     allow you to write callbacks that respond to or update an

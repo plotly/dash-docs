@@ -7,7 +7,7 @@ layout = html.Div([
     rc.Markdown('''
         ## Introduction to Dash
 
-        Dash is a productive Python framework for building web applications.
+        Dash is a productive Python framework for building web analytic applications.
 
         Written on top of Flask, Plotly.js, and React.js,
         Dash is ideal for building data visualization apps
@@ -31,13 +31,12 @@ layout = html.Div([
         or read our [announcement letter](https://medium.com/@plotlygraphs/introducing-dash-5ecf7191b503).
 
         Dash is an open source library, released under the permissive MIT license.
-        [Plotly](https://plot.ly) develops Dash and offers a [platform for managing Dash
-        apps in an enterprise environment](https://plot.ly/dash).
-        If you're interested, [please get in touch](https://plot.ly/get-demo).
-
-        ***
+        [Plotly](https://plot.ly) develops Dash and offers a
+        [platform for managing Dash apps in an enterprise environment](https://plot.ly/dash).
 
     '''.replace('  ', '')),
+
+    rc.WorkspaceBlurb,
 
     html.Iframe(
         width='100%',
