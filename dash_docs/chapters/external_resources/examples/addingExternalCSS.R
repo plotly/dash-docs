@@ -3,8 +3,8 @@ library(dashHtmlComponents)
 
 # external JavaScript files
 external_scripts <- list(
-  src = 'https://www.google-analytics.com/analytics.js',
-  src = 'https://cdn.polyfill.io/v2/polyfill.min.js',
+  'https://www.google-analytics.com/analytics.js',
+  'https://cdn.polyfill.io/v2/polyfill.min.js',
   list(
     src = 'https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.10/lodash.core.js',
     integrity = 'sha256-Qqd/EfdABZUcAxjOkMi8eGEivtdTkh3b65xCZL4qAQA=',
