@@ -24,7 +24,7 @@ layout = html.Div([
     such as validating the types of callback arguments and checking to see
     whether the specified `Input` and `Output` components actually have the
     specified properties. For full validation, all components within your
-    callback must therefore appear in the initial layout of your app, and you
+    callback must exist in the layout when your app starts, and you
     will see an error if they do not.
 
     However, in the case of more complex Dash apps that involve dynamic
