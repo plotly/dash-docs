@@ -32,19 +32,19 @@ Dash Apps on your company's on-premises Linux servers or VPC
 (AWS, Google Cloud, or Azure).
 
 In addition to [easy, git-based deployment](https://plotly.com/app-manager), the Dash Enterprise platform provides a complete Analytical App Stack.
-This includes
-[LDAP & SAML Authentication Middleware](https://plotly.com/dash/authentication),
-[Data Science Workspaces](https://plotly.com/dash/workspaces),
-[High Availability & Horizontal Scaling](https://plotly.com/dash/kubernetes),
-[Job Queue Support](https://plotly.com/dash/job-queue),
-[an Enterprise-Wide Dash App Portal](https://plotly.com/dash/app-manager),
-a [webapp design framework](https://plotly.com/dash/design-kit),
-[reporting, alerting, saved views, and PDF reports](https://plotly.com/dash/snapshot-engine),
-[Dashboard Toolkit](https://plotly.com/dash/toolkit),
-support for [embedding Dash apps in existing websites or Salesforce](https://plotly.com/dash/embedding),
-a [catalog of AI apps](https://plotly.com/dash/ai-and-ml-templates),
-[big data best practices](https://plotly.com/dash/big-data-for-python),
-[GPU support](https://plotly.com/dash/gpu-dask-acceleration), and more.
+This includes:
+- [LDAP & SAML Authentication Middleware](https://plotly.com/dash/authentication)
+- [Data Science Workspaces](https://plotly.com/dash/workspaces)
+- [High Availability & Horizontal Scaling](https://plotly.com/dash/kubernetes)
+- [Job Queue Support](https://plotly.com/dash/job-queue)
+- [Enterprise-Wide Dash App Portal](https://plotly.com/dash/app-manager)
+- [Design Kit](https://plotly.com/dash/design-kit)
+- [Reporting, Alerting, Saved Views, and PDF Reports](https://plotly.com/dash/snapshot-engine)
+- [Dashboard Toolkit](https://plotly.com/dash/toolkit)
+- [Embedding Dash apps in Existing websites or Salesforce](https://plotly.com/dash/embedding),
+- [AI App Catalog](https://plotly.com/dash/ai-and-ml-templates),
+- [Big Data Best Practices](https://plotly.com/dash/big-data-for-python),
+- [GPU support](https://plotly.com/dash/gpu-dask-acceleration)
 
 ![The Analytical App Stack](/assets/images/dds/stack.png)
 
