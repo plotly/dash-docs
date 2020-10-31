@@ -47,12 +47,12 @@ within that set. In this example, we just have a single set of dynamic
 components but you may have multiple sets of dynamic components in more
 complex apps or if you are using `MATCH` (see below).
 - In fact, in this example, we didn't actually _need_ `'type' = 'filter-dropdown'`.
-The same callback would have worked with `Input(list('index'= ALL), 'value')`.
+The same callback would have worked with `input(list('index'= ALL), 'value')`.
 We included `'type' = 'filter-dropdown'` as an extra specifier in case you
 create multiple sets of dynamic components.
 - The component properties themselves (e.g. `value`) cannot be matched by
 a pattern, only the IDs are dynamic.
-- This example uses a common pattern with `State` - the currently displayed
+- This example uses a common pattern with `state` - the currently displayed
 set of dropdowns within the `dropdown-container` component are passed into
 the callback when the button is clicked. Within the callback, the new
 dropdown is appended to the list and then returned.
@@ -103,11 +103,11 @@ we're asking Dash to:
   `input(id=list('index' = MATCH, 'type' = 'dynamic-dropdown'), property= 'value')`
   2. Update the component with the id `'type' = 'dynamic-output'`
   and the `index` that _matches_ the same `index` of the input:
-  `Output(id=list('index' = MATCH, 'type' = 'dynamic-output'), property= 'children')`
+  `output(id=list('index' = MATCH, 'type' = 'dynamic-output'), property= 'children')`
   3. Pass along the `id` of the dropdown into the callback:
   `state(id=list('index' = MATCH, 'type' = 'dynamic-dropdown'), property= 'id')`
 - With the `MATCH` selector, only a _single_ value is passed into the callback
-for each `Input` or `State`. This is unlike the previous example with the
+for each `input` or `state`. This is unlike the previous example with the
 `ALL` selector where Dash passed _all_ of the values into the callback.
 - Notice how it's important to design ID named lists that 'line up' the
 inputs with outputs. The `MATCH` contract is that Dash will update
@@ -147,8 +147,8 @@ index corresponding to the div.
 The user interface in the example below displays filter results that are
 increasingly specific in each as we apply each additional dropdown.
 
-`ALLSMALLER` can only be used in `Input` and `State` items, and
-must be used on a key that has `MATCH` in the `Output` item(s).
+`ALLSMALLER` can only be used in `input` and `state` items, and
+must be used on a key that has `MATCH` in the `output` item(s).
 
 `ALLSMALLER` it isn't always necessary (you can usually use `ALL` and
 filter out the indices in your callback) but it will make your logic simpler.
