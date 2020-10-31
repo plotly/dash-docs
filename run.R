@@ -222,6 +222,8 @@ chapters.deployment <- new.env()
 source('dash_docs/chapters/deployment/index.R', local=chapters.deployment)
 chapters.urls <- new.env()
 source('dash_docs/chapters/urls/index.R', local=chapters.urls)
+chapters.routes <- new.env()
+source('dash_docs/chapters/routes/index.R', local=chapters.routes)
 chapters.devtools <- new.env()
 source('dash_docs/chapters/devtools/index.R', local=chapters.devtools)
 chapters.app_lifecycle <- new.env()
@@ -377,6 +379,7 @@ app$callback(
       # Beyond the Basics
       '/external-resources' = chapters.external_resources$layout,
       '/urls' = chapters.urls$layout,
+      '/routes' = chapters.routes$layout,
       '/devtools' = chapters.devtools$layout,
       '/support' = chapters.support$layout,
       '/plugins' = chapters.plugins$layout,
@@ -579,6 +582,11 @@ app$callback(
                 caption="Dash provides two components (`dccLink` and `dccLocation`) that allow you to easily make fast multipage apps using its own \"Single Page App (SPA)\" design pattern."
                 ),
                 components$Chapter(
+                'Server Routes & Redirects',
+                href='/routes',
+                caption="Dash offers two methods (`server_route` and `redirect`) to simplify the process of specifying user-defined routes and redirects for your apps."
+                ),
+                components$Chapter(
                 'Dev tools',
                 href='/devtools',
                 caption="Dash dev tools reference"
@@ -655,40 +663,20 @@ app$callback(
   )
 )
 
-plugin <- list(
-  on_attach = function(server) {
-    router <- server$plugins$request_routr
-    route <- routr::Route$new()
-    redirect_getting_started <- function(request, response, keys, ...) {
-      response$status <- 301L
-      response$set_header('Location', '/layout')
-      TRUE
-    }
-    redirect_getting_started_2 <- function(request, response, keys, ...) {
-      response$status <- 301L
-      response$set_header('Location', '/basic-callbacks')
-      TRUE
-    }
-    redirect_state <- function(request, response, keys, ...) {
-      response$status <- 301L
-      response$set_header('Location', '/basic-callbacks')
-      TRUE
-    }
-    redirect_sizing <- function(request, response, keys, ...) {
-      response$status <- 301L
-      response$set_header('Location', '/datatable/width')
-      TRUE
-    }
-    route$add_handler('get', '/getting-started', redirect_getting_started)
-    route$add_handler('get', '/getting-started-part-2', redirect_getting_started_2)
-    route$add_handler('get', '/state', redirect_state)
-    route$add_handler('get', '/datatable/sizing', redirect_sizing)
-    router$add_route(route, "redirects")
-  },
-  name = 'redirect_urls',
-  require = 'request_routr'
+app$redirect(
+  "/getting-started", "/layout"
 )
 
-app$server$attach(plugin)
+app$redirect(
+  "/getting-started-part-2", "/basic-callbacks"
+)
+
+app$redirect(
+  "/state", "/basic-callbacks"
+)
+
+app$redirect(
+  "/datatable/sizing", "/datatable/width"
+)
 
 app$run_server(host = "0.0.0.0")
