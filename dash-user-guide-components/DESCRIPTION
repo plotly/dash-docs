@@ -11,5 +11,3 @@ BugReports: https://github.com/plotly/dash-user-guide-components/issues
 Encoding: UTF-8
 LazyData: true
 KeepSource: true
-Author: Chris P [aut]
-Maintainer: Chris P <chris@plotly.com>
