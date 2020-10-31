@@ -9,18 +9,27 @@ from textwrap import dedent
 
 layout = html.Div([
     rc.Markdown('''
-    > This chapter covers two forms of authentication maintained by Plotly:
-    >
-    > 1. `dash-enterprise-auth`, the authentication and authorization layer built-in
-    > to Plotly's commercial product, [Dash Enterprise](https://plotly.com/dash).
-    >
-    > 2. `dash-auth`, a simple [basic auth](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication)
-    > implementation.
+    This chapter covers two forms of authentication maintained by Plotly:
+
+    1. `dash-enterprise-auth`, the authentication and authorization layer built-in
+    to Plotly's commercial product, [Dash Enterprise](https://plotly.com/dash).
+
+    2. `dash-auth`, a simple [basic auth](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication)
+    implementation.
+
+    Dash Enterprise can be
+    installed on a Linux server at your company or the Kubernetes service
+    of every major cloud:
+
+    - [Install Dash Enterprise on Azure](https://plotly.com/dash/azure)
+    - [Install Dash Enterprise on AWS](https://plotly.com/dash/aws)
+    - [Install Dash Enterprise on an on-premises Linux server](https://plotly.com/dash/on-premises-linux)
+    - Or, [find out if your company is using Dash Enterprise](https://go.plotly.com/company-lookup)
 
     # Dash Enterprise Auth
 
     [Dash Enterprise](https://plotly.com/dash/) provides
-    an [authentication middleware](https://plotly.com/dash/app-manager/)
+    an [authentication middleware](https://plotly.com/dash/authentication/)
     that is configured by your administrator.
     This authentication middleware connects to your
     organization's LDAP or SAML identity provider
