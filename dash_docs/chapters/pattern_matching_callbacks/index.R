@@ -39,7 +39,7 @@ This means 'match any input that has an ID list where `'type'` is `'filter-dropd
 and `'index'` is _anything_. Whenever the `value` property of any of the
 dropdowns change, send _all_ of their values to the callback.'
 - The names & values of the ID list (`type`, `index`, `filter-dropdown`)
-are arbitrary. This could've be named `list('foo' = 'bar', 'baz' = n_clicks)`.
+are arbitrary. This could've been named `list('foo' = 'bar', 'baz' = n_clicks)`.
 - However, for readability, we recommend using names like `type`, `index`, or `id`.
 `type` can be used to refer to the class or set dynamic components and
 `index` or `id` could be used to refer _which_ component you are matching
