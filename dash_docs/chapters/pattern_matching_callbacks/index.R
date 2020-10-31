@@ -109,7 +109,7 @@ we're asking Dash to:
 - With the `MATCH` selector, only a _single_ value is passed into the callback
 for each `input` or `state`. This is unlike the previous example with the
 `ALL` selector where Dash passed _all_ of the values into the callback.
-- Notice how it's important to design ID named lists that 'line up' the
+- Notice how it's important to design IDs using named lists that 'line up' the
 inputs with outputs. The `MATCH` contract is that Dash will update
 whichever output has the same dynamic ID as the id. In this case, the
 'dynamic ID' is the value of the `index` and we've designed our layout to
