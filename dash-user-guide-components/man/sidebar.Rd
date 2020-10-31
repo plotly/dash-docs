@@ -22,3 +22,6 @@ sidebar(children=NULL, id=NULL, urls=NULL, depth=NULL)
 
 \item{depth}{Numeric. depth}
 }
+
+\value{named list of JSON elements corresponding to React.js properties and their values}
+

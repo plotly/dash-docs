@@ -31,10 +31,11 @@ applications.
 - Adding Meta Tags
 - Serving Dash's Component Libraries Locally or from a CDN
 - Sample Dash CSS Stylesheet
+- Syntax Highlighting with Markdown
 ***
-
-## Adding Your Own CSS and JavaScript to Dash Apps
-
+"),
+  htmlH2('Adding Your Own CSS and JavaScript to Dash Apps'),
+  dccMarkdown("
 Including custom CSS or JavaScript in your Dash apps is simple.
 Just create a folder named `assets` in the root of your app directory
 and include your CSS and JavaScript
@@ -64,22 +65,22 @@ three files in that folder:
   ),
   
   htmlHr(),
-  dccMarkdown(
-"body {
+  dccMarkdown("
+body {
     font-family: sans-serif;
 }
 h1, h2, h3, h4, h5, h6 {
     color: hotpink
 }
 "),
-htmlHr(),
+ htmlHr(),
 
-htmlDiv(
+ htmlDiv(
   dccMarkdown('`header.css`'),
   style=list('paddingTop' = 20)
 ),
 
-dccMarkdown(
+ dccMarkdown(
   "app-header {
     height: 60px;
     line-height: 60px;
@@ -93,8 +94,8 @@ dccMarkdown(
 "
 ),
 
-htmlHr(),
-htmlDiv(
+ htmlHr(),
+ htmlDiv(
   dccMarkdown('`custom-script.js`'),
   style=list('paddingTop' = 20)
 ),
@@ -137,18 +138,20 @@ then see the next section.
             
 5 - Your custom CSS will be included after the 
 Dash component CSS
+"),
 
-### Hot Reloading
-
+ htmlH3("Hot Reloading"),
+ dccMarkdown("
 By default, Dash includes \"hot-reloading\". 
 This means that Dash will automatically refresh your browser 
 when you make a change in your Python code and your CSS code.
 
 Give it a try: Change the color in typography.css from \"hotpink\" 
 to \"orange\" and see your application update.
-
-## Load Assets from a Folder Hosted on a CDN
-
+"),
+ 
+ htmlH3("Load Assets from a Folder Hosted on a CDN"),
+ dccMarkdown("
 If you duplicate the file structure of your local assets folder 
 to a folder hosted externally to your Dash app, 
 you can use `assets_url_path = 'http://your-external-assets-folder-url'` in the Dash constructor to load the files from there instead of locally. 
@@ -177,147 +180,186 @@ In your app.r file you can use the relative path to that image:
 examples$embeddingImages$source_code,
 
 dccMarkdown("
-## Adding external CSS/Javascript 
+## Adding external CSS/JavaScript
 
-You can add resources hosted externally to your Dash app with the 
+You can add resources hosted externally to your Dash app with the
 `external_stylesheets/stylesheets` init keywords.
 
 The resources can be either a string or 
-a dict containing the tag attributes (src, integrity, crossorigin, etc). 
+a list containing the tag attributes (`src`, `integrity`, `crossorigin`, etc).
 You can mix both.
             
-External css/js files are loaded before the assets.
+External CSS/JavaScript files are loaded before the assets.
             "),
 
 examples$addingExternalCSS$source_code,
 
-# 
-# examples$addingExternalCSS$source_code,
-# 
-# dccMarkdown("
-# ## Customizing Dash's HTML Index Template
-# 
-# New in dash 0.22.0
-# 
-# Dash's UI is generated dynamically with Dash's React.js front-end. 
-# So, on page load, Dash serves a very small HTML template string that 
-# includes the CSS and JavaScript that is necessary to render the page 
-# and some simple HTML meta tags.
-#             
-# This simple HTML string is customizable. 
-# You might want to customize this string if you wanted to:
-# 
-# - Include a different <title> for your app 
-# (the <title> tag is the name that appears in your brower's tab. 
-# By default, it is \"dash\")
-# 
-# - Customize the way that your CSS or JavaScript is included in the page. 
-# For example, if you wanted to include remote scripts or if you wanted to 
-# include the CSS before the Dash component CSS
-# 
-# - Include a custom version of dash renderer, 
-# by instantiating the `DashRenderer` class yourself. 
-# You can add request hooks this way, 
-# by providing a hooks config object as in the example below.
-# 
-# ### Usage
-# 
-# ** Option 1 ** - index string
-# 
-# Add an `index_string` to modify the default HTML Index Template:
-# 
-# ```
-# library(dash)
-# library(dashCoreComponents)
-# library(dashHtmlComponents)
-# 
-# external_stylesheets <- list(
-#   list('https://codepen.io/chriddyp/pen/bWLwgP.css')
-# )
-# app <- Dash$new(external_stylesheets = external_stylesheets)
-# 
-# string <- \"
-# <!DOCTYPE html>
-# <html>
-#     <head>
-#         {%metas%}
-#         <title>{%title%}</title>
-#         {%favicon%}
-#         {%css%}
-#     </head>
-#     <body>
-#         <div>My Custom header</div>
-#         {%app_entry%}
-#         <footer>
-#             {%config%}
-#             {%scripts%}
-#             {%renderer%}
-#         </footer>
-#         <div>My Custom footer</div>
-#     </body>
-# </html>
-# \"
-# app$index_string <- string
-# 
-# app$layout(htmlDiv('Simple Dash App'))
-# 
-# app$run_server()
-# ```
-# 
-# The `{%key%}`s are template variables that Dash will fill in automatically with default properties. The available keys are:
-# 
-# `{%favicon%}` (optional)
-#             
-# A favicon link tag if found in the `assets` folder.
-#             
-# `{%css%}` (optional)
-#             
-# `<link/>` tags to css resources. 
-# These resources include the Dash component library CSS resources 
-# as well as any CSS resources found in the `assets` folder.
-#             
-# `{%title%}` (optional)
-#             
-# The contents of the page `<title>` tag. Learn more about `<title/>`
-#             
-# `{%config%}` (required)
-#             
-# An auto-generated tag that includes configuration settings 
-# passed from Dash's backend to Dash's front-end (`dash-renderer`).
-#             
-# `{%app_entry%}` (required)
-#             
-# The container in which the Dash layout is rendered.
-#             
-# `{%scripts%}` (required)
-#             
-# The set of JavaScript scripts required to render the Dash app. 
-# This includes the Dash component JavaScript files as well as 
-# any JavaScript files found in the assets folder.
-#             
-# `{%renderer%}` (required)
-#           
-# The JavaScript script that instantiates dash-renderer 
-# by calling new `DashRenderer()`
-# 
-# **Option 2 - interpolate_index**
-# 
-# If your HTML content isn't static or if you would like to introspect or modify the templated variables, 
-# then you can override the Dash.interpolate_index method.   
-# ```
-# library(dash)
-# library(dashHtmlComponents)
-# ... # build R6 class
-# ```
-# ## Customizing dash-renderer with request hooks
-# 
-# To instantiate your own version of `dash-renderer`, 
-# you can override Dash's HTML Index Template and provide your own script 
-# that will be used instead of the standard script. 
-# This script should somewhere call var renderer = new DashRenderer();, 
-# which instantiates the DashRenderer class. You can add this script to your index HTML when you're setting app.index_string, 
-# or you could simply override app.renderer like so:
-#             "),
+dccMarkdown("
+## Customizing Dash's HTML Index Template
+
+Dash's UI is generated dynamically with Dash's React.js front-end. 
+So, on page load, Dash serves a very small HTML template string that 
+includes the CSS and JavaScript that is necessary to render the page 
+and some simple HTML meta tags.
+            
+This simple HTML string is customizable. 
+You might want to customize this string if you wanted to:
+
+- Include a different <title> for your app 
+(the <title> tag is the name that appears in your brower's tab. 
+By default, it is \"dash\")
+
+- Customize the way that your CSS or JavaScript is included in the page. 
+For example, if you wanted to include remote scripts or if you wanted to 
+include the CSS before the Dash component CSS
+
+### Usage
+
+Add an `index_string` to modify the default HTML Index Template:
+
+```
+library(dash)
+library(dashCoreComponents)
+library(dashHtmlComponents)
+
+external_stylesheets <- list(
+  list('https://codepen.io/chriddyp/pen/bWLwgP.css')
+)
+app <- Dash$new(external_stylesheets = external_stylesheets)
+
+string <- \"
+<!DOCTYPE html>
+<html>
+    <head>
+        {%metas%}
+        <title>{%title%}</title>
+        {%favicon%}
+        {%css%}
+    </head>
+    <body>
+        <div>My Custom header</div>
+        {%app_entry%}
+        <footer>
+            {%config%}
+            {%scripts%}
+            {%renderer%}
+        </footer>
+        <div>My Custom footer</div>
+    </body>
+</html>
+\"
+app$index_string <- string
+
+app$layout(htmlDiv('Simple Dash App'))
+
+app$run_server()
+```
+
+The `{%key%}`s are template variables that Dash will fill in automatically with default properties. The available keys are:
+
+`{%favicon%}` (optional)
+            
+A favicon link tag if found in the `assets` folder.
+            
+`{%css%}` (optional)
+            
+`<link/>` tags to css resources. 
+These resources include the Dash component library CSS resources 
+as well as any CSS resources found in the `assets` folder.
+            
+`{%title%}` (optional)
+            
+The contents of the page `<title>` tag. Learn more about `<title/>`
+            
+`{%config%}` (required)
+            
+An auto-generated tag that includes configuration settings 
+passed from Dash's backend to Dash's front-end (`dash-renderer`).
+            
+`{%app_entry%}` (required)
+            
+The container in which the Dash layout is rendered.
+            
+`{%scripts%}` (required)
+            
+The set of JavaScript scripts required to render the Dash app. 
+This includes the Dash component JavaScript files as well as 
+any JavaScript files found in the assets folder.
+            
+`{%renderer%}` (required)
+          
+The JavaScript script that instantiates dash-renderer 
+by calling new `DashRenderer()`
+            "),
+
+dccMarkdown("
+## Customizing Meta Tags
+
+To add custom meta tags to your application, you can always override Dash's HTML Index Template. Alternatively, Dash provides a shortcut: you can specify meta tags directly in the Dash constructor:
+```
+library(dash)
+library(dashHtmlComponents)
+
+app <- Dash$new(meta_tags = list(
+    # A description of the app, used by e.g.
+    # search engines when displaying search results.
+    list(
+      name = 'description',
+      content = 'my description'
+    ),
+    # A tag that tells Internet Explorer (IE)
+    # to use the latest renderer version available
+    # to that browser (e.g. Edge)
+    list(
+      `http-equiv` = 'X-UA-Compatible',
+      content = 'IE=edge'
+    ),
+    # A tag that tells the browser not to scale
+    # desktop widths to fit mobile screens.
+    # Sets the width of the viewport (browser)
+    # to the width of the device, and the zoom level
+    # (initial scale) to 1.
+    #
+    # Necessary for 'true' mobile support.
+    list(
+      name = 'viewport',
+      content = 'width=device-width, initial-scale=1.0'
+    )
+  )
+)
+
+app$layout(
+  htmlDiv(
+    'Simple Dash App'
+  )
+)
+
+app$run_server(debug=TRUE)
+```
+              "),
+
+dccMarkdown("
+## Serving Dash's Component Libraries Locally or from a CDN
+
+Dash's component libraries, like `dashCoreComponents` and `dashHtmlComponents`, are bundled with JavaScript and CSS files. Dash automatically checks with component libraries are being used in your application and will automatically serve these files in order to render the application.
+By default, Dash serves the JavaScript and CSS resources from the local files on the server where Dash is running. This is the more flexible and robust option: in some cases, such as firewalled or airgapped environments, it is the only option. It also avoids some hard-to-debug problems like packages that have not been published to NPM or CDN downtime, and the unlikely but possible scenario of the CDN being hacked. And of course, component developers will want the local version while changing the code, so when dev bundles are requested (such as with `debug=TRUE`) we always serve locally.
+However, for performance-critical apps served beyond an intranet, online CDNs can often deliver these files much faster than loading the resources from the file system, and will reduce the load on the Dash server.
+```
+library(dash)
+
+app <- Dash$new(serve_locally=FALSE)
+```
+This will load the bundles from the [https://unpkg.com/](https://unpkg.com) CDN which is a community-maintained project that serves JavaScript bundles from NPM. We don't maintain it, so we cannot attest or guarantee to its uptime, performance, security, or long term availability.
+              "),
+
+dccMarkdown("
+## Syntax Highlighting With Markdown
+
+Both `dashTable` and `dashCoreComponents` support markdown formatting; this includes syntax highlighting for inline code.
+
+Highlighting is taken care of by [highlight.js](https://highlightjs.org/). By default, only certain languages are recognized, and there is only one color scheme available. However, you can override this by downloading a custom `highlight.js` package. To do this, visit [https://highlightjs.org/download/](https://highlightjs.org/download/), and in the 'Custom package' section, check off all of the languages that you require, download your package, and place the resultant `highlight.pack.js` file into the `assets/` folder for your app. The package should also come with a `styles/` directory; to use a different color scheme, simply copy the corresponding stylesheet into your app's `assets/` folder.
+
+              "),
 
 dccMarkdown("
 [Back to the Table of Contents](/)

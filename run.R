@@ -263,9 +263,7 @@ app$layout(htmlDiv(
           htmlDiv(id = 'backlinks-bottom', className = 'backlinks')
         ),
         className = 'rhs-content container-width'),
-
-        dugcPageMenu(id = 'pagemenu')
-
+        pageMenu(id = 'pagemenu')
       )
     )
   )
