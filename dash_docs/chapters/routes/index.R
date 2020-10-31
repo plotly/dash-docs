@@ -49,6 +49,10 @@ instead:
     })
 ```
 
+The handler must return `TRUE` (indicating that the next route handler in the stack
+should be called), or `FALSE` (if no further route handlers should be called). An
+in-depth discussion of [`routr`](https://cran.r-project.org/package=routr) and its interface
+is available [here](https://www.data-imaginist.com/2017/introducing-routr/).
 
 We could also incorporate a wildcard to handle subpaths -
 in this case redirecting `/getting-started/` with anything
