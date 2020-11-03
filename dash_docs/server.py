@@ -68,12 +68,7 @@ class CustomDash(Dash):
         </html>'''.format(**meta_kwargs))
 
 
-app = CustomDash(
-    __name__,
-    external_stylesheets=[
-        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'
-    ]
-)
+app = CustomDash(__name__)
 server = app.server
 
 app.config.suppress_callback_exceptions = True

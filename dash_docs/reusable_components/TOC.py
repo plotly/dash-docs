@@ -13,7 +13,8 @@ def TOCChapters(chapters):
                     chapter['name'],
                     href=chapter['chapters'][0]['url'].rstrip('/'),
                     caption=chapter['chapters'][0].get('description', ''),
-                    className=chapter['chapters'][0].get('className', '')
+                    className=chapter['chapters'][0].get('className', ''),
+                    icon=chapter['chapters'][0].get('icon', ''),
                 ))
 
             else:
@@ -21,7 +22,8 @@ def TOCChapters(chapters):
                     chapter['name'],
                     href=chapter['url'].rstrip('/'),
                     caption=chapter.get('description', ''),
-                    className=chapter.get('className', '')
+                    className=chapter.get('className', ''),
+                    icon=chapter.get('icon', ''),
                 ))
         except Exception as e:
             print('Error generating TOC', e)
