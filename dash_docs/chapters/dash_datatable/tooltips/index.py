@@ -501,7 +501,7 @@ layout = html.Div(
             ],
             tooltip={
                 c: {'value': markdown_table, 'type': 'markdown'}
-                for c in df.columns
+                for c in ['shop', 'sales', 'goal']
             },
             tooltip_delay=0,
             tooltip_duration=None
