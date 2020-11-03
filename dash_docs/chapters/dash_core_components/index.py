@@ -18,6 +18,10 @@ layout = html.Div(className="gallery", children=[
         A core set of components, written and maintained by the Dash team,
         is available in the `dash-core-components` library.
 
+        For production Dash apps, the Dash Core Components styling & layout
+        should be managed with Dash Enterprise
+        [Design Kit](https://plotly.com/dash/design-kit).
+
         The source is on GitHub at [plotly/dash-core-components](https://github.com/plotly/dash-core-components).
 
         These docs are using version {}.

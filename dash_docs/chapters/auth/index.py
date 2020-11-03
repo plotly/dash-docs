@@ -9,6 +9,8 @@ from textwrap import dedent
 
 layout = html.Div([
     rc.Markdown('''
+    # Authentication
+
     This chapter covers two forms of authentication maintained by Plotly:
 
     1. `dash-enterprise-auth`, the authentication and authorization layer built-in
@@ -33,7 +35,7 @@ layout = html.Div([
     >
     > **`https://<your-dash-enterprise-platform>/Docs/dash-enterprise`**
     >
-    > (Replace `<your-dash-enterprise-platform>` with the host name of your
+    > (Replace `<your-dash-enterprise-platform>` with the hostname of your
     > your licensed Dash Enterprise platform in your VPC)
     >
     > [Look up the hostname of your company's license](https://go.plotly.com/company-lookup).
@@ -43,7 +45,7 @@ layout = html.Div([
     that is configured by your administrator.
     This authentication middleware connects to your
     organization's LDAP or SAML identity provider
-    (e.g. Active Directory, Ping Federate), allows your end users to log in
+    (e.g. Active Directory, Ping Federate, Okta), allows your end users to log in
     with SSO, verifies if the user has permission to view the application,
     and then passes along user information like their username or group.
 

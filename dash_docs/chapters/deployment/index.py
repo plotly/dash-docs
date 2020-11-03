@@ -26,7 +26,7 @@ of every major cloud:
 >
 > **`https://<your-dash-enterprise-platform>/Docs/dash-enterprise`**
 >
-> (Replace `<your-dash-enterprise-platform>` with the host name of your
+> (Replace `<your-dash-enterprise-platform>` with the hostname of your
 > licensed Dash Enterprise in your VPC).
 >
 > [Look up the hostname for your company's license](https://go.plotly.com/company-lookup)
