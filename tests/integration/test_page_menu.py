@@ -56,6 +56,7 @@ def test_page_menu_001(dash_doc):
         'Creating Your Own Components',
         'Beyond the Basics',
         'Production Capabilities',
+        'These capabilities are only available in Dash Enterprise',
         'Getting Help'
     ]
 
