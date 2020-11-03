@@ -58,11 +58,10 @@ layout = html.Div([
 
     ''') if not tools.is_in_dash_enterprise() else '',
 
-    rc.Syntax(examples['getting_started_layout_1.py'][0], summary='''
-        To get started, create a file named `app.py` with the following code.
-    '''),
     rc.Markdown('''
-    Run the app with
+    To get started, create a file named `app.py` with the following code.
+
+    Then, run the app with
 
     ```
     $ python app.py
@@ -73,7 +72,66 @@ layout = html.Div([
     in your web browser. You should see an app that looks like this.
     '''),
 
-    rc.Example(examples['getting_started_layout_1.py'][1]),
+    dcc.Tabs([
+        dcc.Tab(
+            label='Dash open-source',
+            children=[
+                rc.Syntax(examples['getting_started_layout_1.py'][0]),
+                rc.Example(examples['getting_started_layout_1.py'][1]),
+            ]
+        ),
+        dcc.Tab(
+            label='Dash Enterprise Design Kit',
+            children=[
+                rc.Syntax(
+                '''
+                import dash
+                import dash_design_kit as ddk
+                import plotly.express as px
+                import pandas as pd
+
+                app = dash.Dash(__name__)
+                server = app.server  # expose server variable for Procfile
+
+                # assume you have a "long-form" data frame
+                # see https://plotly.com/python/px-arguments/ for more options
+                df = pd.DataFrame({
+                    "Fruit": ["Apples", "Oranges", "Bananas", "Apples", "Oranges", "Bananas"],
+                    "Amount": [4, 1, 2, 2, 4, 5],
+                    "City": ["SF", "SF", "SF", "Montreal", "Montreal", "Montreal"]
+                })
+
+                fig = px.bar(df, x="Fruit", y="Amount", color="City", barmode="group")
+
+                app.layout = ddk.App(show_editor=True, children=[
+                    ddk.Header([ddk.Title('Hello Dash')]),
+                    ddk.Card(children=[
+                        ddk.CardHeader(title='Dash: A Web application framework for Python.'),
+                        ddk.Graph(figure=fig)
+                    ])
+                ])
+
+                if __name__ == '__main__':
+                    app.run_server(debug=True)
+                '''
+                ),
+
+                html.P('Default Theme'),
+                html.Img(src=tools.relpath('/assets/images/ddk/layout-default.png')),
+                html.P('Mars Theme'),
+                html.Img(src=tools.relpath('/assets/images/ddk/layout-mars.png')),
+                html.P('Neptune Theme'),
+                html.Img(src=tools.relpath('/assets/images/ddk/layout-neptune.png')),
+                html.P('Miller Theme'),
+                html.Img(src=tools.relpath('/assets/images/ddk/layout-miller.png')),
+                html.P('Extrasolar Theme'),
+                html.Img(src=tools.relpath('/assets/images/ddk/layout-extrasolar.png')),
+                html.P('Design Kit Theme Editor'),
+                html.Img(src=tools.relpath('/assets/images/ddk/theme-editor.png')),
+
+            ]
+        )
+    ]),
 
     rc.Markdown(
     '''
