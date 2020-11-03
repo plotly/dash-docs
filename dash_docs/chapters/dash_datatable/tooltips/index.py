@@ -6,7 +6,7 @@ import pandas as pd
 import dash_table
 from dash_docs import reusable_components as rc
 from dash_docs import datasets
-from dash_docs.run import app
+from dash_docs.server import app
 
 Display = rc.CreateDisplay({
     'dash_table': dash_table,
