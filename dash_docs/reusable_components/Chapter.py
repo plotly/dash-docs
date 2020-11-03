@@ -3,7 +3,7 @@ import dash_core_components as dcc
 from dash_docs.tools import relpath
 from .Markdown import Markdown
 
-def Chapter(name, href=None, caption=None):
+def Chapter(name, href=None, caption=None, className=''):
     linkComponent = html.A if href.startswith('http') else dcc.Link
     return html.Div(className='toc--chapter', children=[
         html.Li(
@@ -11,7 +11,7 @@ def Chapter(name, href=None, caption=None):
                 name,
                 href=relpath(href),
                 id=href,
-                className='toc--chapter-link'
+                className='toc--chapter-link ' + className
             ),
         ),
         html.Small(

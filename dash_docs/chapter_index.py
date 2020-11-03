@@ -83,18 +83,7 @@ URLS = [
                 ''',
                 'content': chapters.introduction.index.layout
             }
-        ] +
-        ([
-            {
-                'url': 'https://dash.plotly.com/dash',
-                'name': 'Dash Enterprise',
-                'description': '''
-                    The commercial platform behind Dash Open Source for
-                    developing, deploying, and managing better Dash Applications
-                    at scale.
-                '''
-            }
-        ] if not tools.is_in_dash_enterprise() else []) + [
+        ] + [
             {
                 'url': 'https://medium.com/@plotlygraphs/introducing-dash-5ecf7191b503',
                 'name': 'Announcement Essay (2017)',
@@ -119,7 +108,19 @@ URLS = [
                     An email newsletter by chriddyp, the creator of Dash.
                 '''
             },
-        ]
+        ] +
+        ([
+            {
+                'url': 'https://dash.plotly.com/dash',
+                'name': 'Dash Enterprise',
+                'description': '''
+                    The commercial platform behind Dash Open Source for
+                    developing, deploying, and managing better Dash Applications
+                    at scale.
+                ''',
+                'className': 'red'
+            }
+        ] if not tools.is_in_dash_enterprise() else [])
     },
 
     {
