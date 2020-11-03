@@ -25,8 +25,8 @@ layout = html.Div([
     authentication logic so that only  users who have logged into the
     existing host web application can view the embedded Dash application.
 
-    To get started with Dash Enterprise Embedded Middleware, visit:
-    [http://<your-dash-enterprise-hostname>/Docs/embedded-middleware](http://<your-dash-enterprise-hostname>/Docs/embedded-middleware),
+    To get started with Dash Enterprise Embedded Middleware, **visit:
+    `https://<your-dash-enterprise-hostname>/Docs/embedded-middleware`**,
     replacing `<your-dash-enterprise-hostname>` with the hostname of your
     licensed Dash Enterprise in your VPC. [Look up the hostname for your company's license](https://go.plotly.com/company-lookup)
 

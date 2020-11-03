@@ -841,7 +841,7 @@ URLS = [
             > To deploy Dash apps in production environments, you'll need
             > [Dash Enterprise](https://plotly.com/dash).
             >
-            > If you already have Dash Enterprise, **visit these docs at
+            > If you already have Dash Enterprise, **visit docs at
             > `https://<your-Dash-Enterprise-URL>/Docs/`**
             >
             > [Find out if your company has Dash Enterprise](https://go.plotly.com/company-lookup).
@@ -1159,7 +1159,7 @@ URLS = [
             },
 
             {
-                'url': 'https://',
+                'url': 'https://plotly.com/dash/ai-and-ml-templates/',
                 'name': 'Sample Apps & Templates',
                 'description': (
                     '''

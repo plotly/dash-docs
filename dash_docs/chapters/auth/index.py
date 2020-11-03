@@ -21,12 +21,22 @@ layout = html.Div([
     installed on a Linux server at your company or the Kubernetes service
     of every major cloud:
 
-    - [Install Dash Enterprise on Azure](https://plotly.com/dash/azure)
-    - [Install Dash Enterprise on AWS](https://plotly.com/dash/aws)
-    - [Install Dash Enterprise on an on-premises Linux server](https://plotly.com/dash/on-premises-linux)
-    - Or, [find out if your company is using Dash Enterprise](https://go.plotly.com/company-lookup)
+    > - [Install Dash Enterprise on Azure](https://plotly.com/dash/azure)
+    > - [Install Dash Enterprise on AWS](https://plotly.com/dash/aws)
+    > - [Install Dash Enterprise on an on-premises Linux server](https://plotly.com/dash/on-premises-linux)
+    > - Or, [find out if your company is using Dash Enterprise](https://go.plotly.com/company-lookup)
 
     # Dash Enterprise Auth
+
+    > If your company has licensed Dash Enterprise, then view authentication
+    > documentation by visting
+    >
+    > **`https://<your-dash-enterprise-platform>/Docs/dash-enterprise`**
+    >
+    > (Replace `<your-dash-enterprise-platform>` with the host name of your
+    > your licensed Dash Enterprise platform in your VPC)
+    >
+    > [Look up the hostname of your company's license](https://go.plotly.com/company-lookup).
 
     [Dash Enterprise](https://plotly.com/dash/) provides
     an [authentication middleware](https://plotly.com/dash/authentication/)
