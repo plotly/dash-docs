@@ -16,7 +16,8 @@ layout = html.Div(children=[
         '''
         For production Dash apps, Dash Core Components styling and layout
         should be managed with Dash Enterprise [Design Kit](https://plotly.com/dash/design-kit).
-        '''
+        ''',
+        className='red-links'
     ),
     html.H3('Default Dropdown'),
     html.P("An example of a default dropdown without \

@@ -33,12 +33,14 @@ preamble = html.Div([
     and its behavior is completely customizable through its properties.
     DataTable is rendered with standard, semantic HTML `<table/>` markup,
     which makes it accessible, responsive, and easy to style.
+    '''),
 
+    rc.Markdown('''
     For production Dash applications, DataTable is intended to bse used with
     [Python data pipelines](https://plotly.com/dash/job-queue/) for ingesting
     the table data and [Design Kit](https://plotly.com/dash/design-kit) for
     DataTable styling.
-    '''),
+    ''', className='red-links'),
 
     Section('Quickstart', [
         rc.Markdown(
@@ -94,13 +96,11 @@ preamble = html.Div([
 
                     html.P('Default Theme'),
                     html.Img(src=tools.relpath('/assets/images/ddk/table-default.png')),
-                    html.P('Mars Theme'),
-                    html.Img(src=tools.relpath('/assets/images/ddk/table-mars.png')),
                     html.P('Neptune Theme'),
                     html.Img(src=tools.relpath('/assets/images/ddk/table-neptune.png')),
                     html.P('Miller Theme'),
                     html.Img(src=tools.relpath('/assets/images/ddk/table-miller.png')),
-                    html.P('Extrasolar Theme'),
+                    html.P('Mercury Theme'),
                     html.Img(src=tools.relpath('/assets/images/ddk/table-mercury.png')),
                     html.P('Design Kit Theme Editor'),
                     html.Img(src=tools.relpath('/assets/images/ddk/theme-editor.png')),

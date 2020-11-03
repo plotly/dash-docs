@@ -98,9 +98,164 @@ DASH_ENTERPRISE_URLS = {
                 '''
             ),
             'icon': 'fas fa-cloud-upload-alt',
+        },
+
+        {
+            'url': '/authentication',
+            'content': chapters.auth.index.layout,
+            'name': 'Add Authentication to your Dash App',
+            'description': (
+                '''
+                Protect your applicaton behind a login screen &
+                access user authentication data in your Dash apps.
+                [Learn more](https://plotly.com/dash/authentication-middleware/).
+                '''
+            ),
+            'icon': 'fas fa-users',
+            'ad': 'dash-enterprise-app-manager.jpg',
+            'adhref': 'https://plotly.com/get-demo/?utm_source=docs&utm_medium=ad&utm_campaign=april&utm_content=authentication',
+        },
+
+        {
+            'url': '/integrating-dash',
+            'content': chapters.integrating_dash.index.layout,
+            'name': 'Embed your Dash App in other Websites',
+            'description': (
+                '''
+                Embed your Dash applications in external websites securely
+                without iframes.
+                [Learn more](https://plotly.com/dash/embedding/).
+                '''
+            ),
+            'icon': 'fas fa-code',
+        },
+
+        {
+            'url': 'https://plotly.com/dash/design-kit/',
+            'name': 'Design Kit',
+            'description': (
+                '''
+                Dash Enterprise Design Kit is a set of Dash components
+                designed to simplify application layout and theme your
+                apps. No CSS required.
+                [Learn more](https://plotly.com/dash/design-kit).
+                '''
+            ),
+            'icon': 'fas fa-palette'
+        },
+
+        {
+            'url': 'https://plotly.com/dash/snapshot-engine/',
+            'name': 'Snapshot Engine',
+            'description': (
+                '''
+                Snapshot Engine is a Dash Enterprise capability for saving
+                views of Dash apps and generating PDF reports from Python.
+                [Learn more](https://plotly.com/dash/snapshot-engine)
+                '''
+            ),
+            'icon': 'fas fa-camera-retro'
+        },
+
+        {
+            'url': 'https://plotly.com/dash/job-queue/',
+            'name': 'Job Queue',
+            'description': (
+                '''
+                Background jobs can dramatically improve the scalability of
+                a Dash app by enabling it to offload slow or CPU-intensive
+                tasks from its callback loops. Background jobs can also
+                run periodically in the background to refresh your app's
+                data on a daily or hourly basis. [Learn more](https://plotly.com/dash/job-queue/).
+                '''
+            ),
+            'icon': 'fas fa-clock'
+        },
+
+        {
+            'url': 'https://plotly.com/dash/kubernetes/',
+            'name': 'Kubernetes Installation',
+            'description': (
+                '''
+                Dash Apps on Dash Enterprise scale horizontally thanks to
+                a stateless design and Kubernetes infrastructure.
+                 [Learn more](https://plotly.com/dash/kubernetes/).
+                '''
+            ),
+            'icon': 'fas fa-fighter-jet'
+        },
+
+        {
+            'url': 'https://plotly.com/dash/snapshot-engine/',
+            'name': 'Dash Notes',
+            'description': (
+                '''
+                With Dash Notes, the entire Dash app becomes a drawing canvas.
+                Dash app end users can make annotations on Dash apps that
+                trigger email notifications to stakeholders. Try to do that
+                in Tableau! [Learn more](https://plotly.com/dash/snapshot-engine/).
+                '''
+            ),
+            'icon': 'fas fa-pencil-alt'
+        },
+
+        {
+            'url': 'https://plotly.com/dash/workspaces/',
+            'name': 'Data Science Workspaces',
+            'description': (
+                '''
+                A built-in IDE to develop Dash apps or Jupyter notebooks on
+                Dash Enterprise without leaving your browser. In Workspaces,
+                the development environment closly matches production.
+                [Learn more](https://plotly.com/dash/workspaces/).
+                '''
+            ),
+            'icon': 'fas fa-copy'
+        },
+
+        {
+            'url': 'https://plotly.com/dash/big-data-for-python/',
+            'name': 'Dash Enterprise & Databricks',
+            'description': (
+                '''
+                Connect your Dash apps to Databricks Spark clusters.
+                [Learn more](https://plotly.com/dash/big-data-for-python/).
+                '''
+            ),
+            'icon': 'fas fa-database'
+        },
+
+        {
+            'url': 'https://plotly.com/dash/big-data-for-python/',
+            'name': 'Dash Enterprise & Snowflake',
+            'description': (
+                '''
+                Connect your Dash apps to Snowflake Data Warehouse.
+                [Learn more](https://plotly.com/dash/big-data-for-python/).
+                '''
+            ),
+            'icon': 'fas fa-snowflake'
+        },
+
+        {
+            'url': 'https://plotly.com/dash/ai-and-ml-templates/',
+            'name': 'Sample Apps & Templates',
+            'description': (
+                '''
+                Get started with these curated sample apps or learn first
+                principles from the templates in this section.
+                Sample Apps include the [AI & ML App Catalogue](https://plotly.com/dash/ai-and-ml-templates/).
+                '''
+            ),
+            'icon': 'fas fa-grip-horizontal'
+        },
+
+        {
+            'url': '/dash-enterprise',
+            'name': 'App Manager',
             'chapters': [
                 {
-                    'name': 'Overview',
+                    'name': 'App Manager Overview',
                     'breadcrumb': 'Dash Enterprise',
                     'url': '/dash-enterprise',
                     'content': chapters.dash_enterprise.index.layout
@@ -241,24 +396,7 @@ DASH_ENTERPRISE_URLS = {
                     'description': 'A reference for git commands and how they are used '
                     'with Dash Enterprise.'
                 },
-            ]
-        },
 
-        {
-            'url': '/authentication',
-            'content': chapters.auth.index.layout,
-            'name': 'Add Authentication to your Dash App',
-            'description': (
-                '''
-                Protect your applicaton behind a login screen &
-                access user authentication data in your Dash apps.
-                [Learn more](https://plotly.com/dash/authentication-middleware/).
-                '''
-            ),
-            'icon': 'fas fa-users',
-            'ad': 'dash-enterprise-app-manager.jpg',
-            'adhref': 'https://plotly.com/get-demo/?utm_source=docs&utm_medium=ad&utm_campaign=april&utm_content=authentication',
-            'chapters': [
                 {
                     'url': '/dash-enterprise/privacy',
                     'content': chapters.dash_enterprise.dash_enterprise_chapters.AppPrivacy,
@@ -273,140 +411,6 @@ DASH_ENTERPRISE_URLS = {
                     'description': 'Accessing User Authentication Data in your Dash App'
                 },
             ]
-        },
-
-        {
-            'url': '/integrating-dash',
-            'content': chapters.integrating_dash.index.layout,
-            'name': 'Embed your Dash App in other Websites',
-            'description': (
-                '''
-                Embed your Dash applications in external websites securely
-                without iframes.
-                [Learn more](https://plotly.com/dash/embedding/).
-                '''
-            ),
-            'icon': 'fas fa-code',
-        },
-
-        {
-            'url': 'https://plotly.com/dash/design-kit/',
-            'name': 'Design Kit',
-            'description': (
-                '''
-                Dash Enterprise Design Kit is a set of Dash components
-                designed to simplify application layout and theme your
-                apps. No CSS required.
-                [Learn more](https://plotly.com/dash/design-kit).
-                '''
-            ),
-            'icon': 'fas fa-palette'
-        },
-
-        {
-            'url': 'https://plotly.com/dash/snapshot-engine/',
-            'name': 'Snapshot Engine',
-            'description': (
-                '''
-                Snapshot Engine is a Dash Enterprise capability for saving
-                views of Dash apps and generating PDF reports from Python.
-                [Learn more](https://plotly.com/dash/snapshot-engine)
-                '''
-            ),
-            'icon': 'fas fa-camera-retro'
-        },
-
-        {
-            'url': 'https://plotly.com/dash/job-queue/',
-            'name': 'Job Queue',
-            'description': (
-                '''
-                Background jobs can dramatically improve the scalability of
-                a Dash app by enabling it to offload slow or CPU-intensive
-                tasks from its callback loops. Background jobs can also
-                run periodically in the background to refresh your app's
-                data on a daily or hourly basis. [Learn more](https://plotly.com/dash/job-queue/).
-                '''
-            ),
-            'icon': 'fas fa-clock'
-        },
-
-        {
-            'url': 'https://plotly.com/dash/kubernetes/',
-            'name': 'Kubernetes Installation',
-            'description': (
-                '''
-                Dash Apps on Dash Enterprise scale horizontally thanks to
-                a stateless design and Kubernetes infrastructure.
-                 [Learn more](https://plotly.com/dash/kubernetes/).
-                '''
-            ),
-            'icon': 'fas fa-fighter-jet'
-        },
-
-        {
-            'url': 'https://plotly.com/dash/snapshot-engine/',
-            'name': 'Dash Notes',
-            'description': (
-                '''
-                With Dash Notes, the entire Dash app becomes a drawing canvas.
-                Dash app end users can make annotations on Dash apps that
-                trigger email notifications to stakeholders. Try to do that
-                in Tableau! [Learn more](https://plotly.com/dash/snapshot-engine/).
-                '''
-            ),
-            'icon': 'fas fa-pencil-alt'
-        },
-
-        {
-            'url': 'https://plotly.com/dash/workspaces/',
-            'name': 'Data Science Workspaces',
-            'description': (
-                '''
-                A built-in IDE to develop Dash apps or Jupyter notebooks on
-                Dash Enterprise without leaving your browser. In Workspaces,
-                the development environment closly matches production.
-                [Learn more](https://plotly.com/dash/workspaces/).
-                '''
-            ),
-            'icon': 'fas fa-copy'
-        },
-
-        {
-            'url': 'https://plotly.com/dash/big-data-for-python/',
-            'name': 'Dash Enterprise & Databricks',
-            'description': (
-                '''
-                Connect your Dash apps to Databricks Spark clusters.
-                [Learn more](https://plotly.com/dash/big-data-for-python/).
-                '''
-            ),
-            'icon': 'fas fa-database'
-        },
-
-        {
-            'url': 'https://plotly.com/dash/big-data-for-python/',
-            'name': 'Dash Enterprise & Snowflake',
-            'description': (
-                '''
-                Connect your Dash apps to Snowflake Data Warehouse.
-                [Learn more](https://plotly.com/dash/big-data-for-python/).
-                '''
-            ),
-            'icon': 'fas fa-snowflake'
-        },
-
-        {
-            'url': 'https://plotly.com/dash/ai-and-ml-templates/',
-            'name': 'Sample Apps & Templates',
-            'description': (
-                '''
-                Get started with these curated sample apps or learn first
-                principles from the templates in this section.
-                Sample Apps include the [AI & ML App Catalogue](https://plotly.com/dash/ai-and-ml-templates/).
-                '''
-            ),
-            'icon': 'fas fa-grip-horizontal'
         }
 
     ]
