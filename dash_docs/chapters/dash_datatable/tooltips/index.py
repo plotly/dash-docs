@@ -512,8 +512,8 @@ layout = html.Div(
         '''
         ## Styling Tooltips
 
-        Tooltips can be styled with the `dash-tooltips` CSS class. This can
-        be specified within a CSS file inside your `assets/` folder
+        Tooltips can be styled with the `dash-tooltip` (container) and `dash-table-tooltip` (content) CSS classes.
+        This can be specified within a CSS file inside your `assets/` folder
         or within the table itself with the `css` property.
         '''
         ),
@@ -531,7 +531,7 @@ layout = html.Div(
                 } for row in df.to_dict('rows')
             ],
             css=[{
-                'selector': '.dash-tooltip',
+                'selector': '.dash-table-tooltip',
                 'rule': 'background-color: white; font-family: monospace;'
             }],
 
