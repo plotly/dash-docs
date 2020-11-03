@@ -6,7 +6,7 @@ from dash_docs import styles
 from dash_docs.tools import load_examples
 from dash_docs import tools
 from dash_docs import reusable_components as rc
-from dash_docs.run import app
+from dash_docs.server import app
 
 examples = load_examples(__file__)
 
