@@ -55,8 +55,8 @@ def test_page_menu_001(dash_doc):
         'Open Source Component Libraries',
         'Creating Your Own Components',
         'Beyond the Basics',
+        'Production Capabilities',
         'Getting Help',
-        'Dash Enterprise'
     ]
 
     for i in range(len(home_links)):
