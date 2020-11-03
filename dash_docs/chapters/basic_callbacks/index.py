@@ -278,7 +278,15 @@ layout = html.Div([
         dcc.Tab(
             label='Dash Open Source',
             children=[
+                rc.Markdown(
+                    examples['getting_started_multiple_viz.py'][0],
+                    style=styles.code_container
+                ),
 
+                html.Div(examples['getting_started_multiple_viz.py'][1], className="example-container", style={
+                    'padding-right': '35px',
+                    'padding-bottom': '30px'
+                }),
             ]
         ),
         dcc.Tab(
@@ -390,15 +398,6 @@ layout = html.Div([
             ]
         )
     ]),
-    rc.Markdown(
-        examples['getting_started_multiple_viz.py'][0],
-        style=styles.code_container
-    ),
-
-    html.Div(examples['getting_started_multiple_viz.py'][1], className="example-container", style={
-        'padding-right': '35px',
-        'padding-bottom': '30px'
-    }),
 
     rc.Markdown('''
 
