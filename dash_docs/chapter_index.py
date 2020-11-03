@@ -83,18 +83,7 @@ URLS = [
                 ''',
                 'content': chapters.introduction.index.layout
             }
-        ] +
-        ([
-            {
-                'url': 'https://dash.plotly.com/dash',
-                'name': 'Dash Enterprise',
-                'description': '''
-                    The commercial platform behind Dash Open Source for
-                    developing, deploying, and managing better Dash Applications
-                    at scale.
-                '''
-            }
-        ] if not tools.is_in_dash_enterprise() else []) + [
+        ] + [
             {
                 'url': 'https://medium.com/@plotlygraphs/introducing-dash-5ecf7191b503',
                 'name': 'Announcement Essay (2017)',
@@ -119,7 +108,19 @@ URLS = [
                     An email newsletter by chriddyp, the creator of Dash.
                 '''
             },
-        ]
+        ] +
+        ([
+            {
+                'url': 'https://dash.plotly.com/dash',
+                'name': 'Dash Enterprise',
+                'description': '''
+                    The commercial platform behind Dash Open Source for
+                    developing, deploying, and managing better Dash Applications
+                    at scale.
+                ''',
+                'className': 'red'
+            }
+        ] if not tools.is_in_dash_enterprise() else [])
     },
 
     {
@@ -842,67 +843,33 @@ URLS = [
     },
 
     {
-        'name': 'Production',
-        'chapters': [
-            {
-                'url': '/authentication',
-                'content': chapters.auth.index.layout,
-                'name': 'Authentication',
-                'description': '',
-                'ad': 'dash-enterprise-app-manager.jpg',
-                'adhref': 'https://plotly.com/get-demo/?utm_source=docs&utm_medium=ad&utm_campaign=april&utm_content=authentication'
-            },
-
-            {
-                'url': '/deployment',
-                'content': chapters.deployment.index.layout,
-                'name': 'Deployment',
-                'description': 'To share a Dash app, you need to "deploy" your Dash ' \
-                               'app to a server'
-            },
-
-            {
-                'url': '/integrating-dash',
-                'content': chapters.integrating_dash.index.layout,
-                'name': 'Integrating Dash with Existing Web Apps',
-                'description': 'Strategies for integrating Dash apps with existing web ' \
-                               'apps.',
-            }
-        ]
-    },
-
-    {
-        'name': 'Getting Help',
-        'chapters': [
-            {
-                'url': 'https://community.plotly.com/c/dash',
-                'description': '',
-                'name': 'The Dash Community Forum'
-            },
-            {
-                'url': '/support',
-                'name': 'Support and Contact',
-                'description': '',
-                'content': chapters.support.index.layout,
-            }
-        ]
-    },
-
-    {
-        'name': 'Dash Enterprise',
+        'name': 'Production Capabilities',
         'description': (
             '''
-            Dash Enterprise is Plotly's commercial platform for building &
-            delivering Python analytics & Dash apps in mid to large-sized companies.
+            #### These capabilities are only available in Dash Enterprise
+
+            > To deploy Dash apps in production environments, you'll need
+            > [Dash Enterprise](https://plotly.com/dash).
+            >
+            > If you already have Dash Enterprise, **visit docs at
+            > `https://<your-Dash-Enterprise-URL>/Docs/`**
+            >
+            > [Find out if your company has Dash Enterprise](https://go.plotly.com/company-lookup).
             '''
         ),
         'chapters': [
             {
-                'name': 'About Dash Enterprise',
-                'url': 'https://plotly.com/dash/'
-            },
-            {
-                'name': 'Dash Enterprise Documentation',
+                'url': '/deployment',
+                'content': chapters.deployment.index.layout,
+                'name': 'Deploy your Dash App',
+                'description': (
+                    '''
+                    How to deploy & configure your application with
+                    Dash Enterprise App Manager.
+                    [Learn more](https://plotly.com/dash/app-manager/).
+                    '''
+                ),
+                'icon': 'fas fa-cloud-upload-alt',
                 'chapters': [
                     {
                         'name': 'Overview',
@@ -954,12 +921,6 @@ URLS = [
                         'description': 'Manage users in the Admin Panel '
                     },
                     {
-                        'url': '/dash-enterprise/privacy',
-                        'content': chapters.dash_enterprise.dash_enterprise_chapters.AppPrivacy,
-                        'name': 'Dash App Privacy',
-                        'description': 'Dash App Privacy and Managing Collaborators'
-                    },
-                    {
                         'url': '/dash-enterprise/redis-database',
                         'content': chapters.dash_enterprise.dash_enterprise_chapters.Redis,
                         'name': 'Linking a Redis Database',
@@ -994,12 +955,6 @@ URLS = [
                         "to app owners from the command line via ssh."
                     },
                     {
-                        'url': '/dash-enterprise/app-authentication',
-                        'content': chapters.dash_enterprise.dash_enterprise_chapters.Authentication,
-                        'name': 'Dash Enterprise Auth Features',
-                        'description': 'Accessing User Authentication Data in your Dash App'
-                    },
-                    {
                         'url': '/dash-enterprise/checks',
                         'content': chapters.dash_enterprise.dash_enterprise_chapters.Checks,
                         'name': 'Dash Enterprise App Health Checks',
@@ -1023,13 +978,6 @@ URLS = [
                         'name': 'Create a Staging Dash App ',
                         'description': 'Use a staged Dash App to test changes before updating '
                         'your production Dash App.'
-                    },
-                    {
-                        'url': '/dash-enterprise/pdf-service',
-                        'content': chapters.dash_enterprise.dash_enterprise_chapters.pdfService,
-                        'name': 'Dash Enterprise PDF Service',
-                        'description': 'Utilize the Dash Enterprise API endpoint for '
-                        'creating PDF exports of your Dash applications'
                     },
                     {
                         'url': '/dash-enterprise/analytics',
@@ -1066,10 +1014,192 @@ URLS = [
                         'with Dash Enterprise.'
                     },
                 ]
+            },
+
+            {
+                'url': '/authentication',
+                'content': chapters.auth.index.layout,
+                'name': 'Add Authentication to your Dash App',
+                'description': (
+                    '''
+                    Protect your applicaton behind a login screen &
+                    access user authentication data in your Dash apps.
+                    [Learn more](https://plotly.com/dash/authentication-middleware/).
+                    '''
+                ),
+                'icon': 'fas fa-users',
+                'ad': 'dash-enterprise-app-manager.jpg',
+                'adhref': 'https://plotly.com/get-demo/?utm_source=docs&utm_medium=ad&utm_campaign=april&utm_content=authentication',
+                'chapters': [
+                    {
+                        'url': '/dash-enterprise/privacy',
+                        'content': chapters.dash_enterprise.dash_enterprise_chapters.AppPrivacy,
+                        'name': 'Dash App Privacy',
+                        'description': 'Dash App Privacy and Managing Collaborators'
+                    },
+
+                    {
+                        'url': '/dash-enterprise/app-authentication',
+                        'content': chapters.dash_enterprise.dash_enterprise_chapters.Authentication,
+                        'name': 'Dash Enterprise Auth Features',
+                        'description': 'Accessing User Authentication Data in your Dash App'
+                    },
+                ]
+            },
+
+            {
+                'url': '/integrating-dash',
+                'content': chapters.integrating_dash.index.layout,
+                'name': 'Embed your Dash App in other Websites',
+                'description': (
+                    '''
+                    Embed your Dash applications in external websites securely
+                    without iframes.
+                    [Learn more](https://plotly.com/dash/embedding/).
+                    '''
+                ),
+                'icon': 'fas fa-code',
+            },
+
+            {
+                'url': 'https://plotly.com/dash/design-kit/',
+                'name': 'Design Kit',
+                'description': (
+                    '''
+                    Dash Enterprise Design Kit is a set of Dash components
+                    designed to simplify application layout and theme your
+                    apps. No CSS required.
+                    [Learn more](https://plotly.com/dash/design-kit).
+                    '''
+                ),
+                'icon': 'fas fa-palette'
+            },
+
+            {
+                'url': 'https://plotly.com/dash/snapshot-engine/',
+                'name': 'Snapshot Engine',
+                'description': (
+                    '''
+                    Snapshot Engine is a Dash Enterprise capability for saving
+                    views of Dash apps and generating PDF reports from Python.
+                    [Learn more](https://plotly.com/dash/snapshot-engine)
+                    '''
+                ),
+                'icon': 'fas fa-camera-retro'
+            },
+
+            {
+                'url': 'https://plotly.com/dash/job-queue/',
+                'name': 'Job Queue',
+                'description': (
+                    '''
+                    Background jobs can dramatically improve the scalability of
+                    a Dash app by enabling it to offload slow or CPU-intensive
+                    tasks from its callback loops. Background jobs can also
+                    run periodically in the background to refresh your app's
+                    data on a daily or hourly basis. [Learn more](https://plotly.com/dash/job-queue/).
+                    '''
+                ),
+                'icon': 'fas fa-clock'
+            },
+
+            {
+                'url': 'https://plotly.com/dash/kubernetes/',
+                'name': 'Kubernetes Installation',
+                'description': (
+                    '''
+                    Dash Apps on Dash Enterprise scale horizontally thanks to
+                    a stateless design and Kubernetes infrastructure.
+                     [Learn more](https://plotly.com/dash/kubernetes/).
+                    '''
+                ),
+                'icon': 'fas fa-fighter-jet'
+            },
+
+            {
+                'url': 'https://plotly.com/dash/snapshot-engine/',
+                'name': 'Dash Notes',
+                'description': (
+                    '''
+                    With Dash Notes, the entire Dash app becomes a drawing canvas.
+                    Dash app end users can make annotations on Dash apps that
+                    trigger email notifications to stakeholders. Try to do that
+                    in Tableau! [Learn more](https://plotly.com/dash/snapshot-engine/).
+                    '''
+                ),
+                'icon': 'fas fa-pencil-alt'
+            },
+
+            {
+                'url': 'https://plotly.com/dash/workspaces/',
+                'name': 'Data Science Workspaces',
+                'description': (
+                    '''
+                    A built-in IDE to develop Dash apps or Jupyter notebooks on
+                    Dash Enterprise without leaving your browser. In Workspaces,
+                    the development environment closly matches production.
+                    [Learn more](https://plotly.com/dash/workspaces/).
+                    '''
+                ),
+                'icon': 'fas fa-copy'
+            },
+
+            {
+                'url': 'https://plotly.com/dash/big-data-for-python/',
+                'name': 'Dash Enterprise & Databricks',
+                'description': (
+                    '''
+                    Connect your Dash apps to Databricks Spark clusters.
+                    [Learn more](https://plotly.com/dash/big-data-for-python/).
+                    '''
+                ),
+                'icon': 'fas fa-database'
+            },
+
+            {
+                'url': 'https://plotly.com/dash/big-data-for-python/',
+                'name': 'Dash Enterprise & Snowflake',
+                'description': (
+                    '''
+                    Connect your Dash apps to Snowflake Data Warehouse.
+                    [Learn more](https://plotly.com/dash/big-data-for-python/).
+                    '''
+                ),
+                'icon': 'fas fa-snowflake'
+            },
+
+            {
+                'url': 'https://plotly.com/dash/ai-and-ml-templates/',
+                'name': 'Sample Apps & Templates',
+                'description': (
+                    '''
+                    Get started with these curated sample apps or learn first
+                    principles from the templates in this section.
+                    Sample Apps include the [AI & ML App Catalogue](https://plotly.com/dash/ai-and-ml-templates/).
+                    '''
+                ),
+                'icon': 'fas fa-grip-horizontal'
+            }
+
+        ]
+    },
+
+    {
+        'name': 'Getting Help',
+        'chapters': [
+            {
+                'url': 'https://community.plotly.com/c/dash',
+                'description': '',
+                'name': 'The Dash Community Forum'
+            },
+            {
+                'url': '/support',
+                'name': 'Support and Contact',
+                'description': '',
+                'content': chapters.support.index.layout,
             }
         ]
-    }
-
+    },
 ]
 
 

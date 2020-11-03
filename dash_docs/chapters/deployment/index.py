@@ -19,17 +19,22 @@ of every major cloud:
 > - [Install Dash Enterprise on an on-premises Linux server](https://plotly.com/dash/on-premises-linux)
 > - Or, [find out if your company is using Dash Enterprise](https://go.plotly.com/company-lookup)
 
-## Dash Enterprise
+## Dash Enterprise Deployment
 
 > If your company has licensed Dash Enterprise, then view the deployment
-> documentation by visiting `https://<your-dash-enterprise-platform>/Docs/dash-enterprise`
-> replacing `<your-dash-enterprise-platform>` with the host name of your
-> licensed Dash Enterprise in your VPC. [Look up the hostname for your company's license](https://go.plotly.com/company-lookup)
+> documentation by visiting
+>
+> **`https://<your-dash-enterprise-platform>/Docs/dash-enterprise`**
+>
+> (Replace `<your-dash-enterprise-platform>` with the hostname of your
+> licensed Dash Enterprise in your VPC).
+>
+> [Look up the hostname for your company's license](https://go.plotly.com/company-lookup)
 
 [Dash Enterprise](https://plotly.com/dash/)
 is Plotly's commercial product for developing & deploying
 Dash Apps on your company's on-premises Linux servers or VPC
-([AWS](https://plotly.com/dash/aws), [Google Cloud](https://plotly.com/dash), or [Azure](https://plotly.com/dash/azure).
+([AWS](https://plotly.com/dash/aws), [Google Cloud](https://plotly.com/dash), or [Azure](https://plotly.com/dash/azure)).
 
 In addition to [easy, git-based deployment](https://plotly.com/dash/app-manager), the Dash Enterprise platform provides a complete Analytical App Stack.
 This includes:
