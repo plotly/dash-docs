@@ -508,3 +508,10 @@ a {
 .red {
     color: #f4564e;
 }
+
+.tab-container {
+    margin-top: -1px !important;
+}
+.tab.tab--selected {
+    border-top-color: #80cfbe !important;
+}

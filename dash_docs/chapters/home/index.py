@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import dash_core_components as dcc
 import dash_html_components as html
-from dash_docs.chapter_index import URLS, URL_TO_CONTENT_MAP
+from dash_docs.chapter_index import URLS, URL_TO_CONTENT_MAP, DASH_ENTERPRISE_URLS
 
 from dash_docs.convert_to_html import convert_to_html
 from dash_docs.reusable_components import TOC, WorkspaceBlurb
@@ -15,20 +15,29 @@ styles = {
 }
 
 layout = html.Div([
-    html.H1('Dash User Guide'),
+    dcc.Tabs([
+        dcc.Tab(label='Dash open-source', children=[
+            html.H1('Dash User Guide'),
 
-    dcc.Markdown(
-        '''
-        > This user guide is for the Python implementation of Dash Open Source.
-        > Dash Open Source is also available in R and Julia.
-        > View the [Dash for R User Guide & Documentation](https://dashr.plotly.com)
-        > and the [Dash for Julia User Guide & Documentation](https://dash-julia.plotly.com)
-        ''', style={'fontSize': 14}
-    ),
+            dcc.Markdown(
+                '''
+                > This user guide is for the Python implementation of Dash Open Source.
+                > Dash Open Source is also available in R and Julia.
+                > View the [Dash for R User Guide & Documentation](https://dashr.plotly.com)
+                > and the [Dash for Julia User Guide & Documentation](https://dash-julia.plotly.com)
+                ''', style={'fontSize': 14}
+            ),
 
-    WorkspaceBlurb,
+            WorkspaceBlurb,
 
-    TOC(URLS)
+            TOC(URLS)
+        ]),
+
+        dcc.Tab(label='Dash Enterprise', children=[
+            TOC([DASH_ENTERPRISE_URLS])
+        ])
+
+    ])
 ])
 
 
