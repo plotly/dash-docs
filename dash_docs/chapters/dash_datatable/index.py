@@ -50,12 +50,64 @@ preamble = html.Div([
             style=styles.code_container
         ),
 
-        rc.Markdown(
-            examples['simple.py'][0],
-            style=styles.code_container
-        ),
+        dcc.Tabs([
+            dcc.Tab(
+                label='Dash open-source',
+                children=[
+                    rc.Markdown(
+                        examples['simple.py'][0],
+                        style=styles.code_container
+                    ),
 
-        html.Div(examples['simple.py'][1], className='example-container'),
+                    html.Div(examples['simple.py'][1], className='example-container'),
+                ]
+            ),
+            dcc.Tab(
+                label='Dash Enterprise',
+                children=[
+                    rc.Markdown(
+                    '''
+                    ```python
+                    import dash
+                    import dash_table
+                    import pandas as pd
+                    import dash_design_kit as ddk
+
+                    df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/solar.csv')
+
+                    app = dash.Dash(__name__)
+
+                    app.layout = ddk.App(show_editor=True, children=[
+                        ddk.DataTable(
+                           id='table',
+                           columns=[{"name": i, "id": i} for i in df.columns],
+                           data=df.to_dict("rows"),
+                           editable=True
+                       )
+                    ])
+
+                    if __name__ == '__main__':
+                        app.run_server(debug=True)
+                    ```
+                    '''
+                    ),
+
+                    html.P('Default Theme'),
+                    html.Img(src=tools.relpath('/assets/images/ddk/table-default.png')),
+                    html.P('Mars Theme'),
+                    html.Img(src=tools.relpath('/assets/images/ddk/table-mars.png')),
+                    html.P('Neptune Theme'),
+                    html.Img(src=tools.relpath('/assets/images/ddk/table-neptune.png')),
+                    html.P('Miller Theme'),
+                    html.Img(src=tools.relpath('/assets/images/ddk/table-miller.png')),
+                    html.P('Extrasolar Theme'),
+                    html.Img(src=tools.relpath('/assets/images/ddk/table-mercury.png')),
+                    html.P('Design Kit Theme Editor'),
+                    html.Img(src=tools.relpath('/assets/images/ddk/theme-editor.png')),
+
+                ]
+            ),
+        ])
 
     ]),
 
