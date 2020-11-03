@@ -508,3 +508,10 @@ a {
 .red {
     color: #f4564e;
 }
+.red-links a {
+    color: #f4564e !important;
+}
+
+.tab.tab--selected {
+    border-top-color: #80cfbe !important;
+}

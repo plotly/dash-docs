@@ -34,7 +34,17 @@ layout = html.Div([
 
         This chapter describes how to make your
         Dash apps using callback functions: Python functions that are automatically called by Dash whenever an input component's property changes.
+    '''),
 
+    rc.Markdown('''
+    For optimum user-interaction and chart loading performance, production
+    Dash applications should consider the [Job Queue](https://plotly.com/dash/job-queue),
+    [HPC](https://plotly.com/dash/big-data-for-python), [Datashader](https://plotly.com/dash/big-data-for-python),
+    and [horizontal scaling](https://plotly.com/dash/kubernetes) capabilities of
+    Dash Enterprise.
+    ''', className='red-links'),
+
+    rc.Markdown('''
         Let's get started with a simple example of an interactive Dash app.
 
     '''),
