@@ -6,6 +6,7 @@ from dash_docs import styles
 from dash_docs.tools import load_examples
 from dash_docs import tools
 from dash_docs import reusable_components as rc
+from dash_docs.run import app
 
 examples = load_examples(__file__)
 
@@ -127,16 +128,98 @@ layout = html.Div([
     Dash App Layout With Figure and Slider
     ''', id='dash-app-with-slider'),
 
-    rc.Markdown(
-        examples['getting_started_graph.py'][0],
-        style=styles.code_container
-    ),
+    dcc.Tabs([
+        dcc.Tab(
+            label='Dash open-source',
+            children=[
+                rc.Markdown(
+                    examples['getting_started_graph.py'][0],
+                    style=styles.code_container
+                ),
 
-    html.Div(examples['getting_started_graph.py'][1], className="example-container", style={
-        'paddingLeft': '20px',
-        'paddingRight': '35px',
-        'paddingBottom': '30px'
-    }),
+                html.Div(examples['getting_started_graph.py'][1], className="example-container", style={
+                    'paddingLeft': '20px',
+                    'paddingRight': '35px',
+                    'paddingBottom': '30px'
+                }),
+            ]
+        ),
+
+        dcc.Tab(
+            label='Dash Enterprise Design Kit',
+            children=[
+                rc.Markdown(
+                    '''
+                    ```python
+                    import dash
+                    import dash_design_kit as ddk  # Only available on Dash Enterprise
+                    import dash_core_components as dcc
+                    from dash.dependencies import Input, Output
+                    import plotly.express as px
+                    import pandas as pd
+
+                    app = dash.Dash(__name__)
+
+                    df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv')
+
+                    controls = [
+                        ddk.ControlItem(
+                            dcc.Slider(
+                                id=‘year-slider’,min=df[‘year'].min(),max=df['year'].max(),value=df['year'].min(),
+                                marks={str(year): str(year) for year in df['year'].unique()},step=None
+                            )
+                        )
+                    ]
+
+                    app.layout = ddk.App(show_editor=True, children=[
+                        ddk.Card(width=100, children=ddk.Graph(id='graph-with-slider')),
+                        ddk.ControlCard(controls, width=100, orientation=‘horizontal’),
+                    ])
+
+                    @app.callback(
+                        Output('graph-with-slider', 'figure'),
+                        Input('year-slider', 'value'))
+                    def update_figure(selected_year):
+                        filtered_df = df[df.year == selected_year]
+
+                        fig = px.scatter(filtered_df, x="gdpPercap", y="lifeExp",
+                                         size="pop", color="continent", hover_name="country",
+                                         log_x=True, size_max=55)
+
+                        fig.update_layout(transition_duration=500)
+
+                        return fig
+
+                    if __name__ == '__main__':
+                        app.run_server(debug=True)
+                    ```
+                    ''',
+                    style=styles.code_container
+                ),
+
+                html.P('Default Theme'),
+                html.Img(src=tools.relpath('/assets/images/ddk/default.png')),
+
+                html.P('Mars Theme'),
+                html.Img(src=tools.relpath('/assets/images/ddk/mars.png')),
+
+                html.P('Neptune Theme'),
+                html.Img(src=tools.relpath('/assets/images/ddk/neptune.png')),
+
+                html.P('Miller Theme'),
+                html.Img(src=tools.relpath('/assets/images/ddk/miller.png')),
+
+                html.P('Extrasolar Theme'),
+                html.Img(src=tools.relpath('/assets/images/ddk/extrasolar.png')),
+
+                html.P('Preset Themes'),
+                html.Img(src=tools.relpath('/assets/images/ddk/theme-editor.png')),
+
+            ]
+        ),
+
+    ]),
+
 
     rc.Markdown('''
     In this example, the `"value"` property of the `Slider` is the input of the
@@ -191,6 +274,122 @@ layout = html.Div([
 
     '''),
 
+    dcc.Tabs([
+        dcc.Tab(
+            label='Dash Open Source',
+            children=[
+
+            ]
+        ),
+        dcc.Tab(
+            label='Dash Enterprise Design Kit',
+            children=[
+            dcc.Markdown(
+            '''
+            ```python
+            import dash
+            import dash_design_kit as ddk  # Only available on Dash Enterprise
+            import dash_core_components as dcc
+            from dash.dependencies import Input, Output
+            import plotly.express as px
+            import pandas as pd
+
+            df = pd.read_csv('https://plotly.github.io/datasets/country_indicators.csv')
+
+            available_indicators = df['Indicator Name'].unique()
+
+            app = dash.Dash(__name__)
+
+            controls = [
+                ddk.ControlItem([
+                    dcc.Dropdown(
+                        id='xaxis-column',
+                        options=[{'label': i, 'value': i} for i in available_indicators],
+                        value='Fertility rate, total (births per woman)'
+                    ),
+                    dcc.RadioItems(
+                        id='xaxis-type',
+                        options=[{'label': i, 'value': i} for i in ['Linear', 'Log']],
+                        value='Linear',
+                    )]
+                ),
+                ddk.ControlItem([
+                    dcc.Dropdown(
+                        id='yaxis-column',
+                        options=[{'label': i, 'value': i} for i in available_indicators],
+                        value='Life expectancy at birth, total (years)'
+                    ),
+                    dcc.RadioItems(
+                        id='yaxis-type',
+                        options=[{'label': i, 'value': i} for i in ['Linear', 'Log']],
+                        value='Linear',
+                    )
+                ])
+            ]
+
+            app.layout = ddk.App([
+                ddk.ControlCard(controls, width=100, orientation='horizontal'),
+                ddk.Card(width=100, children=[ddk.Graph(id='indicator-graphic')]),
+                ddk.ControlCard(width=100, children=[
+                    ddk.ControlItem(
+                        dcc.Slider(
+                            id='year--slider',
+                            min=df['Year'].min(),
+                            max=df['Year'].max(),
+                            value=df['Year'].max(),
+                            marks={str(year): str(year) for year in df['Year'].unique()},
+                            step=None
+                        )
+                    )]
+                )
+            ])
+
+            @app.callback(
+                Output('indicator-graphic', 'figure'),
+                Input('xaxis-column', 'value'),
+                Input('yaxis-column', 'value'),
+                Input('xaxis-type', 'value'),
+                Input('yaxis-type', 'value'),
+                Input('year--slider', 'value'))
+            def update_graph(xaxis_column_name, yaxis_column_name,
+                             xaxis_type, yaxis_type,
+                             year_value):
+                dff = df[df['Year'] == year_value]
+
+                fig = px.scatter(x=dff[dff['Indicator Name'] == xaxis_column_name]['Value'],
+                                 y=dff[dff['Indicator Name'] == yaxis_column_name]['Value'],
+                                 hover_name=dff[dff['Indicator Name'] == yaxis_column_name]['Country Name'])
+
+                fig.update_layout(margin={'l': 40, 'b': 40, 't': 10, 'r': 0}, hovermode='closest')
+
+                fig.update_xaxes(title=xaxis_column_name,
+                                 type='linear' if xaxis_type == 'Linear' else 'log')
+
+                fig.update_yaxes(title=yaxis_column_name,
+                                 type='linear' if yaxis_type == 'Linear' else 'log')
+
+                return fig
+
+            if __name__ == '__main__':
+                app.run_server(debug=True)
+            ```
+            '''
+            ),
+            html.P('Default Theme'),
+            html.Img(src=tools.relpath('/assets/images/ddk/multiple-inputs-default.png')),
+            html.P('Mars Theme'),
+            html.Img(src=tools.relpath('/assets/images/ddk/multiple-inputs-mars.png')),
+            html.P('Neptune Theme'),
+            html.Img(src=tools.relpath('/assets/images/ddk/multiple-inputs-neptune.png')),
+            html.P('Miller Theme'),
+            html.Img(src=tools.relpath('/assets/images/ddk/multiple-inputs-miller.png')),
+            html.P('Extrasolar Theme'),
+            html.Img(src=tools.relpath('/assets/images/ddk/multiple-inputs-extrasolar.png')),
+            html.P('Design Kit Theme Editor'),
+            html.Img(src=tools.relpath('/assets/images/ddk/theme-editor.png')),
+            ]
+        )
+    ]),
     rc.Markdown(
         examples['getting_started_multiple_viz.py'][0],
         style=styles.code_container
@@ -226,8 +425,6 @@ layout = html.Div([
     ''', id='dash-app-multiple-outputs'),
 
     rc.Markdown('''
-
-    *New in dash 0.39.0*
 
     So far all the callbacks we've written only update a
     single `Output` property. We can also update several at once: put all the
