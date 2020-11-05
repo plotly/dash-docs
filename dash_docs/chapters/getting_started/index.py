@@ -23,16 +23,15 @@ layout = html.Div([
     </blockquote>
     '''),
 
-
     rc.Markdown('''
 
     This tutorial will walk you through a fundamental aspect of Dash apps, the
     app `layout`, through {} self-contained apps.
 
     For production Dash apps, we recommend styling the app `layout` with
-    Dash Enterprise [design kit](https://plotly.com/dash/design-kit).
+    Dash Enterprise [Design Kit](https://plotly.com/dash/design-kit).
 
-    '''.format(len(examples))),
+    '''.format(len(examples)), className='red-links'),
 
     rc.Markdown('''
     ***
