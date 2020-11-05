@@ -278,7 +278,7 @@ layout = html.Div(
 
         ## Styles Priority
 
-        There is a specific order of priority for the style\_\* properties.
+        There is a specific order of priority for the style_* properties.
         If there are multiple style_* props, the one with higher priority will
         take precedence. Within each prop, rules for higher indices will be
         prioritized over those for lower indices. Previously applied styles of equal
