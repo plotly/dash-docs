@@ -85,11 +85,7 @@ rc.Section("User Interface", [
         rc.Chapter('Create a Staging Dash App',
                 '/dash-enterprise/staging-app',
                 'Use a staged Dash App to test changes before updating your '
-                'production Dash App.'),
-        rc.Chapter('Dash Enterprise PDF Service',
-                '/dash-enterprise/pdf-service',
-                'Utilize the Dash Enterprise API endpoint for creating '
-                'PDF exports of your Dash applications')
+                'production Dash App.')
     ]),
 
     rc.Section("Troubleshooting", [

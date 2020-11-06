@@ -44,13 +44,15 @@ layout = html.Div([
     `relayoutData`.
     These properties update when you hover over points, click on points, or
     select regions of points in a graph.
+    '''),
 
+    rc.Markdown('''
     For optimum user-interaction and chart loading performance, production
     Dash applications should consider the [Job Queue](https://plotly.com/dash/job-queue),
     [HPC](https://plotly.com/dash/big-data-for-python), [Datashader](https://plotly.com/dash/big-data-for-python),
     and [horizontal scaling](https://plotly.com/dash/kubernetes) capabilities of
     Dash Enterprise.
-    '''),
+    ''', className='red-links'),
 
     rc.Syntax(
         examples['graph_callbacks_simple.py'][0],

@@ -94,6 +94,12 @@ def redirect_gallery():
     return redirect("https://dash-gallery.plotly.host/Portal/", code=301)
 
 
+@server.route('/gallery)')
+def redirect_gallery_trailing_p():
+    # there is some link out there to /gallery) that appears on duck duck go
+    return redirect("https://dash-gallery.plotly.host/Portal/", code=301)
+
+
 @server.route('/dash-deployment-server')
 def redirect_to_enterprise():
     return redirect('/dash-enterprise', code=301)
