@@ -29,7 +29,7 @@ app.layout = html.Div([
      Output('twos', 'children'),
      Output('threes', 'children'),
      Output('x^x', 'children')],
-    [Input('num-multi', 'value')])
+    Input('num-multi', 'value'))
 def callback_a(x):
     return x**2, x**3, 2**x, 3**x, x**x
 

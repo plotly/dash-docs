@@ -259,7 +259,7 @@ def flat_list(*args):
                Output('pagemenu', 'dummy2'),
                Output('sidebar-image-img', 'src'),
                Output('sidebar-image-link', 'href')],
-              [Input('location', 'pathname')])
+              Input('location', 'pathname'))
 def display_content(pathname):
     if pathname is None or pathname == '/':
         return [home, '', {'borderBottom': 'none'}, '', '', DEFAULT_AD['src'], DEFAULT_AD['href']]
@@ -322,7 +322,7 @@ app.clientside_callback(
     }
     ''',
     Output('pagemenu', 'dummy'),
-    [Input('chapter', 'children')],
+    Input('chapter', 'children'),
 )
 
 

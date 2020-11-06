@@ -169,7 +169,7 @@ layout = html.Div([
     rc.Markdown('''
     ```py
     @app.callback(Output('cytoscape-callbacks-1', 'layout'),
-                  [Input('dropdown-callbacks-1', 'value')])
+                  Input('dropdown-callbacks-1', 'value'))
         def update_layout(layout):
             return {'name': layout}
     ```
@@ -184,7 +184,7 @@ layout = html.Div([
     rc.Markdown('''
     ```py
     @app.callback(Output('cytoscape-callbacks-1', 'layout'),
-                  [Input('dropdown-callbacks-1', 'value')])
+                  Input('dropdown-callbacks-1', 'value'))
     def update_layout(layout):
         return {
             'name': layout,

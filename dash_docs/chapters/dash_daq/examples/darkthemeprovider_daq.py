@@ -34,7 +34,7 @@ app.layout = html.Div(id='dark-theme-provider-demo', children=[
 
 @app.callback(
     Output('dark-theme-component-demo', 'children'),
-    [Input('daq-light-dark-theme', 'value')]
+    Input('daq-light-dark-theme', 'value')
 )
 def turn_dark(dark_theme): 
     if(dark_theme):
@@ -51,7 +51,7 @@ def turn_dark(dark_theme):
 
 @app.callback(
     Output('dark-theme-provider-demo', 'style'),
-    [Input('daq-light-dark-theme', 'value')]
+    Input('daq-light-dark-theme', 'value')
 )
 def change_bg(dark_theme):
     if(dark_theme):

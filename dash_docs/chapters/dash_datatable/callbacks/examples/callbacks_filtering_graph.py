@@ -114,7 +114,7 @@ def update_table(page_current, page_size, sort_by, filter):
 
 @app.callback(
     Output('table-paging-with-graph-container', "children"),
-    [Input('table-paging-with-graph', "data")])
+    Input('table-paging-with-graph', "data"))
 def update_graph(rows):
     dff = pd.DataFrame(rows)
     return html.Div(

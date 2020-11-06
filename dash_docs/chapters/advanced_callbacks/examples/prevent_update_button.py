@@ -14,7 +14,7 @@ app.layout = html.Div([
 
 @app.callback(
     Output(component_id='body-div', component_property='children'),
-    [Input(component_id='show-secret', component_property='n_clicks')]
+    Input(component_id='show-secret', component_property='n_clicks')
 )
 def update_output(n_clicks):
     if n_clicks is None:

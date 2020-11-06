@@ -331,7 +331,7 @@ layout = html.Div([
          className='container')
 
 
-    @app.callback(Output('title', 'children'), [Input('title', 'id')])
+    @app.callback(Output('title', 'children'), Input('title', 'id'))
     def give_name(title):
         username = auth.get_username()
         return 'Welcome to the app, {}'.format(username)
@@ -344,7 +344,7 @@ layout = html.Div([
             auth.set_user_data({'graph_1': True})
         return active
 
-    @app.callback(Output('authorized', 'children'), [Input('btn', 'n_clicks')])
+    @app.callback(Output('authorized', 'children'), Input('btn', 'n_clicks'))
     def check_perms(n_clicks):
         if n_clicks:
             perms = auth.get_user_data()
@@ -355,7 +355,7 @@ layout = html.Div([
                 return 'You are authorized!'
 
 
-    @app.callback(Output('graph', 'style'), [Input('btn', 'n_clicks')])
+    @app.callback(Output('graph', 'style'), Input('btn', 'n_clicks'))
     def check_perms_graph_update(n_clicks):
         if n_clicks:
             perms = auth.get_user_data()

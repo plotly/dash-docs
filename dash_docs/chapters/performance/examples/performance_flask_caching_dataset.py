@@ -47,7 +47,7 @@ app.layout = html.Div([
 
 
 @app.callback(Output('live-graph', 'figure'),
-              [Input('live-dropdown', 'value')])
+              Input('live-dropdown', 'value'))
 def update_live_graph(value):
     df = dataframe()
     now = dt.datetime.now()

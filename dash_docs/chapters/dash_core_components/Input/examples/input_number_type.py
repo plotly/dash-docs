@@ -23,7 +23,7 @@ app.layout = html.Div(
 
 @app.callback(
     Output("number-out", "children"),
-    [Input("dfalse", "value"), Input("dtrue", "value"), Input("input_range", "value")],
+    Input("dfalse", "value"), Input("dtrue", "value"), Input("input_range", "value"),
 )
 def number_render(fval, tval, rangeval):
     return "dfalse: {}, dtrue: {}, range: {}".format(fval, tval, rangeval)

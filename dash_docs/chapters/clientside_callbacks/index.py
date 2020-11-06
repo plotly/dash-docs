@@ -33,7 +33,7 @@ layout = html.Div([
     rc.Syntax('''
     @app.callback(
         Output('out-component', 'value'),
-        [Input('in-component1', 'value'), Input('in-component2', 'value')]
+        Input('in-component1', 'value'), Input('in-component2', 'value')
     )
     def large_params_function(largeValue1, largeValue2):
         largeValueOutput = someTransform(largeValue1, largeValue2)
@@ -60,7 +60,7 @@ layout = html.Div([
         }
         """,
         Output('out-component', 'value'),
-        [Input('in-component1', 'value'), Input('in-component2', 'value')]
+        Input('in-component1', 'value'), Input('in-component2', 'value')
     )
     ''')),
 
@@ -103,7 +103,7 @@ layout = html.Div([
             function_name='large_params_function'
         ),
         Output('out-component', 'value'),
-        [Input('in-component1', 'value'), Input('in-component2', 'value')]
+        Input('in-component1', 'value'), Input('in-component2', 'value')
     )
     ''')),
 

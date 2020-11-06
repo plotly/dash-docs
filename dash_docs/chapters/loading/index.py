@@ -46,13 +46,13 @@ layout = html.Div([
         ],
     )
 
-    @app.callback(Output("loading-output-1", "children"), [Input("input-1", "value")])
+    @app.callback(Output("loading-output-1", "children"), Input("input-1", "value"))
     def input_triggers_spinner(value):
         time.sleep(1)
         return value
 
 
-    @app.callback(Output("loading-output-2", "children"), [Input("input-2", "value")])
+    @app.callback(Output("loading-output-2", "children"), Input("input-2", "value"))
     def input_triggers_nested(value):
         time.sleep(1)
         return value
@@ -99,13 +99,13 @@ layout = html.Div([
     )
 
 
-    @app.callback(Output("output-1", "children"), [Input("input-1", "value")])
+    @app.callback(Output("output-1", "children"), Input("input-1", "value"))
     def input_triggers_spinner(value):
         time.sleep(1)
         return value
 
 
-    @app.callback(Output("output-2", "children"), [Input("input-2", "value")])
+    @app.callback(Output("output-2", "children"), Input("input-2", "value"))
     def input_triggers_nested(value):
         time.sleep(1)
         return value

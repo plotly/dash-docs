@@ -41,7 +41,7 @@ app.layout = html.Div([
 
 @app.callback(
     Output('adding-rows-table', 'data'),
-    [Input('editing-rows-button', 'n_clicks')],
+    Input('editing-rows-button', 'n_clicks'),
     [State('adding-rows-table', 'data'),
      State('adding-rows-table', 'columns')])
 def add_row(n_clicks, rows, columns):
@@ -52,7 +52,7 @@ def add_row(n_clicks, rows, columns):
 
 @app.callback(
     Output('adding-rows-table', 'columns'),
-    [Input('adding-rows-button', 'n_clicks')],
+    Input('adding-rows-button', 'n_clicks'),
     [State('adding-rows-name', 'value'),
      State('adding-rows-table', 'columns')])
 def update_columns(n_clicks, value, existing_columns):
