@@ -24,11 +24,9 @@ style_done.update(style_todo)
         Output("list-container", "children"),
         Output("new-item", "value")
     ],
-    [
-        Input("add", "n_clicks"),
-        Input("new-item", "n_submit"),
-        Input("clear-done", "n_clicks")
-    ],
+    Input("add", "n_clicks"),
+    Input("new-item", "n_submit"),
+    Input("clear-done", "n_clicks"),
     [
         State("new-item", "value"),
         State({"index": ALL}, "children"),

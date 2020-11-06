@@ -160,12 +160,11 @@ def put_image_string(data):
 
 @app.callback(
     Output("cytoscape-image-export", "generateImage"),
-    [
-        Input('tabs-image-export', 'value'),
-        Input("btn-get-jpg", "n_clicks"),
-        Input("btn-get-png", "n_clicks"),
-        Input("btn-get-svg", "n_clicks"),
-    ])
+    Input('tabs-image-export', 'value'),
+    Input("btn-get-jpg", "n_clicks"),
+    Input("btn-get-png", "n_clicks"),
+    Input("btn-get-svg", "n_clicks"),
+    )
 def get_image(tab, get_jpg_clicks, get_png_clicks, get_svg_clicks):
 
     # File type to output of 'svg, 'png', 'jpg', or 'jpeg' (alias of 'jpg')
