@@ -63,9 +63,9 @@ def get_figure(df, x_col, y_col, selectedpoints, selectedpoints_local):
     [Output('g1', 'figure'),
      Output('g2', 'figure'),
      Output('g3', 'figure')],
-    [Input('g1', 'selectedData'),
+    Input('g1', 'selectedData'),
      Input('g2', 'selectedData'),
-     Input('g3', 'selectedData')]
+     Input('g3', 'selectedData')
 )
 def callback(selection1, selection2, selection3):
     selectedpoints = df.index

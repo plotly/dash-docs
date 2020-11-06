@@ -52,8 +52,8 @@ def update_columns(n_clicks, value, existing_columns):
 
 @app.callback(
     Output('editing-columns-graph', 'figure'),
-    [Input('editing-columns', 'data'),
-     Input('editing-columns', 'columns')])
+    Input('editing-columns', 'data'),
+     Input('editing-columns', 'columns'))
 def display_output(rows, columns):
     return {
         'data': [{

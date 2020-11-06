@@ -57,8 +57,8 @@ def on_data_set_table(data):
 
 
 @app.callback(Output('memory-graph', 'figure'),
-              [Input('memory-output', 'data'),
-               Input('memory-field', 'value')])
+              Input('memory-output', 'data'),
+               Input('memory-field', 'value'))
 def on_data_set_graph(data, field):
     if data is None:
         raise PreventUpdate

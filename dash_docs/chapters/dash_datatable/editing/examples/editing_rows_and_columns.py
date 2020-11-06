@@ -66,8 +66,8 @@ def update_columns(n_clicks, value, existing_columns):
 
 @app.callback(
     Output('adding-rows-graph', 'figure'),
-    [Input('adding-rows-table', 'data'),
-     Input('adding-rows-table', 'columns')])
+    Input('adding-rows-table', 'data'),
+     Input('adding-rows-table', 'columns'))
 def display_output(rows, columns):
     return {
         'data': [{

@@ -237,10 +237,10 @@ layout = html.Div([
         rc.Markdown('''
         ```py
         @app.callback(Output('cytoscape', 'stylesheet'),
-                      [Input('cytoscape', 'tapNode'),
+                      Input('cytoscape', 'tapNode'),
                        Input('input-follower-color', 'value'),
                        Input('input-following-color', 'value'),
-                       Input('dropdown-node-shape', 'value')])
+                       Input('dropdown-node-shape', 'value'))
         def generate_stylesheet(node, follower_color, following_color, node_shape):
             if not node:
                 return default_stylesheet
