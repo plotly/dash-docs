@@ -95,9 +95,9 @@ header = html.Div(
 )
 
 DEFAULT_AD = dict(
-    alt='Ad for Dash Enterprise: A Kubernetes platform for rapid Dash app deployment.',
-    src=tools.relpath('/assets/images/sidebar/dash-enterprise-kubernetes.jpg'),
-    href='https://plotly.com/dash/kubernetes/?utm_source=docs&utm_medium=sidebar&utm_campaign=june&utm_content=kubernetes'
+    alt='Webinar: Machine Learning & Interactive Image Processing with Dash',
+    src=tools.relpath('/assets/images/sidebar/Webinar_Nov18.jpg'),
+    href='https://go.plotly.com/dash-image-processing/'
 )
 
 app.title = 'Dash User Guide and Documentation - Dash by Plotly'
