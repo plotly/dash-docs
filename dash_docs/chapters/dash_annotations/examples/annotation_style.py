@@ -21,7 +21,7 @@ app.layout = html.Div(
         html.Pre('Opacity of annotations'),
         dcc.Slider(id="opacity-slider", min=0, max=1, value=0.5, step=0.1, tooltip={'always_visible':True}),
         daq.ColorPicker(
-            id="my-color-picker", label="Color Picker", value=dict(hex="#119DFF")
+            id="annotation-color-picker", label="Color Picker", value=dict(hex="#119DFF")
         ),
     ]
 )
@@ -29,7 +29,7 @@ app.layout = html.Div(
 
 @app.callback(
     Output("graph-styled-annotations", "figure"),
-    [Input("opacity-slider", "value"), Input("my-color-picker", "value")],
+    [Input("opacity-slider", "value"), Input("annotation-color-picker", "value")],
     prevent_initial_call=True,
 )
 def on_style_change(slider_value, color_value):
