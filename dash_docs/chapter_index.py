@@ -912,7 +912,7 @@ URLS = [
                         'content': chapters.dash_canvas.index.layout,
                         'description': (
                             'Image rendering, drawing, annotations '
-                            'for image processing applications'
+                            'for image processing applications '
                             '(legacy tool).'
                         )
                     }
