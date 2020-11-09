@@ -46,7 +46,7 @@ app.layout = html.Div([
 @app.callback(
     Output('datatable-paging-page-count', 'data'),
     Input('datatable-paging-page-count', "page_current"),
-     Input('datatable-paging-page-count', "page_size"))
+    Input('datatable-paging-page-count', "page_size"))
 def update_table(page_current,page_size):
     return df.iloc[
         page_current*page_size:(page_current+ 1)*page_size
@@ -55,7 +55,7 @@ def update_table(page_current,page_size):
 @app.callback(
     Output('datatable-paging-page-count', 'page_count'),
     Input('datatable-use-page-count', 'value'),
-     Input('datatable-page-count', 'value'))
+    Input('datatable-page-count', 'value'))
 def update_table(use_page_count, page_count_value):
     if len(use_page_count) == 0 or page_count_value is None:
         return None

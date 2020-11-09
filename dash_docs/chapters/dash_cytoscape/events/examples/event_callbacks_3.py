@@ -74,7 +74,7 @@ app.layout = html.Div([
 
 
 @app.callback(Output('cytoscape-selectedNodeData-markdown', 'children'),
-              Input('cytoscape-event-callbacks-3', 'selectedNodeData'))
+            Input('cytoscape-event-callbacks-3', 'selectedNodeData'))
 def displaySelectedNodeData(data_list):
     if data_list is None:
         return "No city selected."

@@ -43,7 +43,7 @@ def parse_contents(contents, filename):
 
 @app.callback([Output('datatable-upload-container', 'data'),
                Output('datatable-upload-container', 'columns')],
-              Input('datatable-upload', 'contents'),
+            Input('datatable-upload', 'contents'),
               [State('datatable-upload', 'filename')])
 def update_output(contents, filename):
     if contents is None:
@@ -53,7 +53,7 @@ def update_output(contents, filename):
 
 
 @app.callback(Output('datatable-upload-graph', 'figure'),
-              Input('datatable-upload-container', 'data'))
+            Input('datatable-upload-container', 'data'))
 def display_graph(rows):
     df = pd.DataFrame(rows)
 

@@ -19,7 +19,7 @@ app.layout = html.Div([
 ])
 
 @app.callback(Output('tabs-content-props', 'children'),
-              Input('tabs-styled-with-props', 'value'))
+            Input('tabs-styled-with-props', 'value'))
 def render_content(tab):
     if tab == 'tab-1':
         return html.Div([

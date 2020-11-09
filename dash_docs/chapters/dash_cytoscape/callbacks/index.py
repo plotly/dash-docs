@@ -287,8 +287,8 @@ layout = html.Div([
     rc.Markdown('''
     ```py
     @app.callback(Output('cytoscape-callbacks-2', 'stylesheet'),
-              Input('input-line-color', 'value'),
-               Input('input-bg-color', 'value'))
+            Input('input-line-color', 'value'),
+            Input('input-bg-color', 'value'))
     def update_stylesheet(line_color, bg_color):
         if line_color is None:
             line_color = ''
@@ -379,7 +379,7 @@ layout = html.Div([
     ```py
     @app.callback(Output('cytoscape-callbacks-2', 'elements'),
                   Input('btn-add-node-example', 'n_clicks_timestamp'),
-                   Input('btn-remove-node-example', 'n_clicks_timestamp'),
+                  Input('btn-remove-node-example', 'n_clicks_timestamp'),
                   [State('cytoscape-callbacks-2', 'elements')])
     def update_elements(btn_add, btn_remove, elements):
         if int(btn_add) > int(btn_remove):

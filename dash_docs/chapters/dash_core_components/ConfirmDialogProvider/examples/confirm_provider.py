@@ -20,7 +20,7 @@ app.layout = html.Div([
 
 
 @app.callback(Output('output-provider', 'children'),
-              Input('danger-danger-provider', 'submit_n_clicks'))
+            Input('danger-danger-provider', 'submit_n_clicks'))
 def update_output(submit_n_clicks):
     if not submit_n_clicks:
         return ''

@@ -65,7 +65,7 @@ app.layout = html.Div([
 @app.callback(
     Output('clientside-figure-store', 'data'),
     Input('clientside-graph-indicator', 'value'),
-     Input('clientside-graph-country', 'value')
+    Input('clientside-graph-country', 'value')
 )
 def update_store_data(indicator, country):
     dff = df[df['country'] == country]
@@ -89,7 +89,7 @@ app.clientside_callback(
     """,
     Output('clientside-graph', 'figure'),
     Input('clientside-figure-store', 'data'),
-     Input('clientside-graph-scale', 'value')
+    Input('clientside-graph-scale', 'value')
 )
 
 

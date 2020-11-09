@@ -95,7 +95,7 @@ app.layout = html.Div([
 ])
 
 @app.callback(Output('output', 'children'),
-              Input('dropdown', 'value'))
+            Input('dropdown', 'value'))
 def update_output_1(value):
     # Here, `df` is an example of a variable that is
     # "outside the scope of this function".
@@ -125,7 +125,7 @@ app.layout = html.Div([
 ])
 
 @app.callback(Output('output', 'children'),
-              Input('dropdown', 'value'))
+            Input('dropdown', 'value'))
 def update_output_1(value):
     # Safely reassign the filter to a new variable
     filtered_df = df[df['c'] == value]

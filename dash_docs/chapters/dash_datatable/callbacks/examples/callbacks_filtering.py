@@ -62,8 +62,8 @@ def split_filter_part(filter_part):
 @app.callback(
     Output('table-filtering', "data"),
     Input('table-filtering', "page_current"),
-     Input('table-filtering', "page_size"),
-     Input('table-filtering', "filter_query"))
+    Input('table-filtering', "page_size"),
+    Input('table-filtering', "filter_query"))
 def update_table(page_current,page_size, filter):
     print(filter)
     filtering_expressions = filter.split(' && ')

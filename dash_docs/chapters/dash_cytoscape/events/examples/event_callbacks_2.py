@@ -77,14 +77,14 @@ app.layout = html.Div([
 
 
 @app.callback(Output('cytoscape-tapNodeData-output', 'children'),
-              Input('cytoscape-event-callbacks-2', 'tapNodeData'))
+            Input('cytoscape-event-callbacks-2', 'tapNodeData'))
 def displayTapNodeData(data):
     if data:
         return "You recently clicked/tapped the city: " + data['label']
 
 
 @app.callback(Output('cytoscape-tapEdgeData-output', 'children'),
-              Input('cytoscape-event-callbacks-2', 'tapEdgeData'))
+            Input('cytoscape-event-callbacks-2', 'tapEdgeData'))
 def displayTapEdgeData(data):
     if data:
         return "You recently clicked/tapped the edge between " + \
@@ -92,14 +92,14 @@ def displayTapEdgeData(data):
 
 
 @app.callback(Output('cytoscape-mouseoverNodeData-output', 'children'),
-              Input('cytoscape-event-callbacks-2', 'mouseoverNodeData'))
+            Input('cytoscape-event-callbacks-2', 'mouseoverNodeData'))
 def displayTapNodeData(data):
     if data:
         return "You recently hovered over the city: " + data['label']
 
 
 @app.callback(Output('cytoscape-mouseoverEdgeData-output', 'children'),
-              Input('cytoscape-event-callbacks-2', 'mouseoverEdgeData'))
+            Input('cytoscape-event-callbacks-2', 'mouseoverEdgeData'))
 def displayTapEdgeData(data):
     if data:
         return "You recently hovered over the edge between " + \

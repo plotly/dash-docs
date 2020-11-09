@@ -186,7 +186,7 @@ Deploy = html.Div(children=[
 
 
 @app.callback(Output('instructions-2', 'children'),
-              Input('platform-2', 'value'))
+            Input('platform-2', 'value'))
 def display_instructions2(platform):
     return [
         rc.Markdown(
@@ -588,7 +588,7 @@ def display_instructions2(platform):
 ]
 
 @app.callback(Output('remote-and-deploy-instructions', 'children'),
-              Input('deploy-method', 'value'))
+            Input('deploy-method', 'value'))
 def display_instructions_deploy(method):
     return [
         rc.Markdown('''
@@ -1492,7 +1492,7 @@ Ssh = html.Div(children=[
 ])
 
 @app.callback(Output('instructions', 'children'),
-              Input('platform', 'value'))
+            Input('platform', 'value'))
 def display_instructions(platform):
     return [
 

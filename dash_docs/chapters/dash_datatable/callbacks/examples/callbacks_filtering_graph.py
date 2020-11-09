@@ -78,9 +78,9 @@ def split_filter_part(filter_part):
 @app.callback(
     Output('table-paging-with-graph', "data"),
     Input('table-paging-with-graph', "page_current"),
-     Input('table-paging-with-graph', "page_size"),
-     Input('table-paging-with-graph', "sort_by"),
-     Input('table-paging-with-graph', "filter_query"))
+    Input('table-paging-with-graph', "page_size"),
+    Input('table-paging-with-graph', "sort_by"),
+    Input('table-paging-with-graph', "filter_query"))
 def update_table(page_current, page_size, sort_by, filter):
     filtering_expressions = filter.split(' && ')
     dff = df

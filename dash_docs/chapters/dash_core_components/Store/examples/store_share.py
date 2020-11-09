@@ -36,7 +36,7 @@ app.layout = html.Div([
 
 
 @app.callback(Output('memory-output', 'data'),
-              Input('memory-countries', 'value'))
+            Input('memory-countries', 'value'))
 def filter_countries(countries_selected):
     if not countries_selected:
         # Return all the rows on initial load/no country selected.
@@ -48,7 +48,7 @@ def filter_countries(countries_selected):
 
 
 @app.callback(Output('memory-table', 'data'),
-              Input('memory-output', 'data'))
+            Input('memory-output', 'data'))
 def on_data_set_table(data):
     if data is None:
         raise PreventUpdate
@@ -57,8 +57,8 @@ def on_data_set_table(data):
 
 
 @app.callback(Output('memory-graph', 'figure'),
-              Input('memory-output', 'data'),
-               Input('memory-field', 'value'))
+            Input('memory-output', 'data'),
+            Input('memory-field', 'value'))
 def on_data_set_graph(data, field):
     if data is None:
         raise PreventUpdate
