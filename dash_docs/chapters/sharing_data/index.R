@@ -20,11 +20,11 @@ layout <- htmlDiv(
   list(
     dccMarkdown("
 # Sharing State Between Callbacks
-> This is the 5th chapter of the essential [Dash Tutorial](https://dashr-docs.herokuapp.com/). The [previous chapter](/graph-crossfiltering)
+> This is the 5th chapter of the essential [Dash Tutorial](https://dashr.plotly.com). The [previous chapter](/graph-crossfiltering)
 > covered how to use callbacks with the `dashCoreComponents.Graph` component.
 > The rest of the Dash documentation covers other topics like multi-page apps and component libraries.
-> Just getting started? Make sure to [install the necessary dependencies](https://dashr-docs.herokuapp.com/installation).
-> The [next and final chapter](https://dashr-docs.herokuapp.com/faq-gotchas) covers frequently asked questions and gotchas.
+> Just getting started? Make sure to [install the necessary dependencies](/installation).
+> The [next and final chapter](/faq-gotchas) covers frequently asked questions and gotchas.
 
 One of the core Dash principles explained in the
 [Getting Started Guide on Callbacks](/getting-started-part-2)

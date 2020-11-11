@@ -52,6 +52,8 @@ chapters.advanced_callbacks <- new.env()
 source('dash_docs/chapters/advanced_callbacks/index.R', local=chapters.advanced_callbacks)
 chapters.clientside_callbacks <- new.env()
 source('dash_docs/chapters/clientside_callbacks/index.R', local=chapters.clientside_callbacks)
+chapters.pattern_matching_callbacks <- new.env()
+source('dash_docs/chapters/pattern_matching_callbacks/index.R', local=chapters.pattern_matching_callbacks)
 chapters.callback_gotchas <- new.env()
 source('dash_docs/chapters/callback_gotchas/index.R', local=chapters.callback_gotchas)
 # Component Libraries (Dash Core Components)
@@ -220,6 +222,8 @@ chapters.deployment <- new.env()
 source('dash_docs/chapters/deployment/index.R', local=chapters.deployment)
 chapters.urls <- new.env()
 source('dash_docs/chapters/urls/index.R', local=chapters.urls)
+chapters.routes <- new.env()
+source('dash_docs/chapters/routes/index.R', local=chapters.routes)
 chapters.devtools <- new.env()
 source('dash_docs/chapters/devtools/index.R', local=chapters.devtools)
 chapters.app_lifecycle <- new.env()
@@ -263,9 +267,7 @@ app$layout(htmlDiv(
           htmlDiv(id = 'backlinks-bottom', className = 'backlinks')
         ),
         className = 'rhs-content container-width'),
-
-        dugcPageMenu(id = 'pagemenu')
-
+        pageMenu(id = 'pagemenu')
       )
     )
   )
@@ -290,6 +292,7 @@ app$callback(
       # Dash Callbacks
       '/advanced-callbacks' = chapters.advanced_callbacks$layout,
       '/clientside-callbacks' = chapters.clientside_callbacks$layout,
+      '/pattern-matching-callbacks' = chapters.pattern_matching_callbacks$layout,
       '/callback-gotchas' = chapters.callback_gotchas$layout,
       # Component Libraries (Dash Core Components)
       '/dash-core-components' = chapters.dashCoreComponents$layout,
@@ -376,6 +379,7 @@ app$callback(
       # Beyond the Basics
       '/external-resources' = chapters.external_resources$layout,
       '/urls' = chapters.urls$layout,
+      '/routes' = chapters.routes$layout,
       '/devtools' = chapters.devtools$layout,
       '/support' = chapters.support$layout,
       '/plugins' = chapters.plugins$layout,
@@ -476,6 +480,12 @@ app$callback(
                   callbacks allow you to write your callbacks in JavaScript that runs in the browser."
                 ),
                 components$Chapter(
+                  'Pattern-Matching Callbacks',
+                  href='/pattern-matching-callbacks',
+                  caption="The pattern-matching callback selectors `MATCH`, `ALL`, & `ALLSMALLER` allow you to
+                  write callbacks that respond to or dynamically update a subset of components."
+                ),
+                components$Chapter(
                   'Callback Gotchas',
                   href='/callback-gotchas',
                   caption="Dash callbacks have some idiosyncracies that should be taken into consideration when
@@ -572,6 +582,11 @@ app$callback(
                 caption="Dash provides two components (`dccLink` and `dccLocation`) that allow you to easily make fast multipage apps using its own \"Single Page App (SPA)\" design pattern."
                 ),
                 components$Chapter(
+                'Server Routes & Redirects',
+                href='/routes',
+                caption="Dash offers two methods (`server_route` and `redirect`) to simplify the process of specifying user-defined routes and redirects for your apps."
+                ),
+                components$Chapter(
                 'Dev tools',
                 href='/devtools',
                 caption="Dash dev tools reference"
@@ -648,40 +663,20 @@ app$callback(
   )
 )
 
-plugin <- list(
-  on_attach = function(server) {
-    router <- server$plugins$request_routr
-    route <- routr::Route$new()
-    redirect_getting_started <- function(request, response, keys, ...) {
-      response$status <- 301L
-      response$set_header('Location', '/layout')
-      TRUE
-    }
-    redirect_getting_started_2 <- function(request, response, keys, ...) {
-      response$status <- 301L
-      response$set_header('Location', '/basic-callbacks')
-      TRUE
-    }
-    redirect_state <- function(request, response, keys, ...) {
-      response$status <- 301L
-      response$set_header('Location', '/basic-callbacks')
-      TRUE
-    }
-    redirect_sizing <- function(request, response, keys, ...) {
-      response$status <- 301L
-      response$set_header('Location', '/datatable/width')
-      TRUE
-    }
-    route$add_handler('get', '/getting-started', redirect_getting_started)
-    route$add_handler('get', '/getting-started-part-2', redirect_getting_started_2)
-    route$add_handler('get', '/state', redirect_state)
-    route$add_handler('get', '/datatable/sizing', redirect_sizing)
-    router$add_route(route, "redirects")
-  },
-  name = 'redirect_urls',
-  require = 'request_routr'
+app$redirect(
+  "/getting-started", "/layout"
 )
 
-app$server$attach(plugin)
+app$redirect(
+  "/getting-started-part-2", "/basic-callbacks"
+)
+
+app$redirect(
+  "/state", "/basic-callbacks"
+)
+
+app$redirect(
+  "/datatable/sizing", "/datatable/width"
+)
 
 app$run_server(host = "0.0.0.0")

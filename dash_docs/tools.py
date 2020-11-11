@@ -180,7 +180,7 @@ def load_example(path, relative_path=False):
             raise e
 
     return (
-        '```python \n' + _source + '```',
+        '```python \n' + _source.rstrip() + '\n```',
         scope['layout']  # layout is a global created from the app
     )
 

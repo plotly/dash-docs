@@ -11,15 +11,19 @@ def TOCChapters(chapters):
             if 'url' not in chapter:
                 chapter_content.append(Chapter(
                     chapter['name'],
-                    chapter['chapters'][0]['url'].rstrip('/'),
-                    chapter['chapters'][0].get('description', '')
+                    href=chapter['chapters'][0]['url'].rstrip('/'),
+                    caption=chapter['chapters'][0].get('description', ''),
+                    className=chapter['chapters'][0].get('className', ''),
+                    icon=chapter['chapters'][0].get('icon', ''),
                 ))
 
             else:
                 chapter_content.append(Chapter(
                     chapter['name'],
-                    chapter['url'].rstrip('/'),
-                    chapter.get('description', '')
+                    href=chapter['url'].rstrip('/'),
+                    caption=chapter.get('description', ''),
+                    className=chapter.get('className', ''),
+                    icon=chapter.get('icon', ''),
                 ))
         except Exception as e:
             print('Error generating TOC', e)
