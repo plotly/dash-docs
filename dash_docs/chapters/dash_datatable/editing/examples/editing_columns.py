@@ -38,7 +38,7 @@ app.layout = html.Div([
 
 @app.callback(
     Output('editing-columns', 'columns'),
-    [Input('editing-columns-button', 'n_clicks')],
+    Input('editing-columns-button', 'n_clicks'),
     [State('editing-columns-name', 'value'),
      State('editing-columns', 'columns')])
 def update_columns(n_clicks, value, existing_columns):

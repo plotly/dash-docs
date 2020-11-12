@@ -152,7 +152,7 @@ app.layout = html.Div([
 
 @app.callback(
     Output('image-text', 'children'),
-    [Input('cytoscape-image-export', 'imageData')],
+    Input('cytoscape-image-export', 'imageData'),
     )
 def put_image_string(data):
     return data

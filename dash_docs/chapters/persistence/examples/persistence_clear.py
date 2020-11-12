@@ -17,7 +17,7 @@ app.layout = html.Div([
 
 @app.callback(
     Output('important-info', 'value'),
-    [Input('clear-info', 'n_clicks')]
+    Input('clear-info', 'n_clicks')
 )
 def clear_persistence(n):
     return INITIAL if n else dash.no_update

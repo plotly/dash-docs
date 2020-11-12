@@ -186,7 +186,7 @@ Deploy = html.Div(children=[
 
 
 @app.callback(Output('instructions-2', 'children'),
-              [Input('platform-2', 'value')])
+              Input('platform-2', 'value'))
 def display_instructions2(platform):
     return [
         rc.Markdown(
@@ -388,7 +388,7 @@ def display_instructions2(platform):
                     ])
 
                     @app.callback(Output('display-value', 'children'),
-                                [Input('dropdown', 'value')])
+                                Input('dropdown', 'value'))
                     def display_value(value):
                       return 'You have selected "{}"'.format(value)
 
@@ -588,7 +588,7 @@ def display_instructions2(platform):
 ]
 
 @app.callback(Output('remote-and-deploy-instructions', 'children'),
-              [Input('deploy-method', 'value')])
+              Input('deploy-method', 'value'))
 def display_instructions_deploy(method):
     return [
         rc.Markdown('''
@@ -1457,7 +1457,7 @@ Ssh = html.Div(children=[
     In these cases, it will be easier to configure deployment using SSH.
     - If your Dash Enterprise is configured with **SAML**, then the
     HTTPS method will not work.
-    - If you are experiencing connectivity issues due to network latency, consider deploying with SSH instead; this method is often less susceptible to timeouts than HTTP, and so may provide a more reliable means of deploying your app. 
+    - If you are experiencing connectivity issues due to network latency, consider deploying with SSH instead; this method is often less susceptible to timeouts than HTTP, and so may provide a more reliable means of deploying your app.
     deploying with HTTP
 
     ***
@@ -1492,7 +1492,7 @@ Ssh = html.Div(children=[
 ])
 
 @app.callback(Output('instructions', 'children'),
-              [Input('platform', 'value')])
+              Input('platform', 'value'))
 def display_instructions(platform):
     return [
 
@@ -2199,7 +2199,7 @@ Authentication = html.Div(children=[
 
 
     @app.callback(Output('header-title','children'),
-                  [Input('dummy-input', 'children')])
+                  Input('dummy-input', 'children'))
     def update_title(_):
 
         # print user data to the logs
@@ -2210,7 +2210,7 @@ Authentication = html.Div(children=[
 
 
     @app.callback(Output('graph', 'figure'),
-                  [Input('dropdown', 'value')])
+                  Input('dropdown', 'value'))
     def update_graph(value):
         return {
             'data': [{
@@ -2936,7 +2936,7 @@ pdfService = html.Div(children=[
 
 
         @app.callback(Output('output', 'children'),
-                      [Input('run', 'n_clicks')],
+                      Input('run', 'n_clicks'),
                       [State('website', 'value'),
                        State('wait_selector', 'value')])
         def snapshot_page(n_clicks, url, wait_selector):

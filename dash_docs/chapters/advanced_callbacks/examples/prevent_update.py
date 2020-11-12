@@ -16,7 +16,7 @@ app.layout = html.Div([
 
 @app.callback(
     [Output('out', 'children'), Output('err', 'children')],
-    [Input('num', 'value')]
+    Input('num', 'value')
 )
 def show_factors(num):
     if num is None:

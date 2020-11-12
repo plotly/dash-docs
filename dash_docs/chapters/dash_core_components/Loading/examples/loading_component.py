@@ -31,13 +31,13 @@ app.layout = html.Div(
 )
 
 
-@app.callback(Output("loading-output-1", "children"), [Input("loading-input-1", "value")])
+@app.callback(Output("loading-output-1", "children"), Input("loading-input-1", "value"))
 def input_triggers_spinner(value):
     time.sleep(1)
     return value
 
 
-@app.callback(Output("loading-output-2", "children"), [Input("loading-input-2", "value")])
+@app.callback(Output("loading-output-2", "children"), Input("loading-input-2", "value"))
 def input_triggers_nested(value):
     time.sleep(1)
     return value

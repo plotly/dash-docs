@@ -30,7 +30,7 @@ app.layout = html.Div([
 
 @app.callback(
     Output('output-container-range-slider-non-linear', 'children'),
-    [Input('non-linear-range-slider', 'value')])
+    Input('non-linear-range-slider', 'value'))
 def update_output(value):
     transformed_value = [transform_value(v) for v in value]
     return 'Linear Value: {}, Log Value: [{:0.2f}, {:0.2f}]'.format(

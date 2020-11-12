@@ -107,14 +107,14 @@ def update_table(page_current, page_size, sort_by, filter):
             inplace=False
         )
 
-    return dff.iloc[ 
+    return dff.iloc[
         page_current*page_size: (page_current + 1)*page_size
     ].to_dict('records')
 
 
 @app.callback(
     Output('table-paging-with-graph-container', "children"),
-    [Input('table-paging-with-graph', "data")])
+    Input('table-paging-with-graph', "data"))
 def update_graph(rows):
     dff = pd.DataFrame(rows)
     return html.Div(

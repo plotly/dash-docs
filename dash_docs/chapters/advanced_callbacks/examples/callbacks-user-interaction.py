@@ -18,7 +18,7 @@ app.layout = html.Div(
 
 @app.callback(
     Output("first_output_3", "children"),
-    [Input("button_3", "n_clicks")])
+    Input("button_3", "n_clicks"))
 def first_callback(n):
     now = datetime.now()
     current_time = now.strftime("%H:%M:%S")
@@ -26,7 +26,7 @@ def first_callback(n):
 
 
 @app.callback(
-    Output("second_output_3", "children"), [Input("button_4", "n_clicks")])
+    Output("second_output_3", "children"), Input("button_4", "n_clicks"))
 def second_callback(n):
     time.sleep(5)
     now = datetime.now()

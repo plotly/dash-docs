@@ -29,7 +29,7 @@ app.layout = html.Div([
 
 
 @app.callback(Output('my-image', 'src'),
-              [Input('canvas', 'json_data')])
+              Input('canvas', 'json_data'))
 def update_data(string):
     if string:
         mask = parse_jsonstring(string, io.imread(filename, as_gray=True).shape)

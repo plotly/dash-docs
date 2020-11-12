@@ -94,7 +94,7 @@ app.clientside_callback(
 
 @app.callback(
     Output('clientside-figure-json-px', 'children'),
-    [Input('clientside-figure-store-px', 'data')]
+    Input('clientside-figure-store-px', 'data')
 )
 def generated_px_figure_json(data):
     return '```\n'+json.dumps(data, indent=2)+'\n```'
