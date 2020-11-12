@@ -20,9 +20,9 @@ layout = html.Div([
     installed on a Linux server at your company or the Kubernetes service
     of every major cloud:
 
-    > - [Install Dash Enterprise on Azure](https://plotly.com/dash/azure)
-    > - [Install Dash Enterprise on AWS](https://plotly.com/dash/aws)
-    > - [Install Dash Enterprise on an on-premises Linux server](https://plotly.com/dash/on-premises-linux)
+    > - [Install Dash Enterprise on Azure](https://plotly.com/dash/azure/?utm_source=docs&utm_medium=integrating&utm_campaign=nov&utm_content=azure)
+    > - [Install Dash Enterprise on AWS](https://plotly.com/dash/aws/?utm_source=docs&utm_medium=integrating&utm_campaign=nov&utm_content=aws)
+    > - [Install Dash Enterprise on an on-premises Linux server](https://plotly.com/dash/on-premises-linux/?utm_source=docs&utm_medium=integrating&utm_campaign=nov&utm_content=linux)
     > - Or, [find out if your company is using Dash Enterprise](https://go.plotly.com/company-lookup)
 
     ## Dash Enterprise Embedding Middleware
