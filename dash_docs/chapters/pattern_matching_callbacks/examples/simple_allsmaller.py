@@ -16,7 +16,7 @@ app.layout = html.Div([
 @app.callback(
     Output('container-ex3', 'children'),
     Input('add-filter-ex3', 'n_clicks'),
-    [State('container-ex3', 'children')])
+    State('container-ex3', 'children'))
 def display_dropdowns(n_clicks, existing_children):
     existing_children.append(html.Div([
         dcc.Dropdown(

@@ -14,7 +14,7 @@ app.layout = html.Div([
 @app.callback(
     Output('dropdown-container', 'children'),
     Input('add-filter', 'n_clicks'),
-    [State('dropdown-container', 'children')])
+    State('dropdown-container', 'children'))
 def display_dropdowns(n_clicks, children):
     new_dropdown = dcc.Dropdown(
         id={

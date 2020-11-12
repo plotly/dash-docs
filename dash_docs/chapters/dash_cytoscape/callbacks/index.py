@@ -380,7 +380,7 @@ layout = html.Div([
     @app.callback(Output('cytoscape-callbacks-2', 'elements'),
                   [Input('btn-add-node-example', 'n_clicks_timestamp'),
                    Input('btn-remove-node-example', 'n_clicks_timestamp')],
-                  [State('cytoscape-callbacks-2', 'elements')])
+                   State('cytoscape-callbacks-2', 'elements'))
     def update_elements(btn_add, btn_remove, elements):
         if int(btn_add) > int(btn_remove):
             next_node_idx = len(elements) - len(edges)

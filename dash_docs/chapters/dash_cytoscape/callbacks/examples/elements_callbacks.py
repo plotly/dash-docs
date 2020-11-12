@@ -78,7 +78,7 @@ app.layout = html.Div([
 @app.callback(Output('cytoscape-elements-callbacks', 'elements'),
               [Input('btn-add-node', 'n_clicks_timestamp'),
                Input('btn-remove-node', 'n_clicks_timestamp')],
-              [State('cytoscape-elements-callbacks', 'elements')])
+               State('cytoscape-elements-callbacks', 'elements'))
 def update_elements(btn_add, btn_remove, elements):
     # If the add button was clicked most recently
     if int(btn_add) > int(btn_remove):

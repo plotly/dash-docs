@@ -43,8 +43,8 @@ def parse_contents(contents, filename):
 
 @app.callback([Output('datatable-upload-container', 'data'),
                Output('datatable-upload-container', 'columns')],
-              Input('datatable-upload', 'contents'),
-              [State('datatable-upload', 'filename')])
+               Input('datatable-upload', 'contents'),
+               State('datatable-upload', 'filename'))
 def update_output(contents, filename):
     if contents is None:
         return [{}], []
