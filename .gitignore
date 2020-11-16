@@ -12,6 +12,8 @@ venv/
 *.pyc
 *.egg-info
 *.log
+*py~
+*swp
 .DS_Store
 cache
 bundle.js
