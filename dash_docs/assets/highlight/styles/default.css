@@ -8,7 +8,7 @@ Original highlight.js style (c) Ivan Sagalaev <maniac@softwaremaniacs.org>
   display: block;
   overflow-x: auto;
   padding: 1.5em;
-  background: #F7FAFC;
+  background: #FAFBFC;
 }
 
 
@@ -44,7 +44,7 @@ Original highlight.js style (c) Ivan Sagalaev <maniac@softwaremaniacs.org>
 .hljs-quote,
 .hljs-template-tag,
 .hljs-deletion {
-  color: #60BAB6;
+  color: #299991;
 }
 
 .hljs-title,
