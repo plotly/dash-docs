@@ -9,6 +9,10 @@ examples = tools.load_examples(__file__)
 
 layout = html.Div([
     rc.Markdown('''\
+
+    __Note__: dash-canvas is a legacy package, the recommended way to
+    annotate images is to use the [drawing tools of plotly figures](/annotations).
+
     ## Introduction to dash-canvas
 
     '''),
