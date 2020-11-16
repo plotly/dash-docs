@@ -4,6 +4,11 @@ Original highlight.js style (c) Ivan Sagalaev <maniac@softwaremaniacs.org>
 
 */
 
+pre > code {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px
+}
+
 .hljs {
   display: block;
   overflow-x: auto;
@@ -49,7 +54,7 @@ Original highlight.js style (c) Ivan Sagalaev <maniac@softwaremaniacs.org>
 
 .hljs-title,
 .hljs-section {
-  color: #F4564E;
+  color: #FF8022;
   font-weight: bold;
 }
 
