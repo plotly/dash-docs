@@ -2937,8 +2937,8 @@ pdfService = html.Div(children=[
 
         @app.callback(Output('output', 'children'),
                       Input('run', 'n_clicks'),
-                      [State('website', 'value'),
-                       State('wait_selector', 'value')])
+                      State('website', 'value'),
+                      State('wait_selector', 'value'))
         def snapshot_page(n_clicks, url, wait_selector):
             if n_clicks == 0:
                 return ''

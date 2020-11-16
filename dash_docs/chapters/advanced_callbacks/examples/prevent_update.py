@@ -15,7 +15,8 @@ app.layout = html.Div([
 ])
 
 @app.callback(
-    [Output('out', 'children'), Output('err', 'children')],
+    Output('out', 'children'),
+    Output('err', 'children'),
     Input('num', 'value')
 )
 def show_factors(num):

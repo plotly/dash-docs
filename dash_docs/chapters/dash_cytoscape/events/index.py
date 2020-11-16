@@ -237,10 +237,10 @@ layout = html.Div([
         rc.Markdown('''
         ```py
         @app.callback(Output('cytoscape', 'stylesheet'),
-                      [Input('cytoscape', 'tapNode'),
-                       Input('input-follower-color', 'value'),
-                       Input('input-following-color', 'value'),
-                       Input('dropdown-node-shape', 'value')])
+                      Input('cytoscape', 'tapNode'),
+                      Input('input-follower-color', 'value'),
+                      Input('input-following-color', 'value'),
+                      Input('dropdown-node-shape', 'value'))
         def generate_stylesheet(node, follower_color, following_color, node_shape):
             if not node:
                 return default_stylesheet
@@ -401,8 +401,8 @@ layout = html.Div([
         ```py
         @app.callback(Output('cytoscape', 'elements'),
                       Input('cytoscape', 'tapNodeData'),
-                      [State('cytoscape', 'elements'),
-                       State('radio-expand', 'value')])
+                      State('cytoscape', 'elements'),
+                      State('radio-expand', 'value'))
         def generate_elements(nodeData, elements, expansion_mode):
             if not nodeData:
                 return default_elements

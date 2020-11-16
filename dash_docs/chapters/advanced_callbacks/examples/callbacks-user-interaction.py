@@ -36,7 +36,8 @@ def second_callback(n):
 
 @app.callback(
     Output("third_output_3", "children"),
-    [Input("first_output_3", "children"), Input("second_output_3", "children")])
+    Input("first_output_3", "children"),
+    Input("second_output_3", "children"))
 def third_callback(n, m):
     now = datetime.now()
     current_time = now.strftime("%H:%M:%S")

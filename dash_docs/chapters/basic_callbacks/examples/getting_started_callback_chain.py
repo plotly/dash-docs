@@ -45,8 +45,8 @@ def set_cities_value(available_options):
 
 @app.callback(
     Output('display-selected-values', 'children'),
-    [Input('countries-radio', 'value'),
-     Input('cities-radio', 'value')])
+    Input('countries-radio', 'value'),
+    Input('cities-radio', 'value'))
 def set_display_children(selected_country, selected_city):
     return u'{} is a city in {}'.format(
         selected_city, selected_country,

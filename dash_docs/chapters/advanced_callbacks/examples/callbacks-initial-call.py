@@ -13,7 +13,8 @@ app.layout = html.Div(
 
 
 @app.callback(
-    [Output("first_output_1", "children"), Output("second_output_1", "children")],
+    Output("first_output_1", "children"),
+    Output("second_output_1", "children"),
     Input("button_1", "n_clicks")
 )
 def change_text(n_clicks):

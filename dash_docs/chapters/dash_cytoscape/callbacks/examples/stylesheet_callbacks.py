@@ -83,8 +83,8 @@ app.layout = html.Div([
 
 
 @app.callback(Output('cytoscape-stylesheet-callbacks', 'stylesheet'),
-              [Input('input-line-color', 'value'),
-               Input('input-bg-color', 'value')])
+              Input('input-line-color', 'value'),
+               Input('input-bg-color', 'value'))
 def update_stylesheet(line_color, bg_color):
     if line_color is None:
         line_color = 'transparent'

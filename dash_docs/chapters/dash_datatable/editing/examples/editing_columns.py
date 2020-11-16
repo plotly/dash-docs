@@ -39,8 +39,8 @@ app.layout = html.Div([
 @app.callback(
     Output('editing-columns', 'columns'),
     Input('editing-columns-button', 'n_clicks'),
-    [State('editing-columns-name', 'value'),
-     State('editing-columns', 'columns')])
+    State('editing-columns-name', 'value'),
+    State('editing-columns', 'columns'))
 def update_columns(n_clicks, value, existing_columns):
     if n_clicks > 0:
         existing_columns.append({
@@ -52,8 +52,8 @@ def update_columns(n_clicks, value, existing_columns):
 
 @app.callback(
     Output('editing-columns-graph', 'figure'),
-    [Input('editing-columns', 'data'),
-     Input('editing-columns', 'columns')])
+    Input('editing-columns', 'data'),
+    Input('editing-columns', 'columns'))
 def display_output(rows, columns):
     return {
         'data': [{

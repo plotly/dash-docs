@@ -51,8 +51,8 @@ app.layout = html.Div([
 
 
 @app.callback(
-    [Output('filter-query-input', 'style'),
-     Output('filter-query-output', 'style')],
+    Output('filter-query-input', 'style'),
+    Output('filter-query-output', 'style'),
     Input('filter-query-read-write', 'value')
 )
 def query_input_output(val):
