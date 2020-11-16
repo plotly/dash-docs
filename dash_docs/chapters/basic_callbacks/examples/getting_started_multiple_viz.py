@@ -65,7 +65,7 @@ app.layout = html.Div([
     Input('yaxis-column', 'value'),
     Input('xaxis-type', 'value'),
     Input('yaxis-type', 'value'),
-     nput('year--slider', 'value'))
+    Input('year--slider', 'value'))
 def update_graph(xaxis_column_name, yaxis_column_name,
                  xaxis_type, yaxis_type,
                  year_value):
