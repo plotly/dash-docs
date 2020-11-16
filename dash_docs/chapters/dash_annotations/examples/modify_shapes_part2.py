@@ -32,8 +32,9 @@ app.layout = html.Div(
 
 
 @app.callback(
-    [Output("graph-hist", "figure"), Output("annotations", "children")],
-    [Input("fig-pic", "relayoutData")],
+    Output("graph-hist", "figure"),
+    Output("annotations", "children"),
+    Input("fig-pic", "relayoutData"),
     prevent_initial_call=True,
 )
 def on_relayout(relayout_data):

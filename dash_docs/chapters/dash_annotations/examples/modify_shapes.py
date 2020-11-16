@@ -29,12 +29,12 @@ app.layout = html.Div(
         dcc.Markdown("Characteristics of shapes"),
         html.Pre(id="annotations-pre"),
     ]
-) 
+)
 
 
 @app.callback(
     Output("annotations-pre", "children"),
-    [Input("fig-image", "relayoutData")],
+    Input("fig-image", "relayoutData"),
     prevent_initial_call=True,
 )
 def on_new_annotation(relayout_data):

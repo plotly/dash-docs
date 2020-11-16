@@ -29,7 +29,8 @@ app.layout = html.Div(
 
 @app.callback(
     Output("graph-styled-annotations", "figure"),
-    [Input("opacity-slider", "value"), Input("annotation-color-picker", "value")],
+    Input("opacity-slider", "value"),
+    Input("annotation-color-picker", "value"),
     prevent_initial_call=True,
 )
 def on_style_change(slider_value, color_value):

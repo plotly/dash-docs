@@ -24,7 +24,7 @@ app.layout = html.Div(
 
 @app.callback(
     Output("annotations-data", "children"),
-    [Input("graph-picture", "relayoutData")],
+    Input("graph-picture", "relayoutData"),
     prevent_initial_call=True,
 )
 def on_new_annotation(relayout_data):

@@ -53,7 +53,7 @@ app.layout = html.Div(
 
 @app.callback(
     Output("graph-histogram", "figure"),
-    [Input("graph-camera", "relayoutData")],
+    Input("graph-camera", "relayoutData"),
     prevent_initial_call=True,
 )
 def on_new_annotation(relayout_data):
