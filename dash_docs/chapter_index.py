@@ -457,7 +457,7 @@ URLS = [
         ] +
         ([
             {
-                'url': 'https://dash.plotly.com/dash',
+                'url': 'https://dash.plotly.com/dash-enterprise',
                 'name': 'Dash Enterprise',
                 'description': '''
                     The commercial platform behind Dash Open Source for
