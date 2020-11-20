@@ -58,9 +58,9 @@ layout = html.Div([
     > copy & paste the below code into your Workspace ([see video](https://plotly.com/dash/workspaces/#screencast)).
     ''') if not tools.is_in_dash_enterprise() else '',
 
-    rc.Markdown('''
-    > _[Find out if your company is using Dash Enterprise](https://go.plotly.com/company-lookup)_
-    ''', className='red-links') if not tools.is_in_dash_enterprise() else '',
+    rc.Markdown(
+        '> _[Find out if your company is using Dash Enterprise](https://go.plotly.com/company-lookup)_', 
+        className='red-links') if not tools.is_in_dash_enterprise() else '',
 
     rc.Markdown(
         examples['getting_started_interactive_simple.py'][0],
