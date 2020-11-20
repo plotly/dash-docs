@@ -3000,117 +3000,348 @@ pdfService = html.Div(children=[
 
 ])
 
-# # # # # # #
-# Common Errors
-# # # # # # #
+# # # # # # # # #
+# Common Errors #
+# # # # # # # # #
 Troubleshooting = html.Div(children=[
-    html.H1('Common Errors'),
+     html.H1('Common Deployment Errors'),
 
     Blockquote(),
 
     rc.Markdown(
-    '''
-    This section describes some of the common errors you may encounter when
-    trying to deploy to the Dash Enterprise, and provides information
-    about how to resolve these errors. If you can't find the information
-    you're looking for, or need help, <dccLink href="/dash-enterprise/support" children="contact our support team"/>.
+        '''
+        This chapter describes errors that you may encountering when deploying with `git push plotly master`.
 
-    ***
+        Troubleshooting Checklist
 
-    #### Package Versioning
+        1. Search for your error message on this page.
+        2. Verify that you can deploy a sample application or template.
+        3. Verify the Dash Enterprise-specific files required for deployment like requirements.txt & Procfile. <dccLink href="/dash-enterprise/application-structure" children="View a full list of these files"/>.
+        4. Verify that the requirements & versions listed in the App Manager for your application match your expectations and what you have specified in your requirements.txt file. The requirements listed in the App Manager represent the exact versions being used in the application that is currently deployed.
+        5. Try running your application in a Workspace.
+        6. Try deploying your application from a Workspace. In Workspaces, git & ssh are preconfigured so running `git push plotly master` should "just work".
+        7. Reach out to our <dccLink href="/dash-enterprise/support" children="support team"/> with the error that you encountered when doing a `git push plotly master`.
 
-    '''),
-
-    html.Details([
-        html.Summary("Are you using the latest versions?"),
-
-        rc.Markdown('''
-        ```shell
-        dash=={}
-        dash-html-components=={}
-        dash-core-components=={}
-        dash-table=={}
-        ```
-        '''.format(
-            dash.__version__,
-            html.__version__,
-            dcc.__version__,
-            dt.__version__
-        ), style=styles.code_container),
-
-        rc.Markdown('''
-        > A quick note on checking your versions and on upgrading.
-        > These docs are run using the versions listed above and these
-        > versions should be the latest versions available.
-        > To check which version that you have installed, you can run e.g.
-        > ```
-        > >>> import dash_core_components
-        > >>> print(dash_core_components.__version__)
-        > ```
-        > To see the latest changes of any package, check the GitHub repo's CHANGELOG.md file:
-        > - [dash & dash-renderer changelog](https://github.com/plotly/dash/blob/master/CHANGELOG.md)
-        >   - `dash-renderer` is a separate package installed automatically with
-        >     dash but its updates are included in the main dash changelog.
-        >     These docs are using dash-renderer=={}.
-        > - [dash-core-components changelog](https://github.com/plotly/dash-core-components/blob/master/CHANGELOG.md)
-        > - [dash-html-components changelog](https://github.com/plotly/dash-html-components/blob/master/CHANGELOG.md)
-        > - [dash-table changelog](https://github.com/plotly/dash-table/blob/master/CHANGELOG.md)
-        > - [plotly changelog](https://github.com/plotly/plotly.py/blob/master/CHANGELOG.md)
-        >   - the `plotly` package is also installed automatically with dash. It is
-        >     the Python interface to the plotly.js graphing library, so is mainly
-        >     used by dash-core-components, but it's also used by dash itself.
-        >     These docs are using plotly=={}.
-        >
-        > All of these packages adhere to [semver](https://semver.org/).
-        '''.format(dash_renderer.__version__, plotly.__version__))
-    ]),
+        The following is a collection of common error messages when running `git push`.
+        '''
+    ),
 
     rc.Markdown(
-    '''
-    ***
+        '''
+        ### error: failed to push some refs to dokku@<dash-enterprise>:<app-name>
+        '''
+    ),
 
-    #### Deploying with Self-Signed Certificates?
-
-    '''),
-
-    html.Details([
-        html.Summary("SSL certificate problem: self signed certificate"),
-
-        rc.Markdown(
+    rc.Markdown(
         '''
         ```shell
-        fatal: unable to access 'https://<your-dash-enterprise>/GIT/your-dash-app-name/': SSL certificate problem: self signed certificate
+        $ git push plotly master
+        [...]
+        To <your-dash-enterprise-host>:<your-dash-app>
+        ! [remote rejected] master -> master (pre-receive hook declined)
+        error: failed to push some refs to '<your-dash-enterprise-host>:<your-dash-app>'
         ```
-        ''',
-        style=styles.code_container),
+        '''
+    ),
 
-        rc.Markdown(
+    rc.Markdown(
+        '''
+        This is a generic error message that indicates that the git push deployment failed. The root cause of the error will be further up in the logs.\
+
+        In some cases, the error message may not exist or may be misleading. This page covers many of the common errors that may be reported further up in your deploy logs.
+        '''
+    ),
+
+    rc.Markdown(
+        '''
+        ### cat /app/Procfile: No such file or directory
+        '''
+    ),
+
+    rc.Markdown(
+        '''
+        ```shell
+        $ git push plotly master
+        [...]
+        remote: App container failed to start!!
+        =====> demo-app web container output:
+            cat: /app/Procfile: No such file or directory
+            cat: /app/Procfile: No such file or directory
+        =====> end demo-app web container output
+        To <your-dash-enterprise-host>:<your-dash-app>
+        ! [remote rejected] master -> master (pre-receive hook declined)
+        error: failed to push some refs to '<your-dash-enterprise-host>:<your-dash-app>'
+        ```
+        '''
+    ),
+
+    rc.Markdown(
+        '''
+        This error occurs when the project folder doesn’t contain a file named `Procfile`.\
+        See <dccLink href="/dash-enterprise/application-structure" children="Application Structure"/>
+        page for more details about this file.\
+        '''
+    ),
+
+
+    rc.Markdown(
+        '''
+        ### Failed to find application object 'server' in 'index'
+        '''
+    ),
+
+    rc.Markdown(
+        '''
+        ```shell
+        remote: App container failed to start!!
+        =====> <your-dash-app> web container output:
+        [...]
+        Failed to find application object 'server' in 'index'
+        [...]
+            raise HaltServer(reason, self.APP_LOAD_ERROR)
+            gunicorn.errors.HaltServer: <HaltServer 'App failed to load.' 4>
+        [...]
+                raise HaltServer(reason, self.APP_LOAD_ERROR)
+            gunicorn.errors.HaltServer: <HaltServer 'App failed to load.' 4>
+            Failed to find application object 'server' in 'index'
+            [2020-11-02 18:17:22 +0000] [191] [INFO] Worker exiting (pid: 191)
+        =====> end aa-qa web container output
+        To <your-dash-enterprise-host>:<your-dash-app>
+        ! [remote rejected] master -> master (pre-receive hook declined)
+        error: failed to push some refs to 'dokku@<your-dash-enterprise-host>:<your-dash-app>'
+        ```
+        '''
+    ),
+
+    rc.Markdown(
+        '''
+        This happens when `server = app.server` is missing from your code .\
+        See  <dccLink href="/dash-enterprise/application-structure" children="Application Structure"/>
+        page for more details.\
+        '''
+    ),
+
+
+    rc.Markdown(
+        '''
+        ### Unable to select a buildpack
+        '''
+    ),
+
+    rc.Markdown(
+        '''
+        ```shell
+        $ git push plotly master
+        [...]
+        -----> Adding BUILD_ENV to build environment...
+        -----> Unable to select a buildpack
+        To <your-dash-enterprise-host>:<your-dash-app>
+        ! [remote rejected] master -> master (pre-receive hook declined)
+        error: failed to push some refs to '<your-dash-enterprise-host>:<your-dash-app>'
+        ```
+        '''
+    ),
+
+    rc.Markdown(
+        '''
+
+        This error may happern if you are trying to push from a branch
+        that is not your `master` branch.
+
+        To resolve get the name of your current
+        branch by running `git branch`. Then, to push from this branch
+        to the remote server, run `git push plotly your-branch-name:master`.
+
+        This may also occur if you don’t have a requirements.txt file.
+
+        The buildpack is the technology Dash Enterprise uses to create a Docker container.
+
+        Dash Enterprise supports three different buildpacks: The standard Python & pip buildpack, a Python & conda buildpack, and a Dash for R buildpack. Dash Enterprise automatically selects the buildpack based off of which files are contained in the project:\
+
+        - `requirements.txt` - If this file exists, then Dash Enterprise uses the Python & pip buildpack.
+        - `conda-requirements.txt` - If this file exists, then Dash Enterprises uses the Python & conda buildpack.
+        - `.buildpacks` - If this file exists and is equal to `https://github.com/plotly/heroku-buildpack-r#heroku-18`, then Dash Enterprise uses the R buildpack.
+
+        See  <dccLink href="/dash-enterprise/application-structure" children="Application Structure"/>
+        page for more details.
+        '''
+    ),
+
+    rc.Markdown(
+        '''
+        ### remote: unknown shorthand flag: 'e' in -e
+
+        ```
+        $ git push plotly master
+        [...]
+        remote: unknown shorthand flag: 'e' in -e
+        remote: See 'docker image build --help'
+        ```
+
+        This error can happen if your project contains a Dockerfile.
+        Dash Enterprise does not support projects that contain a Dockerfile.
+        To resolve, remove the Dockerfile from your project and redeploy.
+
+        > Background
+
+        > Dash Enterprise uses buildpack technolgy in order to automatically
+        > build Docker containers. These buildpacks are detected automatically
+        > dependeing on the files within the project file.
+
+        > Dash Enterprise supports three different buildpacks: The standard Python & pip buildpack, a Python & conda buildpack, and a Dash for R buildpack. Dash Enterprise automatically selects the buildpack based off of which files are contained in the project:\
+
+        > - `requirements.txt` - If this file exists, then Dash Enterprise uses the Python & pip buildpack.
+        > - `conda-requirements.txt` - If this file exists, then Dash Enterprises uses the Python & conda buildpack.
+        > - `.buildpacks` - If this file exists and is equal to `https://github.com/plotly/heroku-buildpack-r#heroku-18`, then Dash Enterprise uses the R buildpack.
+
+        > If a `Dockerfile` is included, then Dash Enterprise attempts to use
+        > an unsupported Docker buildpack.
+
+        '''
+    ),
+
+    rc.Markdown(
+        '''
+        ### remote: unknown shorthand flag: 'e' in -e
+
+        ```
+        $ git push plotly master
+        [...]
+        remote: unknown shorthand flag: 'e' in -e
+        remote: See 'docker image build --help'
+        ```
+
+        This error can happen if your project contains a Dockerfile.
+        Dash Enterprise does not support projects that contain a Dockerfile.
+        To resolve, remove the Dockerfile from your project and redeploy.
+
+        > Background
+
+        > Dash Enterprise uses buildpack technolgy in order to automatically
+        > build Docker containers. These buildpacks are detected automatically
+        > dependeing on the files within the project file.
+
+        > Dash Enterprise supports three different buildpacks: The standard Python & pip buildpack, a Python & conda buildpack, and a Dash for R buildpack. Dash Enterprise automatically selects the buildpack based off of which files are contained in the project:\
+
+        > - `requirements.txt` - If this file exists, then Dash Enterprise uses the Python & pip buildpack.
+        > - `conda-requirements.txt` - If this file exists, then Dash Enterprises uses the Python & conda buildpack.
+        > - `.buildpacks` - If this file exists and is equal to `https://github.com/plotly/heroku-buildpack-r#heroku-18`, then Dash Enterprise uses the R buildpack.
+
+        > If a `Dockerfile` is included, then Dash Enterprise attempts to use
+        > an unsupported Docker buildpack.
+
+        '''
+    ),
+
+    rc.Markdown(
+        '''
+        ### fatal: unable to run gunicorn: file does not exist
+        '''
+    ),
+
+    rc.Markdown(
+        '''
+        ```shell
+        $ git push plotly master
+        [...]
+        remote: App container failed to start!!
+        =====> demo-app web container output:
+            setuidgid: fatal: unable to run gunicorn: file does not exist
+            setuidgid: fatal: unable to run gunicorn: file does not exist
+            setuidgid: fatal: unable to run gunicorn: file does not exist
+            setuidgid: fatal: unable to run gunicorn: file does not exist
+            setuidgid: fatal: unable to run gunicorn: file does not exist
+            setuidgid: fatal: unable to run gunicorn: file does not exist
+        =====> end demo-app web container output
+        To <your-dash-enterprise-host>:<your-dash-app>
+        ! [remote rejected] master -> master (pre-receive hook declined)
+        error: failed to push some refs to '<your-dash-enterprise-host>:<your-dash-app>'
+        ```
+        '''
+    ),
+
+    rc.Markdown(
+        '''
+        This happens when `gunicorn` is missing from your app's `requirement.txt` file.\
+        See  <dccLink href="/dash-enterprise/application-structure" children="Application Structure"/>
+        page for more details.\
+        '''
+    ),
+
+    rc.Markdown(
+        '''
+        ### syntax error in expression (error token is " ")
+        '''
+    ),
+
+    rc.Markdown(
+        '''
+        ```shell
+        $ git push plotly master
+        [...]
+        remote: /var/lib/dokku/plugins/enabled/scheduler-docker-local/scheduler-deploy: line 67: [[: web: gunicorn: syntax error in expression (error token is ": gunicorn")
+        remote: /var/lib/dokku/plugins/enabled/scheduler-docker-local/scheduler-deploy: line 156: web: gunicorn: syntax error in expression (error token is ": gunicorn")
+        To <your-dash-enterprise-host>:<your-dash-app>
+        ! [remote rejected] master -> master (pre-receive hook declined)
+        error: failed to push some refs to 'dokku@<your-dash-enterprise-host>:<your-dash-app>'
+        ```
+        '''
+    ),
+
+    rc.Markdown(
+        '''
+        This can happen when the entries in your `DOKKU_SCALE` file don't match your `Procfile`.\
+        See the `Procfile` section in <dccLink href="/dash-enterprise/application-structure" children="Application Structure"/>
+        page for more details.\
+        '''
+    ),
+
+
+
+    rc.Markdown(
+        '''
+        ### fatal: unable to access 'https://<your-dash-enterprise-host>/GIT/your-dash-app-name/': SSL certificate problem: self signed certificate
+        '''
+    ),
+
+    rc.Markdown(
+        '''
+        ```shell
+        $ git push plotly master
+        [...]
+        fatal: unable to access 'https://<your-dash-enterprise-host>/GIT/your-dash-app-name/': SSL certificate problem: self signed certificate
+        ```
+        '''
+    ),
+
+    rc.Markdown(
         '''
         &nbsp;
+
+        This can happen if you are deploying to Dash Enterprise using an https remote while Dash Enterprise is using a self-signed certificate.
+        Resolve this by <dccLink href="/dash-enterprise/ssh" children="deploying with SSH"/>.
+        Alternatively, you can attempt to follow
+        [these 3rd party instructions to make git accept a self-signed certificate](https://stackoverflow.com/questions/11621768/how-can-i-make-git-accept-a-self-signed-certificate).\
 
         We recommend deploying with HTTPS for most of our users.
         However, if your Dash Enterprise is using a **self-signed
         certificate**, deploying with HTTPS
         [requires some extra, challenging configuration](https://stackoverflow.com/questions/11621768/).
         In these cases, it will be easier to set up deploying with SSH.
-        ''')
-    ]),
+        '''
+    ),
 
+    rc.Markdown(
+        '''
+        ### Could not find a version that satisfies the requirement
+        '''
+    ),
 
-    rc.Markdown('''
-    ***
-
-    #### Deployment Failing?
-
-    '''),
-
-    html.Details([
-        html.Summary("Could not find a version that satisfies the requirement"),
-
-        rc.Markdown(
+    rc.Markdown(
         '''
         ```shell
-        ...
+        $ git push plotly master
+        [...]
         remote: -----> Cleaning up...
         remote: -----> Building my-dash-app from herokuish...
         remote: -----> Injecting apt repositories and packages ...
@@ -3124,99 +3355,73 @@ Troubleshooting = html.Div(children=[
         remote: -----> Installing requirements with pip
         remote:        Collecting dash==0.29.1 (from -r /tmp/build/requirements.txt (line 1))
         remote:        Could not find a version that satisfies the requirement dash==0.29.1 (from -r /tmp/build/requirements.txt (line 1)) (from versions: 0.17.4, 0.17.5, 0.17.7, 0.17.8rc1, 0.17.8rc2, 0.17.8rc3, 0.18.0, 0.18.1, 0.18.2, 0.18.3rc1, 0.18.3, 0.19.0, 0.20.0, 0.21.0, 0.21.1, 0.22.0rc1, 0.22.0rc2, 0.22.0, 0.23.1, 0.24.0, 0.24.1rc1, 0.24.1, 0.24.2, 0.25.0)
-        remote:        No matching distribution found for dash==0.29.1 (from -r /tmp/build/requirements.txt (line 1))```''',
-        style=styles.code_container),
+        remote:        No matching distribution found for dash==0.29.1 (from -r /tmp/build/requirements.txt (line 1))```
+        '''
+    ),
 
-        rc.Markdown(
+    rc.Markdown(
         '''
         &nbsp;
 
-        If you're seeing the error above, it is likely that there is an error in
+        This can happen if there is an error in
         your `requirements.txt` file. To resolve, check the versioning in your
         `requirements.txt` file. For example, the above failed because
         `dash==29.1` isn't a version of dash. If you're working in a virtualenv then
         you can check your version with the command:
-        '''),
+        '''
+    ),
 
-        rc.Markdown('```\n$ pip list\n```', style=styles.code_container),
+    rc.Markdown('```\n$ pip list\n```'),
+
+    rc.Markdown(
+        '''
+        &nbsp;
+
+        if it differs from your `requirements.txt`, you can update it with the command:
+        '''
+    ),
+
+        rc.Markdown('```\n$ pip freeze > requirements.txt\n```'),
 
         rc.Markdown(
         '''
         &nbsp;
 
-        if it is differs from your `requirements.txt`, you can update it with the command:
-        '''),
+        See <dccLink href="/dash-enterprise/application-structure" children="Application Structure"/> page.
 
-        rc.Markdown('```\n$ pip freeze > requirements.txt\n```', style=styles.code_container),
-
-        rc.Markdown(
+        &nbsp;
         '''
-        &nbsp;
+    ),
 
-        For more information see <dccLink href="/dash-enterprise/application-structure" children="Application Structure"/>.
+    rc.Markdown(
+        '''
+        ### SSH deploy: git push is asking for password
+        '''
+    ),
 
-        &nbsp;
-        ''')
-    ]),
-
-    html.Details([
-        html.Summary("Failed to find application object 'server' in 'app"),
-
-        rc.Markdown(
+    rc.Markdown(
         '''
         ```shell
-        ...
-        remote:        Failed to find application object 'server' in 'app'
-        remote:        [2018-08-16 16:00:49 +0000] [181] [INFO] Worker exiting (pid: 181)
-        remote:        [2018-08-16 16:00:49 +0000] [12] [INFO] Shutting down: Master
-        remote:        [2018-08-16 16:00:49 +0000] [12] [INFO] Reason: App failed to load.
-        remote:        [2018-08-16 16:00:51 +0000] [12] [INFO] Starting gunicorn 19.9.0
-        remote:        [2018-08-16 16:00:51 +0000] [12] [INFO] Listening at: http://0.0.0.0:5000 (12)
-        remote:        [2018-08-16 16:00:51 +0000] [12] [INFO] Using worker: sync
-        remote:        [2018-08-16 16:00:51 +0000] [179] [INFO] Booting worker with pid: 179
-        remote:        [2018-08-16 16:00:51 +0000] [180] [INFO] Booting worker with pid: 180```''',
-        style=styles.code_container),
+        $ git push plotly master
+        dokku@your-dash-server password:
 
-        rc.Markdown(
+        ```
+        '''
+    ),
+
+    rc.Markdown(
         '''
         &nbsp;
 
-        Deployment fails with the above message when you have failed to declare
-        `server` in your `app.py` file. Check your `app.py` file and confirm that
-        you have `server = app.server`.
+        This means that the ssh authentication has failed.
 
-        &nbsp;
+        This can be for a variety of
+        reasons so it is useful to run git push again with ssh debugging enabled by
+        adding `GIT_SSH_COMMAND='ssh -v'` before your `git push` command.
+        '''
+    ),
 
-        For more information see
-        <dccLink href="/dash-enterprise/application-structure" children="Application Structure"/>.
-
-        &nbsp;
-        ''')
-    ]),
-
-    html.Details([
-        html.Summary("SSH deploy: git push is asking for password."),
-
-        rc.Markdown(
-            '''
-            ```shell
-            $ git push multipage master
-            dokku@dash.local's password:
-            ```
-            ''',
-            style=styles.code_container),
-
-        rc.Markdown(
-            '''
-            &nbsp;
-
-            If you're seeing a request for a password for dokku@your-dash-server, that
-            means that the ssh authentication has failed. This can be for a variety of
-            reasons so it is useful to run git push again with ssh debugging enabled by
-            adding `GIT_SSH_COMMAND='ssh -v'` before your `git push` command.
-            '''),
-
-        rc.Markdown('''
+    rc.Markdown('''
         ```python
         $ GIT_SSH_COMMAND='ssh -v' git push plotly master
 
@@ -3241,98 +3446,308 @@ Troubleshooting = html.Div(children=[
         # debug1: Trying private key: /home/michael/.ssh/id_ed25519
         # debug1: Next authentication method: password
         dokku@dash.local's password:
-        ```''', style=styles.code_container),
+        ```'''
+    ),
 
-        rc.Markdown(
-            '''
-            &nbsp;
-
-            Above, you can see the output of the debugging logs where unimportant lines
-            have been commented out or omitted. Check the first uncommented out line in the sample
-            output above to ensure that the domain is your Dash server's domain and that port is 3022.
-            If it isn't, you will need to update your `~/.ssh/config` file to set the
-            correct port. You can see how to do that in our <dccLink href="/dash-enterprise/ssh" children="ssh chapter"/>
-            under the "Modify SSH Config" heading.
-
-            The next two emphasized lines show the public keys that were offered (and
-            in this case rejected) by the server. If the RSA key that you added to
-            Dash Enterprise is not among those offered you will need to add it to your `ssh-agent`
-            with `ssh-add ~/path/to/your/key`. More details on `ssh-agent` are included in the
-            <dccLink href="/dash-enterprise/ssh" children="ssh chapter"/>.
-            ''')
-    ]),
-
-    html.Details([
-        html.Summary("Got permission denied while trying to connect to the Docker daemon socket"),
-
-        rc.Markdown(
+    rc.Markdown(
         '''
-        ```
-        $ Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.38/containers/json?all=1&filters=%7B%22label%22%3A%7B%22dokku%22%3Atrue%7D%2C%22status%22%3A%7B%22exited%22%3Atrue%7D%7D: dial unix /var/run/docker.sock: connect: permission denied
-        ```
-        ''',
-        style=styles.code_container),
+        &nbsp;
 
-        rc.Markdown(
+        Above, you can see the output of the debugging logs where unimportant lines
+        have been commented out or omitted. Check the first uncommented out line in the sample
+        output above to ensure that the domain is your Dash server's domain and that port is 3022.
+        If it isn't, you will need to update your `~/.ssh/config` file to set the
+        correct port. You can see how to do that in our <dccLink href="/dash-enterprise/ssh" children="ssh chapter"/>
+        under the "Modify SSH Config" heading.
+
+        The next two emphasized lines show the public keys that were offered (and
+        in this case rejected) by the server. If the RSA key that you added to
+        Dash Enterprise is not among those offered you will need to add it to your `ssh-agent`
+        with `ssh-add ~/path/to/your/key`. More details on `ssh-agent` are included in the
+        <dccLink href="/dash-enterprise/ssh" children="ssh chapter"/>.
+        '''
+    ),
+
+    rc.Markdown(
+        '''
+        ### Got permission denied while trying to connect to the Docker daemon socket
+        '''
+    ),
+
+    rc.Markdown(
+        '''
+        ```shell
+        $ git push plotly master
+        [...]
+        Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.38/containers/json?all=1&filters=%7B%22label%22%3A%7B%22dokku%22%3Atrue%7D%2C%22status%22%3A%7B%22exited%22%3Atrue%7D%7D: dial unix /var/run/docker.sock: connect: permission denied
+        ```
+        '''
+    ),
+
+    rc.Markdown(
         '''
         &nbsp;
 
         If you're receiving the above user permission error, please
         <dccLink href="/dash-enterprise/support" children="contact support"/>.
-        ''')
-    ]),
+        '''
+    ),
 
-    html.Details([
-        html.Summary("Unable to select a buildpack"),
+    rc.Markdown(
+        '''
+        ### fatal: Authentication failed for 'https://<your-dash-enterprise-host>/GIT/<your-dash-app>/'
+        '''
+    ),
 
-        rc.Markdown(
-            '''
-            ```shell
-            ...
-            remote:            Adding BUILD_ENV to build environment...
-            remote:            Unable to select a buildpack
-            ```
-            ''',
-                              style=styles.code_container),
-        rc.Markdown(
-            '''
-            &nbsp;
+    rc.Markdown(
+        '''
+        ```shell
+        $ git push plotly master
 
-            This error might occur if you are trying to push from a branch
-            that is not your `master` branch. Get the name of your current
-            branch by running `git branch`. Then, to push from this branch
-            to the remote server, run `git push plotly your-branch-name:master`.
+        ...
 
-            &nbsp;
-            '''
-        ),
-    ]),
+        fatal: Authentication failed for 'https://<your-dash-enterprise-host>/GIT/<your-dash-app>/'
+        ```
+        '''
+    ),
 
-    rc.Markdown('''
-    ***
+    rc.Markdown(
+        '''
+        This can happen when using git to push changes
+        to a SAML enabled Dash Enterprise Server with `https`.
+        If your Dash Enterprise server is configured to use SAML-based authentication,
+        then pushing code with the `https` git remote is not supported.
+        Resolve this by <dccLink href="/dash-enterprise/ssh" children="deploying with SSH"/>.
+        '''
+    ),
 
-    #### Problems Using a Celery Process?
 
-    '''),
+    rc.Markdown(
+        '''
+        ### Access denied
+        '''
+    ),
 
-    html.Details([
-        html.Summary("Callbacks using async processes aren't running and `Celery` is not present in app logs"),
+    rc.Markdown(
+        '''
+        ```shell
+        $ git push plotly master
+        [...]
+        User does not have permissions to run git-receive-pack on <repository>, or <repository> does not exist
+        Access denied
+        fatal: Could not read from remote repository.
 
-        html.Br(),
+        Please make sure you have the correct access rights
+        and the repository exists.
+        ```
+        '''
+    ),
 
-        rc.Markdown(
-            '''
-            These applications require using a `worker`
-            process. When using a `worker` process in your `Procfile`,
-            you will have to explicitly start it after deploying. To
-            scale a `worker` process, provide a `DOKKU_SCALE` file with
-            something like this:
-            '''),
+    rc.Markdown(
+        '''
+        This happens when multiple user push changes to the same app.
+        Dash Enterprise does not support collaborative deploys or changes being pushed to an app by multiple users.
+        Only the app owner and admin users can deploy to the application.\
 
-        rc.Markdown('```\n$web=1\nworker=1```',
-                              style=styles.code_container),
+        1. Only the app owner and admin users can deploy to the application. If you are given admin rights you will be able to deploy changes to the app as well.
+        2. Pushing via ssh deploy method](https://dash.plotly.com/dash-enterprise/ssh) after adding your ssh key to the app owner's account.For this method to work, you must create a separate ssh key specifically for the other users account. If you upload the same key to two different users, then Dash Enterprise will not know which user is deploying and will complain and say you don't have permission.
+        3. Pushing the master branch from the repository with the app owner's credentials after setting up a CI pipeline working in a repository.
+        '''
+    ),
 
-    ]),
+    rc.Markdown(
+        '''
+        ### Please make sure you have the correct access rights and the repository exists
+        '''
+    ),
+
+    rc.Markdown(
+        '''
+        ```shell
+        $ git push plotly master
+        [...]
+        dokku@<dash-enterprise-server>: Permission denied (publickey).
+
+        fatal: Could not read from remote repository.
+
+        Please make sure you have the correct access rights
+
+        and the repository exists.
+        ```
+        '''
+    ),
+
+    rc.Markdown(
+        '''
+        This can happen when your `~/.ssh/config` is improproperly configured. See the Modify SSH Config section on the <dccLink href="/dash-enterprise/ssh" children="ssh"/> page.
+        page for more details. Watch out for trailing slashes in your Dash Enterprise Server domain!
+        '''
+    ),
+
+    rc.Markdown(
+        '''
+        ### remote: Access denied
+        '''
+    ),
+
+    rc.Markdown(
+        '''
+        https:
+
+        ```shell
+        $ git push plotly master
+        [...]
+        Counting objects: 3, done.
+        Delta compression using up to 8 threads.
+        Compressing objects: 100% (3/3), done.
+        Writing objects: 100% (3/3), 5.18 KiB | 2.59 MiB/s, done.
+        Total 3 (delta 0), reused 0 (delta 0)
+
+        remote: User <your-user-name> does not have permissions to run git-hook on <your-dash-app>, or <your-dash-app> does not exist
+        remote: Access denied
+        To <your-dash-enterprise-host>/GIT/<your-dash-app>
+        ! [remote rejected] master -> master (pre-receive hook declined)
+
+        error: failed to push some refs to '<your-dash-enterprise-host>:<your-dash-app>'
+        '''
+    ),
+
+    rc.Markdown(
+        '''
+        ```shell
+        ssh:
+
+        $ git push plotly master
+        [...]
+        ssh: connect to host <your-dash-enterprise-host> port 22: Connection timed out
+
+        fatal: Could not read from remote repository.
+
+        Please make sure you have the correct access rights
+
+        and the repository exists.
+        ```
+        '''
+    ),
+
+    rc.Markdown(
+        '''
+        If deploying with SSH, then this can happen when your `~/.ssh/config` is improperly configured. See  <dccLink href="/dash-enterprise/ssh" children="ssh"/> for more details.
+
+        If deploying with HTTPS, then this can happen if your username or password is incorrect. Note that usernames and passwords in Dash Enterprise are case sensitive; e.g. the username `Chris.Parmer` is different than the username `chris.parmer`.
+        Git can sometimes cache these usernames after you've typed them. Run `$ git config credential.helper` to verify and correct the username.
+        Also, some operating system's password managers can cache usernames as well. Open your operating system's password manager and verify the username & password if you are deploying with `https`, running into access denied errors, and `git` isn't asking you for your username and password.
+        '''
+    ),
+
+    rc.Markdown(
+        '''
+        ### fatal: invalid server response; got 'ed20603d685403ed53ba0017dd8dda3f11407ce6 HEAD'
+        
+        If deploying with SSH, then this can happen when your `~/.ssh/config` is improperly configured. See  <dccLink href="/dash-enterprise/ssh" children="ssh"/> for more details.
+        
+        If deploying with HTTPS, then this can happen if your username or password is incorrect. Note that usernames and passwords in Dash Enterprise are case sensitive; e.g. the username `Chris.Parmer` is different than the username `chris.parmer`.
+        Git can sometimes cache these usernames after you've typed them. Run `$ git config credential.helper` to verify and correct the username. 
+        Also, some operating system's password managers can cache usernames as well. Open your operating system's password manager and verify the username & password if you are deploying with `https`, running into access denied errors, and `git` isn't asking you for your username and password.
+        ```
+        $ git clone https://<dash-enterprise-server/GIT/<dash-app-name>
+        Cloning into <dash-app-name>...
+        Username for 'https://dash.local':
+        Password for 'https://admin@dash.local':
+
+        fatal: invalid server response; got 'ed20603d685403ed53ba0017dd8dda3f11407ce6 HEAD'
+        ```
+
+        This error can happen if you are using a version of `git` that
+        is incompatible with Dash Enterprise's `git` server.
+        In `git` `v2.26`, `git` switched the default transportation protocol
+        to Version 2. Dash Enterprise's git server runs on `git` 2.17.1
+        and it only supports version `0`. According to the git documentation,
+        the server and client are supposed to be able to negotiate the
+        protocol but, for some as of yet unknown reason, this does not work
+        when deploying with `https`.
+
+        To fix, manually configure `git` to use the old protocol,
+        either in the operation itself:
+        ```
+        $ git -c protocol.version=0 git clone https://<dash-enterprise-server/GIT/<dash-app-name>
+        ```
+        or globally:
+        ```
+        git config --global protocol.version 0
+        ```
+        '''
+    ),
+
+    rc.Markdown(
+        '''
+        ### Proc entrypoint worker does not exist. Please check your Procfile
+
+        ```
+        $ git push plotly master
+        [...]
+        =======> <dash-app> worker container output:
+        Proc entrypoint worker does not exist. Please check your Procfile
+        ```
+
+        This can happen if the directives listed in `DOKKU_SCALE` don't match
+        the directives listed in `Procfile`.
+
+        For example:
+
+        
+        `Procfile`
+        ```
+        web: gunicorn app:server --workers 4
+        ```
+        `DOKKU_SCALE`
+        ```
+        web=1
+        worker=1
+        ```
+
+        In this case, `DOKKU_SCALE` is asking Dash Enterprise to run the "web"
+        process and the "worker" process in their own container.
+        However, there is no associated command for the "worker" process in the
+        `Procfile`.
+
+        To resolve, make sure that the directives (e.g. `web`, `worker`) in the `Procfile` & `DOKKU_SCALE`
+        match.
+
+                For more, see <dccLink href="/dash-enterprise/application-structure" children="application structure"/>.
+
+        '''
+    ),
+
+    dcc.Markdown(
+        '''
+        ## App container failed to start!!
+
+        ```
+        $ git push plotly master
+        [...]
+        remote: -----> Attempting pre-flight checks (web.1)
+        remote: App container failed to start!!
+        remote: =====> <dash-app-name> web container output:
+        remote:        [2020-10-20 12:04:12] [9] [INFO] Starting gunicorn 19.9.0
+        [...]
+        ```
+
+        This can happen if there is an error when Dash Enterprise attempts to
+        run the command listed in the `web` directive in `Procfile`
+        (e.g. `gunicorn app:server`). This is usually an error within your
+        application code.
+
+        To diagnose, try running the `web` command listed
+        in the `Procfile` either locally or within a Dash Enterprise Workspace.
+
+        Also, verify that your development environment matches the production
+        environment. Using a Dash Enterprise Workspace is a great way to
+        ensure that your environment will match since it has the same build
+        process (it will build the packages listed in `requirements.txt`),
+        the same network, and the same operating system.
+        '''
+    )
 
 ])
 
