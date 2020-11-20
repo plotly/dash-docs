@@ -26,7 +26,7 @@ app.layout = html.Div([
 
 
 @app.callback(Output('confirm', 'displayed'),
-              [Input('dropdown', 'value')])
+              Input('dropdown', 'value'))
 def display_confirm(value):
     if value == 'Danger!!':
         return True
@@ -34,7 +34,7 @@ def display_confirm(value):
 
 
 @app.callback(Output('output-confirm', 'children'),
-              [Input('confirm', 'submit_n_clicks')])
+              Input('confirm', 'submit_n_clicks'))
 def update_output(submit_n_clicks):
     if submit_n_clicks:
         return 'It wasnt easy but we did it {}'.format(submit_n_clicks)

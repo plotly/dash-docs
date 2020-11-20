@@ -123,7 +123,7 @@ layout = html.Div([
 
 
     @app.callback(Output('header-title','children'),
-                  [Input('dummy-input', 'children')])
+                  Input('dummy-input', 'children'))
     def update_title(_):
 
         # print user data to the logs
@@ -134,7 +134,7 @@ layout = html.Div([
 
 
     @app.callback(Output('graph', 'figure'),
-                  [Input('dropdown', 'value')])
+                  Input('dropdown', 'value'))
     def update_graph(value):
         return {
             'data': [{

@@ -95,7 +95,7 @@ app.layout = html.Div([
 ])
 
 @app.callback(Output('output', 'children'),
-              [Input('dropdown', 'value')])
+              Input('dropdown', 'value'))
 def update_output_1(value):
     # Here, `df` is an example of a variable that is
     # "outside the scope of this function".
@@ -125,7 +125,7 @@ app.layout = html.Div([
 ])
 
 @app.callback(Output('output', 'children'),
-              [Input('dropdown', 'value')])
+              Input('dropdown', 'value'))
 def update_output_1(value):
     # Safely reassign the filter to a new variable
     filtered_df = df[df['c'] == value]
@@ -195,7 +195,7 @@ def update_output_1(value):
             html.Div(id='intermediate-value', style={'display': 'none'})
         ])
 
-        @app.callback(Output('intermediate-value', 'children'), [Input('dropdown', 'value')])
+        @app.callback(Output('intermediate-value', 'children'), Input('dropdown', 'value'))
         def clean_data(value):
              # some expensive clean data step
              cleaned_df = your_expensive_clean_or_compute_step(value)
@@ -204,7 +204,7 @@ def update_output_1(value):
              # json.dumps(cleaned_df)
              return cleaned_df.to_json(date_format='iso', orient='split')
 
-        @app.callback(Output('graph', 'figure'), [Input('intermediate-value', 'children')])
+        @app.callback(Output('graph', 'figure'), Input('intermediate-value', 'children'))
         def update_graph(jsonified_cleaned_data):
 
             # more generally, this line would be
@@ -214,7 +214,7 @@ def update_output_1(value):
             figure = create_figure(dff)
             return figure
 
-        @app.callback(Output('table', 'children'), [Input('intermediate-value', 'children')])
+        @app.callback(Output('table', 'children'), Input('intermediate-value', 'children'))
         def update_table(jsonified_cleaned_data):
             dff = pd.read_json(jsonified_cleaned_data, orient='split')
             table = create_table(dff)
@@ -240,7 +240,7 @@ def update_output_1(value):
     rc.Syntax(children='''
         @app.callback(
             Output('intermediate-value', 'children'),
-            [Input('dropdown', 'value')])
+            Input('dropdown', 'value'))
         def clean_data(value):
              # an expensive query step
              cleaned_df = your_expensive_clean_or_compute_step(value)
@@ -261,7 +261,7 @@ def update_output_1(value):
 
         @app.callback(
             Output('graph', 'figure'),
-            [Input('intermediate-value', 'children')])
+            Input('intermediate-value', 'children'))
         def update_graph_1(jsonified_cleaned_data):
             datasets = json.loads(jsonified_cleaned_data)
             dff = pd.read_json(datasets['df_1'], orient='split')
@@ -270,7 +270,7 @@ def update_output_1(value):
 
         @app.callback(
             Output('graph', 'figure'),
-            [Input('intermediate-value', 'children')])
+            Input('intermediate-value', 'children'))
         def update_graph_2(jsonified_cleaned_data):
             datasets = json.loads(jsonified_cleaned_data)
             dff = pd.read_json(datasets['df_2'], orient='split')
@@ -279,7 +279,7 @@ def update_output_1(value):
 
         @app.callback(
             Output('graph', 'figure'),
-            [Input('intermediate-value', 'children')])
+            Input('intermediate-value', 'children'))
         def update_graph_3(jsonified_cleaned_data):
             datasets = json.loads(jsonified_cleaned_data)
             dff = pd.read_json(datasets['df_3'], orient='split')
@@ -426,14 +426,14 @@ def update_output_1(value):
             return fig
 
 
-        @app.callback(Output('signal', 'children'), [Input('dropdown', 'value')])
+        @app.callback(Output('signal', 'children'), Input('dropdown', 'value'))
         def compute_value(value):
             # compute value and send a signal when done
             global_store(value)
             return value
 
 
-        @app.callback(Output('graph-1', 'figure'), [Input('signal', 'children')])
+        @app.callback(Output('graph-1', 'figure'), Input('signal', 'children'))
         def update_graph_1(value):
             # generate_figure gets data from `global_store`.
             # the data in `global_store` has already been computed
@@ -452,7 +452,7 @@ def update_output_1(value):
             })
 
 
-        @app.callback(Output('graph-2', 'figure'), [Input('signal', 'children')])
+        @app.callback(Output('graph-2', 'figure'), Input('signal', 'children'))
         def update_graph_2(value):
             return generate_figure(value, {
                 'data': [{
@@ -463,7 +463,7 @@ def update_output_1(value):
             })
 
 
-        @app.callback(Output('graph-3', 'figure'), [Input('signal', 'children')])
+        @app.callback(Output('graph-3', 'figure'), Input('signal', 'children'))
         def update_graph_3(value):
             return generate_figure(value, {
                 'data': [{
@@ -472,7 +472,7 @@ def update_output_1(value):
             })
 
 
-        @app.callback(Output('graph-4', 'figure'), [Input('signal', 'children')])
+        @app.callback(Output('graph-4', 'figure'), Input('signal', 'children'))
         def update_graph_4(value):
             return generate_figure(value, {
                 'data': [{

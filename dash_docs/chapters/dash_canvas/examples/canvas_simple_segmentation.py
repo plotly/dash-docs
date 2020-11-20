@@ -30,7 +30,7 @@ app.layout = html.Div([
 
 
 @app.callback(Output('segmentation-img', 'src'),
-              [Input('segmentation-canvas', 'json_data')])
+              Input('segmentation-canvas', 'json_data'))
 def segmentation(string):
     if string:
         mask = parse_jsonstring(string, io.imread(filename, as_gray=True).shape)

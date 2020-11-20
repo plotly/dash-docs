@@ -278,7 +278,7 @@ layout = html.Div(children=[rc.Markdown('''
 
     # Index callbacks
     @app.callback(Output('page-content', 'children'),
-                  [Input('url', 'pathname')])
+                  Input('url', 'pathname'))
     def display_page(pathname):
         if pathname == "/page-1":
             return layout_page_1
@@ -290,9 +290,9 @@ layout = html.Div(children=[rc.Markdown('''
 
     # Page 1 callbacks
     @app.callback(Output('output-state', 'children'),
-                  [Input('submit-button', 'n_clicks')],
-                  [State('input-1-state', 'value'),
-                   State('input-2-state', 'value')])
+                  Input('submit-button', 'n_clicks'),
+                  State('input-1-state', 'value'),
+                  State('input-2-state', 'value'))
     def update_output(n_clicks, input1, input2):
         return ('The Button has been pressed {} times,'
                 'Input 1 is "{}",'
@@ -301,7 +301,7 @@ layout = html.Div(children=[rc.Markdown('''
 
     # Page 2 callbacks
     @app.callback(Output('page-2-display-value', 'children'),
-                  [Input('page-2-dropdown', 'value')])
+                  Input('page-2-dropdown', 'value'))
     def display_value(value):
         print('display_value')
         return 'You have selected "{}"'.format(value)
@@ -376,7 +376,7 @@ layout = html.Div(children=[rc.Markdown('''
 
     @app.callback(
         Output('app-1-display-value', 'children'),
-        [Input('app-1-dropdown', 'value')])
+        Input('app-1-dropdown', 'value'))
     def display_value(value):
         return 'You have selected "{}"'.format(value)
     ```
@@ -408,7 +408,7 @@ layout = html.Div(children=[rc.Markdown('''
 
 
     @app.callback(Output('page-content', 'children'),
-                  [Input('url', 'pathname')])
+                  Input('url', 'pathname'))
     def display_page(pathname):
         if pathname == '/apps/app1':
             return app1.layout
@@ -460,13 +460,13 @@ layout = html.Div(children=[rc.Markdown('''
 
     @app.callback(
         Output('app-1-display-value', 'children'),
-        [Input('app-1-dropdown', 'value')])
+        Input('app-1-dropdown', 'value'))
     def display_value(value):
         return 'You have selected "{}"'.format(value)
 
     @app.callback(
         Output('app-2-display-value', 'children'),
-        [Input('app-2-dropdown', 'value')])
+        Input('app-2-dropdown', 'value'))
     def display_value(value):
         return 'You have selected "{}"'.format(value)
     ```
@@ -533,7 +533,7 @@ layout = html.Div(children=[rc.Markdown('''
     ])
 
     @app.callback(Output('page-content', 'children'),
-                  [Input('url', 'pathname')])
+                  Input('url', 'pathname'))
     def display_page(pathname):
         if pathname == '/apps/app1':
              return layout1

@@ -61,8 +61,8 @@ app.layout = html.Div([
 
 @app.callback(
     Output('clientside-figure-store-px', 'data'),
-    [Input('clientside-graph-indicator-px', 'value'),
-     Input('clientside-graph-country-px', 'value')]
+    Input('clientside-graph-indicator-px', 'value'),
+    Input('clientside-graph-country-px', 'value')
 )
 def update_store_data(indicator, country):
     dff = df[df['country'] == country]
@@ -87,14 +87,14 @@ app.clientside_callback(
     }
     """,
     Output('clientside-graph-px', 'figure'),
-    [Input('clientside-figure-store-px', 'data'),
-     Input('clientside-graph-scale-px', 'value')]
+    Input('clientside-figure-store-px', 'data'),
+    Input('clientside-graph-scale-px', 'value')
 )
 
 
 @app.callback(
     Output('clientside-figure-json-px', 'children'),
-    [Input('clientside-figure-store-px', 'data')]
+    Input('clientside-figure-store-px', 'data')
 )
 def generated_px_figure_json(data):
     return '```\n'+json.dumps(data, indent=2)+'\n```'

@@ -27,7 +27,7 @@ app.layout = html.Div([
 
 
 @app.callback(Output('annot-canvas-table', 'data'),
-              [Input('annot-canvas', 'json_data')])
+              Input('annot-canvas', 'json_data'))
 def update_data(string):
     if string:
         data = json.loads(string)

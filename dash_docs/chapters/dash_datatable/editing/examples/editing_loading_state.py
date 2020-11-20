@@ -47,7 +47,7 @@ app.layout = html.Div([
 
 @app.callback(
     Output('loading-states-table', 'style_cell'),
-    [Input('loading-states-table-prop', 'value')]
+    Input('loading-states-table-prop', 'value')
 )
 def loading_style_cell(value):
     if value == 'style_cell':
@@ -62,7 +62,7 @@ def loading_style_cell(value):
 
 @app.callback(
     Output('loading-states-table', 'data'),
-    [Input('loading-states-table-prop', 'value')]
+    Input('loading-states-table-prop', 'value')
 )
 def loading_data(value):
     if value == 'data':

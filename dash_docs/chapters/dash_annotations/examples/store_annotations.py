@@ -22,8 +22,8 @@ app.layout = html.Div(
 
 @app.callback(
     Output("store", "data"),
-    [Input("image-carousel", "relayoutData")],
-    [State("next-btn", "n_clicks"), State("store", "data")],
+    Input("image-carousel", "relayoutData"),
+    State("next-btn", "n_clicks"), State("store", "data"),
     prevent_initial_call=True,
 )
 def on_new_shape(relayoutData, n_clicks, store_data):
@@ -34,8 +34,8 @@ def on_new_shape(relayoutData, n_clicks, store_data):
 
 @app.callback(
     Output("image-carousel", "figure"),
-    [Input("next-btn", "n_clicks")],
-    [State("store", "data")],
+    Input("next-btn", "n_clicks"),
+    State("store", "data"),
     prevent_initial_call=True,
 )
 def on_next(n_clicks, store_data):

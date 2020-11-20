@@ -63,7 +63,7 @@ def edit_list(add, add2, clear, new_item, items, items_done):
 
 @app.callback(
     Output({"index": MATCH}, "style"),
-    [Input({"index": MATCH, "type": "done"}, "value")]
+    Input({"index": MATCH, "type": "done"}, "value")
 )
 def mark_done(done):
     return style_done if done else style_todo
@@ -71,7 +71,7 @@ def mark_done(done):
 
 @app.callback(
     Output("totals", "children"),
-    [Input({"index": ALL, "type": "done"}, "value")]
+    Input({"index": ALL, "type": "done"}, "value")
 )
 def show_totals(done):
     count_all = len(done)

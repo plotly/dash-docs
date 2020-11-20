@@ -31,7 +31,7 @@ app.layout = html.Div([
 
 @app.callback(
     Output('neighborhood-container', 'children'),
-    [Input('persisted-city', 'value')]
+    Input('persisted-city', 'value')
 )
 def set_neighborhood(city):
     neighborhoods = NEIGHBORHOODS[city]
@@ -46,7 +46,7 @@ def set_neighborhood(city):
 
 @app.callback(
     Output('persisted-choices', 'children'),
-    [Input('persisted-city', 'value'), Input('neighborhood', 'value')]
+    Input('persisted-city', 'value'), Input('neighborhood', 'value')
 )
 def set_out(city, neighborhood):
     return 'You chose: {}, {}'.format(neighborhood, city)
