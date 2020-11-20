@@ -25,9 +25,7 @@ layout = html.Div([
     > - [Install Dash Enterprise on an on-premises Linux server](https://plotly.com/dash/on-premises-linux/?utm_source=docs&utm_medium=integrating&utm_campaign=nov&utm_content=linux)
     """),
     rc.Markdown(
-    """
-    > - Or, [find out if your company is using Dash Enterprise](https://go.plotly.com/company-lookup)
-    """,
+        "> - Or, [find out if your company is using Dash Enterprise](https://go.plotly.com/company-lookup)",
         className="red-links",
     ),
     rc.Markdown(
