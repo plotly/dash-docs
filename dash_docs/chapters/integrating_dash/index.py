@@ -23,8 +23,15 @@ layout = html.Div([
     > - [Install Dash Enterprise on Azure](https://plotly.com/dash/azure/?utm_source=docs&utm_medium=integrating&utm_campaign=nov&utm_content=azure)
     > - [Install Dash Enterprise on AWS](https://plotly.com/dash/aws/?utm_source=docs&utm_medium=integrating&utm_campaign=nov&utm_content=aws)
     > - [Install Dash Enterprise on an on-premises Linux server](https://plotly.com/dash/on-premises-linux/?utm_source=docs&utm_medium=integrating&utm_campaign=nov&utm_content=linux)
+    """),
+    rc.Markdown(
+    """
     > - Or, [find out if your company is using Dash Enterprise](https://go.plotly.com/company-lookup)
-
+    """,
+        className="red-links",
+    ),
+    rc.Markdown(
+    """
     ## Dash Enterprise Embedding Middleware
 
     > If your company has licensed Dash Enterprise, then view the deployment
