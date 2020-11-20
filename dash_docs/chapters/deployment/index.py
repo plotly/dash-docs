@@ -11,14 +11,16 @@ layout = html.Div(children=[
     own machine. To share a Dash app, you need to "deploy" it to a server.
 
     Our recommend method for securely deploying Dash applications is
-    [Dash Enterprise](https://plotly.com/dash). Dash Enterprise can be
-    installed on a Linux server at your company or the Kubernetes service
-    of every major cloud:
-
-    > - [Install Dash Enterprise on Azure](https://plotly.com/dash/azure/?utm_source=docs&utm_medium=deployment&utm_campaign=nov&utm_content=azure)
-    > - [Install Dash Enterprise on AWS](https://plotly.com/dash/aws/?utm_source=docs&utm_medium=deployment&utm_campaign=nov&utm_content=aws)
-    > - [Install Dash Enterprise on an on-premises Linux server](https://plotly.com/dash/on-premises-linux/?utm_source=docs&utm_medium=deployment&utm_campaign=nov&utm_content=linux)
-    > - Or, [find out if your company is using Dash Enterprise](https://go.plotly.com/company-lookup)
+    [Dash Enterprise](https://plotly.com/dash). 
+    
+    > Dash Enterprise can be installed on the Kubernetes 
+    > services of 
+    > [AWS](https://plotly.com/dash/aws/?utm_source=docs&utm_medium=workspace&utm_campaign=nov&utm_content=aws), 
+    > [Azure](https://plotly.com/dash/azure/?utm_source=docs&utm_medium=workspace&utm_campaign=nov&utm_content=azure), 
+    > [GCP](https://plotly.com/dash/on-premises-linux/?utm_source=docs&utm_medium=workspace&utm_campaign=nov&utm_content=linux), 
+    > or an 
+    > [on-premise Linux Server](https://plotly.com/dash/on-premises-linux/?utm_source=docs&utm_medium=workspace&utm_campaign=nov&utm_content=linux).
+    > [Find out if your company is using Dash Enterprise](https://go.plotly.com/company-lookup)
 
     ## Dash Enterprise Deployment
 
@@ -30,15 +32,8 @@ layout = html.Div(children=[
     > (Replace `<your-dash-enterprise-platform>` with the hostname of your
     > licensed Dash Enterprise in your VPC).
     >
-    '''),
-
-    rc.Markdown('''
     > [Look up the hostname for your company's license](https://go.plotly.com/company-lookup)
-    ''',
-        className='red-links'
-    ),
 
-    rc.Markdown('''
     [Dash Enterprise](https://plotly.com/dash/)
     is Plotly's commercial product for developing & deploying
     Dash Apps on your company's on-premises Linux servers or VPC
@@ -76,7 +71,7 @@ layout = html.Div(children=[
     ***
 
     **Step 1. Create a new folder for your project:**
-    '''),
+    ''', className="lookup-red-links"),
 
     rc.Markdown('''
     ```shell

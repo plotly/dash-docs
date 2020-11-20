@@ -15,21 +15,16 @@ layout = html.Div([
     Our recommend method for securely embedding Dash applications in existing
     Web Apps is to use the [Embedding Middleware](https://plotly.com/dash/embedding/)
     of Dash Enterprise.
+    
+    > Dash Enterprise can be installed on the Kubernetes 
+    > services of 
+    > [AWS](https://plotly.com/dash/aws/?utm_source=docs&utm_medium=workspace&utm_campaign=nov&utm_content=aws), 
+    > [Azure](https://plotly.com/dash/azure/?utm_source=docs&utm_medium=workspace&utm_campaign=nov&utm_content=azure), 
+    > [GCP](https://plotly.com/dash/on-premises-linux/?utm_source=docs&utm_medium=workspace&utm_campaign=nov&utm_content=linux), 
+    > or an 
+    > [on-premise Linux Server](https://plotly.com/dash/on-premises-linux/?utm_source=docs&utm_medium=workspace&utm_campaign=nov&utm_content=linux).
+    > [Find out if your company is using Dash Enterprise](https://go.plotly.com/company-lookup)
 
-    Dash Enterprise can be
-    installed on a Linux server at your company or the Kubernetes service
-    of every major cloud:
-
-    > - [Install Dash Enterprise on Azure](https://plotly.com/dash/azure/?utm_source=docs&utm_medium=integrating&utm_campaign=nov&utm_content=azure)
-    > - [Install Dash Enterprise on AWS](https://plotly.com/dash/aws/?utm_source=docs&utm_medium=integrating&utm_campaign=nov&utm_content=aws)
-    > - [Install Dash Enterprise on an on-premises Linux server](https://plotly.com/dash/on-premises-linux/?utm_source=docs&utm_medium=integrating&utm_campaign=nov&utm_content=linux)
-    """),
-    rc.Markdown(
-        "> - Or, [find out if your company is using Dash Enterprise](https://go.plotly.com/company-lookup)",
-        className="red-links",
-    ),
-    rc.Markdown(
-    """
     ## Dash Enterprise Embedding Middleware
 
     > If your company has licensed Dash Enterprise, then view the deployment
@@ -68,7 +63,7 @@ layout = html.Div([
      whose `src` attribute points
     towards the address of a deployed Dash app. This allows you to place your
     Dash app in a specific location within an existing web page with your
-    desired dimensions:"""),
+    desired dimensions:""", className='lookup-red-links'),
     rc.Markdown(
     '''
     ```html
