@@ -13,9 +13,7 @@ WorkspaceBlurb = html.Div([
 '''
   ),
   dcc.Markdown(
-'''
-> Or, [find out if your company is using Dash Enterprise](https://go.plotly.com/company-lookup)
-''',
+    '> Or, [find out if your company is using Dash Enterprise](https://go.plotly.com/company-lookup)',
     className="red-links"
   )
 ])
