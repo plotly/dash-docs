@@ -3,87 +3,90 @@ import dash_html_components as html
 from dash_docs import styles
 from dash_docs import reusable_components as rc
 
-layout = html.Div(children=[rc.Markdown('''
-# Deploying Dash Apps
+layout = html.Div(children=[
+    rc.Markdown('''
+    # Deploying Dash Apps
 
-By default, Dash apps run on `localhost` - you can only access them on your
-own machine. To share a Dash app, you need to "deploy" it to a server.
+    By default, Dash apps run on `localhost` - you can only access them on your
+    own machine. To share a Dash app, you need to "deploy" it to a server.
 
-Our recommend method for securely deploying Dash applications is
-[Dash Enterprise](https://plotly.com/dash). Dash Enterprise can be
-installed on a Linux server at your company or the Kubernetes service
-of every major cloud:
+    Our recommend method for securely deploying Dash applications is
+    [Dash Enterprise](https://plotly.com/dash). 
+    
+    > Dash Enterprise can be installed on the Kubernetes 
+    > services of 
+    > [AWS](https://plotly.com/dash/aws/?utm_source=docs&utm_medium=workspace&utm_campaign=nov&utm_content=aws), 
+    > [Azure](https://plotly.com/dash/azure/?utm_source=docs&utm_medium=workspace&utm_campaign=nov&utm_content=azure), 
+    > [GCP](https://plotly.com/dash/on-premises-linux/?utm_source=docs&utm_medium=workspace&utm_campaign=nov&utm_content=linux), 
+    > or an 
+    > [on-premise Linux Server](https://plotly.com/dash/on-premises-linux/?utm_source=docs&utm_medium=workspace&utm_campaign=nov&utm_content=linux).
+    > [Find out if your company is using Dash Enterprise](https://go.plotly.com/company-lookup)
 
-> - [Install Dash Enterprise on Azure](https://plotly.com/dash/azure/?utm_source=docs&utm_medium=deployment&utm_campaign=nov&utm_content=azure)
-> - [Install Dash Enterprise on AWS](https://plotly.com/dash/aws/?utm_source=docs&utm_medium=deployment&utm_campaign=nov&utm_content=aws)
-> - [Install Dash Enterprise on an on-premises Linux server](https://plotly.com/dash/on-premises-linux/?utm_source=docs&utm_medium=deployment&utm_campaign=nov&utm_content=linux)
-> - Or, [find out if your company is using Dash Enterprise](https://go.plotly.com/company-lookup)
+    ## Dash Enterprise Deployment
 
-## Dash Enterprise Deployment
+    > If your company has licensed Dash Enterprise, then view the deployment
+    > documentation by visiting
+    >
+    > **`https://<your-dash-enterprise-platform>/Docs/dash-enterprise`**
+    >
+    > (Replace `<your-dash-enterprise-platform>` with the hostname of your
+    > licensed Dash Enterprise in your VPC).
+    >
+    > [Look up the hostname for your company's license](https://go.plotly.com/company-lookup)
 
-> If your company has licensed Dash Enterprise, then view the deployment
-> documentation by visiting
->
-> **`https://<your-dash-enterprise-platform>/Docs/dash-enterprise`**
->
-> (Replace `<your-dash-enterprise-platform>` with the hostname of your
-> licensed Dash Enterprise in your VPC).
->
-> [Look up the hostname for your company's license](https://go.plotly.com/company-lookup)
+    [Dash Enterprise](https://plotly.com/dash/)
+    is Plotly's commercial product for developing & deploying
+    Dash Apps on your company's on-premises Linux servers or VPC
+    ([AWS](https://plotly.com/dash/aws), [Google Cloud](https://plotly.com/dash), or [Azure](https://plotly.com/dash/azure)).
 
-[Dash Enterprise](https://plotly.com/dash/)
-is Plotly's commercial product for developing & deploying
-Dash Apps on your company's on-premises Linux servers or VPC
-([AWS](https://plotly.com/dash/aws), [Google Cloud](https://plotly.com/dash), or [Azure](https://plotly.com/dash/azure)).
+    In addition to [easy, git-based deployment](https://plotly.com/dash/app-manager), the Dash Enterprise platform provides a complete Analytical App Stack.
+    This includes:
+    - [LDAP & SAML Authentication Middleware](https://plotly.com/dash/authentication)
+    - [Data Science Workspaces](https://plotly.com/dash/workspaces)
+    - [High Availability & Horizontal Scaling](https://plotly.com/dash/kubernetes)
+    - [Job Queue Support](https://plotly.com/dash/job-queue)
+    - [Enterprise-Wide Dash App Portal](https://plotly.com/dash/app-manager)
+    - [Design Kit](https://plotly.com/dash/design-kit)
+    - [Reporting, Alerting, Saved Views, and PDF Reports](https://plotly.com/dash/snapshot-engine)
+    - [Dashboard Toolkit](https://plotly.com/dash/toolkit)
+    - [Embedding Dash apps in Existing websites or Salesforce](https://plotly.com/dash/embedding)
+    - [AI App Catalog](https://plotly.com/dash/ai-and-ml-templates)
+    - [Big Data Best Practices](https://plotly.com/dash/big-data-for-python)
+    - [GPU support](https://plotly.com/dash/gpu-dask-acceleration)
 
-In addition to [easy, git-based deployment](https://plotly.com/dash/app-manager), the Dash Enterprise platform provides a complete Analytical App Stack.
-This includes:
-- [LDAP & SAML Authentication Middleware](https://plotly.com/dash/authentication)
-- [Data Science Workspaces](https://plotly.com/dash/workspaces)
-- [High Availability & Horizontal Scaling](https://plotly.com/dash/kubernetes)
-- [Job Queue Support](https://plotly.com/dash/job-queue)
-- [Enterprise-Wide Dash App Portal](https://plotly.com/dash/app-manager)
-- [Design Kit](https://plotly.com/dash/design-kit)
-- [Reporting, Alerting, Saved Views, and PDF Reports](https://plotly.com/dash/snapshot-engine)
-- [Dashboard Toolkit](https://plotly.com/dash/toolkit)
-- [Embedding Dash apps in Existing websites or Salesforce](https://plotly.com/dash/embedding)
-- [AI App Catalog](https://plotly.com/dash/ai-and-ml-templates)
-- [Big Data Best Practices](https://plotly.com/dash/big-data-for-python)
-- [GPU support](https://plotly.com/dash/gpu-dask-acceleration)
+    ![The Analytical App Stack](/assets/images/dds/stack.png)
 
-![The Analytical App Stack](/assets/images/dds/stack.png)
+    ## Heroku for Sharing Public Dash apps for Free
 
-## Heroku for Sharing Public Dash apps for Free
+    Heroku is one of the easiest platforms for deploying and managing public Flask
+    applications. The git & buildpack-based deployment of UIs of Heroku and Dash Enterprise
+    are nearly identical, enabling an easy transition to Dash Enterprise if you
+    are already using Heroku.
 
-Heroku is one of the easiest platforms for deploying and managing public Flask
-applications. The git & buildpack-based deployment of UIs of Heroku and Dash Enterprise
-are nearly identical, enabling an easy transition to Dash Enterprise if you
-are already using Heroku.
+    [View the official Heroku guide to Python](https://devcenter.heroku.com/articles/getting-started-with-python#introduction).
 
-[View the official Heroku guide to Python](https://devcenter.heroku.com/articles/getting-started-with-python#introduction).
+    Here is a simple example. This example requires a Heroku account,
+    `git`, and `virtualenv`.
 
-Here is a simple example. This example requires a Heroku account,
-`git`, and `virtualenv`.
+    ***
 
-***
+    **Step 1. Create a new folder for your project:**
+    ''', className="lookup-red-links"),
 
-**Step 1. Create a new folder for your project:**
-'''),
+    rc.Markdown('''
+    ```shell
+    $ mkdir dash_app_example
+    $ cd dash_app_example
+    ```
+    ''', style=styles.code_container),
 
-          rc.Markdown('''
-          ```shell
-          $ mkdir dash_app_example
-          $ cd dash_app_example
-          ```
-          ''', style=styles.code_container),
+    rc.Markdown('''
 
-          rc.Markdown('''
+    ***
 
-***
+    **Step 2. Initialize the folder with `git` and a `virtualenv`**
 
-**Step 2. Initialize the folder with `git` and a `virtualenv`**
-
-'''),
+    '''),
 
           rc.Markdown('''
           ```shell
