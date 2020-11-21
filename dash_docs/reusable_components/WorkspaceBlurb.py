@@ -12,8 +12,8 @@ WorkspaceBlurb = html.Div([
 > [GCP](https://plotly.com/dash/on-premises-linux/?utm_source=docs&utm_medium=workspace&utm_campaign=nov&utm_content=linux), 
 > or an 
 > [on-premise Linux Server](https://plotly.com/dash/on-premises-linux/?utm_source=docs&utm_medium=workspace&utm_campaign=nov&utm_content=linux).
-> 10% of the Fortune 500 uses Dash Enterprise to productionize AI and data science apps.
-> [Find out if your company is using Dash Enterprise](https://go.plotly.com/company-lookup)
+> **10% of the Fortune 500 uses Dash Enterprise to productionize AI and data science apps.
+> [Find out if your company is using Dash Enterprise](https://go.plotly.com/company-lookup)**
 ''',
   className="lookup-red-links",
   )
