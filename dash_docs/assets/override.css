@@ -512,6 +512,10 @@ a {
     color: #f4564e !important;
 }
 
+.lookup-red-links a[href="https://go.plotly.com/company-lookup"] {
+    color: #f4564e !important;
+}
+
 .tab.tab--selected {
     border-top-color: #80cfbe !important;
 }

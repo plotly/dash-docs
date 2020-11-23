@@ -54,7 +54,7 @@ def split_filter_part(filter_part):
 
 @app.callback(
     Output('table-filtering-be', "data"),
-    [Input('table-filtering-be', "filter_query")])
+    Input('table-filtering-be', "filter_query"))
 def update_table(filter):
     filtering_expressions = filter.split(' && ')
     dff = df

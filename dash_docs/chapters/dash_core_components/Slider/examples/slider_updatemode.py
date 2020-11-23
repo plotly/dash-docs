@@ -27,7 +27,7 @@ app.layout = html.Div([
 
 
 @app.callback(Output('updatemode-output-container', 'children'),
-              [Input('slider-updatemode', 'value')])
+              Input('slider-updatemode', 'value'))
 def display_value(value):
     return 'Linear Value: {} | \
             Log Value: {:0.2f}'.format(value, transform_value(value))

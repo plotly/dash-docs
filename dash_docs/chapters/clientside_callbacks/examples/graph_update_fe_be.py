@@ -64,8 +64,8 @@ app.layout = html.Div([
 
 @app.callback(
     Output('clientside-figure-store', 'data'),
-    [Input('clientside-graph-indicator', 'value'),
-     Input('clientside-graph-country', 'value')]
+    Input('clientside-graph-indicator', 'value'),
+    Input('clientside-graph-country', 'value')
 )
 def update_store_data(indicator, country):
     dff = df[df['country'] == country]
@@ -88,14 +88,14 @@ app.clientside_callback(
     }
     """,
     Output('clientside-graph', 'figure'),
-    [Input('clientside-figure-store', 'data'),
-     Input('clientside-graph-scale', 'value')]
+    Input('clientside-figure-store', 'data'),
+    Input('clientside-graph-scale', 'value')
 )
 
 
 @app.callback(
     Output('clientside-figure-json', 'children'),
-    [Input('clientside-figure-store', 'data')]
+    Input('clientside-figure-store', 'data')
 )
 def generated_figure_json(data):
     return '```\n'+json.dumps(data, indent=2)+'\n```'

@@ -70,8 +70,8 @@ app.layout = serve_layout
 
 
 @app.callback(Output('output-1', 'children'),
-              [Input('get-data-button', 'n_clicks'),
-               Input('session-id', 'children')])
+              Input('get-data-button', 'n_clicks'),
+              Input('session-id', 'children'))
 def display_value_1(value, session_id):
     df = get_dataframe(session_id)
     return html.Div([
@@ -81,8 +81,8 @@ def display_value_1(value, session_id):
 
 
 @app.callback(Output('output-2', 'children'),
-              [Input('get-data-button', 'n_clicks'),
-               Input('session-id', 'children')])
+              Input('get-data-button', 'n_clicks'),
+              Input('session-id', 'children'))
 def display_value_2(value, session_id):
     df = get_dataframe(session_id)
     return html.Div([

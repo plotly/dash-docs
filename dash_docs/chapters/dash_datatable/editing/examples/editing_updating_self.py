@@ -20,8 +20,8 @@ app.layout = html.Div([
 
 @app.callback(
     Output('computed-table', 'data'),
-    [Input('computed-table', 'data_timestamp')],
-    [State('computed-table', 'data')])
+    Input('computed-table', 'data_timestamp'),
+    State('computed-table', 'data'))
 def update_columns(timestamp, rows):
     for row in rows:
         try:
