@@ -95,7 +95,7 @@ header = html.Div(
 )
 
 DEFAULT_AD = dict(
-    alt='We are hiring! View our open positions."
+    alt='We are hiring! View our open positions.',
     src=tools.relpath('/assets/images/sidebar/Hiring.png'),
     href='https://grnh.se/6667434d2us'
 )
