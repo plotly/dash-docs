@@ -95,9 +95,9 @@ header = html.Div(
 )
 
 DEFAULT_AD = dict(
-    alt='Sign up to Dash Club! A newsletter by chriddyp, the creator of Dash.',
-    src=tools.relpath('/assets/images/sidebar/dash-club.png'),
-    href='https://go.plotly.com/dash-club/?utm_source=docs&utm_medium=sidebar&utm_campaign=nov&utm_content=dash-club'
+    alt='We are hiring! View our open positions.',
+    src=tools.relpath('/assets/images/sidebar/Hiring.png'),
+    href='https://grnh.se/6667434d2us'
 )
 
 app.title = 'Dash User Guide and Documentation - Dash by Plotly'
