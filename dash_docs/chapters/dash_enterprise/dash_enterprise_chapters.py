@@ -3042,8 +3042,8 @@ DataConnections = html.Div(children=[
 
     4. Test that the database server has started successfully, verify that it is accepting connections, and validate the credentials and connection string; we can create a simple
     `try_connection` function which sends a basic query to the database and checks to see if it is successful. If it fails,
-    the connection is retried after an exponentially increasing delay. This allows us to easily diagnose any issues related
-    to the database itself and differentiate them from the Dash app callbacks. Eg:
+    the connection is retried after an exponentially increasing delay. This allows us to distinguish between errors
+    arising from issues with the callback logic, and errors caused by database configuration or connectivity problems. Eg:
     ```
     @retry(wait=wait_exponential(multiplier=2, min=1, max=10), stop=stop_after_attempt(5))
     def try_connection():
@@ -3071,7 +3071,7 @@ DataConnections = html.Div(children=[
     ```
     from sqlalchemy.pool import NullPool
     engine = create_engine(
-        'postgresql+psycopg2://scott:tiger@localhost/test',
+        'postgresql+psycopg2://username:password@localhost/test',
         pool=NullPool)
     ```
 
