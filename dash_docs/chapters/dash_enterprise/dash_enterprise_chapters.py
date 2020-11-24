@@ -3020,12 +3020,12 @@ DataConnections = html.Div(children=[
     To query databases, you'll need to install the Python database packages and in many cases system level dependencies.
     For complete examples, see the relevant "Database Connections" section in Sample Apps & Templates:
 
-    * <dccLink href="/templates/postgresql-sample-app" children="Connecting to PostgreSQL"/>
-    * <dccLink href="/templates/mssql-pyodbc-sample-app" children="Connecting to MSSQL with pyodbc"/>
-    * <dccLink href="/templates/pymysql-sample-app" children="Connecting to MySQL"/>
-    * <dccLink href="/templates/oracle-sample-app" children="Connecting to Oracle Express"/>
-    * <dccLink href="/templates/databricks-connect" children="Connecting to Databricks Cluster"/>
-    * <dccLink href="/templates/dask-sample" children="Connecting to Dask Cluster"/>
+    * Connecting to PostgreSQL
+    * Connecting to MSSQL with pyodbc
+    * Connecting to MySQL
+    * Connecting to Oracle Express
+    * Connecting to Databricks Cluster
+    * Connecting to Dask Cluster
 
     ## Working with Connection Objects in a Dash App
 
