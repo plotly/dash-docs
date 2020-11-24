@@ -3018,7 +3018,7 @@ DataConnections = html.Div(children=[
     by following the standardized API. For more information on the Python DB-API, see [PEP-0249](https://www.python.org/dev/peps/pep-0249/).
 
     To query databases, you'll need to install the Python database packages and in many cases system level dependencies.
-    For complete example, see the "Database Connections" section in Sample Apps & Templates:
+    For complete examples, see the relevant "Database Connections" section in Sample Apps & Templates:
 
     * [Connecting to PostgreSQL](/templates/postgresql-sample-app)
     * [Connecting to MSSQL](/templates/mssql-pyodbc-sample-app)
