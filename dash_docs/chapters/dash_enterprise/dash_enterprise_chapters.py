@@ -3011,7 +3011,7 @@ DataConnections = html.Div(children=[
 
     ## Managing Connection Drivers and Libraries
 
-    Dash Apps can use open source libraries in the Python ecosystem to query external databases and datastores in callbacks or job queues.
+    Dash Apps can use open source libraries to query external databases and datastores in callbacks or job queues.
 
     The Python DB-API standardizes the interface for most Python database access modules. This allows us to write Dash
     apps with code that can be modified with little effort to connect to different types of databases with different dialects
