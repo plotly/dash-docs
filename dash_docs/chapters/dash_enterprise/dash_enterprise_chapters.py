@@ -3001,6 +3001,123 @@ pdfService = html.Div(children=[
 ])
 
 # # # # # # #
+# Dash App SQL Database Connections
+# # # # # # #
+DataConnections = html.Div(children=[
+    html.H1('Dash App SQL Database Connections'),
+
+    rc.Markdown(
+    '''
+
+    ## Managing Connection Drivers and Libraries
+
+    Dash Apps can use open source libraries in the Python ecosystem to query external databases and datastores in callbacks or job queues.
+
+    The Python DB-API standardizes the interface for most Python database access modules. This allows us to write Dash
+    apps with code that can be modified with little effort to connect to different types of databases with different dialects
+    by following the standardized API. For more information on the Python DB-API, see [PEP-0249](https://www.python.org/dev/peps/pep-0249/).
+
+    To query databases, you'll need to install the Python database packages and in many cases system level dependencies.
+    For complete example, see the "Database Connections" section in Sample Apps & Templates:
+
+    * [Connecting to PostgreSQL](https://dash-playground.plotly.host/Docs/templates/postgresql-sample-app)
+    * [Connecting to MSSQL](https://dash-playground.plotly.host/Docs/templates/mssql-pyodbc-sample-app)
+    * [Connecting to MySQL](https://dash-playground.plotly.host/Docs/templates/pymysql-sample-app)
+    * [Connecting to Oracle Express](https://dash-playground.plotly.host/Docs/templates/oracle-sample-app)
+    * [Connecting to Databricks Cluster](https://dash-playground.plotly.host/Docs/templates/databricks-connect)
+    * [Connecting to Dask Cluster](https://dash-playground.plotly.host/Docs/templates/dask-sample)
+
+    ## Working with Connection Objects in a Dash App
+
+    Many of the database apps follow a similar pattern:
+
+    1. Install the database driver & system level dependencies. This will vary by database type and we recommend viewing
+    the examples that we've provided first. Many of the database drivers more easily installed on Linux environments,
+    and so we recommend developing these apps in a [Dash Enterprise Workspace](/Docs/workspaces).
+
+    2. Create a connection. We recommend using [SQLAlchemy](https://www.sqlalchemy.org) if available for your database.
+
+    3. Store your connection's database password as an environment variable in your App Settings in the Dash Enterprise
+    App Manager instead of storing it within code.
+
+    4. Poll the database initially to check that it is ready to begin accepting connections. We can create a simple
+    `try_connection` function which sends a basic query to the database and checks to see if it is successful. If it fails,
+    the connection is retried after an exponentially increasing delay. This allows us to easily diagnose any issues related
+    to the database itself and differentiate them from the Dash app callbacks. Eg:
+    ```
+    @retry(wait=wait_exponential(multiplier=2, min=1, max=10), stop=stop_after_attempt(5))
+    def try_connection():
+        try:
+            with postgres_engine.connect() as connection:
+                stmt = text("SELECT 1")
+                connection.execute(stmt)
+            print("Connection to database successful.")
+
+        except Exception as e:
+            print("Connection to database failed, retrying.")
+            raise Exception
+    ```
+
+    5. Consider [connection pooling](https://docs.sqlalchemy.org/en/14/core/pooling.html#using-connection-pools-with-multiprocessing-or-os-fork).
+    In these examples above, we don't use database connection pools. Connection pools have tricky implications when using
+    alongside `celery` or gunicorn's `--preload` option. If you aren't using `--preload` nor `celery`, then you can improve
+    your query performance by using a node pool. With a node pool, connections are shared instead of recreated and discarded.
+    It is possible to use --preload and celery with a node pool but it requires extra caution. For more details, see:
+    > - [SQLAlchemy: Using Connection Pools with Multiprocessing or os.fork()](https://docs.sqlalchemy.org/en/14/core/pooling.html#using-connection-pools-with-multiprocessing-or-os-fork)
+    > - [Not The Same Pre-fork Worker Model](https://www.yangster.ca/post/not-the-same-pre-fork-worker-model/)
+    > - [SQLAlchemy connection pool within multiple threads and processes](https://davidcaron.dev/sqlalchemy-multiple-threads-and-processes/)
+
+    To disable connection pooling, you will use the `NullPool`:
+    ```
+    from sqlalchemy.pool import NullPool
+    engine = create_engine(
+        'postgresql+psycopg2://scott:tiger@localhost/test',
+        pool=NullPool)
+    ```
+
+    6. Construct your SQL query. You have several options here:
+        * Use raw SQL commands. This is the low-level option and great if you want full control & transparency and are
+        comfortable with SQL. We recommend using the [`text`](https://docs.sqlalchemy.org/en/13/core/sqlelement.html#sqlalchemy.sql.expression.text)
+        function in `sqlalchemy` and parameterized queries. This will avoid SQL Injection issues:
+        ```python
+        import pandas as pd
+        from sqlalchemy import text
+
+        t = text("SELECT * FROM users WHERE id=:user_id")
+        result = pd.read_sql(t, params={'user_id': 12})
+        ```
+        * Use the Pythonic classes available with `sqlalchemy`. For  examples, see [SQLAlchemy — Python Tutorial
+        ](https://towardsdatascience.com/sqlalchemy-python-tutorial-79a577141a91).
+
+        *; Use [ibis](https://ibis-project.org), a library that uses SQLAlchemy under the hood but has a more Pandas-like interface.
+
+    7. Open a connection when you need to perform an operation and close it after. In `sqlalchemy`, this can be done with the `with engine.connect()` clause.
+    While a NullPool can do this for us by default as well, we can also use the Engine object to implicitly open and close connections
+    on an ad hoc basis for both this and other pooling implementations. Enclosed in the `with`context statement, the
+    connection object generated by the `Engine.connect()` method is automatically closed by `Connection.close()` at the
+    end of the codeblock e.g.
+    ```python
+    with mssql_engine.connect() as connection:
+         countries = pd.read_sql('SELECT DISTINCT location from data', connection)
+    ```
+
+    ## Database URLs
+
+    As we saw earlier when creating our SQLAlchemy engine object, a database URL is required to be passed to specify the
+    dialect and driver we will use to connect to our database. This can be passed to the pool or directly to the Engine
+    object to use a default pool.
+    ```
+    dialect+driver://username:password@host:port/database
+
+    # For PostgreSQL
+    postgres+psycopg2://username:password@localhost:8050/test-database
+    ```
+    For more information on dialects and drivers, see [here](https://docs.sqlalchemy.org/en/13/core/engines.html#database-urls).
+
+    '''),
+])
+
+# # # # # # #
 # Common Errors
 # # # # # # #
 Troubleshooting = html.Div(children=[

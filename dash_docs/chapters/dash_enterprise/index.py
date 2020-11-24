@@ -85,7 +85,11 @@ rc.Section("User Interface", [
         rc.Chapter('Create a Staging Dash App',
                 '/dash-enterprise/staging-app',
                 'Use a staged Dash App to test changes before updating your '
-                'production Dash App.')
+                'production Dash App.'),
+        rc.Chapter('Dash App SQL Database Connections',
+                '/dash-enterprise/database-connections',
+                'Learn how to manage external database connections, perform '
+                'queries with Dash callbacks, and maintain SQL best practices.'),
     ]),
 
     rc.Section("Troubleshooting", [
