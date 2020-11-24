@@ -3033,7 +3033,7 @@ DataConnections = html.Div(children=[
 
     1. Install the database driver & system level dependencies. This will vary by database type and we recommend viewing
     the examples that we've provided first. Many of the database drivers more easily installed on Linux environments,
-    and so we recommend developing these apps in a [Dash Enterprise Workspace](/Docs/workspaces).
+    and so we recommend developing these apps in a [Dash Enterprise Workspace](https://plotly.com/dash/workspaces/).
 
     2. Create a connection. We recommend using [SQLAlchemy](https://www.sqlalchemy.org) if available for your database.
 
