@@ -365,7 +365,7 @@ DASH_ENTERPRISE_URLS = {
                 {
                     'url': '/dash-enterprise/database-connections',
                     'content': chapters.dash_enterprise.dash_enterprise_chapters.DataConnections,
-                    'name': 'Dash App SQL Database Connections',
+                    'name': 'Connect a Dash App to an SQL Database',
                     'description': 'Learn how to manage external database connections, perform '
                     'queries with Dash callbacks, and maintain SQL best practices.'
                 },

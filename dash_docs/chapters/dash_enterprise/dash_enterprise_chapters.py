@@ -3004,7 +3004,7 @@ pdfService = html.Div(children=[
 # Dash App SQL Database Connections
 # # # # # # #
 DataConnections = html.Div(children=[
-    html.H1('Dash App SQL Database Connections'),
+    html.H1('Connect a Dash App to an SQL Database'),
 
     rc.Markdown(
     '''
