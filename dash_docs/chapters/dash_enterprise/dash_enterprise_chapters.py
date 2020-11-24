@@ -3020,12 +3020,12 @@ DataConnections = html.Div(children=[
     To query databases, you'll need to install the Python database packages and in many cases system level dependencies.
     For complete example, see the "Database Connections" section in Sample Apps & Templates:
 
-    * [Connecting to PostgreSQL](https://dash-playground.plotly.host/Docs/templates/postgresql-sample-app)
-    * [Connecting to MSSQL](https://dash-playground.plotly.host/Docs/templates/mssql-pyodbc-sample-app)
-    * [Connecting to MySQL](https://dash-playground.plotly.host/Docs/templates/pymysql-sample-app)
-    * [Connecting to Oracle Express](https://dash-playground.plotly.host/Docs/templates/oracle-sample-app)
-    * [Connecting to Databricks Cluster](https://dash-playground.plotly.host/Docs/templates/databricks-connect)
-    * [Connecting to Dask Cluster](https://dash-playground.plotly.host/Docs/templates/dask-sample)
+    * [Connecting to PostgreSQL](/templates/postgresql-sample-app)
+    * [Connecting to MSSQL](/templates/mssql-pyodbc-sample-app)
+    * [Connecting to MySQL](/templates/pymysql-sample-app)
+    * [Connecting to Oracle Express](/templates/oracle-sample-app)
+    * [Connecting to Databricks Cluster](/templates/databricks-connect)
+    * [Connecting to Dask Cluster](/templates/dask-sample)
 
     ## Working with Connection Objects in a Dash App
 
