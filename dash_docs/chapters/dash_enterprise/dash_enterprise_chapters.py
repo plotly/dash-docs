@@ -3040,7 +3040,7 @@ DataConnections = html.Div(children=[
     3. Store your connection's database password as an environment variable in your App Settings in the Dash Enterprise
     App Manager instead of storing it within code.
 
-    4. Poll the database initially to check that it is ready to begin accepting connections. We can create a simple
+    4. Test that the database server has started successfully, verify that it is accepting connections, and validate the credentials and connection string; we can create a simple
     `try_connection` function which sends a basic query to the database and checks to see if it is successful. If it fails,
     the connection is retried after an exponentially increasing delay. This allows us to easily diagnose any issues related
     to the database itself and differentiate them from the Dash app callbacks. Eg:
