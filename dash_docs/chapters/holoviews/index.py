@@ -263,7 +263,7 @@ layout = html.Div([
     visualizations of large datasets.
      
     While the Plotly `scattergl` trace can handle hundreds of thousands of points, 
-    Datashader can handles tens to hundreds of millions. The difference is that rather
+    Datashader can handle tens to hundreds of millions. The difference is that rather
     than passing the entire dataset from the Python server to the browser for rendering,
     Datashader rasterizes the dataset to a heatmap or image, and only this heatmap or
     image is transferred to the browser for rendering.
