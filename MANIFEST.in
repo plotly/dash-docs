@@ -1,5 +1,7 @@
 recursive-include dash_docs *.py
 
+recursive-include dash_docs *.md
+
 recursive-include dash_docs *.csv
 recursive-include dash_docs *.xml
 
