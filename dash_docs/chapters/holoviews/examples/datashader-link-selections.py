@@ -32,13 +32,13 @@ hist = selection_linker(
     hv.operation.histogram(dataset, dimension="petal_width", normed=False)
 )
 
-# Use plot hook to set the default drag mode to box selection
-def set_dragmode(plot, element):
+# Use plot hook to set the default drag mode to vertical box selection
+def set_hist_dragmode(plot, element):
     fig = plot.state
     fig['layout']['dragmode'] = "select"
+    fig['layout']['selectdirection'] = "h"
 
-scatter.opts(opts.RGB(hooks=[set_dragmode]))
-hist.opts(opts.Histogram(hooks=[set_dragmode]))
+hist.opts(opts.Histogram(hooks=[set_hist_dragmode]))
 
 app = dash.Dash(__name__)
 components = to_dash(

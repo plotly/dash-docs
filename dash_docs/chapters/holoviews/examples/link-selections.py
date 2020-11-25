@@ -24,6 +24,9 @@ hist = selection_linker(
 def set_dragmode(plot, element):
     fig = plot.state
     fig['layout']['dragmode'] = "select"
+    if isinstance(element, hv.Histogram):
+        # Constrain histogram selection direction to horizontal
+        fig['layout']['selectdirection'] = "h"
 
 scatter.opts(opts.Scatter(hooks=[set_dragmode]))
 hist.opts(opts.Histogram(hooks=[set_dragmode]))
