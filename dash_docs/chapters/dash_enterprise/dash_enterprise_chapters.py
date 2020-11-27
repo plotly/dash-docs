@@ -3547,7 +3547,7 @@ Troubleshooting = html.Div(children=[
         '''
         This happens when multiple user push changes to the same app.
         Dash Enterprise does not support collaborative deploys or changes being pushed to an app by multiple users.
-        Only the app owner and admin users can deploy to the application.\
+        You have three options to work deploy apps collaboratively:\
 
         1. Only the app owner and admin users can deploy to the application. If you are given admin rights you will be able to deploy changes to the app as well.
         2. Pushing via ssh deploy method](https://dash.plotly.com/dash-enterprise/ssh) after adding your ssh key to the app owner's account.For this method to work, you must create a separate ssh key specifically for the other users account. If you upload the same key to two different users, then Dash Enterprise will not know which user is deploying and will complain and say you don't have permission.
@@ -3592,7 +3592,6 @@ Troubleshooting = html.Div(children=[
 
     rc.Markdown(
         '''
-        https:
 
         ```shell
         $ git push plotly master
@@ -3615,7 +3614,6 @@ Troubleshooting = html.Div(children=[
     rc.Markdown(
         '''
         ```shell
-        ssh:
 
         $ git push plotly master
         [...]
@@ -3750,7 +3748,6 @@ Troubleshooting = html.Div(children=[
     )
 
 ])
-
 
 # # # # # #
 # Portal
