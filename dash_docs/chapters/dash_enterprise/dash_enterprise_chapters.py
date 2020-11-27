@@ -22,11 +22,11 @@ def Blockquote():
     if 'DASH_DOCS_URL_PREFIX' in os.environ:
         return None
     return rc.Markdown('''
-        > This documentation is for [Dash Enterprise](https://plotly.com/dash),
-        Plotly's commercial platform for managing and improving
-        Dash applications in your organization.
-        <dccLink href="/dash-enterprise" children="View the docs"/> or
-        [request a trial](https://plotly.com/get-demo/).
+        > This documentation is for [Dash Enterprise](https://plotly.com/dash).
+        > Dash Enterprise is the fastest way to write & deploy Dash apps and
+        > Jupyter notebooks.
+        > 10% of the Fortune 500 uses Dash Enterprise to productionize AI and
+        > data science apps. [Find out if your company is using Dash Enterprise](https://go.plotly.com/company-lookup)
     ''')
 
 
@@ -1457,7 +1457,7 @@ Ssh = html.Div(children=[
     In these cases, it will be easier to configure deployment using SSH.
     - If your Dash Enterprise is configured with **SAML**, then the
     HTTPS method will not work.
-    - If you are experiencing connectivity issues due to network latency, consider deploying with SSH instead; this method is often less susceptible to timeouts than HTTP, and so may provide a more reliable means of deploying your app. 
+    - If you are experiencing connectivity issues due to network latency, consider deploying with SSH instead; this method is often less susceptible to timeouts than HTTP, and so may provide a more reliable means of deploying your app.
     deploying with HTTP
 
     ***
