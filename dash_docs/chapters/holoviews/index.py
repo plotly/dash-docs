@@ -255,7 +255,7 @@ layout = html.Div([
     ),
     html.Div(examples['link-selections.py'][1], className="example-container"),
     rc.Markdown('''
-    ## Visualizing Large Datasets with HoloViews and Datashader
+    ## Visualizing a Large Datasets with Datashader
     Another HoloViews feature that is particularly convenient for Dash users is the
     integration with [Datashader](https://datashader.org/).
     
@@ -271,8 +271,10 @@ layout = html.Div([
     To effectively use Datashader in an interactive context, it's necessary to rerender
     the dataset each time the figure viewport changes. This can be accomplished in 
     Dash by installing a callback function that listens for changes to the
-    `relayoutData` prop.  Because of how HoloViews packages data lazily (without rendering it immediately), replaying this pipeline of transformations can be accomplished without manually
-    defining any callbacks, making Datashader much easier to use than if invoked without HoloViews.
+    `relayoutData` prop.  Because of how HoloViews packages data lazily (without 
+    rendering it immediately), replaying this pipeline of transformations can be 
+    accomplished without manually defining any callbacks, making Datashader much easier 
+    to use than if invoked without HoloViews.
 
     This example loads the iris dataset included in plotly.py and then duplicates
     it many times with added noise to generate a DataFrame with 1.5 million rows.
@@ -316,8 +318,72 @@ layout = html.Div([
     ),
     html.Div(examples['datashader-link-selections.py'][1], className="example-container"),
     rc.Markdown('''
-    ### GPU Accelerating Datashader and Linked Selections with RAPIDS
+    ## Map Overlay
+    Most 2-dimensional HoloViews elements can be displayed on top of a map by
+    overlaying them on top of a `Tiles` element.  There are three approaches to 
+    configuring the map that is displayed by a `Tiles` element:
     
+      1. Construct a `holoviews.Tiles` element with a WMTS tile server url.
+         E.g. `Tiles("https://maps.wikimedia.org/osm-intl/{Z}/{X}/{Y}@2x.png")`
+      2. Construct a `Tiles` element with a predefined tile server url using a
+         function from the `holoviews.element.tiles.tile_sources` module. E.g. `CartoDark()`
+      3. Construct a `holoviews.Tiles` element with an empty string, then use `.opts`
+         to supply a mapbox token and style.
+         E.g. `Tiles("").opts(mapboxstyle="light", accesstoken="pk...")`
+    
+    > **Coordinate Systems:**  Unlike the native plotly mapbox traces which accept
+      geographic positions in longitude and latitude coordinates, HoloViews expects
+      geographic positions to be supplied in Web Mercator coordinates 
+      (https://epsg.io/3857).  Rather than "longitude" and "latitude", horizontal and
+      vertical coordinates in Web Mercator are commonly called "easting" and "northing"
+      respectively. HoloViews provides `Tiles.lon_lat_to_easting_northing` and 
+      `Tiles.easting_northing_to_lon_lat` for converting between coordinate systems.
+    
+    This example displays a scatter plot of the `plotly.data.carshare` dataset on top
+    of the predefined `StamenTerrain` WMTS map.
+    '''),
+    rc.Markdown(
+        examples['mapbox-points.py'][0],
+        style=styles.code_container
+    ),
+    html.Div(examples['mapbox-points.py'][1],
+             className="example-container"),
+    rc.Markdown('''
+    ## Visualizing a Large Geographic Datasets with Datashader
+    This example demonstrates how to use datashader to display a large geographic
+    scatter plot on top of a vector tiled Mapbox map. A large dataset is synthesized
+    by repeating the carshare dataset and adding Gaussian noise to the positional
+    coordinates.
+    
+    Using mapbox maps requires a free mapbox account and an associated access token.
+    
+    > This example assumes the mapbox access token is stored in a local file named
+      `.mapbox_token`. To run this example yourself, either create a file with this name
+      in your working directory that contains your token, or assign the `mapbox_token`
+      variable to a string containing your token.
+    '''),
+    rc.Markdown(
+        examples['mapbox-datashader.py'][0],
+        style=styles.code_container
+    ),
+    html.Div(examples['mapbox-datashader.py'][1],
+             className="example-container"),
+    rc.Markdown('''
+    ## Mapbox datashader and linked selections
+    This example demonstrates how the `link_selections` transformation described above
+    can be used with geographic scatter plots.  Here, the scatter plot is also
+    datashaded, but `link_selections` will work with plain `Scatter` elements
+    as well. 
+    '''),
+    rc.Markdown(
+        examples['mapbox-linked-datashader.py'][0],
+        style=styles.code_container
+    ),
+    html.Div(examples['mapbox-linked-datashader.py'][1],
+             className="example-container"),
+    rc.Markdown('''
+    ### GPU Accelerating Datashader and Linked Selections with RAPIDS
+
     Many HoloViews operations, including `datashade` and `link_selections`, can be
     accelerated on modern NVIDIA GPUs using technologies from the
     [RAPIDS](https://developer.nvidia.com/rapids)
@@ -339,7 +405,7 @@ layout = html.Div([
     ]),
     rc.Markdown('''
     The `cudf.from_pandas` function can be used to construct a cuDF DataFrame from a
-    pandas DataFrame. So adding GPU acceleration to each of the prior examples can be 
+    pandas DataFrame. So adding GPU acceleration to each of the prior examples can be
     done simply by replacing the `dataset = hv.Dataset(df)` statements with:
 
     ```python
@@ -355,7 +421,7 @@ layout = html.Div([
     full support for the elements and stream types supported by the HoloViews Plotly
     backend.
 
-    To demonstrate this, here are Dash ports of some of the interactive Plotly examples 
+    To demonstrate this, here are Dash ports of some of the interactive Plotly examples
     from the HoloViews documentation.
     '''),
     rc.Markdown('''
