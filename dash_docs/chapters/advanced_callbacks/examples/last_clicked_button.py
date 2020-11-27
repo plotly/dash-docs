@@ -15,9 +15,9 @@ app.layout = html.Div([
 
 
 @app.callback(Output('container', 'children'),
-              [Input('btn-1', 'n_clicks'),
-               Input('btn-2', 'n_clicks'),
-               Input('btn-3', 'n_clicks')])
+              Input('btn-1', 'n_clicks'),
+              Input('btn-2', 'n_clicks'),
+              Input('btn-3', 'n_clicks'))
 def display(btn1, btn2, btn3):
     ctx = dash.callback_context
 

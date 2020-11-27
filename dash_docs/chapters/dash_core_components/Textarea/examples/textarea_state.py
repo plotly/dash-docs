@@ -17,8 +17,8 @@ app.layout = html.Div([
 
 @app.callback(
     Output('textarea-state-example-output', 'children'),
-    [Input('textarea-state-example-button', 'n_clicks')],
-    [State('textarea-state-example', 'value')]
+    Input('textarea-state-example-button', 'n_clicks'),
+    State('textarea-state-example', 'value')
 )
 def update_output(n_clicks, value):
     if n_clicks > 0:

@@ -51,9 +51,9 @@ app.layout = html.Div([
 
 
 @app.callback(
-    [Output('filter-query-input', 'style'),
-     Output('filter-query-output', 'style')],
-    [Input('filter-query-read-write', 'value')]
+    Output('filter-query-input', 'style'),
+    Output('filter-query-output', 'style'),
+    Input('filter-query-read-write', 'value')
 )
 def query_input_output(val):
     input_style = {'width': '100%'}
@@ -69,7 +69,7 @@ def query_input_output(val):
 
 @app.callback(
     Output('datatable-advanced-filtering', 'filter_query'),
-    [Input('filter-query-input', 'value')]
+    Input('filter-query-input', 'value')
 )
 def write_query(query):
     if query is None:
@@ -79,7 +79,7 @@ def write_query(query):
 
 @app.callback(
     Output('filter-query-output', 'children'),
-    [Input('datatable-advanced-filtering', 'filter_query')]
+    Input('datatable-advanced-filtering', 'filter_query')
 )
 def read_query(query):
     if query is None:
@@ -89,7 +89,7 @@ def read_query(query):
 
 @app.callback(
     Output('datatable-query-structure', 'children'),
-    [Input('datatable-advanced-filtering', 'derived_filter_query_structure')]
+    Input('datatable-advanced-filtering', 'derived_filter_query_structure')
 )
 def display_query(query):
     if query is None:

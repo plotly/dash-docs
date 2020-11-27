@@ -63,7 +63,7 @@ app.layout = html.Div([
 
 
 @app.callback(Output('cytoscape-update-layout', 'layout'),
-              [Input('dropdown-update-layout', 'value')])
+              Input('dropdown-update-layout', 'value'))
 def update_layout(layout):
     return {
         'name': layout,

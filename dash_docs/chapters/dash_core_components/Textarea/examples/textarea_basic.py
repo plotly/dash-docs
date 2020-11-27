@@ -16,7 +16,7 @@ app.layout = html.Div([
 
 @app.callback(
     Output('textarea-example-output', 'children'),
-    [Input('textarea-example', 'value')]
+    Input('textarea-example', 'value')
 )
 def update_output(value):
     return 'You have entered: \n{}'.format(value)

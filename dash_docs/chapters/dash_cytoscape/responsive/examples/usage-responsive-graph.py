@@ -88,14 +88,14 @@ app.layout = html.Div(style=styles['container'], children=[
 ])
 
 
-@app.callback(Output('cytoscape', 'responsive'), [Input('toggle-button', 'n_clicks')])
+@app.callback(Output('cytoscape', 'responsive'), Input('toggle-button', 'n_clicks'))
 def toggle_responsive(n_clicks):
     n_clicks = 2 if n_clicks is None else n_clicks
     toggle_on = n_clicks % 2 == 0
     return toggle_on
 
 
-@app.callback(Output('toggle-text', 'children'), [Input('cytoscape', 'responsive')])
+@app.callback(Output('toggle-text', 'children'), Input('cytoscape', 'responsive'))
 def update_toggle_text(responsive):
     return '\t' + 'Responsive ' + ('On' if responsive else 'Off')
 

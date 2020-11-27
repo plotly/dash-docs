@@ -19,14 +19,14 @@ layout = html.Div([
     2. `dash-auth`, a simple [basic auth](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication)
     implementation.
 
-    Dash Enterprise can be
-    installed on a Linux server at your company or the Kubernetes service
-    of every major cloud:
-
-    > - [Install Dash Enterprise on Azure](https://plotly.com/dash/azure)
-    > - [Install Dash Enterprise on AWS](https://plotly.com/dash/aws)
-    > - [Install Dash Enterprise on an on-premises Linux server](https://plotly.com/dash/on-premises-linux)
-    > - Or, [find out if your company is using Dash Enterprise](https://go.plotly.com/company-lookup)
+    > Dash Enterprise can be installed on the Kubernetes 
+    > services of 
+    > [AWS](https://plotly.com/dash/aws/?utm_source=docs&utm_medium=workspace&utm_campaign=nov&utm_content=aws), 
+    > [Azure](https://plotly.com/dash/azure/?utm_source=docs&utm_medium=workspace&utm_campaign=nov&utm_content=azure), 
+    > [GCP](https://plotly.com/dash/on-premises-linux/?utm_source=docs&utm_medium=workspace&utm_campaign=nov&utm_content=linux), 
+    > or an 
+    > [on-premise Linux Server](https://plotly.com/dash/on-premises-linux/?utm_source=docs&utm_medium=workspace&utm_campaign=nov&utm_content=linux).
+    > [Find out if your company is using Dash Enterprise](https://go.plotly.com/company-lookup)
 
     # Dash Enterprise Auth
 
@@ -78,7 +78,7 @@ layout = html.Div([
     `DASH_LOGOUT_URL`. You can do this by running your code with `DASH_LOGOUT_URL=plot.ly python app.py`.
 
     ## Dash Enterprise Auth Example
-    '''),
+    ''', className="lookup-red-links"),
 
     rc.Syntax(dedent('''
     import dash
@@ -123,7 +123,7 @@ layout = html.Div([
 
 
     @app.callback(Output('header-title','children'),
-                  [Input('dummy-input', 'children')])
+                  Input('dummy-input', 'children'))
     def update_title(_):
 
         # print user data to the logs
@@ -134,7 +134,7 @@ layout = html.Div([
 
 
     @app.callback(Output('graph', 'figure'),
-                  [Input('dropdown', 'value')])
+                  Input('dropdown', 'value'))
     def update_graph(value):
         return {
             'data': [{

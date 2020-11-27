@@ -275,7 +275,7 @@ layout = html.Div([
 
 
     @app.callback(Output('cytoscape-usage-phylogeny', 'stylesheet'),
-                  [Input('cytoscape-usage-phylogeny', 'mouseoverEdgeData')])
+                  Input('cytoscape-usage-phylogeny', 'mouseoverEdgeData'))
     def color_children(edgeData):
         if not edgeData:
             return stylesheet

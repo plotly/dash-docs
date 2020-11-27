@@ -12,8 +12,8 @@ app.layout = html.Div([
 
 @app.callback(
     Output('dynamic-dropdown-container', 'children'),
-    [Input('dynamic-add-filter', 'n_clicks')],
-    [State('dynamic-dropdown-container', 'children')])
+    Input('dynamic-add-filter', 'n_clicks'),
+    State('dynamic-dropdown-container', 'children'))
 def display_dropdowns(n_clicks, children):
     new_element = html.Div([
         dcc.Dropdown(
@@ -36,8 +36,8 @@ def display_dropdowns(n_clicks, children):
 
 @app.callback(
     Output({'type': 'dynamic-output', 'index': MATCH}, 'children'),
-    [Input({'type': 'dynamic-dropdown', 'index': MATCH}, 'value')],
-    [State({'type': 'dynamic-dropdown', 'index': MATCH}, 'id')],
+    Input({'type': 'dynamic-dropdown', 'index': MATCH}, 'value'),
+    State({'type': 'dynamic-dropdown', 'index': MATCH}, 'id'),
 )
 def display_output(value, id):
     return html.Div('Dropdown {} = {}'.format(id['index'], value))

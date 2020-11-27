@@ -112,7 +112,7 @@ def construct_filter(derived_query_structure, df, complexOperator=None):
 
 @app.callback(
     Output("demo-table", "data"),
-    [Input("demo-table", "derived_filter_query_structure")]
+    Input("demo-table", "derived_filter_query_structure")
 )
 def onFilterUpdate(derived_query_structure):
     (pd_query_string, df_filtered) = construct_filter(derived_query_structure, df)

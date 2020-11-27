@@ -17,7 +17,7 @@ app.layout = html.Div([
 ])
 
 @app.callback(Output('tabs-example-content', 'children'),
-              [Input('tabs-example', 'value')])
+              Input('tabs-example', 'value'))
 def render_content(tab):
     if tab == 'tab-1':
         return html.Div([

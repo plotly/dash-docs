@@ -39,7 +39,7 @@ app.layout = html.Div([
 
 
 @app.callback(Output('canvas-color', 'lineColor'),
-            [Input('color-picker', 'value')])
+            Input('color-picker', 'value'))
 def update_canvas_linewidth(value):
     if isinstance(value, dict):
         return value['hex']
@@ -48,7 +48,7 @@ def update_canvas_linewidth(value):
 
 
 @app.callback(Output('canvas-color', 'lineWidth'),
-            [Input('bg-width-slider', 'value')])
+            Input('bg-width-slider', 'value'))
 def update_canvas_linewidth(value):
     return value
 

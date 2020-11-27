@@ -457,7 +457,7 @@ URLS = [
         ] +
         ([
             {
-                'url': 'https://dash.plotly.com/dash',
+                'url': 'https://dash.plotly.com/dash-enterprise',
                 'name': 'Dash Enterprise',
                 'description': '''
                     The commercial platform behind Dash Open Source for
@@ -592,6 +592,7 @@ URLS = [
             '/dash-bio/'
             '/dash-daq/',
             '/canvas/',
+            '/annotations/',
             '/cytoscape/'
         ],
         'chapters': [
@@ -889,6 +890,20 @@ URLS = [
             },
 
             {
+                'name': 'Dash Image annotations',
+                'chapters': [
+                    {
+                        'url': '/annotations',
+                        'name': 'Overview & Reference',
+                        'content': chapters.dash_annotations.index.layout,
+                        'description': (
+                            'Image annotations for image processing applications.'
+                        )
+                    }
+                ]
+            },
+
+            {
                 'name': 'Dash Canvas',
                 'chapters': [
                     {
@@ -897,7 +912,8 @@ URLS = [
                         'content': chapters.dash_canvas.index.layout,
                         'description': (
                             'Image rendering, drawing, annotations '
-                            'for image processing applications.'
+                            'for image processing applications '
+                            '(legacy tool).'
                         )
                     }
                 ]

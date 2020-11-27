@@ -22,7 +22,7 @@ app.layout = html.Div([
 
 @app.callback(
     Output('output-container-date-picker-single', 'children'),
-    [Input('my-date-picker-single', 'date')])
+    Input('my-date-picker-single', 'date'))
 def update_output(date_value):
     string_prefix = 'You have selected: '
     if date_value is not None:
