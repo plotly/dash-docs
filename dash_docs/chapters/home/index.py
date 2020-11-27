@@ -34,7 +34,7 @@ layout = html.Div([
         ]),
 
         dcc.Tab(label='Dash Enterprise', children=[
-            html.Div(TOC([DASH_ENTERPRISE_URLS]), className="lookup-red-links")
+            html.Div(TOC([DASH_ENTERPRISE_URLS]))
         ])
 
     ])
