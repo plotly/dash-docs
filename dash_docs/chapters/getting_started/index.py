@@ -58,7 +58,7 @@ layout = html.Div([
     > copy & paste the below code into your Workspace ([see video](https://plotly.com/dash/workspaces/#screencast)).
     > _[Find out if your company is using Dash Enterprise](https://go.plotly.com/company-lookup)_
 
-    ''', className="lookup-red-links") if not tools.is_in_dash_enterprise() else '',
+    ''') if not tools.is_in_dash_enterprise() else '',
 
     rc.Markdown('''
     To get started, create a file named `app.py` with the following code.

@@ -27,8 +27,7 @@ def ComponentReference(component_name, lib=dcc):
             > which has typeahead support for Dash Component Properties.
             > [Find out if your company is using
             > Dash Enterprise](https://go.plotly.com/company-lookup).
-            ''' if not tools.is_in_dash_enterprise() else '',
-            className="lookup-red-links"
+            ''' if not tools.is_in_dash_enterprise() else ''
         )
     ]
 
