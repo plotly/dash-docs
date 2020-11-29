@@ -255,7 +255,7 @@ layout = html.Div([
     ),
     html.Div(examples['link-selections.py'][1], className="example-container"),
     rc.Markdown('''
-    ## Visualizing a Large Datasets with Datashader
+    ## Visualizing Large Datasets with Datashader
     Another HoloViews feature that is particularly convenient for Dash users is the
     integration with [Datashader](https://datashader.org/).
     
