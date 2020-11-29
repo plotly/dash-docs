@@ -323,7 +323,7 @@ layout = html.Div([
     overlaying them on top of a `Tiles` element.  There are three approaches to 
     configuring the map that is displayed by a `Tiles` element:
     
-      1. Construct a `holoviews.Tiles` element with a WMTS tile server url.
+      1. Construct a `holoviews.Tiles` element with a templated WMTS tile server url.
          E.g. `Tiles("https://maps.wikimedia.org/osm-intl/{Z}/{X}/{Y}@2x.png")`
       2. Construct a `Tiles` element with a predefined tile server url using a
          function from the `holoviews.element.tiles.tile_sources` module. E.g. `CartoDark()`
