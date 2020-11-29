@@ -349,7 +349,7 @@ layout = html.Div([
     html.Div(examples['mapbox-points.py'][1],
              className="example-container"),
     rc.Markdown('''
-    ## Visualizing a Large Geographic Datasets with Datashader
+    ## Visualizing a Large Geographic Dataset with Datashader
     This example demonstrates how to use datashader to display a large geographic
     scatter plot on top of a vector tiled Mapbox map. A large dataset is synthesized
     by repeating the carshare dataset and adding Gaussian noise to the positional
