@@ -44,7 +44,7 @@ layout = points * mean_sel * bounds << yhist << xhist
 # Create App
 app = dash.Dash(__name__)
 components = to_dash(
-    app, [layout], reset_button=True
+    app, [layout], reset_button=True, use_ranges=False,
 )
 
 app.layout = html.Div(components.children)
