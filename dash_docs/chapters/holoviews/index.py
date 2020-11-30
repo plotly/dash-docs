@@ -327,9 +327,9 @@ layout = html.Div([
          E.g. `Tiles("https://maps.wikimedia.org/osm-intl/{Z}/{X}/{Y}@2x.png")`
       2. Construct a `Tiles` element with a predefined tile server url using a
          function from the `holoviews.element.tiles.tile_sources` module. E.g. `CartoDark()`
-      3. Construct a `holoviews.Tiles` element with an empty string, then use `.opts`
+      3. Construct a `holoviews.Tiles` element no constructor argument, then use `.opts`
          to supply a mapbox token and style.
-         E.g. `Tiles("").opts(mapboxstyle="light", accesstoken="pk...")`
+         E.g. `Tiles().opts(mapboxstyle="light", accesstoken="pk...")`
     
     > **Coordinate Systems:**  Unlike the native plotly mapbox traces which accept
       geographic positions in longitude and latitude coordinates, HoloViews expects

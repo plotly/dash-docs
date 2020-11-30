@@ -27,7 +27,7 @@ dataset = hv.Dataset(df)
 points = hv.Points(
     df, ["easting", "northing"]
 ).opts(color="crimson")
-tiles = hv.Tiles("").opts(mapboxstyle="light", accesstoken=mapbox_token)
+tiles = hv.Tiles().opts(mapboxstyle="light", accesstoken=mapbox_token)
 overlay = tiles * datashade(points, cmap=sequential.Plasma)
 overlay.opts(
     title="Mapbox Datashader with %d points" % len(df),

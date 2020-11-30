@@ -27,7 +27,7 @@ dataset = hv.Dataset(df).redim.label(car_hours="Car Hours")
 points = hv.Points(
     df, ["easting", "northing"]
 ).opts(color="crimson")
-tiles = hv.Tiles("").opts(mapboxstyle="light", accesstoken=mapbox_token)
+tiles = hv.Tiles().opts(mapboxstyle="light", accesstoken=mapbox_token)
 overlay = tiles * datashade(points, cmap=sequential.Plasma).opts(width=800)
 
 # Build histogram of car_hours column
