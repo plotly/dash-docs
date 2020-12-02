@@ -66,4 +66,5 @@ traitlets==4.3.2
 urllib3==1.24.2
 Werkzeug==0.16.0
 wrapt==1.10.11
-holoviews
+holoviews>=1.14.0a10<1.14.1
+datashader==0.11.1
