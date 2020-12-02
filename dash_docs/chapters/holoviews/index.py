@@ -294,7 +294,11 @@ layout = html.Div([
     [Large Data](http://holoviews.org/user_guide/Large_Data.html) section of the
     HoloViews documentation.
     '''),
-
+    rc.Markdown(
+        examples['datashader.py'][0],
+        style=styles.code_container
+    ),
+    html.Div(examples['datashader.py'][1], className="example-container"),
     rc.Markdown('''
     ## Combining Datashader and Linked Selections
     
@@ -308,7 +312,11 @@ layout = html.Div([
     datashaded image is automatically updated. The reset button can be used to reset 
     to the initial figure viewport and clear the current selection.
     '''),
-
+    rc.Markdown(
+        examples['datashader-link-selections.py'][0],
+        style=styles.code_container
+    ),
+    html.Div(examples['datashader-link-selections.py'][1], className="example-container"),
     rc.Markdown('''
     ## Map Overlay
     Most 2-dimensional HoloViews elements can be displayed on top of a map by
@@ -354,7 +362,12 @@ layout = html.Div([
       in your working directory that contains your token, or assign the `mapbox_token`
       variable to a string containing your token.
     '''),
-
+    rc.Markdown(
+        examples['mapbox-datashader.py'][0],
+        style=styles.code_container
+    ),
+    html.Div(examples['mapbox-datashader.py'][1],
+             className="example-container"),
     rc.Markdown('''
     ## Mapbox datashader and linked selections
     This example demonstrates how the `link_selections` transformation described above
@@ -362,7 +375,12 @@ layout = html.Div([
     datashaded, but `link_selections` will work with plain `Scatter` elements
     as well. 
     '''),
-
+    rc.Markdown(
+        examples['mapbox-linked-datashader.py'][0],
+        style=styles.code_container
+    ),
+    html.Div(examples['mapbox-linked-datashader.py'][1],
+             className="example-container"),
     rc.Markdown('''
     ### GPU Accelerating Datashader and Linked Selections with RAPIDS
 
