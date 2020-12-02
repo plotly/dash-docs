@@ -63,7 +63,7 @@ app.layout = html.Div([
                 Choose the lasso or rectangle tool in the graph's menu
                 bar and then select points in the graph.
 
-                Note that if `layout.clickmode = 'event+select'`, selection data also 
+                Note that if `layout.clickmode = 'event+select'`, selection data also
                 accumulates (or un-accumulates) selected data if you hold down the shift
                 button while clicking.
             """),
@@ -87,28 +87,28 @@ app.layout = html.Div([
 
 @app.callback(
     Output('hover-data', 'children'),
-    [Input('basic-interactions', 'hoverData')])
+    Input('basic-interactions', 'hoverData'))
 def display_hover_data(hoverData):
     return json.dumps(hoverData, indent=2)
 
 
 @app.callback(
     Output('click-data', 'children'),
-    [Input('basic-interactions', 'clickData')])
+    Input('basic-interactions', 'clickData'))
 def display_click_data(clickData):
     return json.dumps(clickData, indent=2)
 
 
 @app.callback(
     Output('selected-data', 'children'),
-    [Input('basic-interactions', 'selectedData')])
+    Input('basic-interactions', 'selectedData'))
 def display_selected_data(selectedData):
     return json.dumps(selectedData, indent=2)
 
 
 @app.callback(
     Output('relayout-data', 'children'),
-    [Input('basic-interactions', 'relayoutData')])
+    Input('basic-interactions', 'relayoutData'))
 def display_relayout_data(relayoutData):
     return json.dumps(relayoutData, indent=2)
 

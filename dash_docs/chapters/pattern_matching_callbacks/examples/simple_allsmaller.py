@@ -15,8 +15,8 @@ app.layout = html.Div([
 
 @app.callback(
     Output('container-ex3', 'children'),
-    [Input('add-filter-ex3', 'n_clicks')],
-    [State('container-ex3', 'children')])
+    Input('add-filter-ex3', 'n_clicks'),
+    State('container-ex3', 'children'))
 def display_dropdowns(n_clicks, existing_children):
     existing_children.append(html.Div([
         dcc.Dropdown(
@@ -37,8 +37,8 @@ def display_dropdowns(n_clicks, existing_children):
 
 @app.callback(
     Output({'type': 'output-ex3', 'index': MATCH}, 'children'),
-    [Input({'type': 'filter-dropdown-ex3', 'index': MATCH}, 'value'),
-     Input({'type': 'filter-dropdown-ex3', 'index': ALLSMALLER}, 'value')],
+    Input({'type': 'filter-dropdown-ex3', 'index': MATCH}, 'value'),
+    Input({'type': 'filter-dropdown-ex3', 'index': ALLSMALLER}, 'value'),
 )
 def display_output(matching_value, previous_values):
     previous_values_in_reversed_order = previous_values[::-1]

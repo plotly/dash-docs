@@ -15,9 +15,9 @@ app.layout = html.Div([
 ])
 
 @app.callback(Output('container-button-timestamp', 'children'),
-              [Input('btn-nclicks-1', 'n_clicks'),
-               Input('btn-nclicks-2', 'n_clicks'),
-               Input('btn-nclicks-3', 'n_clicks')])
+              Input('btn-nclicks-1', 'n_clicks'),
+              Input('btn-nclicks-2', 'n_clicks'),
+              Input('btn-nclicks-3', 'n_clicks'))
 def displayClick(btn1, btn2, btn3):
     changed_id = [p['prop_id'] for p in dash.callback_context.triggered][0]
     if 'btn-nclicks-1' in changed_id:

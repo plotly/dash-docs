@@ -144,28 +144,28 @@ layout = html.Div([
 
 
         @app.callback(Output('cytoscape-tapNodeData-output', 'children'),
-                      [Input('cytoscape-event-callbacks-2', 'tapNodeData')])
+                      Input('cytoscape-event-callbacks-2', 'tapNodeData'))
         def displayTapNodeData(data):
             if data:
                 return "You recently clicked/tapped the city: " + data['label']
 
 
         @app.callback(Output('cytoscape-tapEdgeData-output', 'children'),
-                      [Input('cytoscape-event-callbacks-2', 'tapEdgeData')])
+                      Input('cytoscape-event-callbacks-2', 'tapEdgeData'))
         def displayTapEdgeData(data):
             if data:
                 return "You recently clicked/tapped the edge between " + data['source'].upper() + " and " + data['target'].upper()
 
 
         @app.callback(Output('cytoscape-mouseoverNodeData-output', 'children'),
-                      [Input('cytoscape-event-callbacks-2', 'mouseoverNodeData')])
+                      Input('cytoscape-event-callbacks-2', 'mouseoverNodeData'))
         def displayTapNodeData(data):
             if data:
                 return "You recently hovered over the city: " + data['label']
 
 
         @app.callback(Output('cytoscape-mouseoverEdgeData-output', 'children'),
-                      [Input('cytoscape-event-callbacks-2', 'mouseoverEdgeData')])
+                      Input('cytoscape-event-callbacks-2', 'mouseoverEdgeData'))
         def displayTapEdgeData(data):
             if data:
                 return "You recently hovered over the edge between " + data['source'].upper() + " and " + data['target'].upper()
@@ -201,7 +201,7 @@ layout = html.Div([
 
 
         @app.callback(Output('cytoscape-selectedNodeData-markdown', 'children'),
-                      [Input('cytoscape-event-callbacks-3', 'selectedNodeData')])
+                      Input('cytoscape-event-callbacks-3', 'selectedNodeData'))
         def displaySelectedNodeData(data_list):
             if not data_list:
                 return
@@ -237,10 +237,10 @@ layout = html.Div([
         rc.Markdown('''
         ```py
         @app.callback(Output('cytoscape', 'stylesheet'),
-                      [Input('cytoscape', 'tapNode'),
-                       Input('input-follower-color', 'value'),
-                       Input('input-following-color', 'value'),
-                       Input('dropdown-node-shape', 'value')])
+                      Input('cytoscape', 'tapNode'),
+                      Input('input-follower-color', 'value'),
+                      Input('input-following-color', 'value'),
+                      Input('dropdown-node-shape', 'value'))
         def generate_stylesheet(node, follower_color, following_color, node_shape):
             if not node:
                 return default_stylesheet
@@ -400,9 +400,9 @@ layout = html.Div([
         rc.Markdown('''
         ```py
         @app.callback(Output('cytoscape', 'elements'),
-                      [Input('cytoscape', 'tapNodeData')],
-                      [State('cytoscape', 'elements'),
-                       State('radio-expand', 'value')])
+                      Input('cytoscape', 'tapNodeData'),
+                      State('cytoscape', 'elements'),
+                      State('radio-expand', 'value'))
         def generate_elements(nodeData, elements, expansion_mode):
             if not nodeData:
                 return default_elements

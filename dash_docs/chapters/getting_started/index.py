@@ -23,13 +23,15 @@ layout = html.Div([
     </blockquote>
     '''),
 
-
     rc.Markdown('''
 
     This tutorial will walk you through a fundamental aspect of Dash apps, the
     app `layout`, through {} self-contained apps.
 
-    '''.format(len(examples))),
+    For production Dash apps, we recommend styling the app `layout` with
+    Dash Enterprise [Design Kit](https://plotly.com/dash/design-kit).
+
+    '''.format(len(examples)), className='red-links'),
 
     rc.Markdown('''
     ***
@@ -45,15 +47,23 @@ layout = html.Div([
     but you can also [build your own](https://github.com/plotly/dash-component-boilerplate)
     with JavaScript and React.js.
 
-    Note: Throughout this documentation, Python code examples are meant to be saved as files and executed using `python app.py`. These examples are not intended to run in Jupyter notebooks as-is, although most can be modified slightly to function in that environment.
-
+    Note: Throughout this documentation, Python code examples are meant to
+    be saved as files and executed using `python app.py`.
+    You can also use Jupyter with the [JupyterDash](https://github.com/plotly/jupyter-dash) library.
     '''),
 
-    rc.Syntax(examples['getting_started_layout_1.py'][0], summary='''
-        To get started, create a file named `app.py` with the following code:
-    '''),
     rc.Markdown('''
-    Run the app with
+
+    > If you're using Dash Enterprise's [Data Science Workspaces](https://plotly.com/dash/workspaces),
+    > copy & paste the below code into your Workspace ([see video](https://plotly.com/dash/workspaces/#screencast)).
+    > _[Find out if your company is using Dash Enterprise](https://go.plotly.com/company-lookup)_
+
+    ''') if not tools.is_in_dash_enterprise() else '',
+
+    rc.Markdown('''
+    To get started, create a file named `app.py` with the following code.
+
+    Then, run the app with
 
     ```
     $ python app.py
@@ -64,7 +74,66 @@ layout = html.Div([
     in your web browser. You should see an app that looks like this.
     '''),
 
-    rc.Example(examples['getting_started_layout_1.py'][1]),
+    dcc.Tabs([
+        dcc.Tab(
+            label='Dash open-source',
+            children=[
+                rc.Syntax(examples['getting_started_layout_1.py'][0]),
+                rc.Example(examples['getting_started_layout_1.py'][1]),
+            ]
+        ),
+        dcc.Tab(
+            label='Dash Enterprise Design Kit',
+            children=[
+                rc.Syntax(
+                '''
+                import dash
+                import dash_design_kit as ddk
+                import plotly.express as px
+                import pandas as pd
+
+                app = dash.Dash(__name__)
+                server = app.server  # expose server variable for Procfile
+
+                # assume you have a "long-form" data frame
+                # see https://plotly.com/python/px-arguments/ for more options
+                df = pd.DataFrame({
+                    "Fruit": ["Apples", "Oranges", "Bananas", "Apples", "Oranges", "Bananas"],
+                    "Amount": [4, 1, 2, 2, 4, 5],
+                    "City": ["SF", "SF", "SF", "Montreal", "Montreal", "Montreal"]
+                })
+
+                fig = px.bar(df, x="Fruit", y="Amount", color="City", barmode="group")
+
+                app.layout = ddk.App(show_editor=True, children=[
+                    ddk.Header([ddk.Title('Hello Dash')]),
+                    ddk.Card(children=[
+                        ddk.CardHeader(title='Dash: A Web application framework for Python.'),
+                        ddk.Graph(figure=fig)
+                    ])
+                ])
+
+                if __name__ == '__main__':
+                    app.run_server(debug=True)
+                '''
+                ),
+
+                html.P('Default Theme'),
+                html.Img(src=tools.relpath('/assets/images/ddk/layout-default.png')),
+                html.P('Mars Theme'),
+                html.Img(src=tools.relpath('/assets/images/ddk/layout-mars.png')),
+                html.P('Neptune Theme'),
+                html.Img(src=tools.relpath('/assets/images/ddk/layout-neptune.png')),
+                html.P('Miller Theme'),
+                html.Img(src=tools.relpath('/assets/images/ddk/layout-miller.png')),
+                html.P('Extrasolar Theme'),
+                html.Img(src=tools.relpath('/assets/images/ddk/layout-extrasolar.png')),
+                html.P('Design Kit Theme Editor'),
+                html.Img(src=tools.relpath('/assets/images/ddk/theme-editor.png')),
+
+            ]
+        )
+    ]),
 
     rc.Markdown(
     '''

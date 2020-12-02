@@ -403,7 +403,7 @@ Starting with Dash 1.0.0, `serve_locally` defaults to `True`.
         }
         """,
         Output('blank-output', 'children'),
-        [Input('tabs-example', 'value')]
+        Input('tabs-example', 'value')
     )
 
     if __name__ == '__main__':

@@ -31,8 +31,8 @@ app.layout = html.Div([
 
 @app.callback(
     Output('table-editing-simple-output', 'figure'),
-    [Input('table-editing-simple', 'data'),
-     Input('table-editing-simple', 'columns')])
+    Input('table-editing-simple', 'data'),
+    Input('table-editing-simple', 'columns'))
 def display_output(rows, columns):
     df = pd.DataFrame(rows, columns=[c['name'] for c in columns])
     return {

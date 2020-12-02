@@ -49,8 +49,8 @@ for store in ('memory', 'local', 'session'):
 
     # add a click to the appropriate store.
     @app.callback(Output(store, 'data'),
-                  [Input('{}-button'.format(store), 'n_clicks')],
-                  [State(store, 'data')])
+                  Input('{}-button'.format(store), 'n_clicks'),
+                  State(store, 'data'))
     def on_click(n_clicks, data):
         if n_clicks is None:
             # prevent the None callbacks is important with the store component.
@@ -71,8 +71,8 @@ for store in ('memory', 'local', 'session'):
                   # as Input and the data as State.
                   # This limitation is due to the initial None callbacks
                   # https://github.com/plotly/dash-renderer/pull/81
-                  [Input(store, 'modified_timestamp')],
-                  [State(store, 'data')])
+                  Input(store, 'modified_timestamp'),
+                  State(store, 'data'))
     def on_data(ts, data):
         if ts is None:
             raise PreventUpdate

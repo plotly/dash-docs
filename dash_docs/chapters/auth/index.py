@@ -9,22 +9,43 @@ from textwrap import dedent
 
 layout = html.Div([
     rc.Markdown('''
-    > This chapter covers two forms of authentication maintained by Plotly:
-    >
-    > 1. `dash-enterprise-auth`, the authentication and authorization layer built-in
-    > to Plotly's commercial product, [Dash Enterprise](https://plotly.com/dash).
-    >
-    > 2. `dash-auth`, a simple [basic auth](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication)
-    > implementation.
+    # Authentication
+
+    This chapter covers two forms of authentication maintained by Plotly:
+
+    1. `dash-enterprise-auth`, the authentication and authorization layer built-in
+    to Plotly's commercial product, [Dash Enterprise](https://plotly.com/dash).
+
+    2. `dash-auth`, a simple [basic auth](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication)
+    implementation.
+
+    > Dash Enterprise can be installed on the Kubernetes
+    > services of
+    > [AWS](https://plotly.com/dash/aws/?utm_source=docs&utm_medium=workspace&utm_campaign=nov&utm_content=aws),
+    > [Azure](https://plotly.com/dash/azure/?utm_source=docs&utm_medium=workspace&utm_campaign=nov&utm_content=azure),
+    > [GCP](https://plotly.com/dash/on-premises-linux/?utm_source=docs&utm_medium=workspace&utm_campaign=nov&utm_content=linux),
+    > or an
+    > [on-premise Linux Server](https://plotly.com/dash/on-premises-linux/?utm_source=docs&utm_medium=workspace&utm_campaign=nov&utm_content=linux).
+    > [Find out if your company is using Dash Enterprise](https://go.plotly.com/company-lookup)
 
     # Dash Enterprise Auth
 
+    > If your company has licensed Dash Enterprise, then view authentication
+    > documentation by visting
+    >
+    > **`https://<your-dash-enterprise-platform>/Docs/dash-enterprise`**
+    >
+    > (Replace `<your-dash-enterprise-platform>` with the hostname of your
+    > your licensed Dash Enterprise platform in your VPC)
+    >
+    > [Look up the hostname of your company's license](https://go.plotly.com/company-lookup).
+
     [Dash Enterprise](https://plotly.com/dash/) provides
-    an [authentication middleware](https://plotly.com/dash/app-manager/)
+    an [authentication middleware](https://plotly.com/dash/authentication/)
     that is configured by your administrator.
     This authentication middleware connects to your
     organization's LDAP or SAML identity provider
-    (e.g. Active Directory, Ping Federate), allows your end users to log in
+    (e.g. Active Directory, Ping Federate, Okta), allows your end users to log in
     with SSO, verifies if the user has permission to view the application,
     and then passes along user information like their username or group.
 
@@ -102,7 +123,7 @@ layout = html.Div([
 
 
     @app.callback(Output('header-title','children'),
-                  [Input('dummy-input', 'children')])
+                  Input('dummy-input', 'children'))
     def update_title(_):
 
         # print user data to the logs
@@ -113,7 +134,7 @@ layout = html.Div([
 
 
     @app.callback(Output('graph', 'figure'),
-                  [Input('dropdown', 'value')])
+                  Input('dropdown', 'value'))
     def update_graph(value):
         return {
             'data': [{

@@ -17,7 +17,15 @@ layout = html.Div(className="gallery", children=[
         Dash ships with supercharged components for interactive user interfaces.
         A core set of components, written and maintained by the Dash team,
         is available in the `dash-core-components` library.
+    '''),
 
+    rc.Markdown('''
+        For production Dash apps, the Dash Core Components styling & layout
+        should be managed with Dash Enterprise
+        [Design Kit](https://plotly.com/dash/design-kit).
+    ''', className='red-links'),
+
+    rc.Markdown('''
         The source is on GitHub at [plotly/dash-core-components](https://github.com/plotly/dash-core-components).
 
         These docs are using version {}.
@@ -225,11 +233,11 @@ dcc.RadioItems(
 
     html.H2(dcc.Link('DatePickerSingle', href=tools.relpath('/dash-core-components/datepickersingle'))),
     rc.ComponentBlock('''import dash_core_components as dcc
-from datetime import datetime as dt
+from datetime import date
 
 dcc.DatePickerSingle(
     id='date-picker-single',
-    date=dt(1997, 5, 10)
+    date=date(1997, 5, 10)
 )
 ''', style=styles.code_container),
     dcc.Link('More DatePickerSingle Examples and Reference',
@@ -238,11 +246,11 @@ dcc.DatePickerSingle(
 
     html.H2(dcc.Link('DatePickerRange', href=tools.relpath('/dash-core-components/datepickerrange'))),
     rc.ComponentBlock('''import dash_core_components as dcc
-from datetime import datetime as dt
+from datetime import date
 
 dcc.DatePickerRange(
     id='date-picker-range',
-    start_date=dt(1997, 5, 3),
+    start_date=date(1997, 5, 3),
     end_date_placeholder_text='Select a date!'
 )
 ''', style=styles.code_container),

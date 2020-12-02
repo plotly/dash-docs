@@ -5,7 +5,7 @@ body {
   line-height: 17px;
   letter-spacing: 0px;
   font-family: "open-sans", sans-serif;
-  color: #20293d;
+  color: #3F4F75;
   font-weight: 400;
   font-stretch: normal;
   font-style: normal;
@@ -22,6 +22,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 0;
   font-weight: 300;
   letter-spacing: 1px;
+  color: rgb(32, 41, 61);
 }
 h1 { font-size: 50px; line-height: 1.2;  margin-bottom: 2rem; }
 h2 { font-size: 40px; line-height: 1.25; margin-bottom: 1.8rem; margin-top: 1.8rem;}
@@ -50,9 +51,9 @@ h6 { font-size: 20px; line-height: 1.6;  margin-bottom: 0.75rem; margin-top: 0.7
       -ms-flex: 1 100%;
           flex: 1 100%;
 }
-.header {
-    height: 60px;
-}
+/* .header { */
+/*    height: 60px; */
+/* } */
 .sidebar-container {
     -webkit-box-ordinal-group: 1;
         -ms-flex-order: 0;
@@ -105,13 +106,12 @@ h6 { font-size: 20px; line-height: 1.6;  margin-bottom: 0.75rem; margin-top: 0.7
 }
 .page-menu--link:hover {
     border-bottom-style: solid;
-    border-bottom-color: #0D67BF;
     opacity: 1;
-    color: #0D67BF;
+    color: #60BAB6;
 }
 
 .content {
-    margin-left: 20px;
+    margin-left: 30px;
     margin-right: 20px;
     max-width: 800px;
 }
@@ -138,7 +138,6 @@ h6 { font-size: 20px; line-height: 1.6;  margin-bottom: 0.75rem; margin-top: 0.7
     max-width: 250px;
     display: flex;
     flex-direction: column;
-    height: calc(100vh - 60px);
     justify-content: space-between;
 }
 
@@ -225,18 +224,17 @@ summary:hover {
     margin-bottom: 10px;
 }
 
-.sidebar {
-    overflow-y: auto;
+.sidebar-image-link {
+    position: -webkit-sticky;
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    background-color: #e4f5f2;
 }
 
 .sidebar-image {
-   width: calc(100% - 4px);
-}
-
-#fade-out {
-    height: 30px;
-    margin-right: -2px;
-    background-image: linear-gradient(to bottom, rgb(224, 242, 246), white);
+   width: calc(100% - 7px);
+   margin: 2px 5px 2px 0;
 }
 
 
@@ -279,8 +277,7 @@ summary:hover {
 }
 
 .header .links .link:hover {
-  border-bottom: #119DFF 2px solid;
-  color: #2A3F5F;
+  color: #60BAB6;
   height: 59px;
 }
 
@@ -292,6 +289,12 @@ summary:hover {
 }
 .header .logo img:hover {
     border-bottom: 2px rgb(61, 76, 120) solid;
+}
+
+img.logo-divider,
+a.logo-home img,
+a.logo-link img {
+  height: 60px !important;
 }
 
 /* Reference */
@@ -335,14 +338,18 @@ summary:hover {
 .toc--chapter {
   list-style: none;
 }
+.toc--chapters {
+    margin-left: 0px;
+}
 
 .toc--chapter .toc--chapter-link {
     background-color: white;
     text-decoration: underline;
     padding-left: 0px;
     list-style: none;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 1;
+    font-weight: bold;
 }
 
 .toc--chapter-content {
@@ -374,7 +381,7 @@ a {
 }
 
 .content a:hover {
-  color: #0D67BF;
+  color: #60BAB6;
   text-decoration: underline;}
 
 .content a > img:hover {
@@ -496,4 +503,19 @@ a {
     .header .links Iframe {
         display: none;
     }
+}
+
+.red {
+    color: #f4564e;
+}
+.red-links a {
+    color: #f4564e !important;
+}
+
+a[href="https://go.plotly.com/company-lookup"] {
+    color: #f4564e !important;
+}
+
+.tab.tab--selected {
+    border-top-color: #80cfbe !important;
 }
