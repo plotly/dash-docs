@@ -2,7 +2,7 @@ import dash
 import dash_html_components as html
 import holoviews as hv
 from holoviews.plotting.plotly.dash import to_dash
-from holoviews.element.tiles import CartoMidnight
+from holoviews.element.tiles import CartoDark
 from plotly.data import carshare
 
 # Convert from lon/lat to web-mercator easting/northing coordinates
@@ -12,7 +12,7 @@ df["easting"], df["northing"] = hv.Tiles.lon_lat_to_easting_northing(
 )
 
 points = hv.Points(df, ["easting", "northing"]).opts(color="crimson")
-tiles = CartoMidnight()
+tiles = CartoDark()
 overlay = tiles * points
 
 app = dash.Dash(__name__)

@@ -286,7 +286,7 @@ layout = html.Div([
     events. The `to_dash` function is then used to build a single Dash
     `Graph` component and a reset button.
     
-    Try zooming and panning on this figure and notice how the datashaded image is
+    When zooming and panning on this figure, notice how the datashaded image is
     automatically updated. The reset button can be used to reset to the initial figure
     viewport.
     
@@ -294,11 +294,45 @@ layout = html.Div([
     [Large Data](http://holoviews.org/user_guide/Large_Data.html) section of the
     HoloViews documentation.
     '''),
-    rc.Markdown(
-        examples['datashader.py'][0],
-        style=styles.code_container
+    rc.Markdown('''
+    ```python
+    import dash
+    import dash_html_components as html
+    from plotly.data import iris
+    
+    import holoviews as hv
+    from holoviews.plotting.plotly.dash import to_dash
+    from holoviews.operation.datashader import datashade
+    
+    import numpy as np
+    import pandas as pd
+    
+    # Load iris dataset and replicate with noise to create large dataset
+    df_original = iris()[["sepal_length", "sepal_width", "petal_length", "petal_width"]]
+    df = pd.concat([
+        df_original + np.random.randn(*df_original.shape) * 0.1
+        for i in range(10000)
+    ])
+    dataset = hv.Dataset(df)
+    
+    scatter = datashade(
+        hv.Scatter(dataset, kdims=["sepal_length"], vdims=["sepal_width"])
+    ).opts(title="Datashader with %d points" % len(dataset))
+    
+    app = dash.Dash(__name__)
+    components = to_dash(
+        app, [scatter], reset_button=True
+    )
+    
+    app.layout = html.Div(components.children)
+    
+    if __name__ == "__main__":
+        app.run_server(debug=True)
+    ```
+    ''', style=styles.code_container),
+    html.Img(
+        src="/assets/images/integration/holoviews/datashader.gif",
     ),
-    html.Div(examples['datashader.py'][1], className="example-container"),
     rc.Markdown('''
     ## Combining Datashader and Linked Selections
     
@@ -306,17 +340,69 @@ layout = html.Div([
     linking selections across a histogram and a datashaded scatter plot of 1.5 million
     points.
 
-    Try using the box-selection tool to select regions of space in each figure and
+    When using the box-selection tool to select regions of space in each figure,
     notice how the selection of the corresponding data is displayed in both figures.
-    Also, try zooming and panning on datashaded scatter figure and notice how the
+    Also, when zooming and panning on datashaded scatter figure, notice how the
     datashaded image is automatically updated. The reset button can be used to reset 
     to the initial figure viewport and clear the current selection.
     '''),
-    rc.Markdown(
-        examples['datashader-link-selections.py'][0],
-        style=styles.code_container
+    rc.Markdown('''
+    ```python
+    import dash
+    import dash_html_components as html
+    from plotly.data import iris
+    
+    import holoviews as hv
+    from holoviews import opts
+    from holoviews.plotting.plotly.dash import to_dash
+    from holoviews.operation.datashader import datashade
+    
+    import numpy as np
+    import pandas as pd
+    
+    # Load iris dataset and replicate with noise to create large dataset
+    df_original = iris()[["sepal_length", "sepal_width", "petal_length", "petal_width"]]
+    df = pd.concat([
+        df_original + np.random.randn(*df_original.shape) * 0.1
+        for i in range(10000)
+    ])
+    dataset = hv.Dataset(df)
+    
+    # Build selection linking object
+    selection_linker = hv.selection.link_selections.instance()
+    
+    scatter = selection_linker(
+        hv.operation.datashader.datashade(
+            hv.Scatter(dataset, kdims=["sepal_length"], vdims=["sepal_width"])
+        )
+    ).opts(title="Datashader with %d points" % len(dataset))
+    
+    hist = selection_linker(
+        hv.operation.histogram(dataset, dimension="petal_width", normed=False)
+    )
+    
+    # Use plot hook to set the default drag mode to vertical box selection
+    def set_hist_dragmode(plot, element):
+        fig = plot.state
+        fig['layout']['dragmode'] = "select"
+        fig['layout']['selectdirection'] = "h"
+    
+    hist.opts(opts.Histogram(hooks=[set_hist_dragmode]))
+    
+    app = dash.Dash(__name__)
+    components = to_dash(
+        app, [scatter, hist], reset_button=True
+    )
+    
+    app.layout = html.Div(components.children)
+    
+    if __name__ == "__main__":
+        app.run_server(debug=True)
+    ```
+    ''', style=styles.code_container),
+    html.Img(
+        src="/assets/images/integration/holoviews/datashader_linked.gif",
     ),
-    html.Div(examples['datashader-link-selections.py'][1], className="example-container"),
     rc.Markdown('''
     ## Map Overlay
     Most 2-dimensional HoloViews elements can be displayed on top of a map by
@@ -362,12 +448,60 @@ layout = html.Div([
       in your working directory that contains your token, or assign the `mapbox_token`
       variable to a string containing your token.
     '''),
-    rc.Markdown(
-        examples['mapbox-datashader.py'][0],
-        style=styles.code_container
+    rc.Markdown('''
+    ```python
+    import dash
+    import dash_html_components as html
+    import holoviews as hv
+    from holoviews.plotting.plotly.dash import to_dash
+    from holoviews.operation.datashader import datashade
+    import pandas as pd
+    import numpy as np
+    from plotly.data import carshare
+    from plotly.colors import sequential
+    
+    # Mapbox token (replace with your own token string)
+    mapbox_token = open(".mapbox_token").read()
+    
+    # Convert from lon/lat to web-mercator easting/northing coordinates
+    df_original = carshare()
+    df_original["easting"], df_original["northing"] = hv.Tiles.lon_lat_to_easting_northing(
+        df_original["centroid_lon"], df_original["centroid_lat"]
+    )
+    
+    # Duplicate carshare dataframe with Gaussian noise to produce a larger dataframe
+    df = pd.concat([df_original] * 5000)
+    df["easting"] = df["easting"] + np.random.randn(len(df)) * 400
+    df["northing"] = df["northing"] + np.random.randn(len(df)) * 400
+    
+    # Build Dataset and graphical elements
+    dataset = hv.Dataset(df)
+    points = hv.Points(
+        df, ["easting", "northing"]
+    ).opts(color="crimson")
+    tiles = hv.Tiles().opts(mapboxstyle="light", accesstoken=mapbox_token)
+    overlay = tiles * datashade(points, cmap=sequential.Plasma)
+    overlay.opts(
+        title="Mapbox Datashader with %d points" % len(df),
+        width=800,
+        height=500
+    )
+    
+    # Build App
+    app = dash.Dash(__name__)
+    components = to_dash(app, [overlay], reset_button=True)
+    
+    app.layout = html.Div(
+        components.children
+    )
+    
+    if __name__ == '__main__':
+        app.run_server(debug=True)
+    ```
+    ''', style=styles.code_container),
+    html.Img(
+        src="/assets/images/integration/holoviews/mapbox_datashader.gif",
     ),
-    html.Div(examples['mapbox-datashader.py'][1],
-             className="example-container"),
     rc.Markdown('''
     ## Mapbox datashader and linked selections
     This example demonstrates how the `link_selections` transformation described above
@@ -375,12 +509,60 @@ layout = html.Div([
     datashaded, but `link_selections` will work with plain `Scatter` elements
     as well. 
     '''),
-    rc.Markdown(
-        examples['mapbox-linked-datashader.py'][0],
-        style=styles.code_container
+    rc.Markdown('''
+   ```python
+   import dash
+   import dash_html_components as html
+   import holoviews as hv
+   from holoviews.plotting.plotly.dash import to_dash
+   from holoviews.operation.datashader import datashade
+   import pandas as pd
+   import numpy as np
+   from plotly.data import carshare
+   from plotly.colors import sequential
+
+   # Mapbox token (replace with your own token string)
+   mapbox_token = open(".mapbox_token").read()
+
+   # Convert from lon/lat to web-mercator easting/northing coordinates
+   df_original = carshare()
+   df_original["easting"], df_original["northing"] = hv.Tiles.lon_lat_to_easting_northing(
+       df_original["centroid_lon"], df_original["centroid_lat"]
+   )
+
+   # Duplicate carshare dataframe with Gaussian noise to produce a larger dataframe
+   df = pd.concat([df_original] * 5000)
+   df["easting"] = df["easting"] + np.random.randn(len(df)) * 400
+   df["northing"] = df["northing"] + np.random.randn(len(df)) * 400
+
+   # Build Dataset and graphical elements
+   dataset = hv.Dataset(df)
+   points = hv.Points(
+       df, ["easting", "northing"]
+   ).opts(color="crimson")
+   tiles = hv.Tiles().opts(mapboxstyle="light", accesstoken=mapbox_token)
+   overlay = tiles * datashade(points, cmap=sequential.Plasma)
+   overlay.opts(
+       title="Mapbox Datashader with %d points" % len(df),
+       width=800,
+       height=500
+   )
+
+   # Build App
+   app = dash.Dash(__name__)
+   components = to_dash(app, [overlay], reset_button=True)
+
+   app.layout = html.Div(
+       components.children
+   )
+
+   if __name__ == '__main__':
+       app.run_server(debug=True)
+   ```
+   ''', style=styles.code_container),
+    html.Img(
+        src="/assets/images/integration/holoviews/mapbox_linked_datashader.gif",
     ),
-    html.Div(examples['mapbox-linked-datashader.py'][1],
-             className="example-container"),
     rc.Markdown('''
     ### GPU Accelerating Datashader and Linked Selections with RAPIDS
 
