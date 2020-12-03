@@ -95,9 +95,9 @@ header = html.Div(
 )
 
 DEFAULT_AD = dict(
-    alt='We are hiring! View our open positions.',
-    src=tools.relpath('/assets/images/sidebar/Hiring.png'),
-    href='https://grnh.se/6667434d2us'
+    alt='Simplify Big Data Visualization with Dash HoloViews, a webinar with Jon Mease.',
+    src=tools.relpath('/assets/images/sidebar/Holoviews-webinar.png'),
+    href='https://go.plotly.com/dash-holoviews'
 )
 
 app.title = 'Dash User Guide and Documentation - Dash by Plotly'
