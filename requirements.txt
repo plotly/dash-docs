@@ -67,6 +67,3 @@ urllib3==1.24.2
 Werkzeug==0.16.0
 wrapt==1.10.11
 holoviews>=1.14.0a10<1.14.1
-datashader==0.8.0
-numba==0.47.0
-llvmlite==0.31.0
