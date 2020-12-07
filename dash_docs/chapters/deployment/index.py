@@ -11,14 +11,14 @@ layout = html.Div(children=[
     own machine. To share a Dash app, you need to "deploy" it to a server.
 
     Our recommend method for securely deploying Dash applications is
-    [Dash Enterprise](https://plotly.com/dash). 
-    
-    > Dash Enterprise can be installed on the Kubernetes 
-    > services of 
-    > [AWS](https://plotly.com/dash/aws/?utm_source=docs&utm_medium=workspace&utm_campaign=nov&utm_content=aws), 
-    > [Azure](https://plotly.com/dash/azure/?utm_source=docs&utm_medium=workspace&utm_campaign=nov&utm_content=azure), 
-    > [GCP](https://plotly.com/dash/on-premises-linux/?utm_source=docs&utm_medium=workspace&utm_campaign=nov&utm_content=linux), 
-    > or an 
+    [Dash Enterprise](https://plotly.com/dash).
+
+    > Dash Enterprise can be installed on the Kubernetes
+    > services of
+    > [AWS](https://plotly.com/dash/aws/?utm_source=docs&utm_medium=workspace&utm_campaign=nov&utm_content=aws),
+    > [Azure](https://plotly.com/dash/azure/?utm_source=docs&utm_medium=workspace&utm_campaign=nov&utm_content=azure),
+    > [GCP](https://plotly.com/dash/on-premises-linux/?utm_source=docs&utm_medium=workspace&utm_campaign=nov&utm_content=linux),
+    > or an
     > [on-premise Linux Server](https://plotly.com/dash/on-premises-linux/?utm_source=docs&utm_medium=workspace&utm_campaign=nov&utm_content=linux).
     > [Find out if your company is using Dash Enterprise](https://go.plotly.com/company-lookup)
 
@@ -71,7 +71,7 @@ layout = html.Div(children=[
     ***
 
     **Step 1. Create a new folder for your project:**
-    ''', className="lookup-red-links"),
+    '''),
 
     rc.Markdown('''
     ```shell

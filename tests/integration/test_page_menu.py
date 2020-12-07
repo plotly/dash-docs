@@ -55,6 +55,7 @@ def test_page_menu_001(dash_doc):
         'Open Source Component Libraries',
         'Creating Your Own Components',
         'Beyond the Basics',
+        'Ecosystem Integration',
         'Production Capabilities',
         'These capabilities are only available in Dash Enterprise',
         'Getting Help'

@@ -10,9 +10,12 @@ layout = html.Div(className='toc', children=[
         rc.Chapter('Learn More About Dash Enterprise',
                 'https://plotly.com/dash/',
                 """Dash Enterprise is Plotly's commercial offering
-                   for managing and improving your Dash apps in your
-                   organization. [Learn more](https://plotly.com/dash) or
-                   [request a trial](https://plotly.com/get-demo/).""")
+                   for building & deploying Dash apps in your
+                   organization. 10% of the Fortune 500 uses Dash Enterprise
+                   to productionize AI and data science apps.
+                   [Learn more](https://plotly.com/dash) or
+                   [Find out if your company is using Dash Enterprise](https://go.plotly.com/company-lookup).
+                """)
     ]) if 'DASH_DOCS_URL_PREFIX' not in os.environ else '',
 
     rc.Section("Deployment", [
@@ -85,7 +88,11 @@ rc.Section("User Interface", [
         rc.Chapter('Create a Staging Dash App',
                 '/dash-enterprise/staging-app',
                 'Use a staged Dash App to test changes before updating your '
-                'production Dash App.')
+                'production Dash App.'),
+        rc.Chapter('Connect a Dash App to an SQL Database',
+                '/dash-enterprise/database-connections',
+                'Learn how to manage external database connections, perform '
+                'queries with Dash callbacks, and maintain SQL best practices.'),
     ]),
 
     rc.Section("Troubleshooting", [
