@@ -21,6 +21,9 @@
     <loc>https://dash.plotly.com/canvas</loc>
 </url>
 <url>
+    <loc>https://dash.plotly.com/slicer</loc>
+</url>
+<url>
     <loc>https://dash.plotly.com/clientside-callbacks</loc>
 </url>
 <url>
