@@ -7,9 +7,9 @@ WorkspaceBlurb = html.Div([
 > Dash Enterprise is the fastest way to write & deploy Dash apps and
 > Jupyter notebooks. Dash Enterprise can be installed on the Kubernetes
 > services of
-> [AWS](https://plotly.com/dash/aws/?utm_source=docs&utm_medium=workspace&utm_campaign=nov&utm_content=aws),
-> [Azure](https://plotly.com/dash/azure/?utm_source=docs&utm_medium=workspace&utm_campaign=nov&utm_content=azure),
-> [GCP](https://plotly.com/dash/on-premises-linux/?utm_source=docs&utm_medium=workspace&utm_campaign=nov&utm_content=linux),
+> [AWS](https://go.plotly.com/dash-aws),
+> [Azure](https://go.plotly.com/dash-azure),
+> GCP,
 > or an
 > [on-premise Linux Server](https://plotly.com/dash/on-premises-linux/?utm_source=docs&utm_medium=workspace&utm_campaign=nov&utm_content=linux).
 > 10% of the Fortune 500 uses Dash Enterprise to productionize AI and data science apps.
