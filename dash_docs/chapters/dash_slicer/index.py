@@ -40,8 +40,8 @@ layout = html.Div([
     '''),
 
     rc.Markdown(
-          examples['slicer_example1.py'][0],
-          style=styles.code_container
+        examples['slicer_example1.py'][0],
+        style=styles.code_container
     ),
     html.Div(examples['slicer_example1.py'][1], className='example-container'),
 
@@ -62,8 +62,8 @@ layout = html.Div([
     '''),
 
     rc.Markdown(
-          examples['slicer_example2.py'][0],
-          style=styles.code_container
+        examples['slicer_example2.py'][0],
+        style=styles.code_container
     ),
     html.Div(examples['slicer_example2.py'][1], className='example-container'),
 
@@ -84,14 +84,14 @@ layout = html.Div([
 
     In the next example, we make the data non-isotropic. This means
     that the distance between voxels is not equal for all dimensions.
-    The relative soacing can be provided via the `spacing` argument.
-    Similarly, an `origin` can also be provided. Zoom into the view on
-    the right to see that the voxels are elongated.
+    The voxel-spacing can be provided via the `spacing` argument.
+    Similarly, an `origin` can also be provided. You can zoom into the
+    view on the right to see that the voxels are elongated.
     '''),
 
     rc.Markdown(
-          examples['slicer_example3.py'][0],
-          style=styles.code_container
+        examples['slicer_example3.py'][0],
+        style=styles.code_container
     ),
     html.Div(examples['slicer_example3.py'][1], className='example-container'),
 
@@ -101,14 +101,15 @@ layout = html.Div([
 
     This example illustrates how your application can react to the slicer's
     position and view by using the `state` store as an input. Note that the
-    id of this store is a dict, which makes it possible to write a pattern
-    matching Input to collect the states of all slicers with a certain scene_id.
+    id of this store is a dict, which makes it possible to write a
+    [pattern matching Input](https://dash.plotly.com/pattern-matching-callbacks)
+    to collect the states of all slicers with a certain scene_id.
     See the reference docs for details.
     '''),
 
     rc.Markdown(
-          examples['slicer_example4.py'][0],
-          style=styles.code_container
+        examples['slicer_example4.py'][0],
+        style=styles.code_container
     ),
     html.Div(examples['slicer_example4.py'][1], className='example-container'),
 
