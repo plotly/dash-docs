@@ -1980,6 +1980,7 @@ Cli = html.Div(children=[
 
            `ssh dokku@your-dash-enterprise -p PORT redis:export redis-db > db.dump`
 
+           &nbsp;
         ''')
     ]),
 
@@ -2107,7 +2108,7 @@ Cli = html.Div(children=[
 
             You can redirect this output to a file:
 
-           `ssh dokku@your-dash-enterprise -p PORT postgres:export redis-db > db.dump`
+           `ssh dokku@your-dash-enterprise -p PORT postgres:export postgres-db > db.dump`
 
         ''')
     ]),
@@ -2136,7 +2137,7 @@ Cli = html.Div(children=[
 
             **Example:**
 
-            `ssh dokku@your-dash-enterprise -p PORT postgres:info redis-db`
+            `ssh dokku@your-dash-enterprise -p PORT postgres:info postgres-db`
 
             You can also retrieve a specific piece of service info via flags:
 
