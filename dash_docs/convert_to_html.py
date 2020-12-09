@@ -60,7 +60,7 @@ def _translate_attrib(attrib):
         False: 'false',
         'False': 'false',
     }
-    if attrib in attrib_map:
+    if isinstance(attrib, (str, int)) and attrib in attrib_map:
         return attrib_map[attrib]
     return attrib
 
