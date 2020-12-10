@@ -96,7 +96,7 @@ header = html.Div(
 
 DEFAULT_AD = dict(
     alt='Simplify Big Data Visualization with Dash HoloViews, a webinar with Jon Mease.',
-    src=tools.relpath('/assets/images/sidebar/Holoviews-webinar.png'),
+    src=tools.relpath('/assets/images/sidebar/Webinar-HoloViews.jpg'),
     href='https://go.plotly.com/dash-holoviews'
 )
 

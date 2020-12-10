@@ -1943,11 +1943,27 @@ Cli = html.Div(children=[
         ''')
     ]),
 
+    html.Details([
+        html.Summary("Clear app cache"),
+        rc.Markdown('''
+            &nbsp;
+
+            Building containers with buildpacks results in a persistent `cache` directory between deploys of the same application. To clear this cache directory, run the following shell command:
+
+            **Example:**
+            `ssh dokku@your-dash-enterprise -p PORT repo:purge-cache my-dash-app`
+
+            &nbsp;
+        ''')
+    ]),
+
     rc.Markdown('''
 
     #### Service-related Commands:
 
-    > These commands, for services such as Redis DBs, can only be run by the service-owner.'''),
+    > These commands can only be run by the service-owner.'''),
+
+    html.H5("Redis"),
 
     html.Details([
         html.Summary("Export the contents of a Redis database"),
@@ -1964,6 +1980,7 @@ Cli = html.Div(children=[
 
            `ssh dokku@your-dash-enterprise -p PORT redis:export redis-db > db.dump`
 
+           &nbsp;
         ''')
     ]),
 
@@ -2075,6 +2092,138 @@ Cli = html.Div(children=[
         &nbsp;
     ''')
     ]),
+
+    html.H5("Postgres"),
+
+    html.Details([
+        html.Summary("Export the contents of a Postgres database"),
+        rc.Markdown('''
+            &nbsp;
+
+            Export a dump of the Postgres service database. By default, datastore output is exported to stdout:
+
+            **Example:**
+
+            `ssh dokku@your-dash-enterprise -p PORT postgres:export postgres-db`
+
+            You can redirect this output to a file:
+
+           `ssh dokku@your-dash-enterprise -p PORT postgres:export postgres-db > db.dump`
+
+           &nbsp;
+        ''')
+    ]),
+
+    html.Details([
+        html.Summary("Upload an existing postgres dump to Postgres database"),
+        rc.Markdown('''
+            &nbsp;
+
+            Import a datastore dump:
+
+            **Example:**
+
+            `ssh dokku@your-dash-enterprise -p PORT postgres:import postgres-db < db.dump`
+
+            &nbsp;
+        ''')
+    ]),
+
+    html.Details([
+        html.Summary("Get connection info for a Postgres service"),
+        rc.Markdown('''
+            &nbsp;
+
+            Print the connection information. Get connection information as follows:
+
+            **Example:**
+
+            `ssh dokku@your-dash-enterprise -p PORT postgres:info postgres-db`
+
+            You can also retrieve a specific piece of service info via flags:
+
+            ```shell
+            ssh dokku@your-dash-enterprise -p PORT postgres:info postgres-db --config-dir
+            ssh dokku@your-dash-enterprise -p PORT postgres:info postgres-db --data-dir
+            ssh dokku@your-dash-enterprise -p PORT postgres:info postgres-db --dsn
+            ssh dokku@your-dash-enterprise -p PORT postgres:info postgres-db --exposed-ports
+            ssh dokku@your-dash-enterprise -p PORT postgres:info postgres-db --id
+            ssh dokku@your-dash-enterprise -p PORT postgres:info postgres-db --internal-ip
+            ssh dokku@your-dash-enterprise -p PORT postgres:info postgres-db --links
+            ssh dokku@your-dash-enterprise -p PORT postgres:info postgres-db --service-root
+            ssh dokku@your-dash-enterprise -p PORT postgres:info postgres-db --status
+            ssh dokku@your-dash-enterprise -p PORT postgres:info postgres-db --version
+            ```
+
+            &nbsp;
+        ''')
+    ]),
+
+    html.Details([
+        html.Summary("Get Postgres logs"),
+        rc.Markdown('''
+            &nbsp;
+
+            Print the most recent log(s) for this service.
+
+            **Example:**
+
+            `ssh dokku@your-dash-enterprise -p PORT postgres:logs postgres-db`
+
+            By default, logs will not be tailed, but you can do this with the --tail flag:
+
+            `ssh dokku@your-dash-enterprise -p PORT postgres:logs postgres-db --tail`
+
+            &nbsp;
+        ''')
+    ]),
+
+    html.Details([
+        html.Summary("Restart a Postgres service"),
+        rc.Markdown('''
+        &nbsp;
+
+        Restart the service:
+
+        **Example:**
+
+        `ssh dokku@your-dash-enterprise -p PORT postgres:restart postgres-db`
+
+        &nbsp;
+    ''')
+    ]),
+
+    html.Details([
+        html.Summary("Stop a Postgres service"),
+        rc.Markdown('''
+        &nbsp;
+
+        Stop the service:
+
+        **Example:**
+
+        `ssh dokku@your-dash-enterprise -p PORT postgres:stop postgres-db`
+
+        &nbsp;
+    ''')
+    ]),
+
+    html.Details([
+        html.Summary("Start a stopped Postgres service"),
+        rc.Markdown('''
+        &nbsp;
+
+        Start the service:
+
+        **Example:**
+
+        `ssh dokku@your-dash-enterprise -p PORT postgres:start postgres-db`
+
+        &nbsp;
+    ''')
+    ]),
+
+
 
     rc.Markdown('''
 
@@ -3117,8 +3266,8 @@ DataConnections = html.Div(children=[
     '''),
 ])
 
-# # # # # # # # # 
-# Common Deployment Errors 
+# # # # # # # # #
+# Common Deployment Errors
 # # # # # # # # #
 Troubleshooting = html.Div(children=[
      html.H1('Common Deployment Errors'),
@@ -3146,7 +3295,7 @@ Troubleshooting = html.Div(children=[
     rc.Markdown(
         '''
         ### error: failed to push some refs to dokku@<dash-enterprise>:<app-name>
- 
+
         ```shell
         $ git push plotly master
         [...]
@@ -3155,7 +3304,7 @@ Troubleshooting = html.Div(children=[
         error: failed to push some refs to '<your-dash-enterprise-host>:<your-dash-app>'
         ```
 
-        
+
         This is a generic error message that indicates that the git push deployment failed. The root cause of the error will be further up in the logs.
 
         In some cases, the error message may not exist or may be misleading. This page covers many of the common errors that may be reported further up in your deploy logs.
@@ -3179,9 +3328,9 @@ Troubleshooting = html.Div(children=[
         error: failed to push some refs to '<your-dash-enterprise-host>:<your-dash-app>'
         ```
 
-        
+
         This error occurs when the project folder doesn’t contain a file named `Procfile`.
-        
+
         See <dccLink href="/dash-enterprise/application-structure" children="Application Structure"/>
         page for more details on `Procfile`.
         '''
@@ -3191,7 +3340,7 @@ Troubleshooting = html.Div(children=[
     rc.Markdown(
         '''
         ### Failed to find application object 'server' in 'index'
- 
+
         ```shell
         remote: App container failed to start!!
         =====> <your-dash-app> web container output:
@@ -3211,9 +3360,9 @@ Troubleshooting = html.Div(children=[
         error: failed to push some refs to 'dokku@<your-dash-enterprise-host>:<your-dash-app>'
         ```
 
-        
+
         This happens when `server = app.server` is missing from your code .
-        
+
         See  <dccLink href="/dash-enterprise/application-structure" children="Application Structure"/>
         page for more details.
         '''
@@ -3223,7 +3372,7 @@ Troubleshooting = html.Div(children=[
     rc.Markdown(
         '''
         ### Unable to select a buildpack
- 
+
         ```shell
         $ git push plotly master
         [...]
@@ -3268,7 +3417,7 @@ Troubleshooting = html.Div(children=[
         remote: See 'docker image build --help'
         ```
 
-        
+
         This error can happen if your project contains a `Dockerfile`.
         Dash Enterprise does not support projects that contain a `Dockerfile`.
         To resolve, remove the `Dockerfile` from your project and redeploy.
@@ -3301,8 +3450,8 @@ Troubleshooting = html.Div(children=[
         remote: unknown shorthand flag: 'e' in -e
         remote: See 'docker image build --help'
         ```
-        
-        
+
+
         This error can happen if your project contains a `Dockerfile`.
         Dash Enterprise does not support projects that contain a `Dockerfile`.
         To resolve, remove the `Dockerfile` from your project and redeploy.
@@ -3346,9 +3495,9 @@ Troubleshooting = html.Div(children=[
         error: failed to push some refs to '<your-dash-enterprise-host>:<your-dash-app>'
         ```
 
-        
+
         This happens when `gunicorn` is missing from your app's `requirement.txt` file.
-        
+
         See  <dccLink href="/dash-enterprise/application-structure" children="Application Structure"/>
         page for more details on `gunicorn` and `requirement.txt`.
         '''
@@ -3357,7 +3506,7 @@ Troubleshooting = html.Div(children=[
     rc.Markdown(
         '''
         ### syntax error in expression (error token is " ")
- 
+
         ```shell
         $ git push plotly master
         [...]
@@ -3368,7 +3517,7 @@ Troubleshooting = html.Div(children=[
         error: failed to push some refs to 'dokku@<your-dash-enterprise-host>:<your-dash-app>'
         ```
 
-        
+
         This can happen when the entries in your `DOKKU_SCALE` file don't match your `Procfile`.
 
         See <dccLink href="/dash-enterprise/application-structure" children="Application Structure"/>
@@ -3385,8 +3534,8 @@ Troubleshooting = html.Div(children=[
         [...]
         fatal: unable to access 'https://<your-dash-enterprise-host>/GIT/your-dash-app-name/': SSL certificate problem: self signed certificate
         ```
-        
-        
+
+
         This can happen if you are deploying to Dash Enterprise using an https remote while Dash Enterprise is using a self-signed certificate.
         Resolve this by <dccLink href="/dash-enterprise/ssh" children="deploying with SSH"/>.
         Alternatively, you can attempt to follow
@@ -3418,7 +3567,7 @@ Troubleshooting = html.Div(children=[
         remote:        No matching distribution found for dash==0.29.1 (from -r /tmp/build/requirements.txt (line 1))```
         ```
 
-        
+
         This can happen if there is an error in
         your `requirements.txt` file. To resolve, check the versioning in your
         `requirements.txt` file. For example, the above failed because
@@ -3443,13 +3592,13 @@ Troubleshooting = html.Div(children=[
     rc.Markdown(
         '''
         ### SSH deploy: git push is asking for password
- 
+
         ```shell
         $ git push plotly master
         dokku@your-dash-server password:
         ```
 
-        
+
         This means that the ssh authentication has failed.
 
         This can be for a variety of
@@ -3486,16 +3635,16 @@ Troubleshooting = html.Div(children=[
         have been commented out or omitted. Check the first uncommented out line in the sample
         output above to ensure that the domain is your Dash server's domain and that port is 3022.
         If it isn't, you will need to update your `~/.ssh/config` file to set the
-        correct port. 
+        correct port.
 
         The next two emphasized lines show the public keys that were offered (and
         in this case rejected) by the server. If the RSA key that you added to
         Dash Enterprise is not among those offered you will need to add it to your `ssh-agent`
-        with `ssh-add ~/path/to/your/key`. 
-        
-        See <dccLink href="/dash-enterprise/ssh" children="SSH"/> page for more details on `ssh-agent` 
+        with `ssh-add ~/path/to/your/key`.
+
+        See <dccLink href="/dash-enterprise/ssh" children="SSH"/> page for more details on `ssh-agent`
         and modifying your `~/.ssh/config` file.
-        
+
         '''
     ),
 
@@ -3509,7 +3658,7 @@ Troubleshooting = html.Div(children=[
         Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.38/containers/json?all=1&filters=%7B%22label%22%3A%7B%22dokku%22%3Atrue%7D%2C%22status%22%3A%7B%22exited%22%3Atrue%7D%7D: dial unix /var/run/docker.sock: connect: permission denied
         ```
 
-        
+
         If you're receiving the above user permission error, please
         <dccLink href="/dash-enterprise/support" children="contact support"/>.
         '''
@@ -3524,7 +3673,7 @@ Troubleshooting = html.Div(children=[
         [...]
         fatal: Authentication failed for 'https://<your-dash-enterprise-host>/GIT/<your-dash-app>/'
         ```
-        
+
 
         This can happen when using git to push changes
         to a SAML enabled Dash Enterprise Server with `https`.
@@ -3550,7 +3699,7 @@ Troubleshooting = html.Div(children=[
         and the repository exists.
         ```
 
-        
+
         This happens when multiple user push changes to the same app.
         Dash Enterprise does not support collaborative deploys or changes being pushed to an app by multiple users.
         You have three options to work deploy apps collaboratively:
@@ -3577,10 +3726,10 @@ Troubleshooting = html.Div(children=[
         and the repository exists.
         ```
 
-        
-        This can happen when your `~/.ssh/config` is improproperly configured. 
-        
-        See the **Modify SSH Config** section on <dccLink href="/dash-enterprise/ssh" children="SSH"/> page 
+
+        This can happen when your `~/.ssh/config` is improproperly configured.
+
+        See the **Modify SSH Config** section on <dccLink href="/dash-enterprise/ssh" children="SSH"/> page
         for more details. Watch out for trailing slashes in your Dash Enterprise Server domain!
         '''
     ),
@@ -3618,13 +3767,13 @@ Troubleshooting = html.Div(children=[
         and the repository exists.
         ```
 
-        
+
         If deploying with SSH, then this can happen when your `~/.ssh/config` is improperly configured. See  <dccLink href="/dash-enterprise/ssh" children="SSH"/> page for more details.
 
         If deploying with HTTPS, then this can happen if your username or password is incorrect. Note that usernames and passwords in Dash Enterprise are case sensitive; e.g. the username `Chris.Parmer` is different than the username `chris.parmer`.
-        
+
         Git can sometimes cache these usernames after you've typed them. Run `$ git config credential.helper` to verify and correct the username.
-        
+
         Also, some operating system's password managers can cache usernames as well. Open your operating system's password manager and verify the username & password if you are deploying with `https`, running into access denied errors, and `git` isn't asking you for your username and password.
         '''
     ),
@@ -3632,7 +3781,7 @@ Troubleshooting = html.Div(children=[
     rc.Markdown(
         '''
         ### fatal: invalid server response; got 'ed20603d685403ed53ba0017dd8dda3f11407ce6 HEAD'
-        
+
         ```
         $ git clone https://<dash-enterprise-server/GIT/<dash-app-name>
         Cloning into <dash-app-name>...
@@ -3642,13 +3791,13 @@ Troubleshooting = html.Div(children=[
         fatal: invalid server response; got 'ed20603d685403ed53ba0017dd8dda3f11407ce6 HEAD'
         ```
 
-        
+
         This error can happen if you are using a version of `git` that
         is incompatible with Dash Enterprise's `git` server.
         In `git` `v2.26`, `git` switched the default transportation protocol
         to Version 2. Dash Enterprise's git server runs on `git` 2.17.1
-        and it only supports version `0`. 
-        
+        and it only supports version `0`.
+
         According to the git documentation,
         the server and client are supposed to be able to negotiate the
         protocol but, for some as of yet unknown reason, this does not work
@@ -3680,13 +3829,13 @@ Troubleshooting = html.Div(children=[
         Proc entrypoint worker does not exist. Please check your Procfile
         ```
 
-        
+
         This can happen if the directives listed in `DOKKU_SCALE` don't match
         the directives listed in `Procfile`.
 
         For example:
 
-        
+
         `Procfile`
         ```
         web: gunicorn app:server --workers 4
@@ -3724,7 +3873,7 @@ Troubleshooting = html.Div(children=[
         [...]
         ```
 
-        
+
         This can happen if there is an error when Dash Enterprise attempts to
         run the command listed in the `web` directive in `Procfile`
         (e.g. `gunicorn app:server`). This is usually an error within your
