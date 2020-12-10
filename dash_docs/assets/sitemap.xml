@@ -21,9 +21,6 @@
     <loc>https://dash.plotly.com/canvas</loc>
 </url>
 <url>
-    <loc>https://dash.plotly.com/slicer</loc>
-</url>
-<url>
     <loc>https://dash.plotly.com/clientside-callbacks</loc>
 </url>
 <url>
@@ -91,6 +88,9 @@
 </url>
 <url>
     <loc>https://dash.plotly.com/dash-bio/needleplot</loc>
+</url>
+<url>
+    <loc>https://dash.plotly.com/dash-bio/nglmoleculeviewer</loc>
 </url>
 <url>
     <loc>https://dash.plotly.com/dash-bio/oncoprint</loc>
@@ -793,6 +793,9 @@
 </url>
 <url>
     <loc>https://dash.plotly.com/sharing-data-between-callbacks</loc>
+</url>
+<url>
+    <loc>https://dash.plotly.com/slicer</loc>
 </url>
 <url>
     <loc>https://dash.plotly.com/support</loc>
