@@ -9,7 +9,7 @@ from holoviews.plotting.plotly.dash import to_dash
 frequencies = [0.5, 0.75, 1.0, 1.25]
 
 def sine_curve(phase, freq):
-    xvals = [0.1* i for i in range(100)]
+    xvals = [0.1 * i for i in range(100)]
     return hv.Curve((xvals, [np.sin(phase+freq*x) for x in xvals]))
 
 # When run live, this cell's output should match the behavior of the GIF below

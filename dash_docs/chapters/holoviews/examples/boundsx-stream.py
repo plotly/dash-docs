@@ -9,7 +9,7 @@ from holoviews import streams
 from holoviews.plotting.plotly.dash import to_dash
 
 n = 200
-np.random.seed(20)
+np.random.seed(20)  # no-display
 xs = np.linspace(0, 1, n)
 ys = np.cumsum(np.random.randn(n))
 df = pd.DataFrame({'x': xs, 'y': ys})

@@ -90,8 +90,8 @@ def load_example(path, relative_path=False):
 
         # if there are lines that should be included in the syntax but
         # not executed, simply put a comment on that line starting "# no-exec"
-        # similarly, if there are lines that should be evalued but
-        # not executed, simply put a comment on that line starting "# no-display"
+        # similarly, if there are lines that should be evaluated but
+        # not displayed, simply put a comment on that line starting "# no-display"
         no_exec = '# no-exec'
         no_display = '# no-display'
         if no_exec in _example:
