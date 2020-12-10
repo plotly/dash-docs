@@ -60,7 +60,8 @@ def _translate_attrib(attrib):
         False: 'false',
         'False': 'false',
     }
-    if isinstance(attrib, (str, bool, int)) and attrib in attrib_map:
+    # Note that bool is a subclass of int
+    if isinstance(attrib, (str, int)) and attrib in attrib_map:
         return attrib_map[attrib]
     return attrib
 
