@@ -19,8 +19,13 @@ def create_sitemap():
 
 def generate_sitemap():
     sitemap = create_sitemap()
-    with open('dash_docs/assets/sitemap.xml', 'w') as f:
-        f.write(sitemap)
+    # Use the same newlines as is currently used
+    with open('dash_docs/assets/sitemap.xml', 'rb') as f:
+        old_sitemap = f.read().decode()
+    if "\r" in old_sitemap:
+        sitemap = sitemap.replace("\n", "\r\n")
+    with open('dash_docs/assets/sitemap.xml', 'wb') as f:
+        f.write(sitemap.encode())
 
 
 if __name__ == '__main__':
