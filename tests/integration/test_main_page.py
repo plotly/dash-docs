@@ -3,6 +3,7 @@ import logging
 import pytest
 import sys
 
+from dash.testing.wait import until
 
 from dash_docs.chapter_index import URL_TO_CONTENT_MAP
 
@@ -25,29 +26,42 @@ def test_snap001_index_page_links(dash_doc, index_pages):
         if resource.startswith('/'):
             hook_id = "wait-for-page-{}".format(resource)
             res = resource.lstrip("/")
-            if res in ['basic-callbacks', 'datatable/callbacks']:
-                # these two pages have an intermittent problem with their
-                # resource queues not clearing properly. While we sort this out,
-                # just wait a reasonably long time on these pages.
-                # code copied out of dash.testing.browser & modified
-                # if we end up wanting to keep this we can add a sleep time to
-                # the visit_and_snapshot signature.
+            try:
                 dash_doc.driver.get(
                     "{}/{}".format(dash_doc.server_url.rstrip("/"), res)
                 )
                 dash_doc.wait_for_element_by_id(hook_id)
-                sleep(3)
+
+                if res in ['basic-callbacks', 'datatable/callbacks']:
+                    # these two pages have an intermittent problem with their
+                    # resource queues not clearing properly. While we sort this out,
+                    # just wait a reasonably long time on these pages.
+                    sleep(3)
+                else:
+                    # everything else we can just wait for all callbacks to finish
+                    sleep(1)
+                    until(dash_doc._wait_for_callbacks, timeout=40, poll=0.3)
+
+                # hide non-repeatable elements before the snapshot
+                selectors_to_hide = ",".join([
+                    "#my-dashbio-molecule2d",
+                    "#molecule2d-selectedatomids",
+                    "#molecule2d-modeldata",
+                    ".forna-container",
+                    "#first_output_3",
+                    "#second_output_3",
+                    "#third_output_3"
+                ])
+                dash_doc.driver.execute_script(
+                    "document.querySelectorAll('" +
+                    selectors_to_hide +
+                    "').forEach(el=>el.style.visibility = 'hidden');"
+                )
                 dash_doc.percy_snapshot(res, wait_for_callbacks=False)
-                # assert not dash_doc.driver.find_elements_by_css_selector(
-                #     "div.dash-debug-alert"
-                # ), "devtools should not raise an error alert"
-            else:
-                try:
-                    dash_doc.visit_and_snapshot(res, hook_id=hook_id, stay_on_page=True, assert_check=False)
-                except Exception as e:
-                    timeout_pages.append('{} --- on page {}'.format(
-                        str(e), resource
-                    ))
+            except Exception as e:
+                timeout_pages.append('{} --- on page {}'.format(
+                    str(e), resource
+                ))
 
             linked_paths = dash_doc.driver.execute_script(
                 'return Array.from(document.querySelectorAll(\'a[href^="/"]\'))'
