@@ -79,6 +79,7 @@ layout = html.Div([
 
     In addition to using the sliders, you can click in one of the
     views to make the other views go to the clicked location. Try it!
+    Thanks to this navigation mode, you can optionally omit sliders in the layout when two or more views are present.
 
     ### Anisotropic data
 
