@@ -2,7 +2,7 @@ import sys
 import dash_html_components as html
 
 
-if sys.version_info > (3, 10 ):
+if sys.version_info > (3, ):
     from .import index
 else:
 

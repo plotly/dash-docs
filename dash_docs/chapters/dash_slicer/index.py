@@ -23,7 +23,7 @@ layout = html.Div([
 
     The ``dash_slicer`` library provides an easy way to visualize 3D image data
     by slicing along one dimension. Multiple views on the same data can be linked,
-    to help with navigation.
+    to help with navigation. There is also support for mask overlays.
 
     Install Dash Slicer with:
 
@@ -68,18 +68,25 @@ layout = html.Div([
     html.Div(examples['slicer_example2.py'][1], className='example-container'),
 
     rc.Markdown('''
-    You can see how the slicers are "linked"; each shows the positions
-    of the other slicers. This linking is based on what we call the
-    scene_id. This is a property that can be provided when you
-    instantiate a `VolumeSlicer`. By default, the scene_id is derived
+    You can see how each view contains indicator lines, which show the
+    position of the other slicers. Each slicer has a certain color
+    (which is auto-selected, but can also be provided), which is shown
+    in the corners around the image. The same color is used to draw the
+    slicer's indicator lines in the other views.
+
+    Slicers indicate each-other's position if they are linked based on their
+    `scene_id`. This is a property that can be provided when you
+    instantiate a `VolumeSlicer`. By default, the `scene_id` is derived
     from the volume. That's why the linking in this example works: each
     slicer is given the same numpy array object. By explicitly setting
-    the scene_id, multiple views on different data can be linked as
-    well.
+    the `scene_id`, multiple views on different data (e.g. MRI and CT) can
+    be linked as well.
 
     In addition to using the sliders, you can click in one of the
     views to make the other views go to the clicked location. Try it!
-    Thanks to this navigation mode, you can optionally omit sliders in the layout when two or more views are present.
+    Thanks to this navigation mode, you can optionally hide sliders in
+    the layout when two or more views are present (see the `VolumeSlicer.slider`
+    property ).
 
     ### Anisotropic data
 
