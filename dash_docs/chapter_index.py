@@ -446,7 +446,7 @@ DASH_ENTERPRISE_URLS = {
                 },
                 {
                     'url': '/dash-enterprise/migration-guide',
-                    'content': chapters.dash_enterprise.dash_enterprise_chapters.MigrationGuide,
+                    'content': chapters.dash_enterprise.migration_guide.index.layout,
                     'name': 'Quickstart Migration Guide',
                     'description': 'Migrate your Dash Apps to Dash Enterprise Server'
                 },
