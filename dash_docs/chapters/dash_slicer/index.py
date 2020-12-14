@@ -48,8 +48,8 @@ layout = html.Div([
     rc.Markdown('''
     In the code above, we first load a 3D numpy array (a volumetric image). Then
     we instantiate a `VolumeSlicer` object with that data. This object is not
-    a Dash component, but has attributes that are. Its `graph` and `slider`
-    are placed in the layout, as well as a handful of `Store` objects that the
+    a Dash component, but has attributes that are. We place its `graph` and
+    `slider` in the layout, as well as a handful of `Store` components that the
     slicer needs to function.
 
     If the server is run in debug mode, consider setting `dev_tools_props_check`
