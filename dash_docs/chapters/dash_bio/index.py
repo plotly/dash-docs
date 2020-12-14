@@ -5,7 +5,7 @@ import dash_bio
 from dash_docs import styles
 from .utils import generate_docs
 from dash_docs import reusable_components as rc
-˚
+
 DASHBIO_LIBRARY_HEADING = [
     rc.Markdown('''# Dash Bio'''),
 
