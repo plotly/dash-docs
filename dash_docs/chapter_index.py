@@ -599,6 +599,7 @@ URLS = [
             '/dash-bio/'
             '/dash-daq/',
             '/canvas/',
+            '/slicer/',
             '/annotations/',
             '/cytoscape/'
         ],
@@ -921,6 +922,20 @@ URLS = [
                             'Image rendering, drawing, annotations '
                             'for image processing applications '
                             '(legacy tool).'
+                        )
+                    }
+                ]
+            },
+
+            {
+                'name': 'Dash Slicer',
+                'chapters': [
+                    {
+                        'url': '/slicer',
+                        'name': 'Overview & Reference',
+                        'content': chapters.dash_slicer.index.layout,
+                        'description': (
+                            'A volume slicer for Dash.'
                         )
                     }
                 ]
