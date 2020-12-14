@@ -36,7 +36,7 @@ layout = html.Div([
     ### A first example
 
     Let's get started with a simple example.
-    (The examples on this page are build with dash-slicer version {dash_slicer.__version__})
+    (The examples on this page are built with dash-slicer version {dash_slicer.__version__})
     '''),
 
     rc.Markdown(
