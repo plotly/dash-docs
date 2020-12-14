@@ -5,7 +5,7 @@ from dash_docs.chapter_index import URLS, URL_TO_CONTENT_MAP, DASH_ENTERPRISE_UR
 
 from dash_docs.convert_to_html import convert_to_html
 from dash_docs.reusable_components import TOC, WorkspaceBlurb
-from dash_docs.tools import merge
+from dash_docs.tools import merge, relpath
 
 styles = {
     'underline': {
@@ -34,7 +34,11 @@ layout = html.Div([
         ]),
 
         dcc.Tab(label='Dash Enterprise', children=[
-            html.Div(TOC([DASH_ENTERPRISE_URLS]))
+            html.Div(TOC([DASH_ENTERPRISE_URLS])),
+            html.Img(
+                src=relpath('/assets/images/dds/app-architecture.jpg'),
+                alt='Dash App Architecture Diagram'
+            )
         ])
 
     ])

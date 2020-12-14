@@ -253,6 +253,14 @@ DASH_ENTERPRISE_URLS = {
         {
             'url': '/dash-enterprise',
             'name': 'App Manager',
+            'icon': 'fas fa-book',
+            'description': (
+                '''
+                Documentation for the Dash Enterperise App Manager.
+                Learn how to deploy apps, manage SSH keys, configure database
+                mounts, manage buildpacks, configure databases and more.
+                '''
+            ),
             'chapters': [
                 {
                     'name': 'App Manager Overview',
