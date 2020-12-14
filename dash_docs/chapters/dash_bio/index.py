@@ -5,7 +5,7 @@ import dash_bio
 from dash_docs import styles
 from .utils import generate_docs
 from dash_docs import reusable_components as rc
-
+˚
 DASHBIO_LIBRARY_HEADING = [
     rc.Markdown('''# Dash Bio'''),
 
@@ -293,7 +293,7 @@ styles_data = json.loads(styles_data)
         'image_info': {
             'location': 'https://raw.githubusercontent.com/plotly/docs-demos-dashbio/master/images/pic_volcano.png?raw=true'
         }
-    }
+    },
 }
 
 layout_children = generate_docs(
