@@ -13,6 +13,9 @@ spacing = 3, 1, 1
 slicer0 = VolumeSlicer(app, vol, spacing=spacing, axis=0)
 slicer1 = VolumeSlicer(app, vol, spacing=spacing, axis=1)
 
+slicer0.graph.config["scrollZoom"] = False
+slicer1.graph.config["scrollZoom"] = False
+
 app.layout = html.Div(
     style={
         "display": "grid",

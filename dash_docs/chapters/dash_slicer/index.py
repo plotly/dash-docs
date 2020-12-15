@@ -52,6 +52,9 @@ layout = html.Div([
     `slider` in the layout, as well as a handful of `Store` components that the
     slicer needs to function.
 
+    The graph's `scrollZoom` config option is turned off here, because
+    it would make the plot grab scroll events as you scroll down this page.
+
     If the server is run in debug mode, consider setting `dev_tools_props_check`
     to False, because it has a big impact on the performance.
 
