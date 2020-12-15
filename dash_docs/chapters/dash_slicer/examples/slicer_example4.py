@@ -10,6 +10,7 @@ app = dash.Dash(__name__, update_title=None)
 
 vol = imageio.volread("imageio:stent.npz")
 slicer = VolumeSlicer(app, vol)
+slicer.graph.config["scrollZoom"] = False
 
 app.layout = html.Div([slicer.graph, slicer.slider, html.Div(id='info'), *slicer.stores])
 
