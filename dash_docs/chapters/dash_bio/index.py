@@ -293,7 +293,7 @@ styles_data = json.loads(styles_data)
         'image_info': {
             'location': 'https://raw.githubusercontent.com/plotly/docs-demos-dashbio/master/images/pic_volcano.png?raw=true'
         }
-    }
+    },
 }
 
 layout_children = generate_docs(

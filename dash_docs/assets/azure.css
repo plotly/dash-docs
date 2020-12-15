@@ -1,0 +1,32 @@
+.azure > img {
+    height: 40px;
+    border: none !important;
+    margin-right: 10px;
+}
+
+.azure > img:hover {
+    border: none !important;
+}
+
+.azure > .label {
+    font-style: normal;
+    font-weight: bold;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+a.azure {
+    text-decoration: none;
+}
+
+.azure-parent {
+    display: flex;
+    justify-content: space-around;
+}
+
+.azure {
+    display: flex;
+    align-items: center;
+    background-color: rgb(249, 250, 252);
+    padding: 10px;
+}

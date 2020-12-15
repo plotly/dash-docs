@@ -253,6 +253,14 @@ DASH_ENTERPRISE_URLS = {
         {
             'url': '/dash-enterprise',
             'name': 'App Manager',
+            'icon': 'fas fa-book',
+            'description': (
+                '''
+                Documentation for the Dash Enterperise App Manager.
+                Learn how to deploy apps, manage SSH keys, configure database
+                mounts, manage buildpacks, configure databases and more.
+                '''
+            ),
             'chapters': [
                 {
                     'name': 'App Manager Overview',
@@ -599,6 +607,7 @@ URLS = [
             '/dash-bio/'
             '/dash-daq/',
             '/canvas/',
+            '/slicer/',
             '/annotations/',
             '/cytoscape/'
         ],
@@ -921,6 +930,20 @@ URLS = [
                             'Image rendering, drawing, annotations '
                             'for image processing applications '
                             '(legacy tool).'
+                        )
+                    }
+                ]
+            },
+
+            {
+                'name': 'Dash Slicer',
+                'chapters': [
+                    {
+                        'url': '/slicer',
+                        'name': 'Overview & Reference',
+                        'content': chapters.dash_slicer.index.layout,
+                        'description': (
+                            'A volume slicer for Dash.'
                         )
                     }
                 ]
