@@ -8,7 +8,8 @@ from holoviews import streams
 from holoviews.plotting.plotly.dash import to_dash
 
 # Declare some points
-points = hv.Points(np.random.randn(1000,2 ))
+np.random.seed(0)  # no-display
+points = hv.Points(np.random.randn(1000, 2))
 
 # Declare points as source of selection stream
 selection = streams.Selection1D(source=points)

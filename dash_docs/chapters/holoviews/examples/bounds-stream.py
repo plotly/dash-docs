@@ -8,6 +8,7 @@ from holoviews import streams
 from holoviews.plotting.plotly.dash import to_dash
 
 # Declare distribution of Points
+np.random.seed(0)  # no-display
 points = hv.Points(
     np.random.multivariate_normal((0, 0), [[1, 0.1], [0.1, 1]], (1000,))
 )
