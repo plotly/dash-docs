@@ -8,7 +8,7 @@ def image(vendor):
                 src='/assets/images/dds/{}-logo.png'.format(vendor)
             ),
             html.Div(
-                'Install Dash Enterprise on {}'.format(vendor.capitalize()),
+                'Install Dash Enterprise on {}'.format(vendor),
                 className='label'
             )
         ],
@@ -33,7 +33,8 @@ WorkspaceBlurb = html.Div([
         '''),
 
         html.Div([
-            image('azure'),
+            image('Azure'),
+            html.Div(className='spacer'),
             image('AWS'),
         ], className='azure-parent')
 

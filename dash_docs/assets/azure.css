@@ -24,6 +24,11 @@ a.azure {
     justify-content: space-around;
 }
 
+.azure-parent .spacer {
+    width: 30px;
+    visibility: hidden;
+}
+
 .azure {
     display: flex;
     align-items: center;
