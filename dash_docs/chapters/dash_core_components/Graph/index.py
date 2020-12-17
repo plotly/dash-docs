@@ -153,10 +153,10 @@ dcc.Graph(
     properties in the following way:
 
     * `True`: `config.responsive` and `figure.layout.autosize` are
-    overriden with `True` values, and `figure.layout.height` and
+    overridden with `True` values, and `figure.layout.height` and
     `figure.layout.width` are unset
     * `False`: `config.responsive` and `figure.layout.autosize` are
-      both overriden with `False` values
+      both overridden with `False` values
     * `'auto'`: the resizability of the plot is determined the
       same way as it used to be (i.e., with the four properties above)
 

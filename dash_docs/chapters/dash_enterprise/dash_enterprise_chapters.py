@@ -3424,7 +3424,7 @@ Troubleshooting = html.Div(children=[
 
         > Background
 
-        > Dash Enterprise uses buildpack technolgy in order to automatically
+        > Dash Enterprise uses buildpack technology in order to automatically
         > build Docker containers. These buildpacks are detected automatically
         > dependeing on the files within the project file.
 
@@ -3458,7 +3458,7 @@ Troubleshooting = html.Div(children=[
 
         > Background
 
-        > Dash Enterprise uses buildpack technolgy in order to automatically
+        > Dash Enterprise uses buildpack technology in order to automatically
         > build Docker containers. These buildpacks are detected automatically
         > dependeing on the files within the project file.
 
