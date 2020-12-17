@@ -153,7 +153,7 @@ layout = html.Div([
     out the empty values.
 
     When you clear a cell, the DataTable will set its contents to `''`
-    (emtpy string). So, for consistency, we recommend initializing your
+    (empty string). So, for consistency, we recommend initializing your
     empty data with `''`.
 
     > Heads up! In the future, when we introduce proper data types,

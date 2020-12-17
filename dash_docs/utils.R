@@ -15,7 +15,7 @@ LoadExampleCode <- function(filename, wd = NULL) {
     # and return it
     list('app\\$layout\\(', 'layout <- htmlDiv\\('),
     # Since app is in the namespace from the `app.R` import,
-    # it will implicity be picked up by the
+    # it will implicitly be picked up by the
     # `eval` call below
     list('app <- Dash\\$new\\(\\)', ''),
     list('app\\$run_server\\(\\)', '')

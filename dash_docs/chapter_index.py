@@ -106,7 +106,7 @@ DASH_ENTERPRISE_URLS = {
             'name': 'Add Authentication to your Dash App',
             'description': (
                 '''
-                Protect your applicaton behind a login screen &
+                Protect your application behind a login screen &
                 access user authentication data in your Dash apps.
                 [Learn more](https://plotly.com/dash/authentication-middleware/).
                 '''
