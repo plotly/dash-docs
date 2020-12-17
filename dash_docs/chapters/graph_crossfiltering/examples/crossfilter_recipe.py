@@ -11,7 +11,7 @@ external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 # make a sample data frame with 6 columns
-np.random.seed(0)
+np.random.seed(0)  # no-display
 df = pd.DataFrame({"Col " + str(i+1): np.random.rand(30) for i in range(6)})
 
 app.layout = html.Div([

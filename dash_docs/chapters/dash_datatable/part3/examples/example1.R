@@ -47,7 +47,7 @@ app$callback(output = list(id = 'datatable_interactivity_container', property = 
              function(rows, derived_virtual_selected_rows) {
                # When the table is first rendered, `derived_virtual_data` and
                # `derived_virtual_selected_rows` will be `list(NULL)`. This is due to an
-               # idiosyncracy in Dash (unsupplied properties are always NULL and Dash
+               # idiosyncrasy in Dash (unsupplied properties are always NULL and Dash
                # calls the dependent callbacks when the component is first rendered).
                # So, if `rows` is `list(NULL)`, then the component was just rendered
                # and its value will be the same as the component's dataframe.

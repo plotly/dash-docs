@@ -11,6 +11,7 @@ if not os.environ.get('IGNORE_DASH_BIO', False):
 from .import deployment
 from .import external_resources
 from .import dash_canvas
+from .import dash_slicer
 from .import dash_annotations
 from .import getting_started
 from .import faq_gotchas

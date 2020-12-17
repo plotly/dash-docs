@@ -8,23 +8,23 @@ from holoviews import streams
 from holoviews.plotting.plotly.dash import to_dash
 
 xs = np.linspace(0, 1, 200)
-ys = xs*(1-xs)
-curve = hv.Curve((xs,ys))
-scatter = hv.Scatter((xs,ys)).opts(size=1)
+ys = xs * (1 - xs)
+curve = hv.Curve((xs, ys))
+scatter = hv.Scatter((xs, ys)).opts(size=1)
 
-bounds_stream = streams.BoundsY(source=curve,boundsy=(0,0))
+bounds_stream = streams.BoundsY(source=curve, boundsy=(0, 0))
 
 def make_area(boundsy):
     return hv.Area(
         (xs, np.minimum(ys, boundsy[0]), np.minimum(ys, boundsy[1])),
-        vdims=['min','max']
+        vdims=['min', 'max']
     )
 
 def make_items(boundsy):
     times = [
         "{0:.2f}".format(x)
-        for x in sorted(np.roots([-1,1,-boundsy[0]])) +
-                 sorted(np.roots([-1,1,-boundsy[1]]))
+        for x in sorted(np.roots([-1, 1, -boundsy[0]])) +
+                 sorted(np.roots([-1, 1, -boundsy[1]]))
     ]
     return hv.ItemTable(
         sorted(zip(['1_entry', '2_exit', '1_exit', '2_entry'], times))

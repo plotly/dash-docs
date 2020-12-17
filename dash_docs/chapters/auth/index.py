@@ -31,7 +31,7 @@ layout = html.Div([
     # Dash Enterprise Auth
 
     > If your company has licensed Dash Enterprise, then view authentication
-    > documentation by visting
+    > documentation by visiting
     >
     > **`https://<your-dash-enterprise-platform>/Docs/dash-enterprise`**
     >

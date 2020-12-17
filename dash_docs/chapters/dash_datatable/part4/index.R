@@ -43,7 +43,7 @@ but it will only filter and sort the data that exists on the page.
 This should be avoided.
 Your users might expect that sorting and filtering is
 happening on the entire dataset and, with large pages,
-might not be aware that this is only occuring on the current page.
+might not be aware that this is only occurring on the current page.
 
 Instead, we recommend implementing sorting and filtering on the backend as well.
 ie, on the entire dataset.
