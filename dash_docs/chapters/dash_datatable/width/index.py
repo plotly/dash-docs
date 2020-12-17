@@ -152,7 +152,7 @@ layout = html.Div(
                 {
                     column: {'value': str(value), 'type': 'markdown'}
                     for column, value in row.items()
-                } for row in df.to_dict('rows')
+                } for row in df.to_dict('records')
             ],
             tooltip_duration=None,
 
@@ -248,7 +248,7 @@ layout = html.Div(
                 {
                     column: {'value': str(value), 'type': 'markdown'}
                     for column, value in row.items()
-                } for row in df.to_dict('rows')
+                } for row in df.to_dict('records')
             ],
             tooltip_duration=None
         )

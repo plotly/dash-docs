@@ -62,7 +62,7 @@ layout = html.Div(
                 {
                     column: {'value': str(value), 'type': 'markdown'}
                     for column, value in row.items()
-                } for row in df.to_dict('rows')
+                } for row in df.to_dict('records')
             ],
 
             # Overflow into ellipsis
@@ -153,7 +153,7 @@ layout = html.Div(
                 'goal': 'Goal was {}'.format(
                     'not achieved' if row['goal'] > row['sales'] else 'achieved'
                 ),
-            } for row in df.to_dict('rows')],
+            } for row in df.to_dict('records')],
 
             tooltip_delay=0,
             tooltip_duration=None
@@ -528,7 +528,7 @@ layout = html.Div(
                 {
                     column: {'value': str(value), 'type': 'markdown'}
                     for column, value in row.items()
-                } for row in df.to_dict('rows')
+                } for row in df.to_dict('records')
             ],
             css=[{
                 'selector': '.dash-table-tooltip',

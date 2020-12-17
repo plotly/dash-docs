@@ -25,7 +25,7 @@ app.scripts.config.serve_locally = True
 
 app.layout = DataTable(
     id='demo-table',
-    data=df.to_dict('rows'),
+    data=df.to_dict('records'),
     columns=[{ 'id': i, 'name': i, 'type': types.get(i, 'any')} for i in df.columns],
     filter_action='custom',
     page_action='native',
@@ -120,7 +120,7 @@ def onFilterUpdate(derived_query_structure):
     if pd_query_string != '':
         df_filtered = df_filtered.query(pd_query_string)
 
-    return df_filtered.to_dict('rows')
+    return df_filtered.to_dict('records')
 
 
 if __name__ == "__main__":
