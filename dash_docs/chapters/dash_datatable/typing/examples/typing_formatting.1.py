@@ -18,7 +18,7 @@ df_typing_formatting = pd.DataFrame(OrderedDict([
 app.layout = html.Div([
     dash_table.DataTable(
         id='typing_formatting_1',
-        data=df_typing_formatting.to_dict('rows'),
+        data=df_typing_formatting.to_dict('records'),
         columns=[{
             'id': 'city',
             'name': 'City',

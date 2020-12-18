@@ -83,7 +83,7 @@ preamble = html.Div([
                         ddk.DataTable(
                            id='table',
                            columns=[{"name": i, "id": i} for i in df.columns],
-                           data=df.to_dict("rows"),
+                           data=df.to_dict('records'),
                            editable=True
                        )
                     ])
