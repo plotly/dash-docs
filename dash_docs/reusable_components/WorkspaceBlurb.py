@@ -12,7 +12,7 @@ def image(vendor):
                 className='label'
             )
         ],
-        href='https://plotly.com/dash/{}'.format(vendor),
+        href='https://plotly.com/dash/{}'.format(vendor.lower()),
         className='azure'
     )
 
