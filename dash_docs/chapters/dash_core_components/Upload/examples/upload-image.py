@@ -36,7 +36,8 @@ app.layout = html.Div([
 def parse_contents(contents, filename, date):
     return html.Div([
         html.H5(filename),
-        html.H6(datetime.datetime.fromtimestamp(date)),
+        html.H6(f"File Modified Date: {datetime.datetime.fromtimestamp(date)}"),
+        html.H6(f"Upload Date: {datetime.datetime.now()}"),
 
         # HTML images accept base64 encoded strings in the same format
         # that is supplied by the upload
