@@ -157,7 +157,7 @@ app.layout = html_div() do
 
     A word of caution: it's not always a good idea to combine Outputs, even if you can:
     - If the Outputs depend on some but not all of the same inputs, keeping them separate
-    can avoid unneccessary updates.
+    can avoid unnecessary updates.
     - If they have the same inputs but do independent computations with these same inputs,
     keeping the callbacks separate can allow them to run in parallel.
     """),

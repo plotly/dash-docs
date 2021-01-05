@@ -3424,7 +3424,7 @@ Troubleshooting = html.Div(children=[
 
         > Background
 
-        > Dash Enterprise uses buildpack technolgy in order to automatically
+        > Dash Enterprise uses buildpack technology in order to automatically
         > build Docker containers. These buildpacks are detected automatically
         > dependeing on the files within the project file.
 
@@ -3458,7 +3458,7 @@ Troubleshooting = html.Div(children=[
 
         > Background
 
-        > Dash Enterprise uses buildpack technolgy in order to automatically
+        > Dash Enterprise uses buildpack technology in order to automatically
         > build Docker containers. These buildpacks are detected automatically
         > dependeing on the files within the project file.
 
@@ -3794,7 +3794,7 @@ Troubleshooting = html.Div(children=[
 
         This error can happen if you are using a version of `git` that
         is incompatible with Dash Enterprise's `git` server.
-        In `git` `v2.26`, `git` switched the default transportation protocol
+        In `git` `v2.26`, `git` switched the default transport protocol
         to Version 2. Dash Enterprise's git server runs on `git` 2.17.1
         and it only supports version `0`.
 

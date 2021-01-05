@@ -95,7 +95,7 @@ This includes:
     - `time (avg milliseconds)` - How long the request took. This is the same as the summary on the green box.
         - `total` - The total time of the request.
         - `compute` - The time spent running your callback function and serializing & deserializing the data. Serialization and deserialization is a data conversion step that the `dash` framework framework performs when receiving and sending data to the client.
-        - `network` - The time spent transfering the data from the browser client to the server and back.
+        - `network` - The time spent transferring the data from the browser client to the server and back.
         - `user: <task-id>` - (Optional) Custom timing events captured by `dash.callback_context.record_timing` (see "Custom Timing Events" below)
     - `data transfer (avg bytes)`
         - `download` - The number of bytes sent from the browser client to the server. This is the data that is passed into your callback function: the `Input` & `State`.

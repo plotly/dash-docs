@@ -67,7 +67,7 @@ we recommend initializing your table with a large number of empty rows and colum
 The DataTable will always return all of the cells in the table,
 even if the cells haven't been filled out. So, you'll likely want to filter out the empty values.
 
-When you clear a cell, the DataTable will set its contents to `''` (emtpy string).
+When you clear a cell, the DataTable will set its contents to `''` (empty string).
 So, for consistency, we recommend initializing your empty data with `''`.
 
 > Heads up! In the future, when we introduce proper data types,
