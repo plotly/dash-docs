@@ -1,125 +1,71 @@
 # -*- coding: utf-8 -*-
+import re
 import dash_html_components as html
 import dash_core_components as dcc
-import re
-from textwrap import dedent
-from .Markdown import Markdown
+
 from dash_docs import tools
+from .Markdown import Markdown
+
 
 def ComponentReference(component_name, lib=dcc):
     component = getattr(lib, component_name)
     component_doc = component.__doc__
 
-    regex = r'''^([^\(]*)\s*\(([^;]*);\s*(.+?)\):\s*(.*?)\s*$'''
-
     return_div = [
         Markdown(
-            '''
+            """
             > Access this documentation in your Python terminal with:
             > ```python
             > >>> help({}.{})
             > ```
-            '''.format(lib.__name__, component_name) +
-
-            '''
+            """.format(
+                lib.__name__, component_name
+            )
+            + """
             > Our recommended IDE for writing Dash apps is Dash Enterprise's
             > [Data Science Workspaces](https://plotly.com/dash/workspaces),
             > which has typeahead support for Dash Component Properties.
             > [Find out if your company is using
             > Dash Enterprise](https://go.plotly.com/company-lookup).
-            ''' if not tools.is_in_dash_enterprise() else ''
+            """
+            if not tools.is_in_dash_enterprise()
+            else ""
         )
     ]
 
-    props = component_doc.split('\n-')[1:]
+    docs = component_doc.split("Keyword arguments:")[-1]
 
-    # sort alphabetically, but keep id at the top
-    id_prop = props.pop(0)
-    props.sort(key=lambda x: x.strip()[0])
-    props = [id_prop] + props
+    # formats code blocks that includes square brackets
+    docs = docs.replace("[", "\[").replace("]", "\]")
+    verbatim_regex = r"`((\\\[)((.|\n)*?)(\\\]))`"
+    docs = re.sub(re.compile(verbatim_regex), r"`[\3]`", docs)
 
-    for prop in props:
+    # format links
+    link_regex = r"\\\[([\w\.\-:\/]+)\\\]\(([\w\.\-:#\/]+)\)"
+    docs = re.sub(re.compile(link_regex), r"[\1](\2)", docs)
 
-        r = re.match(
-            re.compile(regex),
-            prop.replace('\n', ' ')
-        )
+    # formats the prop defaults
+    prop_optional_default_regex = r"""default (.*)\)"""
+    docs = re.sub(re.compile(prop_optional_default_regex), r"default `\1`)", docs)
 
-        if r is None:
-            return_div.append(Markdown(dedent(prop.replace('\n', ' '))))
-            continue
+    # formats the prop type
+    prop_type_regex = r"""(\s*- \w+?\s*\()([^;]*);"""
+    docs = re.sub(re.compile(prop_type_regex), r"\1*\2*;", docs)
 
-        (prop_name, prop_type, prop_optional_default, prop_desc) = r.groups()
-        prop_desc = prop_desc.replace(
-            '[', '\[').replace(
-                ']', '\]')
+    # formats the prop name
+    prop_name_regex = r"""(\n- )(\w+?) \("""
+    docs = re.sub(re.compile(prop_name_regex), r"\1**`\2`** (", docs)
 
-        verbatim_regex = r'`((\\\[)(.*?)(\\\]))`'
+    # formats keys of nested dicts
+    nested_prop_name_regex = r"""(\n\s+- )(\w+?) \("""
+    docs = re.sub(re.compile(nested_prop_name_regex), r"\1`\2` (", docs)
 
-        prop_desc = re.sub(re.compile(verbatim_regex),
-                           r'`[\3]`',
-                           prop_desc)
+    # formats the prop name in the intro to the nested dict
+    intro_prop_regex = r"""(\s*)(\w+?)( has the following type:)"""
+    docs = re.sub(re.compile(intro_prop_regex), r"\1`\2`\3", docs)
 
-        link_regex = r'\\\[([\w\.\-:\/]+)\\\]\(([\w\.\-:#\/]+)\)'
+    # removes a level of nesting
+    docs = docs.replace("\n-", "\n")
 
-        prop_desc = re.sub(re.compile(link_regex),
-                           r'[\1](\2)',
-                           prop_desc)
-
-        if 'dict containing keys' in prop_desc or 'dicts containing keys' in prop_desc:
-            regex_dict = r'''(.*?\.* *[\w]* has the following type: (?:[\w\s|]*)dict[s]* containing keys )([\w\s',]*)(\. Those keys have the following types: )(.*)'''
-            parsed_dict_desc = re.match(
-                re.compile(regex_dict),
-                prop_desc
-            )
-            try:
-                top_level_desc = parsed_dict_desc.groups(0)[0]
-                top_level_keys = parsed_dict_desc.groups(0)[1]
-                top_level_type_preamble = parsed_dict_desc.groups(0)[2]
-                key_defs = parsed_dict_desc.groups(0)[3]
-
-                top_level_keys_list = [key.strip().strip('\'')
-                                       for key in top_level_keys.split(',')]
-                for key in top_level_keys_list:
-                    key_defs = key_defs.replace(
-                        '- {}'.format(key),
-                        '\n- `{}`'.format(key),
-                        1
-                    )
-
-                top_level_type_preamble = top_level_type_preamble.replace(
-                    'Those keys have the following types: ',
-                    'Those keys have the following types: \n'
-                )
-                prop_desc = top_level_desc + \
-                    top_level_keys + \
-                    top_level_type_preamble + \
-                    ''.join(key_defs)
-
-            except AttributeError:
-                pass
-
-        defined_default_val = re.search(
-            r'''default (.*)''',
-            prop_optional_default
-        )
-
-        prop_optional = prop_optional_default
-        if defined_default_val is not None:
-            default_val = defined_default_val.groups(1)[0]
-            prop_optional = 'default `{}`'.format(default_val)
-
-        if prop_type:
-            prop_type = '*{}*; '.format(prop_type)
-            prop_type = prop_type.replace('|', '*|*')
-
-        return_div.append(Markdown(
-            '''**`{}`** ({}{}): {}'''.format(
-                prop_name,
-                prop_type,
-                prop_optional,
-                prop_desc
-            )
-        ))
-
-    return html.Div(return_div, className='reference')
+    return_div.append(Markdown(docs))
+    return html.Div(return_div, className="reference")
