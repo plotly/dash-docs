@@ -282,7 +282,7 @@ DASH_ENTERPRISE_URLS = {
                 },
                 {
                     'url': '/dash-enterprise/application-structure',
-                    'content': chapters.dash_enterprise.dash_enterprise_chapters.Requirements,
+                    'content': chapters.dash_enterprise.application_structure.index.layout,
                     'name': 'Application Structure',
                     'description': 'Ensure that your app meets all the requirements for deployment.'
                 },
@@ -344,12 +344,6 @@ DASH_ENTERPRISE_URLS = {
                     'name': 'Managing Dash Apps via the Command Line',
                     'description': "A list of commands to manage Dash apps available  "
                     "to app owners from the command line via ssh."
-                },
-                {
-                    'url': '/dash-enterprise/checks',
-                    'content': chapters.dash_enterprise.dash_enterprise_chapters.Checks,
-                    'name': 'Dash Enterprise App Health Checks',
-                    'description': 'Create custom checks to ensure that a newly deployed app can serve traffic.'
                 },
                 {
                     'url': '/dash-enterprise/private-packages',

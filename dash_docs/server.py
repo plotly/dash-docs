@@ -168,6 +168,10 @@ def redirect_state():
 def redirect_sizing():
     return redirect('/height', code=301)
 
+@server.route('/checks')
+def redirect_checks():
+    return redirect('/application-structure', code=301)
+
 
 @server.before_request
 def clear_trailing():
