@@ -1,5 +1,6 @@
 import os
 import re
+import glob
 
 if os.environ.get('DASH_APP_LOCATION', '') != 'ABSOLUTE':
     from .server import app
@@ -29,6 +30,24 @@ def exception_handler(func):
             print('\nError running {}\n{}'.format(path, '=' * 76))
             raise e
     return wrapper
+
+
+def load_markdown_files(path):
+    """
+    Usage: content = load_markdown_files(__file__)
+    Loads a set of markdown files (.md) that are in the folder
+    of the file specified at path.
+    Each key is the name of the file, each value is the
+    string of the file's contents.
+    """
+    directory = os.path.join(os.path.dirname(path))
+    list_of_files = glob.glob(os.path.join(directory, '*.md'))
+    content = {}
+    for mdfile in list_of_files:
+        filename = os.path.basename(mdfile)
+        with open(mdfile, 'r') as f:
+            content[filename] = f.read()
+    return content
 
 
 def load_examples(index_filename, omit=[]):

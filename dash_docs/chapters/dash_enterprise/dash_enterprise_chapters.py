@@ -690,241 +690,6 @@ def display_instructions_deploy(method):
         ''')
     ]
 
-
-# # # # # # #
-# Requirements
-# # # # # # #
-Requirements = html.Div(children=[
-    html.H1('Application Structure'),
-
-    Blockquote(),
-
-    rc.Markdown(
-    '''
-    To deploy dash apps to Dash Enterprise, there
-    are a few files required for successful deployment. Below is a common
-    Dash App folder structure and a brief description of each file's function.
-
-    The information below is presented by language; please choose either
-    Python or R depending on the implementation of Dash you are using.
-    ***
-    '''
-    ),
-    dcc.Tabs([
-      dcc.Tab(label='Python', children=[
-        html.Div([
-          rc.Markdown(
-    '''
-
-    ## Folder Reference
-
-    ```
-    Dash_App/
-    |-- assets/
-       |-- app.css
-    |-- app.py
-    |-- .gitignore
-    |-- CHECKS
-    |-- Procfile
-    |-- requirements.txt
-    |-- runtime.txt
-    ```
-
-    ***
-
-    ## Files Reference
-
-    `app.py`
-
-    This is the entry point to your application, it contains your Dash app code.
-    This file must contain a line that defines the `server` variable:
-    ```server = app.server```
-
-    ***
-
-    `CHECKS`
-
-    This optional file allows you to define custom checks to be performed on your app upon deployment.
-     <dccLink href="/dash-enterprise/checks" children="Learn more about the CHECKS file"/>.
-
-    ***
-
-    `.gitignore`
-
-    Determines which files and folders are ignored in git, and therefore
-    ignored (i.e. not copied to the server) when you deploy your application.
-    An example of its contents would be:
-
-    ```
-    venv
-    *.pyc
-    .DS_Store
-    .env
-    ```
-
-    ***
-
-    `Procfile`
-
-    Declares what commands are run by app's containers. This is commonly,
-    ```web: gunicorn app:server --workers 4``` where app refers to the file
-    `app.py` and server refers to the variable named server inside that file.
-    gunicorn is the web server that will run your application, make sure to
-    add this in your requirements.txt file.
-
-    ***
-
-    `requirements.txt`
-
-    Describes the app's python dependencies. For example,
-
-    ```
-    dash=={}
-    dash-auth=={}
-    dash-renderer=={}
-    dash-core-components=={}
-    dash-html-components=={}
-    ```
-
-    If you are using one of the Dash Enterprise packages, like
-    `dash-design-kit` or `dash-snapshots`, then you'll also
-    need to prefix this file with a "`--extra-index-url`" flag.
-    `--extra-index-url` will specify the download location
-    of these packages. For example, this file might look like:
-    ```
-    --extra-index-url=https://your-dash-server.com/Docs/packages
-    dash-design-kit
-    dash
-    gunicorn
-    ```
-
-    ***
-
-    `runtime.txt`
-
-    This optional file specifies python runtime. For example, its contents would be
-    `python-2.7.15` or `python-3.6.6`.  If omitted, Python 3.6.7 will be installed.
-
-    ***
-
-    `assets`
-
-    An optional folder that contains CSS stylesheets, images, or
-    custom JavaScript files. <dccLink href="/external-resources" children="Learn more about assets"/>.
-    '''),
-    ])
-      ]),
-      dcc.Tab(label='R', children=[
-        html.Div([
-          rc.Markdown(
-          '''
-
-    ## Folder Reference
-
-    ```
-    Dash_App/
-    |-- assets/
-       |-- app.css
-    |-- app.R
-    |-- .gitignore
-    |-- CHECKS
-    |-- Procfile
-    |-- .buildpacks
-    |-- apt-packages
-    ```
-
-    ***
-
-    ## Files Reference
-
-    `app.R`
-
-    This is the entry point to your application, it contains your Dash app code.
-    This file must contain a line that includes ```app$run_server()```, or which
-    loads an R script that does.
-
-    ***
-
-    `CHECKS`
-
-    This optional file allows you to define custom checks to be performed on your app upon deployment.
-     <dccLink href="/dash-enterprise/checks" children="Learn more about the CHECKS file"/>.
-
-    ***
-
-    `.gitignore`
-
-    Determines which files and folders are ignored in git, and therefore
-    ignored (i.e. not copied to the server) when you deploy your application.
-    An example of its contents would be:
-
-    ```
-    venv
-    *.pyc
-    .DS_Store
-    .env
-    ```
-
-    ***
-
-    `init.R`
-
-    ```
-    # R script to run author supplied code, typically used to install additional R packages
-    # ======================================================================
-
-    # packages go here
-    install.packages('remotes')
-
-    remotes::install_github('plotly/dashR', upgrade=TRUE)
-    ```
-
-    ***
-
-    `.buildpacks`
-
-    Specifies the buildpack used by the R application to provide a base environment
-    for deployment. This file should contain a URL to the buildpack and the relevant
-    branch, unless the buildpack is stored within `master`.
-
-    We recommend using Plotly's customized buildpack for R deployments:
-
-    ```
-    https://github.com/plotly/heroku-buildpack-r#heroku-18
-    ```
-
-    ***
-
-    `Procfile`
-
-    Declares what commands are run by app's containers. This is commonly,
-    ```web: R -f /app/app.R```, which launches the Dash app from the `/app`
-    subdirectory, where it will be copied during deployment.
-
-    ***
-
-    `apt-packages`
-
-    Describes the app's system-level dependencies. For example, one might include
-
-    ```
-    libcurl4-openssl-dev
-    libxml2-dev
-    libv8-3.14-dev
-    ```
-
-    ***
-
-    `assets`
-
-    An optional folder that contains CSS stylesheets, images, or
-    custom JavaScript files. <dccLink href="/external-resources" children="Learn more about assets"/>.
-    '''),
-    ])
-    ])
-    ])
-    ])
-
 # # # # # # #
 # Adding Static Assets
 # # # # # # #
@@ -2439,82 +2204,6 @@ AppPrivacy = html.Div(children=[
     )
 ])
 
-
-# # # # # # #
-# Dash Enterprise - App Health Checks
-# # # # # # #
-Checks = html.Div(children=[
-    html.H1('Dash Enterprise - App Health Checks'),
-
-    Blockquote(),
-
-    rc.Markdown('''
-    &nbsp;
-
-    Before an app is deployed to Dash Enterprise, a check is performed to make sure that
-    the app is functional. The default check will test to see if the app has encountered a fatal error
-    in the first 10 seconds of running.
-
-    It is possible to customize the health checks performed on your app by adding a file named `CHECKS` to
-    the root directory of your app. In this file you can specify **Checks Settings** to instruct Dash Enterprise when
-    and how to perform the checks. You can also configure **Checks Instructions** to tell Dash Enterprise what endpoints to
-    test and what content it should find there.
-
-    &nbsp;
-    '''),
-
-    html.H3('Checks Settings'),
-
-    rc.Markdown('''
-
-    You can specify values for `WAIT`, `TIMEOUT`, and `ATTEMPTS` to set the period of time
-    that Dash Enterprise waits before performing the check, the amount of time before it times out, and the number of times
-    it will run them before determining that the deployment failed.
-
-    In the example `CHECKS` file below, Dash Enterprise will wait 15 seconds before performing the check, allow up to 10 seconds
-    for a response from the app and perform the check 3 times before marking it as a failure.
-
-    '''),
-
-    rc.Markdown(
-        '''
-        ```shell
-        WAIT=15
-        TIMEOUT=10
-        ATTEMPTS=3
-
-        /app-name/_dash_layout sample text which is inside the layout
-        ```
-        ''', style=styles.code_container
-    ),
-
-    html.H3('Checks Instructions'),
-
-    rc.Markdown('''
-
-   The instructions are specified in the format of a relative link followed by content that Dash Enterprise
-   should find in the response. The expected content can be omitted if text content doesn't make sense (e.g if
-   you want to check whether an image can be served). The example below checks the layout for the text `Sample App`,
-   that `_dash-undo-redo` is included in the dash.css file and that dash-logo.png is being served by the app.
-
-   '''),
-
-    rc.Markdown(
-        '''
-        ```
-        WAIT=5
-        TIMEOUT=10
-        ATTEMPTS=3
-
-        /app-name/_dash-layout Sample App
-        /app-name/assets/dash.css _dash-undo-redo
-        /app-name/assets/images/dash-logo.png
-        ```
-        ''', style=styles.code_container
-    ),
-])
-
-
 # # # # # # #
 # Adding Private Python Packages
 # # # # # # #
@@ -3289,6 +2978,9 @@ Troubleshooting = html.Div(children=[
         7. Reach out to our <dccLink href="/dash-enterprise/support" children="support team"/> with the error that you encountered when doing a `git push plotly master`.
 
         The following is a collection of common error messages when running `git push`.
+        
+        
+        ---
         '''
     ),
 
@@ -3308,6 +3000,9 @@ Troubleshooting = html.Div(children=[
         This is a generic error message that indicates that the git push deployment failed. The root cause of the error will be further up in the logs.
 
         In some cases, the error message may not exist or may be misleading. This page covers many of the common errors that may be reported further up in your deploy logs.
+        
+        
+        ---
         '''
     ),
 
@@ -3333,6 +3028,9 @@ Troubleshooting = html.Div(children=[
 
         See <dccLink href="/dash-enterprise/application-structure" children="Application Structure"/>
         page for more details on `Procfile`.
+        
+        
+        ---
         '''
     ),
 
@@ -3365,6 +3063,9 @@ Troubleshooting = html.Div(children=[
 
         See  <dccLink href="/dash-enterprise/application-structure" children="Application Structure"/>
         page for more details.
+        
+        
+        ---
         '''
     ),
 
@@ -3384,7 +3085,7 @@ Troubleshooting = html.Div(children=[
         ```
 
 
-        This error may happern if you are trying to push from a branch
+        This error may happen if you are trying to push from a branch
         that is not your `master` branch.
 
         To resolve get the name of your current
@@ -3403,10 +3104,13 @@ Troubleshooting = html.Div(children=[
 
         See  <dccLink href="/dash-enterprise/application-structure" children="Application Structure"/>
         page for more details on buildpacks.
+        
+        
+        ---
         '''
     ),
 
-    rc.Markdown(
+   rc.Markdown(
         '''
         ### remote: unknown shorthand flag: 'e' in -e
 
@@ -3417,7 +3121,6 @@ Troubleshooting = html.Div(children=[
         remote: See 'docker image build --help'
         ```
 
-
         This error can happen if your project contains a `Dockerfile`.
         Dash Enterprise does not support projects that contain a `Dockerfile`.
         To resolve, remove the `Dockerfile` from your project and redeploy.
@@ -3426,7 +3129,7 @@ Troubleshooting = html.Div(children=[
 
         > Dash Enterprise uses buildpack technology in order to automatically
         > build Docker containers. These buildpacks are detected automatically
-        > dependeing on the files within the project file.
+        > depending on the files within the project file.
 
         > Dash Enterprise supports three different buildpacks: The standard Python & pip buildpack, a Python & conda buildpack, and a Dash for R buildpack. Dash Enterprise automatically selects the buildpack based off of which files are contained in the project:\
 
@@ -3437,40 +3140,9 @@ Troubleshooting = html.Div(children=[
         > If a `Dockerfile` is included, then Dash Enterprise attempts to use
         > an unsupported Docker buildpack.
 
-        '''
-    ),
-
-    rc.Markdown(
-        '''
-        ### remote: unknown shorthand flag: 'e' in -e
-
-        ```
-        $ git push plotly master
-        [...]
-        remote: unknown shorthand flag: 'e' in -e
-        remote: See 'docker image build --help'
-        ```
 
 
-        This error can happen if your project contains a `Dockerfile`.
-        Dash Enterprise does not support projects that contain a `Dockerfile`.
-        To resolve, remove the `Dockerfile` from your project and redeploy.
-
-        > Background
-
-        > Dash Enterprise uses buildpack technology in order to automatically
-        > build Docker containers. These buildpacks are detected automatically
-        > dependeing on the files within the project file.
-
-        > Dash Enterprise supports three different buildpacks: The standard Python & pip buildpack, a Python & conda buildpack, and a Dash for R buildpack. Dash Enterprise automatically selects the buildpack based off of which files are contained in the project:\
-
-        > - `requirements.txt` - If this file exists, then Dash Enterprise uses the Python & pip buildpack.
-        > - `conda-requirements.txt` - If this file exists, then Dash Enterprises uses the Python & conda buildpack.
-        > - `.buildpacks` - If this file exists and is equal to `https://github.com/plotly/heroku-buildpack-r#heroku-18`, then Dash Enterprise uses the R buildpack.
-
-        > If a `Dockerfile` is included, then Dash Enterprise attempts to use
-        > an unsupported Docker buildpack.
-
+        ---
         '''
     ),
 
@@ -3500,6 +3172,9 @@ Troubleshooting = html.Div(children=[
 
         See  <dccLink href="/dash-enterprise/application-structure" children="Application Structure"/>
         page for more details on `gunicorn` and `requirement.txt`.
+       
+       
+        ---
         '''
     ),
 
@@ -3522,6 +3197,9 @@ Troubleshooting = html.Div(children=[
 
         See <dccLink href="/dash-enterprise/application-structure" children="Application Structure"/>
         page for more details on `Procfile`.
+        
+        
+        ---
         '''
     ),
 
@@ -3541,6 +3219,8 @@ Troubleshooting = html.Div(children=[
         Alternatively, you can attempt to follow
         [these 3rd party instructions to make git accept a self-signed certificate](https://stackoverflow.com/questions/11621768/how-can-i-make-git-accept-a-self-signed-certificate).\
 
+
+        ---
         '''
     ),
 
@@ -3586,6 +3266,8 @@ Troubleshooting = html.Div(children=[
 
         See <dccLink href="/dash-enterprise/application-structure" children="Application Structure"/> page for more details on `requirements.txt`.
 
+
+        ---
         '''
     ),
 
@@ -3645,6 +3327,8 @@ Troubleshooting = html.Div(children=[
         See <dccLink href="/dash-enterprise/ssh" children="SSH"/> page for more details on `ssh-agent`
         and modifying your `~/.ssh/config` file.
 
+
+        ---
         '''
     ),
 
@@ -3661,6 +3345,9 @@ Troubleshooting = html.Div(children=[
 
         If you're receiving the above user permission error, please
         <dccLink href="/dash-enterprise/support" children="contact support"/>.
+        
+        
+        ---
         '''
     ),
 
@@ -3680,6 +3367,9 @@ Troubleshooting = html.Div(children=[
         If your Dash Enterprise server is configured to use SAML-based authentication,
         then pushing code with the `https` git remote is not supported.
         Resolve this by <dccLink href="/dash-enterprise/ssh" children="deploying with SSH"/>.
+        
+        
+        ---
         '''
     ),
 
@@ -3707,30 +3397,9 @@ Troubleshooting = html.Div(children=[
         1. Only the app owner and admin users can deploy to the application. If you are given admin rights you will be able to deploy changes to the app as well.
         2. Pushing via [ssh deploy method](https://dash.plotly.com/dash-enterprise/ssh) after adding your ssh key to the app owner's account.For this method to work, you must create a separate ssh key specifically for the other users account. If you upload the same key to two different users, then Dash Enterprise will not know which user is deploying and will complain and say you don't have permission.
         3. Pushing the master branch from the repository with the app owner's credentials after setting up a CI pipeline working in a repository.
-        '''
-    ),
-
-    rc.Markdown(
-        '''
-        ### Please make sure you have the correct access rights and the repository exists
-
-        ```shell
-        $ git push plotly master
-        [...]
-        dokku@<dash-enterprise-server>: Permission denied (publickey).
-
-        fatal: Could not read from remote repository.
-
-        Please make sure you have the correct access rights
-
-        and the repository exists.
-        ```
-
-
-        This can happen when your `~/.ssh/config` is improproperly configured.
-
-        See the **Modify SSH Config** section on <dccLink href="/dash-enterprise/ssh" children="SSH"/> page
-        for more details. Watch out for trailing slashes in your Dash Enterprise Server domain!
+        
+        
+        ---
         '''
     ),
 
@@ -3775,6 +3444,36 @@ Troubleshooting = html.Div(children=[
         Git can sometimes cache these usernames after you've typed them. Run `$ git config credential.helper` to verify and correct the username.
 
         Also, some operating system's password managers can cache usernames as well. Open your operating system's password manager and verify the username & password if you are deploying with `https`, running into access denied errors, and `git` isn't asking you for your username and password.
+        
+        
+        ---
+        '''
+    ),
+
+    rc.Markdown(
+        '''
+        ### Please make sure you have the correct access rights and the repository exists
+
+        ```shell
+        $ git push plotly master
+        [...]
+        dokku@<dash-enterprise-server>: Permission denied (publickey).
+
+        fatal: Could not read from remote repository.
+
+        Please make sure you have the correct access rights
+
+        and the repository exists.
+        ```
+
+
+        This can happen when your `~/.ssh/config` is improperly configured.
+
+        See the **Modify SSH Config** section on <dccLink href="/dash-enterprise/ssh" children="SSH"/> page
+        for more details. Watch out for trailing slashes in your Dash Enterprise Server domain!
+        
+        
+        ---
         '''
     ),
 
@@ -3815,6 +3514,20 @@ Troubleshooting = html.Div(children=[
         ```
         git config --global protocol.version 0
         ```
+
+        **This error can also happen if you forgot to add the ~/.ssh/config entry.** 
+        It should resemble:
+
+        ```
+        Host <dash-enterprise-server>
+            Port 3022
+        ```
+        
+        See the Modify SSH Config section in [SSH Instructions chapter](https://dash.plotly.com/dash-enterprise/ssh)
+        for more details.
+
+
+        ---
         '''
     ),
 
@@ -3854,12 +3567,15 @@ Troubleshooting = html.Div(children=[
         To resolve, make sure that the directives (e.g. `web`, `worker`) in the `Procfile` & `DOKKU_SCALE`
         match.
 
-        See <dccLink href="/dash-enterprise/application-structure" children="application structure"/> for more details on `Procfile` & `DOKKU_SCALE`.
+        See <dccLink href="/dash-enterprise/application-structure" children="application structure"/>
+        for more details on `Procfile` & `DOKKU_SCALE`.
 
+
+        ---
         '''
     ),
 
-    dcc.Markdown(
+    rc.Markdown(
         '''
         ## App container failed to start!!
 
@@ -3887,8 +3603,130 @@ Troubleshooting = html.Div(children=[
         ensure that your environment will match since it has the same build
         process (it will build the packages listed in `requirements.txt`),
         the same network, and the same operating system.
+
+
+        ---
+        '''
+    ),
+
+    rc.Markdown(
+        '''
+        ## gunicorn: error: unrecognized arguments
+
+        ```sh
+        $ git push plotly master
+        [...]
+        remote: App container failed to start!!
+        =====> <your-dash-app> web container output:
+               usage: gunicorn [OPTIONS] [APP_MODULE]
+               gunicorn: error: unrecognized arguments: --timout 2
+        [...]
+         ! [remote rejected] master -> master (pre-receive hook declined)
+        error: failed to push some refs to 'dokku@<your-dash-enterprise-host>:<your-dash-app>'
+        ```
+
+
+        This can happen when you add an invalid `gunicorn` argument to the `web`process in your `Procfile`.
+
+        To resolve, verify the format and spelling of those arguments. See [Gunicorn Docs on Settings](https://docs.gunicorn.org/en/stable/settings.html) for more details.
+
+
+        ---
+        '''
+    ),
+
+        rc.Markdown(
+        '''
+        ## \[CRITICAL\] WORKER TIMEOUT
+
+        ```sh
+        [...]
+        2020-12-01T07:45:15.008398034Z app[web.1]: [2020-12-01 07:45:15 +0000] [15] [CRITICAL] WORKER TIMEOUT (pid:1040)
+        [...]
+
+        ```
+
+        This can happen in the following scenarios:
+
+
+        * Your app takes longer than 30 seconds to start — 
+
+        In this scenario, the `gunicorn` `web` process does not have enough 
+        time to complete its task during the booting process. By default, 
+        `gunicorn` has a 30 second timeout. Workers silent for more than this 
+        many seconds are killed and restarted. 
+
+
+        To resolves, we recommend that you first use the `--preload` flag to reduce your 
+        application's memory consumption and speed up boot time. Avoid the `--preload` 
+        flag if you are using shared database connection pools. See 
+        [Gunicorn Docs on Preloading](https://docs.gunicorn.org/en/latest/settings.html#preload-app) 
+        for more details. 
+
+
+        ```
+        web: gunicorn app:server --workers 4 --preload
+        
+        ```
+    
+
+        Use the `--timeout` flag only if you cannot use the `--preload` flag. 
+        `--timeout` allows you to modify the default amount of time available 
+        for your workers to complete  a task. See 
+        [Gunicorn Docs on Timeout](https://docs.gunicorn.org/en/stable/settings.html#timeout)
+        for details.
+
+
+        ```
+        web: gunicorn app:server --workers 4 --timeout 90
+
+        ```
+  
+
+        * Your app's callbacks take more than 30 seconds to finish — 
+
+        To resolve, consider using a background job queue with the Dash 
+        Enterprise Snapshot Engine. 
+
+        Alternatively, increase this timeout and ask 
+        your server admin to increase the timeout setting in the Dash Enterprise 
+        Server Manager. We recommend using a job queue instead of increasing 
+        the timeouts because it will make your application more scalable.
+
+
+        ---
+        '''
+    ),
+
+    rc.Markdown(
+        '''
+        ## error processing package ca-certificates
+
+        ```
+        rm: cannot remove ‘ca-certicates.crt’: Device or resource busy
+        dpkg: error processing package ca-certificates
+
+        ```
+
+        This may occur because Dash Enterprise maps `/etc/ssl/certs` from the host server to 
+        Dash apps to make it possible to install APT packages from non-standard APT repositories
+        by default. This interfere with installing certain packages. A server configuration 
+        option to turn this feature off is available. See APT files section in 
+        [Application Structure chapter](/dash-enterprise/application-structure) 
+        for more details.
+
+        To resolve, an admin user can login to your-dash-instance:8800/settings, check 
+        "Enable Dash Customizations" at the bottom of the page and then check 
+        "Indirect Certificate Mapping". They would then save and restart the 
+        server to enable the change. That would prevent you from seeing this 
+        current error.
+    
+
+        ---
         '''
     )
+
+
 
 ])
 
