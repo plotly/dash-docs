@@ -1,6 +1,7 @@
 ## .buildpacks
 
 
+A buildpack converts source code into a docker image.
 By default, Dash Enterprise will not use an **R buildpack** if your project folder 
 contains `run.R`, `init.R` or `init.r` files. You must specify the buildpack by 
 creating a `.buildpacks` file and setting it to:

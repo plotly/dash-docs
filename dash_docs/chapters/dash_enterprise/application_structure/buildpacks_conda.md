@@ -2,10 +2,10 @@
 
 
 A buildpack converts source code into a docker image. The **Conda buildpack** is automatically 
-used if `requirements.txt` and `conda-runtime.txt` file are detected.
+used if a `conda-runtime.txt` file is detected.
 This buildpack is open source and available here: https://github.com/plotly/conda-buildpack. 
 If there are other files in the folder like `package.json` or `Dockerfile`, then Dash Enterprise
-will not know which buildpack to use. To force Dash Enterprise to use this **Conda buildpack**, 
+will not know which buildpack to use. To force Dash Enterprise to use this Conda buildpack, 
 create a `.buildpacks` file and set it to:
 
 ```
