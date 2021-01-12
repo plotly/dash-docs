@@ -12,7 +12,4 @@ Buildpacks are the technology responsible for transforming deployed code into th
 that is then run as a container on the Dash Enterprise server or the Kubernetes cluster.
 It's a higher-level abstraction of a Dockerfile.
 
-Dash Enterprise supports buildpacks for Python, Conda and R. 
-
-By default, when Dash Enterprise detects a `requirements.txt` file it will use the **Python buildpack**. 
-This automatic detection can be overridden by a `.buildpacks` file.
+Dash Enterprise supports buildpacks for Python, Conda and R.

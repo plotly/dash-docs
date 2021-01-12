@@ -1,9 +1,10 @@
 ## .buildpacks
 
-A buildpack converts source code into a docker image. The Python buildpack is automatically used if a requirements.txt file is detected.
+A buildpack converts source code into a docker image. The **Python buildpack** is automatically used 
+if a `requirements.txt` file is detected.
 The Plotly maintained buildpack is open source and available here: https://github.com/plotly/heroku-buildpack-python. 
 If there are other files in the folder like `package.json` or `Dockerfile`, then Dash Enterprise
-will not know which buildpack to use. To force Dash Enterprise to use this **Python buildpack**, 
+will not know which buildpack to use. To force Dash Enterprise to use this Python buildpack, 
 create a `.buildpacks` file and set it to:
 
 ```
