@@ -6,20 +6,8 @@ contains `run.R`, `init.R` or `init.r` files. You must specify the buildpack by
 creating a `.buildpacks` file and setting it to:
 
 ```
-https://github.com/plotly/heroku-buildpack-r/tree/heroku-18
+https://github.com/plotly/heroku-buildpack-r#heroku-18
 ```
-
-To specify a buildpack release append `#` followed by its version number to
-the URL. For example:
-
-```
-https://github.com/plotly/heroku-buildpack-r/tree/heroku-18#4.0.0 
-```
-
-The "v" corresponds to the tag of the [release of the buildpack on Github](https://github.com/plotly/heroku-buildpack-r/tags). 
-This should correspond to your version of Dash Enterprise version number.
-Newer releases of Dash Enterprise can be incompatible with older versions of the 
-buildpack and vice versa. 
 
 >We recommend using open source buildpacks so that you may inspect, fork, and 
 modify these them.
