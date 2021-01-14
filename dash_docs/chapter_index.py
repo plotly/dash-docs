@@ -405,19 +405,23 @@ DASH_ENTERPRISE_URLS = {
                     'description': 'A reference for git commands and how they are used '
                     'with Dash Enterprise.'
                 },
-
                 {
                     'url': '/dash-enterprise/privacy',
                     'content': chapters.dash_enterprise.dash_enterprise_chapters.AppPrivacy,
                     'name': 'Dash App Privacy',
                     'description': 'Dash App Privacy and Managing Collaborators'
                 },
-
                 {
                     'url': '/dash-enterprise/app-authentication',
                     'content': chapters.dash_enterprise.dash_enterprise_chapters.Authentication,
                     'name': 'Dash Enterprise Auth Features',
                     'description': 'Accessing User Authentication Data in your Dash App'
+                },
+                {
+                    'url': '/dash-enterprise/continuous-integration',
+                    'content': chapters.dash_enterprise.continuous_integration.index.layout,
+                    'name': 'Dash Enterprise Continuous Integration',
+                    'description': 'Learn how to setup CI pipelines for Dash Enterprise'
                 },
             ]
         }
