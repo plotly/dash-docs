@@ -29,9 +29,9 @@ layout = html.Div(className='toc', children=[
     ]),
 
     rc.Section("Configuration", [
-        rc.Chapter('Application Structure',
+        rc.Chapter('Application Structure & Buildpacks',
                 '/dash-enterprise/application-structure',
-                'Ensure that your app meets all the requirements for deployment.'),
+                'Ensure that your app meets all the requirements for deployment and learn how to customize the Docker images.'),
         rc.Chapter('Adding Static Assets',
                 '/dash-enterprise/static-assets',
                 'Learn how to include custom CSS, JS, and images with the `assets` directory.'),
@@ -76,9 +76,6 @@ rc.Section("User Interface", [
         rc.Chapter('Dash Enterprise Auth Features',
                 '/dash-enterprise/app-authentication',
                 'Using `dash-enterprise-auth` to manage user authentication data.'),
-        rc.Chapter('App Deployment Health Checks',
-                '/dash-enterprise/checks',
-                'Create custom checks to ensure that a newly deployed app can serve traffic.'),
         rc.Chapter('Adding Private Python Packages',
                 '/dash-enterprise/private-packages',
                 'Install private python packages in your Dash Apps.'),
