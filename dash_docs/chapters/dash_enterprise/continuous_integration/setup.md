@@ -1,4 +1,4 @@
-When CI/CD with Dash Enterprise, all you need to do is `git push` your code from your CI system to Dash Enterprise. Dash Enterprise handles creating the builds (Docker containers), deploying those containers, and opening up those containers to network traffic. For more details on how deployment works, view the [Application Structure & Buildpacks structure](/Docs/dash-enterprise/application).
+When CI/CD with Dash Enterprise, all you need to do is `git push` your code from your CI system to Dash Enterprise. Dash Enterprise handles creating the builds (Docker containers), deploying those containers, and opening up those containers to network traffic. For more details on how deployment works, view the [Application Structure & Buildpacks structure](/dash-enterprise/application).
 
 This set of instructions demonstrates how to write a script that deploys your code to Dash Enterprise from a CI system. In practice, you may modify these scripts to only run when your code has been merged rather than on every branch & pull request or you may include additional API calls to Dash Enterprise to initialize services or set environment members, etc. See the {graphql_api}.
 
@@ -8,7 +8,7 @@ This set of instructions demonstrates how to write a script that deploys your co
 
 1. Designate an admin account who will deploy the apps on behalf of the users. This could be a new admin account or an existing one. Admin accounts have deploy access to all applications. By using an admin account, Dash developers can continue to create & manage their own apps while the separate admin account can deploy to all apps.
 
-2. Create an ssh key and add the public key to Dash Enterprise. See [ssh docs](/Docs/dash-enterprise/ssh) for more details.
+2. Create an ssh key and add the public key to Dash Enterprise. See [ssh docs](/dash-enterprise/ssh) for more details.
 
 3. Write a CI script that runs the `git push` command with `ssh`. There are many ways to do this. Here is one way:
    a. Add the SSH private key as an environment variable in the CI tool. Name this variable `SSH_PRIVATE_KEY`. Replace newlines with `,` (no space)
