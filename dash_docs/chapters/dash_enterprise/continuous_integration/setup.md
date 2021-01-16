@@ -6,7 +6,7 @@ This set of instructions demonstrates how to write a script that deploys your co
 {graphql_api_notes}
 
 
-1. Designate an admin account who will deploy the apps on behalf of the users. This could be a new admin account or an existing one. Admin accounts have deploy access to all applications. By using an admin account, Dash developers can continue to create & manage their own apps while the separate admin account can deploy to all apps.
+1. Designate a service account with admin privileges that will deploy the apps on behalf of the owners of the apps. This could be a new admin account or an existing one. Admin accounts have deploy access to all applications. By using an admin account, Dash developers can continue to create & manage their own apps while the separate admin account can deploy to all apps.
 
 2. Create an ssh key and add the public key to Dash Enterprise. See [ssh docs](/dash-enterprise/ssh) for more details.
 
