@@ -90,6 +90,9 @@ rc.Section("User Interface", [
                 '/dash-enterprise/database-connections',
                 'Learn how to manage external database connections, perform '
                 'queries with Dash callbacks, and maintain SQL best practices.'),
+        rc.Chapter('Dash Enterprise Continuous Integration',
+                '/dash-enterprise/continuous-integration',
+                'Learn how to setup CI pipelines for Dash Enterprise'),
     ]),
 
     rc.Section("Troubleshooting", [
