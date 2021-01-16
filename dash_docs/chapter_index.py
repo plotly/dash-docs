@@ -70,6 +70,176 @@ def component_list(
         component[0].upper() == component[0]
     ]
 
+APP_MANAGER_URLS = [
+    {
+        'name': 'App Manager Overview',
+        'breadcrumb': 'Dash Enterprise',
+        'url': '/dash-enterprise',
+        'content': chapters.dash_enterprise.index.layout
+    },
+    {
+        'url': '/dash-enterprise/initialize',
+        'content': chapters.dash_enterprise.dash_enterprise_chapters.Initialize,
+        'name': 'Part 1. Initialize Dash Apps on Dash Enterprise',
+        'description': 'Initialize Dash Apps on Plotly Enterprise'
+    },
+    {
+        'url': '/dash-enterprise/deployment',
+        'content': chapters.dash_enterprise.dash_enterprise_chapters.Deploy,
+        'name': 'Part 2. Deploy Dash Apps on Dash Enterprise',
+        'description': 'Deploy Dash Apps on Dash Enterprise'
+    },
+    {
+        'url': '/dash-enterprise/application-structure',
+        'content': chapters.dash_enterprise.application_structure.index.layout,
+        'name': 'Application Structure, Buildpacks, and Deployment Lifecycle',
+        'description': 'Ensure that your app meets all the requirements for deployment.'
+    },
+    {
+        'url': '/dash-enterprise/static-assets',
+        'content': chapters.dash_enterprise.dash_enterprise_chapters.staticAssets,
+        'name': 'Adding Static Assets',
+        'description': 'Learn how to include custom CSS, JS, and images with the `assets` directory.'
+    },
+    {
+        'url': '/dash-enterprise/configure-system-dependencies',
+        'content': chapters.dash_enterprise.dash_enterprise_chapters.ConfigSys,
+        'name': 'Configuring System Dependencies',
+        'description': 'Install and configure system dependencies such '
+        'as database drivers or the Java JRE environment.'
+    },
+    {
+        'url': '/dash-enterprise/portal',
+        'content': chapters.dash_enterprise.dash_enterprise_chapters.Portal,
+        'name': 'Dash App Portal',
+        'description': 'Learn about the Dash App Portal '
+    },
+    {
+        'url': '/dash-enterprise/admin-panel',
+        'content': chapters.dash_enterprise.dash_enterprise_chapters.AdminPanel,
+        'name': 'Admin Panel',
+        'description': 'Manage users in the Admin Panel '
+    },
+    {
+        'url': '/dash-enterprise/redis-database',
+        'content': chapters.dash_enterprise.dash_enterprise_chapters.Redis,
+        'name': 'Linking a Redis Database',
+        'description': 'Create and link an in-memory database to your Dash Apps.'
+    },
+    {
+        'url': '/dash-enterprise/environment-variables',
+        'content': chapters.dash_enterprise.dash_enterprise_chapters.EnvVars,
+        'name': 'Setting Environment Variables',
+        'description': 'Environment variables are commonly used to store '
+        'secret variables like database passwords.'
+    },
+    {
+        'url': '/dash-enterprise/map-local-directories',
+        'content': chapters.dash_enterprise.dash_enterprise_chapters.LocalDir,
+        'name': 'Mapping Local Directories',
+        'description': 'Directory mappings allow you to make directories '
+        'on the Dash Enterprise available to your app.'
+    },
+    {
+        'url': '/dash-enterprise/ssh',
+        'content': chapters.dash_enterprise.dash_enterprise_chapters.Ssh,
+        'name': 'Authenticating to Dash Enterprise with SSH',
+        'description': "There are two methods to deploy Dash Apps: HTTPS and SSH "
+        "and we recommend getting started with the HTTPS method."
+    },
+    {
+        'url': '/dash-enterprise/cli',
+        'content': chapters.dash_enterprise.dash_enterprise_chapters.Cli,
+        'name': 'Managing Dash Apps via the Command Line',
+        'description': "A list of commands to manage Dash apps available  "
+        "to app owners from the command line via ssh."
+    },
+    {
+        'url': '/dash-enterprise/private-packages',
+        'content': chapters.dash_enterprise.dash_enterprise_chapters.PrivatePackages,
+        'name': 'Adding Private Python Packages',
+        'description': 'Install private python packages in your Dash Apps.'
+    },
+    {
+        'url': '/dash-enterprise/celery-process',
+        'content': chapters.dash_enterprise.dash_enterprise_chapters.Celery,
+        'name': 'Linking a Celery Process',
+        'description': 'Add a task queue to your Dash Apps.'
+    },
+    {
+        'url': '/dash-enterprise/staging-app',
+        'content': chapters.dash_enterprise.dash_enterprise_chapters.StagingApp,
+        'name': 'Create a Staging Dash App ',
+        'description': 'Use a staged Dash App to test changes before updating '
+        'your production Dash App.'
+    },
+    {
+        'url': '/dash-enterprise/database-connections',
+        'content': chapters.dash_enterprise.dash_enterprise_chapters.DataConnections,
+        'name': 'Connect a Dash App to an SQL Database',
+        'description': 'Learn how to manage external database connections, perform '
+        'queries with Dash callbacks, and maintain SQL best practices.'
+    },
+    {
+        'url': '/dash-enterprise/analytics',
+        'content': chapters.dash_enterprise.dash_enterprise_chapters.Analytics,
+        'name': 'App Analytics',
+        'description': 'View app analytics such as last updated, '
+        'CPU usage, Memory Usage, and more.'
+    },
+    {
+        'url': '/dash-enterprise/logs',
+        'content': chapters.dash_enterprise.dash_enterprise_chapters.Logs,
+        'name': 'App Logs',
+        'description': '''Check your Dash App's logs via the Dash
+        Enterprise UI or via the command line.'''
+    },
+    {
+        'url': '/dash-enterprise/troubleshooting',
+        'content': chapters.dash_enterprise.dash_enterprise_chapters.Troubleshooting,
+        'name': 'Common Errors',
+        'description': 'Common errors when deploying Dash Apps.'
+    },
+    {
+        'url': '/dash-enterprise/support',
+        'content': chapters.dash_enterprise.dash_enterprise_chapters.Support,
+        'name': 'Support',
+        'description': 'Having trouble deploying your app? Our dedicated '
+        'support team is available to help you out.'
+    },
+    {
+        'url': '/dash-enterprise/git',
+        'content': chapters.dash_enterprise.dash_enterprise_chapters.Git,
+        'name': 'Advanced Git',
+        'description': 'A reference for git commands and how they are used '
+        'with Dash Enterprise.'
+    },
+    {
+        'url': '/dash-enterprise/privacy',
+        'content': chapters.dash_enterprise.dash_enterprise_chapters.AppPrivacy,
+        'name': 'Dash App Privacy',
+        'description': 'Dash App Privacy and Managing Collaborators'
+    },
+    {
+        'url': '/dash-enterprise/app-authentication',
+        'content': chapters.dash_enterprise.dash_enterprise_chapters.Authentication,
+        'name': 'Dash Enterprise Auth Features',
+        'description': 'Accessing User Authentication Data in your Dash App'
+    },
+    {
+        'url': '/dash-enterprise/continuous-integration',
+        'content': chapters.dash_enterprise.continuous_integration.index.layout,
+        'name': 'Dash Enterprise Continuous Integration',
+        'description': 'Learn how to setup CI pipelines for Dash Enterprise'
+    },
+    {
+        'url': '/dash-enterprise/api',
+        'content': chapters.dash_enterprise.api.index.layout,
+        'name': 'GraphQL API',
+        'description': 'Learn how to integrate with the Dash Enterprise App Manager with the Graphql API.'
+    },
+]
+
 DASH_ENTERPRISE_URLS = {
     'name': 'Production Capabilities',
     'description': (
@@ -261,169 +431,7 @@ DASH_ENTERPRISE_URLS = {
                 mounts, manage buildpacks, configure databases and more.
                 '''
             ),
-            'chapters': [
-                {
-                    'name': 'App Manager Overview',
-                    'breadcrumb': 'Dash Enterprise',
-                    'url': '/dash-enterprise',
-                    'content': chapters.dash_enterprise.index.layout
-                },
-                {
-                    'url': '/dash-enterprise/initialize',
-                    'content': chapters.dash_enterprise.dash_enterprise_chapters.Initialize,
-                    'name': 'Part 1. Initialize Dash Apps on Dash Enterprise',
-                    'description': 'Initialize Dash Apps on Plotly Enterprise'
-                },
-                {
-                    'url': '/dash-enterprise/deployment',
-                    'content': chapters.dash_enterprise.dash_enterprise_chapters.Deploy,
-                    'name': 'Part 2. Deploy Dash Apps on Dash Enterprise',
-                    'description': 'Deploy Dash Apps on Dash Enterprise'
-                },
-                {
-                    'url': '/dash-enterprise/application-structure',
-                    'content': chapters.dash_enterprise.application_structure.index.layout,
-                    'name': 'Application Structure',
-                    'description': 'Ensure that your app meets all the requirements for deployment.'
-                },
-                {
-                    'url': '/dash-enterprise/static-assets',
-                    'content': chapters.dash_enterprise.dash_enterprise_chapters.staticAssets,
-                    'name': 'Adding Static Assets',
-                    'description': 'Learn how to include custom CSS, JS, and images with the `assets` directory.'
-                },
-                {
-                    'url': '/dash-enterprise/configure-system-dependencies',
-                    'content': chapters.dash_enterprise.dash_enterprise_chapters.ConfigSys,
-                    'name': 'Configuring System Dependencies',
-                    'description': 'Install and configure system dependencies such '
-                    'as database drivers or the Java JRE environment.'
-                },
-                {
-                    'url': '/dash-enterprise/portal',
-                    'content': chapters.dash_enterprise.dash_enterprise_chapters.Portal,
-                    'name': 'Dash App Portal',
-                    'description': 'Learn about the Dash App Portal '
-                },
-                {
-                    'url': '/dash-enterprise/admin-panel',
-                    'content': chapters.dash_enterprise.dash_enterprise_chapters.AdminPanel,
-                    'name': 'Admin Panel',
-                    'description': 'Manage users in the Admin Panel '
-                },
-                {
-                    'url': '/dash-enterprise/redis-database',
-                    'content': chapters.dash_enterprise.dash_enterprise_chapters.Redis,
-                    'name': 'Linking a Redis Database',
-                    'description': 'Create and link an in-memory database to your Dash Apps.'
-                },
-                {
-                    'url': '/dash-enterprise/environment-variables',
-                    'content': chapters.dash_enterprise.dash_enterprise_chapters.EnvVars,
-                    'name': 'Setting Environment Variables',
-                    'description': 'Environment variables are commonly used to store '
-                    'secret variables like database passwords.'
-                },
-                {
-                    'url': '/dash-enterprise/map-local-directories',
-                    'content': chapters.dash_enterprise.dash_enterprise_chapters.LocalDir,
-                    'name': 'Mapping Local Directories',
-                    'description': 'Directory mappings allow you to make directories '
-                    'on the Dash Enterprise available to your app.'
-                },
-                {
-                    'url': '/dash-enterprise/ssh',
-                    'content': chapters.dash_enterprise.dash_enterprise_chapters.Ssh,
-                    'name': 'Authenticating to Dash Enterprise with SSH',
-                    'description': "There are two methods to deploy Dash Apps: HTTPS and SSH "
-                    "and we recommend getting started with the HTTPS method."
-                },
-                {
-                    'url': '/dash-enterprise/cli',
-                    'content': chapters.dash_enterprise.dash_enterprise_chapters.Cli,
-                    'name': 'Managing Dash Apps via the Command Line',
-                    'description': "A list of commands to manage Dash apps available  "
-                    "to app owners from the command line via ssh."
-                },
-                {
-                    'url': '/dash-enterprise/private-packages',
-                    'content': chapters.dash_enterprise.dash_enterprise_chapters.PrivatePackages,
-                    'name': 'Adding Private Python Packages',
-                    'description': 'Install private python packages in your Dash Apps.'
-                },
-                {
-                    'url': '/dash-enterprise/celery-process',
-                    'content': chapters.dash_enterprise.dash_enterprise_chapters.Celery,
-                    'name': 'Linking a Celery Process',
-                    'description': 'Add a task queue to your Dash Apps.'
-                },
-                {
-                    'url': '/dash-enterprise/staging-app',
-                    'content': chapters.dash_enterprise.dash_enterprise_chapters.StagingApp,
-                    'name': 'Create a Staging Dash App ',
-                    'description': 'Use a staged Dash App to test changes before updating '
-                    'your production Dash App.'
-                },
-                {
-                    'url': '/dash-enterprise/database-connections',
-                    'content': chapters.dash_enterprise.dash_enterprise_chapters.DataConnections,
-                    'name': 'Connect a Dash App to an SQL Database',
-                    'description': 'Learn how to manage external database connections, perform '
-                    'queries with Dash callbacks, and maintain SQL best practices.'
-                },
-                {
-                    'url': '/dash-enterprise/analytics',
-                    'content': chapters.dash_enterprise.dash_enterprise_chapters.Analytics,
-                    'name': 'App Analytics',
-                    'description': 'View app analytics such as last updated, '
-                    'CPU usage, Memory Usage, and more.'
-                },
-                {
-                    'url': '/dash-enterprise/logs',
-                    'content': chapters.dash_enterprise.dash_enterprise_chapters.Logs,
-                    'name': 'App Logs',
-                    'description': '''Check your Dash App's logs via the Dash
-                    Enterprise UI or via the command line.'''
-                },
-                {
-                    'url': '/dash-enterprise/troubleshooting',
-                    'content': chapters.dash_enterprise.dash_enterprise_chapters.Troubleshooting,
-                    'name': 'Common Errors',
-                    'description': 'Common errors when deploying Dash Apps.'
-                },
-                {
-                    'url': '/dash-enterprise/support',
-                    'content': chapters.dash_enterprise.dash_enterprise_chapters.Support,
-                    'name': 'Support',
-                    'description': 'Having trouble deploying your app? Our dedicated '
-                    'support team is available to help you out.'
-                },
-                {
-                    'url': '/dash-enterprise/git',
-                    'content': chapters.dash_enterprise.dash_enterprise_chapters.Git,
-                    'name': 'Advanced Git',
-                    'description': 'A reference for git commands and how they are used '
-                    'with Dash Enterprise.'
-                },
-                {
-                    'url': '/dash-enterprise/privacy',
-                    'content': chapters.dash_enterprise.dash_enterprise_chapters.AppPrivacy,
-                    'name': 'Dash App Privacy',
-                    'description': 'Dash App Privacy and Managing Collaborators'
-                },
-                {
-                    'url': '/dash-enterprise/app-authentication',
-                    'content': chapters.dash_enterprise.dash_enterprise_chapters.Authentication,
-                    'name': 'Dash Enterprise Auth Features',
-                    'description': 'Accessing User Authentication Data in your Dash App'
-                },
-                {
-                    'url': '/dash-enterprise/continuous-integration',
-                    'content': chapters.dash_enterprise.continuous_integration.index.layout,
-                    'name': 'Dash Enterprise Continuous Integration',
-                    'description': 'Learn how to setup CI pipelines for Dash Enterprise'
-                },
-            ]
+            'chapters': APP_MANAGER_URLS
         }
 
     ]
