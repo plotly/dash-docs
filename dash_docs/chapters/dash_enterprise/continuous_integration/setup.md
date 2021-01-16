@@ -1,6 +1,6 @@
-When CI/CD with Dash Enterprise, all you need to do is `git push` your code from your CI system to Dash Enterprise. Dash Enterprise handles creating the builds (Docker containers), deploying those containers, and opening up those containers to network traffic. For more details on how deployment works, view the [Application Structure & Buildpacks structure](/dash-enterprise/application).
+To set up CI/CD with Dash Enterprise, all you need to do is `git push` your code from your CI system to Dash Enterprise. Dash Enterprise handles creating the builds (Docker containers), deploying those containers, and opening up those containers to network traffic. For more details on how deployment works, view the [Application Structure & Buildpacks structure](/dash-enterprise/application-structure).
 
-This set of instructions demonstrates how to write a script that deploys your code to Dash Enterprise from a CI system. In practice, you may modify these scripts to only run when your code has been merged rather than on every branch & pull request or you may include additional API calls to Dash Enterprise to initialize services or set environment members, etc. See the {graphql_api}.
+This set of instructions demonstrates how to write a script that deploys your code to Dash Enterprise from a CI system. In practice, you may modify these scripts to only run when your code has been merged rather than on every branch & pull request or you may include additional API calls to Dash Enterprise to initialize services or set environment variables, etc. See the {graphql_api}.
 
 
 {graphql_api_notes}
@@ -29,15 +29,15 @@ This set of instructions demonstrates how to write a script that deploys your co
    ls -al
 
    echo '-----> Creating ssh key'
-   echo "$SSH_PRIVATE_KEY" | tr ',' '\n' > ~/circleci/.ssh/id_rsa
-   chmod 600 ~/circleci/.ssh/id_rsa # permissioning
+   echo "$SSH_PRIVATE_KEY" | tr ',' '\n' > ~/.ssh/id_rsa
+   chmod 600 ~/.ssh/id_rsa # permissioning
    eval "$(ssh-agent -s)" # setting ssh environment variable
 
    echo '-----> Adding keys to ssh-agent'
-   ssh-add ~/circleci/.ssh/id_rsa
+   ssh-add ~/.ssh/id_rsa
 
    echo '-----> Creating ssh config'
-   echo "$SSH_CONFIG" | tr ',' '\n' > ~/circleci/.ssh/config
+   echo "$SSH_CONFIG" | tr ',' '\n' > ~/.ssh/config
 
    echo '-----> Adding git remote'
    git config remote.plotly.url >&- || git remote add plotly dokku@<your-dash-enterprise-hostname>:<your-dash-app-name> # add remote if remote doesn't exist
