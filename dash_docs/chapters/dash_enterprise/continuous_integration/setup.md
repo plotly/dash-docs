@@ -1,10 +1,10 @@
-When creating CI/CD pipelines with Dash Enterprise, all you need to do is to `git push` your code from your CI/CD system. Dash Enterprise will handle the creation and deployment of your app's containers, and manage its network traffic. You may also include calls to the {app_manager_api}.
+When CI/CD with Dash Enterprise, all you need to do is `git push` your code from your CI system to Dash Enterprise. Dash Enterprise handles creating the builds (Docker containers), deploying those containers, and opening up those containers to network traffic. For more details on how deployment works, view the [Application Structure & Buildpacks structure](/Docs/dash-enterprise/application).
 
-{app_manager_api_notes}
+This set of instructions demonstrates how to write a script that deploys your code to Dash Enterprise from a CI system. In practice, you may modify these scripts to only run when your code has been merged rather than on every branch & pull request or you may include additional API calls to Dash Enterprise to initialize services or set environment members, etc. See the {graphql_api}.
 
----
 
-The following set of instructions covers one of the ways to deploy your Dash app with a CI/CD system:
+{graphql_api_notes}
+
 
 1. Designate an admin account who will deploy the apps on behalf of the users. This could be a new admin account or an existing one. Admin accounts have deploy access to all applications. By using an admin account, Dash developers can continue to create & manage their own apps while the separate admin account can deploy to all apps.
 
@@ -40,7 +40,7 @@ The following set of instructions covers one of the ways to deploy your Dash app
    echo "$SSH_CONFIG" | tr ',' '\n' > ~/circleci/.ssh/config
 
    echo '-----> Adding git remote'
-   git config remote.plotly.url >&- || git remote add plotly dokku@dash-playground.plotly.host:aa-tngo-ci-qa # add remote if remote doesn't exist
+   git config remote.plotly.url >&- || git remote add plotly dokku@<your-dash-enterprise-hostname>:<your-dash-app-name> # add remote if remote doesn't exist
 
    echo '-----> Deploying app'
    git push plotly HEAD:master
