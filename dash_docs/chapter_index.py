@@ -1259,10 +1259,8 @@ URLS = [
                 'description': 'HoloViews integration'
             },
         ]
-    },
-    DASH_ENTERPRISE_URLS,
-
-    {
+    }
+] + ([DASH_ENTERPRISE_URLS] if not tools.is_in_dash_enterprise() else []) + [{
         'name': 'Getting Help',
         'chapters': [
             {
