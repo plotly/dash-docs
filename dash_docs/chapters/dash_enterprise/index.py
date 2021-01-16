@@ -116,8 +116,8 @@ rc.Section("User Interface", [
                 '/dash-enterprise/git',
                 'A reference for git commands and how they are used '
                 'with Dash Enterprise.'),
-        rc.Chapter('Dash Enterprise API',
-                'https://github.com/plotly/dds-api-docs',
+        rc.Chapter('GraphQL API',
+                '/dash-enterprise/api',
                 'Reference documentation for Dash Enterprise\'s GraphQL API. '
                 'Use this to programmatically add collaborators, '
                 'initialize dash apps and more.')
