@@ -740,6 +740,15 @@ URLS = [
                     },
 
                     {
+                        'url': '/datatable/data-formatting',
+                        'content': chapters.dash_datatable.data_formatting.index.layout,
+                        'name': 'Number Formatting',
+                        'description': '''
+                            Several examples of how to format and localize numbers.
+                        '''
+                    },
+
+                    {
                         'url': '/datatable/interactivity',
                         'content': chapters.dash_datatable.interactivity.index.layout,
                         'name': 'Sorting, Filtering, Selecting, and Paging Natively',

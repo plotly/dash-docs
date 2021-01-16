@@ -113,6 +113,7 @@ def load_example(path, relative_path=False):
         # not displayed, simply put a comment on that line starting "# no-display"
         no_exec = '# no-exec'
         no_display = '# no-display'
+        skip_id_check = '# skip-id-check'
         if no_exec in _example:
             _example = '\n'.join(
                 line for line in _example.splitlines() if no_exec not in line
@@ -132,6 +133,12 @@ def load_example(path, relative_path=False):
             find_no_display = re.compile(r'\s+' + no_display + '.*')
             _example = '\n'.join(
                 find_no_display.sub('', line) if no_display in line else line
+                for line in _example.splitlines()
+            )
+
+        if skip_id_check in _example:
+            _example = '\n'.join(
+                line.replace(skip_id_check, '')
                 for line in _example.splitlines()
             )
 
