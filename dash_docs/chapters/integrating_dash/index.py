@@ -55,7 +55,7 @@ layout = html.Div([
 
     ![GIF showing how to use dash embedded](https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-embedded-js-host.gif)
 
-    Inside your JavaScript app, you simply need to call the `renderDash()` function included with Dash Embedded Component:
+    Inside your JavaScript host app, you simply provide the array or object that you want to share to your Dash app as a positional argument in Dash Embedded Components `renderDash()` function:
     ```js
     ...
     var setter = window.dash_embedded_component.renderDash(
@@ -88,7 +88,7 @@ layout = html.Div([
     }
     ```
 
-    Inside your Dash app, simply use `dash_embedded.ConsumerContext`, `dash_embedded.ConsumerFunction`:
+    Then inside your Dash app, simply use the `dash_embedded.ConsumerContext` and `dash_embedded.ConsumerFunction` components consume and use the shared data:
 
     ```python
     ...
