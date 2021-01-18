@@ -1,3 +1,5 @@
+# -*- coding: future_fstrings -*-
+
 from dash_docs import reusable_components as rc
 import dash_html_components as html
 from dash_docs import tools
