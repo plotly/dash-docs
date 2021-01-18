@@ -45,7 +45,7 @@ def ComponentReference(component_name, lib=dcc):
     docs = re.sub(re.compile(verbatim_regex), r"`[\3]`", docs)
 
     # format links
-    link_regex = r"\\\[([\w\.\-:\/]+)\\\]\(([\w\.\-:#\/]+)\)"
+    link_regex = r"\\\[([\w\.\-:\s\/]+)\\\]\(([\w\.\-:#\/]+)\)"
     docs = re.sub(re.compile(link_regex), r"[\1](\2)", docs)
 
     # formats the prop defaults
