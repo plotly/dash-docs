@@ -1,3 +1,5 @@
+# -*- coding: future_fstrings -*-
+
 import os
 import re
 import glob
@@ -29,7 +31,7 @@ def get_url_and_domain(path):
     if _startswith_protocol(path):
         return path, path.split("://")[1]
     else:
-        return 'http://%s' % path, path
+        return f"http://{path}", path
 
 
 def exception_handler(func):
