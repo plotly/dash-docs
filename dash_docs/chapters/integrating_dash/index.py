@@ -55,6 +55,39 @@ layout = html.Div([
 
     ![GIF showing how to use dash embedded](https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-embedded-js-host.gif)
 
+    Inside your JavaScript app, you simply need to call the `renderDash()` function included with Dash Embedded Component:
+    ```js
+    ...
+    var setter = window.dash_embedded_component.renderDash(
+        { url_base_pathname: "http://dash.tests:8050" }, 
+        'dash-app', 
+        sharedData
+    );
+    ```
+
+    If you are using a React app, you can import the component and use it inside JSX:
+    ```js
+    import { DashApp } from "dash-embedded-component";
+
+    window.React = React;
+    window.ReactDOM = ReactDOM;
+    window.PropTypes = PropTypes;
+
+    function App() {
+        return (
+            <div style={...}>
+                ...
+                <h1>Embedded Dash Application</h1>
+                <DashApp
+                    config={{
+                        url_base_pathname: "http://dash.tests:8050",
+                    }}
+                />
+            </div>
+        );
+    }
+    ```
+
     Inside your Dash app, simply use `dash_embedded.ConsumerContext`, `dash_embedded.ConsumerFunction`:
 
     ```python
@@ -90,41 +123,6 @@ layout = html.Div([
     ...
     ```
     
-    Inside your JavaScript app, you simply need to call the `renderDash()` function included with Dash Embedded Component:
-    ```js
-    ...
-    var setter = window.dash_embedded_component.renderDash(
-        { url_base_pathname: "http://dash.tests:8050" }, 
-        'dash-app', 
-        sharedData
-    );
-    ```
-
-    
-
-    If you are using a React app, you can import the component and use it inside JSX:
-    ```js
-    import { DashApp } from "dash-embedded-component";
-
-    window.React = React;
-    window.ReactDOM = ReactDOM;
-    window.PropTypes = PropTypes;
-
-    function App() {
-        return (
-            <div style={...}>
-                ...
-                <h1>Embedded Dash Application</h1>
-                <DashApp
-                    config={{
-                        url_base_pathname: "http://dash.tests:8050",
-                    }}
-                />
-            </div>
-        );
-    }
-    ```
-
 
     ## Embedding Public Apps in Public Websites with `<iframe>`
 
