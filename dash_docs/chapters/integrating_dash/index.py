@@ -9,7 +9,7 @@ from dash_docs import reusable_components as rc
 
 layout = html.Div([
     rc.Markdown(
-    """
+        """
     # Embedding Dash Apps in other Web Platforms
 
     Our recommend method for securely embedding Dash applications in existing
@@ -48,6 +48,83 @@ layout = html.Div([
     `https://<your-dash-enterprise-hostname>/Docs/embedded-middleware`**,
     replacing `<your-dash-enterprise-hostname>` with the hostname of your
     licensed Dash Enterprise in your VPC. [Look up the hostname for your company's license](https://go.plotly.com/company-lookup)
+    
+    #### Sharing State between a Javascript Host app and an embedded Dash App
+
+    You can find here a simple example illustrating multidirectional shared state, enabling the communication between your JavaScript host app and your Dash app.
+
+    ![GIF showing how to use dash embedded](https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-embedded-js-host.gif)
+
+    Inside your Dash app, simply use `dash_embedded.ConsumerContext`, `dash_embedded.ConsumerFunction`:
+
+    ```python
+    ...
+    app.layout = ddk.App(
+        [
+            ...
+            ddk.Card(
+                [
+                    ddk.CardHeader(title="Triggering Callbacks from Dash App & Host App"),
+                    ConsumerContext(id="clicks", path=["myObject", "clicks"]),
+                    ConsumerContext(id="data-one", path=["myObject", "data", "dataOne"]),
+                    ConsumerContext(id="data-two", path=["myObject", "data", "dataTwo"]),
+                    ...
+                ],
+                width=50,
+            ),
+            ddk.ControlCard(
+                [
+                    ddk.CardHeader(title="Triggering Host App Functions from Dash App"),
+                    ConsumerFunction(
+                        id="host-app-multiply", path=["myObject", "multiplyFunc"]
+                    ),
+                    ConsumerFunction(id="host-app-sum", path=["myObject", "sumFunc"]),
+                    ddk.ControlItem(...),
+                    ...
+                ],
+                width=50,
+            ),
+            ...
+        ]
+    )
+    ...
+    ```
+    
+    Inside your JavaScript app, you simply need to call the `renderDash()` function included with Dash Embedded Component:
+    ```js
+    ...
+    var setter = window.dash_embedded_component.renderDash(
+        { url_base_pathname: "http://dash.tests:8050" }, 
+        'dash-app', 
+        sharedData
+    );
+    ```
+
+    
+
+    If you are using a React app, you can import the component and use it inside JSX:
+    ```js
+    import { DashApp } from "dash-embedded-component";
+
+    window.React = React;
+    window.ReactDOM = ReactDOM;
+    window.PropTypes = PropTypes;
+
+    function App() {
+        return (
+            <div style={...}>
+                ...
+                <h1>Embedded Dash Application</h1>
+                <DashApp
+                    config={{
+                        url_base_pathname: "http://dash.tests:8050",
+                    }}
+                />
+            </div>
+        );
+    }
+    ```
+
 
     ## Embedding Public Apps in Public Websites with `<iframe>`
 
@@ -65,7 +142,7 @@ layout = html.Div([
     Dash app in a specific location within an existing web page with your
     desired dimensions:"""),
     rc.Markdown(
-    '''
+        '''
     ```html
     <iframe src="http://localhost:8050" width=700 height=600>
     ```
