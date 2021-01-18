@@ -29,7 +29,7 @@ def get_url_and_domain(path):
     if _startswith_protocol(path):
         return path, path.split("://")[1]
     else:
-        return f"http://{path}", path
+        return 'http://%s' % path, path
 
 
 def exception_handler(func):
