@@ -140,6 +140,40 @@ layout = html.Div([
         ]
     )
     ...
+
+    # Access the nested objects via `path=["myObject"]`
+    @app.callback(Output("display-full-object", "children"), Input("full-object", "value"))
+    def display(value):
+        return json.dumps(value, indent=2)
+
+
+    # Access nested values via `path=[...]`
+    @app.callback(
+        Output("display-data_dataOne_y[1]", "children"), Input("data_dataOne_y[1]", "value"))
+    def display(value):
+        return "data.dataOne.y[1]={}".format(value)
+
+
+    # Trigger Callback from Host App Data & Dash App Buttons
+    @app.callback(
+        Output("plot", "figure"),
+        Input("update", "n_clicks"), Input("clicks", "value"),
+        State("data-one", "value"), State("data-two", "value"),
+    )
+    def update_figure(clicks_dash, clicks_host, trace1, trace2):
+        ...
+        return go.Figure(...)
+
+
+    # Trigger Host App functions by sending data into the `params` property
+    @app.callback(
+        Output("host-app-sum", "params"),
+        Input("sum", "n_clicks"),
+        State("input-x", "value"), State("input-y", "value"),
+    )
+    def trigger_sum(_, x, y):
+        return [x, y]
+    ...
     ```
     
 
