@@ -1219,7 +1219,7 @@ URLS = [
             {
                 'url': '/app-lifecycle',
                 'content': chapters.app_lifecycle.index.layout,
-                'name': 'Dash App Lifecylce',
+                'name': 'Dash App Lifecycle',
                 'description': 'An overview of the lifecyle of a Dash app'
             },
 
