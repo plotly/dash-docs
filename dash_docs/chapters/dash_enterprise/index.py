@@ -4,7 +4,7 @@ import os
 from dash_docs import reusable_components as rc
 
 layout = html.Div(className='toc', children=[
-    html.H1('Dash Enterprise Documentation'),
+    html.H1('Dash Enterprise App Manager Documentation'),
 
     rc.Section("What's Dash Enterprise?", [
         rc.Chapter('Learn More About Dash Enterprise',
@@ -29,7 +29,7 @@ layout = html.Div(className='toc', children=[
     ]),
 
     rc.Section("Configuration", [
-        rc.Chapter('Application Structure & Buildpacks',
+        rc.Chapter('Application Structure, Buildpacks, and Deployment Lifecycle',
                 '/dash-enterprise/application-structure',
                 'Ensure that your app meets all the requirements for deployment and learn how to customize the Docker images.'),
         rc.Chapter('Adding Static Assets',
@@ -90,6 +90,9 @@ rc.Section("User Interface", [
                 '/dash-enterprise/database-connections',
                 'Learn how to manage external database connections, perform '
                 'queries with Dash callbacks, and maintain SQL best practices.'),
+        rc.Chapter('Dash Enterprise Continuous Integration',
+                '/dash-enterprise/continuous-integration',
+                'Learn how to setup CI pipelines for Dash Enterprise'),
     ]),
 
     rc.Section("Troubleshooting", [
@@ -113,8 +116,8 @@ rc.Section("User Interface", [
                 '/dash-enterprise/git',
                 'A reference for git commands and how they are used '
                 'with Dash Enterprise.'),
-        rc.Chapter('Dash Enterprise API',
-                'https://github.com/plotly/dds-api-docs',
+        rc.Chapter('GraphQL API',
+                '/dash-enterprise/api',
                 'Reference documentation for Dash Enterprise\'s GraphQL API. '
                 'Use this to programmatically add collaborators, '
                 'initialize dash apps and more.')

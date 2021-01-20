@@ -234,6 +234,9 @@
     <loc>https://dash.plotly.com/dash-enterprise/analytics</loc>
 </url>
 <url>
+    <loc>https://dash.plotly.com/dash-enterprise/api</loc>
+</url>
+<url>
     <loc>https://dash.plotly.com/dash-enterprise/app-authentication</loc>
 </url>
 <url>
@@ -247,6 +250,9 @@
 </url>
 <url>
     <loc>https://dash.plotly.com/dash-enterprise/configure-system-dependencies</loc>
+</url>
+<url>
+    <loc>https://dash.plotly.com/dash-enterprise/continuous-integration</loc>
 </url>
 <url>
     <loc>https://dash.plotly.com/dash-enterprise/database-connections</loc>
@@ -700,6 +706,9 @@
 </url>
 <url>
     <loc>https://dash.plotly.com/datatable/conditional-formatting</loc>
+</url>
+<url>
+    <loc>https://dash.plotly.com/datatable/data-formatting</loc>
 </url>
 <url>
     <loc>https://dash.plotly.com/datatable/dropdowns</loc>
