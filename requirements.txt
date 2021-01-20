@@ -24,6 +24,7 @@ Flask-Cors==3.0.3
 Flask-SeaSurf==0.2.2
 Flask==1.1.1
 future==0.18.2
+future-fstrings==1.2.0
 greenlet==0.4.14
 gunicorn==19.8.0
 idna==2.6
