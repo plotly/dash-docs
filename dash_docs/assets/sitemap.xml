@@ -234,6 +234,9 @@
     <loc>https://dash.plotly.com/dash-enterprise/analytics</loc>
 </url>
 <url>
+    <loc>https://dash.plotly.com/dash-enterprise/api</loc>
+</url>
+<url>
     <loc>https://dash.plotly.com/dash-enterprise/app-authentication</loc>
 </url>
 <url>
