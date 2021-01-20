@@ -48,7 +48,7 @@ data (clear your cache) every hour or every day.
 Here is an example of `Flask-Caching` with Redis:
 '''),
 
-    rc.Syntax(examples['performance_flask_caching.py'][0]),
+    rc.Markdown(examples['performance_flask_caching.py'][0]),
 
     rc.Markdown('''
 
@@ -62,7 +62,7 @@ several callbacks.
 
 '''),
 
-    rc.Syntax(examples['performance_flask_caching_dataset.py'][0]),
+    rc.Markdown(examples['performance_flask_caching_dataset.py'][0]),
 
     rc.Markdown('''
 
