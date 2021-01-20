@@ -35,7 +35,7 @@ itsdangerous==0.24
 Jinja2==2.11.1
 jsonschema==2.6.0
 jupyter-core==4.4.0
-lxml==4.5.0
+lxml==4.6.2
 Markdown==3.2.1;python_version>="3.5"
 MarkupSafe==1.1.1
 mccabe==0.6.1
