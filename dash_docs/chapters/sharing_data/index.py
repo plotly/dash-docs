@@ -5,7 +5,7 @@ import dash_html_components as html
 from dash_docs import tools
 from dash_docs import reusable_components as rc
 
-examples = tools.load_examples(__file__)
+examples = tools.load_examples(__file__, run=False)
 
 
 layout = html.Div([
@@ -529,8 +529,7 @@ def update_output_1(value):
         '''),
 
     rc.Syntax(
-        # with Syntax + load_example we are wrapping twice, hence replace()
-        examples['sharing_state_filesystem_sessions.py'][0].replace('```python ', ''),
+        examples['sharing_state_filesystem_sessions.py'][0],
         summary="Here's what this example looks like in code:"
     ),
 
