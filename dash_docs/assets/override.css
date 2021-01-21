@@ -298,8 +298,9 @@ a.logo-link img {
 }
 
 /* Reference */
-.reference ul {
+.reference ul li p {
     padding-left: 10px;
+    display: block
 }
 
 /* Example Container */
