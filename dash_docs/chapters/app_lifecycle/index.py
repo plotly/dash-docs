@@ -9,7 +9,7 @@ layout = html.Div(children=[
     rc.Markdown('''
     # Dash App Life Cycle
 
-    This section describes the lifecyle of a Dash app.
+    This section describes the lifecycle of a Dash app.
 
     1. When `python app.py` or `gunicorn app:server` is run, all of the files in a Dash app are executed. This means that if you have a statement such as `df = pd.read_csv('...')`, it is run when the program starts, rather than when the page is loaded. Therefore, if the CSV changes after the program starts, `df` will not be updated until the program restarts. In this case, it is recommended to provide data via a periodic `celery` task or by setting `app.layout` as a function to regenerate the layout with each page load.
 

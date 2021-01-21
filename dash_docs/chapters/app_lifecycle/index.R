@@ -8,7 +8,7 @@ layout <- htmlDiv(
     dccMarkdown("
     # Dash App Life Cycle
 
-    This section describes the lifecyle of a Dash app.
+    This section describes the lifecycle of a Dash app.
 
     1. When `Rscript -e \"source('app.R')\"` is run, all of the files in a Dash app are executed. This means that if you have a statement such as `df <- read.csv(...)`, it is run when the program starts, rather than when the page is loaded. Therefore, if the CSV changes after the program starts, `df` will not be updated until the program restarts. In this case, it is recommended to provide data via a periodic `celery` task or by setting `app.layout` as a function to regenerate the layout with each page load.
 
