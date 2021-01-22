@@ -149,12 +149,63 @@ def slow_function(input):
 
 
     rc.Markdown('''
-    ## Prevent Callbacks From Being Executed on Initial Load
+    ## Prevent Callbacks From Being Executed When Their Inputs First Appear The App Layout
 
-    You can use the `prevent_initial_call` attribute of callbacks to prevent callbacks from being fired when the app initially loads, as in the following example app.
+    You can use the `prevent_initial_call` attribute of callbacks to prevent callbacks from being fired when their inputs first appear in the Dash app layout.
+
+    This applies to both when a Dash app is initially loaded with a layout and when layout components are added to a layout as the result of a callback.
+
     '''),
 
     rc.Syntax(examples['callbacks-prevent-initial-call.py'][0]),
     rc.Example(examples['callbacks-prevent-initial-call.py'][1]),
+
+    rc.Markdown('''
+
+    However, the above behavior only applies if both the callback output and input are present in the app layout upon initial load of the application.
+
+    It is important to note that `prevent_initial_call` will not prevent a callback from firing in the case where the callback's input is inserted into the layout as the result of another callback after the app initially loads **unless the output is inserted alongside that input**!
+
+    In other words, if the output of the callback is already present in the app layout before its input is inserted into the layout, `prevent_initial_call` will not prevent its execution when the input is first inserted into the layout.
+
+    Consider the following example:
+
+    ```python
+      import dash
+      import dash_core_components as dcc
+      import dash_html_components as html
+      from dash.dependencies import Input, Output, State
+      import urllib
+      app = dash.Dash(__name__, suppress_callback_exceptions=True)
+      server = app.server
+      app.layout = html.Div([
+          dcc.Location(id='url'),
+          html.Div(id='layout-div'),
+          html.Div(id='content')
+      ])
+
+      @app.callback(Output('content', 'children'), Input('url', 'pathname'))
+      def display_page(pathname):
+          return html.Div([
+              dcc.Input(id='input', value='hello world'),
+              html.Div(id='output')
+          ])
+
+      @app.callback(Output('output', 'children'), Input('input', 'value'), prevent_initial_call=True)
+      def update_output(value):
+          print('>>> update_output')
+          return value
+
+      @app.callback(Output('layout-div', 'children'), Input('input', 'value'), prevent_initial_call=True)
+      def update_layout_div(value):
+          print('>>> update_layout_div')
+          return value
+
+    ```
+
+    In this case, `prevent_initial_call` will prevent the `update_output()` callback from firing when it's input is first inserted into the app layout as a result of the `display_page()` callback. This is because both the callback's input and output are already contained within the app layout when the callback is set to execute.
+
+    However, `prevent_initial_call` will not prevent the `update_layout_div()` callback from firing, because the callback's output is already present in the app layout but its input is not. Since `suppress_callback_exceptions=True` is specified in this example Dash app, Dash has to asssume that the input is present in the app layout when the app is initialized, which means that it cannot prevent the initial call of the callback that would occur under normal circumstances.
+    ''')
 
 ])
