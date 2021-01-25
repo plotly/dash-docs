@@ -205,7 +205,7 @@ def slow_function(input):
 
     In this case, `prevent_initial_call` will prevent the `update_output()` callback from firing when it's input is first inserted into the app layout as a result of the `display_page()` callback. This is because both the callback's input and output are already contained within the app layout when the callback is set to execute.
 
-    However, `prevent_initial_call` will not prevent the `update_layout_div()` callback from firing, because the callback's output is already present in the app layout but its input is not. Since `suppress_callback_exceptions=True` is specified in this example Dash app, Dash has to asssume that the input is present in the app layout when the app is initialized, which means that it cannot prevent the initial call of the callback that would occur under normal circumstances.
+    However, `prevent_initial_call` will not prevent the `update_layout_div()` callback from firing, because the callback's output is already present in the app layout but its input is not. Since `suppress_callback_exceptions=True` is specified in this example Dash app, Dash has to asssume that the input is present in the app layout when the app is initialized. This means that as far as the output element is concerned, the new input component is a change just like if the existing input had been given a new value, rather than its initial render.
     ''')
 
 ])
