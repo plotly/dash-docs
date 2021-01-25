@@ -149,7 +149,7 @@ def slow_function(input):
 
 
     rc.Markdown('''
-    ## Prevent Callbacks From Being Executed When Their Inputs First Appear The App Layout
+    ## Prevent Callbacks From Being Executed When Their Inputs First Appear In The App Layout
 
     You can use the `prevent_initial_call` attribute of callbacks to prevent callbacks from being fired when their inputs first appear in the Dash app layout.
 
