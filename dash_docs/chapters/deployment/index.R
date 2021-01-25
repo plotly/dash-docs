@@ -30,9 +30,9 @@ Dash apps are web applications. Dash uses Fiery as the web framework.
 The underlying Fiery app is available at `app`, that is:
 
 ```r
-    library(dash)
+library(dash)
 
-    app <- Dash$new()
+app <- Dash$new()
 ```
 
 ## Heroku Example
@@ -49,8 +49,8 @@ For more information about this deployment method, [please consult the Heroku do
 Step 1. Create a new folder for your project:
 
 ```
-    $ mkdir dash_app_example
-    $ cd dash_app_example
+$ mkdir dash_app_example
+$ cd dash_app_example
 ```
 
 ---
@@ -58,7 +58,7 @@ Step 1. Create a new folder for your project:
 Step 2. Initialize the folder with `git`
 
 ```
-    $ git init        # initializes an empty git repo
+$ git init        # initializes an empty git repo
 ```
 
 ---
@@ -70,31 +70,30 @@ Create the following files in your project folder:
 **`app.R`**
 
 ```r
+app <- Dash$new()
 
-    app <- Dash$new()
+app$layout(htmlDiv(list(htmlH2('Hello World'),
+          dccDropdown(id = 'dropdown',
+          options = list(
+             list('label' = 'LA', 'value' = 'LA'),
+             list('label' = 'NYC', 'value' = 'NYC'),
+             list('label' = 'MTL', 'value' = 'MTL')
+          ),
+          value = 'LA'),
+          htmlDiv(id = 'display-value'))
+   )
+)
 
-    app$layout(htmlDiv(list(htmlH2('Hello World'),
-              dccDropdown(id = 'dropdown',
-              options = list(
-                 list('label' = 'LA', 'value' = 'LA'),
-                 list('label' = 'NYC', 'value' = 'NYC'),
-                 list('label' = 'MTL', 'value' = 'MTL')
-              ),
-              value = 'LA'),
-              htmlDiv(id = 'display-value'))
-       )
-    )
+app$callback(output=list(id='display-value', property='children'),
+             params=list(
+  input(id='dropdown', property='value')),
+  function(value)
+  {
+    sprintf('You have selected %s', value)
+  }
+)
 
-    app$callback(output=list(id='display-value', property='children'),
-                 params=list(
-      input(id='dropdown', property='value')),
-      function(value)
-      {
-        sprintf('You have selected %s', value)
-      }
-    )
-
-    app$run_server(host = '0.0.0.0', port = Sys.getenv('PORT', 8050))
+app$run_server(host = '0.0.0.0', port = Sys.getenv('PORT', 8050))
 ```
 
 ---
@@ -143,18 +142,18 @@ It's fairly trivial to install packages from both CRAN mirrors and GitHub reposi
 ```r
 # R script to run author supplied code, typically used to install additional R packages
 # contains placeholders which are inserted by the compile script
-              # NOTE: this script is executed in the chroot context; check paths!
-              
-              r <- getOption('repos')
-              r['CRAN'] <- 'http://cloud.r-project.org'
-              options(repos=r)
-              
-              # ======================================================================
-              
-              # packages go here
-              install.packages('remotes')
-              
-              remotes::install_github('plotly/dashR', upgrade=TRUE)
+# NOTE: this script is executed in the chroot context; check paths!
+
+r <- getOption('repos')
+r['CRAN'] <- 'http://cloud.r-project.org'
+options(repos=r)
+
+# ======================================================================
+
+# packages go here
+install.packages('remotes')
+
+remotes::install_github('plotly/dashR', upgrade=TRUE)
 ```
 
 ---
@@ -165,20 +164,20 @@ It's fairly trivial to install packages from both CRAN mirrors and GitHub reposi
 three packages by including their names, one per line, within this file: 
 
 ```
-    libcurl4-openssl-dev
-    libxml2-dev
-    libv8-3.14-dev
+libcurl4-openssl-dev
+libxml2-dev
+libv8-3.14-dev
 ```
 ---
 
 4. Initialize Heroku, add files to Git, and deploy
 
 ```
-    $ heroku create --stack container my-dash-app # change my-dash-app to a unique name    
-    $ git add . # add all files to git
-    $ git commit -m 'Initial app boilerplate'
-    $ git push heroku master # deploy code to Heroku
-    $ heroku ps:scale web=1  # run the app with one Heroku 'dyno'
+$ heroku create --stack container my-dash-app # change my-dash-app to a unique name    
+$ git add . # add all files to git
+$ git commit -m 'Initial app boilerplate'
+$ git push heroku master # deploy code to Heroku
+$ heroku ps:scale web=1  # run the app with one Heroku 'dyno'
 ```
 
 You should be able to access your app at `https://my-dash-app.herokuapp.com` (changing my-dash-app to the name of your app).
@@ -190,10 +189,10 @@ You should be able to access your app at `https://my-dash-app.herokuapp.com` (ch
 When you modify app.R with your own code, you will need to add the changes to git and push those changes to heroku.
 
 ```
-    $ git status # view the changes
-    $ git add .  # add all the changes
-    $ git commit -m 'a description of the changes'
-    $ git push heroku master
+$ git status # view the changes
+$ git add .  # add all the changes
+$ git commit -m 'a description of the changes'
+$ git push heroku master
 ```
 
 If you're ready to take your apps to the next level, and deliver interactive analytics at scale, we invite you to learn more about Dash Enterprise. 
