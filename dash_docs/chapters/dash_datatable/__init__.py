@@ -1,5 +1,6 @@
 from .import callbacks
 from .import conditional_formatting
+from .import data_formatting
 from .import dropdowns
 from .import editing
 from .import filtering

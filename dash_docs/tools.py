@@ -1,3 +1,5 @@
+# -*- coding: future_fstrings -*-
+
 import os
 import re
 import glob
@@ -20,6 +22,16 @@ def relpath(path):
         )
 
     return path
+
+
+def _startswith_protocol(path):
+    return path.startswith('http://') or path.startswith('https://')
+
+def get_url_and_domain(path):
+    if _startswith_protocol(path):
+        return path, path.split("://")[1]
+    else:
+        return f"http://{path}", path
 
 
 def exception_handler(func):
@@ -50,7 +62,7 @@ def load_markdown_files(path):
     return content
 
 
-def load_examples(index_filename, omit=[]):
+def load_examples(index_filename, omit=[], run=True):
     dir = os.path.dirname(os.path.relpath(index_filename))
     example_dir = os.path.join(dir, 'examples')
     try:
@@ -63,13 +75,13 @@ def load_examples(index_filename, omit=[]):
     for filename in example_filenames:
         full_filename = os.path.join(example_dir, filename)
         if filename not in omit and os.path.isfile(full_filename) and filename.endswith('.py'):
-            examples[filename] = load_example(full_filename)
+            examples[filename] = load_example(full_filename, run=run)
     return examples
 
 
 
 @exception_handler
-def load_example(path, relative_path=False):
+def load_example(path, relative_path=False, run=True):
     if relative_path:
         path = os.path.join(os.path.dirname(os.path.realpath(__file__)), path)
     with open(path, 'r') as _f:
@@ -113,6 +125,7 @@ def load_example(path, relative_path=False):
         # not displayed, simply put a comment on that line starting "# no-display"
         no_exec = '# no-exec'
         no_display = '# no-display'
+        skip_id_check = '# skip-id-check'
         if no_exec in _example:
             _example = '\n'.join(
                 line for line in _example.splitlines() if no_exec not in line
@@ -132,6 +145,12 @@ def load_example(path, relative_path=False):
             find_no_display = re.compile(r'\s+' + no_display + '.*')
             _example = '\n'.join(
                 find_no_display.sub('', line) if no_display in line else line
+                for line in _example.splitlines()
+            )
+
+        if skip_id_check in _example:
+            _example = '\n'.join(
+                line.replace(skip_id_check, '')
                 for line in _example.splitlines()
             )
 
@@ -192,11 +211,14 @@ def load_example(path, relative_path=False):
                 _example = _example.replace(key, find_and_replace[key])
 
         scope = {'app': app}
-        try:
-            exec(_example, scope)
-        except Exception as e:
-            print(_example)
-            raise e
+        if run:
+            try:
+                exec(_example, scope)
+            except Exception as e:
+                print(_example)
+                raise e
+        else:
+            scope['layout'] = None
 
     return (
         '```python \n' + _source.rstrip() + '\n```',
