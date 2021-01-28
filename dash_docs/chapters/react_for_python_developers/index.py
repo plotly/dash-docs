@@ -142,10 +142,9 @@ This allows users to create a project with custom values formatted for the proje
 
 ### Build the project
 
-- `npm run build:js` generate the production bundle `project_shortname.min.js`
-- `npm run build:js-dev` generate the development bundle `project_shortname.dev.js`, use with `app.run_server(debug=True)`
-- `npm run build:py` generate the python classes files for the components.
-- `npm run build:all` generate both bundles and the languages classes files.
+- `npm run build:js` generate the JavaScript bundle `project_shortname.min.js`
+- `npm run build:py_and_r` generate the Python and R class files for the components.
+- `npm run build` generate everything: the JavaScript bundles and the Python and R class files.
 
 ### Release the project
 
