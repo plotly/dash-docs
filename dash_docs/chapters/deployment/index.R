@@ -63,7 +63,7 @@ $ git init        # initializes an empty git repo
 
 ---
 
-Step 3. Initialize the folder with a sample app (`app.R`), a `.gitignore` file (not required, but will avoid committing any files that aren't necessary for your app to function), `Dockerfile`, `heroku.yml` for deployment. Note that you **must change the last line of your app** to `.app$run_server(host = '0.0.0.0')` for your app to work properly on Heroku.
+Step 3. Initialize the folder with a sample app (`app.R`), a `.gitignore` file (not required, but will avoid committing any files that aren't necessary for your app to function), `Dockerfile`, `heroku.yml` for deployment. Note that you **must change the last line of your app** to `app$run_server(host = '0.0.0.0')` for your app to work properly on Heroku.
 
 Create the following files in your project folder:
 
