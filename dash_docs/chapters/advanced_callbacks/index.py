@@ -235,6 +235,16 @@ def slow_function(input):
     
     rc.Syntax(examples['circular_units_input.py'][0]),
     rc.Example(examples['circular_units_input.py'][1]),
+
+    
+    rc.Markdown(
+    '''
+    ### Synchronizing Two Checklists
+    '''
+    ),
+    
+    rc.Syntax(examples['circular_checkbox.py'][0]),
+    rc.Example(examples['circular_checkbox.py'][1]),
     
 
 ])
