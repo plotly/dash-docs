@@ -10,24 +10,26 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 app.layout = html.Div(
     [
         dcc.Slider(
-            id="slider", min=0, max=20, 
+            id="slider-circular", min=0, max=20, 
             marks={i: str(i) for i in range(21)}, 
             value=3
         ),
         dcc.Input(
-            id="input", type="number", min=0, max=20, value=3
+            id="input-circular", type="number", min=0, max=20, value=3
         ),
     ]
 )
 @app.callback(
-    Output("input", "value"),
-    Output("slider", "value"),
-    Input("input", "value"),
-    Input("slider", "value"),
+    Output("input-circular", "value"),
+    Output("slider-circular", "value"),
+    Input("input-circular", "value"),
+    Input("slider-circular", "value"),
 )
 def callback(input_value, slider_value):
     ctx = dash.callback_context
     trigger_id = ctx.triggered[0]["prop_id"].split(".")[0]
     value = input_value if trigger_id == "input" else slider_value
     return value, value
-app.run_server(debug=True)
+    
+if __name__ == '__main__':
+    app.run_server(debug=True)
