@@ -28,7 +28,7 @@ app.layout = html.Div(
 def callback(input_value, slider_value):
     ctx = dash.callback_context
     trigger_id = ctx.triggered[0]["prop_id"].split(".")[0]
-    value = input_value if trigger_id == "input" else slider_value
+    value = input_value if trigger_id == "input-circular" else slider_value
     return value, value
     
 if __name__ == '__main__':
