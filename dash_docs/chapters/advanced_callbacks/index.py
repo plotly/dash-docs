@@ -206,6 +206,45 @@ def slow_function(input):
     In this case, `prevent_initial_call` will prevent the `update_output()` callback from firing when its input is first inserted into the app layout as a result of the `display_page()` callback. This is because both the input and output of the callback are already contained within the app layout when the callback executes.
 
     However, because the app layout contains only the output of the callback, and not its input, `prevent_initial_call` will not prevent the `update_layout_div()` callback from firing. Since `suppress_callback_exceptions=True` is specified here, Dash has to assume that the input is present in the app layout when the app is initialized. From the perspective of the output element in this example, the new input component is handled as if an existing input had been provided a new value, rather than treating it as initially rendered.
-    ''')
+    '''),
+    
+    rc.Markdown(
+    '''
+    ## Circular Callbacks
+    
+    As of `dash v1.19.0`, you can create circular updates 
+     _within the same callback_.
+    
+    Circular callback chains that involve multiple callbacks are not supported.
+    
+    Circular callbacks can be used to keep multiple inputs synchronized to 
+    each other. 
+    
+    ### Synchronizing a Slider with a Text Input Example
+    '''
+    ),
+    
+    rc.Syntax(examples['circular_slider_input.py'][0]),
+    rc.Example(examples['circular_slider_input.py'][1]),
+    
+    rc.Markdown(
+    '''
+    ### Displaying Two Inputs with Different Units Example
+    '''
+    ),
+    
+    rc.Syntax(examples['circular_units_input.py'][0]),
+    rc.Example(examples['circular_units_input.py'][1]),
+
+    
+    rc.Markdown(
+    '''
+    ### Synchronizing Two Checklists
+    '''
+    ),
+    
+    rc.Syntax(examples['circular_checkbox.py'][0]),
+    rc.Example(examples['circular_checkbox.py'][1]),
+    
 
 ])
