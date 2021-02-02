@@ -142,6 +142,16 @@ data = df.values
         }
     },
 
+    'Igv': {
+        'description': '''A high performance genomics visualization tool for real-time
+        exploration of large scale genomic data features.''',
+        'params': {
+            'genome': '"ce11"',
+            'minimumBases': '100',
+            'locus': '"chrV"'
+        }
+    },
+
     'ManhattanPlot': {
         'description': '''A plot that can be used to display the results of genomic studies
         sorted out by chromosome. Perfect for Genome Wide Association Studies (GWAS).''',

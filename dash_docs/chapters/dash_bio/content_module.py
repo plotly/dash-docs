@@ -498,6 +498,87 @@ dashbio.Ideogram(
     ]
 )
 
+
+# Igv
+Igv = create_doc_page(
+    examples, component_names, 'igv.py', component_examples=[
+        {
+            'param_name': 'Genome',
+            'description': 'Select a genome using an identifier string (e.g. "hg19"). A list of '
+                           'pre-defined genomes hosted by IGV can be found [here]('
+                           'https://s3.amazonaws.com/igv.org.genomes/genomes.json).',
+            'code': '''import dash_bio as dashbio
+
+dashbio.Igv(
+    id='genome-igv',
+    genome='ce11'
+)'''
+        },
+        {
+            'param_name': 'Reference',
+            'description': 'Add a reference dictionary which can be used to specify the genomic '
+                           'data added to the IGV component, and add tracks to display features '
+                           'such as annotations, genome variants, alignments, and quantitative '
+                           'data. '
+                           '\n \n'
+                           'For more information on reference options, visit the `IGV` wiki '
+                           '[here](https://github.com/igvteam/igv.js/wiki/Reference-Genome). '
+                           '\n \n'
+                           'Multiple tracks can be added to a single reference by creating a list '
+                           'of dicts, each of which correspond to a single track. For more '
+                           'information on Track Types and Track Configurations, visit the '
+                           '`IGV` wiki [here]('
+                           'https://github.com/igvteam/igv.js/wiki/Tracks-2.0).',
+            'code': '''import dash_bio as dashbio
+
+dashbio.Igv(
+        id='reference-igv',
+        reference={
+            "id": "ASM985889v3",
+            "name": "Sars-CoV-2 (ASM985889v3)",
+            "fastaURL": "https://s3.amazonaws.com/igv.org.genomes/covid_ASM985889v3/GCF_009858895.2_ASM985889v3_genomic.fna",
+            "indexURL": "https://s3.amazonaws.com/igv.org.genomes/covid_ASM985889v3/GCF_009858895.2_ASM985889v3_genomic.fna.fai",
+            "order": 1000000,
+            "tracks": [
+                {
+                    "name": "Annotations",
+                    "url": "https://s3.amazonaws.com/igv.org.genomes/covid_ASM985889v3/GCF_009858895.2_ASM985889v3_genomic.gff.gz",
+                    "displayMode": "EXPANDED",
+                    "nameField": "gene",
+                    "height": 150,
+                    "color": "rgb(176,141,87)"
+                }
+            ]
+        },
+)'''
+        },
+        {
+            'param_name': 'Locus',
+            'description': 'The initial genomic location displayed on the viewer. This can be a '
+                           'string or a list of strings. In the example below, the locus is '
+                           '"chrV".',
+            'code': '''import dash_bio as dashbio
+
+dashbio.Igv(
+    id='locus-igv',
+    genome='ce11',
+    locus=['chrV', 'chrII']
+)'''
+        },
+        {
+            'param_name': 'Minimum Bases',
+            'description': 'Minimum window size in base pairs when zooming in.',
+            'code': '''import dash_bio as dashbio
+
+dashbio.Igv(
+    id='bases-igv',
+    genome='ce11',
+    minimumBases='10'
+)'''
+        }
+    ]
+)
+
 # ManhattanPlot
 ManhattanPlot = create_doc_page(
     examples, component_names, 'manhattan-plot.py', component_examples=[
