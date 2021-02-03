@@ -1068,6 +1068,21 @@ URLS = [
                 ]
             },
 
+            
+            {
+                'name': 'Dash VTK',
+                'chapters': [
+                    {
+                        'url': '/vtk',
+                        'name': 'Overview',
+                        'content': chapters.dash_vtk.index.layout,
+                        'description': (
+                            'Bringing vtk.js into Dash and Python'
+                        )
+                    }
+                ]
+            },
+
             {
                 'name': 'Dash Bootstrap Components',
                 'chapters': [
