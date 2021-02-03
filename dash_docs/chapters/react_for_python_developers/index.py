@@ -353,7 +353,7 @@ class MyComponent(Component):
         self.a = a;
         super().__init__(a)
 
-    def render(this):
+    def render(self):
         return self.a;
 ```
 
