@@ -350,8 +350,8 @@ JavaScript classes are very similar to Python classes. For example, this Python 
 ```js
 class MyComponent(Component):
     def __init__(self, a):
+        super().__init__()
         self.a = a;
-        super().__init__(a)
 
     def render(self):
         return self.a;
@@ -360,7 +360,7 @@ class MyComponent(Component):
 would be written in JavaScript as:
 ```js
 class MyComponent extends Component {
-  init() {
+  init(a) {
       super();
       this.a = a;
   }
