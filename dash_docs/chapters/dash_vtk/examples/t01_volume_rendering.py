@@ -4,10 +4,10 @@ import dash_html_components as html
 import dash_vtk
 from dash_vtk.utils import to_volume_state
 
-import vtk
+from vtk.vtkImagingCore import vtkRTAnalyticSource
 
 # Use VTK to get some data
-data_source = vtk.vtkRTAnalyticSource()
+data_source = vtkRTAnalyticSource()
 data_source.Update()  # <= Execute source to produce an output
 dataset = data_source.GetOutput()
 
