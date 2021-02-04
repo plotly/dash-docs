@@ -739,12 +739,12 @@ layout = html.Div([
 
     [dash_vtk](https://github.com/plotly/dash-vtk/blob/master/demos/pyvista-point-cloud/app.py) | [PyVista](https://docs.pyvista.org/examples/00-load/create-point-cloud.html)
 
-    ![Preview](https://raw.githubusercontent.com/plotly/dash-vtk/master/demos/pyvista-point-cloud/demo.jpg)
+    ![Preview](/assets/images/vtk/pyvista-point-cloud.jpg)
 
     ### Terrain following mesh
 
     [dash_vtk](https://github.com/plotly/dash-vtk/blob/master/demos/pyvista-terrain-following-mesh/app.py) | [PyVista](https://docs.pyvista.org/examples/00-load/terrain-mesh.html)
-    ![Preview](https://raw.githubusercontent.com/plotly/dash-vtk/master/demos/pyvista-terrain-following-mesh/demo.jpg)
+    ![Preview](/assets/images/vtk/pyvista-terrain-following-mesh.jpg)
 
     ### VTK dynamic streamlines Example
 
@@ -752,22 +752,22 @@ layout = html.Div([
 
     [dash_vtk](https://github.com/plotly/dash-vtk/blob/master/demos/usage-vtk-cfd/app.py)
 
-    ![CFD Preview](https://raw.githubusercontent.com/plotly/dash-vtk/master/demos/usage-vtk-cfd/demo.jpg)
+    ![CFD Preview](/assets/images/vtk/usage-vtk-cfd.jpg)
 
     ### Medical examples
 
     [Real medical image](https://github.com/plotly/dash-vtk/blob/master/demos/volume-rendering/app.py)
 
-    ![Real medical image](https://raw.githubusercontent.com/plotly/dash-vtk/master/demos/volume-rendering/demo.jpg)
+    ![Real medical image](/assets/images/vtk/volume-rendering.jpg)
 
 
     [Randomly generated volume](https://github.com/plotly/dash-vtk/blob/master/demos/synthetic-volume-rendering/app.py)
 
-    ![Randomly generated volume](https://raw.githubusercontent.com/plotly/dash-vtk/master/demos/synthetic-volume-rendering/demo.jpg)
+    ![Randomly generated volume](/assets/images/vtk/synthetic-volume-rendering.jpg)
 
     [Multi-View with slicing](https://github.com/plotly/dash-vtk/blob/master/demos/slice-rendering/app.py)
 
-    ![Multi-View with slicing](https://raw.githubusercontent.com/plotly/dash-vtk/master/demos/slice-rendering/demo.jpg)
+    ![Multi-View with slicing](/assets/images/vtk/slice-rendering.jpg)
 
     ''')
 ])
