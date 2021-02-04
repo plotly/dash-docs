@@ -347,7 +347,7 @@ console.log(add(4, 6)); // 10
 > Heads up! Classes, among other features, are new language features in JavaScript. Technically, they're part of a new version of JavaScript called ES6. When we build our JavaScript code, a tool called Babel will convert these new language features into simpler JavaScript that older browsers like IE11 can understand.
 
 JavaScript classes are very similar to Python classes. For example, this Python class:
-```js
+```py
 class MyComponent(Component):
     def __init__(self, a):
         super().__init__()
