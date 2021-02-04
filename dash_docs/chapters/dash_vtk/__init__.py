@@ -10,4 +10,4 @@ else:
         pass
 
     index = FakeModule()
-    index.layout = html.Div("Dash Slicer is not supported on Python 2.7")
+    index.layout = html.Div("Dash VTK is not supported on Python 2.7")
