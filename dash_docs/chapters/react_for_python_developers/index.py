@@ -143,8 +143,8 @@ This allows users to create a project with custom values formatted for the proje
 ### Build the project
 
 - `npm run build:js` generate the JavaScript bundle `project_shortname.min.js`
-- `npm run build:py_and_r` generate the Python and R class files for the components.
-- `npm run build` generate everything: the JavaScript bundles and the Python and R class files.
+- `npm run build:backends` generate the Python, R and Julia class files for the components.
+- `npm run build` generate everything: the JavaScript bundles and the Python, R and Julia class files.
 
 ### Release the project
 
