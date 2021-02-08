@@ -73,4 +73,5 @@ Werkzeug==0.16.0
 wrapt==1.10.11
 holoviews>=1.14.0a10<1.14.1
 git+https://github.com/plotly/dash-vtk.git@a7ccec888c6979fadc5fdc504fa0f4608e2c79b5
-vtk==9.0.1
+vtk==9.0.1;python_version>="3.7"
+vtk==8.1.2;python_version<="3.6"
