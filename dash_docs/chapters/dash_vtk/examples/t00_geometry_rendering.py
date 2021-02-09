@@ -4,7 +4,12 @@ import dash_html_components as html
 import dash_vtk
 from dash_vtk.utils import to_mesh_state
 
-from vtk.vtkImagingCore import vtkRTAnalyticSource
+try:
+   # VTK 9+
+   from vtkmodules.vtkImagingCore import vtkRTAnalyticSource
+except:
+  # Old VTK
+  from vtk.vtkImagingCore import vtkRTAnalyticSource
 
 # Use VTK to get some data
 data_source = vtkRTAnalyticSource()
