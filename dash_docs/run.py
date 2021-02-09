@@ -95,7 +95,7 @@ header = html.Div(
 )
 
 DEFAULT_AD = dict(
-    alt='🐇 Announcing Dash VTK for 3d simulation graphics. Check out the March Webinar.',
+    alt='Announcing Dash VTK for 3d simulation graphics. Check out the March Webinar.',
     src=tools.relpath('/assets/images/sidebar/Hiring.png'),
     href='https://go.plotly.com/dash-vtk'
 )
