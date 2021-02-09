@@ -73,4 +73,5 @@ Werkzeug==0.16.0
 wrapt==1.10.11
 holoviews>=1.14.0a10<1.14.1
 dash-vtk==0.0.4
-vtk==8.*
+vtk==9.*;python_version>="3.7"
+vtk==8.*;python_version<="3.6"
