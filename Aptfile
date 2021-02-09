@@ -2,3 +2,4 @@ unattended-upgrades
 imagemagick-6-common
 libmagick++-dev
 libgl1-mesa-glx
+libXt
