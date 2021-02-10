@@ -16,52 +16,6 @@ Display = rc.CreateDisplay({
 
 layout = html.Div([
 
-    rc.Markdown(
-        '''
-        # Editable DataTable
-
-        The DataTable is editable. Like a spreadsheet, it can be used
-        as an input for controlling models with a variable number
-        of inputs.
-
-        This chapter includes recipes for:
-
-        - Reading the contents of the DataTable
-        - Filtering out null values
-        - Uploading data
-        - Determining which cell has changed
-        - Adding or removing columns
-        - Adding or removing rows
-        - Clearable, deletable, renamable, and hideable columns
-        - Export DataTable
-        '''
-    ),
-
-    rc.Markdown('***'),
-
-    rc.Markdown(
-        '''
-        ## Predefined Columns
-
-        In this example, we initialize a table with 10 blank rows and
-        a few predefined columns. To retrieve the data, just listen to the
-        `data` property.
-
-        A few notes:
-        - If you copy and paste data that is larger than the rows, then the
-        table will expand to contain the contents.
-        Try it out by [copying and pasting this dataset](https://docs.google.com/spreadsheets/d/1MWj7AjngD_fH7vkVhEMIRo51Oty295kE36-DFnQElrg/edit?usp=sharing).
-        - Unlike other spreadsheet programs, the DataTable has a fixed number of
-        rows. So, if your model has an arbitrary number of parameters
-        (rows or columns), we recommend initializing your table with a
-        large number of empty rows and columns.
-        - When copying data from the table to an external spreadsheet or
-        between two tables in different tabs, you can choose to include column headers
-        by adding `include_headers_on_copy_paste=True`. However, headers are ignored
-        when copying between two tables in the same tab.
-        '''
-    ),
-
     rc.Markdown('''
     # Editable DataTable
 
