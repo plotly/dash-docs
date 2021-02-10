@@ -353,6 +353,32 @@ Starting with Dash 1.0.0, `serve_locally` defaults to `True`.
         style=styles.code_container
     ),
 
+    rc.Markdown(
+            """
+    ***
+
+    ## Controlling the Plotly.js Version Used by `dcc.Graph`
+
+    The [`Graph` component from `dash_core_components`](/dash-core-components/graph) leverages the [Plotly.js](https://plotly.com/javascript/) library to render
+    visualizations. The `Graph` component comes with its own version of the  Plotly.js library, but this can be overridden by placing a Plotly.js bundle
+    in the `assets` directory as described above.
+
+    This technique can be used to:
+
+        * take advantage of new features in a version of Plotly.js that is **more recent** than the one that is included in the currently-installed version of `dash_core_components` (or Dash Enterprise Design Kit).
+        * take advantage of more desirable behaviour of a version of Plotly.js that is **less recent** than the one that is included in the currently-installed version of `dash_core_components` (or Dash Enterprise Design Kit). Note that this situation should be rare and short-lived, as we strive to make more-recent Plotly.js versions totally backwards-compatible with older versions!
+        * use a Plotly.js partial or custom bundle that only includes the specific features of Plotly.js that your Dash app uses. Such bundles are smaller than the full Plotly.js bundles and can therefore improve your app's loading time.
+
+    ## Rendering LaTeX inside `dcc.Graph` Figures
+
+    To use the built-in Plotly.js capability of rendering LaTeX inside figure labels, the `external_script` and `assets` functionality described above can be used together as follows:
+
+        1. add `external_scripts=["https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML" ]` to the `app = dash.Dash()` call
+        2. add a file to `assets` called `mathjax_config.js` containing the text `window.PlotlyConfig = {MathJaxConfig: 'local'};`
+
+    """
+
+        ),
     rc.Markdown('''
     ## Customizing Dash's Document or Browser Tab Title
     The Document Title is the name of the web page that appears in your
