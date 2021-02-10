@@ -122,7 +122,7 @@ dcc.Graph(
 
         * take advantage of new features in a version of Plotly.js that is **more recent** than the one that is included in the currently-installed version of `dash_core_components` (or Dash Enterprise Design Kit).
         * take advantage of more desirable behaviour of a version of Plotly.js that is **less recent** than the one that is included in the currently-installed version of `dash_core_components` (or Dash Enterprise Design Kit). Note that this situation should be rare and short-lived, as we strive to make more-recent Plotly.js versions totally backwards-compatible with older versions!
-        * use a Plotly.js partial or custom bundle that only includes the specific features of Plotly.js that your Dash app uses. Such bundles are smaller than the full Plotly.js bundles and can therefore improve your app's loading time.
+        * use [a Plotly-distributed Plotly.js partial bundle](https://github.com/plotly/plotly.js/blob/master/dist/README.md) or [a custom-built Plotly.js bundle](https://github.com/plotly/plotly.js/blob/master/BUILDING.md) which only includes the subset of Plotly.js features that your Dash app uses. Such bundles are smaller than the full Plotly.js bundles that come with the `Graph` component and can therefore improve your app's loading time.
 
     ## Rendering LaTeX inside `dcc.Graph` Figures
 
