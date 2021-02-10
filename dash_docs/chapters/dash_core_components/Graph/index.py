@@ -114,7 +114,7 @@ dcc.Graph(
 
     ## Controlling the Plotly.js Version Used by `dcc.Graph`
 
-    The [`Graph` component from `dash_core_components`](/dash-core-components/graph) leverages the [Plotly.js](https://plotly.com/javascript/) library to render
+    The `Graph` component leverages the [Plotly.js](https://plotly.com/javascript/) library to render
     visualizations. The `Graph` component comes with its own version of the  Plotly.js library, but this can be overridden by placing a Plotly.js bundle
     in the `assets` directory as described above.
 
@@ -128,7 +128,7 @@ dcc.Graph(
 
     To use the built-in Plotly.js capability of rendering LaTeX inside figure labels, the `external_script` and `assets` functionality described above can be used together as follows:
 
-        1. add `external_scripts=["https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML" ]` to the `app = dash.Dash()` call
+        1. add `external_scripts=["https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" ]` to the `app = dash.Dash()` call
         2. add a file to `assets` called `mathjax_config.js` containing the text `window.PlotlyConfig = {MathJaxConfig: 'local'};`
 
     """

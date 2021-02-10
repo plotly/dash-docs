@@ -373,7 +373,7 @@ Starting with Dash 1.0.0, `serve_locally` defaults to `True`.
 
     To use the built-in Plotly.js capability of rendering LaTeX inside figure labels, the `external_script` and `assets` functionality described above can be used together as follows:
 
-        1. add `external_scripts=["https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML" ]` to the `app = dash.Dash()` call
+        1. add `external_scripts=["https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" ]` to the `app = dash.Dash()` call
         2. add a file to `assets` called `mathjax_config.js` containing the text `window.PlotlyConfig = {MathJaxConfig: 'local'};`
 
     """
