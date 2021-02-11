@@ -1,5 +1,4 @@
 import dash_html_components as html
-import dash_core_components as dcc
 import dash_table
 
 from dash_docs import tools
@@ -16,13 +15,13 @@ layout = html.Div([
 
     rc.Markdown('''
     # Editable DataTable
-    
+
     The DataTable is editable. Like a spreadsheet, it can be used
     as an input for controlling models with a variable number
     of inputs.
-    
+
     This chapter includes recipes for:
-    
+
     - Reading the contents of the DataTable
     - Filtering out null values
     - Uploading data
@@ -31,15 +30,15 @@ layout = html.Div([
     - Adding or removing rows
     - Clearable, deletable, renamable, and hideable columns
     - Export DataTable
-    
+
     ***
-    
+
     ## Predefined Columns
-    
+
     In this example, we initialize a table with 10 blank rows and
     a few predefined columns. To retrieve the data, just listen to the
     `data` property.
-    
+
     A few notes:
     - If you copy and paste data that is larger than the rows, then the
     table will expand to contain the contents.
@@ -154,11 +153,11 @@ layout = html.Div([
     rc.Markdown(
         '''
         ## Adding or removing columns
-    
+
         In the DataTable, we've provided a built-in UI for _deleting_ columns
         but not for adding columns. We recommend using an external button to
         add columns.
-    
+
         This is a simple example that plots the data in the spreadsheet as a
         heatmap. Try adding or removing columns!
         '''),
@@ -175,7 +174,7 @@ layout = html.Div([
     rc.Markdown(
         '''
         ## Adding or removing rows
-    
+
         Similarly as columns, the DataTable has a built-in UI for removing rows
         but not for adding rows. You can add rows to the table through an
         external button.
@@ -194,18 +193,18 @@ layout = html.Div([
     rc.Markdown(
         '''
         ## Updating Columns of the Same Table
-    
+
         One neat application of DataTable is being able to update the table itself
         when you edit cells.
-    
+
         One of the limitations in Dash is that a callback's `Output` can't be
         the same as the `Input` (circular dependencies aren't supported yet).
         So, we couldn't have `Output('table', 'data')` _and_
         `Input('table', 'data')` in the same `@app.callback`.
-    
+
         However, we can work around this by using `State('table', 'data')`
         and triggering the callback with `Input('table', 'data_timestamp')`.
-    
+
         This example mimics a traditional spreadsheet like excel by computing
         certain columns based off of other other columns.
         '''
@@ -223,18 +222,18 @@ layout = html.Div([
     rc.Markdown(
         '''
         ## Modify the data table content
-    
+
         Columns in the table can be hidden, deleted, cleared, and renamed. Each of these actions
         are represented by a small icon in the column headers. If there is more than one header row,
         you can choose where the icons appear. If you want to override these icons, you can do so
         by using table css selectors, as demonstrated by the example.
-    
+
         When the clear or delete action is performed, the associated filters are also cleared.
         Hiding or deleting can only be done if there are more than one column left in the
         table after the action is performed.
-    
+
         In this example, we have included a variety of column actions. Try:
-    
+
         - Clear the first column: the content is cleared (or multiple columns when headers are merged)
         without deleting the column itself.
         - Delete the second column: column is deleted from the table and can't be seen again unless the
@@ -242,7 +241,7 @@ layout = html.Div([
         - Rename the third column: the content of selected column headers is edited.
         - Hide the fourth column: the entire column is hidden from view and can be made visible again
         through the toggle columns button.
-    
+
         '''
     ),
 
@@ -286,7 +285,7 @@ layout = html.Div([
         the option to download the table with merged headers if your table headers are merged.
         Finally, if an action was performed on columns (cleared, deleted,hidden, sorted, filtered), then
         the downloaded table will display the current view.
-    
+
         - Note that `display` mode is only supported for `export_format: xlsx` due to the fact that
         headers in csv files can not be merged.
         '''
