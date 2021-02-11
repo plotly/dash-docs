@@ -116,7 +116,7 @@ dcc.Graph(
 
     The `Graph` component leverages the [Plotly.js](https://plotly.com/javascript/) library to render
     visualizations. The `Graph` component comes with its own version of the  Plotly.js library, but this can be overridden by placing a Plotly.js bundle
-    in the `assets` directory as described above.
+    [in the `assets` directory](/external-resources).
 
     This technique can be used to:
 
@@ -126,10 +126,11 @@ dcc.Graph(
 
     ## Rendering LaTeX inside `dcc.Graph` Figures
 
-    To use the built-in Plotly.js capability of rendering LaTeX inside figure labels, the `external_script` and `assets` functionality described above can be used together as follows:
+    To use the built-in Plotly.js capability of rendering LaTeX inside figure labels, the [`external_script`
+    functionality can be used](/external-resources): add `external_scripts=["https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" ]` to the `app = dash.Dash()` call.
 
-    1. add `external_scripts=["https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" ]` to the `app = dash.Dash()` call
-    2. add a file to `assets` called `mathjax_config.js` containing the text `window.PlotlyConfig = {MathJaxConfig: 'local'};`
+    If loading files from a CDN is undesirable, MathJax will have to be installed into the `assets` directory and [the HTML Index Template](/external-resources) will need to be customized
+    to do [in-line configuration of MathJax](https://docs.mathjax.org/en/v2.7-latest/configuration.html#using-in-line-configuration-options).
 
     """
 
