@@ -6,61 +6,53 @@ from dash_docs import tools
 from dash_docs import styles
 from dash_docs import reusable_components as rc
 
-
 examples = tools.load_examples(__file__)
 
 Display = rc.CreateDisplay({
     'dash_table': dash_table,
 })
 
-
 layout = html.Div([
 
-    rc.Markdown(
-        '''
-        # Editable DataTable
-
-        The DataTable is editable. Like a spreadsheet, it can be used
-        as an input for controlling models with a variable number
-        of inputs.
-
-        This chapter includes recipes for:
-
-        - Reading the contents of the DataTable
-        - Filtering out null values
-        - Uploading data
-        - Determining which cell has changed
-        - Adding or removing columns
-        - Adding or removing rows
-        - Clearable, deletable, renamable, and hideable columns
-        - Export DataTable
-        '''
-    ),
-
-    rc.Markdown('***'),
-
-    rc.Markdown(
-        '''
-        ## Predefined Columns
-
-        In this example, we initialize a table with 10 blank rows and
-        a few predefined columns. To retrieve the data, just listen to the
-        `data` property.
-
-        A few notes:
-        - If you copy and paste data that is larger than the rows, then the
-        table will expand to contain the contents.
-        Try it out by [copying and pasting this dataset](https://docs.google.com/spreadsheets/d/1MWj7AjngD_fH7vkVhEMIRo51Oty295kE36-DFnQElrg/edit?usp=sharing).
-        - Unlike other spreadsheet programs, the DataTable has a fixed number of
-        rows. So, if your model has an arbitrary number of parameters
-        (rows or columns), we recommend initializing your table with a
-        large number of empty rows and columns.
-        - When copying data from the table to an external spreadsheet or
-        between two tables in different tabs, you can choose to include column headers
-        by adding `include_headers_on_copy_paste=True`. However, headers are ignored
-        when copying between two tables in the same tab.
-        '''
-    ),
+    rc.Markdown('''
+    # Editable DataTable
+    
+    The DataTable is editable. Like a spreadsheet, it can be used
+    as an input for controlling models with a variable number
+    of inputs.
+    
+    This chapter includes recipes for:
+    
+    - Reading the contents of the DataTable
+    - Filtering out null values
+    - Uploading data
+    - Determining which cell has changed
+    - Adding or removing columns
+    - Adding or removing rows
+    - Clearable, deletable, renamable, and hideable columns
+    - Export DataTable
+    
+    ***
+    
+    ## Predefined Columns
+    
+    In this example, we initialize a table with 10 blank rows and
+    a few predefined columns. To retrieve the data, just listen to the
+    `data` property.
+    
+    A few notes:
+    - If you copy and paste data that is larger than the rows, then the
+    table will expand to contain the contents.
+    Try it out by [copying and pasting this dataset](https://docs.google.com/spreadsheets/d/1MWj7AjngD_fH7vkVhEMIRo51Oty295kE36-DFnQElrg/edit?usp=sharing).
+    - Unlike other spreadsheet programs, the DataTable has a fixed number of
+    rows. So, if your model has an arbitrary number of parameters
+    (rows or columns), we recommend initializing your table with a
+    large number of empty rows and columns.
+    - When copying data from the table to an external spreadsheet or
+    between two tables in different tabs, you can choose to include column headers
+    by adding `include_headers_on_copy_paste=True`. However, headers are ignored
+    when copying between two tables in the same tab.
+    '''),
 
     rc.Markdown(
         examples['editing_simple.py'][0],
@@ -105,7 +97,6 @@ layout = html.Div([
         className='example-container'
     ),
 
-
     rc.Markdown('''
     ## Filtering out Empty Cells
     The DataTable will always return all of the cells in the table, even
@@ -136,7 +127,6 @@ layout = html.Div([
         className='example-container'
     ),
 
-
     rc.Markdown('''
     ## Uploading Data
 
@@ -150,7 +140,7 @@ layout = html.Div([
     Try it out by [downloading this file](https://raw.githubusercontent.com/plotly/datasets/master/2014_apple_stock.csv)
     and then uploading it.
     '''
-    ),
+                ),
 
     rc.Markdown(
         examples['editing_uploading.py'][0],
@@ -162,16 +152,16 @@ layout = html.Div([
     ),
 
     rc.Markdown(
-    '''
-    ## Adding or removing columns
-
-    In the DataTable, we've provided a built-in UI for _deleting_ columns
-    but not for adding columns. We recommend using an external button to
-    add columns.
-
-    This is a simple example that plots the data in the spreadsheet as a
-    heatmap. Try adding or removing columns!
-    '''),
+        '''
+        ## Adding or removing columns
+    
+        In the DataTable, we've provided a built-in UI for _deleting_ columns
+        but not for adding columns. We recommend using an external button to
+        add columns.
+    
+        This is a simple example that plots the data in the spreadsheet as a
+        heatmap. Try adding or removing columns!
+        '''),
 
     rc.Markdown(
         examples['editing_columns.py'][0],
@@ -183,13 +173,13 @@ layout = html.Div([
     ),
 
     rc.Markdown(
-    '''
-    ## Adding or removing rows
-
-    Similarly as columns, the DataTable has a built-in UI for removing rows
-    but not for adding rows. You can add rows to the table through an
-    external button.
-    '''
+        '''
+        ## Adding or removing rows
+    
+        Similarly as columns, the DataTable has a built-in UI for removing rows
+        but not for adding rows. You can add rows to the table through an
+        external button.
+        '''
     ),
 
     rc.Markdown(
@@ -202,23 +192,23 @@ layout = html.Div([
     ),
 
     rc.Markdown(
-    '''
-    ## Updating Columns of the Same Table
-
-    One neat application of DataTable is being able to update the table itself
-    when you edit cells.
-
-    One of the limitations in Dash is that a callback's `Output` can't be
-    the same as the `Input` (circular dependencies aren't supported yet).
-    So, we couldn't have `Output('table', 'data')` _and_
-    `Input('table', 'data')` in the same `@app.callback`.
-
-    However, we can work around this by using `State('table', 'data')`
-    and triggering the callback with `Input('table', 'data_timestamp')`.
-
-    This example mimics a traditional spreadsheet like excel by computing
-    certain columns based off of other other columns.
-    '''
+        '''
+        ## Updating Columns of the Same Table
+    
+        One neat application of DataTable is being able to update the table itself
+        when you edit cells.
+    
+        One of the limitations in Dash is that a callback's `Output` can't be
+        the same as the `Input` (circular dependencies aren't supported yet).
+        So, we couldn't have `Output('table', 'data')` _and_
+        `Input('table', 'data')` in the same `@app.callback`.
+    
+        However, we can work around this by using `State('table', 'data')`
+        and triggering the callback with `Input('table', 'data_timestamp')`.
+    
+        This example mimics a traditional spreadsheet like excel by computing
+        certain columns based off of other other columns.
+        '''
     ),
 
     rc.Markdown(
@@ -231,29 +221,29 @@ layout = html.Div([
     ),
 
     rc.Markdown(
-    '''
-    ## Modify the data table content
-
-    Columns in the table can be hidden, deleted, cleared, and renamed. Each of these actions
-    are represented by a small icon in the column headers. If there is more than one header row,
-    you can choose where the icons appear. If you want to override these icons, you can do so
-    by using table css selectors, as demonstrated by the example.
-
-    When the clear or delete action is performed, the associated filters are also cleared.
-    Hiding or deleting can only be done if there are more than one column left in the
-    table after the action is performed.
-
-    In this example, we have included a variety of column actions. Try:
-
-    - Clear the first column: the content is cleared (or multiple columns when headers are merged)
-    without deleting the column itself.
-    - Delete the second column: column is deleted from the table and can't be seen again unless the
-    page is refreshed.
-    - Rename the third column: the content of selected column headers is edited.
-    - Hide the fourth column: the entire column is hidden from view and can be made visible again
-    through the toggle columns button.
-
-    '''
+        '''
+        ## Modify the data table content
+    
+        Columns in the table can be hidden, deleted, cleared, and renamed. Each of these actions
+        are represented by a small icon in the column headers. If there is more than one header row,
+        you can choose where the icons appear. If you want to override these icons, you can do so
+        by using table css selectors, as demonstrated by the example.
+    
+        When the clear or delete action is performed, the associated filters are also cleared.
+        Hiding or deleting can only be done if there are more than one column left in the
+        table after the action is performed.
+    
+        In this example, we have included a variety of column actions. Try:
+    
+        - Clear the first column: the content is cleared (or multiple columns when headers are merged)
+        without deleting the column itself.
+        - Delete the second column: column is deleted from the table and can't be seen again unless the
+        page is refreshed.
+        - Rename the third column: the content of selected column headers is edited.
+        - Hide the fourth column: the entire column is hidden from view and can be made visible again
+        through the toggle columns button.
+    
+        '''
     ),
 
     Display(
@@ -288,18 +278,18 @@ layout = html.Div([
         '''),
 
     rc.Markdown(
-    '''
-    ## Export Data Table
-    The table data can be exported either as csv or xlsx file. You can customize table
-    headers in the export file. Headers can be column ids, names or as displayed.
-    The difference between `export_headers: name` and `export_headers: display` is that you have
-    the option to download the table with merged headers if your table headers are merged.
-    Finally, if an action was performed on columns (cleared, deleted,hidden, sorted, filtered), then
-    the downloaded table will display the current view.
-
-    - Note that `display` mode is only supported for `export_format: xlsx` due to the fact that
-    headers in csv files can not be merged.
-    '''
+        '''
+        ## Export Data Table
+        The table data can be exported either as csv or xlsx file. You can customize table
+        headers in the export file. Headers can be column ids, names or as displayed.
+        The difference between `export_headers: name` and `export_headers: display` is that you have
+        the option to download the table with merged headers if your table headers are merged.
+        Finally, if an action was performed on columns (cleared, deleted,hidden, sorted, filtered), then
+        the downloaded table will display the current view.
+    
+        - Note that `display` mode is only supported for `export_format: xlsx` due to the fact that
+        headers in csv files can not be merged.
+        '''
     ),
 
     Display(
