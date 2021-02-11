@@ -25,3 +25,4 @@ bundle.js
 ignore/indicators.csv
 .Rproj.user
 dash-docs.Rproj
+.vscode
