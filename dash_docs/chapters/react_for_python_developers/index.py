@@ -143,8 +143,8 @@ This allows users to create a project with custom values formatted for the proje
 ### Build the project
 
 - `npm run build:js` generate the JavaScript bundle `project_shortname.min.js`
-- `npm run build:py_and_r` generate the Python and R class files for the components.
-- `npm run build` generate everything: the JavaScript bundles and the Python and R class files.
+- `npm run build:backends` generate the Python, R and Julia class files for the components.
+- `npm run build` generate everything: the JavaScript bundles and the Python, R and Julia class files.
 
 ### Release the project
 
@@ -347,20 +347,20 @@ console.log(add(4, 6)); // 10
 > Heads up! Classes, among other features, are new language features in JavaScript. Technically, they're part of a new version of JavaScript called ES6. When we build our JavaScript code, a tool called Babel will convert these new language features into simpler JavaScript that older browsers like IE11 can understand.
 
 JavaScript classes are very similar to Python classes. For example, this Python class:
-```js
+```py
 class MyComponent(Component):
     def __init__(self, a):
+        super().__init__()
         self.a = a;
-        super().__init__(a)
 
-    def render(this):
+    def render(self):
         return self.a;
 ```
 
 would be written in JavaScript as:
 ```js
 class MyComponent extends Component {
-  init() {
+  init(a) {
       super();
       this.a = a;
   }
