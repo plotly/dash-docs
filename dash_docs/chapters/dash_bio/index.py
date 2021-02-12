@@ -235,6 +235,25 @@ styles_data = json.loads(styles_data)
         }
     },
 
+    'NglMoleculeViewer': {
+        'description': '''A comprehensive 3D molecule visualizer for visualizing multiple 
+        molecules and chains in a variety of representations.''',
+        'params': {
+            "data": "[ngl_parser.get_data(data_path=data_path, pdb_id='1BNA', color='red', "
+                    "reset_view=False, "
+                    "local=False)]"
+        },
+        'library_imports': [
+            ['dash_bio_utils.ngl_parser', 'ngl_parser'],
+            ['dash.exceptions', 'PreventUpdate']
+        ],
+        'setup_code': '''data_path =  "https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/"''',
+        'image_info': {
+            'location': 'https://raw.githubusercontent.com/plotly/docs-demos-dashbio/master'
+                        '/images/pic_ngl_moleculeviewer.png'
+        }
+    },
+
     'OncoPrint': {
         'description': '''A chart that can be used to visualize multiple
         genomic alternations with an interactive heatmap.''',
