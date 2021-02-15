@@ -33,7 +33,7 @@ app.layout = html.Div([
     * Individual Molecule Interaction: Left click on the molecule to interact with, then hold the 
     `CTRL` key and use right and left click mouse buttons to rotate and pan individual molecules.
     '''),
-    dcc.Dropdown(id="data-dropdown", options=dropdown_options, placeholder="Select a molecule",
+    dcc.Dropdown(id="default-dropdown", options=dropdown_options, placeholder="Select a molecule",
                  value = "1BNA"),
     dashbio.NglMoleculeViewer(id="default-ngl"),
 ])
@@ -42,7 +42,7 @@ app.layout = html.Div([
 @app.callback(
     [Output("default-ngl", 'data'),
      Output("default-ngl", "molStyles")],
-    [Input("data-dropdown", "value")]
+    [Input("default-dropdown", "value")]
 )
 def return_molecule(value):
     if (value is None):
@@ -62,4 +62,3 @@ def return_molecule(value):
 
 if __name__ == '__main__':
     app.run_server(debug=True)
-

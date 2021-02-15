@@ -795,59 +795,8 @@ dashbio.NeedlePlot(
 
 # NglMoleculeViewer
 NglMoleculeViewer = create_doc_page(
-    examples, component_names, 'ngl-molecule-viewer.py', component_examples=[
-{
-            'param_name': 'Multiple Molecules',
-            'description': 'Multiple molecules can be visualized by adding entries to the data '
-                           'list. In the example below, we use multiple dropdown selections to '
-                           'add molecules to the stage. Each molecule can have its own set of '
-                           'atoms and residues highlighted. Individual molecules can be '
-                           'interacted with by holding down the `CTRL` key.',
-            'code': '''import dash_bio as dashbio
-import six.moves.urllib.request as urlreq
-from dash.exceptions import PreventUpdate
-
-
-data_path =  "https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/"
-
-# PDB examples
-dropdown_options = [
-    {"label": "1BNA", "value": "1BNA"},
-    {"label": "MPRO", "value": "MPRO"},
-    {"label": "PLPR", "value": "PLPR"},
-    {"label": "5L73", "value": "5L73"},
-    {"label": "NSP2", "value": "NSP2"}
-]
-
-app.layout = html.Div([
-    dashbio.NglMoleculeViewer(id="multiple-ngl"),
-    dcc.Dropdown(id="data-dropdown", options=dropdown_options, value = ["1BNA", "MPRO"], multi=True)
-])
-
-
-@app.callback(
-    [Output("multiple-ngl", 'data'),
-     Output("multiple-ngl", "molStyles")],
-    [Input("data-dropdown", "value")]
-)
-def return_molecule(value):
-    if (value is None):
-        raise PreventUpdate
-
-    molstyles_dict = {
-        "representations": ["cartoon", "axes+box"],
-        "chosenAtomsColor": "white",
-        "chosenAtomsRadius": 1,
-        "molSpacingXaxis": 100,
-    }
-
-    data_list = [ngl_parser.get_data(data_path=data_path, pdb_id=molecule, color='red',
-                                     reset_view=False, local=False) for molecule in value]
-
-    return data_list, molstyles_dict
-'''
-        },
-    ]
+    examples, component_names, 'ngl-molecule-viewer.py', component_examples=[],
+    interactive_examples_flag="-example"
 )
 
 
