@@ -315,7 +315,7 @@ cytoCytoscape(
 # The following external layouts are distributed with the official `dash-cytoscape` library:
 # * [cose-bilkent](https://github.com/cytoscape/cytoscape.js-cose-bilkent)
 # * [cola](https://github.com/cytoscape/cytoscape.js-cola)
-# * [euler](https://github.com/cytoscape/cytoscape.js-dagre)
+# * [euler](https://github.com/cytoscape/cytoscape.js-euler)
 # * [spread](https://github.com/cytoscape/cytoscape.js-spread)
 # * [dagre](https://github.com/cytoscape/cytoscape.js-dagre)
 # * [klay](https://github.com/cytoscape/cytoscape.js-klay)
