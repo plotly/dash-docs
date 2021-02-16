@@ -27,7 +27,7 @@ app.layout = html.Div([
     dcc.Markdown('''
     ### NglMoleculeViewer Controls
     
-    * Rotate Stage: Left-click on the viewer and move the mouse to rotate the stage..
+    * Rotate Stage: Left-click on the viewer and move the mouse to rotate the stage.
     * Zoom: Use the mouse scroll-wheel to zoom in and out of the viewer.
     * Pan: Right click on the viewer to pan the stage.
     * Individual Molecule Interaction: Left click on the molecule to interact with, then hold the 
