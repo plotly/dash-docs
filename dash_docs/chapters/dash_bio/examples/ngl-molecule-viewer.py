@@ -56,7 +56,7 @@ def return_molecule(value):
     }
 
     data_list = [ngl_parser.get_data(data_path=data_path, pdb_id=value, color='red',
-                                     reset_view=False, local=False)]
+                                     reset_view=True, local=False)]
 
     return data_list, molstyles_dict
 

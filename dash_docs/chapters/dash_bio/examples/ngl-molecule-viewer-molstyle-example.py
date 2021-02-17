@@ -71,7 +71,7 @@ def return_molecule(style, sidebyside):
     }
 
     data_list = [ngl_parser.get_data(data_path=data_path, pdb_id=molecule, color='red',
-                                     reset_view=False, local=False)
+                                     reset_view=True, local=False)
                  for molecule in ['NSP2', 'NSP4']]
 
     return data_list, molstyles_dict

@@ -44,7 +44,7 @@ def return_molecule(n_clicks, filename):
     }
 
     data_list = [ngl_parser.get_data(data_path=data_path, pdb_id='1BNA', color='red',
-                                     reset_view=False, local=False)]
+                                     reset_view=True, local=False)]
 
     imageParameters = {
         "antialias": True,
