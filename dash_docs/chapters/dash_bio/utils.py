@@ -402,7 +402,7 @@ def create_interactive_examples(
         examples_list = []
         for example in example_code:
             # For each example, extract the description and remove it from the app code.
-            # This description will be set as the header and subtext for the component.
+            # This description will be set as the header and subtext for this component.
             example_string = str(example[0])
             description = re.search(r"\'\'\'(.*?)\'\'\'", example_string, re.S)
             description = re.sub(r"\'\'\'", "", description.group(), 0, re.S)
