@@ -142,6 +142,16 @@ data = df.values
         }
     },
 
+    'Igv': {
+        'description': '''A high performance genomics visualization tool for real-time
+        exploration of large scale genomic data features.''',
+        'params': {
+            'genome': '"ce11"',
+            'minimumBases': '100',
+            'locus': '"chrV"'
+        }
+    },
+
     'ManhattanPlot': {
         'description': '''A plot that can be used to display the results of genomic studies
         sorted out by chromosome. Perfect for Genome Wide Association Studies (GWAS).''',
@@ -222,6 +232,25 @@ styles_data = json.loads(styles_data)
         'image_info': {
             'location': 'https://github.com/plotly/docs-demos-dashbio/blob/master/images/pic_needle_plot.png?raw=true',
             'width': 850
+        }
+    },
+
+    'NglMoleculeViewer': {
+        'description': '''A comprehensive 3D molecule visualizer for visualizing multiple 
+        molecules and chains in a variety of representations.''',
+        'params': {
+            "data": "[ngl_parser.get_data(data_path=data_path, pdb_id='1BNA', color='red', "
+                    "reset_view=False, "
+                    "local=False)]"
+        },
+        'library_imports': [
+            ['dash_bio_utils.ngl_parser', 'ngl_parser'],
+            ['dash.exceptions', 'PreventUpdate']
+        ],
+        'setup_code': '''data_path =  "https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/"''',
+        'image_info': {
+            'location': 'https://raw.githubusercontent.com/plotly/docs-demos-dashbio/master'
+                        '/images/pic_ngl_moleculeviewer.png'
         }
     },
 

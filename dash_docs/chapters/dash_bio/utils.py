@@ -386,6 +386,48 @@ def create_default_example(
         html.Hr()
     ]
 
+# Create interactive example
+
+def create_interactive_examples(
+    component_name,
+    example_code
+):
+    '''Generate an interactive example for this component with callbacks.
+
+    :param (str) component_name: The name of the component as it is
+    defined within the package.
+    :param (str) example_code: The code for the interactive example.
+    '''
+    if len(example_code) > 0:
+        examples_list = []
+        for example in example_code:
+            # For each example, extract the description and remove it from the app code.
+            # This description will be set as the header and subtext for this component.
+            example_string = str(example[0])
+            description = re.search(r"\'\'\'(.*?)\'\'\'", example_string, re.S)
+            description = re.sub(r"\'\'\'", "", description.group(), 0, re.S)
+            example_string = re.sub(r"\'\'\'(.*?)\'\'\'", "", example_string, 0, re.S)
+
+
+            single_example = html.Div([
+                html.Hr(),
+                rc.Markdown(
+                    description
+                ),
+                rc.Markdown(
+                   example_string
+                ),
+                html.Div(
+                    example[1],
+                    className='example-container'
+                ),
+                html.Hr()
+            ])
+            examples_list.append(single_example)
+        return(examples_list)
+    else:
+        return []
+
 
 def create_examples(
         examples_data
@@ -507,7 +549,8 @@ def generate_prop_table(
     ])
 
 
-def create_doc_page(examples, component_names, component_hyphenated, component_examples=None):
+def create_doc_page(examples, component_names, component_hyphenated, component_examples=None,
+                    interactive_examples_flag="None"):
     '''Generates a documentation page for a component.
 
     :param (dict[object]) examples: A dictionary that contains the
@@ -538,6 +581,8 @@ def create_doc_page(examples, component_names, component_hyphenated, component_e
     elif component_name == 'Molecule2DViewer':
         component_name = 'Molecule2dViewer'
 
+    interactive_examples = [examples[k] for k in examples if interactive_examples_flag in k]
+
     return html.Div(
         children=[
             html.H1('{} Examples and Reference'.format(
@@ -546,6 +591,7 @@ def create_doc_page(examples, component_names, component_hyphenated, component_e
                                examples[component_hyphenated],
                                styles,
                                component_hyphenated.replace('.py', '')) +
+        create_interactive_examples(component_name, interactive_examples) +
         component_examples +
         [rc.ComponentReference(
             component_name,
