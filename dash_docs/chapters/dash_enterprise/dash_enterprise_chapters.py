@@ -2243,7 +2243,7 @@ Redis = html.Div(children=[
     - Save application data that persists in memory across processes, containers, and deploys.
     - Enable queued and background processes with Celery.
     [Redis and Celery Demo App](https://github.com/plotly/dash-redis-demo)
-    - Use the Dash Enterprise Snapshot Engine, see the documentation on your
+    - Use the Dash Enterprise Snapshot Engine; see the documentation on your
     Dash Enterprise server for details.
     - Cache data from your callbacks across processes.
     <dccLink href="/performance" children="Caching in Dash with Redis"/>
