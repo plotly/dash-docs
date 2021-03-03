@@ -2351,7 +2351,7 @@ Redis = html.Div(children=[
 
     While it is now possible to create and link Redis Databases via the
     Dash Enterprise UI, it is still possible to create and link a Redis
-    database via the [Dash Enterprise GraphQL API](/dash-enterprise/api)
+    database via the [Dash Enterprise GraphQL API](/dash-enterprise/api).
 
     '''),
 
