@@ -1956,7 +1956,7 @@ Cli = html.Div(children=[
         '''
         ### Unsupported and Deprecated Commands
         
-        These commands are no longer supported or recommended.
+        These `dokku` commands are no longer supported or recommended. Each of their recommended alternatives, respectively, are provided below.
         
         **Scale app process**
         
