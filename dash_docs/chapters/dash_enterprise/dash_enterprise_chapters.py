@@ -2259,28 +2259,6 @@ Redis = html.Div(children=[
     rc.Markdown('''
     ***
 
-    #### Enable Redis Databases
-
-    In Plotly Enterprise 2.5.0, Redis Databases are always enabled.
-
-    For previous versions, navigate to Plotly On-Premises Server Settings
-    (`https://<your.plotly.domain>:8800/settings`), then under **Special Options
-    & Customizations** select **Enable Dash Customizations** and **Enable Redis
-    Databases** for Dash Apps.
-    '''),
-
-    html.Img(
-        alt='Enable Redis Databases',
-        src=tools.relpath('/assets/images/dds/enable-redis.png'),
-        style={
-            'width': '100%', 'border': 'thin lightgrey solid',
-            'border-radius': '4px'
-        }
-    ),
-
-    rc.Markdown('''
-    ***
-
     #### Create and Link (via UI)
 
     You can create one Redis instance that is used by multiple apps or you
@@ -2291,7 +2269,7 @@ Redis = html.Div(children=[
 
     &nbsp;
 
-    In Plotly Enterprise 2.5.0 it is possible to create and link a Redis
+    In Dash Enterprise, it is possible to create and link a Redis
     Database to your Dash App using the Dash Enterprise UI.
     Here, you have two options:
 
