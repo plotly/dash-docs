@@ -1477,7 +1477,7 @@ Cli = html.Div(children=[
     <dccLink href="/dash-enterprise/api" children="Dash Enterprise GraphQL API"/>.
     
     Until these commands are exposed in the API,
-    you can run a SSH commands against a core part of the Dash Enterprise
+    you can run SSH commands against a core part of the Dash Enterprise
     technology stack, `dokku`.
     
     These commands should be treated as **temporary workarounds** until they are officially 
