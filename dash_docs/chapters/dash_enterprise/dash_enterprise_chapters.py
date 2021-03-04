@@ -1468,11 +1468,24 @@ def display_instructions(platform):
 # Managing Dash Apps from the Command Line
 # # # # # # #
 Cli = html.Div(children=[
-    html.H1('Managing Dash Apps from the Command Line '),
+    html.H1('Managing Dash Apps via Dokku instead of Official API'),
 
     Blockquote(),
 
     rc.Markdown('''
+    Certain management actions are not yet exposed in the official 
+    <dccLink href="/dash-enterprise/api" children="Dash Enterprise GraphQL API"/>.
+    
+    Until these commands are exposed in the API,
+    you can run SSH commands against a core part of the Dash Enterprise
+    technology stack, `dokku`.
+    
+    These commands should be treated as **temporary workarounds** until they are officially 
+    supported in the GraphQL API. **Support for these commands may be dropped in 
+    the future.**
+    
+    ***
+    
     After setting up SSH authentication (see our <dccLink href="/dash-enterprise/ssh" children="ssh doc"/>), you will
     be able to use the commands below to help manage your apps from the command line.
 
@@ -1654,55 +1667,6 @@ Cli = html.Div(children=[
             **Example:**
 
             `ssh dokku@your-dash-enterprise -p PORT ps:start my-dash-app`
-
-            &nbsp;
-        ''')
-    ]),
-
-    html.Details([
-        html.Summary("Scale app processes"),
-        rc.Markdown('''
-        &nbsp;
-
-        Dash Enterprise can also manage scaling applications (increase the number of containers for processes defined
-        in the Procfile) via the `ps:scale` command. Dash Enterprise only scales the web process by default so if you
-        define others you will need to scale them.
-
-        **Example:**
-
-        `ssh dokku@your-dash-enterprise -p PORT ps:scale my-dash-app web=1`
-
-        This command can be used to scale multiple process types at the same time.
-
-        `ssh dokku@your-dash-enterprise -p PORT ps:scale my-dash-app web=1 worker=1`
-
-        The ps:scale command with no process type argument will output
-        the current scaling settings for an application:
-
-        ```
-        ssh dokku@your-dash-enterprise -p PORT ps:scale my-dash-app
-        -----> Scaling for my-dash-app
-        -----> proctype           qty
-        -----> --------           ---
-        -----> web                1
-        -----> worker             1
-        ```
-
-        &nbsp;
-    ''')
-    ]),
-
-    html.Details([
-        html.Summary("List persistent storage directories"),
-        rc.Markdown('''
-            &nbsp;
-
-            List bind mounts for an app's container(s) (host:container).
-            See our doc on <dccLink href="/dash-enterprise/map-local-directories" children="mapping local directories"/> for more info on
-            how to set these up.
-
-            **Example:**
-            `ssh dokku@your-dash-enterprise -p PORT storage:list my-dash-app`
 
             &nbsp;
         ''')
@@ -1988,44 +1952,33 @@ Cli = html.Div(children=[
     ''')
     ]),
 
-
-
-    rc.Markdown('''
-
-    #### Service Linking Commands:
-
-    > These commands can only be run by the user who owns both the service as well as the application.
-    '''),
-
-    html.Details([
-        html.Summary("Link Redis to an app"),
-        rc.Markdown('''
-        &nbsp;
-
-        Link the Redis service to the app. This will also restart your app:
-
-        **Example:**
-
-        `ssh dokku@your-dash-enterprise -p PORT redis:link redis-db my-dash-app`
-
-        &nbsp;
-    ''')
+    dcc.Markdown([
+        '''
+        ### Unsupported and Deprecated Commands
+        
+        These `dokku` commands are no longer supported or recommended. Each of their recommended alternatives, respectively, are provided below.
+        
+        **Scale app process**
+        
+        Use the `scaleProcesses` GraphQL mutation instead
+        of the `dokku ps:scale` command.
+        
+        Alternatively, provide a [`DOKKU_SCALE`](/dash-enterprise/application-structure)
+        file in your repository and redeploy.
+        
+        **List persistent storage directories**
+        
+        Use the `mounts` GraphQL query within an `apps` query instead
+        of the `dokku storage:list` command.
+        
+        **Creating & Linking Services (Postgres & Redis Databases)**
+        
+        Use the `addService`, `deleteService`, `linkService`, and `unlinkService`
+        GraphQL mutations instead of the `dokku service`  commands.
+        
+        '''
     ]),
 
-    html.Details([
-        html.Summary("Unlink Redis from an app"),
-        rc.Markdown('''
-        &nbsp;
-
-        Unlink the Redis service from the app. This will also restart your app and unset related environment variables:
-
-        **Example:**
-
-        `ssh dokku@your-dash-enterprise -p PORT redis:unlink redis-db my-dash-app`
-
-        &nbsp;
-    ''')
-    ])
 
     ])
 
@@ -2287,9 +2240,11 @@ Redis = html.Div(children=[
     Redis is a powerful in-memory database that is well-suited for many Dash
     applications. In particular, you can use Redis to:
 
-    - Save application data
+    - Save application data that persists in memory across processes, containers, and deploys.
     - Enable queued and background processes with Celery.
     [Redis and Celery Demo App](https://github.com/plotly/dash-redis-demo)
+    - Use the Dash Enterprise Snapshot Engine; see the documentation on your
+    Dash Enterprise server for details.
     - Cache data from your callbacks across processes.
     <dccLink href="/performance" children="Caching in Dash with Redis"/>
 
@@ -2304,28 +2259,6 @@ Redis = html.Div(children=[
     rc.Markdown('''
     ***
 
-    #### Enable Redis Databases
-
-    In Plotly Enterprise 2.5.0, Redis Databases are always enabled.
-
-    For previous versions, navigate to Plotly On-Premises Server Settings
-    (`https://<your.plotly.domain>:8800/settings`), then under **Special Options
-    & Customizations** select **Enable Dash Customizations** and **Enable Redis
-    Databases** for Dash Apps.
-    '''),
-
-    html.Img(
-        alt='Enable Redis Databases',
-        src=tools.relpath('/assets/images/dds/enable-redis.png'),
-        style={
-            'width': '100%', 'border': 'thin lightgrey solid',
-            'border-radius': '4px'
-        }
-    ),
-
-    rc.Markdown('''
-    ***
-
     #### Create and Link (via UI)
 
     You can create one Redis instance that is used by multiple apps or you
@@ -2336,7 +2269,7 @@ Redis = html.Div(children=[
 
     &nbsp;
 
-    In Plotly Enterprise 2.5.0 it is possible to create and link a Redis
+    In Dash Enterprise, it is possible to create and link a Redis
     Database to your Dash App using the Dash Enterprise UI.
     Here, you have two options:
 
@@ -2414,34 +2347,11 @@ Redis = html.Div(children=[
     rc.Markdown('''
     ***
 
-    #### Create and Link (via Command Line)
+    #### Create and Link Programmatically
 
     While it is now possible to create and link Redis Databases via the
     Dash Enterprise UI, it is still possible to create and link a Redis
-    database via the command line (using ssh):
-
-    '''),
-
-    rc.Markdown(
-    '''
-    ```shell
-    $ ssh dokku@YOUR_DASH_SERVER redis:create SERVICE-NAME
-    $ ssh dokku@YOUR_DASH_SERVER redis:link SERVICE-NAME APP-NAME
-    ```
-    ''',
-    style=styles.code_container,
-    ),
-
-    rc.Markdown('''
-
-    &nbsp;
-
-    In the commands above, replace:
-    * `YOUR_DASH_SERVER` with the name of your Dash server
-    (same as when you run `git remote add`)
-    * `SERVICE-NAME` with the name you want for your Redis service
-    * `APP-NAME` with the name of your app (as specified in the
-    Dash App Manager).
+    database via the [Dash Enterprise GraphQL API](/dash-enterprise/api).
 
     '''),
 
