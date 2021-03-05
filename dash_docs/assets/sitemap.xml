@@ -789,6 +789,9 @@
     <loc>https://dash.plotly.com/persistence</loc>
 </url>
 <url>
+    <loc>https://dash.plotly.com/custom-hover-content</loc>
+</url>
+<url>
     <loc>https://dash.plotly.com/plugins</loc>
 </url>
 <url>

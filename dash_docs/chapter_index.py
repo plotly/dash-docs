@@ -1204,6 +1204,16 @@ URLS = [
             },
 
             {
+                'url': '/custom-hover-content',
+                'content': chapters.custom_hover_content.index.layout,
+                'name': 'Custom Hover Content',
+                'description': '''
+                    (Released February 2021 with Dash X.X) Add custom Dash content
+                    to plot hovers.
+                '''
+            },
+
+            {
                 'url': '/devtools',
                 'content': chapters.devtools.index.layout,
                 'name': 'Dev tools',
