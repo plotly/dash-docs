@@ -1,0 +1,32 @@
+#my-sequence-viewer, #my-dashbio-sequenceviewer,
+#sequence-viewer-selection, #sequence-viewer-lines,
+#sequence-viewer-toolbar, #sequence-viewer-titlebadge {
+    width: 420px;
+    border: solid 1px gray;
+    border-radius: 5px;
+    padding: 5px;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+}
+#sequence-viewer-lines {
+    width: 200px;
+}
+#sequence-viewer-toolbar label, #sequence-viewer-toolbar .sequenceToolbar {
+    display: inline-block;
+    font-size: 12pt;
+}
+#sequence-viewer-toolbar {
+    width: auto;
+}
+.igv-chromosome-select-widget-container select {
+    display: block;
+    cursor: pointer;
+    width: 100px;
+    height: 75%;
+    outline: none;
+    font-size: 12px;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+    padding: 0px;
+}

@@ -1,0 +1,36 @@
+build/
+cache-directory/
+dist/
+lib/bundle.js*
+coverage/
+dash_core_components/metadata.json
+dash_core_components/bundle.js*
+node_modules/
+.npm
+vv/
+venv/
+*.pyc
+*.egg-info
+*.log
+*py~
+*swp
+.DS_Store
+cache
+bundle.js
+.idea
+.env
+.mypy_cache/
+.Rhistory
+.RData
+ignore/indicators.csv
+.Rproj.user
+dash-docs.Rproj
+.vscode
+
+dash_docs/chapters/dash_enterprise/review_apps/_helper_script_delete copy.md
+dash_docs/chapters/dash_enterprise/review_apps/_helper_script_deploy copy.md
+dash_docs/chapters/dash_enterprise/review_apps/_helper_script_initialize _code.md
+dash_docs/chapters/dash_enterprise/review_apps/helper_script.md
+dash_docs/chapters/dash_enterprise/review_apps/_helper_script.md
+dash_docs/chapters/dash_enterprise/review_apps/helper_script.md
+dash_docs/chapters/dash_enterprise/review_apps/helper_script.md

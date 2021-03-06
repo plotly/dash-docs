@@ -1,0 +1,93 @@
+version: 2
+jobs:
+  "percy-finalize":
+    docker:
+      - image: percyio/agent
+        auth:
+          username: dashautomation
+          password: $DASH_PAT_DOCKERHUB
+    steps:
+      - run: percy finalize --all
+
+  "python-3.7": &test-template
+    resource_class: medium+
+    docker:
+      - image: circleci/python:3.7.5-stretch-browsers
+        auth:
+          username: dashautomation
+          password: $DASH_PAT_DOCKERHUB
+        environment:
+          PERCY_PARALLEL_TOTAL: '-1'
+    steps:
+      - checkout
+
+      - run:
+          name: Write job name
+          command: echo $CIRCLE_JOB > circlejob.txt
+
+      - restore_cache:
+          key: deps-{{ .Branch }}-{{ checksum "requirements.txt" }}-{{ checksum "circlejob.txt" }}
+
+      - run:
+          name: Install dependencies
+          command: |
+              sudo pip install virtualenv --upgrade
+              python -m venv venv || virtualenv venv
+              . venv/bin/activate
+              pip install -r requirements.txt
+
+      - save_cache:
+          key: deps-{{ .Branch }}-{{ checksum "requirements.txt" }}-{{ checksum "circlejob.txt" }}
+          paths:
+              - "venv"
+
+      - run:
+          name: Run tests
+          command: |
+              . venv/bin/activate
+              set -eo pipefail
+              pip install --progress-bar off -e git+https://github.com/plotly/dash.git@dev#egg=dash[testing]
+              python -m pytest tests/unit
+              pytest --log-cli-level INFO --nopercyfinalize --junitxml=test-reports/snapshots.xml tests/integration
+      - store_artifacts:
+          path: test-reports
+      - store_test_results:
+          path: test-reports
+      - store_artifacts:
+          path: /tmp/dash_artifacts
+
+
+  "python-3.6":
+    <<: *test-template
+    docker:
+      - image: circleci/python:3.6.9-stretch-browsers
+        auth:
+          username: dashautomation
+          password: $DASH_PAT_DOCKERHUB
+    environment:
+      PERCY_ENABLE: 0
+
+  "python-2.7":
+    <<: *test-template
+    docker:
+      - image: circleci/python:2.7.16-stretch-browsers
+        auth:
+          username: dashautomation
+          password: $DASH_PAT_DOCKERHUB
+    environment:
+      PERCY_ENABLE: 0
+
+workflows:
+  version: 2
+  python2.7:
+    jobs:
+      - python-2.7
+  python3.7:
+    jobs:
+      - python-3.7
+      - percy-finalize:
+          requires:
+            - python-3.7
+  python3.6:
+    jobs:
+      - python-3.6

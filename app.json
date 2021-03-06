@@ -1,0 +1,22 @@
+{
+  "name": "dash-docs",
+  "scripts": {
+  },
+  "env": {
+    "accesstoken": {
+      "required": true
+    },
+    "WEB_CONCURRENCY": "2"
+  },
+  "formation": {
+  },
+  "addons": [
+
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ],
+  "stack": "heroku-18"
+}
