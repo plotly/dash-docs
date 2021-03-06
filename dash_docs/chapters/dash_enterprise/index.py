@@ -62,7 +62,19 @@ rc.Section("User Interface", [
                 'Directory mappings allow you to make directories on the '
                 'Dash Enterprise available to your app.')
     ]),
-
+    rc.Section("Continuous Integration", [
+        rc.Chapter('Dash Enterprise Continuous Integration',
+                '/dash-enterprise/continuous-integration',
+                'Learn how to setup CI pipelines for Dash Enterprise'),
+        rc.Chapter('Create a Staging Dash App',
+                '/dash-enterprise/staging-app',
+                'Use a staged Dash App to test changes before updating your '
+                'production Dash App.'),
+        rc.Chapter('Dash Enterprise Review Apps',
+                '/dash-enterprise/review-apps',
+                'Enable Review Apps'),
+    ]),
+    
     rc.Section("Advanced", [
         rc.Chapter('Authenticating to Dash Enterprise with SSH',
                 '/dash-enterprise/ssh',
@@ -82,17 +94,10 @@ rc.Section("User Interface", [
         rc.Chapter('Linking a Celery Process',
                 '/dash-enterprise/celery-process',
                 'Add a task queue to your Dash Apps.'),
-        rc.Chapter('Create a Staging Dash App',
-                '/dash-enterprise/staging-app',
-                'Use a staged Dash App to test changes before updating your '
-                'production Dash App.'),
         rc.Chapter('Connect a Dash App to an SQL Database',
                 '/dash-enterprise/database-connections',
                 'Learn how to manage external database connections, perform '
                 'queries with Dash callbacks, and maintain SQL best practices.'),
-        rc.Chapter('Dash Enterprise Continuous Integration',
-                '/dash-enterprise/continuous-integration',
-                'Learn how to setup CI pipelines for Dash Enterprise'),
     ]),
 
     rc.Section("Troubleshooting", [
