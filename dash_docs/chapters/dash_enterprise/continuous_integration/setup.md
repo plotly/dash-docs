@@ -43,6 +43,7 @@ This set of instructions demonstrates how to write a script that deploys your co
     ```bash
     cat config | base64 -w 0 > config.base64
     ```
+    
     Becomes:
 
     ```
