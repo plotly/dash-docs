@@ -54,7 +54,7 @@ layout = html.Div([
     component/property pair, you’ll have to bundle them up into a larger
     callback and detect which of the relevant `Inputs` triggered the callback
     inside the function. For `html.Button` elements, detecting which one
-    triggered the callback ca be done using the `n_clicks_timestamp`
+    triggered the callback can be done using the `n_clicks_timestamp`
     property. For an example of this, see the question in the FAQ, *How do I
     determine which `Input` has changed?*.
 
