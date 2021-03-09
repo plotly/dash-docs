@@ -72,7 +72,7 @@ rc.Section("User Interface", [
                 'production Dash App.'),
         rc.Chapter('Dash Enterprise Review Apps',
                 '/dash-enterprise/review-apps',
-                'Enable Review Apps'),
+                'Review Apps allow you to automatically deploy staged Dash Apps on pull requests, enabling you to preview changes before they are merged into production.'),
     ]),
     
     rc.Section("Advanced", [
