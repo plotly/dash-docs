@@ -725,6 +725,111 @@ dashbio.Molecule3dViewer(
     backgroundColor='#FF0000',
     backgroundOpacity=0.2
 )'''
+        },
+
+        {
+            'param_name': 'Labels',
+            'description': 'Add labels corresponding to the atom of the molecule. Label styles '
+                           'can be set with additional parameters. For styling keys, '
+                           'see https://3dmol.csb.pitt.edu/doc/types.html#LabelSpec',
+            'code': '''import json
+import six.moves.urllib.request as urlreq
+
+import dash_bio as dashbio
+
+model_data = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/mol3d/model_data.js').read()
+styles_data = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/mol3d/styles_data.js').read()
+model_data = json.loads(model_data)
+styles_data = json.loads(styles_data)
+
+dashbio.Molecule3dViewer(
+    styles=styles_data,
+    modelData=model_data,
+    labels = [
+            {"text": "Residue Name: 'GLY1'", "fontColor": "red", "font": "Ariel"},
+            {"text": "Residue Chain: 'A'", "position": {"x":15.407, "y": -8.432, "z": 6.573}}
+        ],
+)'''
+        },
+
+        {
+            'param_name': 'Shapes',
+            'description': 'Add predefined renderable shapes to the molecule. Supported shapes '
+                           'types are Arrow, Sphere, and Cylinder.',
+            'code': '''import json
+import six.moves.urllib.request as urlreq
+
+import dash_bio as dashbio
+
+model_data = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/mol3d/model_data.js').read()
+styles_data = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/mol3d/styles_data.js').read()
+model_data = json.loads(model_data)
+styles_data = json.loads(styles_data)
+
+dashbio.Molecule3dViewer(
+    styles=styles_data,
+    modelData=model_data,
+    shapes = [
+        {
+            "type": "Sphere",
+            "center": {'x':0,'y':0,'z':0},
+            "radius": 3.0,
+            "color": "blue",
+            "opacity": 1
+        },
+        {
+            "type": "Arrow",
+            "start": {'x':40, 'y':20.0, 'z':0.0},
+            "end": {'x':20.0, 'y':10.0, 'z':0.0},
+            "radius": 1.0,
+            "radiusRadio":0.5,
+            "mid":1.0,
+            "color": 'red',
+            "opacity": 1
+        },
+        {
+            "type": "Cylinder",
+            "start": {'x': 10.0, 'y': -30.0, 'z': 0.0},
+            "end": {'x': 20.0, 'y': -50.0, 'z': 0.0},
+            "radius": 1.0,
+            "fromCap": 1,
+            "toCap": 2,
+            "color": 'green',
+            "opacity": 1
+        }
+    ],
+)'''
+        },
+
+{
+            'param_name': 'Isosurfaces',
+            'description': 'Render a 3D isosurface. Volumetric orbital data must be provided in '
+                           'the `cube` file format.',
+            'code': '''import json
+import six.moves.urllib.request as urlreq
+
+import dash_bio as dashbio
+
+model_data = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/mol3d/benzene_model_data.js').read()
+styles_data = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/mol3d/benzene_style_data.js').read()
+
+cube_data = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/mol3d/benzene-homo.cube').read().decode('utf-8')
+
+model_data = json.loads(model_data)
+styles_data = json.loads(styles_data)
+
+dashbio.Molecule3dViewer(
+    styles=styles_data,
+    modelData=model_data,
+    selectionType='atom',
+    orbital={
+      'cube_file': cube_data,
+      'iso_val': 0.1,
+      'opacity': 1.0,
+      'positiveVolumetricColor': 'red',
+      'negativeVolumetricColor': 'blue',
+    }
+)'''
         }
 
     ]
