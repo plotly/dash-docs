@@ -6,75 +6,100 @@ This set of instructions demonstrates how to write a script that deploys your co
 
 
 1. Designate a service account with admin privileges that will deploy the apps on behalf of the owners of the apps. This could be a new admin account or an existing one. Admin accounts have deploy access to all applications. By using an admin account, Dash developers can continue to create & manage their own apps while the separate admin account can deploy to all apps.
-
-2. Create an ssh key and add the public key to Dash Enterprise. See [Authenticating to Dash Enterprise with SSH](/dash-enterprise/ssh) for more detailed instructions.
-
+2. Create an ssh key *without a passphrase* and add the public key to Dash Enterprise. See [Authenticating to Dash Enterprise with SSH](/dash-enterprise/ssh) for more detailed instructions.
 3. Write a CI script that runs the `git push` command with `ssh`. There are many ways to do this. Here is one way:
+   1. Add the SSH private key as an environment variable in the CI tool. Name this variable `SSH_PRIVATE_KEY`. Encode the key in base64:
 
-    1. Add the SSH private key as an environment variable in the CI tool. Name this variable `SSH_PRIVATE_KEY`. Replace newlines with `,` (no space):
+      Linux and Mac OS:
 
-    ```
-    -----BEGIN RSA PRIVATE KEY-----
-    MIIG4wIBAAKCA
-    [...]
-    GtUlPGZb+Dyu1
-    -----END RSA PRIVATE KEY-----
-    ```
-
-    Becomes:
-
-    ```
-    -----BEGIN RSA PRIVATE KEY-----,MIIG4wIBAAKCA[...]GtUlPGZb+Dyu1,-----END RSA PRIVATE KEY-----
-    ```
-
-    2. Add the SSH config as an environment variable in the CI tool. Name this variable `SSH_CONFIG`. Replace newlines with `,` (no space):
-
-    ```
-    Host *
-        Port 3022
-        StrictHostKeyChecking no
-        UserKnownHostsFile=/dev/null
-    ```
-
-    Becomes:
-
-    ```
-    Host *,    Port 3022,    StrictHostKeyChecking no,     UserKnownHostsFile=/dev/null
-    ```
-
-    3. Provide the following script to the CI tool. If the CI tool accepts YAML files that 
-    run steps one at a time, then you can provide each of these commands on their own line.
-
-    ```
-    #!/bin/sh
-    set -x
-
-    echo '-----> Project directory'
-    pwd
-    ls -al
-
-    echo '-----> Creating ssh key'
-    echo "$SSH_PRIVATE_KEY" | tr ',' '\n' > ~/.ssh/id_rsa
-    chmod 600 ~/.ssh/id_rsa # permissioning
-    eval "$(ssh-agent -s)" # setting ssh environment variable
-
-    echo '-----> Adding keys to ssh-agent'
-    ssh-add ~/.ssh/id_rsa
-
-    echo '-----> Creating ssh config'
-    echo "$SSH_CONFIG" | tr ',' '\n' > ~/.ssh/config
-
-    echo '-----> Adding git remote'
-    git config remote.plotly.url >&- || git remote add plotly dokku@<your-dash-enterprise-hostname>:<your-dash-app-name> # add remote if remote doesn't exist
-
-    echo '-----> Deploying app'
-    git push plotly HEAD:master
-    ```
-
-    You'll need to make a few changes to this script:
-
-    - Replace `<your-dash-enterprise-hostname>` with the host name of your Dash Enterprise platform
-    - Replace `<your-dash-app-name>` with the name of your Dash app as initialized on Dash Enterprise
-    - The path of `~/.ssh` may be different on your CI system. Consult your CI system's docs on SSH.
-
+      ```bash
+      cat id_rsa | base64 -w 0 > id_rsa.base64
+      ```
+      
+      Windows:
+      
+      ```bash
+      certutil -encode id_rsa id_rsa.base64
+      ```
+      
+      >Note: Replace `id_rsa` with the location of your SSH key.
+      
+      ```bash
+      -----BEGIN RSA PRIVATE KEY-----
+      MIIG4wIBAAKCA
+      [...]
+      GtUlPGZb+Dyu1
+      -----END RSA PRIVATE KEY-----
+      ```
+      
+      Becomes:
+      
+      ```bash
+      LS0tLS1CRUdJTiBP [...] UEVOU1NIIFBSSVZBV=
+      ```
+      
+   2. Add the SSH config as an environment variable in the CI tool. Name this variable `SSH_CONFIG`. Encode the configuration file in base64:
+      
+      Linux and Mac OS:
+      
+      ```bash
+      cat config | base64 -w 0 > config-base64.txt
+      ```
+      
+      Windows:
+      
+      ```bash
+      certutil -encode config config-base64.txt
+      ```
+      
+      ```bash
+      Host *
+          Port 3022
+          StrictHostKeyChecking no
+          UserKnownHostsFile=/dev/null
+      ```
+      
+      Becomes:
+      
+      ```
+      Vc2VyIGdpdAogHaH [...] ViX3RlbnmlubmdvCg==
+      ```
+      
+   3. Provide the following script to the CI tool. If the CI tool accepts YAML files that 
+      run steps one at a time, then you can provide each of these commands on their own line.
+      
+      ```bash
+      #!/bin/sh
+      set -x
+      
+      echo '-----> Project directory'
+      pwd
+      ls -al
+      
+      echo '-----> Creating ssh key'
+      echo "$SSH_PRIVATE_KEY" | base64 --decode -i > ~/.ssh/id_rsa
+      chmod 600 ~/.ssh/id_rsa # permissioning
+      eval "$(ssh-agent -s)" # setting ssh environment variable
+      
+      echo '-----> Adding keys to ssh-agent'
+      ssh-add ~/.ssh/id_rsa
+      
+      echo '-----> Creating ssh config'
+      echo "$SSH_CONFIG" | base64 --decode -i > ~/.ssh/config
+      
+      echo '-----> Adding git remote'
+      git config remote.plotly.url >&- || git remote add plotly dokku@<your-dash-enterprise-hostname>:<your-dash-app-name>
+      
+      echo '-----> Deploying app'
+      git push plotly HEAD:master
+      ```
+      
+      You'll also need to make a few changes to this script:
+      
+      - Replace `<your-dash-enterprise-hostname>` with the host name of your Dash Enterprise platform
+      - Replace `<your-dash-app-name>` with the name of your Dash app as initialized on Dash Enterprise
+      - The path of `~/.ssh` may be different on your CI system. Consult your CI system's docs on SSH.
+      
+      See [Review Apps](https://github.com/plotly/dash-enterprise-review-apps) repository for review app initialization, deployment and deletion script examples and, [Dash Enterprise Review Apps](/dash-enterprise/review-apps) docs for more detailed instructions.
+   
 4. Trigger this CI script when code is merged into `master`.
