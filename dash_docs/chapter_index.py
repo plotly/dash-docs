@@ -233,6 +233,12 @@ APP_MANAGER_URLS = [
         'description': 'Learn how to setup CI pipelines for Dash Enterprise'
     },
     {
+        'url': '/dash-enterprise/review-apps',
+        'content': chapters.dash_enterprise.review_apps.index.layout,
+        'name': 'Dash Enterprise Review Apps',
+        'description': 'Enhance your CI pipeline with automated Review App deployment'
+    },
+    {
         'url': '/dash-enterprise/api',
         'content': chapters.dash_enterprise.api.index.layout,
         'name': 'GraphQL API',
