@@ -642,14 +642,7 @@ dashbio.Pileup(
 import os
 import six.moves.urllib.request as urlreq
 # read in JSON
-
-# TODO: need to add file file = os.path.join("assets", "pileup", "pileup.synth4.tumor.chr1.4930000-4950000.json")
 # json = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/pileup.synth4.tumor.chr1.4930000-4950000.json').read()
-
-# TODO RM
-file = '/Users/akmorrow/Documents/Projects/consulting/plotly/dash-bio-docs-files/pileup.synth4.tumor.chr1.4930000-4950000.json'
-with open(file, "r") as f:
-    json = f.read()
 
 dashbio.Pileup(
         id = 'tracks-pileup',
@@ -692,13 +685,8 @@ import os
 import re
 import six.moves.urllib.request as urlreq
 # read in JSON
-# TODO: need to fix this
-# json = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/pileup.synth4.tumor.chr1.4930000-4950000.json').read()
+json = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/pileup.synth4.tumor.chr1.4930000-4950000.json').read()
 
-# TODO RM
-file = '/Users/akmorrow/Documents/Projects/consulting/plotly/dash-bio-docs-files/pileup.synth4.tumor.chr1.4930000-4950000.json'
-with open(file, "r") as f:
-        json = f.read()
 
 dashbio.Pileup(
         id='tracks-pileup',
@@ -730,15 +718,7 @@ import os
 import re
 import six.moves.urllib.request as urlreq
 # read in JSON
-# TODO: need to read in right
-# file = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/ileup.features.ga4gh.chr1.120000-125000.chr17.7500000-7515100.json').read()
-
-# TODO RM
-file = '/Users/akmorrow/Documents/Projects/consulting/plotly/dash-bio-docs-files/pileup.features.ga4gh.chr1.120000-125000.chr17.7500000-7515100.json'
-with open(file, "r") as f:
-        json = f.read()
-with open(file, "r") as f:
-        json = f.read()
+file = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/ileup.features.ga4gh.chr1.120000-125000.chr17.7500000-7515100.json').read()
 
 dashbio.Pileup(
         id='features-pileup',
