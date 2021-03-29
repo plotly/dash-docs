@@ -15,9 +15,17 @@ HOSTED_GENOME_DICT = [
 
 HOSTED_GENOME_TRACKS = {
     'mm10': {
-        'range': {"contig": 'chr17', "start": 7512284, "stop": 7512644},
-        'reference': {"label": "mm10", "url": 'https://hgdownload.cse.ucsc.edu/goldenPath/mm10/bigZips/mm10.2bit'},
-        'tracks': [{
+        'range': {
+            'contig': 'chr17',
+            'start': 7512284,
+            'stop': 7512644
+        },
+        'reference': {
+            'label': 'mm10',
+            'url': 'https://hgdownload.cse.ucsc.edu/goldenPath/mm10/bigZips/mm10.2bit'
+        },
+        'tracks': [
+            {
                 'viz': 'scale',
                 'label': 'Scale'
             },
@@ -27,8 +35,15 @@ HOSTED_GENOME_TRACKS = {
             }]
     },
     'hg19': {
-        'range': {"contig": 'chr17', "start": 7512284, "stop": 7512644},
-        'reference': {"label": "hg19", "url": 'https://hgdownload.cse.ucsc.edu/goldenPath/hg19/bigZips/hg19.2bit'},
+        'range': {
+            'contig': 'chr17',
+            'start': 7512284,
+            'stop': 7512644
+        },
+        'reference': {
+            'label': 'hg19',
+            'url': 'https://hgdownload.cse.ucsc.edu/goldenPath/hg19/bigZips/hg19.2bit'
+        },
         'tracks': [{
                 'viz': 'scale',
                 'label': 'Scale'
@@ -75,9 +90,9 @@ def return_pileup(genome):
         html.Div([
             dashbio.Pileup(
                 id = 'default-pileup',
-                range = HOSTED_GENOME_TRACKS[genome].range,
-                reference = HOSTED_GENOME_TRACKS[genome].reference,
-                tracks = HOSTED_GENOME_TRACKS[genome].tracks
+                range = HOSTED_GENOME_TRACKS[genome]['range'],
+                reference = HOSTED_GENOME_TRACKS[genome]['reference'],
+                tracks = HOSTED_GENOME_TRACKS[genome]['tracks']
             )
         ])
     )
