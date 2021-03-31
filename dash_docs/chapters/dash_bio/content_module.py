@@ -642,6 +642,7 @@ dashbio.Pileup(
 import os
 import json
 import six.moves.urllib.request as urlreq
+
 # read in JSON
 json = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/pileup.synth4.tumor.chr1.4930000-4950000.json').read()
 
@@ -681,14 +682,13 @@ dashbio.Pileup(
             '\n- `pileup`: included vizOptions are `viewAsPairs: bool`, `colorByInsert: bool`, `colorByStrand: bool`, `hideAlignments: bool`'
             '\n- `features`: collapse overlapping features by specifying `{\'collapse\': True}`',
             'code': '''import dash_bio as dashbio
-
 import os
 import re
 import json
 import six.moves.urllib.request as urlreq
+
 # read in JSON
 json = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/pileup.synth4.tumor.chr1.4930000-4950000.json').read()
-
 
 dashbio.Pileup(
         id='tracks-pileup',
@@ -720,8 +720,9 @@ import os
 import re
 import json
 import six.moves.urllib.request as urlreq
+
 # read in JSON
-file = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/pileup.features.ga4gh.chr1.120000-125000.chr17.7500000-7515100.json').read()
+json = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/pileup.features.ga4gh.chr1.120000-125000.chr17.7500000-7515100.json').read()
 
 dashbio.Pileup(
         id='features-pileup',
@@ -729,7 +730,7 @@ dashbio.Pileup(
             'contig': 'chr1',
             'start': 120000,
             'stop': 125000
-       },
+        },
         reference = {
             'label': 'hg19',
             'url': 'https://hgdownload.cse.ucsc.edu/goldenPath/hg19/bigZips/hg19.2bit'
