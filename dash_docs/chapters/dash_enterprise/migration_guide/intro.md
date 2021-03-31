@@ -96,6 +96,7 @@ indicate the inputs and therefore which callback the request is associated with.
 **Improving Callback Network Transfer Performance**
 
 There are two ways to improve callback network transfer performance:
+
 1. Reduce the size of the inputs, outputs and state of a callback. This can be done with strategies like:
     - Aggregating or binning your data in Python before displaying it a `dcc.Graph` or `dash_table.DataTable`.
     - Using an alternative visualization routine that displays an aggregate or summary of data instead of every individual data point.
@@ -115,6 +116,7 @@ Unless you are using Dash Enterprise Workspaces, the network path from your work
 environment to your datastore is different than the network path from Dash Enterprise to the datastore.
 
 This has a few implications:
+
 1. The VMs that are running Dash Enterprise apps need to have network access to your data store. You can verify this by using a Dash Enterprise Workspace.
 2. The network speed may be different when deploying your app. Usually, the network transfer speed is _faster_ as the Dash Enterprise VMs are frequently "closer" to the underlying datastore in your organization's VPC.
 
@@ -193,12 +195,13 @@ Request timeouts are encountered when running your app callbacks. So, if your ca
 it will timeout by default and the update will not be displayed to the user.
 
 To get around this, you have a few options:
+
 1. Speed up your application code so that it takes less than 30 seconds to run
 2. Split up long callbacks into multiple chained callbacks, storing intermediate data in a `dcc.Store` or
    in a server-side cache (see ["Caching and Signaling"](/sharing-data-between-callbacks)
 3. Run long-running tasks in a Job Queue instead. See the "Background Task Queue" Sample Application on your Dash Enterprise server
    at https://<your-dash-enterprise-server>/Docs/templates.
-5. Increase two timeouts:
+4. Increase two timeouts:
    a. The built-in proxy timeout in the Dash Enterprise Server Manager. Your admin will need to adjust this setting.
    b. The default gunicorn timeout with e.g. ` gunicorn app:server --timeout 120`.
    
@@ -290,6 +293,7 @@ There are also CPU limits. Exceeding the CPU limit will not restart the app howe
 
 Dash Enterprise includes access to several commercial packages that can be incorporated into your Dash application.
 Visit `https://<your-dash-enterprise>.com/Docs` for commercial documentation and installation. These capabilities include libraries like:
+
 - `dash-design-kit` for theming and building the layout of your Dash app
 - `dash-snapshots` for saving point-in-time views of your app's state and generating structured reports
 - `dash-embedded` for embedding Dash apps in 3rd party websites without Iframes
