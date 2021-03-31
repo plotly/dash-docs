@@ -3,6 +3,7 @@ import dash_html_components as html
 from dash_docs import reusable_components as rc
 import dash_core_components as dcc
 from dash_docs import tools
+from textwrap import dedent
 import os
 
 content = tools.load_markdown_files(__file__)
@@ -12,7 +13,7 @@ PAGE_CONTENT = rc.Markdown('''
 
 {intro}
 
-'''.format(**{k.replace('.md', ''): v for (k, v) in content.items()}).format(
+'''.format(**{k.replace('.md', ''): dedent(v) for (k, v) in content.items()}).format(
     url_sample_app=('''
     If you haven't already created a dash app, we recommend trying out a 
     Dash Enterprise [Sample App or Template](/Docs/templates) Every sample 
@@ -21,9 +22,9 @@ PAGE_CONTENT = rc.Markdown('''
     ''' 
     if check_url else 
     '''  
-    >To view the Dash Enterprise Sample Apps & Templates, visit: https://<your-dash-enterprise-hostname\>/Docs/template,
-    > replacing <your-dash-enterprise-hostname\> with the hostname of your licensed Dash Enterprise in your VPC.   
-    >[Look up the hostname for your company’s license](go.plotly.com).
+    To view the Dash Enterprise Sample Apps & Templates, visit: https://<your-dash-enterprise-hostname\>/Docs/template,
+     replacing <your-dash-enterprise-hostname\> with the hostname of your licensed Dash Enterprise in your VPC.   
+    [Look up the hostname for your company’s license](go.plotly.com).
     '''),
     url_requirements=('''
     see our [Application Structure Docs](/Docs/requirements) for more details.
