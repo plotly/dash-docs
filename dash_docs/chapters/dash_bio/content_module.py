@@ -721,7 +721,7 @@ import re
 import json
 import six.moves.urllib.request as urlreq
 # read in JSON
-file = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/ileup.features.ga4gh.chr1.120000-125000.chr17.7500000-7515100.json').read()
+file = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/pileup.features.ga4gh.chr1.120000-125000.chr17.7500000-7515100.json').read()
 
 dashbio.Pileup(
         id='features-pileup',
