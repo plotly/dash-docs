@@ -16,7 +16,7 @@ Consider the following items to ensure that your application will be successfull
   ```
   web: gunicorn app:server --workers 2
  ```
-3. **`requirements.txt`** - Ensure that your project folder has a `requirements.txt` file with the Python dependencies and versions of your app. Don't forgot `gunicorn`! See [Application Structure Documentation](/dash-enterprise/application-structure) for details.
+3. **`requirements.txt`** - Ensure that your project folder has a `requirements.txt` file with the Python dependencies and versions. Don't forgot `gunicorn`! See [Application Structure Documentation](/dash-enterprise/application-structure) for details.
 4. **`server = app.server`** - Declare the underlying `server` variable to be referenced by the `web` command in your `Procfile`. See [Application Structure Documentation](/dash-enterprise/application-structure) for details.
 5. **Remove secrets & passwords** - Remove sensitive passwords and API keys from your code and replace them with [Environment Variables](/dash-enterprise/environment-variables).
 6. **System-Level dependencies** - If your project requires system level dependencies like database drivers, then install those dependencies with a `predeploy` script and an `apt-packages` file.  See [Application Structure Documentation](/dash-enterprise/application-structure).
