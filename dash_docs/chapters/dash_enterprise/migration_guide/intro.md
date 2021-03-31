@@ -89,7 +89,7 @@ To investigate whether the performance issues are related to the network, we rec
       dev_tools_serve_dev_bundles=True,
   )
   ```
-- Using the Network Panel of your Browser's Dev Tools to view the network transfer speed of the requests.
+- Using the Network Panel of your browser's Development Tools to view the network transfer speed of the requests.
 Each callback will corresponds to a `POST /_dash-update-component`. The contents of the request will 
 indicate the inputs and therefore which callback the request is associated with.
 
