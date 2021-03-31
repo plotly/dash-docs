@@ -19,19 +19,16 @@ layout = html.Div(className='toc', children=[
     ]) if 'DASH_DOCS_URL_PREFIX' not in os.environ else '',
 
     rc.Section("Deployment", [
-        rc.Chapter('Part 1. Initialize Dash Apps on Dash Enterprise',
+        rc.Chapter('Part 1. Preparing your App for Dash Enterprise',
+                '/dash-enterprise/preparing',
+                'Preparing app code that works locally into code that will run on Dash Enterprise'),
+        rc.Chapter('Part 2. Initialize Dash Apps on Dash Enterprise',
                 '/dash-enterprise/initialize',
                 'Initialize an app via Dash Enterprise UI.'),
-        rc.Chapter('Part 2. Deploy Dash Apps on Dash Enterprise',
+        rc.Chapter('Part 3. Deploy Dash Apps on Dash Enterprise',
                 '/dash-enterprise/deployment',
                 'Deploy Dash Apps to the Dash Enterprise using '
                 'HTTPS or SSH. Start with a sample app or deploy your existing app.')
-    ]),
-
-    rc.Section("Migration", [
-        rc.Chapter('Preparing an App for Dash Enterprise',
-                '/dash-enterprise/migration-guide',
-                'Migrating from Local Development to Dash Enterprise')
     ]),
 
     rc.Section("Configuration", [
