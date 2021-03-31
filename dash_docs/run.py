@@ -95,9 +95,9 @@ header = html.Div(
 )
 
 DEFAULT_AD = dict(
-    alt='Announcing Dash VTK for 3d simulation graphics. Check out the March Webinar.',
-    src=tools.relpath('/assets/images/sidebar/dash_vtk_sidebar_2-14.jpg'),
-    href='https://go.plotly.com/dash-vtk'
+    alt='Want to see Dash Enterprise in action? Register for one of our Dash Live Weeklies!',
+    src=tools.relpath('https://images.prismic.io/plotly-marketing-website/d7faba57-a227-4f22-a934-5b2525da1ca3_sidebar_ads_2-09.jpg?auto=compress,format'),
+    href='https://plotly.com/get-demo'
 )
 
 app.title = 'Dash User Guide and Documentation - Dash by Plotly'
