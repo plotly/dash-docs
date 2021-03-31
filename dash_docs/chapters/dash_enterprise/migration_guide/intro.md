@@ -200,7 +200,7 @@ To get around this, you have a few options:
 
 1. Speed up your application code so that it takes less than 30 seconds to run
 2. Split up long callbacks into multiple chained callbacks, storing intermediate data in a `dcc.Store` or
-   in a server-side cache (see ["Caching and Signaling"](/sharing-data-between-callbacks)
+   in a server-side cache (see ["Caching and Signaling"](/sharing-data-between-callbacks))
 3. Run long-running tasks in a Job Queue instead. See the "Background Task Queue" Sample Application on your Dash Enterprise server
    at https://<your-dash-enterprise-server>/Docs/templates.
 4. Increase two timeouts:
