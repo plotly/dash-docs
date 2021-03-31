@@ -98,11 +98,13 @@ indicate the inputs and therefore which callback the request is associated with.
 There are two ways to improve callback network transfer performance:
 
 1. Reduce the size of the inputs, outputs and state of a callback. This can be done with strategies like:
+
     - Aggregating or binning your data in Python before displaying it a `dcc.Graph` or `dash_table.DataTable`.
     - Using an alternative visualization routine that displays an aggregate or summary of data instead of every individual data point.
     - Visualizing aggregated data via [Dash with Datashader](/holoviews).
     - Replacing `dcc.Store` or hidden divs with a server-side cache via the ["Caching and Signaling" method](/sharing-data-between-callbacks).
 2. Reduce the number of times a callback is fired. This can be done with strategies like:
+
     - [Clientside callbacks](/clientside-callbacks)
     - Changing the UI to update less frequently from user interaction. For example, instead of updating on every keypress of a `dcc.Input`, update the UI when the user clicks a button and pass the value of the `dcc.Input` via [`State`](/basic-callbacks).
     - Replacing `dcc.Store` or hidden divs with a server-side cache via the ["Caching and Signaling" method](/sharing-data-between-callbacks).
@@ -145,6 +147,7 @@ Dash Enterprise enables you to create and link Redis and Postgres databases to y
 via the App Manager user interface.
 
 Once linked, these databases are accessible within your code via:
+
 - The `REDIS_URL` environment variable for the Redis database
 - The `DATABASE_URL` environment variable for the Postgres database
 
