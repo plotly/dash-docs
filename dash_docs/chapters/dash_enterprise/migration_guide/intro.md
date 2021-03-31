@@ -2,7 +2,7 @@ The first step in deploying your Dash app to Dash Enterprise is to
 prepare your application's code with the necessary files
 required to deploy your Dash app.
 
-This guide aimed at user who already have Dash apps running locally. 
+This guide aimed at users who already have Dash apps running locally. 
 If you haven't already created a Dash app yet, we recommend trying out 
 Dash Enterprise Sample Apps & Templates. Every sample app and template is deploy ready and contains all of the 
 necessary configuration files. 
