@@ -1,7 +1,8 @@
 This guide will provide you with the necessary steps to successfully 
-migrate your existing Dash apps to your Dash Enterprise Server. It is 
+migrate Dash apps from your local development environment
+to your Dash Enterprise platform. It is 
 aimed at user who already have Dash apps running locally. 
-If you haven't already created a dash app we recommend trying out 
+If you haven't already created a Dash app yet, we recommend trying out 
 Dash Enterprise Sample Apps & Templates.
 
 Every sample app and template is deploy ready and contains all of the 
