@@ -29,7 +29,6 @@ def Blockquote():
         > data science apps. [Find out if your company is using Dash Enterprise](https://go.plotly.com/company-lookup)
     ''')
 
-
 # # # # # # #
 # Initialize
 # # # # # # #

@@ -78,15 +78,21 @@ APP_MANAGER_URLS = [
         'content': chapters.dash_enterprise.index.layout
     },
     {
+        'url': '/dash-enterprise/preparing',
+        'content': chapters.dash_enterprise.migration_guide.index.layout,
+        'name': 'Part 1. Preparing your App for Dash Enterprise',
+        'description': 'Preparing app code that works locally into code that will run on Dash Enterprise'
+    },        
+    {
         'url': '/dash-enterprise/initialize',
         'content': chapters.dash_enterprise.dash_enterprise_chapters.Initialize,
-        'name': 'Part 1. Initialize Dash Apps on Dash Enterprise',
+        'name': 'Part 2. Initialize Dash Apps on Dash Enterprise',
         'description': 'Initialize Dash Apps on Plotly Enterprise'
     },
     {
         'url': '/dash-enterprise/deployment',
         'content': chapters.dash_enterprise.dash_enterprise_chapters.Deploy,
-        'name': 'Part 2. Deploy Dash Apps on Dash Enterprise',
+        'name': 'Part 3. Deploy Dash Apps on Dash Enterprise',
         'description': 'Deploy Dash Apps on Dash Enterprise'
     },
     {
@@ -251,7 +257,6 @@ DASH_ENTERPRISE_URLS = {
     'description': (
         '''
         #### These capabilities are only available in Dash Enterprise
-
         > To deploy Dash apps in production environments, you'll need
         > [Dash Enterprise](https://plotly.com/dash).
         >
@@ -796,7 +801,6 @@ URLS = [
                             clientside (in the browser). This means that you need to
                             load all of the data into the table up-front. If your data is large,
                             then this can be prohibitively slow.
-
                             In this chapter, you'll learn how to write your own filtering,
                             sorting, and paging backends in Python with Dash.
                             We'll do the data processing with Pandas but you could write your
@@ -812,9 +816,7 @@ URLS = [
                             The DataTable is editable. Like a spreadsheet, it can be used
                             as an input for controlling models with a variable number
                             of inputs.
-
                             This chapter includes recipes for:
-
                             - Determining which cell has changed
                             - Filtering out null values
                             - Adding or removing columns
