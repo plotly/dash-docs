@@ -28,7 +28,7 @@ Consider the following items to ensure that your application will be successfull
 ## Additional Considerations
 
 
-### Troubleshooting with Workspaces
+### Dash Enterprise Workspaces
 
 There are frequently many difference between your local environment and 
 the containerized environment Dash Enterprise runs your app in.
