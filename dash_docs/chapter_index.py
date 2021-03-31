@@ -78,22 +78,22 @@ APP_MANAGER_URLS = [
         'content': chapters.dash_enterprise.index.layout
     },
     {
+        'url': '/dash-enterprise/preparing',
+        'content': chapters.dash_enterprise.migration_guide.index.layout,
+        'name': 'Part 1. Preparing your App for Dash Enterprise',
+        'description': 'Preparing app code that works locally into code that will run on Dash Enterprise'
+    },        
+    {
         'url': '/dash-enterprise/initialize',
         'content': chapters.dash_enterprise.dash_enterprise_chapters.Initialize,
-        'name': 'Part 1. Initialize Dash Apps on Dash Enterprise',
+        'name': 'Part 2. Initialize Dash Apps on Dash Enterprise',
         'description': 'Initialize Dash Apps on Plotly Enterprise'
     },
     {
         'url': '/dash-enterprise/deployment',
         'content': chapters.dash_enterprise.dash_enterprise_chapters.Deploy,
-        'name': 'Part 2. Deploy Dash Apps on Dash Enterprise',
+        'name': 'Part 3. Deploy Dash Apps on Dash Enterprise',
         'description': 'Deploy Dash Apps on Dash Enterprise'
-    },
-    {
-        'url': '/dash-enterprise/transitioning-an-app-to-dash-enterprise',
-        'content': chapters.dash_enterprise.migration_guide.index.layout,
-        'name': 'Transitioning your App to Dash Enterprise',
-        'description': 'Migrating your code from local development to Dash Enterprise'
     },
     {
         'url': '/dash-enterprise/application-structure',
