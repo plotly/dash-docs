@@ -124,8 +124,7 @@ This has a few implications:
 
 ### Working with Large Data Files
 
-If your app can read directly from data files (rather than a database or an API),  
-then you have three options for reading these files in a deployed application:
+If your app can read directly from data files (rather than a database or an API), then you have three options for reading these files in a deployed application:
 
 - **Commit the files** into your project folder. Projects with large 
     data files can become difficult to share between systems & people and 
