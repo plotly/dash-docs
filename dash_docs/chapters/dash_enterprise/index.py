@@ -27,6 +27,13 @@ layout = html.Div(className='toc', children=[
                 'Deploy Dash Apps to the Dash Enterprise using '
                 'HTTPS or SSH. Start with a sample app or deploy your existing app.')
     ]),
+    
+    rc.Section("Migration", [
+        rc.Chapter('Migration Guide',
+                '/dash-enterprise/migration',
+                'What you need to know to migrate your apps',
+                'to Dash Enterprise')
+    ]),
 
     rc.Section("Configuration", [
         rc.Chapter('Application Structure, Buildpacks, and Deployment Lifecycle',
