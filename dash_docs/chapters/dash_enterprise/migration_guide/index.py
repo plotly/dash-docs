@@ -14,7 +14,8 @@ PAGE_CONTENT = rc.Markdown('''
 {intro}
 
 '''.format(**{k.replace('.md', ''): dedent(v) for (k, v) in content.items()}).format(
-    url_sample_app=('''
+    url_sample_app=(
+    '''
     If you haven't already created a dash app, we recommend trying out a 
     Dash Enterprise [Sample App or Template](/Docs/templates) Every sample 
     app and template is deploy ready and contains all of the necessary 
@@ -26,59 +27,64 @@ PAGE_CONTENT = rc.Markdown('''
      replacing <your-dash-enterprise-hostname\> with the hostname of your licensed Dash Enterprise in your VPC.   
     [Look up the hostname for your company’s license](go.plotly.com).
     '''),
-    url_requirements=('''
+    url_requirements=(
+    '''
     see our [Application Structure Docs](/Docs/requirements) for more details.
     '''
     if check_url else 
     '''
-    >To view the Application Structure Docs, visit: https://<your-dash-enterprise-hostname\>Docs/requirements,
-    > replacing <your-dash-enterprise-hostname\> with the hostname of your licensed Dash Enterprise in your VPC.   
-    >[Look up the hostname for your company’s license](go.plotly.com).
+    To view the Application Structure Docs, visit: https://<your-dash-enterprise-hostname\>Docs/requirements,
+    replacing <your-dash-enterprise-hostname\> with the hostname of your licensed Dash Enterprise in your VPC.   
+    [Look up the hostname for your company’s license](go.plotly.com).
     '''),
     url_workspaces=('''
     See our [Workspaces Docs](/Docs/workspaces) for more details.
     '''
     if check_url else 
     '''
-    >To view the Application Structure Docs, visit: https://<your-dash-enterprise-hostname\>/Docs/requirements,
-    > replacing <your-dash-enterprise-hostname\> with the hostname of your licensed Dash Enterprise in your VPC.   
-    >[Look up the hostname for your company’s license](go.plotly.com).
+    To view the Application Structure Docs, visit: https://<your-dash-enterprise-hostname\>/Docs/requirements,
+    replacing <your-dash-enterprise-hostname\> with the hostname of your licensed Dash Enterprise in your VPC.   
+    [Look up the hostname for your company’s license](go.plotly.com).
     '''),
-    url_workspaces_ide=('''
+    url_workspaces_ide=(
+    '''
     See our [Workspaces IDE](/Docs/workspaces/ide) for more details.
     '''
     if check_url else 
     '''
-    >To view Workspace IDE Docs, visit: https://<your-dash-enterprise-hostname>/Docs/workspaces/ide,
-    > replacing <your-dash-enterprise-hostname\> with the hostname of your licensed Dash Enterprise in your VPC.   
-    >[Look up the hostname for your company’s license](go.plotly.com).
+    To view Workspace IDE Docs, visit: https://<your-dash-enterprise-hostname>/Docs/workspaces/ide,
+    replacing <your-dash-enterprise-hostname\> with the hostname of your licensed Dash Enterprise in your VPC.   
+    [Look up the hostname for your company’s license](go.plotly.com).
     '''),
-    url_initialize=('''
+    url_initialize=(
+    '''
     See our [Initialization Docs](/dash-enterprise/initialize) for more details.
     '''
     if check_url else 
     '''
-    >To view Initialization Docs, visit: https://<your-dash-enterprise-hostname>/Docs/initialize,
-    > replacing <your-dash-enterprise-hostname\> with the hostname of your licensed Dash Enterprise in your VPC.   
-    >[Look up the hostname for your company’s license](go.plotly.com).
+    To view Initialization Docs, visit: https://<your-dash-enterprise-hostname>/Docs/initialize,
+    replacing <your-dash-enterprise-hostname\> with the hostname of your licensed Dash Enterprise in your VPC.   
+    [Look up the hostname for your company’s license](go.plotly.com).
     '''),
-    url_deployment=('''
+    url_deployment=(
+    '''
     See our [Deployment Docs](/dash-enterprise/deployment) for more details.
     '''
     if check_url else 
     '''
-    >To view Deployment Docs, visit: https://<your-dash-enterprise-hostname>/Docs/performance,
-    > replacing <your-dash-enterprise-hostname\> with the hostname of your licensed Dash Enterprise in your VPC.   
-    >[Look up the hostname for your company’s license](go.plotly.com).
+    To view Deployment Docs, visit: https://<your-dash-enterprise-hostname>/Docs/performance,
+    replacing <your-dash-enterprise-hostname\> with the hostname of your licensed Dash Enterprise in your VPC.   
+    [Look up the hostname for your company’s license](go.plotly.com).
     '''),
-    url_performance=('''
+    url_performance=(
+    '''
     See our [App Performance Docs](/performance) for recommendations.
     '''
     if check_url else 
     '''        
-    >To view App Performance Docs, visit: https://<your-dash-enterprise-hostname>/Docs/performance,
-    > replacing <your-dash-enterprise-hostname\> with the hostname of your licensed Dash Enterprise in your VPC.   
-    >[Look up the hostname for your company’s license](go.plotly.com).
+    To view App Performance Docs, visit: https://<your-dash-enterprise-hostname>/Docs/performance,
+    replacing <your-dash-enterprise-hostname\> with the hostname of your licensed Dash Enterprise in your VPC.   
+    [Look up the hostname for your company’s license](go.plotly.com).
     ''')
 ))
 
