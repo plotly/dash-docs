@@ -90,10 +90,10 @@ APP_MANAGER_URLS = [
         'description': 'Deploy Dash Apps on Dash Enterprise'
     },
     {
-        'url': '/dash-enterprise/migration-guide',
+        'url': '/dash-enterprise/transitioning-an-app-to-dash-enterprise',
         'content': chapters.dash_enterprise.migration_guide.index.layout,
-        'name': 'Preparing an App for Dash Enterprise',
-        'description': 'Migrating from Local Development to Dash Enterprise'
+        'name': 'Transitioning your App to Dash Enterprise',
+        'description': 'Migrating your code from local development to Dash Enterprise'
     },
     {
         'url': '/dash-enterprise/application-structure',
