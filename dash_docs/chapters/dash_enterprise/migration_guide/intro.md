@@ -32,15 +32,15 @@ Consider the following items to ensure that your application will be successfull
 
 There are frequently many difference between your local environment and 
 the containerized environment Dash Enterprise runs your app in.
+
 This can include differences in:
 
 - Operating system and the available drivers and package dependencies
 - Networking
-- Redis 
-- Postgres
+- Redis & Postgres
 - Python packages - The versions that are installed and available for the operating system
 - Authentication logic
-- Server resources (RAM, CPU)
+- Server resources (RAM, CPU, Disk)
 - Timeouts
 - Git
 
@@ -50,6 +50,7 @@ apply between Workspaces and deployed apps.
 
 The easiest way to troubleshoot your application is to run it within a Dash Enterprise Workspace.
 This can be done in two ways:
+
 1. Deploying the app and creating a Workspace from that deployed application.
    This can only be done if the deployment succeeds.
 2. Copying or uploading the files from your local environment to a new Dash Enterprise Workspace.
