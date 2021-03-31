@@ -82,7 +82,7 @@ PAGE_CONTENT = rc.Markdown('''
 ))
 
 layout = html.Div([
-    html.H1('Dash App Migration Guide'),
-    html.Div(''),
+    html.H1('Preparing an App for Dash Enterprise'),
+    html.H2('Migrating from Local Development to Dash Enterprise'),
     html.Div([PAGE_CONTENT]),
 ])
