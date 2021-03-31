@@ -640,9 +640,10 @@ dashbio.Pileup(
                            'of dictionaries, each of which corresponds to a single track.',
             'code': '''import dash_bio as dashbio
 import os
+import json
 import six.moves.urllib.request as urlreq
 # read in JSON
-# json = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/pileup.synth4.tumor.chr1.4930000-4950000.json').read()
+json = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/pileup.synth4.tumor.chr1.4930000-4950000.json').read()
 
 dashbio.Pileup(
         id = 'tracks-pileup',
@@ -683,6 +684,7 @@ dashbio.Pileup(
 
 import os
 import re
+import json
 import six.moves.urllib.request as urlreq
 # read in JSON
 json = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/pileup.synth4.tumor.chr1.4930000-4950000.json').read()
@@ -716,6 +718,7 @@ dashbio.Pileup(
             'code': '''import dash_bio as dashbio
 import os
 import re
+import json
 import six.moves.urllib.request as urlreq
 # read in JSON
 file = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/ileup.features.ga4gh.chr1.120000-125000.chr17.7500000-7515100.json').read()
