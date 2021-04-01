@@ -173,7 +173,7 @@ To workaround this limitation, you have three options:
 
 ### Authentication and Authorization
 
-Apps deployed on Dash Enterprise can access the username of the currently loggged in visitor of the Dash application 
+Apps deployed on Dash Enterprise can access the username of the currently logged in visitor of the Dash application 
 via the `dash-enterprise-auth` package:
 
 ```python
@@ -283,11 +283,12 @@ for details.
 ### Daily Restarts & Memory and CPU Limits (Kubernetes)
 
 In Dash Enterprise Kubernetes, your application can restart more frequently than when running locally:
+
 1. Daily Restarts - Dash Enterprise Kubernetes restarts your application daily to prevent
-long-running memory leaks or other subtle bugs that can occur with long-running processes.
+   long-running memory leaks or other subtle bugs that can occur with long-running processes.
 2. Out-of-memory Restarts - If the application consumes more memory than what it has been allocated,
-then Dash Enterprise will restart the application. This can be desirable if there is a memory leak or
-surprising if simply enough memory was not allocated.
+   then Dash Enterprise will restart the application. This can be desirable if there is a memory leak or
+   surprising if simply enough memory was not allocated.
 
 There are also CPU limits. Exceeding the CPU limit will not restart the app however it will slow the application down.
 
