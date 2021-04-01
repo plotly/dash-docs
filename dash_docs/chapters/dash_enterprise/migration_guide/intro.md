@@ -106,7 +106,7 @@ There are two ways to improve callback network transfer performance:
 2. Reduce the number of times a callback is fired. This can be done with strategies like:
 
     - [Clientside callbacks](/clientside-callbacks)
-    - Changing the UI to update less frequently from user interaction. For example, instead of updating on every keypress of a `dcc.Input`, update the UI when the user clicks a button and passes the value of the `dcc.Input` via [`State`](/basic-callbacks).
+    - Changing the UI to update less frequently from user interaction. For example, instead of updating on every keypress of a `dcc.Input`, update the UI when the user clicks a button and pass the value of the `dcc.Input` via [`State`](/basic-callbacks).
     - Replacing `dcc.Store` or hidden divs with a server-side cache via the ["Caching and Signaling" method](/sharing-data-between-callbacks).
     - Combining multiple callbacks into a single callback with [multiple outputs](/basic-callbacks).
 
