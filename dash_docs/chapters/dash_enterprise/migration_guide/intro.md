@@ -2,7 +2,7 @@ The first step in deploying your Dash app to Dash Enterprise is to
 prepare your application's code with the necessary files
 required to deploy your Dash app.
 
-This guide aimed at users who already have Dash apps running locally. 
+This guide is aimed at users who already have Dash apps running locally. 
 If you haven't already created a Dash app yet, we recommend trying out 
 Dash Enterprise Sample Apps & Templates. Every sample app and template is deploy ready and contains all of the 
 necessary configuration files. 
@@ -16,7 +16,7 @@ Consider the following items to ensure that your application will be successfull
   ```
   web: gunicorn app:server --workers 2
  ```
-3. **`requirements.txt`** - Ensure that your project folder has a `requirements.txt` file with the Python dependencies and versions. Don't forgot `gunicorn`! See [Application Structure Documentation](/dash-enterprise/application-structure) for details.
+3. **`requirements.txt`** - Ensure that your project folder has a `requirements.txt` file with the Python dependencies and versions. Don't forget `gunicorn`! See [Application Structure Documentation](/dash-enterprise/application-structure) for details.
 4. **`server = app.server`** - Declare the underlying `server` variable to be referenced by the `web` command in your `Procfile`. See [Application Structure Documentation](/dash-enterprise/application-structure) for details.
 5. **Remove secrets & passwords** - Remove sensitive passwords and API keys from your code and replace them with [Environment Variables](/dash-enterprise/environment-variables).
 6. **System-Level dependencies** - If your project requires system level dependencies like database drivers, then install those dependencies with a `predeploy` script and an `apt-packages` file.  See [Application Structure Documentation](/dash-enterprise/application-structure).
@@ -69,13 +69,13 @@ performance of any data fetching being done within your callback.
 
 **Callback Performance**
 
-The input, output, and state of a callback is transferred over the network.
+The input, output, and state of a callback are transferred over the network.
 When working locally, this data transfer is very fast.
 When the application is deployed on a server, it takes longer to 
 transfer the data from the user's browser to your callback and from your
 callback to the user's browser.
 
-This is usually not noticable unless your callbacks have large data structures
+This is usually not noticeable unless your callbacks have large data structures
 as inputs (e.g. a dataframe stored in `dcc.Store` or the contents of a `dcc.Upload` component)
 or as outputs (e.g. large `figure` properties of `dcc.Graph` or large `data` properties of `DataTable`).
 
@@ -90,8 +90,8 @@ To investigate whether the performance issues are related to the network, we rec
   )
   ```
 - Using the Network Panel of your browser's Development Tools to view the network transfer speed of the requests.
-Each callback will corresponds to a `POST /_dash-update-component`. The contents of the request will 
-indicate the inputs and therefore which callback the request is associated with.
+Each callback will correspond to a `POST /_dash-update-component`. The contents of the request will 
+indicate the inputs and, therefore which callback the request is associated with.
 
 **Improving Callback Network Transfer Performance**
 
@@ -163,9 +163,9 @@ container and Docker containers have isolated file systems.
 
 When you deploy a Dash app, it is run in a set of new containers.
 So, data that is written to the file system won't necessarily be available
-during the next deployment nor will be available between processes (like between the `web` process and the `worker` process).
+during the next deployment, nor will it be available between processes (like between the `web` process and the `worker` process).
 
-To workaround this limitation, you have three options:
+To work around this limitation, you have three options:
 
 1. Save the data to an external data store
 2. Save the data to a Redis or Postgres database onboard Dash Enterprise. This feature is not yet available on Dash Enterprise Kubernetes.
@@ -173,7 +173,7 @@ To workaround this limitation, you have three options:
 
 ### Authentication and Authorization
 
-Apps deployed on Dash Enterprise can access the username of the currently loggged in visitor of the Dash application 
+Apps deployed on Dash Enterprise can access the username of the currently logged-in visitor of the Dash application 
 via the `dash-enterprise-auth` package:
 
 ```python
@@ -194,7 +194,7 @@ Apps deployed on Dash Enterprise are subject to a 30 second request timeout by d
 This is to prevent long-running or stuck requests from hanging the app's processes and preventing further requests.
 
 Request timeouts are encountered when running your app callbacks. So, if your callback takes longer than 30 seconds
-it will timeout by default and the update will not be displayed to the user.
+it will timeout by default, and the update will not be displayed to the user.
 
 To get around this, you have a few options:
 
@@ -205,10 +205,10 @@ To get around this, you have a few options:
    at https://<your-dash-enterprise-server>/Docs/templates.
 4. Increase two timeouts:
    a. The built-in proxy timeout in the Dash Enterprise Server Manager. Your admin will need to adjust this setting.
-   b. The default gunicorn timeout with e.g. ` gunicorn app:server --timeout 120`.
+   b. The default gunicorn timeout with, e.g. ` gunicorn app:server --timeout 120`.
    
-   Be aware of the performance limitations of this method: more CPU processes and workers will be utilized while
-   handling long-running requests and it will be more likely that your app will "run out" of the
+   Be aware of this method's performance limitations: more CPU processes and workers will be utilized while
+   handling long-running requests, and it will be more likely that your app will "run out" of the
    available CPU processes and workers while multiple users interact with your app. You will likely need to increase
    the number of workers with gunicorn's `--workers` argument.
 
@@ -229,7 +229,7 @@ Also, consider using a [CHECKS](/dash-enterprise/application-structure) to preve
 
 Dash Enterprise applications are accessible under a separate URL path.
 
-That is, instead of accessing the app at e.g. `http://localhost:8050`, you access the app at `https://<your-dash-enterprise>.com/<your-dash-app-name>`. 
+That is, instead of accessing the app at, e.g. `http://localhost:8050`, you access the app at `https://<your-dash-enterprise>.com/<your-dash-app-name>`. 
 
 The `/<your-dash-app-name>` is the path that we are referring to.
 
@@ -258,8 +258,8 @@ This server may have more or less CPU, RAM, Disk Space & Write/Read Speed, Netwo
 This may cause your app to run faster or slower than your local environment.
 
 If the server is under-provisioned, there may not be enough memory on the platform to run your Dash application. 
-On Dash Enterprise on a Single Server, this can cause the server downtime.
-On Dash Enterprise Kubernetes, this can cause the app to not be deployed.
+On Dash Enterprise on a Single Server, this can cause server downtime.
+On Dash Enterprise Kubernetes, this can cause the app not to be deployed.
 
 On Dash Enterprise Kubernetes, you will need to allocate enough memory and CPU for your particular application via the "Resources" tab
 after initializing your app in the Dash Enterprise App Manager.
@@ -283,13 +283,14 @@ for details.
 ### Daily Restarts & Memory and CPU Limits (Kubernetes)
 
 In Dash Enterprise Kubernetes, your application can restart more frequently than when running locally:
-1. Daily Restarts - Dash Enterprise Kubernetes restarts your application daily to prevent
-long-running memory leaks or other subtle bugs that can occur with long-running processes.
+
+1. Daily Restarts - Dash Enterprise Kubernetes restarts your application daily to prevent long-running 
+   memory leaks or other subtle bugs that can occur with long-running processes.
 2. Out-of-memory Restarts - If the application consumes more memory than what it has been allocated,
 then Dash Enterprise will restart the application. This can be desirable if there is a memory leak or
 surprising if simply enough memory was not allocated.
 
-There are also CPU limits. Exceeding the CPU limit will not restart the app however it will slow the application down.
+There are also CPU limits. Exceeding the CPU limit will not restart the app however, it will slow the application down.
 
 ### Dash Enterprise Application Capabilities
 
