@@ -605,6 +605,7 @@ dashbio.Pileup(
     }
 )'''
         },
+
         {
             'param_name': 'Tracks',
             'description': 'Add tracks in the `tracks` parameter of a Pileup component '
@@ -671,6 +672,7 @@ dashbio.Pileup(
             'sourceOptions': json
         }])'''
         },
+
         {
             'param_name': 'Visualization Options',
             'description': 'Depending on the visualization track, you can modify and set '
@@ -710,6 +712,7 @@ dashbio.Pileup(
             'sourceOptions': json
         }])'''
         },
+
         {
             'param_name': 'Features',
             'description': 'The `features` visualization allows you to view any features that '

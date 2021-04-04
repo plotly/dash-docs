@@ -75,7 +75,6 @@ app.layout = html.Div([
 ])
 
 
-
 # Return the Pileup component with the selected genome.
 @app.callback(
     Output('pileup-container', 'children'),
