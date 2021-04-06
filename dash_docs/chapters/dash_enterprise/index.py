@@ -19,10 +19,13 @@ layout = html.Div(className='toc', children=[
     ]) if 'DASH_DOCS_URL_PREFIX' not in os.environ else '',
 
     rc.Section("Deployment", [
-        rc.Chapter('Part 1. Initialize Dash Apps on Dash Enterprise',
+        rc.Chapter('Part 1. Preparing your App for Dash Enterprise',
+                '/dash-enterprise/preparing',
+                'Preparing app code that works locally into code that will run on Dash Enterprise'),
+        rc.Chapter('Part 2. Initialize Dash Apps on Dash Enterprise',
                 '/dash-enterprise/initialize',
                 'Initialize an app via Dash Enterprise UI.'),
-        rc.Chapter('Part 2. Deploy Dash Apps on Dash Enterprise',
+        rc.Chapter('Part 3. Deploy Dash Apps on Dash Enterprise',
                 '/dash-enterprise/deployment',
                 'Deploy Dash Apps to the Dash Enterprise using '
                 'HTTPS or SSH. Start with a sample app or deploy your existing app.')
@@ -62,7 +65,19 @@ rc.Section("User Interface", [
                 'Directory mappings allow you to make directories on the '
                 'Dash Enterprise available to your app.')
     ]),
-
+    rc.Section("Continuous Integration", [
+        rc.Chapter('Dash Enterprise Continuous Integration',
+                '/dash-enterprise/continuous-integration',
+                'Learn how to setup CI pipelines for Dash Enterprise'),
+        rc.Chapter('Create a Staging Dash App',
+                '/dash-enterprise/staging-app',
+                'Use a staged Dash App to test changes before updating your '
+                'production Dash App.'),
+        rc.Chapter('Dash Enterprise Review Apps',
+                '/dash-enterprise/review-apps',
+                'Review Apps allow you to automatically deploy staged Dash Apps on pull requests, enabling you to preview changes before they are merged into production.'),
+    ]),
+    
     rc.Section("Advanced", [
         rc.Chapter('Authenticating to Dash Enterprise with SSH',
                 '/dash-enterprise/ssh',
@@ -82,17 +97,10 @@ rc.Section("User Interface", [
         rc.Chapter('Linking a Celery Process',
                 '/dash-enterprise/celery-process',
                 'Add a task queue to your Dash Apps.'),
-        rc.Chapter('Create a Staging Dash App',
-                '/dash-enterprise/staging-app',
-                'Use a staged Dash App to test changes before updating your '
-                'production Dash App.'),
         rc.Chapter('Connect a Dash App to an SQL Database',
                 '/dash-enterprise/database-connections',
                 'Learn how to manage external database connections, perform '
                 'queries with Dash callbacks, and maintain SQL best practices.'),
-        rc.Chapter('Dash Enterprise Continuous Integration',
-                '/dash-enterprise/continuous-integration',
-                'Learn how to setup CI pipelines for Dash Enterprise'),
     ]),
 
     rc.Section("Troubleshooting", [

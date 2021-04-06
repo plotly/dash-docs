@@ -285,6 +285,9 @@
     <loc>https://dash.plotly.com/dash-enterprise/portal</loc>
 </url>
 <url>
+    <loc>https://dash.plotly.com/dash-enterprise/preparing</loc>
+</url>
+<url>
     <loc>https://dash.plotly.com/dash-enterprise/privacy</loc>
 </url>
 <url>
@@ -292,6 +295,9 @@
 </url>
 <url>
     <loc>https://dash.plotly.com/dash-enterprise/redis-database</loc>
+</url>
+<url>
+    <loc>https://dash.plotly.com/dash-enterprise/review-apps</loc>
 </url>
 <url>
     <loc>https://dash.plotly.com/dash-enterprise/ssh</loc>
