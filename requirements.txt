@@ -33,7 +33,7 @@ imageio==2.6.1;python_version=="2.7"
 imageio>=2.8;python_version>="3.0"
 ipython-genutils==0.2.0
 itsdangerous==0.24
-Jinja2==2.11.1
+Jinja2==2.11.3
 jsonschema==2.6.0
 jupyter-core==4.4.0
 lxml==4.6.2
