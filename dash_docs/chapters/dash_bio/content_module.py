@@ -645,7 +645,7 @@ import json
 import six.moves.urllib.request as urlreq
 
 # read in JSON
-json = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/pileup.synth4.tumor.chr1.4930000-4950000.json').read()
+source_data = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/pileup.synth4.tumor.chr1.4930000-4950000.json').read()
 
 dashbio.Pileup(
         id = 'tracks-pileup',
@@ -669,7 +669,7 @@ dashbio.Pileup(
             'viz': 'pileup',
             'label': 'alignments',
             'source': 'alignmentJson',
-            'sourceOptions': json
+            'sourceOptions': source_data
         }])'''
         },
 
@@ -690,7 +690,7 @@ import json
 import six.moves.urllib.request as urlreq
 
 # read in JSON
-json = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/pileup.synth4.tumor.chr1.4930000-4950000.json').read()
+source_data = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/pileup.synth4.tumor.chr1.4930000-4950000.json').read()
 
 dashbio.Pileup(
         id='tracks-pileup',
@@ -709,7 +709,7 @@ dashbio.Pileup(
             'vizOptions': { 'viewAsPairs': True },
             'label': 'alignments',
             'source': 'alignmentJson',
-            'sourceOptions': json
+            'sourceOptions': source_data
         }])'''
         },
 
@@ -725,7 +725,7 @@ import json
 import six.moves.urllib.request as urlreq
 
 # read in JSON
-json = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/pileup.features.ga4gh.chr1.120000-125000.chr17.7500000-7515100.json').read()
+source_data = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/pileup.features.ga4gh.chr1.120000-125000.chr17.7500000-7515100.json').read()
 
 dashbio.Pileup(
         id='features-pileup',
@@ -745,7 +745,7 @@ dashbio.Pileup(
                             'collapse': False },
             'label': 'features',
             'source': 'featureJson',
-            'sourceOptions': json
+            'sourceOptions': source_data
         }])'''
         }
     ]
