@@ -3,7 +3,7 @@ import dash_html_components as html
 
 
 if sys.version_info > (3, ):
-    from .import index
+    from . import index
 else:
 
     class FakeModule:
