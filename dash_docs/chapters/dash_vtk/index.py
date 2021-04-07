@@ -93,7 +93,7 @@ layout = html.Div([
 
     ### Representation
 
-    A representation is responsible to convert a __DataSource__ into something visual that will be available inside the __View__.
+    A representation is responsible for converting a __DataSource__ into something visual that will be available inside the __View__.
 
     So far we are exposing to `dash_vtk` 3 core types of __Representation__:
     - __GeometryRepresentation__: The geometry representation will expect a mesh and will render it as geometry rendering (think triangle sets).
