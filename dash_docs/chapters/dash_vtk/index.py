@@ -18,7 +18,7 @@ layout = html.Div([
 
     [Vtk.js](https://kitware.github.io/vtk-js/) on the other hand is a subset of VTK that focuses on the rendering aspect of it but in the JavaScript world. Vtk.js takes the same architecture and object decomposition as its big brother VTK/C++ but makes it friendly to use inside your browser.
 
-    Dash-vtk is enabling its users to use VTK on the server side for any data processing and provide the infrastructure to push the visualization to the client side for a better experience.
+    Dash-vtk enables its users to use VTK on the server side for any data processing and provides the infrastructure to push the visualization to the client side for a better experience.
     Dash-vtk do not require VTK but can seamlessly leverage it for looking at point clouds, a CFD simulation or anything 3D mesh or 3D images related.
 
     ## 3D Visualization explained
