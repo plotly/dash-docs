@@ -82,7 +82,7 @@ layout = html.Div([
     - __shift__: True/False   # Is the `Shift` key down
     - __alt__: True/False     # Is the `Alt` key down
     - __control__: True/False # Is the `Ctrl` key down
-    - __scrollEnabled__: True/False # Some action could also be trigger by scroll
+    - __scrollEnabled__: True/False # Some action could also be triggered by scroll
     - __dragEnabled__: True/False   # Mostly used to disable default drag behavior
 
     And the `action` could be one of the following:
