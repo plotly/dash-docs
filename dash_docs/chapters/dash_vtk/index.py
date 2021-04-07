@@ -108,16 +108,16 @@ layout = html.Div([
 
     In `dash_vtk` we have several objects that falls into that category. The list below gives you an overview of those but more details information can be found later.
     - __Algorithm__: Allows you to instantiate a vtk.js algorithm that could either be a filter (vtkWarpScalar) or a source (vtkLineSource, vtkConeSource, vtkPlaneSource, vtkSphereSource, vtkCylinderSource).
-    - __ImageData__: An ImageData is what I've been calling a 3D image so far. This element will let you define each piece that compose a 3D image.
-    - __PolyData__: A PolyData is a surface mesh (points, triangles...). This element will let you define the various piece of a mesh.
-    - __Reader__: A reader is similar to an __Algorithm__ except that readers have a common set of API and this element let you leverage those.
-    - __ShareDataSet__: This element allow you to capture any __DataSource__ and make it available into another processing pipeline or representation without duplicating the data that get sent from the server to the client.
-    - __Mesh__: This element is similar to __PolyData__ except that it has a Python helper function that goes with it which will help you map a __vtkDataSet__ into a single property of the __Mesh__.
-    - __Volume__: This element is similar to __ImageData__ except that it has a Python helper function that goes with it which will help you map a __vtkImageData__ into a single property of the __Volume__.
+    - __ImageData__: What we've been calling a 3D image so far. This element will let you define each piece that comprises a 3D image.
+    - __PolyData__: A surface mesh (points, triangles...). This element will let you define the various piece of a mesh.
+    - __Reader__: Similar to an __Algorithm__ except that readers have a common API and this element lets you leverage those.
+    - __ShareDataSet__: Allows you to capture any __DataSource__ and make it available in another processing pipeline or representation without duplicating the data that gets sent from the server to the client.
+    - __Mesh__: Similar to __PolyData__ except that it has a Python helper function to help you map a __vtkDataSet__ into a single property of the __Mesh__.
+    - __Volume__: Similar to __ImageData__ except that it has a Python helper function to help you map a __vtkImageData__ into a single property of the __Volume__.
 
     ## Geometry Rendering
 
-    Now that we have those core concepts down we can show you some code on how to render a mesh using `dash-vtk`.
+    Now that we have those core concepts down we can show some examples of rendering a mesh using `dash-vtk`.
 
     '''),
 
