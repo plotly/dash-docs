@@ -39,6 +39,8 @@ layout = html.Div([
       cameraParallelProjection=False, # Should we see our 3D work with perspective or flat with no depth perception
       triggerRender=0,                # Timestamp meant to trigger a render when different
       triggerResetCamera=0,           # Timestamp meant to trigger a reset camera when different
+      # clickInfo,                    # Read-only property to retrieve picked representation id and picking information
+      # hoverInfo                     # Read-only property to retrieve picked representation id and picking information
     )
     ```
 
@@ -384,6 +386,8 @@ layout = html.Div([
         - customShaderAttributes = []
 
     On top of those previous settings we provide additional properties to configure a lookup table using one of our available [__colorMapPreset__](https://github.com/Kitware/vtk-js/blob/master/Sources/Rendering/Core/ColorTransferFunction/ColorMaps.json) and a convinient __colorDataRange__ to rescale to color map to your area of focus.
+
+    With the GeometryRepresentation you also have the option to turn on the CubeAxes using the `showCubeAxes=True` along with additional configuration parameters that can be provided via the `cubeAxesStyle` property. The content of the object for __cubeAxesStyle__ can be found in the source code of vtk.js from the [default section here](https://github.com/Kitware/vtk-js/blob/HEAD/Sources/Rendering/Core/CubeAxesActor/index.js#L703-L719).
 
     ### GlyphRepresentation
 
