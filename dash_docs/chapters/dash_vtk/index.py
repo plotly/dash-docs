@@ -86,7 +86,7 @@ layout = html.Div([
     - __dragEnabled__: True/False   # Mostly used to disable default drag behavior
 
     And the `action` could be one of the following:
-    - __Pan__: Will pan the object on the plan normal to the camera
+    - __Pan__: Will pan the object on the plane normal to the camera
     - __Zoom__: Will zoom closer or further from the object based on the drag direction
     - __Roll__: Will rotate the object around the view direction
     - __ZoomToMouse__: Will zoom while keeping the location that was initialy under the mouse at the same spot
