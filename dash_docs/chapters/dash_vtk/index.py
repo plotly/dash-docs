@@ -137,6 +137,7 @@ layout = html.Div([
     rc.Markdown('''
     ```py
     # Use helper to get a mesh structure that can be passed as-is to a Mesh
+    from dash_vtk.utils import to_mesh_state
     mesh_state = to_mesh_state(dataset)
 
     content = dash_vtk.View([
@@ -183,11 +184,11 @@ layout = html.Div([
 
     In vtk.js because we mostly focus on Rendering we only have 2 types of data structures. We have a `vtkPolyData` that can be used for geometry rendering and a `vtkImageData` that can be used for volume rendering. In proper VTK, we have more types of DataSets and we have several filters that help you convert from one type to another.
 
-    But in our usecase here we are going to explain some of the fondation of those data structure so you could understand how you could create them by hand if you wanted to.
+    Here we explain some of the foundation of those data structures so you could create them by hand if you wanted to.
 
     ### ImageData
 
-    An Image data is an implicit grid that is axis aligned like shown in the picture below.
+    An ImageData is an implicit grid that is axis aligned as shown in the picture below.
 
     ![ImageData](/assets/images/vtk/imagedata.jpg)
 
@@ -226,20 +227,20 @@ layout = html.Div([
 
     ### PolyData
 
-    A Poly data is a surface mesh that is composed of `points` and `cells`. A polydata can be composed of various types of cells listed below:
-    - __verts__: Vertex or point that we want to see as a tiny square on the screen
+    A PolyData is a surface mesh composed of `points` and `cells`. The cells can be:
+    - __verts__: Vertex or point to show as a tiny square on the screen
     - __lines__: Lines that connect points into a one segment or multi segment line
-    - __polys__: Polygones which are convex surface such as a triangle, rectangle, circle...
-    - __strips__: Triangle strips is a way to combine efficiently triangles together with no repetition in points connectivity
+    - __polys__: Polygons which are convex surfaces such as triangles, rectangles, circles...
+    - __strips__: Triangle strips efficiently combine triangles together with no repeated points just for connectivity
 
-    The way cells are defined is via an index based array that map to a given point index. For example let's pretend you want to create a line that has 2 segments, you will need at least 3 points defined in the `points` array. If those points are defined first in your `points` array, then the `lines` array should be filled as follow:
+    The way cells are defined is via an index-based array that maps to a given point index. For example let's pretend you want to create a line with 2 segments, you will need at least 3 points defined in the `points` array. If those points are defined first in your `points` array, then the `lines` array should be filled as follows:
 
     ```py
     nb_points = 3
     lines = [nb_points, 0, 1, 2]
     ```
 
-    In case you want to create 2 lines independant from each other, you can do it as follow:
+    To create 2 lines independent of each other, you can do it as follows:
 
     ```py
     lines = [
@@ -272,7 +273,7 @@ layout = html.Div([
     rc.Markdown('''
 
 
-    The `dash_vtk.PolyData` element has an additional property to automatically generate cells based on some assumption of the order of the points defined in the `points` array. That property is named __connectivity__ which default to `manual` meaning no automatic action is taken. But that property can be set to `points` to automatically set the vertex to actually see the points provided or `triangles` which assume to use 3 concecutive points to create a triangle and finally `strips` which then assume it is a single triangle strip consuming all the points.
+    The `dash_vtk.PolyData` element has an additional property to automatically generate cells based on some assumption of the order of the points defined in the `points` array. That property is named __connectivity__ and defaults to `manual`, meaning no automatic action is taken. But that property can be set to `points` to automatically set the vertex to actually see the points provided or `triangles` which uses each set of 3 consecutive points to create a triangle and finally `strips` which consumes all the points in a single strip of triangles.
 
     ### Fields
 
@@ -280,11 +281,11 @@ layout = html.Div([
 
     Fields are arrays that map to either __Points__ or __Cells__. They could be scalars or vectors of different size.
 
-    The diagram below try to explain the difference between fields located on points vs cells in term of rendering but it also trully has a different meaning based on the type of data that you have.
+    The diagram below tries to explain the difference between fields located on points vs cells in term of rendering, but it also truly has a different meaning based on the type of data that you have.
 
     ![Fields](/assets/images/vtk/fields.jpg)
 
-    The example below show you how you can attach fields to a dataset (PolyData and/or ImageData).
+    The example below shows how to attach fields to a dataset (PolyData and/or ImageData).
 
     Caution: By convention, we always attach data to points in an ImageData for doing VolumeRendering and the array must be registered as scalars.
 
@@ -336,9 +337,9 @@ layout = html.Div([
 
     The properties available on the __GeometryRepresentation__ let you tune the way you want to render your geometry.
 
-    In VTK a representation is composed of an [__Actor__](https://kitware.github.io/vtk-js/api/Rendering_Core_Actor.html), a [__Mapper__](https://kitware.github.io/vtk-js/api/Rendering_Core_Mapper.html) and a [__Property__](https://kitware.github.io/vtk-js/api/Rendering_Core_Property.html). Each of those object can be configured using the __actor__, __mapper__ and __property__ arguments of the __GeometryRepresentation__.
+    In VTK a representation is composed of an [__Actor__](https://kitware.github.io/vtk-js/api/Rendering_Core_Actor.html), a [__Mapper__](https://kitware.github.io/vtk-js/api/Rendering_Core_Mapper.html) and a [__Property__](https://kitware.github.io/vtk-js/api/Rendering_Core_Property.html). Each of those objects can be configured using the __actor__, __mapper__ and __property__ arguments of the __GeometryRepresentation__.
 
-    The list below show you the default values used for each argument:
+    The list below shows the default values for each argument:
 
       - __actor__:
         - origin = (0,0,0)
@@ -386,11 +387,11 @@ layout = html.Div([
 
     ### GlyphRepresentation
 
-    GlyphRepresentation let you use a source as a Glyph which will then be cloned and position at every points of another source. The properties available on the __GlyphRepresentation__ let you tune the way you want to render your geometry.
+    GlyphRepresentation lets you use a source as a Glyph which will then be cloned and positioned at every point of another source. The properties available on the __GlyphRepresentation__ let you tune the way you want to render your geometry.
 
-    In VTK a representation is composed of an [__Actor__](https://kitware.github.io/vtk-js/api/Rendering_Core_Actor.html), a [__Mapper__](https://kitware.github.io/vtk-js/api/Rendering_Core_Glyph3DMapper.html) and a [__Property__](https://kitware.github.io/vtk-js/api/Rendering_Core_Property.html). Each of those object can be configured using the __actor__, __mapper__ and __property__ arguments of the __GlyphRepresentation__.
+    In VTK a representation is composed of an [__Actor__](https://kitware.github.io/vtk-js/api/Rendering_Core_Actor.html), a [__Mapper__](https://kitware.github.io/vtk-js/api/Rendering_Core_Glyph3DMapper.html) and a [__Property__](https://kitware.github.io/vtk-js/api/Rendering_Core_Property.html). Each of those objects can be configured using the __actor__, __mapper__ and __property__ arguments of the __GlyphRepresentation__.
 
-    The list below show you the default values used for each argument:
+    The list below shows the default values for each argument:
 
       - __actor__:
         - origin = (0,0,0)
@@ -443,7 +444,7 @@ layout = html.Div([
 
     On top of those previous settings we provide additional properties to configure a lookup table using one of our available [__colorMapPreset__](https://github.com/Kitware/vtk-js/blob/master/Sources/Rendering/Core/ColorTransferFunction/ColorMaps.json) and a convinient __colorDataRange__ to rescale to color map to your area of focus.
 
-    An example of the __GlyphRepresentation__ could be for creating a spicky sphere by positioning cones normal to the sphere.
+    An example of the __GlyphRepresentation__ could be creating a spiky sphere by positioning cones normal to the sphere.
 
     ```python
     def Example():
@@ -480,10 +481,10 @@ layout = html.Div([
 
     The properties available on the __VolumeRepresentation__ let you tune the way you want to render your volume.
 
-    In VTK a representation is composed of an [__Volume__](https://kitware.github.io/vtk-js/api/Rendering_Core_Volume.html), a [__Mapper__](https://kitware.github.io/vtk-js/api/Rendering_Core_VolumeMapper.html) and a [__Property__](https://kitware.github.io/vtk-js/api/Rendering_Core_VolumeProperty.html). Each of those object can be configured using the __actor__, __mapper__ and __property__ arguments of the __GeometryRepresentation__.
+    In VTK a representation is composed of an [__Volume__](https://kitware.github.io/vtk-js/api/Rendering_Core_Volume.html), a [__Mapper__](https://kitware.github.io/vtk-js/api/Rendering_Core_VolumeMapper.html) and a [__Property__](https://kitware.github.io/vtk-js/api/Rendering_Core_VolumeProperty.html). Each of those objects can be configured using the __actor__, __mapper__ and __property__ arguments of the __GeometryRepresentation__.
 
 
-    The list below show you the default values used for each argument:
+    The list below shows the default values for each argument:
 
       - __volume__:
         - origin = (0,0,0)
@@ -520,20 +521,20 @@ layout = html.Div([
 
     On top of those previous settings we provide additional properties to configure a lookup table using one of our available [__colorMapPreset__](https://github.com/Kitware/vtk-js/blob/master/Sources/Rendering/Core/ColorTransferFunction/ColorMaps.json) and a convinient __colorDataRange__ to rescale to color map to your area of focus.
 
-    Because it can be combersome and difficult to properly configure your volume rendering properties, it is convinient to add as first child to that representation a __VolumeController__ which will give you a UI to drive some of those parameters while also providing better defaults for your ImageData.
+    Because it can be cumbersome and difficult to properly configure your volume rendering properties, it is convenient to add as first child to that representation a __VolumeController__ which will give you a UI to drive some of those parameters while also providing better defaults for your ImageData.
 
     #### VolumeController
 
-    The __VolumeController__ provide a convinient UI element to control your Volume Rendering settings and can be tuned with the following set of properties:
+    The __VolumeController__ provide a convenient UI element to control your Volume Rendering settings and can be tuned with the following set of properties:
 
     - __size__: [width, height] in pixel for the controller UI
     - __rescaleColorMap__: true/false to use the opacity piecewise function to dynamically rescale the color map or keep the full data range as color range.
 
     ### SliceRepresentation
 
-    The __SliceRepresentation__ let you see a slice within a 3D image. That slice can be along i,j,k or x,y,z if your volume contains an orientation matrix.
+    The __SliceRepresentation__ lets you see a slice within a 3D image. That slice can be along i,j,k or x,y,z if your volume contains an orientation matrix.
 
-    The following set of properties let you pick which slice you want to see. Only 1 of those property can be used at a time.
+    The following set of properties lets you pick which slice you want to see. Only one of those properties can be used at a time.
 
     - __iSlice__, __jSlice__, __kSlice__: Index based slicing
     - __xSlice__, __ySlice__, __zSlice__: World coordinate slicing
@@ -567,7 +568,7 @@ layout = html.Div([
 
     ### PointCloudRepresentation
 
-    The __PointCloudRepresentation__ is just a helper using the following structure to streamline rendering a point cloud dataset. The code snippet below is not fully accurate but it should provide you with some understanding of the kind of simplification that is happening under the hood.
+    The __PointCloudRepresentation__ is just a helper using the following structure to streamline rendering a point cloud dataset. The code snippet below is not complete but it should provide you with some understanding of the kind of simplification that is happening under the hood.
 
     ```python
     def PointCloudRepresentation(**kwargs):
@@ -593,16 +594,16 @@ layout = html.Div([
       )
     ```
 
-    The set of convinient properties are as follow:
+    The set of convenient properties are as follows:
     - __xyz__ = list of xyz of each point inside a flat array
     - __colorMapPreset__ = color preset name to use
     - __colorDataRange__ = rescale color map to provided that range
     - __property__ = {} # Same as GeometryRepresentation/property
-    - __rgb__ / __rgba__ / __scalars__ = [...] let you define the field you want to color your point cloud with. The rgb(a) expect numbers up to 255 for each component of Red Green Blue Alpha.
+    - __rgb__ / __rgba__ / __scalars__ = [...] let you define the field you want to color your point cloud with. The rgb(a) expects numbers up to 255 for each component: Red Green Blue (Alpha).
 
     ### VolumeDataRepresentation
 
-    The __VolumeDataRepresentation__ is just a helper using the following structure to streamline rendering a volume. The code snippet below is not fully accurate but it should provide you with some understanding of the kind of simplification that is happening under the hood.
+    The __VolumeDataRepresentation__ is just a helper using the following structure to streamline rendering a volume. The code snippet below is not complete but it should provide you with some understanding of the kind of simplification that is happening under the hood.
 
     ```python
     def VolumeDataRepresentation(**kwargs):
@@ -637,7 +638,7 @@ layout = html.Div([
       )
     ```
 
-    The set of convinient properties are as follow:
+    The set of convenient properties are as follows:
     - __dimensions__: Number of points along x, y, z
     - __spacing__: Spacing along x, y, z between points in world
     - __origin__: World coordinate of the lower left corner of your vtkImageData (i=0, j=0, k=0).
@@ -671,7 +672,7 @@ layout = html.Div([
         )
     ```
 
-    The __Mesh__ element expect a single __state__ property that is internaly split into 2 elements to represent the geometry and the field that you want to optionally attach to your mesh. The structure could be defined as follow:
+    The __Mesh__ element expects a single __state__ property that is internally split into 2 elements to represent the geometry and the field that you want to optionally attach to your mesh. The structure could be defined as follows:
 
     - __state__
       - mesh: (Contains the properties of __PolyData__)
@@ -706,7 +707,7 @@ layout = html.Div([
         )
     ```
 
-    The __Volume__ element expect a single __state__ property that is internaly split into 2 elements to represent the geometry and the field that you want to optionally attach to your mesh. The structure could be defined as follow:
+    The __Volume__ element expects a single __state__ property that is internally split into 2 elements to represent the geometry and the field that you want to optionally attach to your mesh. The structure could be defined as follows:
 
     - __state__
       - image: (Contains the properties of __ImageData__)
@@ -720,11 +721,11 @@ layout = html.Div([
 
     ### Algorithm
 
-    This element allow you to create and configure a vtk.js class. This element expect only 2 properties:
+    This element allows you to create and configure a vtk.js class. This element expect only 2 properties:
     - __vtkClass__: The name of the vtkClass to instantiate.
     - __state__: The set of properties to apply on the given vtkClass.
 
-    The current [list of classes](https://github.com/Kitware/react-vtk-js/blob/master/src/AvailableClasses.js#L4-L15) that could be instantiate are as follow:
+    The current [list of classes](https://github.com/Kitware/react-vtk-js/blob/master/src/AvailableClasses.js#L4-L15) available to instantiate are:
 
     - __vtkClass__:
       - [vtkConcentricCylinderSource](https://kitware.github.io/vtk-js/api/Filters_Sources_ConcentricCylinderSource.html)
@@ -736,9 +737,9 @@ layout = html.Div([
       - [vtkPointSource](https://kitware.github.io/vtk-js/api/Filters_Sources_PointSource.html)
       - [vtkSphereSource](https://kitware.github.io/vtk-js/api/Filters_Sources_SphereSource.html)
       - [vtkWarpScalar](https://kitware.github.io/vtk-js/api/Filters_General_WarpScalar.html)
-    - __state__: You will have to look on which property is available for your selected vtkClass.
+    - __state__: See the references above for the properties available for each vtkClass.
 
-    The following example use a vtk source in vtk.js to generate a mesh
+    The following example uses a vtk source in vtk.js to generate a mesh
     
     '''),
 
@@ -757,8 +758,8 @@ layout = html.Div([
 
     ### Reader
 
-    This element is similar to the __Algorithm__ one except that it focus on vtk.js readers by allowing to leverage their custom API.
-    A reader expect like an __Algorithm__ a __vtkClass__ among the one [listed below](https://github.com/Kitware/react-vtk-js/blob/master/src/AvailableClasses.js#L17-L24):
+    This element is similar to the __Algorithm__ except that it focuses on vtk.js readers by allowing you to leverage their custom API.
+    Like __Algorithm__, a reader expects a __vtkClass__ among those [listed below](https://github.com/Kitware/react-vtk-js/blob/master/src/AvailableClasses.js#L17-L24):
 
     - __vtkClass__
       - vtkPLYReader
@@ -769,7 +770,7 @@ layout = html.Div([
       - vtkXMLImageDataReader
       - vtkXMLPolyDataReader
 
-    Then you should use one of the property below to feed the reader with some data:
+    Then use one of the properties below to feed the reader some data:
     - __url__: set of url to fetch data from (on the JS side)
     - __parseAsText__: set the text content to process
     - __parseAsArrayBuffer__: set binary data to process from base64 string
@@ -797,9 +798,9 @@ layout = html.Div([
 
     This element does not affect the dataset or else, but it allow the JavaScript side to reuse an existing __vtkDataSet__ for another __Representation__ or __filter__.
 
-    The only property expected in a __ShareDataSet__ is a name to properly reference it accross various location. By default a __name__ is provided so, in the case of only one _dataset_, you would not even need to specify such property.
+    The only property expected in a __ShareDataSet__ is a name to properly reference it elsewhere. By default a __name__ is provided so, in the case of only one _dataset_, you would not even need to specify this property.
 
-    The following example show how you can create a view with 1 __Volume__ and 4 representation of it.
+    The following example shows how to create a view with one __Volume__ and four representations of it.
     
     '''),
 
@@ -823,7 +824,7 @@ layout = html.Div([
 
     We've converted several examples from [PyVista](https://docs.pyvista.org/) to show you how to enable rendering on the client side using __dash_vtk__.
 
-    Then we made several example using plain VTK for both a CFD example and some medical ones.
+    Then we made several examples using plain VTK for both a CFD example and some medical ones.
 
     ### Point Cloud creation
 
@@ -838,7 +839,7 @@ layout = html.Div([
 
     ### VTK dynamic streamlines Example
 
-    This example leverage plain VTK on the server side while providing UI controls in __dash__ and leverage __dash_vtk__ to enable local rendering of dynamically computed streamlines inside a wind-tunnel.
+    This example leverages plain VTK on the server side while providing UI controls in __dash__ and leverages __dash_vtk__ to enable local rendering of dynamically computed streamlines inside a wind tunnel.
 
     [dash_vtk](https://github.com/plotly/dash-vtk/blob/master/demos/usage-vtk-cfd/app.py)
 
