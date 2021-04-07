@@ -89,7 +89,7 @@ layout = html.Div([
     - __Pan__: Will pan the object on the plane normal to the camera
     - __Zoom__: Will zoom closer or further from the object based on the drag direction
     - __Roll__: Will rotate the object around the view direction
-    - __ZoomToMouse__: Will zoom while keeping the location that was initialy under the mouse at the same spot
+    - __ZoomToMouse__: Will zoom while keeping the location that was initially under the mouse at the same spot
 
     ### Representation
 
