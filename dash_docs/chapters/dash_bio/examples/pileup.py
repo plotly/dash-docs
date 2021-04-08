@@ -56,7 +56,7 @@ HOSTED_GENOME_TRACKS = {
                 'viz': 'genes',
                 'label': 'genes',
                 'source': 'bigBed',
-                'sourceOptions': {'url': 'http://www.biodalliance.org/datasets/ensGene.bb'}
+                'sourceOptions': {'url': 'https://www.biodalliance.org/datasets/ensGene.bb'}
             }]
     }
 }
