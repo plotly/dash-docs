@@ -800,7 +800,7 @@ layout = html.Div([
 
     ### ShareDataSet
 
-    This element does not affect the dataset or else, but it allow the JavaScript side to reuse an existing __vtkDataSet__ for another __Representation__ or __filter__.
+    This element does not affect the dataset, but it allows the JavaScript side to reuse an existing __vtkDataSet__ for another __Representation__ or __filter__.
 
     The only property expected in a __ShareDataSet__ is a name to properly reference it elsewhere. By default a __name__ is provided so, in the case of only one _dataset_, you would not even need to specify this property.
 
