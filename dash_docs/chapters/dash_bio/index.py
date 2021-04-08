@@ -277,27 +277,27 @@ styles_data = json.loads(styles_data)
             'name': 'pileup.synth4.tumor.chr1.4930000-4950000.json'
         },
         'params': {
-'range': '''{
-   'contig': 'chr1',
-   'start': 4930382,
-   'stop': 4946898
-}''',
-'reference': '''{
-   'label': 'hg19',
-   'url': 'https://hgdownload.cse.ucsc.edu/goldenPath/hg19/bigZips/hg19.2bit'
-}''',
-'tracks': '''[
-   {'viz': 'coverage',
-   'label': 'alignments',
-   'source': 'alignmentJson',
-   'sourceOptions': data
-},
-   {'viz': 'pileup',
-   'label': 'alignments',
-   'source': 'alignmentJson',
-   'sourceOptions': data
-}
-]'''
+        'range': '''{
+           'contig': 'chr1',
+           'start': 4930382,
+           'stop': 4946898
+        }''',
+        'reference': '''{
+           'label': 'hg19',
+           'url': 'https://hgdownload.cse.ucsc.edu/goldenPath/hg19/bigZips/hg19.2bit'
+        }''',
+        'tracks': '''[
+           {'viz': 'coverage',
+           'label': 'alignments',
+           'source': 'alignmentJson',
+           'sourceOptions': data
+        },
+           {'viz': 'pileup',
+           'label': 'alignments',
+           'source': 'alignmentJson',
+           'sourceOptions': data
+        }
+    ]'''
         },
     },
 
