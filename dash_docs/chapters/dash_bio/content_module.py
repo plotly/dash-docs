@@ -584,8 +584,8 @@ Pileup = create_doc_page(
     examples, component_names, 'pileup.py', component_examples=[
         {
             'param_name': 'Genome',
-            'description': 'Select a genome by specifying a label (e.g. "hg19", "mm10"),'
-            ' and a link to a [TwoBit file](http://genome.ucsc.edu/FAQ/FAQformat.html#format7).'
+            'description': 'Select a genome by specifying a reference label (e.g. "hg19", "mm10"),'
+            ' and a url pointing to a [TwoBit data file](http://genome.ucsc.edu/FAQ/FAQformat.html#format7).'
             ' TwoBit files can be found in the [UCSC Genome Browser](https://hgdownload.soe.ucsc.edu/downloads.html),'
             ' or can be remotely staged elsewhere.'
             'The Pileup component also requires a genomic range object that specifies the contig, start, and end '
@@ -608,37 +608,39 @@ dashbio.Pileup(
 
         {
             'param_name': 'Tracks',
-            'description': 'Add tracks in the `tracks` parameter of a Pileup component '
-                           'to view data sources. Tracks can display genomic coverage, features, '
-                           'variants, and reads.'
+            'description': 'Add tracks with the `tracks` property of a Pileup '
+                           'component to view additional data types and sources. Tracks can '
+                           'display genomic coverage, features, variants, and reads.'
                            '\n \n'
-                           'Each track in a Pileup component requires a visualization type (viz) '
-                           'and a data source (source). '
+                           'Each track in a Pileup component requires a visualization type (`viz`) '
+                           'and a data source (`source`). '
                            '\n###### Pileup Data Sources\n'
-                           'Each data source requires different parameters. '
+                           'Each data source has its own set of required keys. '
                            'Below, we enumerate the available data source types:'
-                           '\n- `bam`: requires `\'sourceOptions\': {\'url\':, URL.bam \'indexUrl\': URL.bam.bai}`'
-                           '\n- `alignmentJson`: requires `\'sourceOptions\': {GA4GH_JSON_STRING}`'
-                           '\n- `variantJson`: requires `\'sourceOptions\': {GA4GH_JSON_STRING}`'
-                           '\n- `featureJson`: requires `\'sourceOptions\': {GA4GH_JSON_STRING}`'
-                           '\n- `ideogramJson`: requires `\'sourceOptions\': {JSON_STRING}`'
-                           '\n- `vcf`: requires `\'sourceOptions\': {\'url\':, URL.vcf }`'
-                           '\n- `bigBed`: requires `\'sourceOptions\': {\'url\':, URL.bb }`'
+                           '\n- `bam` : requires `\'sourceOptions\': {\'url\':, URL.bam '
+                           '\'indexUrl\': URL.bam.bai}`'
+                           '\n- `alignmentJson` : requires `\'sourceOptions\': {GA4GH_JSON_STRING}`'
+                           '\n- `variantJson` : requires `\'sourceOptions\': {GA4GH_JSON_STRING}`'
+                           '\n- `featureJson` : requires `\'sourceOptions\': {GA4GH_JSON_STRING}`'
+                           '\n- `ideogramJson` : requires `\'sourceOptions\': {JSON_STRING}`'
+                           '\n- `vcf` : requires `\'sourceOptions\': {\'url\':, URL.vcf }`'
+                           '\n- `bigBed` : requires `\'sourceOptions\': {\'url\':, URL.bb }`'
                            '\n'
                            '\n###### Pileup Visualization Types\n'
                            'The Pileup component supports the following visualizations:'
-                           '\n- `coverage`: requires `alignmentJson`, `bam`, or `featureJson` source'
-                           '\n- `genes`: requires `bigBed` source'
-                           '\n- `features`: requires `featureJson` or `bigBed` source'
-                           '\n- `variants`: requires a `vcf` or `variantJson` data source'
-                           '\n- `genotypes`: requires a `vcf` or `variantJson` data source'
-                           '\n- `pileup`: requires a `bam` or `alignmentJson` data source'
-                           '\n- `idiogram`:  requires `ideogramJson` data source'
-                           '\n- `location`: does not require a data source'
-                           '\n- `scale`: does not require a data source'
+                           '\n- `coverage` : requires `alignmentJson`, `bam`, or `featureJson` '
+                           'source'
+                           '\n- `genes` : requires `bigBed` source'
+                           '\n- `features` : requires `featureJson` or `bigBed` source'
+                           '\n- `variants` : requires a `vcf` or `variantJson` data source'
+                           '\n- `genotypes` : requires a `vcf` or `variantJson` data source'
+                           '\n- `pileup` : requires a `bam` or `alignmentJson` data source'
+                           '\n- `idiogram` :  requires `ideogramJson` data source'
+                           '\n- `location` : does not require a data source'
+                           '\n- `scale` : does not require a data source'
                            '\n \n'
-                           'Multiple tracks can be added to a Pileup component by creating a list '
-                           'of dictionaries, each of which corresponds to a single track.',
+                           'Multiple tracks can be added to a Pileup component by passing in a '
+                           'list of dicts, each of which corresponds to an individual track.',
             'code': '''import dash_bio as dashbio
 import os
 import json
@@ -677,12 +679,13 @@ dashbio.Pileup(
             'param_name': 'Visualization Options',
             'description': 'Depending on the visualization track, you can modify and set '
             'various visualization options. In this example, we set the option to view '
-            'alignments as pairs by setting vizOptions `viewAsPairs` to `True`.'
-            'Other vizOptions are included for the following visualizations:'
-            '\n- `coverage` and `features`: set the track color by specifying a dictionary '
-            ' of RGB colors: `{ \'color\': {\'rgb\': {\'r\': int, \'g\': int, \'b\': int, \'a\': int}}}`'
-            '\n- `pileup`: included vizOptions are `viewAsPairs: bool`, `colorByInsert: bool`, `colorByStrand: bool`, `hideAlignments: bool`'
-            '\n- `features`: collapse overlapping features by specifying `{\'collapse\': True}`',
+            'alignments as pairs by setting the value for `viewAsPairs` to `True`. '
+            'Other vizOptions are as follows for each of the following track types:'
+            '\n- `coverage` and `features` : Set the track color by specifying a dict '
+            ' of RGB colors: ```{ \'color\': {\'rgb\': {\'r\': int, \'g\': int, \'b\': int, \'a\': int}}}```'
+            '\n- `pileup` : Included vizOptions are `viewAsPairs: bool`, `colorByInsert: bool`, '
+                           '`colorByStrand: bool`, `hideAlignments: bool`'
+            '\n- `features` : Collapse overlapping features by specifying `{\'collapse\': True}`',
             'code': '''import dash_bio as dashbio
 import os
 import re
@@ -717,7 +720,8 @@ dashbio.Pileup(
             'param_name': 'Features',
             'description': 'The `features` visualization allows you to view any features that '
                             'have a genomic location (a contig, start, and stop). You can specify vizOptions'
-                            ' for features, including the track color and the ability to collapse overlapping features.',
+                            ' for features, including the track color whether to collapse '
+                           'overlapping features.',
             'code': '''import dash_bio as dashbio
 import os
 import re
