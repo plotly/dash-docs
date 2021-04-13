@@ -456,19 +456,17 @@ URLS = [
                 'url': '/introduction',
                 'name': 'Introduction',
                 'description': '''
-                    A quick paragraph about Dash and a link to the talk at
-                    Plotcon that started it all.
+                    A short introduction to Dash.
                 ''',
                 'content': chapters.introduction.index.layout
             }
         ] + [
             {
                 'url': 'https://medium.com/@plotlygraphs/introducing-dash-5ecf7191b503',
-                'name': 'Announcement Essay (2017)',
+                'name': '2017 Announcement Essay',
                 'description': (
                     '''
-                    Our extended essay on Dash. An extended discussion of
-                    Dash's architecture and our motivation behind the project.
+                    A longer introduction to Dash, including architecture and project motivation.
                     '''
                 )
             },
@@ -476,14 +474,14 @@ URLS = [
                 'url': 'https://dash-gallery.plotly.host/Portal/',
                 'name': 'Dash App Gallery',
                 'description': '''
-                    A glimpse into what's possible with Dash.
+                    Over 100 open-source Dash app examples for every industry.
                 '''
             },
             {
                 'url': 'https://go.plotly.com/dash-club',
                 'name': 'Dash Club',
                 'description': '''
-                    An email newsletter by chriddyp, the creator of Dash.
+                    An email newsletter by @chriddyp, the creator of Dash.
                 '''
             },
         ] +
@@ -492,12 +490,10 @@ URLS = [
                 'url': '/dash-enterprise',
                 'name': 'Dash Enterprise',
                 'description': '''
-                    The commercial platform behind Dash Open Source for
-                    developing, deploying, and managing better Dash Applications
+                    The Kubernetes platform for writing, deploying, 
+                    and managing high performance Dash applications
                     at scale.
-                ''',
-                'className': 'red'
-            }
+                '''            }
         ] if not tools.is_in_dash_enterprise() else [])
     },
 
@@ -525,18 +521,16 @@ URLS = [
                 'name': 'Part 3. Basic Callbacks',
                 'description': (
                     "Dash apps are made interactive through Dash "
-                    "Callbacks: Python functions that are "
-                    "automatically called whenever an input "
-                    "component's property changes. Callbacks "
-                    "can be chained, allowing one update in the "
-                    "UI to trigger several updates across the app."
+                    "Callbacks: chainable Python functions that are "
+                    "automatically called whenever a UI element is changed."
                 ),
                 'content': chapters.basic_callbacks.index.layout
             },
             {
                 'url': '/interactive-graphing',
                 'name': 'Part 4. Interactive Graphing and Crossfiltering',
-                'description': 'Bind interactivity to the Dash `Graph` ' \
+                'description': 'Graphs can be inputs as well as outputs: '\
+                               'bind interactivity to the Dash `Graph` ' \
                                'component whenever you hover, click, or ' \
                                'select points on your chart.',
                 'content': chapters.graph_crossfiltering.index.layout
