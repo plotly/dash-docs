@@ -490,8 +490,8 @@ URLS = [
                 'url': '/dash-enterprise',
                 'name': '👑 Dash Enterprise 👑',
                 'description': '''
-                    The Kubernetes platform behind Dash Open Source for
-                    developing, deploying, and managing high performance Dash applications
+                    The Kubernetes platform for writing, deploying, 
+                    and managing high performance Dash applications
                     at scale.
                 '''            }
         ] if not tools.is_in_dash_enterprise() else [])
