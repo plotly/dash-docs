@@ -54,6 +54,8 @@ layout = html.Div([
     ```
     """, style=styles.code_container),
 
+    html.Br(),
+    
     rc.Markdown("Ready? Now, let's [make your first Dash app](/layout)."),
 
     rc.WorkspaceBlurb if not tools.is_in_dash_enterprise() else "",
