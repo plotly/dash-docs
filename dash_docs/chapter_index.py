@@ -529,7 +529,7 @@ URLS = [
             {
                 'url': '/interactive-graphing',
                 'name': 'Part 4. Interactive Graphing and Crossfiltering',
-                'description': 'Graphs can bee inputs as well as outputs:
+                'description': 'Graphs can be inputs as well as outputs: '\
                                'bind interactivity to the Dash `Graph` ' \
                                'component whenever you hover, click, or ' \
                                'select points on your chart.',
