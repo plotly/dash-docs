@@ -488,7 +488,7 @@ URLS = [
         ([
             {
                 'url': '/dash-enterprise',
-                'name': '👑 Dash Enterprise 👑',
+                'name': 'Dash Enterprise',
                 'description': '''
                     The Kubernetes platform for writing, deploying, 
                     and managing high performance Dash applications
