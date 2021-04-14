@@ -1,6 +1,6 @@
 # Dash Userguide
 
-The [Dash User Guide](https://dash.plotly.com/dash): everything that you need to know to be productive with Dash.
+The [Dash User Guide](https://dash.plotly.com): everything that you need to know to be productive with Dash.
 
 The Dash User Guide is hosted online at: [https://dash.plotly.com](https://dash.plotly.com). A [PDF version](/pdf-docs/Dash_User_Guide_and_Documentation.pdf) is also available.
 
