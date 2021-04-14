@@ -12,6 +12,7 @@ from .Link.index import layout as Link
 from .Textarea.index import layout as Textarea
 from .Tabs.index import layout as Tabs
 from .Tab.index import layout as Tab
+from .Download.index import layout as Download
 from .Upload.index import layout as Upload
 from .ConfirmDialog.index import layout as ConfirmDialog
 from .ConfirmDialogProvider.index import layout as ConfirmDialogProvider
