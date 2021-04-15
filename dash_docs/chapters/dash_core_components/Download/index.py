@@ -18,7 +18,7 @@ layout = html.Div([
 
     Note that the following examples make use of the `prevent_initial_call`
     attribute to prevent the callbacks from being triggered when the app inputs
-    are initially rendered. See [Advanced Callbacks](/advanced-callbacks#prevent-callbacks-from-being-executed-on-initial-load) for more details.
+    are initially rendered. See <dccLink href="../advanced-callbacks#prevent-callbacks-from-being-executed-on-initial-load" children="Advanced Callbacks"/>. for more details.
     '''),
     html.H3('Downloading Content as Strings'),
     rc.Syntax(examples['download-text.py'][0], summary=rc.Markdown('''
@@ -29,16 +29,16 @@ layout = html.Div([
     html.Hr(),
 
     html.H3('Downloading Images'),
-    rc.Syntax(examples['download-image.py'][0], summary=rc.Markdown('''    
-        To download a file from disk use `dcc.send_file`, taking care to specify the file
-        path.
+    rc.Syntax(examples['download-image.py'][0], summary=rc.Markdown('''
+        To download a file from disk use `dcc.send_file`, taking care to
+        specify the file path.
     ''')),
     rc.Example(examples['download-image.py'][1]),
 
     html.Hr(),
 
     html.H3('Downloading Dataframes'),
-    rc.Syntax(examples['download-dataframe.py'][0], summary=rc.Markdown('''    
+    rc.Syntax(examples['download-dataframe.py'][0], summary=rc.Markdown('''
         For downloading dataframes the many pandas export methods are supported:
     ''')),
     rc.Example(examples['download-dataframe.py'][1]),
