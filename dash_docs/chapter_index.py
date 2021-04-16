@@ -1079,7 +1079,7 @@ URLS = [
                         'name': 'Overview',
                         'content': chapters.dash_vtk.index.layout,
                         'description': (
-                            'Bringing vtk.js into Dash and Python'
+                            'Dash VTK enables Dash application developers to harness the power of Kitware's open source Visualization Toolkit when manipulating or displaying scientific data.'
                         )
                     }
                 ]
