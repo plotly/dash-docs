@@ -8,7 +8,7 @@ try:
    # VTK 9+
    from vtkmodules.vtkImagingCore import vtkRTAnalyticSource
 except:
-  # Old VTK
+  # VTK =< 8
   from vtk.vtkImagingCore import vtkRTAnalyticSource
 
 # Use VTK to get some data
