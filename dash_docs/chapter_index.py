@@ -82,7 +82,7 @@ APP_MANAGER_URLS = [
         'content': chapters.dash_enterprise.migration_guide.index.layout,
         'name': 'Part 1. Preparing your App for Dash Enterprise',
         'description': 'Preparing app code that works locally into code that will run on Dash Enterprise'
-    },        
+    },
     {
         'url': '/dash-enterprise/initialize',
         'content': chapters.dash_enterprise.dash_enterprise_chapters.Initialize,
@@ -490,7 +490,7 @@ URLS = [
                 'url': '/dash-enterprise',
                 'name': 'Dash Enterprise',
                 'description': '''
-                    The Kubernetes platform for writing, deploying, 
+                    The Kubernetes platform for writing, deploying,
                     and managing high performance Dash applications
                     at scale.
                 '''            }
@@ -1067,6 +1067,21 @@ URLS = [
                         '''
                     },
 
+                ]
+            },
+
+
+            {
+                'name': 'Dash VTK',
+                'chapters': [
+                    {
+                        'url': '/vtk',
+                        'name': 'Overview',
+                        'content': chapters.dash_vtk.index.layout,
+                        'description': (
+                            'Dash VTK enables Dash application developers to harness the power of Kitware\'s open source Visualization Toolkit when manipulating or displaying scientific data.'
+                        )
+                    }
                 ]
             },
 
