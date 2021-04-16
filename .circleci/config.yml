@@ -26,7 +26,7 @@ jobs:
           command: echo $CIRCLE_JOB > circlejob.txt
 
       - restore_cache:
-          key: deps-{{ arch }}-{{ .Branch }}-{{ checksum "requirements.txt" }}-{{ checksum "circlejob.txt" }}
+          key: deps-{{ .Branch }}-{{ checksum "requirements.txt" }}-{{ checksum "circlejob.txt" }}
 
       - run:
           name: Install dependencies
@@ -37,7 +37,7 @@ jobs:
               pip install -r requirements.txt
 
       - save_cache:
-          key: deps-{{ arch }}-{{ .Branch }}-{{ checksum "requirements.txt" }}-{{ checksum "circlejob.txt" }}
+          key: deps-{{ .Branch }}-{{ checksum "requirements.txt" }}-{{ checksum "circlejob.txt" }}
           paths:
               - "venv"
 
