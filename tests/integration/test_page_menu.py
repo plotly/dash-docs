@@ -48,7 +48,7 @@ def test_page_menu_001(dash_doc):
     dash_doc.wait_for_element_by_id("page-menu--links")
 
     home_links = [
-        'Dash User Guide',
+        'Dash Python User Guide',
         'What\'s Dash?',
         'Dash Tutorial',
         'Dash Callbacks',
