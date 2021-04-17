@@ -1,4 +1,5 @@
 from .Checklist.index import layout as Checklist
+from .Clipboard.index import layout as Clipboard
 from .ConfirmDialog.index import layout as ConfirmDialog
 from .ConfirmDialogProvider.index import layout as ConfirmDialogProvider
 from .DatePickerRange.index import layout as DatePickerRange
