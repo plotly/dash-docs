@@ -18,13 +18,34 @@ layout = html.Div([
 
     Note that the following examples make use of the `prevent_initial_call`
     attribute to prevent the callbacks from being triggered when the app inputs
-    are initially rendered. See <dccLink href="../advanced-callbacks#prevent-callbacks-from-being-executed-on-initial-load" children="Advanced Callbacks"/>. for more details.
+    are initially rendered. See <dccLink href="../\
+    advanced-callbacks#prevent-callbacks-from-being-executed-on-initial-\
+    load" children="Advanced Callbacks"/>. for more details.
     '''),
     html.H3('Downloading Content as Strings'),
     rc.Syntax(examples['download-text.py'][0], summary=rc.Markdown('''
-        Here is an example show how to download content as a string, while showing the raw JSON:
+        Here is an example show how to download content as a string, \
+        while showing the raw JSON:
     ''')),
     rc.Example(examples['download-text.py'][1]),
+
+    html.Hr(),
+
+    html.H3('Download Dataframe as CSV file'),
+    rc.Syntax(examples['download-dataframe-csv.py'][0], summary=rc.Markdown('''
+        For downloading dataframes, the many pandas export methods are
+        supported. Below we are downloading a dataframe as a CSV:
+    ''')),
+    rc.Example(examples['download-dataframe-csv.py'][1]),
+
+    html.Hr(),
+
+    html.H3('Download Dataframe as Excel file'),
+    rc.Syntax(examples['download-dataframe-xlxs.py'][0], summary=rc.Markdown('''
+        To download a dataframe as an Excel file with pandas, add
+        `xlsxwriter` or `openpyxl` as an app dependency:
+    ''')),
+    rc.Example(examples['download-dataframe-xlxs.py'][1]),
 
     html.Hr(),
 
@@ -34,14 +55,6 @@ layout = html.Div([
         specify the file path.
     ''')),
     rc.Example(examples['download-image.py'][1]),
-
-    html.Hr(),
-
-    html.H3('Downloading Dataframes'),
-    rc.Syntax(examples['download-dataframe.py'][0], summary=rc.Markdown('''
-        For downloading dataframes the many pandas export methods are supported:
-    ''')),
-    rc.Example(examples['download-dataframe.py'][1]),
 
     html.Hr(),
 
