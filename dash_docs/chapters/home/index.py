@@ -17,16 +17,18 @@ styles = {
 layout = html.Div([
     dcc.Tabs([
         dcc.Tab(label='Dash open-source', children=[
-            html.H1('Dash User Guide'),
+            html.H2('Dash Python User Guide'),
 
-            dcc.Markdown(
+            html.Blockquote([dcc.Markdown(
                 '''
-                > This user guide is for the Python implementation of Dash Open Source.
-                > Dash Open Source is also available in R and Julia.
-                > View the [Dash for R User Guide & Documentation](https://dashr.plotly.com)
-                > and the [Dash for Julia User Guide & Documentation](https://dash-julia.plotly.com)
-                ''', style={'fontSize': 14}
-            ),
+                Dash brings low-code data apps to these languages: 
+                
+                [Python](dash.plotly.com) | 
+                [R](dashr.plotly.com) | 
+                [Julia](https://dashjulia.plotly.com) | 
+                [.NET](https://github.com/plotly/Dash.NET)
+                '''),
+            ]),
 
             WorkspaceBlurb,
 

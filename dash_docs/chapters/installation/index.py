@@ -26,7 +26,20 @@ layout = html.Div([
     that make up the core of Dash: `dash_html_components`, `dash_core_components`,
     `dash_table`, as well as the `plotly` graphing library. These libraries are
     under active development, so install and upgrade frequently.
+    
+    If you prefer [Jupyter notebook](https://plotly.com/dash/workspaces/?tab=jupyter-notebooks) 
+    or JupyterLab as your development environment, we recommend installing [jupyter-dash](https://github.com/plotly/jupyter-dash):
+    """),
 
+    rc.Markdown("""
+    ```shell
+    pip install jupyter-dash
+    ```
+    """, style=styles.code_container),
+
+    html.Br(),    
+    
+    rc.Markdown("""
     These docs are running `dash` version `{}`.
     Python 2 and 3 are supported.
 
@@ -41,9 +54,9 @@ layout = html.Div([
     ```
     """, style=styles.code_container),
 
-    html.Hr(),
+    html.Br(),
+    
+    rc.Markdown("Ready? Now, let's [make your first Dash app](/layout)."),
 
     rc.WorkspaceBlurb if not tools.is_in_dash_enterprise() else "",
-
-    rc.Markdown("Ready? Now, let's [make your first Dash app](/layout)."),
 ])
