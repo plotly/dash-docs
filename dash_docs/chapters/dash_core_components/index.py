@@ -279,7 +279,7 @@ dcc.DatePickerRange(
 
     html.Br(),
     dcc.Link('More Markdown Examples and Reference',
-             href=tools.relpath("/dash-core-components/markdown")),
+             href=tools.relpath('/dash-core-components/markdown')),
 
     html.Hr(),
 
@@ -301,9 +301,24 @@ dcc.DatePickerRange(
     dcc.Link('More Upload Examples and Reference',
              href=tools.relpath("/dash-core-components/upload")),
 
+    html.Hr(),
+
+    html.H2(dcc.Link('Download Component', href=tools.relpath('/dash-core-components/download'))),
     rc.Markdown('''
-    ***
+    The `dcc.Download` component allows users to download files from your app through their browser.
     '''),
+
+    rc.Markdown(
+        examples['download-text.py'][0],
+        style=styles.code_container
+    ),
+
+    html.Div(examples['download-text.py'][1], className='example-container'),
+
+    dcc.Link('More Download Examples and Reference',
+             href=tools.relpath("/dash-core-components/download")),
+
+    html.Hr(),
 
     html.H2(dcc.Link('Tabs', href='/dash-core-components/tabs')),
     rc.Markdown('''
