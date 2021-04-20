@@ -1,1 +1,2 @@
-.git/
+# Exclude files from the final slug compilation
+/pdf-docs
