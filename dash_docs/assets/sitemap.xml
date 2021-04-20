@@ -126,6 +126,9 @@
     <loc>https://dash.plotly.com/dash-core-components/datepickersingle</loc>
 </url>
 <url>
+    <loc>https://dash.plotly.com/dash-core-components/download</loc>
+</url>
+<url>
     <loc>https://dash.plotly.com/dash-core-components/dropdown</loc>
 </url>
 <url>
@@ -820,5 +823,8 @@
 </url>
 <url>
     <loc>https://dash.plotly.com/urls</loc>
+</url>
+<url>
+    <loc>https://dash.plotly.com/vtk</loc>
 </url>
 </urlset>
