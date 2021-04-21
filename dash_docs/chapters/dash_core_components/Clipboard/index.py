@@ -18,7 +18,7 @@ layout = html.Div(children=[
     html.H3('Simple Clipboard Example'),
     rc.Markdown("""
         The easiest way to trigger the copy is by using the the `target_id` 
-        prop. No callback is required!
+        property. No callback is required!
 
         Place dcc.Clipboard() in the layout where you would like the copy
          icon located. Specify the `target_id` of the component with text to copy.
