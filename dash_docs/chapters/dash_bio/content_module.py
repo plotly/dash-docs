@@ -19,7 +19,7 @@ from six import PY3
 import dash_bio as dashbio
 
 
-data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/alignment_viewer_p53.fasta").read()
+data = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/alignment_viewer_p53.fasta').read()
 
 if PY3:
     data = data.decode('utf-8')
@@ -39,7 +39,7 @@ dashbio.AlignmentChart(
 from six import PY3
 import dash_bio as dashbio
 
-data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/alignment_viewer_p53.fasta").read()
+data = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/alignment_viewer_p53.fasta').read()
 
 if PY3:
     data = data.decode('utf-8')
@@ -59,7 +59,7 @@ from six import PY3
 import dash_bio as dashbio
 
 
-data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/alignment_viewer_p53.fasta").read()
+data = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/alignment_viewer_p53.fasta').read()
 
 if PY3:
     data = data.decode('utf-8')
@@ -78,7 +78,7 @@ from six import PY3
 import dash_bio as dashbio
 
 
-data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/alignment_viewer_p53.fasta").read()
+data = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/alignment_viewer_p53.fasta').read()
 
 if PY3:
     data = data.decode('utf-8')
@@ -534,19 +534,19 @@ dashbio.Igv(
 dashbio.Igv(
         id='reference-igv',
         reference={
-            "id": "ASM985889v3",
-            "name": "Sars-CoV-2 (ASM985889v3)",
-            "fastaURL": "https://s3.amazonaws.com/igv.org.genomes/covid_ASM985889v3/GCF_009858895.2_ASM985889v3_genomic.fna",
-            "indexURL": "https://s3.amazonaws.com/igv.org.genomes/covid_ASM985889v3/GCF_009858895.2_ASM985889v3_genomic.fna.fai",
-            "order": 1000000,
-            "tracks": [
+            'id': 'ASM985889v3',
+            'name': 'Sars-CoV-2 (ASM985889v3)',
+            'fastaURL': 'https://s3.amazonaws.com/igv.org.genomes/covid_ASM985889v3/GCF_009858895.2_ASM985889v3_genomic.fna',
+            'indexURL': 'https://s3.amazonaws.com/igv.org.genomes/covid_ASM985889v3/GCF_009858895.2_ASM985889v3_genomic.fna.fai',
+            'order': 1000000,
+            'tracks': [
                 {
-                    "name": "Annotations",
-                    "url": "https://s3.amazonaws.com/igv.org.genomes/covid_ASM985889v3/GCF_009858895.2_ASM985889v3_genomic.gff.gz",
-                    "displayMode": "EXPANDED",
-                    "nameField": "gene",
-                    "height": 150,
-                    "color": "rgb(176,141,87)"
+                    'name': 'Annotations',
+                    'url': 'https://s3.amazonaws.com/igv.org.genomes/covid_ASM985889v3/GCF_009858895.2_ASM985889v3_genomic.gff.gz',
+                    'displayMode': 'EXPANDED',
+                    'nameField': 'gene',
+                    'height': 150,
+                    'color': 'rgb(176,141,87)'
                 }
             ]
         },
@@ -766,7 +766,7 @@ ManhattanPlot = create_doc_page(
 import dash_core_components as dcc
 import dash_bio as dashbio
 
-df = pd.read_csv("https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/manhattan_data.csv")
+df = pd.read_csv('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/manhattan_data.csv')
 
 n_chr = 23  # number of chromosome pairs in humans
 assert 'CHR' in df.columns
@@ -792,7 +792,7 @@ dcc.Graph(figure=manhattanplot)'''
 import dash_core_components as dcc
 import dash_bio as dashbio
 
-df = pd.read_csv("https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/manhattan_data.csv")
+df = pd.read_csv('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/manhattan_data.csv')
 
 n_chr = 23  # number of chromosome pairs in humans
 assert 'CHR' in df.columns
@@ -923,8 +923,8 @@ dashbio.Molecule3dViewer(
     styles=styles_data,
     modelData=model_data,
     labels = [
-            {"text": "Residue Name: 'GLY1'", "fontColor": "red", "font": "Arvo"},
-            {"text": "Residue Chain: 'A'", "position": {"x":15.407, "y": -8.432, "z": 6.573}}
+            {'text': 'Residue Name: GLY1', 'fontColor': 'red', 'font': 'Arvo'},
+            {'text': 'Residue Chain: A', 'position': {'x':15.407, 'y': -8.432, 'z': 6.573}}
         ],
 )'''
         },
@@ -948,31 +948,31 @@ dashbio.Molecule3dViewer(
     modelData=model_data,
     shapes = [
         {
-            "type": "Sphere",
-            "center": {'x':0,'y':0,'z':0},
-            "radius": 3.0,
-            "color": "blue",
-            "opacity": 1
+            'type': 'Sphere',
+            'center': {'x':0,'y':0,'z':0},
+            'radius': 3.0,
+            'color': 'blue',
+            'opacity': 1
         },
         {
-            "type": "Arrow",
-            "start": {'x':40, 'y':20.0, 'z':0.0},
-            "end": {'x':20.0, 'y':10.0, 'z':0.0},
-            "radius": 1.0,
-            "radiusRadio":0.5,
-            "mid":1.0,
-            "color": 'red',
-            "opacity": 1
+            'type': 'Arrow',
+            'start': {'x':40, 'y':20.0, 'z':0.0},
+            'end': {'x':20.0, 'y':10.0, 'z':0.0},
+            'radius': 1.0,
+            'radiusRadio':0.5,
+            'mid':1.0,
+            'color': 'red',
+            'opacity': 1
         },
         {
-            "type": "Cylinder",
-            "start": {'x': 10.0, 'y': -30.0, 'z': 0.0},
-            "end": {'x': 20.0, 'y': -50.0, 'z': 0.0},
-            "radius": 1.0,
-            "fromCap": 1,
-            "toCap": 2,
-            "color": 'green',
-            "opacity": 1
+            'type': 'Cylinder',
+            'start': {'x': 10.0, 'y': -30.0, 'z': 0.0},
+            'end': {'x': 20.0, 'y': -50.0, 'z': 0.0},
+            'radius': 1.0,
+            'fromCap': 1,
+            'toCap': 2,
+            'color': 'green',
+            'opacity': 1
         }
     ],
 )'''
@@ -1026,7 +1026,7 @@ from six import PY3
 import dash_bio as dashbio
 
 
-data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/needle_PIK3CA.json").read()
+data = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/needle_PIK3CA.json').read()
 
 if PY3:
     data = data.decode('utf-8')
@@ -1055,10 +1055,10 @@ from six import PY3
 import dash_bio as dashbio
 
 
-data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/needle_PIK3CA.json").read()
+data = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/needle_PIK3CA.json').read()
 
 if PY3:
-    data = data.decode("utf-8")
+    data = data.decode('utf-8')
 
 mdata = json.loads(data)
 
@@ -1078,7 +1078,7 @@ dashbio.NeedlePlot(
 # NglMoleculeViewer
 NglMoleculeViewer = create_doc_page(
     examples, component_names, 'ngl-molecule-viewer.py', component_examples=[],
-    interactive_examples_flag="-example"
+    interactive_examples_flag='-example'
 )
 
 
@@ -1095,7 +1095,7 @@ import six.moves.urllib.request as urlreq
 import dash_bio as dashbio
 
 
-data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/oncoprint_dataset3.json").read()
+data = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/oncoprint_dataset3.json').read()
 data = json.loads(data)
 
 dashbio.OncoPrint(
@@ -1118,7 +1118,7 @@ import six.moves.urllib.request as urlreq
 import dash_bio as dashbio
 
 
-data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/oncoprint_dataset3.json").read()
+data = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/oncoprint_dataset3.json').read()
 data = json.loads(data)
 
 dashbio.OncoPrint(
@@ -1138,7 +1138,7 @@ import six.moves.urllib.request as urlreq
 import dash_bio as dashbio
 
 
-data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/oncoprint_dataset3.json").read()
+data = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/oncoprint_dataset3.json').read()
 data = json.loads(data)
 
 dashbio.OncoPrint(
@@ -1274,7 +1274,7 @@ import dash_bio as dashbio
 from dash_bio_utils import xyz_reader
 
 
-data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/speck_methane.xyz").read()
+data = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/speck_methane.xyz').read()
 
 if PY3:
     data = data.decode('utf-8')
@@ -1304,7 +1304,7 @@ import dash_bio as dashbio
 from dash_bio_utils import xyz_reader
 
 
-data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/speck_methane.xyz").read()
+data = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/speck_methane.xyz').read()
 
 if PY3:
     data = data.decode('utf-8')
@@ -1333,7 +1333,7 @@ import dash_core_components as dcc
 import dash_bio as dashbio
 
 
-df = pd.read_csv("https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/volcano_data1.csv")
+df = pd.read_csv('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/volcano_data1.csv')
 
 volcanoplot = dashbio.VolcanoPlot(
         dataframe=df,
@@ -1355,7 +1355,7 @@ import dash_core_components as dcc
 import dash_bio as dashbio
 
 
-df = pd.read_csv("https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/volcano_data1.csv")
+df = pd.read_csv('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/volcano_data1.csv')
 
 volcanoplot = dashbio.VolcanoPlot(
         dataframe=df,
