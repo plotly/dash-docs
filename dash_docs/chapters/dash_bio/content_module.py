@@ -923,7 +923,7 @@ dashbio.Molecule3dViewer(
     styles=styles_data,
     modelData=model_data,
     labels = [
-            {"text": "Residue Name: 'GLY1'", "fontColor": "red", "font": "Ariel"},
+            {"text": "Residue Name: 'GLY1'", "fontColor": "red", "font": "Arvo"},
             {"text": "Residue Chain: 'A'", "position": {"x":15.407, "y": -8.432, "z": 6.573}}
         ],
 )'''
