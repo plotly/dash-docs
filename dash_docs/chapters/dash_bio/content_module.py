@@ -931,7 +931,7 @@ dashbio.Molecule3dViewer(
 
         {
             'param_name': 'Shapes',
-            'description': 'Add predefined renderable shapes to the molecule. Supported shapes '
+            'description': 'Add predefined renderable shapes to the molecule. Supported shape '
                            'types are Arrow, Sphere, and Cylinder.',
             'code': '''import json
 import six.moves.urllib.request as urlreq
