@@ -579,6 +579,183 @@ dashbio.Igv(
     ]
 )
 
+# Pileup
+Pileup = create_doc_page(
+    examples, component_names, 'pileup.py', component_examples=[
+        {
+            'param_name': 'Genome',
+            'description': 'Select a genome by specifying a reference label (e.g. "hg19", "mm10"),'
+            ' and a url pointing to a [TwoBit data file](http://genome.ucsc.edu/FAQ/FAQformat.html#format7).'
+            ' TwoBit files can be found in the [UCSC Genome Browser](https://hgdownload.soe.ucsc.edu/downloads.html),'
+            ' or can be remotely staged elsewhere.'
+            'The Pileup component also requires a genomic range object that specifies the contig, start, and end '
+            'position to be visualized.',
+            'code': '''import dash_bio as dashbio
+
+dashbio.Pileup(
+    id = 'genome-pileup',
+    range = {
+        'contig': 'chr8',
+        'start': 65869361,
+        'stop': 65869511
+    },
+    reference = {
+        'label': 'mm10',
+        'url': 'https://hgdownload.cse.ucsc.edu/goldenPath/mm10/bigZips/mm10.2bit'
+    }
+)'''
+        },
+
+        {
+            'param_name': 'Tracks',
+            'description': 'Add tracks with the `tracks` property of a Pileup '
+                           'component to view additional data types and sources. Tracks can '
+                           'display genomic coverage, features, variants, and reads.'
+                           '\n \n'
+                           'Each track in a Pileup component requires a visualization type (`viz`) '
+                           'and a data source (`source`). '
+                           '\n###### Pileup Data Sources\n'
+                           'Each data source has its own set of required keys. '
+                           'Below, we enumerate the available data source types:'
+                           '\n- `bam` : requires `\'sourceOptions\': {\'url\':, URL.bam '
+                           '\'indexUrl\': URL.bam.bai}`'
+                           '\n- `alignmentJson` : requires `\'sourceOptions\': {GA4GH_JSON_STRING}`'
+                           '\n- `variantJson` : requires `\'sourceOptions\': {GA4GH_JSON_STRING}`'
+                           '\n- `featureJson` : requires `\'sourceOptions\': {GA4GH_JSON_STRING}`'
+                           '\n- `idiogramJson` : requires `\'sourceOptions\': {JSON_STRING}`'
+                           '\n- `vcf` : requires `\'sourceOptions\': {\'url\':, URL.vcf }`'
+                           '\n- `bigBed` : requires `\'sourceOptions\': {\'url\':, URL.bb }`'
+                           '\n'
+                           '\n###### Pileup Visualization Types\n'
+                           'The Pileup component supports the following visualizations:'
+                           '\n- `coverage` : requires `alignmentJson`, `bam`, or `featureJson` '
+                           'source'
+                           '\n- `genes` : requires `bigBed` source'
+                           '\n- `features` : requires `featureJson` or `bigBed` source'
+                           '\n- `variants` : requires a `vcf` or `variantJson` data source'
+                           '\n- `genotypes` : requires a `vcf` or `variantJson` data source'
+                           '\n- `pileup` : requires a `bam` or `alignmentJson` data source'
+                           '\n- `idiogram` :  requires `idiogramJson` data source'
+                           '\n- `location` : does not require a data source'
+                           '\n- `scale` : does not require a data source'
+                           '\n \n'
+                           'Multiple tracks can be added to a Pileup component by passing in a '
+                           'list of dicts, each of which corresponds to an individual track.',
+            'code': '''import dash_bio as dashbio
+import os
+import json
+import six.moves.urllib.request as urlreq
+
+# read in JSON
+source_data = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/pileup.synth4.tumor.chr1.4930000-4950000.json').read().decode('utf-8')
+
+dashbio.Pileup(
+        id = 'tracks-pileup',
+        range = {
+            'contig': 'chr1',
+            'start': 4930382,
+            'stop': 4946898
+        },
+        reference = {
+            'label': 'hg19',
+            'url': 'https://hgdownload.cse.ucsc.edu/goldenPath/hg19/bigZips/hg19.2bit'
+        },
+        tracks=[
+        {
+            'viz': 'coverage',
+            'label': 'alignments',
+            'source': 'alignmentJson',
+            'sourceOptions': source_data
+        },
+        {
+            'viz': 'pileup',
+            'label': 'alignments',
+            'source': 'alignmentJson',
+            'sourceOptions': source_data
+        }])'''
+        },
+
+        {
+            'param_name': 'Visualization Options',
+            'description': 'Depending on the visualization track, you can modify and set '
+            'various visualization options. In this example, we set the option to view '
+            'alignments as pairs by setting the value for `viewAsPairs` to `True`. '
+            'Other vizOptions are as follows for each of the following track types:'
+            '\n- `coverage` and `features` : Set the track color by specifying a dict '
+            ' of RGB colors: ```{ \'color\': {\'rgb\': {\'r\': int, \'g\': int, \'b\': int, \'a\': int}}}```'
+            '\n- `pileup` : Included vizOptions are `viewAsPairs: bool`, `colorByInsert: bool`, '
+                           '`colorByStrand: bool`, `hideAlignments: bool`'
+            '\n- `features` : Collapse overlapping features by specifying `{\'collapse\': True}`',
+            'code': '''import dash_bio as dashbio
+import os
+import re
+import json
+import six.moves.urllib.request as urlreq
+
+# read in JSON
+source_data = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/pileup.synth4.tumor.chr1.4930000-4950000.json').read().decode('utf-8')
+
+dashbio.Pileup(
+        id='tracks-pileup',
+        range={
+            'contig': 'chr1',
+            'start': 4930382,
+            'stop': 4946898
+        },
+        reference = {
+            'label': 'hg19',
+            'url': 'https://hgdownload.cse.ucsc.edu/goldenPath/hg19/bigZips/hg19.2bit'
+        },
+        tracks=[
+        {
+            'viz': 'pileup',
+            'vizOptions': { 'viewAsPairs': True },
+            'label': 'alignments',
+            'source': 'alignmentJson',
+            'sourceOptions': source_data
+        }])'''
+        },
+
+        {
+            'param_name': 'Features',
+            'description': 'The `features` visualization allows you to view any features that '
+                            'have a genomic location (a contig, start, and stop). You can specify vizOptions'
+                            ' for features, including the track color whether to collapse '
+                           'overlapping features.',
+            'code': '''import dash_bio as dashbio
+import os
+import re
+import json
+import six.moves.urllib.request as urlreq
+
+# read in JSON
+source_data = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/pileup.features.ga4gh.chr1.120000-125000.chr17.7500000-7515100.json').read().decode('utf-8')
+
+dashbio.Pileup(
+        id='features-pileup',
+        range={
+            'contig': 'chr1',
+            'start': 120000,
+            'stop': 125000
+        },
+        reference = {
+            'label': 'hg19',
+            'url': 'https://hgdownload.cse.ucsc.edu/goldenPath/hg19/bigZips/hg19.2bit'
+        },
+        tracks=[
+        {
+            'viz': 'features',
+            'vizOptions': { 'color': {'rgb': {'r': 251, 'g': 62, 'b': 22, 'a': 1}},
+                            'collapse': False },
+            'label': 'features',
+            'source': 'featureJson',
+            'sourceOptions': source_data
+        }])'''
+        }
+    ]
+)
+
+
 # ManhattanPlot
 ManhattanPlot = create_doc_page(
     examples, component_names, 'manhattan-plot.py', component_examples=[
