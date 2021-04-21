@@ -63,10 +63,7 @@ app.layout = html.Div([
 )
 def return_molecule(style, sidebyside):
 
-    sidebyside_bool = False
-
-    if sidebyside == "True":
-        sidebyside_bool = True
+    sidebyside_bool = sidebyside == "True"
 
     molstyles_dict = {
         "representations": style,
