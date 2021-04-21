@@ -43,7 +43,7 @@ layout = html.Div(children=[
         style={'overflow': 'hidden', 'padding': '20px'}
     ),
 
-    html.H3('Updating Text in a callback'),
+    html.H3('Updating the Clipboard Text in a callback'),
     rc.Markdown("""When `target_id` is not specified, the content of the `text` prop
     is copied to the clipboard.  This works well with components like the DataTable where
     you may want to customized the text in a callback.  In this example, 
