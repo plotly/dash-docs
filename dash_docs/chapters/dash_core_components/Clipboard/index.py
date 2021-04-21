@@ -20,7 +20,7 @@ layout = html.Div(children=[
         The easiest way to trigger the copy is by using the the `target_id` 
         property. No callback is required!
 
-        Place dcc.Clipboard() in the layout where you would like the copy
+        Place `dcc.Clipboard()` in the layout where you would like the copy
          icon located. Specify the `target_id` of the component with text to copy.
          In this example, the content of the `value` prop of the dcc.Textarea() is copied to the clipboard.    
     """),
