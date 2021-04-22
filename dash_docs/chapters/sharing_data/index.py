@@ -176,7 +176,7 @@ def update_output_1(value):
 
         2 - On the disk (e.g. on a file or in a database)
 
-        3 - In server-side memory shared across processes and servers like a Redis database
+        3 - In server-side memory shared across processes and servers like a Redis database. [Dash Enterprise](https://plotly.com/dash) includes onboard, one-click Redis databases for this purpose.
 
         The following three examples illustrate these approaches.
 
