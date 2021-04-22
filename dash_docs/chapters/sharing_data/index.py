@@ -50,6 +50,33 @@ layout = html.Div([
 
     rc.Markdown('''
 
+    ## Dash is Stateless
+
+    Dash was architected to be a stateless framework.
+    
+    Stateless frameworks are more scalable and more robust. Most websites that you visit are
+    architected on stateless servers.
+    
+    They are more scalable because it's trivial to add more compute power to the application.
+    To scale the application to serve more users or run more computations, simply
+    run more "copies" of the app in separate processes.
+    In production, this is either done with gunicorn's worker command:
+    ```
+    gunicorn app:server --workers 8
+    ```
+    or by running the app in multiple Docker containers or servers and load balancing between them.
+    
+    Stateless frameworks are more robust because one process can fail and other processes can continue
+    serving requests.
+    In Dash Enterprise Kubernetes, these containers can run on separate servers or even
+    separate regions, providing resiliancing against server failure.
+    
+    With a stateless framework, user sessions are not mapped 1-1 with server processes.
+    Each callback request can be executed on _any_ of the available processes.
+    `gunicorn` will check which process isn't busy running a callback and send the new callback request
+    to that process. This means that a few processes can balance the requests of 10s or 100s of concurrent users
+    so long as those requests aren't happening at _the exact same time_ (they usually don't!).
+
     ## Why `global` variables will break your app
 
     Dash is designed to work in multi-user environments
@@ -62,6 +89,7 @@ layout = html.Div([
 
     Dash is also designed to be able to run with **multiple python
     workers** so that callbacks can be executed in parallel.
+    
     This is commonly done with `gunicorn` using syntax like
     ```shell
     $ gunicorn --workers 4 app:server
@@ -73,7 +101,7 @@ layout = html.Div([
     When Dash apps run across multiple workers, their memory
     _is not shared_. This means that if you modify a global
     variable in one callback, that modification will not be
-    applied to the rest of the workers.
+    applied to the rest of the workers / processes.
 
     ***
 
@@ -139,14 +167,14 @@ def update_output_1(value):
         ## Sharing Data Between Callbacks
 
         In order to share data safely across multiple python
-        processes, we need to store the data somewhere that is accessible to
+        processes or servers, we need to store the data somewhere that is accessible to
         each of the processes.
 
         There are three main places to store this data:
 
         1 - In the user's browser session via [dcc.Store](/dash-core-components/store)
 
-        2 - On the disk (e.g. on a file or on a new database)
+        2 - On the disk (e.g. on a file or in a database)
 
         3 - In server-side memory shared across processes and servers like a Redis database
 
