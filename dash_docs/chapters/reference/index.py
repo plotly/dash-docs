@@ -7,7 +7,7 @@ import inspect
 
 def convert_docstring_to_markdown(docstring):
     if not docstring:
-        return '\n\(Not officially documented)\n'
+        return '\n\(No docstring available)\n'
 
     lines = docstring.split('\n')
 
@@ -21,6 +21,10 @@ def convert_docstring_to_markdown(docstring):
 
     # Remove leading ': from rst Example
     docstring = docstring.replace(':Example:', 'Example:')
+
+    docstring = docstring.replace(
+        ':return:', '\n\nreturns:'
+    )
 
     docstring = docstring.replace('``', '`')
 
@@ -89,9 +93,12 @@ PUBLIC_API = [
         'css',
         'dependencies',
         'dispatch',
+        'exceptions',
+        'fingerprint',
         'logger',
         'registered_paths',
         'renderer',
+        'resources',
         'routes',
         'scripts',
         'serve_component_suites',
@@ -106,6 +113,27 @@ PUBLIC_API = [
     app = dash.Dash(__name__)
     ```
     '''
+    ), override=dict(
+        server=dcc.Markdown(
+            '''
+            The Flask server associated with this app.
+            Often used in conjunction with `gunicorn` when running the app
+            in production with multiple workers:
+            
+            `app.py`
+            ```
+            app = dash.Dash(__name__)
+            
+            # expose the flask variable in the file
+            server = app.server  
+            ```
+            
+            `Procfile`
+            ```
+            gunicorn app:server
+            ```
+            '''
+        )
     )),
 
     dict(obj=dash.dependencies, prefix='', skip=[], preamble=dcc.Markdown(
@@ -149,7 +177,11 @@ def create_docstrings():
         for method in public_methods(docitem['obj']):
             if method not in docitem['skip']:
                 docstring.append(doc_signature(docitem['obj'], method, docitem['prefix']))
-                docstring.append(dcc.Markdown(convert_docstring_to_markdown(getattr(docitem['obj'], method).__doc__)))
+                if 'override' in docitem:
+                    docstring.append(docitem['override'])
+                else:
+                    docstring.append(dcc.Markdown(convert_docstring_to_markdown(getattr(docitem['obj'], method).__doc__)))
+        docstring.append(html.Hr())
     return docstring          
 
 layout = html.Div([
