@@ -80,7 +80,9 @@ PUBLIC_API = [
     # app,
     # dash.Dash,
     # dash.resources,
-    dict(obj=dash, prefix='', skip=[], preamble=dcc.Markdown(
+    dict(obj=dash, prefix='', skip=[
+        'fingerprint',
+    ], preamble=dcc.Markdown(
     '''
     # The `dash` module
     ```
@@ -94,7 +96,6 @@ PUBLIC_API = [
         'dependencies',
         'dispatch',
         'exceptions',
-        'fingerprint',
         'logger',
         'registered_paths',
         'renderer',
@@ -133,6 +134,19 @@ PUBLIC_API = [
             gunicorn app:server
             ```
             '''
+        ),
+        title=dcc.Markdown(
+            '''
+            Configures the document.title (the text that appears in a browser tab).
+
+            Default is "Dash".
+            
+            This is now configurable in the `dash.Dash(title='...')` constructor 
+            instead of as a property of `app`. We have kept this property
+            in the `app` object for backwards compatibility.
+            '''
+            
+            
         )
     )),
 
@@ -154,7 +168,7 @@ PUBLIC_API = [
     handle this particular scenario.
     These exception classes are in this module.
     '''
-    ))
+    ), global_override='')
 ]
 
 
@@ -179,6 +193,8 @@ def create_docstrings():
                 docstring.append(doc_signature(docitem['obj'], method, docitem['prefix']))
                 if 'override' in docitem and method in docitem['override']:
                     docstring.append(docitem['override'][method])
+                elif 'global_override' in docitem:
+                    docstring.append(docitem['global_override'])
                 else:
                     docstring.append(dcc.Markdown(convert_docstring_to_markdown(getattr(docitem['obj'], method).__doc__)))
         docstring.append(html.Hr())
