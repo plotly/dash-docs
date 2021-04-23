@@ -83,7 +83,8 @@ PUBLIC_API = [
     import dash
     ```
     '''
-    ),
+    )),
+
     dict(obj=app, prefix='app', skip=[
         'css',
         'dependencies',
@@ -106,6 +107,7 @@ PUBLIC_API = [
     ```
     '''
     )),
+
     dict(obj=dash.dependencies, prefix='', skip=[], preamble=dcc.Markdown(
     '''
     # dash.dependencies
@@ -114,6 +116,7 @@ PUBLIC_API = [
     signature.
     '''
     )),
+
     dict(obj=dash.exceptions, prefix='', skip=[], preamble=dcc.Markdown(
     '''
     # dash.exceptions
