@@ -57,6 +57,7 @@ def doc_signature(obj, method, prefix):
             html.H2(
                 html.Code("{}.{}".format(prefix, name)),
                 className="docs-article",
+                style={'overflowX': 'auto'}
             ),
             html.Pre(
                 className="docs-article",
