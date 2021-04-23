@@ -177,8 +177,8 @@ def create_docstrings():
         for method in public_methods(docitem['obj']):
             if method not in docitem['skip']:
                 docstring.append(doc_signature(docitem['obj'], method, docitem['prefix']))
-                if 'override' in docitem:
-                    docstring.append(docitem['override'])
+                if 'override' in docitem and method in docitem['override']:
+                    docstring.append(docitem['override'][method])
                 else:
                     docstring.append(dcc.Markdown(convert_docstring_to_markdown(getattr(docitem['obj'], method).__doc__)))
         docstring.append(html.Hr())
