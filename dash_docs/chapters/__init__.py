@@ -25,6 +25,7 @@ from .import migration
 from .import performance
 from .import persistence
 from .import plugins
+from .import reference
 from .import sharing_data
 from .import clientside_callbacks
 from .import advanced_callbacks

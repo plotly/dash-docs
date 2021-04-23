@@ -31,6 +31,10 @@ h4 { font-size: 26px; line-height: 1.35; margin-bottom: 1.2rem; margin-top: 1.2r
 h5 { font-size: 22px; line-height: 1.5;  margin-bottom: 0.6rem; margin-top: 0.6rem;}
 h6 { font-size: 20px; line-height: 1.6;  margin-bottom: 0.75rem; margin-top: 0.75rem;}
 
+pre {
+    overflow-x: auto;
+}
+
 ._dash-loading {
   text-align: center;
   margin-top: 50px;
@@ -87,6 +91,7 @@ h6 { font-size: 20px; line-height: 1.6;  margin-bottom: 0.75rem; margin-top: 0.7
     margin-top: 30px;
     margin-left: 10px;
     font-size: 12px;
+    overflow-y: auto;
 }
 .page-menu--header {
     font-weight: bold;
