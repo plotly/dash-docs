@@ -78,7 +78,7 @@ PUBLIC_API = [
     # dash.resources,
     dict(obj=dash, prefix='', skip=[], preamble=dcc.Markdown(
     '''
-    # dash
+    # The `dash` module
     ```
     import dash
     ```
@@ -100,7 +100,7 @@ PUBLIC_API = [
         'validation_layout'
     ], preamble=dcc.Markdown(
     '''
-    # app
+    # The `app` Object
     ```
     import dash
     app = dash.Dash(__name__)
@@ -110,7 +110,7 @@ PUBLIC_API = [
 
     dict(obj=dash.dependencies, prefix='', skip=[], preamble=dcc.Markdown(
     '''
-    # dash.dependencies
+    # The `dash.dependencies` module
     
     The classes in `dash.dependencies` are all used in the `app.callback`
     signature.
@@ -119,7 +119,7 @@ PUBLIC_API = [
 
     dict(obj=dash.exceptions, prefix='', skip=[], preamble=dcc.Markdown(
     '''
-    # dash.exceptions
+    # The `dash.exceptions` module
     
     Dash will raise exceptions under certain scenarios. 
     Dash will always use a special exception class that can be caught to 
@@ -145,10 +145,10 @@ def public_methods(obj):
 def create_docstrings():
     docstring = []
     for docitem in PUBLIC_API:
+        docstring.append(docitem['preamble']),
         for method in public_methods(docitem['obj']):
             if method not in docitem['skip']:
                 docstring.append(doc_signature(docitem['obj'], method, docitem['prefix']))
-                docstring.append(docitem['preamble']),
                 docstring.append(dcc.Markdown(convert_docstring_to_markdown(getattr(docitem['obj'], method).__doc__)))
     return docstring          
 
