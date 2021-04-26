@@ -95,9 +95,9 @@ header = html.Div(
 )
 
 DEFAULT_AD = dict(
-   alt="⚾️ It's finally baseball season! Root for your home team! Register today for our Sports Analytics Webinar on April 21st!",
-   src=tools.relpath('https://images.prismic.io/plotly-marketing-website/6fc81948-6832-45b5-9ab7-cf3ca93275b1_sidebar_ads_4-7-21.jpeg?auto=compress,format'),
-   href='https://go.plotly.com/sports-analytics'
+   alt="📈Curious about what Dash can do for your team? Register for Dash Live Weekly to find out!",
+   src=tools.relpath('https://images.prismic.io/plotly-marketing-website/920e40d6-b09d-4df8-a649-f4570f597437_sidebar_ads_2-08.jpg?auto=compress,format'),
+   href='https://plotly.com/get-demo'
 )
 
 app.title = 'Dash User Guide and Documentation - Dash by Plotly'
