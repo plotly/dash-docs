@@ -99,6 +99,9 @@
     <loc>https://dash.plotly.com/dash-bio/oncoprint</loc>
 </url>
 <url>
+    <loc>https://dash.plotly.com/dash-bio/pileup</loc>
+</url>
+<url>
     <loc>https://dash.plotly.com/dash-bio/sequenceviewer</loc>
 </url>
 <url>
@@ -808,6 +811,9 @@
 </url>
 <url>
     <loc>https://dash.plotly.com/react-for-python-developers</loc>
+</url>
+<url>
+    <loc>https://dash.plotly.com/reference</loc>
 </url>
 <url>
     <loc>https://dash.plotly.com/sharing-data-between-callbacks</loc>

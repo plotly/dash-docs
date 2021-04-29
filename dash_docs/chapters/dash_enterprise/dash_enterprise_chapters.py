@@ -1034,6 +1034,10 @@ LocalDir = html.Div(children=[
     can allow certain directories on the host server to be mapped to dash apps. Go to
     the *Allowed Directories for Mapping* section of the settings page and add the path(s)
     of approved directories.
+    
+    In order for Dash Apps to have read and write access to the directory, ensure that 
+    it is owned by UID/GID 32767. E.g from the host server, an admin could run
+    `chown -R 32767:32767 /srv/app-data`
 
     '''),
 

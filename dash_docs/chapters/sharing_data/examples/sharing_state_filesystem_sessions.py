@@ -59,7 +59,7 @@ def serve_layout():
     session_id = str(uuid.uuid4())
 
     return html.Div([
-        html.Div(session_id, id='session-id', style={'display': 'none'}),
+        dcc.Store(data=session_id, id='session-id'),
         html.Button('Get data', id='get-data-button'),
         html.Div(id='output-1'),
         html.Div(id='output-2')
@@ -71,7 +71,7 @@ app.layout = serve_layout
 
 @app.callback(Output('output-1', 'children'),
               Input('get-data-button', 'n_clicks'),
-              Input('session-id', 'children'))
+              Input('session-id', 'data'))
 def display_value_1(value, session_id):
     df = get_dataframe(session_id)
     return html.Div([
@@ -82,7 +82,7 @@ def display_value_1(value, session_id):
 
 @app.callback(Output('output-2', 'children'),
               Input('get-data-button', 'n_clicks'),
-              Input('session-id', 'children'))
+              Input('session-id', 'data'))
 def display_value_2(value, session_id):
     df = get_dataframe(session_id)
     return html.Div([
