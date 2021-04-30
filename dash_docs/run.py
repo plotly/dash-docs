@@ -96,7 +96,7 @@ header = html.Div(
 
 DEFAULT_AD = dict(
    alt="🧬 Learn how to build RNA-Seq data apps in Python & Dash at this May 20 Webinar!",
-   src=tools.relpath('https://images.prismic.io/plotly-marketing-website/14e0ba73-31c1-4b26-8f47-4437d4e1ba41_sidebar_ads_bioinformatics.jpeg?auto=compress,format'),
+   src=tools.relpath('https://images.prismic.io/plotly-marketing-website/317e6a00-08ff-4582-8e1a-6c11adeea6d0_sidebar_ads_bioinformatics%28changed%29.jpeg?auto=compress,format'),
    href='https://go.plotly.com/bioinformatics'
 )
 
