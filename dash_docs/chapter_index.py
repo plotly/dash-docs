@@ -15,6 +15,7 @@ import dash_table
 import dash_daq
 import dash_cytoscape
 import dash_bio
+import dash_vtk
 
 from dash_docs import reusable_components as rc, tools
 from .reusable_components import TOC, TOCChapters
@@ -1081,6 +1082,12 @@ URLS = [
                         'description': (
                             'Dash VTK enables Dash application developers to harness the power of Kitware\'s open source Visualization Toolkit when manipulating or displaying scientific data.'
                         )
+                    },
+                    {
+                        'url': '/vtk/reference',
+                        'name': 'Reference',
+                        'content': chapters.dash_vtk.reference.index.layout,
+                        'description': 'Comprehensive reference of all Dash VTK components.'
                     }
                 ]
             },
