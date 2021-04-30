@@ -8,7 +8,7 @@ examples = tools.load_examples(__file__)
 
 layout = html.Div([
     rc.Markdown('''
-    # Dash-vtk
+    # Dash VTK
 
     Dash-vtk aims to integrate VTK/vtk.js visualization into the Dash framework.
 
