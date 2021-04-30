@@ -95,7 +95,7 @@ header = html.Div(
 )
 
 DEFAULT_AD = dict(
-   alt="🧬Alyssa Morrow shows us how to build RNA-Sequencing apps in Python with Dash, IGV.js, and Pileup,js. Register for the May 20 Webinar!",
+   alt="🧬 Learn how to build RNA-Seq data apps in Python & Dash at this May 20 Webinar!",
    src=tools.relpath('https://images.prismic.io/plotly-marketing-website/14e0ba73-31c1-4b26-8f47-4437d4e1ba41_sidebar_ads_bioinformatics.jpeg?auto=compress,format'),
    href='https://go.plotly.com/bioinformatics'
 )
