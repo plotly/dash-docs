@@ -1,6 +1,7 @@
 import sys
 import dash_html_components as html
 
+from . import reference
 
 if sys.version_info > (3, ):
     from . import index
