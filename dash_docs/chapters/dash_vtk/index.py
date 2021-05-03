@@ -820,6 +820,99 @@ layout = html.Div([
         examples['t06_shared_dataset.py'][1], 
         className='example-container'
     ),
+
+    rc.Markdown('''
+    ## Click and Hover Callbacks
+
+    It's possible to create callbacks based on user clicks and hovering. First, you need to specify the `pickingModes` prop in 
+    `dash_vtk.View` to be a list of modes you want to capture. The following values are accepted:
+    * `"click"`
+    * `"hover"`
+    
+    Afterwards, you need to create callbacks where the inputs and states include one of the following read-only properties of `dash_vtk.View`.
+    * `clickInfo`: Called when the user clicks on an object.
+    * `hoverInfo`: Called when the user hovers over an object.
+
+    > The full documentation for `dash_vtk.View` can be found in the [API reference](/vtk/reference).
+    '''),
+    
+    rc.Markdown('''
+    The following example shows you how to concisely display the output of `clickInfo` inside an `html.Pre`:
+    '''),
+    html.Details(open=False, children=[
+        html.Summary('View full code'),      
+        rc.Markdown(
+            examples['t07_click_info.py'][0], 
+            style=styles.code_container
+        ),
+    ]),
+
+    html.Div(
+        examples['t07_click_info.py'][1], 
+        className='example-container'
+    ),
+
+    rc.Markdown('''
+
+    You can also construct more complex hover callbacks, which would affect the `actor` and `state` of your geometry representations. 
+    In the [terrain mesh demo](https://dash-gallery.plotly.host/dash-vtk-explorer/pyvista-terrain-following-mesh), whenever you hover
+    over the surface, a callback is fired and the output is displayed on your screen:
+
+    ![terrain-following-mesh-hover](/assets/images/vtk/hoverInfoMesh.jpg)
+
+    The full code can be found [here](https://github.com/plotly/dash-vtk/tree/master/demos/pyvista-terrain-following-mesh), but the 
+    following snippet summarizes what is needed to capture hover events in the image above:
+
+    ```py
+    # ...
+
+    vtk_view = dash_vtk.View(
+        id="vtk-view",
+        pickingModes=["hover"],
+        children=[
+            dash_vtk.GeometryRepresentation(id="vtk-representation", ...),
+            dash_vtk.GeometryRepresentation(
+                id="pick-rep",
+                children=[
+                    dash_vtk.Algorithm(id="pick-sphere", ...)
+                ],
+                # ...
+            ),
+        ],
+    )
+
+    app.layout = html.Div([
+      # ...,
+      vtk_view,
+      # ...
+    ])
+
+    @app.callback(
+        [
+            Output("tooltip", "children"),
+            Output("pick-sphere", "state"),
+            Output("pick-rep", "actor"),
+        ],
+        [Input("vtk-view", "clickInfo"), Input("vtk-view", "hoverInfo")],
+    )
+    def onInfo(clickData, hoverData):
+        info = hoverData if hoverData else clickData
+        if info:
+            if (
+                "representationId" in info
+                and info["representationId"] == "vtk-representation"
+            ):
+                return (
+                    [json.dumps(info, indent=2)],
+                    {"center": info["worldPosition"]},
+                    {"visibility": True},
+                )
+            return dash.no_update, dash.no_update, dash.no_update
+        return [""], {}, {"visibility": False}
+    ```
+
+    '''),
+
     
     rc.Markdown('''
     ## More advanced demos
