@@ -911,6 +911,13 @@ layout = html.Div([
         return [""], {}, {"visibility": False}
     ```
 
+    You can notice that the `clickInfo` or `hoverInfo` data will be a dictionary with various keys describing the picked object. The keys include:
+    * `displayPosition`: The x,y,z coordinate with on the user's screen.
+    * `ray`: A line between two points in 3D space (xyz1, xyz2) that represent the mouse position. It covers the full space under the 2D mouse position.
+    * `representationId`: The ID assigned to the `dash_vtk.GeometryRepresentation` containing your object.
+    * `worldPosition`:  The x, y, z coordinates in the 3D environment that you are rendering where the ray hit the object. It corresponds to the 3D coordinate on the surface of the object under your mouse.
+    
+
     '''),
 
     
