@@ -834,6 +834,24 @@
     <loc>https://dash.plotly.com/vtk</loc>
 </url>
 <url>
+    <loc>https://dash.plotly.com/vtk/advanced</loc>
+</url>
+<url>
+    <loc>https://dash.plotly.com/vtk/click-hover</loc>
+</url>
+<url>
+    <loc>https://dash.plotly.com/vtk/intro</loc>
+</url>
+<url>
+    <loc>https://dash.plotly.com/vtk/other</loc>
+</url>
+<url>
     <loc>https://dash.plotly.com/vtk/reference</loc>
+</url>
+<url>
+    <loc>https://dash.plotly.com/vtk/representations</loc>
+</url>
+<url>
+    <loc>https://dash.plotly.com/vtk/structure</loc>
 </url>
 </urlset>
