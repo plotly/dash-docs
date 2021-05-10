@@ -1249,6 +1249,18 @@ URLS = [
             },
 
             {
+                'url': '/reference',
+                'content': chapters.reference.index.layout,
+                'name': 'API Reference',
+                'description': (
+                    '''
+                    The docstrings and options for the public methods of the
+                    `dash` module and the `app` object.
+                    '''
+                )
+            },
+
+            {
                 'url': '/dash-1-0-migration',
                 'name': 'Dash 1.0.0 Migration',
                 'description': (

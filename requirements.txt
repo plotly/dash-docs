@@ -21,7 +21,7 @@ enum34==1.1.6
 flake8==3.5.0
 Flask-Caching==1.4.0
 Flask-Compress==1.4.0
-Flask-Cors==3.0.3
+Flask-Cors==3.0.9
 Flask-SeaSurf==0.2.2
 Flask==1.1.1
 future==0.18.2

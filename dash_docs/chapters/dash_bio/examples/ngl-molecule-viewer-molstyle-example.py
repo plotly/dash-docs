@@ -62,12 +62,15 @@ app.layout = html.Div([
      Input("molstyle-radio", "value")]
 )
 def return_molecule(style, sidebyside):
+
+    sidebyside_bool = sidebyside == "True"
+
     molstyles_dict = {
         "representations": style,
         "chosenAtomsColor": "red",
         "chosenAtomsRadius": 1,
         "molSpacingXaxis": 100,
-        "sideByside": sidebyside
+        "sideByside": sidebyside_bool
     }
 
     data_list = [ngl_parser.get_data(data_path=data_path, pdb_id=molecule, color='red',

@@ -630,19 +630,19 @@ app$callback(
             ),
 
             components$Section(
-            'Dash Deployment Server',
+            'Dash Enterprise',
               list(
                 components$Chapter(
-                'About Dash Deployment Server',
+                'About Dash Enterprise',
                 href='https://plotly.com/dash/?_ga=2.180458663.1075922756.1562168385-916141078.1562168385'
                 ),
                 components$Chapter(
-                'Dash Deployment Server Documentation',
-                href='https://dash.plotly.com/dash-deployment-server'
+                'Dash Enterprise Documentation',
+                href='https://dash.plotly.com/dash-enterprise'
                 )
               ),
-              description="Dash Deployment Server is Plotly's commercial offering for hosting and sharing
-              Dash apps on-premises or in the cloud.",
+              description="Dash Enterprise helps businesses operationalize data science, AI, and ML
+              models. It’s everything you need to deliver your AI or ML initiative at scale.",
               headerStyle=list('color'='#0D76BF')
             )
           )
