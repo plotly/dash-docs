@@ -3,9 +3,8 @@ import dash_core_components as dcc
 import dash_html_components as html
 from dash_docs.chapter_index import URLS, URL_TO_CONTENT_MAP, DASH_ENTERPRISE_URLS
 
-from dash_docs.convert_to_html import convert_to_html
 from dash_docs.reusable_components import TOC, WorkspaceBlurb
-from dash_docs.tools import merge, relpath
+from dash_docs.tools import relpath
 
 styles = {
     'underline': {
@@ -21,11 +20,11 @@ layout = html.Div([
 
             html.Blockquote([dcc.Markdown(
                 '''
-                Dash brings low-code data apps to these languages: 
-                
-                [Python](dash.plotly.com) | 
-                [R](dashr.plotly.com) | 
-                [Julia](https://dashjulia.plotly.com) | 
+                Dash brings low-code data apps to these languages:
+
+                [Python](https://dash.plotly.com) |
+                [R](https://dashr.plotly.com) |
+                [Julia](https://dash-julia.plotly.com) |
                 [.NET](https://github.com/plotly/Dash.NET)
                 '''),
             ]),
