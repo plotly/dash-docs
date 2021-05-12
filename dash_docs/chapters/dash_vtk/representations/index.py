@@ -249,26 +249,26 @@ layout = html.Div([
 
         ```python
         def PointCloudRepresentation(**kwargs):
-        return dash_vtk.GeometryRepresentation(
-            id=kwargs.get('id'),
-            colorMapPreset=kwargs.get('colorMapPreset'),
-            colorDataRange=kwargs.get('colorDataRange'),
-            property=kwargs.get('property'),
-            children=[
-            dash_vtk.PolyData(
-                points=kwargs.get('xyz'),
-                connectivity='points',
+            return dash_vtk.GeometryRepresentation(
+                id=kwargs.get('id'),
+                colorMapPreset=kwargs.get('colorMapPreset'),
+                colorDataRange=kwargs.get('colorDataRange'),
+                property=kwargs.get('property'),
                 children=[
-                dash_vtk.PointData([
-                    dash_vtk.DataArray(
-                    registration='setScalars',
-                    values={kwargs.get('scalars')}
-                    )
-                ])
+                dash_vtk.PolyData(
+                    points=kwargs.get('xyz'),
+                    connectivity='points',
+                    children=[
+                    dash_vtk.PointData([
+                        dash_vtk.DataArray(
+                        registration='setScalars',
+                        values={kwargs.get('scalars')}
+                        )
+                    ])
+                    ],
+                )
                 ],
             )
-            ],
-        )
         ```
 
         The set of convenient properties are as follows:
