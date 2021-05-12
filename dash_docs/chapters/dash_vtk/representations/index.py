@@ -284,35 +284,33 @@ layout = html.Div([
 
         ```python
         def VolumeDataRepresentation(**kwargs):
-        return dash_vtk.VolumeRepresentation(
-            id=kwargs.get('id'),
-            colorMapPreset=kwargs.get('colorMapPreset'),
-            colorDataRange=kwargs.get('colorDataRange'),
-            property=kwargs.get('property'),
-            mapper=kwargs.get('mapper'),
-            volume=kwargs.get('volume'),
-            children=[
-                dash_vtk.VolumeController(
-                    rescaleColorMap=kwargs.get('rescaleColorMap'),
-                    size=kwargs.get('size'),
-                ),
-                dash_vtk.ImageData(
-                    dimensions=kwargs.get('dimensions'),
-                    origin=kwargs.get('origin'),
-                    spacing=kwargs.get('spacing'),
-                    children=[
-                        dash_vtk.PointData([
-                            dash_vtk.DataArray(
-                                registration='setScalars',
-                                values=kwargs.get('scalars'),
-                            )
-                        ])
-                    ],
-                ),
+            return dash_vtk.VolumeRepresentation(
+                id=kwargs.get('id'),
+                colorMapPreset=kwargs.get('colorMapPreset'),
+                colorDataRange=kwargs.get('colorDataRange'),
+                property=kwargs.get('property'),
+                mapper=kwargs.get('mapper'),
+                volume=kwargs.get('volume'),
+                children=[
+                    dash_vtk.VolumeController(
+                        rescaleColorMap=kwargs.get('rescaleColorMap'),
+                        size=kwargs.get('size'),
+                    ),
+                    dash_vtk.ImageData(
+                        dimensions=kwargs.get('dimensions'),
+                        origin=kwargs.get('origin'),
+                        spacing=kwargs.get('spacing'),
+                        children=[
+                            dash_vtk.PointData([
+                                dash_vtk.DataArray(
+                                    registration='setScalars',
+                                    values=kwargs.get('scalars'),
+                                )
+                            ])
+                        ],
+                    ),
                 ],
             )
-            ],
-        )
         ```
 
         The set of convenient properties are as follows:
