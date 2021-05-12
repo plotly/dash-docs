@@ -276,7 +276,7 @@ layout = html.Div([
         - __colorMapPreset__ = color preset name to use
         - __colorDataRange__ = rescale color map to provided that range
         - __property__ = {} # Same as GeometryRepresentation/property
-        - __rgb__ / __rgba__ / __scalars__ = [...] let you define the field you want to color your point cloud with. The rgb(a) expects numbers up to 255 for each component: Red Green Blue (Alpha).
+        - __rgb__ / __rgba__ / __scalars__ = `[...]` let you define the field you want to color your point cloud with. The rgb(a) expects numbers up to 255 for each component: Red Green Blue (Alpha).
 
         ## VolumeDataRepresentation
 
