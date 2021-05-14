@@ -180,7 +180,7 @@ layout = html.Div([
     good practice to expose your *acceptance criteria* directly in the test
     case rather than wrapping the `assert` inside another helper API, also to
     write these messages with SHOULD/SHOULD NOT without failure confusion.
-    By looking at the test name, the app definition, the acitons, and the
+    By looking at the test name, the app definition, the actions, and the
     checkpoints, reviewers should figure out easily the purpose of the test.
 
     8. We use [Percy](https://percy.io/) as our Visual Regression Testing

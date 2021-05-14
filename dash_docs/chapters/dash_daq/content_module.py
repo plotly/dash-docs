@@ -1039,7 +1039,7 @@ daq.Thermometer(
 
     html.H3('Label'),
     rc.Markdown("Display a label alongside the thermometer in \
-    the specified positon by setting `label` and `labelPosition`."),
+    the specified position by setting `label` and `labelPosition`."),
     rc.ComponentBlock('''import dash_daq as daq
 daq.Thermometer(
     value=5,

@@ -96,6 +96,20 @@ dcc.Slider(
         style={'overflow': 'hidden', 'padding': '20px'}
     ),
 
+    html.H3('Using drag_value'),
+    rc.Markdown("Rather than changing the updatemode of the slider, "
+                "you can also use `drag_value` an an input. This makes it "
+                "possible to react differently to drag and mouseup."),
+    rc.Markdown(
+        examples['slider_drag.py'][0],
+        style=styles.code_container,
+    ),
+    html.Div(
+        examples['slider_drag.py'][1],
+        className='example-container',
+        style={'overflow': 'hidden', 'padding': '20px'}
+    ),
+
     html.H3("Slider Properties"),
     rc.ComponentReference('Slider')
 ])

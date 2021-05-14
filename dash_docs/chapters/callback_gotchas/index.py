@@ -24,7 +24,7 @@ layout = html.Div([
     such as validating the types of callback arguments and checking to see
     whether the specified `Input` and `Output` components actually have the
     specified properties. For full validation, all components within your
-    callback must therefore appear in the initial layout of your app, and you
+    callback must exist in the layout when your app starts, and you
     will see an error if they do not.
 
     However, in the case of more complex Dash apps that involve dynamic
@@ -54,7 +54,7 @@ layout = html.Div([
     component/property pair, you’ll have to bundle them up into a larger
     callback and detect which of the relevant `Inputs` triggered the callback
     inside the function. For `html.Button` elements, detecting which one
-    triggered the callback ca be done using the `n_clicks_timestamp`
+    triggered the callback can be done using the `n_clicks_timestamp`
     property. For an example of this, see the question in the FAQ, *How do I
     determine which `Input` has changed?*.
 
@@ -99,5 +99,9 @@ layout = html.Div([
 
     This is a known issue and you can track its status in this [GitHub
     Issue](https://github.com/plotly/dash-renderer/issues/40).
+
+    ### Callback Definitions Don't Need To Be In Lists
+
+    As of Dash 1.15.0, `Input`, `Output`, and `State` in callback definitions don't need to be in lists. You still need to provide `Output` items first, then `Input` items, then `State`, and the list form is still supported. In particular, if you want to return a single output item wrapped in a length-1 list, you should still wrap the `Output` in a list. This can be useful for procedurally-generated callbacks.
     ''')
 ])

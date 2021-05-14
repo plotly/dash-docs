@@ -145,7 +145,8 @@ layout = html.Div(
                     'if': {
                         'state': 'active'  # 'active' | 'selected'
                     },
-                   'backgroundColor': 'rgba(0, 116, 217, 0.3)'
+                   'backgroundColor': 'rgba(0, 116, 217, 0.3)',
+                   'border': '1px solid rgb(0, 116, 217)'
                 }
 
             ]
@@ -170,7 +171,8 @@ layout = html.Div(
         - A column's default data type is `any`
         - `column_type` refers to the data type of the column (`numeric`, `text`, `datetime`, and `any`)
         - `column_editable` can be equal to `True` or `False` (new in Dash 1.12.0)
-        - `state` can be equal to `'active'` or `'selected'` (new in Dash 1.12.0)
+        - `state` can be equal to `'active'` or `'selected'` (new in Dash 1.12.0). Use this to change 
+           the default pink background and border colors for selected and active cells.
         - `row_index` is absolute - if you filter or sort your table,
            the 5th row will remain highlighted. Try sorting the columns and
            notice how "San Francisco" remains highlighted but "London" does not.

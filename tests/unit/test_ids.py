@@ -42,7 +42,7 @@ def test_no_duplicate_ids():
                     if multiline_str:
                         continue
 
-                    if '# no-exec' in line:
+                    if '# no-exec' in line or '# skip-id-check':
                         continue
 
                     matches = id_regex.findall(line)

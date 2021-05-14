@@ -1,4 +1,4 @@
-from datetime import datetime as dt
+from datetime import date
 import dash
 from dash.dependencies import Input, Output
 import dash_html_components as html
@@ -11,10 +11,10 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 app.layout = html.Div([
     dcc.DatePickerSingle(
         id='my-date-picker-single',
-        min_date_allowed=dt(1995, 8, 5),
-        max_date_allowed=dt(2017, 9, 19),
-        initial_visible_month=dt(2017, 8, 5),
-        date=str(dt(2017, 8, 25, 23, 59, 59))
+        min_date_allowed=date(1995, 8, 5),
+        max_date_allowed=date(2017, 9, 19),
+        initial_visible_month=date(2017, 8, 5),
+        date=date(2017, 8, 25)
     ),
     html.Div(id='output-container-date-picker-single')
 ])
@@ -22,14 +22,13 @@ app.layout = html.Div([
 
 @app.callback(
     Output('output-container-date-picker-single', 'children'),
-    [Input('my-date-picker-single', 'date')])
-def update_output(date):
+    Input('my-date-picker-single', 'date'))
+def update_output(date_value):
     string_prefix = 'You have selected: '
-    if date is not None:
-        date = dt.strptime(re.split('T| ', date)[0], '%Y-%m-%d')
-        date_string = date.strftime('%B %d, %Y')
+    if date_value is not None:
+        date_object = date.fromisoformat(date_value)
+        date_string = date_object.strftime('%B %d, %Y')
         return string_prefix + date_string
-
 
 if __name__ == '__main__':
     app.run_server(debug=True)

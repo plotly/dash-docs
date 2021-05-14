@@ -3,100 +3,90 @@ import dash_html_components as html
 from dash_docs import styles
 from dash_docs import reusable_components as rc
 
-layout = html.Div(children=[rc.Markdown('''
-# Deploying Dash Apps
+layout = html.Div(children=[
+    rc.Markdown('''
+    # Deploying Dash Apps
 
-By default, Dash apps run on `localhost` - you can only access them on your
-own machine. To share a Dash app, you need to "deploy" your Dash app to a
-server and open up the server's firewall to the public or to a restricted
-set of IP addresses.
+    By default, Dash apps run on `localhost` - you can only access them on your
+    own machine. To share a Dash app, you need to "deploy" it to a server.
 
-Dash uses Flask under the hood. This makes deployment easy: you can deploy
-a Dash app just like you would deploy a Flask app.
-Almost every cloud server provider has a guide for deploying
-Flask apps. For more, see the official [Flask Guide to Deployment](http://flask.pocoo.org/docs/latest/deploying/)
-or view the tutorial on deploying to Heroku below.
+    Our recommend method for securely deploying Dash applications is
+    [Dash Enterprise](https://plotly.com/dash).
 
-### Dash Enterprise
+    > Dash Enterprise can be installed on the Kubernetes
+    > services of
+    > [AWS](https://go.plotly.com/dash-aws),
+    > [Azure](https://go.plotly.com/dash-azure),
+    > GCP,
+    > or an
+    > [on-premise Linux Server](https://plotly.com/dash/on-premises-linux/?utm_source=docs&utm_medium=workspace&utm_campaign=nov&utm_content=linux).
+    > [Find out if your company is using Dash Enterprise](https://go.plotly.com/company-lookup)
 
-[Dash Enterprise](https://plotly.com/dash/)
-is Plotly's commercial product for deploying
-Dash Apps on your company's servers or on AWS, Google Cloud, or Azure.
-It offers an enterprise-wide Dash App Portal,
-easy git-based deployment, automatic URL namespacing,
-built-in SSL support, LDAP authentication, and more.
-[Learn more about Dash Enterprise](https://plotly.com/dash) or
-[get in touch to start a trial](https://plotly.com/get-demo/).
+    ## Dash Enterprise Deployment
 
-For existing customers, see the <dccLink href="/dash-enterprise" children="Dash Enterprise Documentation"/>.
+    > If your company has licensed Dash Enterprise, then view the deployment
+    > documentation by visiting
+    >
+    > **`https://<your-dash-enterprise-platform>/Docs/dash-enterprise`**
+    >
+    > (Replace `<your-dash-enterprise-platform>` with the hostname of your
+    > licensed Dash Enterprise in your VPC).
+    >
+    > [Look up the hostname for your company's license](https://go.plotly.com/company-lookup)
 
-### Dash and Flask
+    [Dash Enterprise](https://plotly.com/dash/)
+    is Plotly's commercial product for developing & deploying
+    Dash Apps on your company's on-premises Linux servers or VPC
+    ([AWS](https://plotly.com/dash/aws), [Google Cloud](https://plotly.com/dash), or [Azure](https://plotly.com/dash/azure)).
 
-Dash apps are web applications. Dash uses Flask as the web framework.
-The underlying Flask app is available at `app.server`, that is:
-'''),
+    In addition to [easy, git-based deployment](https://plotly.com/dash/app-manager), the Dash Enterprise platform provides a complete Analytical App Stack.
+    This includes:
+    - [LDAP & SAML Authentication Middleware](https://plotly.com/dash/authentication)
+    - [Data Science Workspaces](https://plotly.com/dash/workspaces)
+    - [High Availability & Horizontal Scaling](https://plotly.com/dash/kubernetes)
+    - [Job Queue Support](https://plotly.com/dash/job-queue)
+    - [Enterprise-Wide Dash App Portal](https://plotly.com/dash/app-manager)
+    - [Design Kit](https://plotly.com/dash/design-kit)
+    - [Reporting, Alerting, Saved Views, and PDF Reports](https://plotly.com/dash/snapshot-engine)
+    - [Dashboard Toolkit](https://plotly.com/dash/toolkit)
+    - [Embedding Dash apps in Existing websites or Salesforce](https://plotly.com/dash/embedding)
+    - [AI App Catalog](https://plotly.com/dash/ai-and-ml-templates)
+    - [Big Data Best Practices](https://plotly.com/dash/big-data-for-python)
+    - [GPU support](https://plotly.com/dash/gpu-dask-acceleration)
 
-          rc.Markdown('''
-          ```python
-          import dash
+    ![The Analytical App Stack](/assets/images/dds/stack.png)
 
-          app = dash.Dash(__name__)
+    ## Heroku for Sharing Public Dash apps for Free
 
-          server = app.server # the Flask app
-          ```
-          ''', style=styles.code_container),
+    Heroku is one of the easiest platforms for deploying and managing public Flask
+    applications. The git & buildpack-based deployment of UIs of Heroku and Dash Enterprise
+    are nearly identical, enabling an easy transition to Dash Enterprise if you
+    are already using Heroku.
 
-          rc.Markdown('''
-You can also pass your own flask app instance into Dash:
-'''),
+    [View the official Heroku guide to Python](https://devcenter.heroku.com/articles/getting-started-with-python#introduction).
 
-          rc.Markdown('''
-          ```python
-          import flask
+    Here is a simple example. This example requires a Heroku account,
+    `git`, and `virtualenv`.
 
-          server = flask.Flask(__name__)
-          app = dash.Dash(__name__, server=server)
-          ```
-          ''', style=styles.code_container),
+    ***
 
-          rc.Markdown('''
-By exposing this `server` variable, you can deploy Dash apps like you would
-any Flask app. For more, see the official [Flask Guide to Deployment](http://flask.pocoo.org/docs/latest/deploying/).
-Note that
+    **Step 1. Create a new folder for your project:**
+    '''),
 
-> While lightweight and easy to use, *Flask's built-in server is not suitable
-> for production* as it doesn't scale well and by default serves only one
-> request at a time
+    rc.Markdown('''
+    ```shell
+    $ mkdir dash_app_example
+    $ cd dash_app_example
+    ```
+    ''', style=styles.code_container),
 
-### Heroku Example
+    rc.Markdown('''
 
-Heroku is one of the easiest platforms for deploying and managing public Flask
-applications.
+    ***
 
-[View the official Heroku guide to Python](https://devcenter.heroku.com/articles/getting-started-with-python#introduction).
+    **Step 2. Initialize the folder with `git` and a `virtualenv`**
 
-Here is a simple example. This example requires a Heroku account,
-`git`, and `virtualenv`.
-
-***
-
-**Step 1. Create a new folder for your project:**
-'''),
-
-          rc.Markdown('''
-          ```shell
-          $ mkdir dash_app_example
-          $ cd dash_app_example
-          ```
-          ''', style=styles.code_container),
-
-          rc.Markdown('''
-
-***
-
-**Step 2. Initialize the folder with `git` and a `virtualenv`**
-
-'''),
+    '''),
 
           rc.Markdown('''
           ```shell
@@ -255,7 +245,7 @@ to git and push those changes to heroku.
 
 ***
 
-This workflow for deploying apps on heroku is very similar to how deployment
+This workflow for deploying apps on Heroku is very similar to how deployment
 works with the Plotly Enterprise's Dash Enterprise.
 [Learn more](https://plotly.com/dash/) or [get in touch](https://plotly.com/get-demo/).
 ''')

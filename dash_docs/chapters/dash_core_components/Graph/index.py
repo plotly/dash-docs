@@ -23,7 +23,7 @@ layout =  html.Div(children=[
         - **To get started with plotly**, learn how its documentation is organized:
             1. Learn the architecture of the `figure`: https://plot.ly/python/creating-and-updating-figures/
             2. Every chart type has a set of examples at a unique URL.
-            Familarize yourself with the structure of these pages. Google is your friend.
+            Familiarize yourself with the structure of these pages. Google is your friend.
             For example "Plotly Python Histogram Charts" is documented at
             https://plot.ly/python/histogram
             3. Plotly Express is the recommended high-level interface.
@@ -108,6 +108,31 @@ dcc.Graph(
     https://community.plot.ly/t/exploring-a-transitions-api-for-dcc-graph/15468
     """),
 
+    rc.Markdown(
+            """
+    ***
+
+    ## Controlling the Plotly.js Version Used by `dcc.Graph`
+
+    The `Graph` component leverages the [Plotly.js](https://plotly.com/javascript/) library to render
+    visualizations. The `Graph` component comes with its own version of the  Plotly.js library, but this can be overridden by placing a Plotly.js bundle
+    [in the `assets` directory](/external-resources).
+
+    This technique can be used to:
+
+    * take advantage of new features in a version of Plotly.js that is **more recent** than the one that is included in the currently-installed version of `dash_core_components` (or Dash Enterprise Design Kit).
+    * take advantage of more desirable behaviour of a version of Plotly.js that is **less recent** than the one that is included in the currently-installed version of `dash_core_components` (or Dash Enterprise Design Kit). Note that this situation should be rare and short-lived, as we strive to make more-recent Plotly.js versions totally backwards-compatible with older versions!
+    * use [a Plotly-distributed Plotly.js partial bundle](https://github.com/plotly/plotly.js/blob/master/dist/README.md) or [a custom-built Plotly.js bundle](https://github.com/plotly/plotly.js/blob/master/BUILDING.md) which only includes the subset of Plotly.js features that your Dash app uses. Such bundles are smaller than the full Plotly.js bundles that come with the `Graph` component and can therefore improve your app's loading time.
+
+    ## Rendering LaTeX inside `dcc.Graph` Figures
+
+    To use the built-in Plotly.js capability of rendering LaTeX inside figure labels, the [`external_script`
+    functionality can be used](/external-resources): add `external_scripts=["https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" ]` to the `app = dash.Dash()` call.
+
+    """
+
+        ),
+
     html.H2('Graph Resizing and Responsiveness'),
     rc.Markdown("""
 
@@ -153,10 +178,10 @@ dcc.Graph(
     properties in the following way:
 
     * `True`: `config.responsive` and `figure.layout.autosize` are
-    overriden with `True` values, and `figure.layout.height` and
+    overridden with `True` values, and `figure.layout.height` and
     `figure.layout.width` are unset
     * `False`: `config.responsive` and `figure.layout.autosize` are
-      both overriden with `False` values
+      both overridden with `False` values
     * `'auto'`: the resizability of the plot is determined the
       same way as it used to be (i.e., with the four properties above)
 

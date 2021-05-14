@@ -9,217 +9,193 @@ from dash_docs import reusable_components as rc
 
 layout = html.Div([
     rc.Markdown(
-    """
-    # Integrating Dash with Existing Web Apps
+        """
+    # Embedding Dash Apps in other Web Platforms
 
-    This section describes three different approaches to embedding a Dash app
-    within an existing web application.
+    Our recommend method for securely embedding Dash applications in existing
+    Web Apps is to use the [Embedding Middleware](https://plotly.com/dash/embedding/)
+    of Dash Enterprise.
 
-    > Heads up! If you are a [**Dash Enterprise**](https://plotly.com/dash) customer,
-    > then you can use the
-    > Dash Embedded Middleware library that is included in your license.
-    > `dash-embedded` provides a secure mechanism for embedding Dash apps
-    > into an existing website without iframes. It also provides hooks into
-    > your existing website's login and authentication logic so that only
-    > users who have logged into the existing host web application can view
-    > the embedded Dash application.
+    > Dash Enterprise can be installed on the Kubernetes
+    > services of
+    > [AWS](https://go.plotly.com/dash-aws),
+    > [Azure](https://go.plotly.com/dash-azure),
+    > GCP,
+    > or an
+    > [on-premise Linux Server](https://plotly.com/dash/on-premises-linux/?utm_source=docs&utm_medium=workspace&utm_campaign=nov&utm_content=linux).
+    > [Find out if your company is using Dash Enterprise](https://go.plotly.com/company-lookup)
 
-    ## Using an `<iframe>`
+    ## Dash Enterprise Embedding Middleware
+
+    > If your company has licensed Dash Enterprise, then view the deployment
+    > documentation by visiting
+    >
+    > **`https://<your-dash-enterprise-platform>/Docs/embedded-middleware`**
+    >
+    > (Replace `<your-dash-enterprise-platform>` with the hostname of your
+    > licensed Dash Enterprise in your VPC).
+    >
+    > [Look up the hostname for your company's license](https://go.plotly.com/company-lookup)
+
+    Dash Enterprise provides a first-class capability for embedding Dash apps
+    as a microservice in 3rd party websites & Salesforce.
+
+    This capability provides hooks into your existing website's login and
+    authentication logic so that only  users who have logged into the
+    existing host web application can view the embedded Dash application.
+
+    To get started with Dash Enterprise Embedded Middleware, **visit:
+    `https://<your-dash-enterprise-hostname>/Docs/embedded-middleware`**,
+    replacing `<your-dash-enterprise-hostname>` with the hostname of your
+    licensed Dash Enterprise in your VPC. [Look up the hostname for your company's license](https://go.plotly.com/company-lookup)
+    
+    #### Sharing State between a Javascript Host app and an embedded Dash App
+
+    You can find here a simple example illustrating multidirectional shared state, enabling the communication between your JavaScript host app and your Dash app.
+
+    ![GIF showing how to use dash embedded](https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-embedded-js-host.gif)
+
+    Inside your JavaScript host app, you simply provide the array or object that you want to share to your Dash app as a positional argument in Dash Embedded Components `renderDash()` function:
+    ```js
+    ...
+    var setter = window.dash_embedded_component.renderDash(
+        { url_base_pathname: "http://dash.tests:8050" }, 
+        'dash-app', 
+        sharedData
+    );
+    ```
+
+    If you are using a React app, you can import the component and use it inside JSX:
+    ```js
+    import { DashApp } from "dash-embedded-component";
+
+    window.React = React;
+    window.ReactDOM = ReactDOM;
+    window.PropTypes = PropTypes;
+
+    class App extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {
+                sharedData: {
+                    myObject: {
+                        clicks: 0,
+                        aString: randomString(5),
+                        data: myData,
+                        multiplyFunc: (x, y) => { ... },
+                        sumFunc: (x, y) => { ... },
+                        storeDataFromDash: obj => { ... },
+                        dashAppData: {}
+                    },
+                },
+            };
+            this.clickIncrement = this.clickIncrement.bind(this);
+            ...
+        }
+
+        render() {
+            return (
+            <div className="App-Background">
+                ...
+                <div className="App-Content">
+                <h1>Embedded Dash Application</h1>
+                <DashApp config={{url_base_pathname: "http://dash.tests:8050"}} value={this.state.sharedData} />
+                </div>
+            </div>
+            );
+        }
+    }
+    ```
+
+    Then inside your Dash app, simply use the `dash_embedded.ConsumerContext` and `dash_embedded.ConsumerFunction` components consume and use the shared data:
+
+    ```python
+    ...
+    app.layout = ddk.App(
+        [
+            ...
+            ddk.Card(
+                [
+                    ddk.CardHeader(title="Triggering Callbacks from Dash App & Host App"),
+                    ConsumerContext(id="clicks", path=["myObject", "clicks"]),
+                    ConsumerContext(id="data-one", path=["myObject", "data", "dataOne"]),
+                    ConsumerContext(id="data-two", path=["myObject", "data", "dataTwo"]),
+                    ...
+                ],
+                width=50,
+            ),
+            ddk.ControlCard(
+                [
+                    ddk.CardHeader(title="Triggering Host App Functions from Dash App"),
+                    ConsumerFunction(
+                        id="host-app-multiply", path=["myObject", "multiplyFunc"]
+                    ),
+                    ConsumerFunction(id="host-app-sum", path=["myObject", "sumFunc"]),
+                    ddk.ControlItem(...),
+                    ...
+                ],
+                width=50,
+            ),
+            ...
+        ]
+    )
+    ...
+
+    # Access the nested objects via `path=["myObject"]`
+    @app.callback(Output("display-full-object", "children"), Input("full-object", "value"))
+    def display(value):
+        return json.dumps(value, indent=2)
+
+
+    # Access nested values via `path=[...]`
+    @app.callback(
+        Output("display-data_dataOne_y[1]", "children"), Input("data_dataOne_y[1]", "value"))
+    def display(value):
+        return "data.dataOne.y[1]={}".format(value)
+
+
+    # Trigger Callback from Host App Data & Dash App Buttons
+    @app.callback(
+        Output("plot", "figure"),
+        Input("update", "n_clicks"), Input("clicks", "value"),
+        State("data-one", "value"), State("data-two", "value"),
+    )
+    def update_figure(clicks_dash, clicks_host, trace1, trace2):
+        ...
+        return go.Figure(...)
+
+
+    # Trigger Host App functions by sending data into the `params` property
+    @app.callback(
+        Output("host-app-sum", "params"),
+        Input("sum", "n_clicks"),
+        State("input-x", "value"), State("input-y", "value"),
+    )
+    def trigger_sum(_, x, y):
+        return [x, y]
+    ...
+    ```
+    
+
+    ## Embedding Public Apps in Public Websites with `<iframe>`
 
     The simplest approach to embedding Dash in an existing web application is to
-    include an `<iframe>` element in your HTML whose `src` attribute points
+    include an `<iframe>` element in your HTML.
+
+    Note that this does not work if your
+    application is private and does not integrate with your website's existing
+    authentication or login system. To provide a single sign on experience,
+    use Dash Enterprise Embedding Middleware.
+
+
+     whose `src` attribute points
     towards the address of a deployed Dash app. This allows you to place your
     Dash app in a specific location within an existing web page with your
     desired dimensions:"""),
     rc.Markdown(
-    '''
+        '''
     ```html
     <iframe src="http://localhost:8050" width=700 height=600>
     ```
-    '''),
-    rc.Markdown(
-    """
-    ## Embedding a Dash app within an Existing Flask App
-
-    As discussed in the <dccLink href="/deployment" children="Deployment Chapter"/>, Dash uses the Flask
-    web framework under the hood. This makes it fairly straightforward to
-    embed a Dash app at a specific route of an existing Flask app.
-
-    In the following example, a Dash app is mounted at the `/dash` route (eg
-    `http://localhost:8050/dash`) of a Flask app:
-    """
-    ),
-    rc.Syntax(
-        '''
-        import flask
-        import dash
-        import dash_html_components as html
-
-        server = flask.Flask(__name__)
-
-        @server.route('/')
-        def index():
-            return 'Hello Flask app'
-
-        app = dash.Dash(
-            __name__,
-            server=server,
-            routes_pathname_prefix='/dash/'
-        )
-
-        app.layout = html.Div("My Dash app")
-
-        if __name__ == '__main__':
-            app.run_server(debug=True)
-        '''
-    ),
-    rc.Markdown(
-    """
-    > **Note**: it is important to set the `name` parameter of the Dash instance
-    to the value `__name__`, so that Dash can correctly detect the location of
-    any static assets inside an `assets` directory for this Dash app.
-    """
-    ),
-    html.Hr(),
-    rc.Markdown(
-    """
-    ## Combining One or More Dash Apps with Existing WSGI Apps
-
-    This approach uses Werkzeug's
-    [`DispatcherMiddleware`](http://werkzeug.pocoo.org/docs/latest/middleware/)
-    to combine one or more Dash apps with existing WSGI apps (including
-    Flask). It is useful when you want to combine multiple Dash apps or when
-    your existing app is a non-Flask WSGI app.
-
-    The following example illustrates this approach by combining two Dash apps
-    with a Flask app.
-    """
-    ),
-    rc.Markdown("`flask_app.py`"),
-    rc.Syntax(
-        '''
-            from flask import Flask
-
-            flask_app = Flask(__name__)
-
-            @flask_app.route('/')
-            def index():
-                return 'Hello Flask app'
-        '''
-    ),
-    html.Hr(),
-    rc.Markdown("`app1.py`"),
-    rc.Syntax(
-        """
-            import dash
-            import dash_html_components as html
-
-            app = dash.Dash(
-                __name__,
-                requests_pathname_prefix='/app1/'
-            )
-
-            app.layout = html.Div("Dash app 1")
-        """
-    ),
-    html.Hr(),
-    rc.Markdown("`app2.py`"),
-    rc.Syntax(
-        """
-            import dash
-            import dash_html_components as html
-
-            app = dash.Dash(
-                __name__,
-                requests_pathname_prefix='/app2/'
-            )
-
-            app.layout = html.Div("Dash app 2")
-            """
-    ),
-    html.Hr(),
-    rc.Markdown("`wsgi.py`"),
-    rc.Syntax(
-        """
-            from werkzeug.wsgi import DispatcherMiddleware
-
-            from app1 import app as app1
-            from app2 import app as app2
-
-            application = DispatcherMiddleware(flask_app, {
-                '/app1': app1.server,
-                '/app2': app2.server,
-            })
-        """
-    ),
-    rc.Markdown(
-        """
-            In this example, the Flask app has been mounted at `/` and the two Dash apps
-            have been mounted at `/app1` and `/app2`. In this approach, we do not pass
-            in a Flask server to the Dash apps, but let them create their own, which the
-            `DispatcherMiddleware` routes requests to based on the prefix of the
-            incoming requests. Within each Dash app, `requests_pathname_prefix` must be
-            specified as the app's mount point, in order to match the route prefix
-            set by the `DispatcherMiddleware`.
-
-            Note that the `application` object in `wsgi.py` is of type
-            `werkzeug.wsgi.DispatcherMiddleware`, which does not have a `run`
-            method. This can be run as a WSGI app like so:
-        """
-    ),
-    rc.Syntax("$ gunicorn wsgi:application"),
-    rc.Markdown(
-    """
-    Alternatively, you can use the Werkzeug development server (which is not
-    suitable for production) to run the app:
-
-    `run.py`
-    """
-    ),
-    rc.Syntax(
-        """
-            from werkzeug.wsgi import DispatcherMiddleware
-            from werkzeug.serving import run_simple
-
-            from app1 import app as app1
-            from app2 import app as app2
-
-            application = DispatcherMiddleware(flask_app, {
-                '/app1': app1.server,
-                '/app2': app2.server,
-            })
-
-            if __name__ == '__main__':
-                run_simple('localhost', 8050, application)
-        """
-    ),
-    rc.Markdown(
-    """
-    If you need access to the Dash development tools when using this approach
-    (whether running with a WSGI server, or using the Werkzeug development
-    server) you must invoke them manually for each Dash app. The following lines
-    can be added before the initialisation of the `DispatcherMiddleware` to do this:
-    """
-    ),
-    rc.Syntax(
-        """
-            app1.enable_dev_tools(debug=True)
-            app2.enable_dev_tools(debug=True)
-        """
-    ),
-    rc.Markdown(
-    """
-    > **Note:** debug mode should not be enabled in production. When using debug
-        mode with Gunicorn, the `--reload` command line flag is required for hot
-        reloading to work.
-
-    In this example, the existing app being combined with two Dash apps is a
-    Flask app, however this approach enables the combination of any web
-    application implementing the [WSGI
-    specification](https://wsgi.readthedocs.io). A list of WSGI web frameworks
-    can be found in the [WSGI
-    documentation](https://wsgi.readthedocs.io/en/latest/frameworks.html) with
-    one or more Dash apps.
-    """
-    ),
+    ''')
 ])

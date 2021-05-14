@@ -24,9 +24,9 @@ app.layout = html.Div([
     [dash.dependencies.Input('my-indicator-button', 'n_clicks')]
 )
 def update_output(value):
-    if value % 2 is 0:
+    if value % 2 == 0:
         value = True
-    else: 
+    else:
         value = False
     return value
 

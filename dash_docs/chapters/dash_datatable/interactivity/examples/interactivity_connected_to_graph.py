@@ -34,7 +34,7 @@ app.layout = html.Div([
 
 @app.callback(
     Output('datatable-interactivity', 'style_data_conditional'),
-    [Input('datatable-interactivity', 'selected_columns')]
+    Input('datatable-interactivity', 'selected_columns')
 )
 def update_styles(selected_columns):
     return [{
@@ -44,12 +44,12 @@ def update_styles(selected_columns):
 
 @app.callback(
     Output('datatable-interactivity-container', "children"),
-    [Input('datatable-interactivity', "derived_virtual_data"),
-     Input('datatable-interactivity', "derived_virtual_selected_rows")])
+    Input('datatable-interactivity', "derived_virtual_data"),
+    Input('datatable-interactivity', "derived_virtual_selected_rows"))
 def update_graphs(rows, derived_virtual_selected_rows):
     # When the table is first rendered, `derived_virtual_data` and
     # `derived_virtual_selected_rows` will be `None`. This is due to an
-    # idiosyncracy in Dash (unsupplied properties are always None and Dash
+    # idiosyncrasy in Dash (unsupplied properties are always None and Dash
     # calls the dependent callbacks when the component is first rendered).
     # So, if `rows` is `None`, then the component was just rendered
     # and its value will be the same as the component's dataframe.

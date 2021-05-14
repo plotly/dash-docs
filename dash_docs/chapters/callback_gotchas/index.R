@@ -60,8 +60,8 @@ two logically separate sets of `Inputs` with the one output
 component/property pair, you’ll have to bundle them up into a larger
 callback and detect which of the relevant `Inputs` triggered the callback
 inside the function. For `html.Button` elements, detecting which one
-triggered the callback ca be done using `callback_context` or the legacy
-`n_clicks_timestamp` property. For an example of this, see the question in the 
+triggered the callback can be done using `callback_context` or the legacy
+`n_clicks_timestamp` property. For an example of this, see the question in the
 FAQ, *How do I determine which `Input` has changed?*.
 
 

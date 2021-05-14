@@ -9,6 +9,10 @@ examples = tools.load_examples(__file__)
 
 layout = html.Div([
     rc.Markdown('''\
+
+    __Note__: dash-canvas is a legacy package, the recommended way to
+    annotate images is to use the [drawing tools of plotly figures](/annotations).
+
     ## Introduction to dash-canvas
 
     '''),
@@ -39,8 +43,6 @@ layout = html.Div([
     ```pip install -U dash-canvas```
 
     The source is on GitHub at [plotly/dash-canvas](https://github.com/plotly/dash-canvas).
-
-    A gallery of examples is hosted at https://dash-canvas.plotly.host/.
 
     ### DashCanvas: a canvas object for annotations
 
@@ -160,8 +162,7 @@ layout = html.Div([
 
     ### More examples
 
-    A gallery of examples using ``DashCanvas`` is deployed on
-    https://dash-canvas.plotly.host/, its source code is
+    A gallery of examples using ``DashCanvas`` is available at
     [plotly/canvas-portal](https://github.com/plotly/canvas-portal).
     '''),
 

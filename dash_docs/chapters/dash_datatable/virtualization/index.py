@@ -22,7 +22,7 @@ layout = html.Div(
         still permitting the user to scroll through the entire dataset. It achieves this
         by only a rendering a subset of the data at any instant.
 
-        The virtualiztion backend makes a few assumptions about the style of
+        The virtualization backend makes a few assumptions about the style of
         your `DataTable` which must be adhered to in order to ensure that the
         table scrolls smoothly.
 

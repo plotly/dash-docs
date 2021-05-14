@@ -12,6 +12,8 @@ venv/
 *.pyc
 *.egg-info
 *.log
+*py~
+*swp
 .DS_Store
 cache
 bundle.js
@@ -23,3 +25,4 @@ bundle.js
 ignore/indicators.csv
 .Rproj.user
 dash-docs.Rproj
+.vscode

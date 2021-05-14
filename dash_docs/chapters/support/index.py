@@ -5,8 +5,20 @@ from dash_docs import reusable_components as rc
 layout = rc.Markdown('''
 # Dash Support and Contact
 
-Dash is an open-source product that is
+Dash Open Source is an open-source library that is
 developed and maintained by [Plotly](https://plotly.com).
+
+[Dash Enterprise](https://plotly.com/dash) is a commercial product
+for writing & deploy Dash apps and Jupyter notebooks.
+10% of the Fortune 500 uses Dash Enterprise to productionize AI and
+data science apps.
+
+### Commercial Support
+
+If you are a Dash Enterprise customer, reach out to the Plotly support team by
+email.
+This includes professional support for Dash Open Source & Dash Enterprise.
+[Find out if your company is using Dash Enterprise](https://go.plotly.com/company-lookup).
 
 ### Dash Demos and Enterprise Trials
 
@@ -27,7 +39,8 @@ This forum is great for showing off projects, feature requests,
 and general questions.
 
 If you have found a bug, you can open an issue on GitHub at
-[plotly/dash](https://github.com/plotly/dash).
+[plotly/dash](https://github.com/plotly/dash) or
+[plotly/dash-docs](https://github.com/plotly/dash-docs/).
 
 ### Direct Contact
 

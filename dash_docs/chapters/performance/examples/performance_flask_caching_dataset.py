@@ -1,6 +1,4 @@
 import datetime as dt
-import os
-import time
 
 import dash
 import dash_core_components as dcc
@@ -23,8 +21,9 @@ TIMEOUT = 60
 @cache.memoize(timeout=TIMEOUT)
 def query_data():
     # This could be an expensive data querying step
-    df =  pd.DataFrame(
-        np.random.randint(0,100,size=(100, 4)),
+    np.random.seed(0)  # no-display
+    df = pd.DataFrame(
+        np.random.randint(0, 100, size=(100, 4)),
         columns=list('ABCD')
     )
     now = dt.datetime.now()
@@ -47,7 +46,7 @@ app.layout = html.Div([
 
 
 @app.callback(Output('live-graph', 'figure'),
-              [Input('live-dropdown', 'value')])
+              Input('live-dropdown', 'value'))
 def update_live_graph(value):
     df = dataframe()
     now = dt.datetime.now()

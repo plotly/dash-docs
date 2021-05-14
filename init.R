@@ -13,6 +13,7 @@ install.packages("remotes")
 # installs Rcpp, rlang, BH
 install.packages("later")
 
+install.packages("lifecycle")
 install.packages("jsonlite")
 install.packages("rjson")
 install.packages("listenv")
@@ -26,7 +27,7 @@ install.packages("foreach")
 install.packages("glue")
 install.packages("stringr")
 
-remotes::install_github("plotly/dashR", upgrade=TRUE)
+remotes::install_github("plotly/dashR", ref="dev",upgrade=TRUE)
 install.packages("manhattanly")
 remotes::install_github("plotly/dash-canvas", ref="93224c3")
 remotes::install_github("plotly/dash-cytoscape", ref="25b0301")

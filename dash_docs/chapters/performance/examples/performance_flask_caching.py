@@ -34,7 +34,7 @@ app.layout = html.Div([
 
 @app.callback(
     Output('flask-cache-memoized-children', 'children'),
-    [Input('flask-cache-memoized-dropdown', 'value')])
+    Input('flask-cache-memoized-dropdown', 'value'))
 @cache.memoize(timeout=timeout)  # in seconds
 def render(value):
     return 'Selected "{}" at "{}"'.format(

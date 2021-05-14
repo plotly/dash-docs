@@ -3,6 +3,12 @@
     <loc>https://dash.plotly.com/advanced-callbacks</loc>
 </url>
 <url>
+    <loc>https://dash.plotly.com/annotations</loc>
+</url>
+<url>
+    <loc>https://dash.plotly.com/app-lifecycle</loc>
+</url>
+<url>
     <loc>https://dash.plotly.com/authentication</loc>
 </url>
 <url>
@@ -33,10 +39,16 @@
     <loc>https://dash.plotly.com/cytoscape/events</loc>
 </url>
 <url>
+    <loc>https://dash.plotly.com/cytoscape/images</loc>
+</url>
+<url>
     <loc>https://dash.plotly.com/cytoscape/layout</loc>
 </url>
 <url>
     <loc>https://dash.plotly.com/cytoscape/reference</loc>
+</url>
+<url>
+    <loc>https://dash.plotly.com/cytoscape/responsive</loc>
 </url>
 <url>
     <loc>https://dash.plotly.com/cytoscape/styling</loc>
@@ -66,6 +78,9 @@
     <loc>https://dash.plotly.com/dash-bio/ideogram</loc>
 </url>
 <url>
+    <loc>https://dash.plotly.com/dash-bio/igv</loc>
+</url>
+<url>
     <loc>https://dash.plotly.com/dash-bio/manhattanplot</loc>
 </url>
 <url>
@@ -78,7 +93,13 @@
     <loc>https://dash.plotly.com/dash-bio/needleplot</loc>
 </url>
 <url>
+    <loc>https://dash.plotly.com/dash-bio/nglmoleculeviewer</loc>
+</url>
+<url>
     <loc>https://dash.plotly.com/dash-bio/oncoprint</loc>
+</url>
+<url>
+    <loc>https://dash.plotly.com/dash-bio/pileup</loc>
 </url>
 <url>
     <loc>https://dash.plotly.com/dash-bio/sequenceviewer</loc>
@@ -106,6 +127,9 @@
 </url>
 <url>
     <loc>https://dash.plotly.com/dash-core-components/datepickersingle</loc>
+</url>
+<url>
+    <loc>https://dash.plotly.com/dash-core-components/download</loc>
 </url>
 <url>
     <loc>https://dash.plotly.com/dash-core-components/dropdown</loc>
@@ -222,6 +246,9 @@
     <loc>https://dash.plotly.com/dash-enterprise/analytics</loc>
 </url>
 <url>
+    <loc>https://dash.plotly.com/dash-enterprise/api</loc>
+</url>
+<url>
     <loc>https://dash.plotly.com/dash-enterprise/app-authentication</loc>
 </url>
 <url>
@@ -231,13 +258,16 @@
     <loc>https://dash.plotly.com/dash-enterprise/celery-process</loc>
 </url>
 <url>
-    <loc>https://dash.plotly.com/dash-enterprise/checks</loc>
-</url>
-<url>
     <loc>https://dash.plotly.com/dash-enterprise/cli</loc>
 </url>
 <url>
     <loc>https://dash.plotly.com/dash-enterprise/configure-system-dependencies</loc>
+</url>
+<url>
+    <loc>https://dash.plotly.com/dash-enterprise/continuous-integration</loc>
+</url>
+<url>
+    <loc>https://dash.plotly.com/dash-enterprise/database-connections</loc>
 </url>
 <url>
     <loc>https://dash.plotly.com/dash-enterprise/deployment</loc>
@@ -258,10 +288,10 @@
     <loc>https://dash.plotly.com/dash-enterprise/map-local-directories</loc>
 </url>
 <url>
-    <loc>https://dash.plotly.com/dash-enterprise/pdf-service</loc>
+    <loc>https://dash.plotly.com/dash-enterprise/portal</loc>
 </url>
 <url>
-    <loc>https://dash.plotly.com/dash-enterprise/portal</loc>
+    <loc>https://dash.plotly.com/dash-enterprise/preparing</loc>
 </url>
 <url>
     <loc>https://dash.plotly.com/dash-enterprise/privacy</loc>
@@ -271,6 +301,9 @@
 </url>
 <url>
     <loc>https://dash.plotly.com/dash-enterprise/redis-database</loc>
+</url>
+<url>
+    <loc>https://dash.plotly.com/dash-enterprise/review-apps</loc>
 </url>
 <url>
     <loc>https://dash.plotly.com/dash-enterprise/ssh</loc>
@@ -693,6 +726,9 @@
     <loc>https://dash.plotly.com/datatable/conditional-formatting</loc>
 </url>
 <url>
+    <loc>https://dash.plotly.com/datatable/data-formatting</loc>
+</url>
+<url>
     <loc>https://dash.plotly.com/datatable/dropdowns</loc>
 </url>
 <url>
@@ -714,6 +750,9 @@
     <loc>https://dash.plotly.com/datatable/style</loc>
 </url>
 <url>
+    <loc>https://dash.plotly.com/datatable/tooltips</loc>
+</url>
+<url>
     <loc>https://dash.plotly.com/datatable/typing</loc>
 </url>
 <url>
@@ -733,6 +772,9 @@
 </url>
 <url>
     <loc>https://dash.plotly.com/faqs</loc>
+</url>
+<url>
+    <loc>https://dash.plotly.com/holoviews</loc>
 </url>
 <url>
     <loc>https://dash.plotly.com/installation</loc>
@@ -771,7 +813,13 @@
     <loc>https://dash.plotly.com/react-for-python-developers</loc>
 </url>
 <url>
+    <loc>https://dash.plotly.com/reference</loc>
+</url>
+<url>
     <loc>https://dash.plotly.com/sharing-data-between-callbacks</loc>
+</url>
+<url>
+    <loc>https://dash.plotly.com/slicer</loc>
 </url>
 <url>
     <loc>https://dash.plotly.com/support</loc>
@@ -781,5 +829,8 @@
 </url>
 <url>
     <loc>https://dash.plotly.com/urls</loc>
+</url>
+<url>
+    <loc>https://dash.plotly.com/vtk</loc>
 </url>
 </urlset>

@@ -68,12 +68,7 @@ class CustomDash(Dash):
         </html>'''.format(**meta_kwargs))
 
 
-app = CustomDash(
-    __name__,
-    external_stylesheets=[
-        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'
-    ]
-)
+app = CustomDash(__name__)
 server = app.server
 
 app.config.suppress_callback_exceptions = True
@@ -96,6 +91,12 @@ def redirect_migration():
 
 @server.route('/gallery')
 def redirect_gallery():
+    return redirect("https://dash-gallery.plotly.host/Portal/", code=301)
+
+
+@server.route('/gallery)')
+def redirect_gallery_trailing_p():
+    # there is some link out there to /gallery) that appears on duck duck go
     return redirect("https://dash-gallery.plotly.host/Portal/", code=301)
 
 
@@ -167,6 +168,13 @@ def redirect_state():
 def redirect_sizing():
     return redirect('/height', code=301)
 
+@server.route('/checks')
+def redirect_checks():
+    return redirect('/application-structure', code=301)
+
+@server.route('/datatable/sizing')
+def redirect_datatable_sizing():
+    return redirect('/datatable/width', code=301)
 
 @server.before_request
 def clear_trailing():

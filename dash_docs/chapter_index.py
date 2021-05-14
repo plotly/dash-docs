@@ -6,6 +6,7 @@ import plotly
 import six
 import textwrap
 import traceback
+import os
 
 import dash
 import dash_html_components as html
@@ -27,8 +28,8 @@ from .convert_to_html import convert_to_html
 def component_list(
         package, content_module, base_url, import_alias,
         component_library, escape_tags=False,
-        ad='dash-enterprise-kubernetes.jpg',
-        adhref='https://plotly.com/dash/kubernetes/?utm_source=docs&utm_medium=sidebar&utm_campaign=june&utm_content=kubernetes'):
+        ad='dash-club.png',
+        adhref='https://go.plotly.com/dash-club/?utm_source=docs&utm_medium=sidebar&utm_campaign=nov&utm_content=dash-club'):
     return [
         {
             'url': tools.relpath('/{}/{}'.format(base_url, component.lower())),
@@ -69,6 +70,384 @@ def component_list(
         component[0].upper() == component[0]
     ]
 
+APP_MANAGER_URLS = [
+    {
+        'name': 'App Manager Overview',
+        'breadcrumb': 'Dash Enterprise',
+        'url': '/dash-enterprise',
+        'content': chapters.dash_enterprise.index.layout
+    },
+    {
+        'url': '/dash-enterprise/preparing',
+        'content': chapters.dash_enterprise.migration_guide.index.layout,
+        'name': 'Part 1. Preparing your App for Dash Enterprise',
+        'description': 'Preparing app code that works locally into code that will run on Dash Enterprise'
+    },
+    {
+        'url': '/dash-enterprise/initialize',
+        'content': chapters.dash_enterprise.dash_enterprise_chapters.Initialize,
+        'name': 'Part 2. Initialize Dash Apps on Dash Enterprise',
+        'description': 'Initialize Dash Apps on Plotly Enterprise'
+    },
+    {
+        'url': '/dash-enterprise/deployment',
+        'content': chapters.dash_enterprise.dash_enterprise_chapters.Deploy,
+        'name': 'Part 3. Deploy Dash Apps on Dash Enterprise',
+        'description': 'Deploy Dash Apps on Dash Enterprise'
+    },
+    {
+        'url': '/dash-enterprise/application-structure',
+        'content': chapters.dash_enterprise.application_structure.index.layout,
+        'name': 'Application Structure, Buildpacks, and Deployment Lifecycle',
+        'description': 'Ensure that your app meets all the requirements for deployment.'
+    },
+    {
+        'url': '/dash-enterprise/static-assets',
+        'content': chapters.dash_enterprise.dash_enterprise_chapters.staticAssets,
+        'name': 'Adding Static Assets',
+        'description': 'Learn how to include custom CSS, JS, and images with the `assets` directory.'
+    },
+    {
+        'url': '/dash-enterprise/configure-system-dependencies',
+        'content': chapters.dash_enterprise.dash_enterprise_chapters.ConfigSys,
+        'name': 'Configuring System Dependencies',
+        'description': 'Install and configure system dependencies such '
+        'as database drivers or the Java JRE environment.'
+    },
+    {
+        'url': '/dash-enterprise/portal',
+        'content': chapters.dash_enterprise.dash_enterprise_chapters.Portal,
+        'name': 'Dash App Portal',
+        'description': 'Learn about the Dash App Portal '
+    },
+    {
+        'url': '/dash-enterprise/admin-panel',
+        'content': chapters.dash_enterprise.dash_enterprise_chapters.AdminPanel,
+        'name': 'Admin Panel',
+        'description': 'Manage users in the Admin Panel '
+    },
+    {
+        'url': '/dash-enterprise/redis-database',
+        'content': chapters.dash_enterprise.dash_enterprise_chapters.Redis,
+        'name': 'Linking a Redis Database',
+        'description': 'Create and link an in-memory database to your Dash Apps.'
+    },
+    {
+        'url': '/dash-enterprise/environment-variables',
+        'content': chapters.dash_enterprise.dash_enterprise_chapters.EnvVars,
+        'name': 'Setting Environment Variables',
+        'description': 'Environment variables are commonly used to store '
+        'secret variables like database passwords.'
+    },
+    {
+        'url': '/dash-enterprise/map-local-directories',
+        'content': chapters.dash_enterprise.dash_enterprise_chapters.LocalDir,
+        'name': 'Mapping Local Directories',
+        'description': 'Directory mappings allow you to make directories '
+        'on the Dash Enterprise available to your app.'
+    },
+    {
+        'url': '/dash-enterprise/ssh',
+        'content': chapters.dash_enterprise.dash_enterprise_chapters.Ssh,
+        'name': 'Authenticating to Dash Enterprise with SSH',
+        'description': "There are two methods to deploy Dash Apps: HTTPS and SSH "
+        "and we recommend getting started with the HTTPS method."
+    },
+    {
+        'url': '/dash-enterprise/cli',
+        'content': chapters.dash_enterprise.dash_enterprise_chapters.Cli,
+        'name': 'Managing Dash Apps via the Command Line',
+        'description': "A list of commands to manage Dash apps available  "
+        "to app owners from the command line via ssh."
+    },
+    {
+        'url': '/dash-enterprise/private-packages',
+        'content': chapters.dash_enterprise.dash_enterprise_chapters.PrivatePackages,
+        'name': 'Adding Private Python Packages',
+        'description': 'Install private python packages in your Dash Apps.'
+    },
+    {
+        'url': '/dash-enterprise/celery-process',
+        'content': chapters.dash_enterprise.dash_enterprise_chapters.Celery,
+        'name': 'Linking a Celery Process',
+        'description': 'Add a task queue to your Dash Apps.'
+    },
+    {
+        'url': '/dash-enterprise/staging-app',
+        'content': chapters.dash_enterprise.dash_enterprise_chapters.StagingApp,
+        'name': 'Create a Staging Dash App ',
+        'description': 'Use a staged Dash App to test changes before updating '
+        'your production Dash App.'
+    },
+    {
+        'url': '/dash-enterprise/database-connections',
+        'content': chapters.dash_enterprise.dash_enterprise_chapters.DataConnections,
+        'name': 'Connect a Dash App to an SQL Database',
+        'description': 'Learn how to manage external database connections, perform '
+        'queries with Dash callbacks, and maintain SQL best practices.'
+    },
+    {
+        'url': '/dash-enterprise/analytics',
+        'content': chapters.dash_enterprise.dash_enterprise_chapters.Analytics,
+        'name': 'App Analytics',
+        'description': 'View app analytics such as last updated, '
+        'CPU usage, Memory Usage, and more.'
+    },
+    {
+        'url': '/dash-enterprise/logs',
+        'content': chapters.dash_enterprise.dash_enterprise_chapters.Logs,
+        'name': 'App Logs',
+        'description': '''Check your Dash App's logs via the Dash
+        Enterprise UI or via the command line.'''
+    },
+    {
+        'url': '/dash-enterprise/troubleshooting',
+        'content': chapters.dash_enterprise.dash_enterprise_chapters.Troubleshooting,
+        'name': 'Common Errors',
+        'description': 'Common errors when deploying Dash Apps.'
+    },
+    {
+        'url': '/dash-enterprise/support',
+        'content': chapters.dash_enterprise.dash_enterprise_chapters.Support,
+        'name': 'Support',
+        'description': 'Having trouble deploying your app? Our dedicated '
+        'support team is available to help you out.'
+    },
+    {
+        'url': '/dash-enterprise/git',
+        'content': chapters.dash_enterprise.dash_enterprise_chapters.Git,
+        'name': 'Advanced Git',
+        'description': 'A reference for git commands and how they are used '
+        'with Dash Enterprise.'
+    },
+    {
+        'url': '/dash-enterprise/privacy',
+        'content': chapters.dash_enterprise.dash_enterprise_chapters.AppPrivacy,
+        'name': 'Dash App Privacy',
+        'description': 'Dash App Privacy and Managing Collaborators'
+    },
+    {
+        'url': '/dash-enterprise/app-authentication',
+        'content': chapters.dash_enterprise.dash_enterprise_chapters.Authentication,
+        'name': 'Dash Enterprise Auth Features',
+        'description': 'Accessing User Authentication Data in your Dash App'
+    },
+    {
+        'url': '/dash-enterprise/continuous-integration',
+        'content': chapters.dash_enterprise.continuous_integration.index.layout,
+        'name': 'Dash Enterprise Continuous Integration',
+        'description': 'Learn how to setup CI pipelines for Dash Enterprise'
+    },
+    {
+        'url': '/dash-enterprise/review-apps',
+        'content': chapters.dash_enterprise.review_apps.index.layout,
+        'name': 'Dash Enterprise Review Apps',
+        'description': 'Enhance your CI pipeline with automated Review App deployment'
+    },
+    {
+        'url': '/dash-enterprise/api',
+        'content': chapters.dash_enterprise.api.index.layout,
+        'name': 'GraphQL API',
+        'description': 'Learn how to integrate with the Dash Enterprise App Manager with the Graphql API.'
+    },
+]
+
+DASH_ENTERPRISE_URLS = {
+    'name': 'Production Capabilities',
+    'description': (
+        '''
+        #### These capabilities are only available in Dash Enterprise
+        > To deploy Dash apps in production environments, you'll need
+        > [Dash Enterprise](https://plotly.com/dash).
+        >
+        > If you already have Dash Enterprise, **visit docs at
+        > `https://<your-Dash-Enterprise-URL>/Docs/`**
+        >
+        > [Find out if your company has Dash Enterprise](https://go.plotly.com/company-lookup).
+        '''
+    ),
+    'chapters': [
+        {
+            'url': '/deployment',
+            'content': chapters.deployment.index.layout,
+            'name': 'Deploy your Dash App',
+            'description': (
+                '''
+                How to deploy & configure your application with
+                Dash Enterprise App Manager.
+                [Learn more](https://plotly.com/dash/app-manager/).
+                '''
+            ),
+            'icon': 'fas fa-cloud-upload-alt',
+        },
+
+        {
+            'url': '/authentication',
+            'content': chapters.auth.index.layout,
+            'name': 'Add Authentication to your Dash App',
+            'description': (
+                '''
+                Protect your application behind a login screen &
+                access user authentication data in your Dash apps.
+                [Learn more](https://plotly.com/dash/authentication-middleware/).
+                '''
+            ),
+            'icon': 'fas fa-users',
+            'ad': 'dash-enterprise-app-manager.jpg',
+            'adhref': 'https://plotly.com/get-demo/?utm_source=docs&utm_medium=ad&utm_campaign=april&utm_content=authentication',
+        },
+
+        {
+            'url': '/integrating-dash',
+            'content': chapters.integrating_dash.index.layout,
+            'name': 'Embed your Dash App in other Websites',
+            'description': (
+                '''
+                Embed your Dash applications in external websites securely
+                without iframes.
+                [Learn more](https://plotly.com/dash/embedding/).
+                '''
+            ),
+            'icon': 'fas fa-code',
+        },
+
+        {
+            'url': 'https://plotly.com/dash/design-kit/',
+            'name': 'Design Kit',
+            'description': (
+                '''
+                Dash Enterprise Design Kit is a set of Dash components
+                designed to simplify application layout and theme your
+                apps. No CSS required.
+                [Learn more](https://plotly.com/dash/design-kit).
+                '''
+            ),
+            'icon': 'fas fa-palette'
+        },
+
+        {
+            'url': 'https://plotly.com/dash/snapshot-engine/',
+            'name': 'Snapshot Engine',
+            'description': (
+                '''
+                Snapshot Engine is a Dash Enterprise capability for saving
+                views of Dash apps and generating PDF reports from Python.
+                [Learn more](https://plotly.com/dash/snapshot-engine)
+                '''
+            ),
+            'icon': 'fas fa-camera-retro'
+        },
+
+        {
+            'url': 'https://plotly.com/dash/job-queue/',
+            'name': 'Job Queue',
+            'description': (
+                '''
+                Background jobs can dramatically improve the scalability of
+                a Dash app by enabling it to offload slow or CPU-intensive
+                tasks from its callback loops. Background jobs can also
+                run periodically in the background to refresh your app's
+                data on a daily or hourly basis. [Learn more](https://plotly.com/dash/job-queue/).
+                '''
+            ),
+            'icon': 'fas fa-clock'
+        },
+
+        {
+            'url': 'https://plotly.com/dash/kubernetes/',
+            'name': 'Kubernetes Installation',
+            'description': (
+                '''
+                Dash Apps on Dash Enterprise scale horizontally thanks to
+                a stateless design and Kubernetes infrastructure.
+                 [Learn more](https://plotly.com/dash/kubernetes/).
+                '''
+            ),
+            'icon': 'fas fa-fighter-jet'
+        },
+
+        {
+            'url': 'https://plotly.com/dash/snapshot-engine/',
+            'name': 'Dash Notes',
+            'description': (
+                '''
+                With Dash Notes, the entire Dash app becomes a drawing canvas.
+                Dash app end users can make annotations on Dash apps that
+                trigger email notifications to stakeholders. Try to do that
+                in Tableau! [Learn more](https://plotly.com/dash/snapshot-engine/).
+                '''
+            ),
+            'icon': 'fas fa-pencil-alt'
+        },
+
+        {
+            'url': 'https://plotly.com/dash/workspaces/',
+            'name': 'Data Science Workspaces',
+            'description': (
+                '''
+                A built-in IDE to develop Dash apps or Jupyter notebooks on
+                Dash Enterprise without leaving your browser. In Workspaces,
+                the development environment closly matches production.
+                [Learn more](https://plotly.com/dash/workspaces/).
+                '''
+            ),
+            'icon': 'fas fa-copy'
+        },
+
+        {
+            'url': 'https://plotly.com/dash/big-data-for-python/',
+            'name': 'Dash Enterprise & Databricks',
+            'description': (
+                '''
+                Connect your Dash apps to Databricks Spark clusters.
+                [Learn more](https://plotly.com/dash/big-data-for-python/).
+                '''
+            ),
+            'icon': 'fas fa-database'
+        },
+
+        {
+            'url': 'https://plotly.com/dash/big-data-for-python/',
+            'name': 'Dash Enterprise & Snowflake',
+            'description': (
+                '''
+                Connect your Dash apps to Snowflake Data Warehouse.
+                [Learn more](https://plotly.com/dash/big-data-for-python/).
+                '''
+            ),
+            'icon': 'fas fa-snowflake'
+        },
+
+        {
+            'url': 'https://plotly.com/dash/ai-and-ml-templates/',
+            'name': 'Sample Apps & Templates',
+            'description': (
+                '''
+                Get started with these curated sample apps or learn first
+                principles from the templates in this section.
+                Sample Apps include the [AI & ML App Catalogue](https://plotly.com/dash/ai-and-ml-templates/).
+                '''
+            ),
+            'icon': 'fas fa-grip-horizontal'
+        },
+
+        {
+            'url': '/dash-enterprise',
+            'name': 'App Manager',
+            'icon': 'fas fa-book',
+            'description': (
+                '''
+                Documentation for the Dash Enterperise App Manager.
+                Learn how to deploy apps, manage SSH keys, configure database
+                mounts, manage buildpacks, configure databases and more.
+                '''
+            ),
+            'chapters': APP_MANAGER_URLS
+        }
+
+    ]
+}
+
 URLS = [
     {
         'name': "What's Dash?",
@@ -77,18 +456,17 @@ URLS = [
                 'url': '/introduction',
                 'name': 'Introduction',
                 'description': '''
-                    A quick paragraph about Dash and a link to the talk at
-                    Plotcon that started it all.
+                    A short introduction to Dash.
                 ''',
                 'content': chapters.introduction.index.layout
-            },
+            }
+        ] + [
             {
                 'url': 'https://medium.com/@plotlygraphs/introducing-dash-5ecf7191b503',
-                'name': 'Announcement Essay (2017)',
+                'name': '2017 Announcement Essay',
                 'description': (
                     '''
-                    Our extended essay on Dash. An extended discussion of
-                    Dash's architecture and our motivation behind the project.
+                    A longer introduction to Dash, including architecture and project motivation.
                     '''
                 )
             },
@@ -96,31 +474,27 @@ URLS = [
                 'url': 'https://dash-gallery.plotly.host/Portal/',
                 'name': 'Dash App Gallery',
                 'description': '''
-                    A glimpse into what's possible with Dash.
+                    Over 100 open-source Dash app examples for every industry.
                 '''
-            },
-            {
-                'url': '/dash-1-0-migration',
-                'name': 'Dash 1.0.0 Migration',
-                'description': (
-                    "Dash v1.0 is out! If you're new to Dash, just head down to "
-                    "the tutorial section below and get started. This section is "
-                    "for users Dash v0.x upgrading to v1.0. We've learned a lot "
-                    "from working with the amazing Dash community, and Dash v1.0 "
-                    "makes a number of changes to make your apps even more "
-                    "intuitive, powerful, and extensible as Dash continues to "
-                    "evolve."
-                ),
-                'content': chapters.migration.index.layout
             },
             {
                 'url': 'https://go.plotly.com/dash-club',
                 'name': 'Dash Club',
                 'description': '''
-                    An email newsletter by chriddyp, the creator of Dash.
+                    An email newsletter by @chriddyp, the creator of Dash.
                 '''
-            }
-        ]
+            },
+        ] +
+        ([
+            {
+                'url': '/dash-enterprise',
+                'name': 'Dash Enterprise',
+                'description': '''
+                    The Kubernetes platform for writing, deploying,
+                    and managing high performance Dash applications
+                    at scale.
+                '''            }
+        ] if not tools.is_in_dash_enterprise() else [])
     },
 
     {
@@ -147,18 +521,16 @@ URLS = [
                 'name': 'Part 3. Basic Callbacks',
                 'description': (
                     "Dash apps are made interactive through Dash "
-                    "Callbacks: Python functions that are "
-                    "automatically called whenever an input "
-                    "component's property changes. Callbacks "
-                    "can be chained, allowing one update in the "
-                    "UI to trigger several updates across the app."
+                    "Callbacks: chainable Python functions that are "
+                    "automatically called whenever a UI element is changed."
                 ),
                 'content': chapters.basic_callbacks.index.layout
             },
             {
                 'url': '/interactive-graphing',
                 'name': 'Part 4. Interactive Graphing and Crossfiltering',
-                'description': 'Bind interactivity to the Dash `Graph` ' \
+                'description': 'Graphs can be inputs as well as outputs: '\
+                               'bind interactivity to the Dash `Graph` ' \
                                'component whenever you hover, click, or ' \
                                'select points on your chart.',
                 'content': chapters.graph_crossfiltering.index.layout
@@ -227,7 +599,7 @@ URLS = [
             {
                 'url': '/callback-gotchas',
                 'name': 'Callback Gotchas',
-                'description': 'Dash callbacks have some idiosyncracies that '
+                'description': 'Dash callbacks have some idiosyncrasies that '
                 'should be taken into consideration when building a Dash app. '
                 'If you\'re running into unexpected callback behavior, '
                 'and the rest of the documentation hasn\'t shed any light on '
@@ -246,6 +618,8 @@ URLS = [
             '/dash-bio/'
             '/dash-daq/',
             '/canvas/',
+            '/slicer/',
+            '/annotations/',
             '/cytoscape/'
         ],
         'chapters': [
@@ -379,6 +753,15 @@ URLS = [
                     },
 
                     {
+                        'url': '/datatable/data-formatting',
+                        'content': chapters.dash_datatable.data_formatting.index.layout,
+                        'name': 'Number Formatting',
+                        'description': '''
+                            Several examples of how to format and localize numbers.
+                        '''
+                    },
+
+                    {
                         'url': '/datatable/interactivity',
                         'content': chapters.dash_datatable.interactivity.index.layout,
                         'name': 'Sorting, Filtering, Selecting, and Paging Natively',
@@ -394,6 +777,16 @@ URLS = [
                     },
 
                     {
+                        'url': '/datatable/tooltips',
+                        'content': chapters.dash_datatable.tooltips.index.layout,
+                        'name': 'DataTable Tooltips',
+                        'description': '''
+                            Display tooltips on data and header rows, conditional tooltips,
+                            define tooltips for each cell, customize behavior.
+                        '''
+                    },
+
+                    {
                         'url': '/datatable/callbacks',
                         'content': chapters.dash_datatable.callbacks.index.layout,
                         'name': 'Python-Driven Filtering, Paging, Sorting',
@@ -402,7 +795,6 @@ URLS = [
                             clientside (in the browser). This means that you need to
                             load all of the data into the table up-front. If your data is large,
                             then this can be prohibitively slow.
-
                             In this chapter, you'll learn how to write your own filtering,
                             sorting, and paging backends in Python with Dash.
                             We'll do the data processing with Pandas but you could write your
@@ -418,9 +810,7 @@ URLS = [
                             The DataTable is editable. Like a spreadsheet, it can be used
                             as an input for controlling models with a variable number
                             of inputs.
-
                             This chapter includes recipes for:
-
                             - Determining which cell has changed
                             - Filtering out null values
                             - Adding or removing columns
@@ -533,6 +923,20 @@ URLS = [
             },
 
             {
+                'name': 'Dash Image annotations',
+                'chapters': [
+                    {
+                        'url': '/annotations',
+                        'name': 'Overview & Reference',
+                        'content': chapters.dash_annotations.index.layout,
+                        'description': (
+                            'Image annotations for image processing applications.'
+                        )
+                    }
+                ]
+            },
+
+            {
                 'name': 'Dash Canvas',
                 'chapters': [
                     {
@@ -541,7 +945,22 @@ URLS = [
                         'content': chapters.dash_canvas.index.layout,
                         'description': (
                             'Image rendering, drawing, annotations '
-                            'for image processing applications.'
+                            'for image processing applications '
+                            '(legacy tool).'
+                        )
+                    }
+                ]
+            },
+
+            {
+                'name': 'Dash Slicer',
+                'chapters': [
+                    {
+                        'url': '/slicer',
+                        'name': 'Overview & Reference',
+                        'content': chapters.dash_slicer.index.layout,
+                        'description': (
+                            'A volume slicer for Dash.'
                         )
                     }
                 ]
@@ -622,6 +1041,24 @@ URLS = [
                     },
 
                     {
+                        'url': '/cytoscape/images',
+                        'content': chapters.dash_cytoscape.image_export.index.layout,
+                        'name': 'Exporting Images',
+                        'description': '''
+                        This example shows how to export your Cytoscape graphs as images (jpg, png, svg).
+                        '''
+                    },
+
+                    {
+                        'url': '/cytoscape/responsive',
+                        'content': chapters.dash_cytoscape.responsive.index.layout,
+                        'name': 'Making responsive graphs',
+                        'description': '''
+                        This example shows how to build a responsive Cytoscape graph.
+                        '''
+                    },
+
+                    {
                         'url': '/cytoscape/reference',
                         'content': chapters.dash_cytoscape.reference.index.layout,
                         'name': 'Reference',
@@ -633,6 +1070,54 @@ URLS = [
                 ]
             },
 
+
+            {
+                'name': 'Dash VTK',
+                'chapters': [
+                    {
+                        'url': '/vtk',
+                        'name': 'Overview',
+                        'content': chapters.dash_vtk.index.layout,
+                        'description': (
+                            'Dash VTK enables Dash application developers to harness the power of Kitware\'s open source Visualization Toolkit when manipulating or displaying scientific data.'
+                        )
+                    }
+                ]
+            },
+
+            {
+                'name': 'Dash Bootstrap Components',
+                'chapters': [
+                    {
+                        'url': 'https://dash-bootstrap-components.opensource.faculty.ai/',
+                        'name': 'faculty.ai',
+                        'description': (
+                            'A library of Bootstrap components '
+                            'created by [faculty.ai](https://faculty.ai/). '
+                            'Dash Bootstrap Components makes it easier to '
+                            'build consistently styled '
+                            'apps with complex, responsive layouts.'
+                        ),
+                    },
+                ]
+            },
+
+            {
+                'name': 'Dash Community Components',
+                'chapters': [
+                    {
+                        'url': 'https://plotly.com/dash-community-components/',
+                        'name': 'Components List',
+                        'description': (
+                            'A listicle of selected Dash components created by users '
+                            'in [our community forum](https://community.plotly.com/). '
+                            'These are Dash Components created by the '
+                            'world\'s largest open-source community '
+                            'for ML & data science web apps.'
+                        ),
+                    },
+                ]
+            }
         ]
     },
 
@@ -754,44 +1239,57 @@ URLS = [
                 'content': chapters.testing.index.layout,
                 'name': 'Dash Testing',
                 'description': 'An introduction to testing your dash app with selenium'
-            }
+            },
+
+            {
+                'url': '/app-lifecycle',
+                'content': chapters.app_lifecycle.index.layout,
+                'name': 'Dash App Lifecycle',
+                'description': 'An overview of the lifecycle of a Dash app'
+            },
+
+            {
+                'url': '/reference',
+                'content': chapters.reference.index.layout,
+                'name': 'API Reference',
+                'description': (
+                    '''
+                    The docstrings and options for the public methods of the
+                    `dash` module and the `app` object.
+                    '''
+                )
+            },
+
+            {
+                'url': '/dash-1-0-migration',
+                'name': 'Dash 1.0.0 Migration',
+                'description': (
+                    "Dash v1.0 is out! If you're new to Dash, just head down to "
+                    "the tutorial section below and get started. This section is "
+                    "for users Dash v0.x upgrading to v1.0. We've learned a lot "
+                    "from working with the amazing Dash community, and Dash v1.0 "
+                    "makes a number of changes to make your apps even more "
+                    "intuitive, powerful, and extensible as Dash continues to "
+                    "evolve."
+                ),
+                'content': chapters.migration.index.layout
+            },
 
         ],
     },
 
     {
-        'name': 'Production',
+        'name': 'Ecosystem Integration',
         'chapters': [
             {
-                'url': '/authentication',
-                'content': chapters.auth.index.layout,
-                'name': 'Authentication',
-                'description': '',
-                'ad': 'dash-enterprise-authentication.jpg',
-                'adhref': 'https://plotly.com/get-demo/?utm_source=docs&utm_medium=ad&utm_campaign=april&utm_content=authentication'
+                'url': '/holoviews',
+                'content': chapters.holoviews.index.layout,
+                'name': 'HoloViews',
+                'description': 'HoloViews integration'
             },
-
-            {
-                'url': '/deployment',
-                'content': chapters.deployment.index.layout,
-                'name': 'Deployment',
-                'description': 'To share a Dash app, you need to "deploy" your Dash ' \
-                               'app to a server'
-            },
-
-            {
-                'url': '/integrating-dash',
-                'content': chapters.integrating_dash.index.layout,
-                'name': 'Integrating Dash with Existing Web Apps',
-                'description': 'Strategies for integrating Dash apps with existing web ' \
-                               'apps.',
-                'ad': 'dash-enterprise-embedded.jpg',
-                'adhref': 'https://plotly.com/dash/embedding/?utm_source=docs&utm_medium=sidebar&utm_campaign=june&utm_content=embedded'
-            }
         ]
-    },
-
-    {
+    }
+] + ([DASH_ENTERPRISE_URLS] if not tools.is_in_dash_enterprise() else []) + [{
         'name': 'Getting Help',
         'chapters': [
             {
@@ -807,189 +1305,6 @@ URLS = [
             }
         ]
     },
-
-    {
-        'name': 'Dash Enterprise',
-        'description': (
-            '''
-            Dash Enterprise is Plotly's commercial offering for managing
-            and improving your Dash apps in your organization.
-            '''
-        ),
-        'chapters': [
-            {
-                'name': 'About Dash Enterprise',
-                'url': 'https://plotly.com/dash/'
-            },
-            {
-                'name': 'Dash Enterprise Documentation',
-                'chapters': [
-                    {
-                        'name': 'Overview',
-                        'breadcrumb': 'Dash Enterprise',
-                        'url': '/dash-enterprise',
-                        'content': chapters.dash_enterprise.index.layout
-                    },
-                    {
-                        'url': '/dash-enterprise/initialize',
-                        'content': chapters.dash_enterprise.dash_enterprise_chapters.Initialize,
-                        'name': 'Part 1. Initialize Dash Apps on Dash Enterprise',
-                        'description': 'Initialize Dash Apps on Plotly Enterprise'
-                    },
-                    {
-                        'url': '/dash-enterprise/deployment',
-                        'content': chapters.dash_enterprise.dash_enterprise_chapters.Deploy,
-                        'name': 'Part 2. Deploy Dash Apps on Dash Enterprise',
-                        'description': 'Deploy Dash Apps on Dash Enterprise'
-                    },
-                    {
-                        'url': '/dash-enterprise/application-structure',
-                        'content': chapters.dash_enterprise.dash_enterprise_chapters.Requirements,
-                        'name': 'Application Structure',
-                        'description': 'Ensure that your app meets all the requirements for deployment.'
-                    },
-                    {
-                        'url': '/dash-enterprise/static-assets',
-                        'content': chapters.dash_enterprise.dash_enterprise_chapters.staticAssets,
-                        'name': 'Adding Static Assets',
-                        'description': 'Learn how to include custom CSS, JS, and images with the `assets` directory.'
-                    },
-                    {
-                        'url': '/dash-enterprise/configure-system-dependencies',
-                        'content': chapters.dash_enterprise.dash_enterprise_chapters.ConfigSys,
-                        'name': 'Configuring System Dependencie',
-                        'description': 'Install and configure system dependencies such '
-                        'as database drivers or the Java JRE environment.'
-                    },
-                    {
-                        'url': '/dash-enterprise/portal',
-                        'content': chapters.dash_enterprise.dash_enterprise_chapters.Portal,
-                        'name': 'Dash App Portal',
-                        'description': 'Learn about the Dash App Portal '
-                    },
-                    {
-                        'url': '/dash-enterprise/admin-panel',
-                        'content': chapters.dash_enterprise.dash_enterprise_chapters.AdminPanel,
-                        'name': 'Admin Panel',
-                        'description': 'Manage users in the Admin Panel '
-                    },
-                    {
-                        'url': '/dash-enterprise/privacy',
-                        'content': chapters.dash_enterprise.dash_enterprise_chapters.AppPrivacy,
-                        'name': 'Dash App Privacy',
-                        'description': 'Dash App Privacy and Managing Collaborators'
-                    },
-                    {
-                        'url': '/dash-enterprise/redis-database',
-                        'content': chapters.dash_enterprise.dash_enterprise_chapters.Redis,
-                        'name': 'Linking a Redis Database',
-                        'description': 'Create and link an in-memory database to your Dash Apps.'
-                    },
-                    {
-                        'url': '/dash-enterprise/environment-variables',
-                        'content': chapters.dash_enterprise.dash_enterprise_chapters.EnvVars,
-                        'name': 'Setting Enviornment Variables',
-                        'description': 'Environment variables are commonly used to store '
-                        'secret variables like database passwords.'
-                    },
-                    {
-                        'url': '/dash-enterprise/map-local-directories',
-                        'content': chapters.dash_enterprise.dash_enterprise_chapters.LocalDir,
-                        'name': 'Mapping Local Directories',
-                        'description': 'Directory mappings allow you to make directories '
-                        'on the Dash Enterprise available to your app.'
-                    },
-                    {
-                        'url': '/dash-enterprise/ssh',
-                        'content': chapters.dash_enterprise.dash_enterprise_chapters.Ssh,
-                        'name': 'Authenticating to Dash Enterprise with SSH',
-                        'description': "There are two methods to deploy Dash Apps: HTTPS and SSH "
-                        "and we recommend getting started with the HTTPS method."
-                    },
-                    {
-                        'url': '/dash-enterprise/cli',
-                        'content': chapters.dash_enterprise.dash_enterprise_chapters.Cli,
-                        'name': 'Managing Dash Apps via the Command Line',
-                        'description': "A list of commands to manage Dash apps available  "
-                        "to app owners from the command line via ssh."
-                    },
-                    {
-                        'url': '/dash-enterprise/app-authentication',
-                        'content': chapters.dash_enterprise.dash_enterprise_chapters.Authentication,
-                        'name': 'Dash Enterprise Auth Features',
-                        'description': 'Accessing User Authentication Data in your Dash App'
-                    },
-                    {
-                        'url': '/dash-enterprise/checks',
-                        'content': chapters.dash_enterprise.dash_enterprise_chapters.Checks,
-                        'name': 'Dash Enterprise App Health Checks',
-                        'description': 'Create custom checks to ensure that a newly deployed app can serve traffic.'
-                    },
-                    {
-                        'url': '/dash-enterprise/private-packages',
-                        'content': chapters.dash_enterprise.dash_enterprise_chapters.PrivatePackages,
-                        'name': 'Adding Private Python Packages',
-                        'description': 'Intsall private python packages in your Dash Apps.'
-                    },
-                    {
-                        'url': '/dash-enterprise/celery-process',
-                        'content': chapters.dash_enterprise.dash_enterprise_chapters.Celery,
-                        'name': 'Linking a Celery Process',
-                        'description': 'Add a task queue to your Dash Apps.'
-                    },
-                    {
-                        'url': '/dash-enterprise/staging-app',
-                        'content': chapters.dash_enterprise.dash_enterprise_chapters.StagingApp,
-                        'name': 'Create a Staging Dash App ',
-                        'description': 'Use a staged Dash App to test changes before updating '
-                        'your prodcution Dash App.'
-                    },
-                    {
-                        'url': '/dash-enterprise/pdf-service',
-                        'content': chapters.dash_enterprise.dash_enterprise_chapters.pdfService,
-                        'name': 'Dash Enterprise PDF Service',
-                        'description': 'Utilize the Dash Enterprise API endpoint for '
-                        'creating PDF exports of your Dash applications'
-                    },
-                    {
-                        'url': '/dash-enterprise/analytics',
-                        'content': chapters.dash_enterprise.dash_enterprise_chapters.Analytics,
-                        'name': 'App Analytics',
-                        'description': 'View app analytics such as last updated, '
-                        'CPU usage, Memory Usage, and more.'
-                    },
-                    {
-                        'url': '/dash-enterprise/logs',
-                        'content': chapters.dash_enterprise.dash_enterprise_chapters.Logs,
-                        'name': 'App Logs',
-                        'description': '''Check your Dash App's logs via the Dash
-                        Enterprise UI or via the command line.'''
-                    },
-                    {
-                        'url': '/dash-enterprise/troubleshooting',
-                        'content': chapters.dash_enterprise.dash_enterprise_chapters.Troubleshooting,
-                        'name': 'Common Errors',
-                        'description': 'Common errors when deploying Dash Apps.'
-                    },
-                    {
-                        'url': '/dash-enterprise/support',
-                        'content': chapters.dash_enterprise.dash_enterprise_chapters.Support,
-                        'name': 'Support',
-                        'description': 'Having trouble deploying your app? Our dedicated '
-                        'support team is available to help you out.'
-                    },
-                    {
-                        'url': '/dash-enterprise/git',
-                        'content': chapters.dash_enterprise.dash_enterprise_chapters.Git,
-                        'name': 'Advanced Git',
-                        'description': 'A reference for git commands and how they are used '
-                        'with Dash Enterprise.'
-                    },
-                ]
-            }
-        ]
-    }
-
 ]
 
 

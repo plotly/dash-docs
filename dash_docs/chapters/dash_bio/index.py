@@ -142,6 +142,16 @@ data = df.values
         }
     },
 
+    'Igv': {
+        'description': '''A high performance genomics visualization tool for real-time
+        exploration of large scale genomic data features.''',
+        'params': {
+            'genome': '"ce11"',
+            'minimumBases': '100',
+            'locus': '"chrV"'
+        }
+    },
+
     'ManhattanPlot': {
         'description': '''A plot that can be used to display the results of genomic studies
         sorted out by chromosome. Perfect for Genome Wide Association Studies (GWAS).''',
@@ -225,6 +235,25 @@ styles_data = json.loads(styles_data)
         }
     },
 
+    'NglMoleculeViewer': {
+        'description': '''A comprehensive 3D molecule visualizer for visualizing multiple 
+        molecules and chains in a variety of representations.''',
+        'params': {
+            "data": "[ngl_parser.get_data(data_path=data_path, pdb_id='1BNA', color='red', "
+                    "reset_view=False, "
+                    "local=False)]"
+        },
+        'library_imports': [
+            ['dash_bio_utils.ngl_parser', 'ngl_parser'],
+            ['dash.exceptions', 'PreventUpdate']
+        ],
+        'setup_code': '''data_path =  "https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/"''',
+        'image_info': {
+            'location': 'https://raw.githubusercontent.com/plotly/docs-demos-dashbio/master'
+                        '/images/pic_ngl_moleculeviewer.png'
+        }
+    },
+
     'OncoPrint': {
         'description': '''A chart that can be used to visualize multiple
         genomic alternations with an interactive heatmap.''',
@@ -240,6 +269,36 @@ styles_data = json.loads(styles_data)
         'image_info': {
             'location': 'https://github.com/plotly/docs-demos-dashbio/blob/master/images/pic_oncoprint.png?raw=true'
         }
+    },
+
+    'Pileup': {
+        'description': '''An interactive in-browser track viewer.''',
+        'datafile': {
+            'name': 'pileup.synth4.tumor.chr1.4930000-4950000.json'
+        },
+        'params': {
+        'range': '''{
+           'contig': 'chr1',
+           'start': 4930382,
+           'stop': 4946898
+        }''',
+        'reference': '''{
+           'label': 'hg19',
+           'url': 'https://hgdownload.cse.ucsc.edu/goldenPath/hg19/bigZips/hg19.2bit'
+        }''',
+        'tracks': '''[
+           {'viz': 'coverage',
+           'label': 'alignments',
+           'source': 'alignmentJson',
+           'sourceOptions': data
+        },
+           {'viz': 'pileup',
+           'label': 'alignments',
+           'source': 'alignmentJson',
+           'sourceOptions': data
+        }
+    ]'''
+        },
     },
 
     'SequenceViewer': {
@@ -293,7 +352,7 @@ styles_data = json.loads(styles_data)
         'image_info': {
             'location': 'https://raw.githubusercontent.com/plotly/docs-demos-dashbio/master/images/pic_volcano.png?raw=true'
         }
-    }
+    },
 }
 
 layout_children = generate_docs(

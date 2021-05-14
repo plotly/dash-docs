@@ -11,6 +11,9 @@ if not os.environ.get('IGNORE_DASH_BIO', False):
 from .import deployment
 from .import external_resources
 from .import dash_canvas
+from .import dash_slicer
+from .import dash_vtk
+from .import dash_annotations
 from .import getting_started
 from .import faq_gotchas
 from .import graph_crossfiltering
@@ -22,10 +25,12 @@ from .import migration
 from .import performance
 from .import persistence
 from .import plugins
+from .import reference
 from .import sharing_data
 from .import clientside_callbacks
 from .import advanced_callbacks
 from .import callback_gotchas
+from .import app_lifecycle
 from .import support
 from .import urls
 from .import react_for_python_developers
@@ -35,3 +40,4 @@ from .import loading
 from .import testing
 from .import integrating_dash
 from .import pattern_matching_callbacks
+from .import holoviews

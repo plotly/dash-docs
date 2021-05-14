@@ -41,9 +41,9 @@ app.layout = html.Div([
 
 @app.callback(
     Output('adding-rows-table', 'data'),
-    [Input('editing-rows-button', 'n_clicks')],
-    [State('adding-rows-table', 'data'),
-     State('adding-rows-table', 'columns')])
+    Input('editing-rows-button', 'n_clicks'),
+    State('adding-rows-table', 'data'),
+    State('adding-rows-table', 'columns'))
 def add_row(n_clicks, rows, columns):
     if n_clicks > 0:
         rows.append({c['id']: '' for c in columns})
@@ -52,9 +52,9 @@ def add_row(n_clicks, rows, columns):
 
 @app.callback(
     Output('adding-rows-table', 'columns'),
-    [Input('adding-rows-button', 'n_clicks')],
-    [State('adding-rows-name', 'value'),
-     State('adding-rows-table', 'columns')])
+    Input('adding-rows-button', 'n_clicks'),
+    State('adding-rows-name', 'value'),
+    State('adding-rows-table', 'columns'))
 def update_columns(n_clicks, value, existing_columns):
     if n_clicks > 0:
         existing_columns.append({
@@ -66,8 +66,8 @@ def update_columns(n_clicks, value, existing_columns):
 
 @app.callback(
     Output('adding-rows-graph', 'figure'),
-    [Input('adding-rows-table', 'data'),
-     Input('adding-rows-table', 'columns')])
+    Input('adding-rows-table', 'data'),
+    Input('adding-rows-table', 'columns'))
 def display_output(rows, columns):
     return {
         'data': [{

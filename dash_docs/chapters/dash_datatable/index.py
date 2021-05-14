@@ -25,38 +25,22 @@ preamble = html.Div([
     ),
 
     rc.Markdown('''
-    > Dash DataTable is an interactive table component designed for
-    > viewing, editing, and exploring large datasets.
-    >
-    > DataTable is rendered with standard, semantic HTML `<table/>` markup,
-    > which makes it accessible, responsive, and easy to style.
-    >
-    > This component was written from scratch in React.js specifically
-    > for the Dash community. Its API was designed to be ergonomic
-    > and its behavior is completely customizable through its properties.
-    >
-    > 7 months in the making, this is the most complex Dash
-    > component that Plotly has written, all from the ground-up
-    > using React and TypeScript. DataTable was designed with a
-    > featureset that allows that Dash users to create complex,
-    > spreadsheet driven applications with no compromises.
-    > We're excited to continue to work with users and companies
-    > that [invest in DataTable's future](https://plotly.com/products/consulting-and-oem/).
-    >
-    > With `dash-table v4.0.0` - included in `dash v1.0.0` and released on
-    > June 20, 2019 - we consider the API stable. We don't expect any
-    > breaking changes any time soon, but if there are they will be
-    > accompanied by a new major version of dash. If you've been using
-    > DataTable with `dash v0.x` / `dash-table v3.x`, check out the
-    > [Dash 1.0 Migration Guide](/dash-1-0-migration) for the full list of
-    > changes.
-    >
-    > Otherwise, check out DataTable in the docs below.
-    > If you make something cool with it, we'd love to see it! Share it
-    > on the [community forum](https://community.plotly.com/t/show-and-tell-community-thread/7554)!
-    >
-    > -- chriddyp
+    #### Dash DataTable is an interactive table component designed for
+    #### viewing, editing, and exploring large datasets.
+
+    This component was written from scratch in React.js specifically
+    for the Dash community. Its API was designed to be ergonomic
+    and its behavior is completely customizable through its properties.
+    DataTable is rendered with standard, semantic HTML `<table/>` markup,
+    which makes it accessible, responsive, and easy to style.
     '''),
+
+    rc.Markdown('''
+    For production Dash applications, DataTable is intended to bse used with
+    [Python data pipelines](https://plotly.com/dash/job-queue/) for ingesting
+    the table data and [Design Kit](https://plotly.com/dash/design-kit) for
+    DataTable styling.
+    ''', className='red-links'),
 
     Section('Quickstart', [
         rc.Markdown(
@@ -68,12 +52,62 @@ preamble = html.Div([
             style=styles.code_container
         ),
 
-        rc.Markdown(
-            examples['simple.py'][0],
-            style=styles.code_container
-        ),
+        dcc.Tabs([
+            dcc.Tab(
+                label='Dash open-source',
+                children=[
+                    rc.Markdown(
+                        examples['simple.py'][0],
+                        style=styles.code_container
+                    ),
 
-        html.Div(examples['simple.py'][1], className='example-container'),
+                    html.Div(examples['simple.py'][1], className='example-container'),
+                ]
+            ),
+            dcc.Tab(
+                label='Dash Enterprise',
+                children=[
+                    rc.Markdown(
+                    '''
+                    ```python
+                    import dash
+                    import dash_table
+                    import pandas as pd
+                    import dash_design_kit as ddk
+
+                    df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/solar.csv')
+
+                    app = dash.Dash(__name__)
+
+                    app.layout = ddk.App(show_editor=True, children=[
+                        ddk.DataTable(
+                           id='table',
+                           columns=[{"name": i, "id": i} for i in df.columns],
+                           data=df.to_dict('records'),
+                           editable=True
+                       )
+                    ])
+
+                    if __name__ == '__main__':
+                        app.run_server(debug=True)
+                    ```
+                    '''
+                    ),
+
+                    html.P('Default Theme'),
+                    html.Img(src=tools.relpath('/assets/images/ddk/table-default.png')),
+                    html.P('Neptune Theme'),
+                    html.Img(src=tools.relpath('/assets/images/ddk/table-neptune.png')),
+                    html.P('Miller Theme'),
+                    html.Img(src=tools.relpath('/assets/images/ddk/table-miller.png')),
+                    html.P('Mercury Theme'),
+                    html.Img(src=tools.relpath('/assets/images/ddk/table-mercury.png')),
+                    html.P('Design Kit Theme Editor'),
+                    html.Img(src=tools.relpath('/assets/images/ddk/theme-editor.png')),
+
+                ]
+            ),
+        ])
 
     ]),
 

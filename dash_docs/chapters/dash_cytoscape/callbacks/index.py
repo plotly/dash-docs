@@ -169,7 +169,7 @@ layout = html.Div([
     rc.Markdown('''
     ```py
     @app.callback(Output('cytoscape-callbacks-1', 'layout'),
-                  [Input('dropdown-callbacks-1', 'value')])
+                  Input('dropdown-callbacks-1', 'value'))
         def update_layout(layout):
             return {'name': layout}
     ```
@@ -184,7 +184,7 @@ layout = html.Div([
     rc.Markdown('''
     ```py
     @app.callback(Output('cytoscape-callbacks-1', 'layout'),
-                  [Input('dropdown-callbacks-1', 'value')])
+                  Input('dropdown-callbacks-1', 'value'))
     def update_layout(layout):
         return {
             'name': layout,
@@ -245,7 +245,7 @@ layout = html.Div([
     rc.Markdown('''
 
     This is generally declared at the beginning of your script, before layout
-    declaration (therefore it is shared accross sessions). The city graph will
+    declaration (therefore it is shared across sessions). The city graph will
     look something like this:
     '''),
 
@@ -287,8 +287,8 @@ layout = html.Div([
     rc.Markdown('''
     ```py
     @app.callback(Output('cytoscape-callbacks-2', 'stylesheet'),
-              [Input('input-line-color', 'value'),
-               Input('input-bg-color', 'value')])
+                  Input('input-line-color', 'value'),
+                  Input('input-bg-color', 'value'))
     def update_stylesheet(line_color, bg_color):
         if line_color is None:
             line_color = ''
@@ -378,9 +378,9 @@ layout = html.Div([
     rc.Markdown('''
     ```py
     @app.callback(Output('cytoscape-callbacks-2', 'elements'),
-                  [Input('btn-add-node-example', 'n_clicks_timestamp'),
-                   Input('btn-remove-node-example', 'n_clicks_timestamp')],
-                  [State('cytoscape-callbacks-2', 'elements')])
+                  Input('btn-add-node-example', 'n_clicks_timestamp'),
+                  Input('btn-remove-node-example', 'n_clicks_timestamp'),
+                  State('cytoscape-callbacks-2', 'elements'))
     def update_elements(btn_add, btn_remove, elements):
         if int(btn_add) > int(btn_remove):
             next_node_idx = len(elements) - len(edges)

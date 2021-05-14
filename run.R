@@ -52,6 +52,8 @@ chapters.advanced_callbacks <- new.env()
 source('dash_docs/chapters/advanced_callbacks/index.R', local=chapters.advanced_callbacks)
 chapters.clientside_callbacks <- new.env()
 source('dash_docs/chapters/clientside_callbacks/index.R', local=chapters.clientside_callbacks)
+chapters.pattern_matching_callbacks <- new.env()
+source('dash_docs/chapters/pattern_matching_callbacks/index.R', local=chapters.pattern_matching_callbacks)
 chapters.callback_gotchas <- new.env()
 source('dash_docs/chapters/callback_gotchas/index.R', local=chapters.callback_gotchas)
 # Component Libraries (Dash Core Components)
@@ -220,8 +222,12 @@ chapters.deployment <- new.env()
 source('dash_docs/chapters/deployment/index.R', local=chapters.deployment)
 chapters.urls <- new.env()
 source('dash_docs/chapters/urls/index.R', local=chapters.urls)
+chapters.routes <- new.env()
+source('dash_docs/chapters/routes/index.R', local=chapters.routes)
 chapters.devtools <- new.env()
 source('dash_docs/chapters/devtools/index.R', local=chapters.devtools)
+chapters.app_lifecycle <- new.env()
+source('dash_docs/chapters/app_lifecycle/index.R', local=chapters.app_lifecycle)
 
 header <- htmlDiv(
   className = 'header',
@@ -261,9 +267,7 @@ app$layout(htmlDiv(
           htmlDiv(id = 'backlinks-bottom', className = 'backlinks')
         ),
         className = 'rhs-content container-width'),
-
-        PageMenu(id = 'pagemenu')
-
+        pageMenu(id = 'pagemenu')
       )
     )
   )
@@ -288,6 +292,7 @@ app$callback(
       # Dash Callbacks
       '/advanced-callbacks' = chapters.advanced_callbacks$layout,
       '/clientside-callbacks' = chapters.clientside_callbacks$layout,
+      '/pattern-matching-callbacks' = chapters.pattern_matching_callbacks$layout,
       '/callback-gotchas' = chapters.callback_gotchas$layout,
       # Component Libraries (Dash Core Components)
       '/dash-core-components' = chapters.dashCoreComponents$layout,
@@ -374,10 +379,12 @@ app$callback(
       # Beyond the Basics
       '/external-resources' = chapters.external_resources$layout,
       '/urls' = chapters.urls$layout,
+      '/routes' = chapters.routes$layout,
       '/devtools' = chapters.devtools$layout,
       '/support' = chapters.support$layout,
       '/plugins' = chapters.plugins$layout,
       '/d3-react-components' = chapters.d3$layout,
+      '/app_lifecycle' = chapters.app_lifecycle$layout,
       {
         htmlDiv(
           list(
@@ -473,6 +480,12 @@ app$callback(
                   callbacks allow you to write your callbacks in JavaScript that runs in the browser."
                 ),
                 components$Chapter(
+                  'Pattern-Matching Callbacks',
+                  href='/pattern-matching-callbacks',
+                  caption="The pattern-matching callback selectors `MATCH`, `ALL`, & `ALLSMALLER` allow you to
+                  write callbacks that respond to or dynamically update a subset of components."
+                ),
+                components$Chapter(
                   'Callback Gotchas',
                   href='/callback-gotchas',
                   caption="Dash callbacks have some idiosyncracies that should be taken into consideration when
@@ -500,18 +513,22 @@ app$callback(
                 components$Chapter(
                 'Dash DataTable',
                 href='/datatable',
-                caption="(New! Released Nov 2, 2018) The Dash DataTable is our latest and most advanced component.
-                It is an interactive table that supports rich styling, conditional formatting, editing, sorting, filtering, and more."
+                caption="`dash_table.DataTable` is an interactive table that supports rich styling, conditional formatting, editing, sorting, filtering, and more."
+                ),
+                components$Chapter(
+                  'Dash Bio Components',
+                  href='/dash-bio',
+                  caption="Dash Bio is a component library dedicated to visualizing bioinformatics data."
                 ),
                 components$Chapter(
                 'Dash DAQ Components',
                 href='/dash-daq',
-                caption="Beautifully styled technical components for data acquisition and engineering applications."
+                caption="Beautifully styled technical components for data acquisition, monitoring, and engineering applications."
                 ),
                 components$Chapter(
                 'Dash Canvas',
                 href='/dash-canvas',
-                caption="(New! Released March 2019) Drawing and annotations for image processing."
+                caption="Image rendering, drawing, annotations for image processing applications."
                 ),
                 components$Chapter(
                 'Dash Cytoscape',
@@ -520,9 +537,10 @@ app$callback(
                 user-friendly R interface to create beautiful, customizable, interactive and reactive graphs."
                 ),
                 components$Chapter(
-                'Dash Bio Components',
-                href='/dash-bio',
-                caption="(New! Released April 2019) Components dedicated to visualizing bioinformatics data."
+                  'Dash Bootstrap Components',
+                  href='https://dash-bootstrap-components.opensource.faculty.ai/',
+                  caption="A library of Bootstrap components created by [faculty.ai](https://faculty.ai/). Dash Bootstrap Components makes it easier
+                  to build consistently styled apps with complex, responsive layouts."
                 )
               )
             ),
@@ -564,9 +582,19 @@ app$callback(
                 caption="Dash provides two components (`dccLink` and `dccLocation`) that allow you to easily make fast multipage apps using its own \"Single Page App (SPA)\" design pattern."
                 ),
                 components$Chapter(
+                'Server Routes & Redirects',
+                href='/routes',
+                caption="Dash offers two methods (`server_route` and `redirect`) to simplify the process of specifying user-defined routes and redirects for your apps."
+                ),
+                components$Chapter(
                 'Dev tools',
                 href='/devtools',
                 caption="Dash dev tools reference"
+                ),
+                components$Chapter(
+                'App Lifecycle',
+                href='/app_lifecycle',
+                caption="Learn more about the lifecycle of a Dash app."
                 )
               )
             ),
@@ -602,19 +630,19 @@ app$callback(
             ),
 
             components$Section(
-            'Dash Deployment Server',
+            'Dash Enterprise',
               list(
                 components$Chapter(
-                'About Dash Deployment Server',
+                'About Dash Enterprise',
                 href='https://plotly.com/dash/?_ga=2.180458663.1075922756.1562168385-916141078.1562168385'
                 ),
                 components$Chapter(
-                'Dash Deployment Server Documentation',
-                href='https://dash.plotly.com/dash-deployment-server'
+                'Dash Enterprise Documentation',
+                href='https://dash.plotly.com/dash-enterprise'
                 )
               ),
-              description="Dash Deployment Server is Plotly's commercial offering for hosting and sharing
-              Dash apps on-premises or in the cloud.",
+              description="Dash Enterprise helps businesses operationalize data science, AI, and ML
+              models. It’s everything you need to deliver your AI or ML initiative at scale.",
               headerStyle=list('color'='#0D76BF')
             )
           )
@@ -635,40 +663,20 @@ app$callback(
   )
 )
 
-plugin <- list(
-  on_attach = function(server) {
-    router <- server$plugins$request_routr
-    route <- routr::Route$new()
-    redirect_getting_started <- function(request, response, keys, ...) {
-      response$status <- 301L
-      response$set_header('Location', '/layout')
-      TRUE
-    }
-    redirect_getting_started_2 <- function(request, response, keys, ...) {
-      response$status <- 301L
-      response$set_header('Location', '/basic-callbacks')
-      TRUE
-    }
-    redirect_state <- function(request, response, keys, ...) {
-      response$status <- 301L
-      response$set_header('Location', '/basic-callbacks')
-      TRUE
-    }
-    redirect_sizing <- function(request, response, keys, ...) {
-      response$status <- 301L
-      response$set_header('Location', '/datatable/width')
-      TRUE
-    }
-    route$add_handler('get', '/getting-started', redirect_getting_started)
-    route$add_handler('get', '/getting-started-part-2', redirect_getting_started_2)
-    route$add_handler('get', '/state', redirect_state)
-    route$add_handler('get', '/datatable/sizing', redirect_sizing)
-    router$add_route(route, "redirects")
-  },
-  name = 'redirect_urls',
-  require = 'request_routr'
+app$redirect(
+  "/getting-started", "/layout"
 )
 
-app$server$attach(plugin)
+app$redirect(
+  "/getting-started-part-2", "/basic-callbacks"
+)
+
+app$redirect(
+  "/state", "/basic-callbacks"
+)
+
+app$redirect(
+  "/datatable/sizing", "/datatable/width"
+)
 
 app$run_server(host = "0.0.0.0")

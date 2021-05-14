@@ -26,7 +26,7 @@ layout = html.Div([
 
     - The maximum browser [storage space](https://demo.agektmr.com/storage/) is determined by the following factors:
         - Mobile or laptop
-        - The browser, under which a sophiticated algorithm is implmented within *Quota Management*
+        - The browser, under which a sophisticated algorithm is implemented within *Quota Management*
         - Storage encoding where UTF-16 can end up saving only half of the size of UTF-8
         - It's generally safe to store up to 2MB in most environments, and 5~10MB in most desktop-only applications.
     - `modified_timestamp` is read only.

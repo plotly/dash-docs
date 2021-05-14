@@ -54,7 +54,7 @@ and the text every second.
 
 
     @app.callback(Output('live-update-text', 'children'),
-                  [Input('interval-component', 'n_intervals')])
+                  Input('interval-component', 'n_intervals'))
     def update_metrics(n):
         lon, lat, alt = satellite.get_lonlatalt(datetime.datetime.now())
         style = {'padding': '5px', 'fontSize': '16px'}
@@ -67,7 +67,7 @@ and the text every second.
 
     # Multiple components can update everytime interval gets fired.
     @app.callback(Output('live-update-graph', 'figure'),
-                  [Input('interval-component', 'n_intervals')])
+                  Input('interval-component', 'n_intervals'))
     def update_graph_live(n):
         satellite = Orbital('TERRA')
         data = {

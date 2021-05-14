@@ -21,7 +21,8 @@ app.layout = html.Div(
 
 @app.callback(
     Output("output", "children"),
-    [Input("input1", "value"), Input("input2", "value")],
+    Input("input1", "value"),
+    Input("input2", "value"),
 )
 def update_output(input1, input2):
     return u'Input 1 {} and Input 2 {}'.format(input1, input2)

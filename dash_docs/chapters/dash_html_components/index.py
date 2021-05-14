@@ -17,9 +17,14 @@ layout = html.Div(children=[
     `dash-html-components` library.
 
     The source for this library is on GitHub: [plotly/dash-html-components](https://github.com/plotly/dash-html-components).
+    '''),
+
+    rc.Markdown('''
+    For production Dash apps, styling and layout of Dash HTML Components
+    should be managed with Dash Enterprise [Design Kit](https://plotly.com/dash/design-kit).
 
     Here is an example of a simple HTML structure:
-    '''),
+    ''', className='red-links'),
 
     rc.Markdown('''
     ```py
@@ -29,7 +34,7 @@ layout = html.Div(children=[
         html.H1('Hello Dash'),
         html.Div([
             html.P('Dash converts Python classes into HTML'),
-            html.P('This conversion happens behind the scenes by Dash\'s JavaScript front-end')
+            html.P("This conversion happens behind the scenes by Dash's JavaScript front-end")
         ])
     ])
     ```

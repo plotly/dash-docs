@@ -3,7 +3,7 @@ from dash_docs import reusable_components as rc
 
 layout = rc.Markdown(
     '''
-    # Encapuslating D3.js Charts as Python Dash Components
+    # Encapsulating D3.js Charts as Python Dash Components
 
     D3.js is a flexible library for rendering and animating SVG in the web
     browser. It's approach toward rendering content in the DOM is quite

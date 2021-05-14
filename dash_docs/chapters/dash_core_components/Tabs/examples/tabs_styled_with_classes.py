@@ -42,7 +42,7 @@ app.layout = html.Div([
 
 
 @app.callback(Output('tabs-content-classes', 'children'),
-              [Input('tabs-with-classes', 'value')])
+              Input('tabs-with-classes', 'value'))
 def render_content(tab):
     if tab == 'tab-1':
         return html.Div([

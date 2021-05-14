@@ -1,6 +1,6 @@
 source('dash_docs/styles.R')
 
-# Added Reuseable Components
+# Added Reusable Components
 
 Header <- function(title) {
   return (
