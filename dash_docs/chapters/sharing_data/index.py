@@ -224,7 +224,7 @@ def update_output_1(value):
             dcc.Store(id='intermediate-value')
         ])
 
-        @app.callback(Output('intermediate-value', 'children'), Input('dropdown', 'value'))
+        @app.callback(Output('intermediate-value', 'data'), Input('dropdown', 'value'))
         def clean_data(value):
              # some expensive clean data step
              cleaned_df = your_expensive_clean_or_compute_step(value)
