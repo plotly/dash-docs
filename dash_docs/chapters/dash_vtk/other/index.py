@@ -29,6 +29,8 @@ layout = html.Div([
         )
     ```
 
+Note that we assume that `state.field` exists when we use `kwargs.get('state').get('field').get('location')` in the snippet above. However, `state.field` is optional, so when it's not available the `children` is not created, and `kwargs.get('state').get('field').get('location')` would not be needed.
+
     The __Mesh__ element expects a single __state__ property that is internally split into 2 elements to represent the geometry and the field that you want to optionally attach to your mesh. The structure could be defined as follows:
 
     - __state__
