@@ -15,6 +15,7 @@ import dash_table
 import dash_daq
 import dash_cytoscape
 import dash_bio
+import dash_vtk
 
 from dash_docs import reusable_components as rc, tools
 from .reusable_components import TOC, TOCChapters
@@ -1077,10 +1078,57 @@ URLS = [
                     {
                         'url': '/vtk',
                         'name': 'Overview',
-                        'content': chapters.dash_vtk.index.layout,
+                        'preamble': chapters.dash_vtk.index.layout,
                         'description': (
                             'Dash VTK enables Dash application developers to harness the power of Kitware\'s open source Visualization Toolkit when manipulating or displaying scientific data.'
+                        ),
+                        'autogenerate_index': True,
+                    },
+                    {
+                        'url': '/vtk/intro',
+                        'name': 'Intro to 3D Visualization',
+                        'content': chapters.dash_vtk.intro.index.layout,
+                        'description': 'Introductory concepts about 3D visualization needed to understand how Dash VTK works.'
+                    },
+                    {
+                        'url': '/vtk/structure',
+                        'name': 'Structure of Datasets',
+                        'content': chapters.dash_vtk.structure.index.layout,
+                        'description': 'Understand the structure of a dataset in Dash VTK.'
+                    },
+                    {
+                        'url': '/vtk/representations',
+                        'name': 'Representation Components',
+                        'content': chapters.dash_vtk.representations.index.layout,
+                        'description': (
+                            'Dash VTK Components needed to generate a representation.'
                         )
+                    },
+                    {
+                        'url': '/vtk/other',
+                        'name': 'Other Dash VTK Components',
+                        'content': chapters.dash_vtk.other.index.layout,
+                        'description': (
+                            'Dash VTK Components that are not used for building representations.'
+                        )
+                    },
+                    {
+                        'url': '/vtk/click-hover',
+                        'name': 'Click and Hover Callbacks',
+                        'content': chapters.dash_vtk.click_hover.index.layout,
+                        'description': 'Learn to write callbacks based on user click and hovers.'
+                    },
+                    {
+                        'url': '/vtk/advanced',
+                        'name': 'Advanced Demos',
+                        'content': chapters.dash_vtk.advanced.index.layout,
+                        'description': 'Demos of more advanced usage of Dash VTK.'
+                    },
+                    {
+                        'url': '/vtk/reference',
+                        'name': 'Reference',
+                        'content': chapters.dash_vtk.reference.index.layout,
+                        'description': 'Comprehensive reference of all Dash VTK components.'
                     }
                 ]
             },
