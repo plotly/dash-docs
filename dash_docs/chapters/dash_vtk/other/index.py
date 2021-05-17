@@ -29,7 +29,7 @@ layout = html.Div([
         )
     ```
 
-Note that we assume that `state.field` exists when we use `kwargs.get('state').get('field').get('location')` in the snippet above. However, `state.field` is optional, so when it's not available the `children` is not created, and `kwargs.get('state').get('field').get('location')` would not be needed.
+    Note that we assume that `state.field` exists when we use `kwargs.get('state').get('field').get('location')` in the snippet above. However, `state.field` is optional, so when it's not available the `children` is not created, and `kwargs.get('state').get('field').get('location')` would not be needed.
 
     The __Mesh__ element expects a single __state__ property that is internally split into 2 elements to represent the geometry and the field that you want to optionally attach to your mesh. The structure could be defined as follows:
 
@@ -107,11 +107,14 @@ Note that we assume that `state.field` exists when we use `kwargs.get('state').g
         style=styles.code_container
     ),
 
-    html.Div(
-        examples['t04_algorithm.py'][1], 
-        className='example-container'
-    ),
+    # html.Div(
+    #     examples['t04_algorithm.py'][1], 
+    #     className='example-container'
+    # ),
 
+    rc.Markdown('''
+    ![t04](/assets/images/vtk/t04_algorithm.jpg)
+    '''),
 
     rc.Markdown('''
 
@@ -145,10 +148,14 @@ Note that we assume that `state.field` exists when we use `kwargs.get('state').g
         style=styles.code_container
     ),
 
-    html.Div(
-        examples['t05_reader.py'][1], 
-        className='example-container'
-    ),
+    # html.Div(
+    #     examples['t05_reader.py'][1], 
+    #     className='example-container'
+    # ),
+
+    rc.Markdown('''
+    ![t05](/assets/images/vtk/t05_reader.jpg)
+    '''),
 
 
     rc.Markdown('''
@@ -171,8 +178,12 @@ Note that we assume that `state.field` exists when we use `kwargs.get('state').g
         ),
     ]),
 
-    html.Div(
-        examples['t06_shared_dataset.py'][1], 
-        className='example-container'
-    ),
+    # html.Div(
+    #     examples['t06_shared_dataset.py'][1], 
+    #     className='example-container'
+    # ),
+
+    rc.Markdown('''
+    ![t06](/assets/images/vtk/t06_shared_dataset.jpg)
+    '''),
 ])
