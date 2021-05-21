@@ -1160,6 +1160,17 @@ URLS = [
                 ),
                 'url': '/d3-react-components',
                 'content': chapters.d3_react_components.index.layout,
+            },
+
+            {
+                'name': 'Asynchronous Components',
+                'description': (
+                    '''
+                    Optimize the performance of your component library by lazy-loading the JavaScript bundle at run-time.
+                    '''
+                ),
+                'url': '/async-components',
+                'content': chapters.async_components.index.layout,
             }
         ]
     },

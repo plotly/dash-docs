@@ -3,15 +3,78 @@ import dash_html_components as html
 from dash_docs import reusable_components as rc
 
 layout = html.Div([rc.Markdown('''
-# Asynchronous Components
+# Asynchronous Dash Components
 
 ## Introduction
 
-If you're a Dash developer, at some point or another you probably have thought about writing your own set of components for Dash.
-You might have even taken a peek at some of our source code, or taken the `dash-component-boilerplate` for a spin.
+As the developer of a Dash component library, one of the choices you are faced with is whether you want your component library's JavaScript bundle to be loaded syncronously or asynchronously. This is determined by whether you answer `true` or `false` to the `async` prompt when using the [dash-component-boilerplate](https://github.com/plotly/dash-component-boilerplate).
 
-However, if you've never programmed in JavaScript and/or used React before, you might feel slightly confused. By the end of this guide, you should feel comfortable
-creating your own Dash component in React and JavaScript, even if you have never programmed in those languages before. [Let us know how it went by commenting in this thread](https://github.com/plotly/dash-docs/issues/194).
+When a Dash component library is configured to be loaded syncronously, that means that as long as the Python program includes imports the library, all of the individual components that make up that library are served together in one JavaScript bundle that is downloaded by the client when the Dash app starts up. If a componet library contains 10 components but an app only uses 1, the code for the other 9 is still downloaded by the client.
+
+In contrast, when a Dash component library is configured to be loaded asyncronously, individual components generate their own JavaScript bundles which are only be downloaded if the component is used in the Dash app layout.
+
+To illustrate this difference, compare the following Dash apps.
+
+```python
+import dash
+import dash_html_components as html
+
+app = dash.Dash(__name__)
+
+app.layout = html.Div(children="Hello World")
+
+if __name__ == '__main__':
+    app.run_server(debug=True)
+
+```
+
+```python
+import dash
+import dash_core_components as dcc
+
+app = dash.Dash(__name__)
+
+app.layout = dcc.Slider(min=0, max=20)
+
+if __name__ == '__main__':
+    app.run_server(debug=True)
+
+```
+
+Since the `dash_html_components` library is configured to be loaded synchronously, that means that all the components that make up that library are loaded by the client, even though only the `Div` component is present in the layout.
+
+The `dash_core_components` library is configured have some of its components, such as the `Slider`, be loaded asynchronously. This means that no other components which make up the library are loaded by the client except for the one that is specified in the layout.
+
+
+
+
+
+
+
+
+
+you can choose to make
+Since the  uses Webpack to bundle your component's JavaScript assets,
+
+One feature of the  is the ability to create asynchronous Dash components. In this context,
+
+
+
+If you set `async` to `true` during the boilerplate CLI initialization, then your project will use a Webpack and project configuration to enable individual components' JavaScrip to be lazy-loaded by the
+
+A Dash component library can be composed of either a single component or a group of components. In either case, when you import the component library into your app using the `import` keyword, that component library's JavaScript bundle is loaded by the client's browser,
+
+even if you do not use that component in your app's layout.
+
+
+In this chapter, we discuss how to generate Dash components which are loaded asynchronously in the browser
+
+
+The default configuration of the [dash-component-boilerplate](https://github.com/plotly/dash-component-boilerplate) creates
+
+When you create a Dash component using the [dash-component-boilerplate](https://github.com/plotly/dash-component-boilerplate), by default that
+
+
 
 ##### JavaScript
 JavaScript is the language of the web - all modern browsers can run it, and most modern web pages use it to make their pages interactive.

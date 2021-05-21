@@ -41,3 +41,4 @@ from .import testing
 from .import integrating_dash
 from .import pattern_matching_callbacks
 from .import holoviews
+from .import async_components
