@@ -95,9 +95,9 @@ header = html.Div(
 )
 
 DEFAULT_AD = dict(
-   alt="🧬 Learn how to build RNA-Seq data apps in Python & Dash at this May 20 Webinar!",
-   src=tools.relpath('https://images.prismic.io/plotly-marketing-website/317e6a00-08ff-4582-8e1a-6c11adeea6d0_sidebar_ads_bioinformatics%28changed%29.jpeg?auto=compress,format'),
-   href='https://go.plotly.com/bioinformatics'
+   alt="📊 Dash 2.0 Arrives.",
+   src=tools.relpath('https://images.prismic.io/plotly-marketing-website/d0fb7e82-53d3-42a9-bf4e-72ed0e63cd77_Dash-2-sidebar_ads_5-24.jpeg?auto=compress,format'),
+   href='https://go.plotly.com/announcing-dash-2'
 )
 
 app.title = 'Dash User Guide and Documentation - Dash by Plotly'
