@@ -95,8 +95,8 @@ header = html.Div(
 )
 
 DEFAULT_AD = dict(
-   alt="📊 Dash 2.0 Arrives.",
-   src=tools.relpath('https://images.prismic.io/plotly-marketing-website/d0fb7e82-53d3-42a9-bf4e-72ed0e63cd77_Dash-2-sidebar_ads_5-24.jpeg?auto=compress,format'),
+   alt="📊 Dash 2.0 is Arriving.",
+   src=tools.relpath('https://images.prismic.io/plotly-marketing-website/5f7280e4-3f69-4e8b-b024-3e0e7976820e_Dash-2-sidebar_ads_5-24.jpeg?auto=compress,format'),
    href='https://go.plotly.com/announcing-dash-2'
 )
 
