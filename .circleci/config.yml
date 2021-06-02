@@ -61,7 +61,7 @@ jobs:
   "python-3.6":
     <<: *test-template
     docker:
-      - image: circleci/python:3.6.13-stretch-node-browsers
+      - image: circleci/python:3.6.9-stretch-node-browsers
         auth:
           username: dashautomation
           password: $DASH_PAT_DOCKERHUB
