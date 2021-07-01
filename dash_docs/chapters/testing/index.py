@@ -44,9 +44,9 @@ layout = html.Div([
 
     FYI, We run Dash integration tests with Chrome WebDriver.
     But the fixture allows you to choose another browser from the command line,
-    e.g. `pytest --webdriver Firefox -k <test directory>/<test name>`.
+    e.g. `pytest --webdriver Firefox <test directory>/<test name>`.
 
-    Headless mode is added in Dash *1.0.1*, run `pytest --headless -k <test directory>/<test name>`
+    Headless mode is added in Dash *1.0.1*, run `pytest --headless <test directory>/<test name>`
     to start test in headless mode. First time hearing about `headless mode`? The
     main benefit for us is it's lighter and faster to run without a UI. You
     can check the details from both [Firefox](https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Headless_mode)
@@ -54,7 +54,7 @@ layout = html.Div([
 
     Remote WebDriver support is added in Dash *1.3.0*. There are two ways to use it:
 
-    1. Run `pytest --remote -k <test directory>/<test name>` to grab a Chrome WebDriver from a local
+    1. Run `pytest --remote <test directory>/<test name>` to grab a Chrome WebDriver from a local
     hosted grid at `http://localhost:4444/wd/hub`
     2. Run `pytest --webdriver Firefox --remote-url https://grid_provioder_endpoints`
     to connect with a remote grid in the cloud running Firefox (default Chrome).
