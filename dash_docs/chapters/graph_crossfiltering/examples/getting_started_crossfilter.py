@@ -74,11 +74,11 @@ app.layout = html.Div([
 
 @app.callback(
     Output('crossfilter-indicator-scatter', 'figure'),
-    Input('crossfilter-xaxis-column', 'value'),
-    Input('crossfilter-yaxis-column', 'value'),
-    Input('crossfilter-xaxis-type', 'value'),
-    Input('crossfilter-yaxis-type', 'value'),
-    Input('crossfilter-year--slider', 'value'))
+    [Input('crossfilter-xaxis-column', 'value'),
+     Input('crossfilter-yaxis-column', 'value'),
+     Input('crossfilter-xaxis-type', 'value'),
+     Input('crossfilter-yaxis-type', 'value'),
+     Input('crossfilter-year--slider', 'value')])
 def update_graph(xaxis_column_name, yaxis_column_name,
                  xaxis_type, yaxis_type,
                  year_value):
@@ -121,9 +121,9 @@ def create_time_series(dff, axis_type, title):
 
 @app.callback(
     Output('x-time-series', 'figure'),
-    Input('crossfilter-indicator-scatter', 'hoverData'),
-    Input('crossfilter-xaxis-column', 'value'),
-    Input('crossfilter-xaxis-type', 'value'))
+    [Input('crossfilter-indicator-scatter', 'hoverData'),
+     Input('crossfilter-xaxis-column', 'value'),
+     Input('crossfilter-xaxis-type', 'value')])
 def update_y_timeseries(hoverData, xaxis_column_name, axis_type):
     country_name = hoverData['points'][0]['customdata']
     dff = df[df['Country Name'] == country_name]
@@ -134,9 +134,9 @@ def update_y_timeseries(hoverData, xaxis_column_name, axis_type):
 
 @app.callback(
     Output('y-time-series', 'figure'),
-    Input('crossfilter-indicator-scatter', 'hoverData'),
-    Input('crossfilter-yaxis-column', 'value'),
-    Input('crossfilter-yaxis-type', 'value'))
+    [Input('crossfilter-indicator-scatter', 'hoverData'),
+     Input('crossfilter-yaxis-column', 'value'),
+     Input('crossfilter-yaxis-type', 'value')])
 def update_x_timeseries(hoverData, yaxis_column_name, axis_type):
     dff = df[df['Country Name'] == hoverData['points'][0]['customdata']]
     dff = dff[dff['Indicator Name'] == yaxis_column_name]
