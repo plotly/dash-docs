@@ -36,7 +36,7 @@ preamble = html.Div([
     '''),
 
     rc.Markdown('''
-    For production Dash applications, DataTable is intended to bse used with
+    For production Dash applications, DataTable is intended to be used with
     [Python data pipelines](https://plotly.com/dash/job-queue/) for ingesting
     the table data and [Design Kit](https://plotly.com/dash/design-kit) for
     DataTable styling.
