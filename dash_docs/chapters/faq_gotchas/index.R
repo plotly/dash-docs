@@ -70,7 +70,7 @@ and URL Support](/urls) section in the Dash User Guide.
 **Q:** *How do I determine which `input` has changed?*
 
 **A:** In addition to event properties like `n_clicks` that change whenever 
-an event happens (in this case a click), there is a global variable 
+an event happens (in this case a click), there is a variable 
 `app$callback_context()`, available only inside a callback. It has properties:
 
   - `triggered`:  list of changed properties. 
