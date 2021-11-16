@@ -166,7 +166,7 @@ layout = html.Div([
 
     **Note**: There are a few limitations to keep in mind:
 
-    1. Clientside callbacks execute on the browser's main thread and wil block
+    1. Clientside callbacks execute on the browser's main thread and will block
     rendering and events processing while being executed.
     2. Dash does not currently support asynchronous clientside callbacks and will
     fail if a `Promise` is returned.
