@@ -184,7 +184,7 @@ Let's extend our example to include multiple outputs.
 
 So far all the callbacks we've written only update a single Output property. We
 can also update several at once: put all the properties you want to update as a 
-list in the decorator, and return that many items from the callback. This is
+list in the callback, and return that many items from the callback. This is
 particularly nice if two outputs depend on the same computationally intense intermediate 
 result, such as a slow database query. The only change we have to make is setting the `Output`
 as a list of `outputs`, and returning a list of each of the consecutive results.
