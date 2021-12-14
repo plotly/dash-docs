@@ -16,7 +16,7 @@ dash-cytoscape==0.2.0
 dash-dangerously-set-inner-html==0.0.2
 dash-daq==0.5.0
 dash-slicer>=0.3.0;python_version>="3.0"
-dask==1.2.0
+dask==2021.10.0
 decorator==4.3.0
 enum34==1.1.6
 flake8==3.5.0
