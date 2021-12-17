@@ -51,6 +51,24 @@ layout = html.Div([
 
     html.Hr(),
 
+html.H2('Limitations'),
+rc.Markdown('''
+        Chrome, Safari, Edge and Firefox browsers may crash when uploading 
+        files larger than ~150Mb with `dcc.Upload`. `dcc.Upload` first 
+        loads files to browser memory, as a byte64-encoded string, before 
+        uploading them to the server and parsing them. Crashes occur when the 
+        memory runs out on either the client or server sides. Workarounds 
+        include:
+        
+        - Limiting the size of uploaded files to 100MB with the `max_size` property.
+        - Preventing uploads during memory-intensive tasks.
+        - Managing your browser's memory usage by reducing the number of open tabs or running extensions when uploading files.
+        - Increasing the amount of memory available to your browser or server.
+        - Using [dash_uploader](https://github.com/np-8/dash-uploader), a Community developed component that does not have upload limits.
+    '''),
+
+    html.Hr(),
+
     html.H2('dcc.Upload Component Properties'),
     rc.ComponentReference('Upload')
 ])
