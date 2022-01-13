@@ -160,19 +160,6 @@ a subset of the specified `inputs` present in the current page layout, the
 callback will simply not fire at all.
 
 
-### Callbacks can only target a single `output` component/property pair
-
-Currently, for a given callback, it can only have a single `output`, which
-targets one component/property pair eg `'my-graph'`, `'figure'`. If you
-wanted, say, four `Graph` components to be updated based on a particular
-user input, you either need to create four separate callbacks which each
-target an individual `Graph`, or have the callback return a `htmlDiv`
-container that holds the updated four Graphs.
-
-There are plans to remove this limitation. You can track the status of this
-in this [GitHub Issue](https://github.com/plotly/dash/issues/149).
-
-
 ### A component/property pair can only be the `output` of one callback
 
 For a given component/property pair (eg `'my-graph'`, `'figure'`), it can
