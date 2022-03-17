@@ -12,7 +12,7 @@ external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 cache = Cache(app.server, config={
     # try 'filesystem' if you don't want to setup redis
-    'CACHE_TYPE': 'redis',
+    'CACHE_TYPE': 'RedisCache',
     'CACHE_REDIS_URL': os.environ.get('REDIS_URL', '')
 })
 app.config.suppress_callback_exceptions = True
