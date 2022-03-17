@@ -3,7 +3,7 @@
 `app.json` is an optional file that allow you to specify `predeploy` and `postdeploy` scripts to run 
 in your Dash App's environment. It is also used by {kubernetes} to configure app health checks similarly to 
 how Dash Enterprise Single-Server uses `CHECKS` files — determining when an app is ready to 
-receive web traffic. An `apps.json` file must be placed in your app's root directory.
+receive web traffic. An `app.json` file must be placed in your app's root directory.
 
 **predeploy**
 
