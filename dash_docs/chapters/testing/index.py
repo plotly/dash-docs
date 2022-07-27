@@ -56,7 +56,7 @@ layout = html.Div([
 
     1. Run `pytest --remote -k bsly001` to grab a Chrome WebDriver from a local
     hosted grid at `http://localhost:4444/wd/hub`
-    2. Run `pytest --webdriver Firefox --remote-url https://grid_provioder_endpoints`
+    2. Run `pytest --webdriver Firefox --remote-url https://grid_provider_endpoints`
     to connect with a remote grid in the cloud running Firefox (default Chrome).
     Note that you don't need to use `--remote` as soon as the `--remote-url`
     value is set and different than the default one.
