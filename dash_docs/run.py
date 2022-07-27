@@ -53,11 +53,11 @@ header = html.Div(
             # make sure to check that the responsive design still works
             # The breakpoints are set in override.css
             html.Div(className='links', children=[
-                html.A('📓 Workspaces', className='links--announcements', href='https://plotly.com/dash/workspaces'),
-                html.A('Announcements', className='links--announcements', href='https://community.plotly.com/tag/announcements'),
-                html.A('Gallery', className='links--gallery', href='https://dash-gallery.plotly.host'),
+                html.A('Pricing', className='links--announcements', href='https://plotly.com/get-pricing/'),
                 html.A('Show & Tell', className='links--show-and-tell', href='https://community.plotly.com/tag/show-and-tell'),
                 html.A('Community', className='links--community-forum', href='https://community.plotly.com/c/dash'),
+                html.A('Gallery', className='links--gallery', href='https://dash-gallery.plotly.host'),                
+                html.A('📰 News', className='links--announcements', href='https://community.plotly.com/tag/announcements'),                
                 html.Iframe(
                     src="https://ghbtns.com/github-btn.html?user=plotly&repo=dash&type=star&count=true&size=small",
                     style={
@@ -95,9 +95,9 @@ header = html.Div(
 )
 
 DEFAULT_AD = dict(
-    alt='Announcing Dash VTK for 3d simulation graphics. Check out the March Webinar.',
-    src=tools.relpath('/assets/images/sidebar/dash_vtk_sidebar_2-14.jpg'),
-    href='https://go.plotly.com/dash-vtk'
+   alt="📊 Dash 2.0 is Arriving.",
+   src=tools.relpath('https://images.prismic.io/plotly-marketing-website/5f7280e4-3f69-4e8b-b024-3e0e7976820e_Dash-2-sidebar_ads_5-24.jpeg?auto=compress,format'),
+   href='https://go.plotly.com/announcing-dash-2'
 )
 
 app.title = 'Dash User Guide and Documentation - Dash by Plotly'

@@ -172,9 +172,18 @@ def redirect_sizing():
 def redirect_checks():
     return redirect('/application-structure', code=301)
 
+@server.route('/datatable/sizing')
+def redirect_datatable_sizing():
+    return redirect('/datatable/width', code=301)
 
 @server.before_request
 def clear_trailing():
     rp = request.path
     if rp != '/' and rp.endswith('/'):
         return redirect(rp[:-1])
+
+@server.after_request
+def redirect_url(response):
+    url_root = 'https://dash.plotly.com'
+    rp = request.path
+    return redirect('{root}{path}'.format(root=url_root, path=rp))

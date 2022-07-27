@@ -29,7 +29,6 @@ def Blockquote():
         > data science apps. [Find out if your company is using Dash Enterprise](https://go.plotly.com/company-lookup)
     ''')
 
-
 # # # # # # #
 # Initialize
 # # # # # # #
@@ -996,7 +995,7 @@ EnvVars = html.Div(children=[
 # Local Directories
 # # # # # # #
 LocalDir = html.Div(children=[
-    html.H1('Mapping Local Directories Examples and Reference'),
+    html.H1('Mapping Local Directories'),
 
     Blockquote(),
 
@@ -1022,11 +1021,10 @@ LocalDir = html.Div(children=[
     persistently as well as read files from the underlying server, including
     networked file systems.
 
-    Since this feature has security implications, only directories specified
-    in the Plotly-On-Premise Server Manager can be mapped to Dash Apps.
-    > Note that in Plotly Enterprise versions before 3.1.0 only users with admin privileges
-    > could map local directories into their apps. Please contact `onpremise.support@plotly.com` if
-    > you have any questions.
+    > Since this feature has security implications, only directories specified
+    > in the Dash Enterprise Server Manager can be mapped to Dash Apps.
+    
+    > This feature is not yet available in Dash Enterprise Kubernetes.
 
     ***
 
@@ -1036,6 +1034,10 @@ LocalDir = html.Div(children=[
     can allow certain directories on the host server to be mapped to dash apps. Go to
     the *Allowed Directories for Mapping* section of the settings page and add the path(s)
     of approved directories.
+    
+    In order for Dash Apps to have read and write access to the directory, ensure that 
+    it is owned by UID/GID 32767. E.g from the host server, an admin could run
+    `chown -R 32767:32767 /srv/app-data`
 
     '''),
 

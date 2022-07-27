@@ -12,8 +12,6 @@ from dash_docs import reusable_components as rc
 
 import json
 
-
-
 # all component names
 
 def get_component_names(library_name):
@@ -33,7 +31,7 @@ def get_component_names(library_name):
         r'^[A-Z][a-zA-Z]+$', member
     ) is not None]
 
-    react = [c.__name__ for c in library._components]
+    react = [c for c in library.__all__]
     python = [c for c in all_components if c not in react]
 
     return {'react': react,

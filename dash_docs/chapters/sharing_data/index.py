@@ -50,6 +50,33 @@ layout = html.Div([
 
     rc.Markdown('''
 
+    ## Dash is Stateless
+
+    Dash was architected to be a stateless framework.
+    
+    Stateless frameworks are more scalable and more robust. Most websites that you visit are
+    architected on stateless servers.
+    
+    They are more scalable because it's trivial to add more compute power to the application.
+    To scale the application to serve more users or run more computations, simply
+    run more "copies" of the app in separate processes.
+    In production, this is either done with gunicorn's worker command:
+    ```
+    gunicorn app:server --workers 8
+    ```
+    or by running the app in multiple Docker containers or servers and load balancing between them.
+    
+    Stateless frameworks are more robust because one process can fail and other processes can continue
+    serving requests.
+    In Dash Enterprise Kubernetes, these containers can run on separate servers or even
+    separate regions, providing resiliancing against server failure.
+    
+    With a stateless framework, user sessions are not mapped 1-1 with server processes.
+    Each callback request can be executed on _any_ of the available processes.
+    `gunicorn` will check which process isn't busy running a callback and send the new callback request
+    to that process. This means that a few processes can balance the requests of 10s or 100s of concurrent users
+    so long as those requests aren't happening at _the exact same time_ (they usually don't!).
+
     ## Why `global` variables will break your app
 
     Dash is designed to work in multi-user environments
@@ -62,6 +89,7 @@ layout = html.Div([
 
     Dash is also designed to be able to run with **multiple python
     workers** so that callbacks can be executed in parallel.
+    
     This is commonly done with `gunicorn` using syntax like
     ```shell
     $ gunicorn --workers 4 app:server
@@ -73,7 +101,7 @@ layout = html.Div([
     When Dash apps run across multiple workers, their memory
     _is not shared_. This means that if you modify a global
     variable in one callback, that modification will not be
-    applied to the rest of the workers.
+    applied to the rest of the workers / processes.
 
     ***
 
@@ -139,26 +167,27 @@ def update_output_1(value):
         ## Sharing Data Between Callbacks
 
         In order to share data safely across multiple python
-        processes, we need to store the data somewhere that is accessible to
+        processes or servers, we need to store the data somewhere that is accessible to
         each of the processes.
 
         There are three main places to store this data:
 
-        1 - In the user's browser session
+        1 - In the user's browser session via [dcc.Store](/dash-core-components/store)
 
-        2 - On the disk (e.g. on a file or on a new database)
+        2 - On the disk (e.g. on a file or in a database)
 
-        3 - In a shared memory space like with Redis
+        3 - In server-side memory shared across processes and servers like a Redis database. [Dash Enterprise](https://plotly.com/dash) includes onboard, one-click Redis databases for this purpose.
 
         The following three examples illustrate these approaches.
 
-        ## Example 1 - Storing Data in the Browser with a Hidden Div
+        ## Example 1 - Storing Data in the Browser with a `dcc.Store`
+
+        _Note - This example used to be implemented with a "hidden div". 
+        We recommend using `dcc.Store` instead - `dcc.Store` stores the data 
+        in memory in the browser client instead of the browser's DOM and the intent is clearer._
 
         To save data in user's browser's session:
-        - Implemented by saving the data as part of Dash's front-end store
-          through methods explained in
-          [https://community.plotly.com/t/sharing-a-dataframe-between-plots/6173](https://community.plotly.com/t/sharing-a-dataframe-between-plots/6173)
-        - Data has to be converted to a string like JSON for storage and transport
+        - Data has to be converted to a string like JSON or base64 encoded binary data for storage and transport
         - Data that is cached in this way will _only be available in the
           user's current session_.
           - If you open up a new browser, the app's callbacks will always
@@ -180,7 +209,7 @@ def update_output_1(value):
         This example outlines how you can perform an expensive data processing
         step in one callback, serialize the output at JSON, and provide it
         as an input to the other callbacks. This example uses standard Dash
-        callbacks and stores the JSON-ified data inside a hidden div in
+        callbacks and stores the JSON-ified data inside a `dcc.Store` in
         the app.
         '''),
         children='''
@@ -191,11 +220,11 @@ def update_output_1(value):
             html.Table(id='table'),
             dcc.Dropdown(id='dropdown'),
 
-            # Hidden div inside the app that stores the intermediate value
-            html.Div(id='intermediate-value', style={'display': 'none'})
+            # dcc.Store inside the app that stores the intermediate value
+            dcc.Store(id='intermediate-value')
         ])
 
-        @app.callback(Output('intermediate-value', 'children'), Input('dropdown', 'value'))
+        @app.callback(Output('intermediate-value', 'data'), Input('dropdown', 'value'))
         def clean_data(value):
              # some expensive clean data step
              cleaned_df = your_expensive_clean_or_compute_step(value)
@@ -204,7 +233,7 @@ def update_output_1(value):
              # json.dumps(cleaned_df)
              return cleaned_df.to_json(date_format='iso', orient='split')
 
-        @app.callback(Output('graph', 'figure'), Input('intermediate-value', 'children'))
+        @app.callback(Output('graph', 'figure'), Input('intermediate-value', 'data'))
         def update_graph(jsonified_cleaned_data):
 
             # more generally, this line would be
@@ -214,7 +243,7 @@ def update_output_1(value):
             figure = create_figure(dff)
             return figure
 
-        @app.callback(Output('table', 'children'), Input('intermediate-value', 'children'))
+        @app.callback(Output('table', 'children'), Input('intermediate-value', 'data'))
         def update_table(jsonified_cleaned_data):
             dff = pd.read_json(jsonified_cleaned_data, orient='split')
             table = create_table(dff)
@@ -239,7 +268,7 @@ def update_output_1(value):
 
     rc.Syntax(children='''
         @app.callback(
-            Output('intermediate-value', 'children'),
+            Output('intermediate-value', 'data'),
             Input('dropdown', 'value'))
         def clean_data(value):
              # an expensive query step
@@ -261,7 +290,7 @@ def update_output_1(value):
 
         @app.callback(
             Output('graph', 'figure'),
-            Input('intermediate-value', 'children'))
+            Input('intermediate-value', 'data'))
         def update_graph_1(jsonified_cleaned_data):
             datasets = json.loads(jsonified_cleaned_data)
             dff = pd.read_json(datasets['df_1'], orient='split')
@@ -270,7 +299,7 @@ def update_output_1(value):
 
         @app.callback(
             Output('graph', 'figure'),
-            Input('intermediate-value', 'children'))
+            Input('intermediate-value', 'data'))
         def update_graph_2(jsonified_cleaned_data):
             datasets = json.loads(jsonified_cleaned_data)
             dff = pd.read_json(datasets['df_2'], orient='split')
@@ -279,7 +308,7 @@ def update_output_1(value):
 
         @app.callback(
             Output('graph', 'figure'),
-            Input('intermediate-value', 'children'))
+            Input('intermediate-value', 'data'))
         def update_graph_3(jsonified_cleaned_data):
             datasets = json.loads(jsonified_cleaned_data)
             dff = pd.read_json(datasets['df_3'], orient='split')
@@ -295,15 +324,15 @@ def update_output_1(value):
         ## Example 3 - Caching and Signaling
 
         This example:
-        - Uses Redis via Flask-Cache for storing “global variables”.
+        - Uses Redis via Flask-Cache for storing “global variables” on the server-side in a database.
           This data is accessed through a function, the output of which is
           cached and keyed by its input arguments.
-        - Uses the hidden div solution to send a signal to the other
+        - Uses the `dcc.Store` solution to send a signal to the other
           callbacks when the expensive computation is complete.
         - Note that instead of Redis, you could also save this to the file
           system. See https://flask-caching.readthedocs.io/en/latest/
           for more details.
-        - This “signaling” is cool because it allows the expensive
+        - This “signaling” is performant because it allows the expensive
           computation to only take up one process.
           Without this type of signaling, each callback could end up
           computing the expensive computation in parallel,
@@ -315,16 +344,18 @@ def update_output_1(value):
 
         Here’s what this example looks like. Some things to note:
 
-        - I’ve simulated an expensive process by using a time.sleep(5).
+        - We’ve simulated an expensive process by using a time.sleep(5).
         - When the app loads, it takes five seconds to render all four graphs.
         - The initial computation only blocks one process.
         - Once the computation is complete, the signal is sent and four callbacks
           are executed in parallel to render the graphs.
           Each of these callbacks retrieves the data from the
-          “global store”: the Redis or filesystem cache.
-        - I’ve set processes=6 in app.run_server so that multiple callbacks
+          “global server-side store”: the Redis or filesystem cache.
+        - We’ve set `processes=6` in `app.run_server` so that multiple callbacks
           can be executed in parallel. In production, this is done with
-          something like $ gunicorn --workers 6 --threads 2 app:server
+          something like `$ gunicorn --workers 6 app:server`.
+          If you don't run with multiple processes, then you won't see the graphs update in parallel as
+          callbacks will be updated serially.
         - Selecting a value in the dropdown will take less than five seconds
           if it has already been selected in the past.
           This is because the value is being pulled from the cache.
@@ -364,6 +395,8 @@ def update_output_1(value):
             'https://codepen.io/chriddyp/pen/brPBPO.css']
 
         app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+        server = app.server
+
         CACHE_CONFIG = {
             # try 'filesystem' if you don't want to setup redis
             'CACHE_TYPE': 'redis',
@@ -400,8 +433,8 @@ def update_output_1(value):
                 html.Div(dcc.Graph(id='graph-4'), className="six columns"),
             ], className="row"),
 
-            # hidden signal value
-            html.Div(id='signal', style={'display': 'none'})
+            # signal value to trigger callbacks
+            dcc.Store(id='signal')
         ])
 
 
@@ -426,14 +459,14 @@ def update_output_1(value):
             return fig
 
 
-        @app.callback(Output('signal', 'children'), Input('dropdown', 'value'))
+        @app.callback(Output('signal', 'data'), Input('dropdown', 'value'))
         def compute_value(value):
             # compute value and send a signal when done
             global_store(value)
             return value
 
 
-        @app.callback(Output('graph-1', 'figure'), Input('signal', 'children'))
+        @app.callback(Output('graph-1', 'figure'), Input('signal', 'data'))
         def update_graph_1(value):
             # generate_figure gets data from `global_store`.
             # the data in `global_store` has already been computed
@@ -452,7 +485,7 @@ def update_output_1(value):
             })
 
 
-        @app.callback(Output('graph-2', 'figure'), Input('signal', 'children'))
+        @app.callback(Output('graph-2', 'figure'), Input('signal', 'data'))
         def update_graph_2(value):
             return generate_figure(value, {
                 'data': [{
@@ -463,7 +496,7 @@ def update_output_1(value):
             })
 
 
-        @app.callback(Output('graph-3', 'figure'), Input('signal', 'children'))
+        @app.callback(Output('graph-3', 'figure'), Input('signal', 'data'))
         def update_graph_3(value):
             return generate_figure(value, {
                 'data': [{
@@ -472,7 +505,7 @@ def update_output_1(value):
             })
 
 
-        @app.callback(Output('graph-4', 'figure'), Input('signal', 'children'))
+        @app.callback(Output('graph-4', 'figure'), Input('signal', 'data'))
         def update_graph_4(value):
             return generate_figure(value, {
                 'data': [{
@@ -498,14 +531,14 @@ def update_output_1(value):
 
         In some cases, you want to keep the data isolated to user sessions:
         one user's derived data shouldn't update the next user's derived data.
-        One way to do this is to save the data in a hidden `Div`,
+        One way to do this is to save the data in a `dcc.Store`,
         as demonstrated in the first example.
 
         Another way to do this is to save the data on the
         filesystem cache with a session ID and then reference the data
         using that session ID. Because data is saved on the server
         instead of transported over the network, this method is generally faster than the
-        "hidden div" method.
+        `dcc.Store` method.
 
         This example was originally discussed in a
         [Dash Community Forum thread](https://community.plotly.com/t/capture-window-tab-closing-event/7375/2?u=chriddyp).
@@ -514,10 +547,10 @@ def update_output_1(value):
         - Caches data using the `flask_caching` filesystem cache. You can also save to an in-memory database like Redis.
         - Serializes the data as JSON.
             - If you are using Pandas, consider serializing
-            with Apache Arrow. [Community thread](https://community.plotly.com/t/fast-way-to-share-data-between-callbacks/8024/2)
+            with Apache Arrow for faster serialization or Plasma for smaller dataframe size. [Community thread](https://community.plotly.com/t/fast-way-to-share-data-between-callbacks/8024/2)
         - Saves session data up to the number of expected concurrent users.
         This prevents the cache from being overfilled with data.
-        - Creates unique session IDs by embedding a hidden random string into
+        - Creates unique session IDs by embedding a random string into
         the app's layout and serving a unique layout on every page load.
 
         > Note: As with all examples that send data to the client, be aware

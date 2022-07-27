@@ -99,6 +99,9 @@
     <loc>https://dash.plotly.com/dash-bio/oncoprint</loc>
 </url>
 <url>
+    <loc>https://dash.plotly.com/dash-bio/pileup</loc>
+</url>
+<url>
     <loc>https://dash.plotly.com/dash-bio/sequenceviewer</loc>
 </url>
 <url>
@@ -124,6 +127,9 @@
 </url>
 <url>
     <loc>https://dash.plotly.com/dash-core-components/datepickersingle</loc>
+</url>
+<url>
+    <loc>https://dash.plotly.com/dash-core-components/download</loc>
 </url>
 <url>
     <loc>https://dash.plotly.com/dash-core-components/dropdown</loc>
@@ -283,6 +289,9 @@
 </url>
 <url>
     <loc>https://dash.plotly.com/dash-enterprise/portal</loc>
+</url>
+<url>
+    <loc>https://dash.plotly.com/dash-enterprise/preparing</loc>
 </url>
 <url>
     <loc>https://dash.plotly.com/dash-enterprise/privacy</loc>
@@ -804,6 +813,9 @@
     <loc>https://dash.plotly.com/react-for-python-developers</loc>
 </url>
 <url>
+    <loc>https://dash.plotly.com/reference</loc>
+</url>
+<url>
     <loc>https://dash.plotly.com/sharing-data-between-callbacks</loc>
 </url>
 <url>
@@ -817,5 +829,29 @@
 </url>
 <url>
     <loc>https://dash.plotly.com/urls</loc>
+</url>
+<url>
+    <loc>https://dash.plotly.com/vtk</loc>
+</url>
+<url>
+    <loc>https://dash.plotly.com/vtk/advanced</loc>
+</url>
+<url>
+    <loc>https://dash.plotly.com/vtk/click-hover</loc>
+</url>
+<url>
+    <loc>https://dash.plotly.com/vtk/intro</loc>
+</url>
+<url>
+    <loc>https://dash.plotly.com/vtk/other</loc>
+</url>
+<url>
+    <loc>https://dash.plotly.com/vtk/reference</loc>
+</url>
+<url>
+    <loc>https://dash.plotly.com/vtk/representations</loc>
+</url>
+<url>
+    <loc>https://dash.plotly.com/vtk/structure</loc>
 </url>
 </urlset>

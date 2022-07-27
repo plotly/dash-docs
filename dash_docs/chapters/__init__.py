@@ -12,6 +12,7 @@ from .import deployment
 from .import external_resources
 from .import dash_canvas
 from .import dash_slicer
+from .import dash_vtk
 from .import dash_annotations
 from .import getting_started
 from .import faq_gotchas
@@ -24,6 +25,7 @@ from .import migration
 from .import performance
 from .import persistence
 from .import plugins
+from .import reference
 from .import sharing_data
 from .import clientside_callbacks
 from .import advanced_callbacks

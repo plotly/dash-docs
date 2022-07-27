@@ -24,7 +24,7 @@ layout <- htmlDiv(
 > covered how to use callbacks with the `dashCoreComponents.Graph` component.
 > The rest of the Dash documentation covers other topics like multi-page apps and component libraries.
 > Just getting started? Make sure to [install the necessary dependencies](/installation).
-> The [next and final chapter](/faq-gotchas) covers frequently asked questions and gotchas.
+> The [next and final chapter](/faqs) covers frequently asked questions and gotchas.
 
 One of the core Dash principles explained in the
 [Getting Started Guide on Callbacks](/getting-started-part-2)

@@ -3,9 +3,8 @@ import dash_core_components as dcc
 import dash_html_components as html
 from dash_docs.chapter_index import URLS, URL_TO_CONTENT_MAP, DASH_ENTERPRISE_URLS
 
-from dash_docs.convert_to_html import convert_to_html
 from dash_docs.reusable_components import TOC, WorkspaceBlurb
-from dash_docs.tools import merge, relpath
+from dash_docs.tools import relpath
 
 styles = {
     'underline': {
@@ -17,16 +16,18 @@ styles = {
 layout = html.Div([
     dcc.Tabs([
         dcc.Tab(label='Dash open-source', children=[
-            html.H1('Dash User Guide'),
+            html.H2('Dash Python User Guide'),
 
-            dcc.Markdown(
+            html.Blockquote([dcc.Markdown(
                 '''
-                > This user guide is for the Python implementation of Dash Open Source.
-                > Dash Open Source is also available in R and Julia.
-                > View the [Dash for R User Guide & Documentation](https://dashr.plotly.com)
-                > and the [Dash for Julia User Guide & Documentation](https://dash-julia.plotly.com)
-                ''', style={'fontSize': 14}
-            ),
+                Dash brings low-code data apps to these languages:
+
+                [Python](https://dash.plotly.com) |
+                [R](https://dashr.plotly.com) |
+                [Julia](https://dash-julia.plotly.com) |
+                [.NET](https://github.com/plotly/Dash.NET)
+                '''),
+            ]),
 
             WorkspaceBlurb,
 

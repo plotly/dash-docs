@@ -15,6 +15,7 @@ import dash_table
 import dash_daq
 import dash_cytoscape
 import dash_bio
+import dash_vtk
 
 from dash_docs import reusable_components as rc, tools
 from .reusable_components import TOC, TOCChapters
@@ -78,15 +79,21 @@ APP_MANAGER_URLS = [
         'content': chapters.dash_enterprise.index.layout
     },
     {
+        'url': '/dash-enterprise/preparing',
+        'content': chapters.dash_enterprise.migration_guide.index.layout,
+        'name': 'Part 1. Preparing your App for Dash Enterprise',
+        'description': 'Preparing app code that works locally into code that will run on Dash Enterprise'
+    },
+    {
         'url': '/dash-enterprise/initialize',
         'content': chapters.dash_enterprise.dash_enterprise_chapters.Initialize,
-        'name': 'Part 1. Initialize Dash Apps on Dash Enterprise',
+        'name': 'Part 2. Initialize Dash Apps on Dash Enterprise',
         'description': 'Initialize Dash Apps on Plotly Enterprise'
     },
     {
         'url': '/dash-enterprise/deployment',
         'content': chapters.dash_enterprise.dash_enterprise_chapters.Deploy,
-        'name': 'Part 2. Deploy Dash Apps on Dash Enterprise',
+        'name': 'Part 3. Deploy Dash Apps on Dash Enterprise',
         'description': 'Deploy Dash Apps on Dash Enterprise'
     },
     {
@@ -251,7 +258,6 @@ DASH_ENTERPRISE_URLS = {
     'description': (
         '''
         #### These capabilities are only available in Dash Enterprise
-
         > To deploy Dash apps in production environments, you'll need
         > [Dash Enterprise](https://plotly.com/dash).
         >
@@ -451,19 +457,17 @@ URLS = [
                 'url': '/introduction',
                 'name': 'Introduction',
                 'description': '''
-                    A quick paragraph about Dash and a link to the talk at
-                    Plotcon that started it all.
+                    A short introduction to Dash.
                 ''',
                 'content': chapters.introduction.index.layout
             }
         ] + [
             {
                 'url': 'https://medium.com/@plotlygraphs/introducing-dash-5ecf7191b503',
-                'name': 'Announcement Essay (2017)',
+                'name': '2017 Announcement Essay',
                 'description': (
                     '''
-                    Our extended essay on Dash. An extended discussion of
-                    Dash's architecture and our motivation behind the project.
+                    A longer introduction to Dash, including architecture and project motivation.
                     '''
                 )
             },
@@ -471,14 +475,14 @@ URLS = [
                 'url': 'https://dash-gallery.plotly.host/Portal/',
                 'name': 'Dash App Gallery',
                 'description': '''
-                    A glimpse into what's possible with Dash.
+                    Over 100 open-source Dash app examples for every industry.
                 '''
             },
             {
                 'url': 'https://go.plotly.com/dash-club',
                 'name': 'Dash Club',
                 'description': '''
-                    An email newsletter by chriddyp, the creator of Dash.
+                    An email newsletter by @chriddyp, the creator of Dash.
                 '''
             },
         ] +
@@ -487,12 +491,10 @@ URLS = [
                 'url': '/dash-enterprise',
                 'name': 'Dash Enterprise',
                 'description': '''
-                    The commercial platform behind Dash Open Source for
-                    developing, deploying, and managing better Dash Applications
+                    The Kubernetes platform for writing, deploying,
+                    and managing high performance Dash applications
                     at scale.
-                ''',
-                'className': 'red'
-            }
+                '''            }
         ] if not tools.is_in_dash_enterprise() else [])
     },
 
@@ -520,18 +522,16 @@ URLS = [
                 'name': 'Part 3. Basic Callbacks',
                 'description': (
                     "Dash apps are made interactive through Dash "
-                    "Callbacks: Python functions that are "
-                    "automatically called whenever an input "
-                    "component's property changes. Callbacks "
-                    "can be chained, allowing one update in the "
-                    "UI to trigger several updates across the app."
+                    "Callbacks: chainable Python functions that are "
+                    "automatically called whenever a UI element is changed."
                 ),
                 'content': chapters.basic_callbacks.index.layout
             },
             {
                 'url': '/interactive-graphing',
                 'name': 'Part 4. Interactive Graphing and Crossfiltering',
-                'description': 'Bind interactivity to the Dash `Graph` ' \
+                'description': 'Graphs can be inputs as well as outputs: '\
+                               'bind interactivity to the Dash `Graph` ' \
                                'component whenever you hover, click, or ' \
                                'select points on your chart.',
                 'content': chapters.graph_crossfiltering.index.layout
@@ -796,7 +796,6 @@ URLS = [
                             clientside (in the browser). This means that you need to
                             load all of the data into the table up-front. If your data is large,
                             then this can be prohibitively slow.
-
                             In this chapter, you'll learn how to write your own filtering,
                             sorting, and paging backends in Python with Dash.
                             We'll do the data processing with Pandas but you could write your
@@ -812,9 +811,7 @@ URLS = [
                             The DataTable is editable. Like a spreadsheet, it can be used
                             as an input for controlling models with a variable number
                             of inputs.
-
                             This chapter includes recipes for:
-
                             - Determining which cell has changed
                             - Filtering out null values
                             - Adding or removing columns
@@ -1074,6 +1071,68 @@ URLS = [
                 ]
             },
 
+
+            {
+                'name': 'Dash VTK',
+                'chapters': [
+                    {
+                        'url': '/vtk',
+                        'name': 'Overview',
+                        'preamble': chapters.dash_vtk.index.layout,
+                        'description': (
+                            'Dash VTK enables Dash application developers to harness the power of Kitware\'s open source Visualization Toolkit when manipulating or displaying scientific data.'
+                        ),
+                        'autogenerate_index': True,
+                    },
+                    {
+                        'url': '/vtk/intro',
+                        'name': 'Intro to 3D Visualization',
+                        'content': chapters.dash_vtk.intro.index.layout,
+                        'description': 'Introductory concepts about 3D visualization needed to understand how Dash VTK works.'
+                    },
+                    {
+                        'url': '/vtk/structure',
+                        'name': 'Structure of Datasets',
+                        'content': chapters.dash_vtk.structure.index.layout,
+                        'description': 'Understand the structure of a dataset in Dash VTK.'
+                    },
+                    {
+                        'url': '/vtk/representations',
+                        'name': 'Representation Components',
+                        'content': chapters.dash_vtk.representations.index.layout,
+                        'description': (
+                            'Dash VTK Components needed to generate a representation.'
+                        )
+                    },
+                    {
+                        'url': '/vtk/other',
+                        'name': 'Other Dash VTK Components',
+                        'content': chapters.dash_vtk.other.index.layout,
+                        'description': (
+                            'Dash VTK Components that are not used for building representations.'
+                        )
+                    },
+                    {
+                        'url': '/vtk/click-hover',
+                        'name': 'Click and Hover Callbacks',
+                        'content': chapters.dash_vtk.click_hover.index.layout,
+                        'description': 'Learn to write callbacks based on user click and hovers.'
+                    },
+                    {
+                        'url': '/vtk/advanced',
+                        'name': 'Advanced Demos',
+                        'content': chapters.dash_vtk.advanced.index.layout,
+                        'description': 'Demos of more advanced usage of Dash VTK.'
+                    },
+                    {
+                        'url': '/vtk/reference',
+                        'name': 'Reference',
+                        'content': chapters.dash_vtk.reference.index.layout,
+                        'description': 'Comprehensive reference of all Dash VTK components.'
+                    }
+                ]
+            },
+
             {
                 'name': 'Dash Bootstrap Components',
                 'chapters': [
@@ -1235,6 +1294,18 @@ URLS = [
                 'content': chapters.app_lifecycle.index.layout,
                 'name': 'Dash App Lifecycle',
                 'description': 'An overview of the lifecycle of a Dash app'
+            },
+
+            {
+                'url': '/reference',
+                'content': chapters.reference.index.layout,
+                'name': 'API Reference',
+                'description': (
+                    '''
+                    The docstrings and options for the public methods of the
+                    `dash` module and the `app` object.
+                    '''
+                )
             },
 
             {

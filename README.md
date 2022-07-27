@@ -1,48 +1,13 @@
 # Dash Userguide
 
-The [Dash Userguide](https://plotly.com/dash): everything that you need to know to be productive with Dash.
+The [Dash User Guide](https://dash.plotly.com): everything that you need to know to be productive with Dash.
 
-The Dash Userguide is hosted online at: [https://plotly.com/dash](https://plotly.com/dash). A [PDF version](/pdf-docs/Dash_User_Guide_and_Documentation.pdf) is also available.
+The Dash User Guide is hosted online at: [https://dash.plotly.com](https://dash.plotly.com).
 
-### Running an app locally
+# This repo is now an issue tracker only
 
-To run an app locally:
+This repo is no longer used to host dash.plotly.com It is still (as of Sept 1 2021) used for dashr.plotly.com, but this will change soon, so even for R please do not contribute here.
 
-1. (optional) create and activate new virtualenv or conda env:
+If you are a Plotly org member, please visit https://github.com/plotly/ddk-dash-docs and make your PR there.
 
-```
-pip install virtualenv
-virtualenv venv
-source venv/bin/activate
-```
-
-or, with conda:
-```
-conda create --yes -n dash_docs
-source activate dash_docs
-```
-
-2. `pip install -r requirements.txt`
-3. `gunicorn --preload index:server` 
-
-Alternatively, for development purposes, you can run:
-`while true; do IGNORE_DASH_BIO=true python index.py; sleep 2; done`
-
-The `while true` loop restarts Dash when there's syntax errors outside of the callbacks, 
-and `IGNORE_DASH_BIO=true` constant prevents the loading of heavy Dash Bio examples, which makes hotreloading faster.
-
-4. open http://127.0.0.1:8000 in your browser
-
-
-on Windows systems `waitress` can be a replacement for `gunicorn`
-
-3. `pip install waitress`
-4. `waitress-serve --listen=*:8000 index:server`
-5. open http://127.0.0.1:8000 in your browser
-
-
-### Contributing
-
-PRs accepted! The Dash user guide is itself a Dash app. Each file in `tutorial` represents a "chapter" of the docs.
-
-Changes to master will get deployed automatically.
+Unfortunately for our community contributors, the new repo is private. That allows us to provide a better docs experience by using some of our closed-source packages such as dash-design-kit, but it means we can no longer accept community PRs. We still very much welcome your feedback on the docs! Please continue to make issues in this repo describing the changes you would like to see, and a Plotly member will take it from there.
