@@ -24,6 +24,7 @@ from .import live_updates
 from .import migration
 from .import performance
 from .import persistence
+from .import custom_hover_content
 from .import plugins
 from .import reference
 from .import sharing_data
