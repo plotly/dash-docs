@@ -40,7 +40,7 @@ To set up review apps, complete the following steps:
     1. Update `DASH_ENTERPRISE_HOST` with your Dash Enterprise host address.
     2. Update `MAIN_BRANCHNAME` with the name of the branch from where you will be pushing changes to your *main app*.
     3. Update `REVIEW_BRANCHNAME` with the branch name as provided by a CI environment variable.
-    4. Update `MAIN_APP` with the name of the app you want to base your review apps on.
+    4. Update `MAIN_APP` with the name of the app you want to base your review apps on. **This app must already be deployed!**
     5. Update `SERVICE_API_KEY` with the environment variable containing your service account API key.
     6. Update `SERVICE_PRIVATE_SSH_KEY` with the environment variable containing your service account private SSH key.
     7. Update `DE_USERNAME_TO_CI_API_KEY` with the Dash Enterprise usernames and the corresponding API keys of the developers you want to deploy review apps.
