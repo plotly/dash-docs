@@ -76,6 +76,31 @@ dcc.Slider(
     included=False
 )'''),
 
+    html.H3('Tooltips'),
+    rc.Markdown("`tooltip` is a property that describes current slider\
+                values, and is a dictionary with two keys:"),
+    rc.Markdown("- `always_visible`, a boolean value that determines tooltip \
+                visibility. By default, its value is `False`, meaning that the \
+                tooltip will only be visible on hover."),
+    rc.Markdown("- `placement`, determines the location of the tooltip and has \
+                a value equal to: `left`,\
+                `right`, `top`, `bottom`, `topLeft`, `topRight`, `bottomLeft`, \
+                and `bottomRight`. The origin of the tooltip is set with \
+                `placement` values containing `top` or `bottom`."),
+    rc.ComponentBlock('''import dash_core_components as dcc
+
+
+dcc.Slider(
+    min=0,
+    max=30,
+    value=[10, 15],
+    tooltip={
+        "always_visible": False,
+        "placement": "bottom",
+    }
+),
+''', style=styles.code_container),
+
     html.H3('Non-Linear Slider and Updatemode'),
     rc.Markdown("Create a logarithmic slider by setting the labels of the \
                  `marks` property \
